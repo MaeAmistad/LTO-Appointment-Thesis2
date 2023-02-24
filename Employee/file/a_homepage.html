@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- My CSS -->
+	<script src="https://kit.fontawesome.com/9aa6942f31.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="../style/a_homepage.css">
+	<title>LTO Appointmnet Setter</title>
+</head>
+<body>
+	<section class="main">
+        <nav>
+            <img src="../img/Land_Transportation_Office.svg.png">
+        
+            <div class="navbar" id="navLinks">
+                <ul>
+                    <li id="hm"><a href="a_homepage.html">HOME</a></li>
+					<li id="req"><a href="a_reqView.html">REQUIREMENTS</a></li>
+                    <li><a href="">TRANSACTION <i class="fa-solid fa-caret-down"></i></a>
+                    <ul>
+                        <li><a href="a_ALicStat.html">LICENSE</a></li>
+                        <li><a href="a_mvAppr.html">MOTOR VEHICLE</a></li>
+						<li><a href="a_AappntmntStat.html">CONDUCTOR LICENSE</a></li>
+                    </ul>
+                    </li>
+					<li id="prfl"><a href="a_profile.html">PROFILE</a></li>
+                    <li id="logout">LOGOUT</li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+
+	<div class="main2">
+		<div class="btnOptn" id="usr_accnt">
+			<button onclick="usr_accnt()">User Account</button>
+		</div>
+		<div class="btnOptn" id="appntmnt_lst">
+			<button onclick="appntmnt_lst()">Appointment List</button>
+		</div>
+		<!--  
+		<div class="btnOptn" id="license">
+			<button onclick="appntmnt_lst()">License</button>
+		</div>
+		<div class="btnOptn" id="mv">
+			<button onclick="appntmnt_lst()">Motor Vehicle</button>		
+		</div>
+		<div class="btnOptn" id="conductor">
+			<button onclick="appntmnt_lst()">Conductor License</button>
+		</div>-->
+	</div>
+
+	<div class="outer-wrapper">
+		<div class="table-wrapper">
+		<table>
+			<h1 class="actlog">Activity Log</h1>
+			<thead>
+				<th>Name</th>
+				<th>Date</th>
+				<th>Time</th>
+				<th>Action</th>
+			</thead>
+		</table>
+		</div>
+	</div>
+	
+		<div class="announcement">
+			<h1 class="an">Announcement</h1>
+			<textarea rows="4" cols="61" placeholder="Type here:"></textarea>
+			<div class="" id="post_button">
+				<button onclick="">Post Announcement</button>
+			</div>
+		</div>
+	
+	<script src="../src/a_homepageBtn.js"></script>
+	<script type="module" src="../src/a_logout.js"></script>
+
+		
+</body>
+</html>

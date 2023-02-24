@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" dtr="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LTO online Appoinment</title>
+    <link rel="stylesheet" href="../style/c_PIform.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://kit.fontawesome.com/9aa6942f31.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <section class="main2">
+        <nav>
+            <img src="../img/Land_Transportation_Office.svg.png">
+        
+            <div class="navbar" id="navLinks">
+                <ul>
+                    <li id="hm"><a href="c_homepage.html">HOME</a></li>
+                    <li><a href="">LTO PORTAL<i class="fa-solid fa-caret-down"></i></a>
+                    <ul>
+                        <li><a target ="_blank" href="https://lto.gov.ph/frequently-asked-questions/license-permit.html">FAQs</a></li>
+                        <li><a target ="_blank" href="https://lto.gov.ph/lto-forms.html">LTO Application Form</a></li>
+                    </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+
+    <div class="main">
+
+        <div class="instruc"> 
+            <p>Please fill-out all field.</p>
+        </div> 
+
+    <form>
+        <div class="info form">
+
+            <div class="inf">
+                <label>Family Name: </label>   
+                <input type="text" id="lname">
+                <div class="error"></div>
+            </div>
+
+            <div class="inf">
+                <label>First Name: </label> 
+                <input type="text" id="fname">
+                <div class="error"></div>
+            </div>
+
+            <div class="inf">
+                <label>Middle Name:</label>
+                <input type="text" id="mname">
+                <div class="error"></div>
+            </div>
+
+            <div class="inf">
+                <label>Date of Birth:</label>
+                <input type="date" id="dob">
+                <div class="error"></div>
+            </div>
+
+            <div class="inf">
+                <label>Gender</label>
+                    <Select class="gender" id="gen">
+                        <option value="s">Select:</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+            </div>
+            
+            <div class="inf addrss">
+                <label>Address:</label>
+                <p>No., Street, City/Municipality, Province</p>
+                <input type="text" id="addrss">
+                <div class="error"></div>
+            </div>
+
+            <div class="inf">
+                <label>Contact Number</label>
+                <input type="tel" id="con_num" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+                <div class="error"></div>
+            </div>
+
+            <div class="inf">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" type="text">
+                <div class="error"></div>
+            </div>
+
+    </form>    
+</div>
+
+    <button class="btn_cn btn" id="btn_cn">
+        Back
+    </button>
+    <button class="btn_nxt btn" id="btn_nxt">
+        Next
+    </button>
+    
+    <script type="module" src="../src/c_PIform.js"></script>
+    
+</body>
+</html>

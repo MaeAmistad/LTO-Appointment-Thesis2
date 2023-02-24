@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+/* Navigation Bar*/
+
+nav{
+    display: flex;
+    padding: 1% 6%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #032d89;
+}
+nav img{
+    width: 60px;
+    height: 60px;
+}
+.navbar{
+    text-align: left;
+}
+.navbar li{
+    list-style: none;
+    display: inline-block;
+    padding: 8px 7px;
+    position: relative;
+}
+nav ul ul{
+    position: absolute;
+    top: 60px;
+    right: -10px;
+    display: none;
+    background-color: #032d89;
+    margin-top: -20px;
+    margin-right: -50px;
+}
+nav ul ul li{
+    width: 200px;
+    float:none;
+    display: list-item;
+    position: relative;
+}
+nav ul li:hover > ul{
+    display: block;
+}
+.navbar ul li a , #logout{
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    cursor: pointer;
+}
+.navbar ul li{
+    font-size: 15px;
+}
+.main2{
+    display: flex;
+    padding: 1% ;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(209, 207, 207);
+	margin-top: 5px;
+}
+.btnOptn {
+	padding: 2px;
+	padding: 0 10px;
+}
+.btnOptn button{
+	padding: 4px;
+	width: 200px;
+}
+.announcement{
+    width: 30%;
+    float: right;
+    margin-right: 40px;
+    margin-top: 10px;
+    height: 110px;
+} 
+#post_button button{
+    margin-top: 2%;
+    margin-left: 227px;
+    padding:2px;
+    width: 200px;
+}
+.an{
+font-size: 15px;
+padding: 10px;
+}
+.announcement input{
+    width: 350px;
+    margin: 10px;
+    height: 50px;
+    outline: none;
+    padding: 5px;
+}
+.announcement textarea{
+    padding:10px;
+}
+
+/**actlog**/
+.actlog{
+    margin-left: 10px;
+    margin-bottom: 20px;
+    
+}
+.outer-wrapper {
+    overflow-y: auto;
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 30px;
+    margin-right: 20px;
+    /* border: 1px solid black; */
+	width: 63%;
+	height: 450px;
+}
+.table-wrapper {
+    height: fit-content;
+    height: 450px;
+    margin-top: 22px;
+    margin: 15px;
+    padding-bottom: 10px;  
+}
+table {
+    border-collapse: separate;
+    border-spacing: 0px;    
+}
+table th{
+    position: sticky; 
+    top: 0px;
+    background-color: gainsboro;
+    color: black;
+    text-align: center;
+    font-weight: normal;
+    font-size: 18px;
+    outline: 0.7px solid black;
+    width: 235px;
+} 
+table th, table td {
+    padding: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+table td {
+    text-align: left;
+    font-size: 15px;
+    border: 1px solid rgb(177, 177, 177);
+    padding-left: 20px; 
+}

@@ -1,0 +1,110 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Land Transportation Office Appointment Setter</title>
+
+    <script type="text/javascript" src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js'></script>
+    <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js'></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://kit.fontawesome.com/9aa6942f31.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css' media="screen" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.min.css" />
+    
+    <link rel="stylesheet" href="../style/c_calendar.css">
+
+</head>
+<body>
+
+    
+  <section class="main2">
+    <nav>
+        <img src="../img/Land_Transportation_Office.svg.png">
+    
+        <div class="navbar" id="navLinks">
+            <ul>
+                <li id="hm"><a href="c_homepage.html">HOME</a></li>
+                <li><a href="">LTO PORTAL<i class="fa-solid fa-caret-down"></i></a>
+                <ul>
+                    <li><a target ="_blank" href="https://lto.gov.ph/frequently-asked-questions/license-permit.html">FAQs</a></li>
+                    <li><a target ="_blank" href="https://lto.gov.ph/lto-forms.html">LTO Application Form</a></li>
+                </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</section>
+
+<div class="main">
+
+    <div class="instruc"> 
+        <p>Please select your prefered date and time of Appointment.</p>
+    </div> 
+    
+    <div class="datepickerr">
+        <label>Date:</label>
+        <input type="text" id="txtdate" placeholder="mm/dd/yyyy"/>
+    </div>
+
+
+   
+
+    <div class="time">
+        <table>
+            <tr>
+                <th>Time</th>
+            </tr>
+            <tr>
+                <td><button>08:00 AM</button></td>
+            </tr>
+            <tr>
+                <td><button>09:00 AM</button></td>
+            </tr>
+            <tr>
+                <td><button>10:00 AM</button></td>
+            </tr>
+            <tr>
+                <td><button>11:00 AM</button></td>
+            </tr>
+            <tr>
+                <td><button>12:00 AM</button></td>
+            </tr>
+            <tr>
+                <td><button>01:00 AM</button></td>
+            </tr>
+            <tr>
+                <td><button>02:00 AM</button></td>
+            </tr>
+            <tr>
+                <td><button>03:00 AM</button></td>
+            </tr>
+            <tr>
+                <td><button>04:00 AM</button></td>
+            </tr>
+        </table>
+    </div>
+
+     <button class="btn_cn btn" id="btn_cn">
+        Cancel
+    </button>
+    <button class="btn_sv btn" id="btn_nxt">
+        Next
+    </button>
+    
+</div>
+
+
+
+    
+    <script type="text/javascript" src="../src/c_calendar.js"></script>
+    <script>
+        btn_cn.addEventListener('click' , (e) => {
+            window.location = "c_homepage.html";
+        })
+        btn_nxt.addEventListener('click' , (e) => {
+            window.location = "c_PIform.html";
+        })
+    </script>
+
+</body>
+</html>

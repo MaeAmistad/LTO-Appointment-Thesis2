@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/8ec04d5e4f.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../style/c_Trnsctform.css">
+    <title>LTO Appointment Setter</title>
+</head>
+<body>
+
+  <section class="main3">
+    <nav>
+        <img src="../img/Land_Transportation_Office.svg.png">
+    
+        <div class="navbar" id="navLinks">
+            <ul>
+                <li id="hm"><a href="c_homepage.html">HOME</a></li>
+                <li><a href="">LTO PORTAL<i class="fa-solid fa-caret-down"></i></a>
+                <ul>
+                    <li><a target ="_blank" href="https://lto.gov.ph/frequently-asked-questions/license-permit.html">FAQs</a></li>
+                    <li><a target ="_blank" href="https://lto.gov.ph/lto-forms.html">LTO Application Form</a></li>
+                </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</section>
+
+   <div class="main">
+      <div class="main2">
+        <header>Application Form</header>
+            <form>
+                <div class="disclaimer1">
+                    Please select your prefered transaction.
+               </div>
+
+                <div class="instruc instruc1"> 
+                    <p>Type of Transaction:</p>
+                </div> 
+                  <select id="selectText1" onchange="trnsct()" >
+                     <option value="s">Select:</option>
+                     <option value="lscnc">License</option>
+                     <option value="mtrvhcl">Motor Vehicle</option>
+                  </select>
+
+                  <div id="mv_toa">
+                    <div class="instruc instruc5"> 
+                    <p>Type of Application:</p>
+                  </div> 
+                  <select id="selectText5" onchange="mv_toa()" >
+                    <option value="s">Select:</option>
+                    <option value="pr">Plain Renewal</option>
+                    <!-- <option value=""></option> -->
+                  </select>
+                  </div>
+
+                  <div id="license">
+                    <div class="laaf_lic">
+                    <div class="instruc instruc2"> 
+                    <p>License Application Applied for:</p>
+                  </div> 
+                  <select id="selectText2" onchange="laaf_lic()" >
+                    <option value="s">Select:</option>
+                    <option value="sp">Student-Driver's Permit</option>
+                    <option value="npdl">Non-Professional Driver's License</option>
+                    <option value="pdl">Professional Driver's License</option>
+                    <option value="cdl">Conductor's License</option>
+                 </select>
+                  </div>
+                
+                  <div class="toa_lic">
+                    <div class="instruc instruc3"> 
+                    <p>Type of Application:</p>
+                </div>
+                 <select id="selectText3" onchange="toa_Lic()" >
+                    <option value="s">Select:</option>
+                    <option value="nw">New</option>
+                    <option value="rnw">Renewal</option>
+                    <option value="cfdl">Conversion of Foreign DL</option>
+                    <option value="acc">Addiotional Code or Category</option>
+                    <option value="cdlc">Change of DL Classification</option>
+                    <option value="edlvfdl">Expired DL with Valid FDL</option>
+                    <option value="dplct">Duplicate</option>
+                    <option value="dcardc">Dropping of Category or Add'l or Removal of Driving Conditions</option>
+                    <option value="rr">Revision of Records</option>
+                    <option value="edl">Enhancement of DL</option>
+                    <option value="cct">Change of Clutch Type</option>
+                 </select>
+                  </div>
+                 
+                  <div id="lic_rr">
+                    <div class="instruc instruc4"> 
+                      <p>Revision of Records:</p>
+                    </div> 
+                      <select id="selectText4" onchange="lic_rr()" >
+                        <option value="s">Select:</option>
+                        <option value="rrca">Change Address</option>
+                        <option value="rrccs">Change Civil Status</option>
+                        <option value="rrcn">Change Name</option>
+                        <option value="rrcbd">Change Birth date</option>
+                        <option value="rro">Others</option>
+                    </select>
+                  </div>
+                  </div>
+                  
+                
+               
+      </div>
+         
+              <div class="hd">
+                <div id="hide">
+                 
+                </div>
+              </div>
+                <p class="disclaimer2"><b>Note:</b> Please remember to bring the APL Form and the requirements when you 
+                  have your transaction at the office</p>
+                <a href="c_homepage.html" ><button class="back1">Back</button></a>
+                <a href="c_calendarL.html" ><button class="next1" id="nextL">Next</button></a>
+
+              </div>
+   </div>
+            
+        <script src="../src/c_Trnsctform.js"></script>
+</body>
+</html>

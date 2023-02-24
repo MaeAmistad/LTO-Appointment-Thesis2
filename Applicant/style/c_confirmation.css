@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+/* Navigation Bar*/
+
+nav{
+    display: flex;
+    padding: 0.6% 6%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #032d89;
+}
+nav img{
+    width: 60px;
+    height: 60px;
+}
+.navbar{
+    text-align: left;
+} 
+.navbar li{
+    list-style: none;
+    display: inline-block;
+    padding: 8px 7px;
+    position: relative;
+}
+nav ul ul{
+    position: absolute;
+    top:60px;
+    right: -50px;
+    display: none;
+    background-color: #032d89;
+    margin-top: -20px;
+}
+nav ul ul li{
+    width: 150px;
+    float:none;
+    display: list-item;
+    position: relative;
+}
+nav ul li:hover > ul{
+    display: block;
+}
+.navbar ul li a{
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    cursor: pointer;
+}
+.navbar ul li{
+    font-size: 15px;
+}
+.box{
+  position: relative;
+  max-width: 700px;
+  width: 100%;
+  padding: 25px;
+  background: white; 
+  margin-top: 20px;
+  margin-left: 340px;
+  margin-bottom: 10px; 
+  border: 1px solid #b3b3b3;
+}
+.border{    
+    width: 666px;
+    height: 100px;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: -30px;
+}    
+.content-table {
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 0.9em;
+    min-width: 100px;
+    overflow: hidden; 
+}
+.content-table thead tr {
+     /**
+    background-color: #032d89;
+*/
+    color: #565656;
+    text-align: center;
+    font-weight: bold;
+}
+.content-table th,
+.content-table td {
+    padding: 12px 15px;
+    /**
+    border: 1px solid #032d89;
+    */
+    width: 300px;
+}
+.Transaction-table {
+    border-collapse: collapse;
+    font-size: 0.9em;
+    min-width: 100px;
+    overflow: hidden;  
+}
+.Transaction-table thead tr {
+
+    color: #565656;
+    text-align: center;
+    font-weight: bold;
+}
+.Transaction-table th,
+.Transaction-table td {
+    padding: 12px 15px;
+   
+    width: 300px;   
+}
+.Transaction-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 100px;
+    overflow: hidden;   
+}
+.contact-table { 
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 100px;
+    overflow: hidden;
+}
+.contact-table thead tr {
+   
+    color: #565656;
+    text-align: center;
+    font-weight: bold;
+}
+.contact-table th,
+.contact-table td {
+    padding: 12px 15px;
+    /**
+    border: 1px solid #032d89;
+    */
+    width: 300px;
+}
+button{
+    width: 100px;
+    height: 40px;
+    color: black;
+    font-size: 14px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 5px;
+    text-decoration: none;
+    margin-top: 40px; 
+  }
+.confirm{
+    margin-left: 460px;
+    background:#032d89;
+    color: white;
+
+}
+.confirm, button{
+    margin-top: 50px;
+}
