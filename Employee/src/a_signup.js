@@ -1,7 +1,7 @@
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
- import { getFirestore, getDocs, collection,doc, getDoc  } from "https://www.gstatic.com/firebasejs/9.17.0/firebase-firestore.js";
- import { getAuth, signInWithEmailAndPassword, sendEmailVerification} from "https://www.gstatic.com/firebasejs/9.17.0/firebase-auth.js";
+ import { getFirestore, setDoc,doc  } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
+ import { getAuth, createUserWithEmailAndPassword, sendEmailVerification} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
 const firebaseConfig = {
   apiKey: "AIzaSyCyNToos3S0HwLl0cZMRdiVjFJcBb4FWFo",
   authDomain: "lto-online-appointment-setter.firebaseapp.com",
@@ -231,7 +231,7 @@ else{
                 confirmButtonText:`OK`
               }).then((result) => {
                 if (result.value) {
-                    window.location = ("a_useraccTable.html")
+                    // window.location = ("a_useraccTable.html")
                 }
               });
         // window.location = ("a_login.html")
@@ -274,7 +274,7 @@ else{
                 confirmButtonText:`OK`
               }).then((result) => {
                 if (result.value) {
-                    window.location = ("a_useraccTable.html")
+                    // window.location = ("a_useraccTable.html")
                 }
               });
         });

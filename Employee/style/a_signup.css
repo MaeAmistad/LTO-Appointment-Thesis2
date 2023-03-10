@@ -89,12 +89,20 @@ button{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 80px;
-    /* border: 1px solid black; */
     border-radius: 5px;
+    margin-left: -35px;
 }
-.emp input[value="1"]{
+.emp2{
+    width: 400px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
     margin-left: 60px;
+}
+.emp2 input[value="1"]{
+    margin-left: 40px;
 }
 .inf.success input{
     border-color: rgb(10, 185, 10);
@@ -117,6 +125,7 @@ button{
     height: 13px;
     margin-left: 40px;
     width: 400px;
+    margin-bottom: 50px;
 }
 #email{
     text-transform: lowercase;
@@ -128,7 +137,7 @@ button{
     margin-top: 60px;
 }
 .showp input[type="checkbox"]{
-    margin-top: 60px;
+    margin-top: 10px;
     width: 15px;
     height: 15px;
 }
@@ -141,6 +150,7 @@ button{
     margin-left: 40px;
     width: 400px;
     margin-top: -10px;
+    margin-bottom: 25px;
 }
 .inf #uppercase{
     display:none;
@@ -151,6 +161,7 @@ button{
     margin-left: 40px;
     width: 400px;
     margin-top: -10px;
+    margin-bottom: 25px;
 }
 .inf #num{
     display:none;
@@ -161,6 +172,7 @@ button{
     margin-left: 40px;
     width: 400px;
     margin-top: -10px;
+    margin-bottom: 15px;
 }
 .inf #spclchrctr{
     display:none;
@@ -170,6 +182,7 @@ button{
     height: 13px;
     margin-left: 40px;
     width: 400px;
+    margin-bottom: 30px;
 }
 .inf #length{
     display:none;
@@ -179,7 +192,8 @@ button{
     height: 13px;
     margin-left: 40px;
     width: 400px;
-    margin-top: -10px;
+    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 .inf #match{
     display:none;
@@ -192,7 +206,7 @@ button{
     margin-top: -10px;
 }
 .infcpass{
-    margin-top: 55px;
+    /* margin-top: 55px; */
 }
 .hme{
     text-align: center;

@@ -64,6 +64,15 @@ nav ul li:hover > ul{
   margin-bottom: 10px; 
   border: 1px solid #b3b3b3;
 }
+.main header{
+    text-align: center;
+    font-size: 35px;
+    font-weight: 600;
+    margin: 0 0 30px 0;
+}
+h4{
+    font-size: 19px;
+}
 .info{
     margin-top: 30px;
 }
@@ -79,7 +88,10 @@ nav ul li:hover > ul{
     text-transform: capitalize;
     border: 1px solid black
 }
-.info input[type="date"]{
+.info input[type="email"]{
+    text-transform: none;
+}
+.infdob input[type="date"]{
     text-transform: none;
 }
 .btn{
@@ -98,7 +110,7 @@ nav ul li:hover > ul{
 .btn_nxt{
     background-color: #032d89;
     color: white;
-    margin-left: 410px;
+    margin-left: 470px;
 }
 #selectText1, #selectText2,#gen{
     width: 600px;
@@ -106,14 +118,10 @@ nav ul li:hover > ul{
     margin-left: 40px;
     margin-top: 5px;
 }
-p{
-    text-align: justify;
-    margin-bottom: 20px;
-    font-size: 20px;
-    font-weight: 200px;
-}
 .addrss p{
     font-size: 12px;
     margin-left: 39px;
     margin-bottom: -10px;
 }
+
+

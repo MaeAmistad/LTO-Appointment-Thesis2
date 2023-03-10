@@ -48,3 +48,49 @@ p{
     border-radius: 10px; 
     margin-bottom: 30px;
 }
+@media only screen and (max-width: 900px){
+    .main{
+        width: 700px;
+    }
+    p{
+        font-size: 30px;
+    }
+    #st_appntmnt{
+        margin-left: 75px;
+    }
+}
+
+@media only screen and (max-width: 720px){
+    .main{
+        width: 500px;
+    }
+    .main img{
+        width: 250px;
+        height: 250px;
+        margin-top: 80px;
+    }
+    p{
+        margin-top: 70px;
+        font-size: 26px;
+    }
+    #st_appntmnt{
+        margin-left: 50px; 
+    }
+}
+@media only screen and (max-width: 510px){
+    .main{
+        width: 400px;
+    }
+    .main img{
+        width: 250px;
+        height: 250px;
+        margin-top: 80px;
+    }
+    p{
+        margin-top: 70px;
+        font-size: 26px;
+    }
+    #st_appntmnt{
+        margin-left: 40px;
+    }
+}

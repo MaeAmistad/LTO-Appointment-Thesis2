@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>LTO Appointment Setter</title>
+
+    <!-- Montserrat Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://kit.fontawesome.com/8ec04d5e4f.css" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/8ec04d5e4f.js" crossorigin="anonymous"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../style/a_dashboard.css">
+  </head>
+  <body>
+    <div class="grid-container">
+
+      <!-- Header -->
+      <header class="header">
+        <div class="menu-icon" onclick="openSidebar()">
+          <span class="material-icons-outlined">menu</span>
+        </div>
+        <div class="header-left">
+          <span class="material-icons-outlined">search</span>
+        </div>
+        <div class="header-right">
+          <!-- <span class="material-icons-outlined">email</span> -->
+        </div>
+      </header>
+      <!-- End Header -->
+
+      <!-- Sidebar -->
+      <aside id="sidebar">
+        <div class="sidebar-title">
+          <!-- <div class="sidebar-brand">LTO Dashboard</div> -->
+          <img src="../img/Land_Transportation_Office.svg.png">
+          <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+        </div>
+
+        <ul class="sidebar-list">
+          <li class="sidebar-list-item">
+            <a href="a_dashboard.html">
+               Dashboard
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#">
+                Account Management
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href=".html">
+             List of Appointments
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <button class="dropdown-btn">Transactions
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+              <a>License <br><br></a>
+              <a>Motor Vehicle<br><br></a>
+              <a>Conductor's Driver's License</a>
+            
+            </div>
+          
+            <li class="sidebar-list-item">
+              <a href=".html">
+                  List Of Requirements
+              </a>
+            </li>
+            
+          <li class="sidebar-list-item">
+            <a href="#">
+               Log-Out
+            </a>
+          </li>
+
+          </ul>
+      </aside>
+      <!-- End Sidebar -->
+
+      <!-- Main -->
+      <main class="main-container">
+        <div class="main-title">
+          <p class="font-weight-bold">DASHBOARD</p>
+        </div>
+
+        <div class="main-cards">
+
+          <div class="card">
+            <div class="card-inner">
+              <p class="text-primary">--</p>  
+            </div>
+            <span class="text-primary font-weight-bold">--</span>
+          </div>
+
+          <div class="card">
+            <div class="card-inner">
+              <p class="text-primary">--</p>
+              <span class="material-icons-outlined text-orange">--</span>
+            </div>
+            <span class="text-primary font-weight-bold">--</span>
+          </div>
+
+          <div class="card">
+            <div class="card-inner">
+              <p class="text-primary">--</p>
+              <span class="material-icons-outlined text-green">--</span>
+            </div>
+            <span class="text-primary font-weight-bold">-</span>
+          </div>
+
+          <div class="card">
+            <div class="card-inner">
+              <p class="text-primary">-</p>
+              <span class="material-icons-outlined text-red">--</span>
+            </div>
+            <span class="text-primary font-weight-bold">-</span>
+          </div>
+
+        </div>
+        <div>
+            <h1> Statistics</h1>
+        </div>
+
+        <div class="charts">
+
+          <div class="charts-card">
+            <p class="chart-title">Transactions</p>
+            <p class="sdp">Student Driver's License</p><i class="fa-sharp1  fa-solid fa-circle"></i>
+            <p class="npdln">Non-Professional Driver's Lisence(new)</p><i class="fa-sharp2 fa-solid fa-circle"></i>
+            <p class="npdlr">Non-Professional Driver's Lisence(renew)</p><i class="fa-sharp3 fa-solid fa-circle"></i>
+            <p class="pdln">Professional Driver's Lisence(new)</p><i class="fa-sharp4 fa-solid fa-circle"></i>
+            <p class="pdlnr">Professional Driver's Lisence(renew)</p><i class="fa-sharp5 fa-solid fa-circle"></i>
+            <p class="cdln">Conductors Driver's Lisence(new)</p> <i class="fa-sharp6 fa-solid fa-circle"></i>
+            <p class="cdlr">Conductors Driver's Lisence(renew)</p> <i class="fa-sharp7 fa-solid fa-circle"></i>
+            <p class="mvrr">Motor Vehicle Regisatration(renew)</p>  <i class="fa-sharp8 fa-solid fa-circle"></i> 
+            <div id="bar-chart"></div>
+          </div>
+
+          <div class="charts-monthly">
+            <p class="chart-title">Monthly</p>
+            <div id="area-chart"></div>
+          </div>
+
+        </div>
+      </main>
+      <!-- End Main -->
+
+    </div>
+
+    <!-- Scripts -->
+    <!-- ApexCharts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../src/a_dashboard.js"></script>
+  </body>
+</html>

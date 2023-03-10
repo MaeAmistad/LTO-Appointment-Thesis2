@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LTO Appointment Setter</title>
+    <link rel="stylesheet" href="../style/a_appntmntStatADC.css">
+    <script src="https://kit.fontawesome.com/9aa6942f31.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- NAVBAR -->
+	<section class="">
+        <nav>
+            <img src="../img/Land_Transportation_Office.svg.png">
+        
+            <div class="navbar" id="navLinks">
+                <ul>
+                    <li id="hm"><a href="pc_homepage.html">HOME</a></li>
+                    <li><a href="">APPOINTMENTS<i class="fa-solid fa-caret-down"></i></a>
+                    <ul>
+                        <li><a href="pc_LIComp.html">LICENSE</a></li>
+                        <li><a href="pc_mvComp.html">MOTOR VEHICLE</a></li>
+						<li><a href="pc_CLComp.html">CONDUCTOR LICENSE</a></li>
+                    </ul>
+                    </li>
+                    <li id="prfl"><a href="pc_profile.html">PROFILE</a></li>
+                    <li id="logout">LOGOUT</li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+
+    <div class="main2">
+		<div class="btnOptn">
+			<button id="comp_btn" style="background:#032d8983; color: white;">Complete</button>
+		</div>
+		<div class="btnOptn">
+			<button id="incomp_btn">Incomplete</button>
+		</div>
+	</div>
+
+    <div class="main"> 
+
+        <button id="bck_AL">BACK</button>
+        
+        <table class="content-table">
+          <thead>
+          <tr>
+            <th class="sp" colspan="12">Appointments</th>
+          </tr>
+          <tr>
+                <th>Transaction ID.</th>
+                <th>Full Name</th>
+                <th>Birthday</th>
+                <th>Gender</th>
+                <th>Address</th>
+                <th>Transaction Type</th>
+                <th>License Application Applied</th>
+                <th>Application Type</th>
+                <th>Date of Appointment</th>      
+                <th>Time of Appointment</th>                
+                <th>Contact Number</th>
+                <th>Email Address</th>
+          </tr> 
+            <tbody id="tbody1"> </tbody>
+          </table>
+      </div>
+
+    <script type="module" src="../src/a_logout.js"></script>
+    <script type="module" src="../src/pc_CLComp.js"></script>
+    
+</body>
+</html>

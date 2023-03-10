@@ -60,7 +60,7 @@ nav ul li:hover > ul{
   padding: 25px;
   background: white; 
   margin-top: 20px;
-  margin-left: 340px;
+  margin-left: 320px;
   margin-bottom: 10px; 
   border: 1px solid #b3b3b3;
 }
@@ -74,6 +74,15 @@ nav ul li:hover > ul{
   font-weight: 600;
   margin: 0 0 30px 0;
 }
+h2{
+  text-align: center;
+  padding-bottom: 10px;
+}
+h5{
+  margin: 10px 3px;
+  width: 650px;
+  margin-left: 40px;
+}
 .title{
   margin: 5px;
   text-align: center;
@@ -82,7 +91,8 @@ nav ul li:hover > ul{
 }
 .disclaimer1{
   text-align: left;
-  margin: 10px 10px;
+  margin: 10px 3px;
+  font-size: 19px;
 }
 .btn_upload{
   width: 100px;
@@ -128,9 +138,16 @@ select{
   text-align: left;
   height: 70px;
   padding: 30px 10px 30px 40px; 
+  margin-bottom: -60px;
 }
 .next1 {
   background-color: #032d89;
   color: white;
-  margin-left: 360px;
+  margin-left: 420px;
+}
+
+.req ul li{
+  /* padding: 5px 20px;  */
+  width: 600px;
+  margin-left: 60px;
 }

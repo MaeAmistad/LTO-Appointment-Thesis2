@@ -38,12 +38,12 @@
 <div class="main">
 
     <div class="instruc"> 
-        <p>Please select your prefered date and time of Appointment.</p>
+        <p><strong>Please select your prefered date and time of Appointment.</strong></p>
     </div> 
     
     <div class="datepickerr">
         <label>Date:</label>
-        <input type="text" id="txtdate" placeholder="mm/dd/yyyy"/>
+        <input type="text" id="txtdate" placeholder="dd-mm-yyyy"/>
     </div>
 
 
@@ -55,31 +55,31 @@
                 <th>Time</th>
             </tr>
             <tr>
-                <td><button>08:00 AM</button></td>
+                <td class="td1"><input type="button" class="btn1" id="b1" value="08:00 AM"></td>
             </tr>
             <tr>
-                <td><button>09:00 AM</button></td>
+                <td class="td2"><input type="button" class="btn1" id="b2" value="09:00 AM"></td>
             </tr>
             <tr>
-                <td><button>10:00 AM</button></td>
+                <td class="td3"><input type="button" class="btn1" id="b3" value="10:00 AM"></td>
             </tr>
             <tr>
-                <td><button>11:00 AM</button></td>
+                <td class="td4"><input type="button" class="btn1" id="b4" value="11:00 AM"></td>
             </tr>
             <tr>
-                <td><button>12:00 AM</button></td>
+                <td class="td5"><input type="button" class="btn1" id="b5" value="12:00 PM"></td>
             </tr>
             <tr>
-                <td><button>01:00 AM</button></td>
+                <td class="td6"><input type="button" class="btn1" id="b6" value="01:00 PM"></td>
             </tr>
             <tr>
-                <td><button>02:00 AM</button></td>
+                <td class="td7"><input type="button" class="btn1" id="b7" value="02:00 PM"></td>
             </tr>
             <tr>
-                <td><button>03:00 AM</button></td>
+                <td class="td8"><input type="button" class="btn1" id="b8" value="03:00 PM"></td>
             </tr>
             <tr>
-                <td><button>04:00 AM</button></td>
+                <td class="td9"><input type="button" class="btn1" id="b9" value="04:00 PM"></td>
             </tr>
         </table>
     </div>
@@ -92,19 +92,9 @@
     </button>
     
 </div>
-
-
-
     
     <script type="text/javascript" src="../src/c_calendar.js"></script>
-    <script>
-        btn_cn.addEventListener('click' , (e) => {
-            window.location = "c_homepage.html";
-        })
-        btn_nxt.addEventListener('click' , (e) => {
-            window.location = "c_PIform.html";
-        })
-    </script>
+
 
 </body>
 </html>

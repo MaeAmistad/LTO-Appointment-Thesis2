@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/8ec04d5e4f.js" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="../style/c_Trnsctform.css">
     <title>LTO Appointment Setter</title>
 </head>
@@ -31,9 +32,9 @@
    <div class="main">
       <div class="main2">
         <header>Application Form</header>
-            <form>
+        
                 <div class="disclaimer1">
-                    Please select your prefered transaction.
+                    <h4>Please select your prefered transaction.</h4>
                </div>
 
                 <div class="instruc instruc1"> 
@@ -42,7 +43,7 @@
                   <select id="selectText1" onchange="trnsct()" >
                      <option value="s">Select:</option>
                      <option value="lscnc">License</option>
-                     <option value="mtrvhcl">Motor Vehicle</option>
+                     <option value="mtrvhcl">Motor Vehicle Registration (Renewal)</option>
                   </select>
 
                   <div id="mv_toa">
@@ -51,7 +52,12 @@
                   </div> 
                   <select id="selectText5" onchange="mv_toa()" >
                     <option value="s">Select:</option>
-                    <option value="pr">Plain Renewal</option>
+                    <option value="rnwl">Renewal</option>
+                    <option value="pr">Diplomat</option>
+                    <option value="oev">Other Exempt Vehicle (OEV) under Special Economic Zones</option>
+                    <option value="frhr">For Hire</option>
+                    <option value="stlnrcvrd">Stolen and Recovered</option>
+                    <option value="rctvtnstrg">Reactivation of Storage </option>
                     <!-- <option value=""></option> -->
                   </select>
                   </div>
@@ -66,7 +72,7 @@
                     <option value="sp">Student-Driver's Permit</option>
                     <option value="npdl">Non-Professional Driver's License</option>
                     <option value="pdl">Professional Driver's License</option>
-                    <option value="cdl">Conductor's License</option>
+                    <option value="cl">Conductor's License</option>
                  </select>
                   </div>
                 
@@ -74,7 +80,7 @@
                     <div class="instruc instruc3"> 
                     <p>Type of Application:</p>
                 </div>
-                 <select id="selectText3" onchange="toa_Lic()" >
+                 <select id="selectText3" onchange="laaf_lic()" >
                     <option value="s">Select:</option>
                     <option value="nw">New</option>
                     <option value="rnw">Renewal</option>
@@ -100,28 +106,495 @@
                         <option value="rrccs">Change Civil Status</option>
                         <option value="rrcn">Change Name</option>
                         <option value="rrcbd">Change Birth date</option>
+                        <option value="rrcopd">Change of Other Personal Details</option>
                         <option value="rro">Others</option>
                     </select>
                   </div>
                   </div>
-                  
-                
-               
       </div>
          
-              <div class="hd">
-                <div id="hide">
-                 
+                <div id="req_lst">
+
+                  <div class="req" id="spn">
+
+                    <h2>Requirments</h2>
+
+                    <ul>                      
+                      <li>Duly accomplished Application for Permits and Licenses (APL) Form</li>
+                      <li>
+                        Any of the Following: <br> PSA Certificate of Birth/Philippine Identification 
+                        Card/Passport/Local Civil Registry/PSA Certificate of Marriage.
+                      </li>
+                      <li>Medical Certificate from LTO Accredited Medical Clinic:</li>
+                      <li>Any issued ID with photo and signature of the Applicant:</li>
+                      <li>Certificate of Completion of the Theorotical Driving Course:</li>
+                      <li>Parental or Guardian Consent with valid government ID with photo nad signature for applicant 18 below:</li>
+                      <li>For foreigner, photocopy of passport with entry date and VISA with six (6) months duration:</li>
+                    </ul>
+                  </div>
+
+                  <div class="req" id="sprn">
+
+                    <h2>Requirments</h2>
+
+                    <ul>
+                      <li>Duly accomplished Application for Permits and Licenses (APL) Form</li>
+                      <li>Existing Student-Driver's Permit:</li>
+                      <li>Medical Certificate from LTO Accredited Medical Clinic:</li>
+                      <li>For holders of Student Permit before August 3, 2020, 
+                        Certificate of Completion of the Theorotical Driving Course:</li>
+                    </ul>
+                  </div>
+
+                  <div class="req" id="npdln">
+
+                    <h2>Requirments</h2>
+
+                    <ul>
+                      <li>Duly accomplished Application for Permits and Licenses (APL) Form</li>
+                      <li>Valid Student Driver's Permit:</li>
+                      <li>Medical Certificate from LTO Accredited Medical Clinic:</li>
+                      <li>Original and photocopy of Practical Driving Course Certificate (PDC):</li>
+                      <li>Parental or Guardian Consent (with valid government ID with photo and signature)
+                        if applicant is below 17 years old:</li>
+                    </ul>
+                  </div>
+
+                  <div class="req" id="npdlrn">
+
+                    <h2>Requirments</h2>
+
+                    <ul>
+                      <li>Duly accomplished Application for Permits and Licenses (APL) Form</li>
+                      <li>Existing Non-Professional Driver's License:</li>
+                      <li>Medical Certificate from LTO Accredited Medical Clinic:</li>
+                      <li>Certificate of Driving Enhancement Program (DEP):</li>
+                      <li>Certificate of Completion of Driver's Reorientation Course:</li>
+                    </ul>
+                  </div>
+
+                  <div class="req" id="pdln">
+
+                    <h2>Requirments</h2>
+
+                    <ul>
+                      <li>Duly accomplished Application for Permits and Licenses (APL) Form</li>
+                      <li>Existing Non-Professional Driver's License:</li>
+                      <li>Medical Certificate from LTO Accredited Medical Clinic:</li>
+                      <li>Original and photocopy of Practical Driving Course Certificate (PDC):</li>
+                    </ul>
+                  </div>
+
+                  <div class="req" id="pdlrn">
+
+                    <h2>Requirments</h2>
+
+                    <ul>
+                      <li>Duly accomplished Application for Permits and Licenses (APL) Form</li>
+                      <li>Existing Professional Driver's License:</li>
+                      <li>Medical Certificate from LTO Accredited Medical Clinic:</li>
+                      <li>Comprehensive Driver's Education (CDE):</li>
+                    </ul>
+                  </div>
+
+                  <div class="req" id="cln">
+
+                    <h2>Requirments</h2>
+
+                    <ul>
+                      <li>Duly accomplished Application for Permits and Licenses (APL) Form</li>
+                      <li>Medical Certificate from LTO Accredited Medical Clinic:</li>
+                      <li>PSA Certificate of Birth/Philippine Identification Card/Passport/PSA Certificate of Marriage for married women.</li>
+                    </ul>
+                  </div>
+
+                  <div class="req" id="clrn">
+
+                    <h2>Requirments</h2>
+
+                    <ul>
+                      <li>Duly accomplished Application for Permits and Licenses (APL) Form</li>
+                      <li>Medical Certificate from LTO Accredited Medical Clinic:</li>
+                      <li>Original Conductor's License.</li>
+                    </ul>
+                  </div>
+
+                  <div class="req" id="dlplct">
+
+                    <h2>Requirments</h2>
+
+                    <ul>
+                      <li>Duly accomplished Application for Permits and Licenses (APL) Form</li>
+                      <li>Presentation of original Affidavit of Loss / Mutilated ID</li>
+                      <li>Submission of one (1) photocopy and presentation of original valid ID with 
+                        photo and signature</li>
+                    </ul>
+                  </div>
+
+                  <div class="req" id="cofd">
+
+                    <h2>Requirments</h2>
+
+                    <ul>
+                      <li>Duly accomplished Application for Permits and Licenses (APL) Form</li>
+                      <li>Medical Certificate from LTO Accredited Medical Clinic:</li>
+                      <li>Presentation of original and submission of one (1) photocopy of valid
+                        foreign Driver's License. If the foreign Driver’s License is not in English
+                        language, original official English translation 
+                        </li>
+                      <li>Presentation of original and submission of one (1) photocopy of valid 
+                        passport showing the first page, visa page and latest date of entry in the 
+                        Philippines</li>
+                      <li>Presentation of Foreign Driver's License</li>
+                      <li>TIN, if employed</li>
+                    </ul>
+                  </div>
+
+                  <div class="req" id="chngeClssfctn">
+
+                    <h2>Requirments</h2>
+                    <h5>CHANGE CLASSIFICATION FROM NON-PROFESSIONAL DRIVER'S LICENSE CODE TO PROFESSIONAL DRIVER'S
+                      LICENSE CODE WITH SAME DRIVER'S LICENSE CODE</h5>
+                    <ul>
+                      <li>Duly accomplished Application for Permits and Licenses (APL) Form</li>
+                      <li>Medical Certificate from LTO Accredited Medical Clinic:</li>
+                      <li>Presentation of original valid / expired NPDL</li>
+                      <li>Taxpayer's Identification Number (TIN) </li>
+                    </ul>
+
+                    <h5>CHANGE CLASSIFICATION FROM PROFESSIONAL DRIVER'S LICENSE CODE TO NON-PROFESSIONAL DRIVER'S
+                      LICENSE CODE</h5>
+                    <ul>
+                      <li>Duly accomplished Application for Permits and Licenses (APL) Form</li>
+                      <li>Medical Certificate from LTO Accredited Medical Clinic:</li>
+                      <li>Presentation of original Driver's License</li>
+                    </ul>
+                  </div>
+
+                  <div class="req" id="addtnlCd">
+
+                    <h2>Requirments</h2>
+
+                    <ul>
+                      <li>Duly accomplished Application for Permits and Licenses (APL) Form</li>
+                      <li>Medical Certificate from LTO Accredited Medical Clinic:</li>
+                      <li>Presentation of original NPDL/PDL</li>
+                      <li>For DL Code A or A1, if holder of A / A1, no PDC required</li>
+                      <li>For DL Code B, B1 or B2, if holder of B, B1 / B2, no PDC required</li>
+                      <li>For DL Code C, must have equivalent training from LTO accredited TESDA
+                        Training Center for NC III or PDC from Driving School prior to application</li>
+                      <li>For DL Code D, must have equivalent training from LTO accredited TESDA 
+                        Training Center for NC III or PDC from Driving School prior to application</li>
+                      <li>For DL Code BE, must have equivalent training from LTO accredited TESDA 
+                        Training Center or PDC from Driving School prior to application or holder of CE (RC 8)</li>
+                      <li>For DL Code CE, must have equivalent training from LTO accredited TESDA 
+                        Training Center for NC III or PDC from Driving School prior to application</li>
+                        
+                    </ul>
+                  </div>
+
+                  <div class="req" id="ExpiredDLvfdl">
+
+                    <h2>Requirments</h2>
+
+                    <ul>
+                      <li>Duly accomplished Application for Permits and Licenses (APL) Form</li>
+                      <li>Medical Certificate from LTO Accredited Medical Clinic:</li>
+                      <li>Presentation of original and submission of one (1) photocopy of valid
+                          foreign Driver's License. If the foreign Driver’s License is not in English
+                          language, original official English translation </li>
+                      <li>Presentation of original and submission of one (1) photocopy of valid 
+                        passport showing the first page, visa page and latest date of entry in the 
+                        Philippines.
+                        </li>
+                      <li>Presentation of Foreign Driver's License</li>
+                    </ul>
+                  </div>
+
+                  <div class="req" id="chngeCT">
+
+                    <h2>Requirments</h2>
+                    <ul>
+                      <li>Duly accomplished Application for Permits and Licenses (APL) Form</li>
+                      <li>Medical Certificate from LTO Accredited Medical Clinic:</li>
+                      <li>Presentation of original Driver's License</li>
+                    </ul>
+                  </div>
+
+                  <!-- For Revision of Records -->
+
+                  <div class="req" id="rr_ca">
+
+                    <h2>Requirments</h2>
+
+                    <ul>
+                      <li>Duly accomplished Application for Permits and Licenses (APL) Form</li>
+                      <li>Presentation of original Driver’s / Conductor’s License</li>
+                      <li>Barangay Clearance stating the complete address and/or proof of billing statement</li>
+                    </ul>
+                  </div>
+                   
+                  <div class="req" id="rr_ccs">
+
+                    <h2>Requirments</h2>
+
+                    <ul>
+                      <li>Duly accomplished Application for Permits and Licenses (APL) Form</li>
+                      <li>Presentation of original Driver’s / Conductor’s License</li>
+                      <li>PSA Authenticated Marriage Contract</li>
+                      <li>If annulled, presentation of original and submission of one (1) photocopy 
+                        court order or marriage contract with annotation</li>
+                      <li>Certificate of No Marriage (CENOMAR), if applicable</li>
+                      <li>If married abroad, presentation of original and submission of one (1) 
+                        photocopy of passport showing married name or copy of the "report of 
+                        marriage" submitted at the Philippine Consular Office where the marriage took 
+                        place</li>
+                    </ul>
+                  </div>
+
+                  <div class="req" id="rr_cn">
+
+                    <h2>Requirments</h2>
+
+                    <ul>
+                      <li>Duly accomplished Application for Permits and Licenses (APL) Form</li>
+                      <li>Presentation of original Driver’s / Conductor’s License</li>
+                      <li>Presentation of the original and submission of one (1) photocopy of any of the
+                        following: <br>
+                         a. PSA Certificate of Birth <br>
+                         b. Philippine Identification Card <br>
+                         c. Passport</li>
+                    </ul>
+                  </div>
+
+                  <!-- For MV -->
+
+                  <div class="req" id="renewal">
+
+                    <h2>Requirments</h2>
+
+                    <ul>
+                      <li>One (1) clear photocopy of latest OR/CR (for initial renewal in MVIRS
+                        only)
+                        </li>
+                      <li>Proof of electronically transmitted appropriate insurance Certificate of
+                        Cover (COC) or one (1) original COC issued by GSIS, if interconnectivity is
+                        not yet available (for government vehicles)
+                        </li>
+                      <li> Electronically transmitted Motor Vehicle Inspection System Report
+                        (MVISR) or </li>
+                      <li>Motor Vehicle Inspection Report
+                        <ul>
+                        <li>Electronically transmitted Certificate of Emission Compliance
+                          (CEC) for MVs/MCs not inspected at PMVICs (except for Electric
+                          Vehicles)</li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="req" id="dplomt">
+
+                    <h2>Requirments</h2>
+
+                    <ul>
+                      <li>One (1) clear photocopy of latest OR/CR (for initial renewal in MVIRS
+                        only)
+                        </li>
+                      <li>Proof of electronically transmitted appropriate insurance Certificate of
+                        Cover (COC) or one (1) original COC issued by GSIS, if interconnectivity is
+                        not yet available (for government vehicles)
+                        </li>
+                      <li> Electronically transmitted Motor Vehicle Inspection System Report
+                        (MVISR) or </li>
+                      <li>Motor Vehicle Inspection Report
+                        <ul>
+                        <li>Electronically transmitted Certificate of Emission Compliance
+                          (CEC) for MVs/MCs not inspected at PMVICs (except for Electric
+                          Vehicles)</li>
+                        </ul>
+                      </li>
+                      <li>Endorsement with control number </li>
+                    </ul>
+                  </div>
+
+                  <div class="req" id="oevsez">
+
+                    <h2>Requirments</h2>
+
+                    <ul>
+                      <li>One (1) clear photocopy of latest OR/CR (for initial renewal in MVIRS
+                        only)
+                        </li>
+                      <li>Proof of electronically transmitted appropriate insurance Certificate of
+                        Cover (COC) or one (1) original COC issued by GSIS, if interconnectivity is
+                        not yet available (for government vehicles)
+                        </li>
+                      <li> Electronically transmitted Motor Vehicle Inspection System Report
+                        (MVISR) or </li>
+                      <li>Motor Vehicle Inspection Report
+                        <ul>
+                        <li>Electronically transmitted Certificate of Emission Compliance
+                          (CEC) for MVs/MCs not inspected at PMVICs (except for Electric
+                          Vehicles)</li>
+                        </ul>
+                      </li>
+                      <li>Certification that the Motor Vehicle is still classified as Other Exempt
+                        Vehicle (OEV)
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="req" id="forhre">
+
+                    <h2>Requirments</h2>
+
+                    <ul>
+                      <li>One (1) clear photocopy of latest OR/CR (for initial renewal in MVIRS
+                        only)
+                        </li>
+                      <li>Proof of electronically transmitted appropriate insurance Certificate of
+                        Cover (COC) or one (1) original COC issued by GSIS, if interconnectivity is
+                        not yet available (for government vehicles)
+                        </li>
+                      <li> Electronically transmitted Motor Vehicle Inspection System Report
+                        (MVISR) or </li>
+                      <li>Motor Vehicle Inspection Report
+                        <ul>
+                        <li>Electronically transmitted Certificate of Emission Compliance
+                          (CEC) for MVs/MCs not inspected at PMVICs (except for Electric
+                          Vehicles)</li>
+                        </ul>
+                      </li>
+                      <li> Electronically transmitted franchise confirmation or one (1) original copy
+                        of franchise confirmation, if interconnectivity is not yet available (For Motor
+                        Vehicles)
+                      </li>
+                      <li>One (1) Original or Certified Copy of the valid Motorized Tricycle
+                          Operator’s Permit with Official Receipt (MTOP) (For Tricycles only)
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="req" id="stolnrcovrd">
+
+                    <h2>Requirments</h2>
+
+                    <ul>
+                      <li>One (1) clear photocopy of latest OR/CR (for initial renewal in MVIRS
+                        only)
+                        </li>
+                      <li>Proof of electronically transmitted appropriate insurance Certificate of
+                        Cover (COC) or one (1) original COC issued by GSIS, if interconnectivity is
+                        not yet available (for government vehicles)
+                        </li>
+                      <li> Electronically transmitted Motor Vehicle Inspection System Report
+                        (MVISR) or </li>
+                      <li>Motor Vehicle Inspection Report
+                        <ul>
+                        <li>Electronically transmitted Certificate of Emission Compliance
+                          (CEC) for MVs/MCs not inspected at PMVICs (except for Electric
+                          Vehicles)</li>
+                        </ul>
+                      </li>
+                      <li> Presentation of original and submission of one (1) photocopy of the
+                        Lifting of General Alarm</li>
+                      <li>Presentation of original and submission of one (1) photocopy of the
+                        Report of Recovery </li>
+                      <li>Presentation of original and submission of one (1) photocopy of the of
+                        Alarm Sheet</li>
+                      <li> Original PNP Crime Laboratory (macro etching report) or National
+                        Bureau of Investigation (NBI) report, fully identifying the motor vehicle and
+                        stating therein the tampering done on the engine or chassis, if any</li>
+                      <li>Original Certificate of re-stamping in case of tampered engine / chassis
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="req" id="Rctivtncd">
+
+                    <h2>Requirments</h2>
+
+                    <ul>
+                      <li>One (1) clear photocopy of latest OR/CR (for initial renewal in MVIRS
+                        only)
+                        </li>
+                      <li>Proof of electronically transmitted appropriate insurance Certificate of
+                        Cover (COC) or one (1) original COC issued by GSIS, if interconnectivity is
+                        not yet available (for government vehicles)
+                        </li>
+                      <li> Electronically transmitted Motor Vehicle Inspection System Report
+                        (MVISR) or </li>
+                      <li>Motor Vehicle Inspection Report
+                        <ul>
+                        <li>Electronically transmitted Certificate of Emission Compliance
+                          (CEC) for MVs/MCs not inspected at PMVICs (except for Electric
+                          Vehicles)</li>
+                        </ul>
+                      </li>
+                      <li>Original Receipt of Return Plate and Licenses (RRPL)</li>
+                      <li>If for hire, electronic confirmation of valid franchise or Motorized Tricycle
+                        Operator's Permit (MTOP) with valid Official Receipt (OR)</li>
+                    </ul>
+                  </div>
+
+                  <div class="req" id="cl_rrccc">
+
+                    <h2>Requirments</h2>
+
+                    <ul>
+                      <li>Duly accomplished Application for Permits and Licenses (APL) Form.</li>
+                      <li>PSA Authenticated Marriage Contract.</li>
+                    </ul>
+
+                  </div>
+
+                  <div class="req" id="cl_rrcoa">
+
+                    <h2>Requirments</h2>
+
+                    <ul>
+                      <li>Duly accomplished Application for Permits and Licenses (APL) Form.</li>
+                      <li>Barangay Clearance stating the complete address and/or proof of billing statement.</li>
+                    </ul>
+                    
+                  </div>
+
+                  <div class="req" id="cl_rrcopd">
+
+                    <h2>Requirments</h2>
+
+                    <ul>
+                      <li>Duly accomplished Application for Permits and Licenses (APL) Form.</li>
+                      <li>Presentation of the original and submission of one (1) photocopy of any of the
+                        following:<br>
+                         a. PSA Certificate of Birth<br>
+                         b. Philippine Identification Card<br>
+                         c. Passport</li>
+                    </ul>
+                    
+                  </div>
+
+                  <div class="req" id="cl_rrlost">
+
+                    <h2>Requirments</h2>
+
+                    <ul>
+                      <li>Duly accomplished Application for Permits and Licenses (APL) Form.</li>
+                      <li>Affidavit of Loss / Mutilated CL.</li>
+                    </ul>
+                    
+                  </div>
+
                 </div>
-              </div>
-                <p class="disclaimer2"><b>Note:</b> Please remember to bring the APL Form and the requirements when you 
-                  have your transaction at the office</p>
-                <a href="c_homepage.html" ><button class="back1">Back</button></a>
-                <a href="c_calendarL.html" ><button class="next1" id="nextL">Next</button></a>
+
+                <button class="back1" id="back1">Back</button>
+                <button class="next1" id="nextL">Next</button>
 
               </div>
    </div>
             
         <script src="../src/c_Trnsctform.js"></script>
+
 </body>
 </html>

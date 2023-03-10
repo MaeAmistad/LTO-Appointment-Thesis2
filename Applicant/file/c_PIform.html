@@ -31,8 +31,10 @@
 
     <div class="main">
 
+        <header>Application Form</header>
+        
         <div class="instruc"> 
-            <p>Please fill-out all field.</p>
+            <h4>Please fill-out all field.</h4>
         </div> 
 
     <form>
@@ -56,9 +58,9 @@
                 <div class="error"></div>
             </div>
 
-            <div class="inf">
-                <label>Date of Birth:</label>
-                <input type="date" id="dob">
+            <div class="inf infdob">
+                <label>Date of Birth:</label>"
+                <input type="date" id="dob" placeholder="dd-mm-yyyy" max="2016-12-31"/>
                 <div class="error"></div>
             </div>
 
@@ -99,8 +101,9 @@
     <button class="btn_nxt btn" id="btn_nxt">
         Next
     </button>
-    
+
     <script type="module" src="../src/c_PIform.js"></script>
+    <!-- <script src="../src/c_PIform2.js"></script> -->
     
 </body>
 </html>

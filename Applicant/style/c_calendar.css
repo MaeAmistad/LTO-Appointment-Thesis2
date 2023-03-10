@@ -65,31 +65,20 @@ nav ul li:hover > ul{
   margin-bottom: 10px; 
   border: 1px solid #b3b3b3;
 }
-
-.main h1{
-    text-align: center;
+.main p{
+    font-size: 19px;
 }
 #txtdate{
     outline: none;
     width: 300px;
     height: 30px;
 }
-p{
-    text-align: justify;
-    margin-bottom: 20px;
-    font-size: 20px;
-    font-weight: 200px;
-}
 .datepickerr{
     margin-left: 40px;
 }
 .datepickerr label{
     font-size: 15px;
-}
-p{
-    font-size: 18px;
-    margin-bottom: 20px;
-}
+}   
 .btn{
     width: 100px;
     height: 40px;
@@ -131,4 +120,12 @@ table tr td{
 }
 .datepicker table{
     font-size: 20px;
+}
+.swal2-popup{
+    width: 400px;
+    height: 150px;
+    font-size: 15px;
+}
+input[type="button"]{
+    width: 90px;
 }

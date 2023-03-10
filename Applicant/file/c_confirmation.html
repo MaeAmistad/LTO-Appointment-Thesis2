@@ -7,6 +7,7 @@
     <title>Land Transportation Office Appointment Setter</title>
     <link rel="stylesheet" href="../style/c_confirmation.css">
     <script src="https://kit.fontawesome.com/9aa6942f31.js" crossorigin="anonymous"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
@@ -32,14 +33,25 @@
     <div class="box">
     <table class="border">
      <tr>
-            <td> Please review the details of your Appointment.</td>
+            <td> <h4>Please review the details of your Appointment.</h4></td>
     </tr>
     </table>
 
     <table class="content-table">
+          <p>Applicant's Information</p>
           <tr>
-            <td>Full Name:</td>
+            <td>Family Name:</td>
+            <td id="ln">-</td> 
+          </tr>
+
+          <tr>
+            <td>First Name:</td>
             <td id="fn">-</td> 
+          </tr>
+
+          <tr>
+            <td>Middle Name:</td>
+            <td id="mn">-</td> 
           </tr>
 
           <tr>
@@ -51,36 +63,53 @@
             <td>Gender:</td>
             <td id="gndr">-</td> 
           </tr>
-
-          <tr>
-            <td>Address:</td>
-            <td id="addrss">-</td> 
-          </tr>
       </table>
 
       <table class="Transaction-table">
-
+        <p>Appointment's Information</p>
         <tr>
           <td>Transaction Type:</td>
           <td id="tt" >-</td>
         </tr>
 
         <tr>
-          <td>Appointment Date:</td>
+          <td>Application Type:</td>
+          <td id="at" >-</td>
+        </tr>
+
+        <tr>
+          <td>Date:</td>
           <td id="dt_L">-</td>
+        </tr>
+
+        <tr>
+          <td>Time:</td>
+          <td id="dt_t">-</td>
         </tr>
       </table>
 
       <table class="contact-table">
+        <p>Contact Information</p>
+        <tr>
+          <td>Address:</td>
+          <td id="addrss">-</td> 
+        </tr>
+
         <tr>
           <td>Email:</td>
           <td id="em">-</td>
         </tr>
+
         <tr>
           <td>Mobile Number:</td>
-          <td id="mn">-</td> 
+          <td id="mnn">-</td> 
         </tr>
       </table>
+
+      <div class="chckbx">
+        <input type="checkbox" id="chckbx" onchange="chckbx()"/> I hereby certify that all information provided are true, accurate and
+        correct to the best of my knowledge. Any misdeclaration or mispresentation may affect the outcome of my application.
+      </div>
 
       <button class="back" id="bck">Back</button>
      <button class="confirm" id="cnfrm">Confirm</button>
@@ -88,5 +117,6 @@
  </div>
 
 <script src="../src/c_confirm.js"></script>
+<script type="module" src="../src/c_confirm2.js"></script>
 </body>
 </html>

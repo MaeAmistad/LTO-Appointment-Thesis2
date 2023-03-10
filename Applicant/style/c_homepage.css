@@ -66,6 +66,14 @@ p{
     margin-left: 425px;
     margin-top: 40px;
     text-align: justify;
+    font-size: 20px;
+    font-weight: 600;
+}
+ol li{
+    width: 500px;
+    margin-top: 15px;
+    margin-left: 425px;
+    text-align: justify;
 }
 .chckbx{
     width: 500px;
@@ -85,3 +93,23 @@ p{
     margin-top: 40px;
     margin-left:580px;
 }
+
+/* @media only screen and (max-width: 1115px){
+    .rem{
+        margin-left: -130px;
+    }
+}
+@media only screen and (max-width: 840px){
+    .rem{
+        margin-left: -270px;
+    }
+}
+@media only screen and (max-width: 510px){
+    .rem{
+        margin-left: -390px;
+        font-size: 14px;
+    }
+    h1{
+        font-size: 19px;
+    }
+} */
