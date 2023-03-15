@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://kit.fontawesome.com/8ec04d5e4f.css" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/8ec04d5e4f.js" crossorigin="anonymous"></script>
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../style/a_dashboard.css">
+    <link rel="stylesheet" href="../style/a_appntmntStatADC.css">
   </head>
   <body>
     <div class="grid-container">
@@ -85,67 +85,43 @@
 
       <!-- Main -->
       <main class="main-container">
-        <div class="main-title">
-          <p class="font-weight-bold">DASHBOARD</p>
-        </div>
 
-        <div class="main-cards">
+        <div class="main"> 
 
-          <div class="card">
-            <div class="card-inner">
-              <p class="text-primary">--</p>  
+            <!-- <button id="bck_AL">BACK</button> -->
+            
+            <div class="main2">
+                <div class="btnOptn">
+                    <button id="comp_btn" >Complete</button>
+                </div>
+                <div class="btnOptn">
+                    <button id="incomp_btn" style="background:#032d8983; color: white;">Incomplete</button>
+                </div>
             </div>
-            <span class="text-primary font-weight-bold">--</span>
+
+            <table class="content-table">
+              <thead>
+              <tr>
+                <th class="sp" colspan="12">Appointments</th>
+              </tr>
+              <tr>
+                    <th>Transaction ID.</th>
+                    <th>Full Name</th>
+                    <th>Birthday</th>
+                    <th>Gender</th>
+                    <th>Address</th>
+                    <th>Transaction Type</th>
+                    <th>License Application Applied</th>
+                    <th>Application Type</th>
+                    <th>Date of Appointment</th>      
+                    <th>Time of Appointment</th>                
+                    <th>Contact Number</th>
+                    <th>Email Address</th>
+              </tr> 
+                <tbody id="tbody1"> </tbody>
+              </table>
           </div>
 
-          <div class="card">
-            <div class="card-inner">
-              <p class="text-primary">--</p>
-              <span class="material-icons-outlined text-orange">--</span>
-            </div>
-            <span class="text-primary font-weight-bold">--</span>
-          </div>
-
-          <div class="card">
-            <div class="card-inner">
-              <p class="text-primary">--</p>
-              <span class="material-icons-outlined text-green">--</span>
-            </div>
-            <span class="text-primary font-weight-bold">-</span>
-          </div>
-
-          <div class="card">
-            <div class="card-inner">
-              <p class="text-primary">-</p>
-              <span class="material-icons-outlined text-red">--</span>
-            </div>
-            <span class="text-primary font-weight-bold">-</span>
-          </div>
-
-        </div>
-        <div>
-            <h1> Statistics</h1>
-        </div>
-
-        <div class="charts">
-
-          <div class="charts-card">
-            <p class="chart-title">Transactions</p>
-            <p class="sdp">Student Driver's License</p><i class="fa-sharp1  fa-solid fa-circle"></i>
-            <p class="npdln">Non-Professional Driver's Lisence(new)</p><i class="fa-sharp2 fa-solid fa-circle"></i>
-            <p class="npdlr">Non-Professional Driver's Lisence(renew)</p><i class="fa-sharp3 fa-solid fa-circle"></i>
-            <p class="pdln">Professional Driver's Lisence(new)</p><i class="fa-sharp4 fa-solid fa-circle"></i>
-            <p class="pdlnr">Professional Driver's Lisence(renew)</p><i class="fa-sharp5 fa-solid fa-circle"></i>
-            <p class="cdln">Conductors Driver's Lisence(new)</p> <i class="fa-sharp6 fa-solid fa-circle"></i>
-            <p class="cdlr">Conductors Driver's Lisence(renew)</p> <i class="fa-sharp7 fa-solid fa-circle"></i>
-            <p class="mvrr">Motor Vehicle Regisatration(renew)</p>  <i class="fa-sharp8 fa-solid fa-circle"></i> 
-            <div id="bar-chart"></div>
-          </div>
-
-          <div class="charts-monthly">
-            <p class="chart-title">Monthly</p>
-            <div id="area-chart"></div>
-          </div>
 
         </div>
       </main>
@@ -153,10 +129,10 @@
 
     </div>
 
-    <!-- Scripts -->
-    <!-- ApexCharts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
-    <!-- Custom JS -->
+
+    <script type="module" src="../src/a_LIIncomp.js"></script>
     <script src="../src/a_dashboard.js"></script>
+
   </body>
 </html>

@@ -46,7 +46,7 @@ const db = getFirestore(app);
                     document.getElementById("em").innerHTML = doc2.data().User_E;
                     document.getElementById("mnn").innerHTML = doc2.data().User_CN;
                 }
-                else if (doc2.data().User_TT == "License"){
+                else if (doc2.data().User_TT == "Licensing"){
                     document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
                     document.getElementById("dof").innerHTML = doc2.data().User_BD;
                     document.getElementById("gndr").innerHTML = doc2.data().User_GN;

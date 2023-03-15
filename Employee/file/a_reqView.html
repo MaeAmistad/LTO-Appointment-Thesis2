@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>LTO Appointment Setter</title>
+
+    <!-- Montserrat Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://kit.fontawesome.com/8ec04d5e4f.css" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/8ec04d5e4f.js" crossorigin="anonymous"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../style/a_reqView.css">
+  </head>
+  <body>
+    <div class="grid-container">
+
+      <!-- Header -->
+      <header class="header">
+        <div class="menu-icon" onclick="openSidebar()">
+          <span class="material-icons-outlined">menu</span>
+        </div>
+        <div class="header-left">
+          <span class="material-icons-outlined">search</span>
+        </div>
+        <div class="header-right">
+          <!-- <span class="material-icons-outlined">email</span> -->
+        </div>
+      </header>
+      <!-- End Header -->
+
+      <!-- Sidebar -->
+      <aside id="sidebar">
+        <div class="sidebar-title">
+          <!-- <div class="sidebar-brand">LTO Dashboard</div> -->
+          <img src="../img/Land_Transportation_Office.svg.png">
+          <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+        </div>
+
+        <ul class="sidebar-list">
+            <li class="sidebar-list-item">
+              <a href="a_dashboard.html">
+                 Dashboard
+              </a>
+            </li>
+            <li class="sidebar-list-item">
+              <a href="a_accMan.html">
+                  Account Management
+              </a>
+            </li>
+            <li class="sidebar-list-item">
+              <a href="a_appList.html">
+               List of Appointments
+              </a>
+            </li>
+            <li class="sidebar-list-item">
+              <button class="dropdown-btn">Transactions
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-container">
+                <a href="a_LIComp.html">License <br><br></a>
+                <a href="a_mvComp.html">Motor Vehicle<br><br></a>
+                <a href="a_CLComp.html">Conductor's Driver's License</a>
+              
+              </div>
+            
+              <li class="sidebar-list-item">
+                <a href="a_reqView.html">
+                    List Of Requirements
+                </a>
+              </li>
+              
+            <li class="sidebar-list-item">
+              <a id="logout">
+                 Log-Out
+              </a>
+            </li>
+  
+            </ul>
+      </aside>
+      <!-- End Sidebar -->
+
+      <!-- Main -->
+      <main class="main-container">
+        <div class="main-title">
+          <p class="font-weight-bold">REQUIREMENTS</p>
+        </div>
+
+        <div class="lcnsprmtreq">
+          <div class="lcnsprmtreq-item">
+              <div class="lcnsprmtreq-item-header">
+                  Student Driver's Permit
+              </div>
+              <div class="lcnsprmtreq-item-body">
+              <div class="lcnsprmtreq-item-body-content lcnsprmtreq-item-body-content1">
+                  <h4>QUALIFICATIONS:</h4>
+                  <ul style="padding-left: 1rem;">
+                      <li>1.1. Filipino citizens [sixteen (16) years of age and above]</li>
+                      <li>1.2. Foreign citizens at least eighteen (18) years old and must have been in 
+                          the Philippines for at least one (1) month and proof of stay for at least six (6) months</li>
+                      <li>2. Must be physically and mentally fit</li>
+                      <li>3. Must be able to read and write in Filipino or English</li>
+                      <li>4. Must not have unsettled traffic violation</li>
+                      <li>5.Must have completed Theoretical Driving Couse</li>
+                      <li>6. Must have an email address</li>
+                  </ul>
+      
+                  <h4>CHECKLIST OF REQUIREMENTS:</h4>
+                  <ol style="padding-left: 2rem;">
+                      <li>Duly accomplished Application for Permits and Licenses (APL) Form.</li>
+                      <li>Electronically transmitted medical certficate from LTO accredited medical clinic. 
+                          Submission of one (1) photocopy and presentation of original medical certificate</li>
+                      <li>Presentation of original and submission of one (1) photocopy of any of the following:</li>
+                              <ul class="idreq"> 
+                                  <li>a. PSA/NSO Certificate of Birth</li>
+                                  <li>b. Philippine Identification Card</li>
+                                  <li>c. Passport</li>
+                                  <li>d. Local Civil Registry (for areas where there is no PSA)</li>
+                                  <li>e. PSA Certificate of Marriage</li>
+                              </ul>
+                      <li>For applicants below 18 years of age, one (1) parent's consent or 
+                          a person having custody/care or supervision over the minor applicant authorizing the applicant to 
+                          secure a student permit with presentation of one (1) original and submission of 
+                          one (1) photocopy of any valid government issued ID of the parent/affiant with photo and signature</li>
+                      <li>Presentation of original and submission of one (1) photocopy of any issued ID with photo and signature of the applicant</li>
+                      <li>In addition, for foreigner, presentation of the original and submission of one (1) 
+                          photocopy of passport with entry date of at least one (1) month and visa duration of six (6) 
+                          months from date of application, or if born in the Philippines, presentation of the original and submission 
+                          of one (1) photocopy of birth certificate duly authenticated by Philippine Statistics Authority (PSA).
+                          Taxpayer’s Identification Number (TIN), if employed</li>
+                      <li>Taxpayer’s Identification Number (TIN), if employed</li>
+                      <li>Presentation of the original and submission of one (1) photocopy of Certificate of Completion of the 15-hours 
+                          Theoretical Driving Course (Electronically transmitted to LTO by the accredited driving school / LTO DEC / 
+                          LTO Accredited TESDA Training Center)</li>
+                  </ol>
+      
+                  <h4>FOR RENEWAL:</h4>
+                  <ol style="padding-left: 2rem;">
+                      <li>Duly accomplished Application for Permits and License (APL) e-Form</li>
+                      <li>Presentation of the Student Driver's Permit</li>
+                      <li>Electronically transmitted medical certificate from LTO accredited medical clinic. Submission of one (1) 
+                          photocopy and presentation of original medical certificate</li>
+                      <li>For holders of Student Permit issued before August 3, 2020, presentation of original and submission of one (1) 
+                          photocopy of Certificate of Completion of the 15-hour Theoretical Driving Course 
+                          (Electronically transmitted to LTO by the accredited driving school / LTO DEC / LTO Accredited TESDA Training Center)</li>
+                  </ol>
+      
+                  <h4>VALIDITY:</h4>
+                  <ol style="padding-left: 2rem;">
+                      <li>The Student Permit shall be valid for one (1) year from the date of its issuance. 
+                          After one (1) year, it cannot be used for purposes of the practical driving course. 
+                          However, it can be used to apply for Non-Professional Driver's 
+                          License if the practical driving course has been completed within the one (1) year validity period.</li>
+                      <li>After two (2) years from the date of issuance of Student Permit, 
+                          the holder shall be required to acquire a new student permit bearing the same 
+                          Student Permit number and undergo the required apprenticeship period reckoned from the date of 
+                          issuance of the new Student Permit. All records of training courses shall be retained.</li>
+                      <li>Student Permit may be renewed on or before the expiry date if the holder is not ready to 
+                          apply for the Non-Professional Drivers License.Except for settlement of penalties due to traffic violations, 
+                          only the basic fee shall be collected for the renewal of Student Permit after the expiry date.</li>
+                  </ol>
+              </div>
+              </div>
+          </div>
+  
+          <div class="lcnsprmtreq-item">
+              <div class="lcnsprmtreq-item-header">
+              Driver's License (Non-Professional)
+              </div>
+              <div class="nonpro">
+              <div class="nonprocontent ">
+                  <h4>QUALIFICATIONS:</h4>
+                  <ul style="padding-left: 1rem;">
+                      <li>1.  Must be at least seventeen (17) years old. For foreigners, at least eighteen (18) years old.</li>
+                      <li>2.  Must be able to read and write in Filipino and/or English </li>
+                      <li>3.  Must be a holder of Student-Driver’s Permit for at least one (1) month from issuance</li>
+                      <li>4.  Must have attended and passed the Practical Driving Course (PDC) from LTO accredited licensed driver, LTO Driver's Education Center 
+                          (DEC) or LTO accredited Driving School / LTO accredited TESDA Training Center</li>
+                      <li>5.  Must be physically and mentally fit to operate a motor vehicle</li>
+                      <li>6.  Must not have unsettled traffic violation</li>
+                      <li>7.  Must have passed the Automated Theoretical Examination and Practical Driving Test </li>
+                  </ul>
+
+                  <h4>CHECKLIST OF REQUIREMENTS:</h4>
+                  <ol style="padding-left: 2rem;">
+                      <li>Duly accomplished Application for Permits and Licenses (APL) Form</li>
+                      <li>Electronically transmitted medical certificate from LTO accredited medical clinic.
+                          Submission of one (1) photocopy and presentation of original medical certificate</li>
+                      <li>Presentation of original and submission of one (1) photocopy of any of the following:</li>
+                              <ul class="idreq"> 
+                                  <li>a.Practical Driving Course (PDC) Certificate</li>
+                                  <li>b. Electronically transmitted Practical Driving Course (PDC) 
+                                      Certificate</li>
+                              </ul>
+                      <li>Valid Student-Driver's Permit (Refer to validity of SP)</li>
+                      <li>Parental or guardian's consent (with valid government I.D. with photo and signature) if 
+                          applicant is seventeen (17) years old</li>
+                      <li>Tax Identification Number (TIN), if employed</li>
+                  </ol>
+                  <h4>FOR RENEWAL:</h4>
+                  <ol style="padding-left: 2rem;">
+                      <li>Must be physically and mentally fit to operate a motor vehicle</li>
+                      <li>Must have passed the written and practical examination</li>
+                      <li>Must not have unsettled traffic violation</li>
+                      <li>Must have passed the Automated Theoretical Examination and Practical Driving Test (For Driver's License)</li>
+                      <li>Must have completed the Driving Enhancement Program (DEP) prior to initial renewal of the five (5) years DL</li>
+                      <li>For DL holders with accumulated five (5) to nine (9) demerit points, must have completed the Driver's Re-orientation Course</li>
+                      <li>For DL holders with ten (10) or more but less than forty (40) demerit points, must have completed the Driver's 
+                          Re-orientation Course and passed the Theoretical Examination</li>
+                  </ol>
+                  <h4>CHECKLIST OF REQUIREMENTS(Renew):</h4>
+                  <ol style="padding-left: 2rem;">
+                      <li>Duly accomplished Application for Permits and Licenses (APL) Form</li>
+                      <li>Electronically transmitted medical certificate from LTO accredited medical clinic. 
+                          Submission of one (1) photocopy and presentation of original medical certificate</li>
+                      <li>Presentation of original delinquent Driver's/Conductor's License</li>
+                  </ol>    
+                      
+                      <h4>VALIDITY:</h4>
+                  <ol style="padding-left: 2rem;">
+                      <li>A New Driver's License shall be valid for five (5) years reckoned from the date of birth of the license, unless sooner revoked or suspended. 
+                          A DL holder who has not committed any 
+                          violation/s during the five (5) years period preceding its expiration shall be entitled to a renewal of such license valid for ten (10) years.</li>
+                  </ol>
+
+              </div>
+              </div>
+          </div>
+  
+          <div class="lcnsprmtreq-item">
+              <div class="lcnsprmtreq-item-header">
+                  Driver's License (Professional)
+              </div>
+              <div class="driversbody">
+              <div class="driverscnt">
+                      <h4>QUALIFICATIONS:</h4>
+                  <ul style="padding-left: 1rem;">
+                      <li>1.Having a profession as a driver requires a capable mind and body as driving recklessly on the road can cause accidents. Even worse, it can cause death. 
+                          This is why LTO said that candidates must be physically and mentally fit to operate a motor vehicle.</li>
+                      <li>2.Road signs in the country are either written in Filipino or English. Since a professional driver’s license is the highest form of LTO license,
+                          candidates must be able to read and write in Filipino and/or English.
+                          To make sure that candidates are fully committed, they must have passed the required LTO driver's license written and practical examination.</li>
+                      <li>3.The last driver's license requirement LTO is imposing is that candidates must be a holder of a valid non-professional driver’s 
+                          license at least six (6) months from issuance.</li>
+                      
+                  </ul>
+      
+                  <h4>CHECKLIST OF REQUIREMENTS:</h4>
+                  <ol style="padding-left: 2rem;">
+                      <li>1.Valid Student Permit </li>
+                      <li>2.Taxpayer’s Identification Number (TIN)</li>
+                      <li>3.Medical Certificate from Accredited Medical Clinic</li>
+                      <li>4.Driving School Certificate</li>
+                  </ol>
+                  <h4>Clearance / Certificate. (Any of the Following:)</h4>
+                  <ol style="padding-left: 2rem;">
+                              <ul class="idreq"> 
+                                  <li>a. NBI Clearance</li>
+                                  <li>b. Police Clearance</li>
+                                  <li>c. Court Clearance</li>
+                              
+                              </ul>
+                  </ol>
+                  
+                  <h4>FOR RENEWAL:</h4>
+                  <ol style="padding-left: 2rem;">
+                      <li>Must be at least 18 years old</li>
+                      <li>Must have no unsettled traffic violations</li>
+                      <li>Duly accomplished APL Form</li>
+                      <li>One photocopy and original LTO-accredited medical certificate</li>
+                      <li>Original and one photocopy of PRACTICAL DRIVING COURSE (PDC)</li>
+                      <li>Original valid student permit or non-professional driver's license</li>
+                      <li>Original and photocopy of birth certificate </li>
+                      <li>Valid NBI Clearance or Police Clearance</li>
+                      <li>Taxpayer’s Identification Number (TIN)</li>
+              </div>
+              </div>
+          </div>
+
+      <div class="lcnsprmtreq-item">
+          <div class="lcnsprmtreq-item-header">
+              Conductor's  Driver's License 
+          </div>
+          <div class="conductorreq">
+          <div class="conductorcontent">
+              <ul style="padding-left: 1rem;">
+                  <h4>QUALIFICATIONS:</h4>
+                  <ul style="padding-left: 1rem;">
+                      <li>1.Must be at least eighteen (18) years old</li>
+                      <li>2.Must be physically and mentally fit to work and no contagious disease</li>
+                      <li>3.Must be able to read and write in Filipino and/or English</li>
+                      <li>4.Must have passed the theoretical examination - New CL and those not renewed for more than two (2) years from the expiry date</li>
+                      <li>5. Must not have unsettled traffic violation</li>
+                      <li>6. Must have attended and passed the Conductor's Theoretical Course from LTO Driver's Education Center,
+                           or LTO accredited Driving School / LTO Accredited TESDA Training Center</li>
+                      <li>7. Must have completed the DEP for conductor's re-orientation prior to initial renewal of five (5) year CL</li>
+                  </ul>
+      
+                  <h4>CHECKLIST OF REQUIREMENTS:</h4>
+                  <h4>GENERAL REQUIREMENT</h4>
+                      <li style="padding-left: 2rem;"> Duly accomplished Application for Permits and Licenses (APL) Form</li>
+                
+                  <h4>NEW APPLICATION</h4>
+                  <ol style="padding-left: 2rem;">
+                      <li>Electronically transmitted medical certificate from LTO accredited medical clinic. Submission of one (1) photocopy 
+                          and presentation of original medical certificate</li>
+                      <li>Presentation of original and submission of one (1) photocopy of any of the following:</li>
+                               <ul class="idreq"> 
+                                   <li>a. PSA Certificate of Birth</li>
+                                  <li>b. Philippine Identification Card</li>
+                                  <li>c. Passport</li>
+                                  <li>d. PSA Certificate of Marriage for married women</li>
+                              </ul>
+                  
+                      <li>3.Taxpayer's Identification Number (TIN)</li>
+                  </ol>
+                 
+                  <h4>CHANGE OF CIVIL STATUS</h4>
+                  <ol style="padding-left: 2rem;">
+                      <li>PSA Authenticated Marriage Contract</li>
+                  </ol>
+                  
+                  <h4>CHANGE OF ADDRESS</h4>
+                  <ol style="padding-left: 2rem;">
+                      <li>Barangay Clearance stating the complete address and/or proof of billing statement</li>
+                  </ol>
+                 
+                  <h4>CHANGE OF OTHER PERSONAL DETAILS</h4>
+                  <ol style="padding-left: 2rem;">
+                      <li>Presentation of original and submission of one (1) photocopy of any of the following:</li>
+                              <ul class="idreq"> 
+                                  <li>a. PSA Certificate of Birth</li>
+                                  <li>b. Philippine Identification Card</li>
+                                  <li>c. Passport</li>
+                              </ul>
+                  </ol>
+                  <h4>LOST/REPLACEMENT</h4>
+                  <ol style="padding-left: 2rem;">
+                      <li> Affidavit of Loss / Mutilated CL</li> 
+                  </ol>
+      
+                  <h4>FOR RENEWAL:</h4>
+                  <h4>QUALIFICATIONS:</h4>
+                  <ol style="padding-left: 2rem;">
+                      <li>1.Must be a holder of Driver's License or Conductor's License not expired for more two (2) years including advance renewal for those 
+                          who intend to leave the country within one (1) year before expiry date</li>
+                      <li>2. Must be physically and mentally fit to operate a motor vehicle</li>
+                      <li>3. Must not have unsettled traffic violation</li>
+                      <li>4.Must have completed the Driving Enhancement Program (DEP) / Conductor's Enhancement Program (CEP) prior to initial renewal of the five (5) years DL/CL</li>
+                      <li>5.For DL holders with accumulated five (5) to nine (9) demerit points must have completed the Driver's Re-orientation Course</li>
+                      <li>6.For DL holders with ten (10) or more but less than forty (40) demerit points, must have completed the Driver/s Re-orientation Course and passed the Theoretical Examination</li>
+                  </ol>
+                  <h4>Renewal:</h4>
+                  <ol style="padding-left: 2rem;">
+                      <li>1.Comprehensive Driver's Education (CDE)</li>
+                      <li>2.Medical Certificate from Accredited Medical Clinic</li>
+                  </ol>
+                  <h4>Plain RENEWAL:</h4>
+                  <h4>CHECKLIST OF REQUIREMENTS:</h4>
+                  <ol style="padding-left: 2rem;">
+                      <li>1.Duly accomplished Application for Permits and Licenses (APL) Form</li>
+                      <li>2.Electronically transmitted medical certificate from LTO accredited medical clinic. Submission of one (1) photocopy and presentation 
+                          of original medical certificate</li>
+                      <li>3.Electronically Transmitted Certificate of Completion of Driving Enhancement Program (DEP) / Conductor's
+                           Enhancement Program (CEP) for the initial renewal of DL with five (5) years validity</li>
+                      <li>4.Presentation of original Driver's or Conductor's License</li>
+                      <li>5.Submission of Certificate of Completion of Driver's/Conductor's Re-orientation Course for applicants with five (5) to nine (9) demerit points</li>
+                  </ol>
+      
+                  <h4>VALIDITY:</h4>
+                  <ol style="padding-left: 2rem;">
+                      <li>A new Conductor's License (CL) shall be valid for five (5) years reckoned from the date of birth of the license, unless sooner revoked or suspended. 
+                          A holder of CL who has not committed any 
+                          violation/s during the five (5) year period preceding its expiration shall be entitled to renewal of such license valid for ten (10) years.</li>
+                      
+                  </ol>
+              </ul>
+          </div>
+          </div>
+      </div>
+
+      <div class="lcnsprmtreq-item">
+          <div class="lcnsprmtreq-item-header">
+              Motor Vehicle (Plain Renewal)
+          </div>
+          <div class="mvb">
+          <div class="mvcontent">
+              <h4>QUALIFICATIONS:</h4>
+              <ul style="padding-left: 1rem;">
+                  <li>Motor vehicle owners</li>
+              </ul>
+              <h4>CHECKLIST OF REQUIREMENTS</h4>
+              <h4>General Requirements</h4>
+              <ul style="padding-left: 1rem;">
+                  <li>1.LTO Copy and electronically transmitted appropriate insurance Certificate of Cover (Third Party Liability)</li>
+                  <li>2.Duly accomplished Original Motor Vehicle Inspection Report (MVIR)</li>
+                  <li>3.Original copy of Certificate of Emission Compliance (CEC)</li>
+                 
+              </ul>
+              <h4>Additional Requirements:</h4>
+              <h4>Tax Exempt:</h4>
+              <ol style="padding-left: 2rem;">
+                  <li>Original Endorsement with control number</li>
+              </ol>
+                  <h4>Other Exempt Vehicle (OEV) under Special Economic Zones:</h4>
+              <ol style="padding-left: 2rem;">
+                  <li>Original Certification that the Motor Vehicle is still classified as Other Exempt Vehicle (OEV)</li>
+              </ol>
+              <h4>For Hire</h4>
+              <ol style="padding-left: 2rem;">
+                  <li>Electronically transmitted franchise confirmation (For Motor Vehicles) / Provisional Authority (PA) or Petition 
+                      for extension of validity duly received by LTFRB with OR</li>
+                  <li>One (1) Certified Copy of the valid Motorized Tricycle Operator’s Permit with Official Receipt (MTOP)</li>
+                             
+              <h4>Stolen and Recovered</h4>
+              <ol style="padding-left: 2rem;">
+                  <li>Presentation of original and submission of one (1) photocopy of the Lifting of General Alarm</li>
+                  <li>Presentation of original and submission of one (1) photocopy of the Report of Recovery</li>
+                  <li>Presentation of original and submission of one (1) photocopy of the of Alarm Sheet</li>
+                  <li>Original PNP Crime Laboratory (macro etching report) or National Bureau of Investigation (NBI) report, fully identifying the motor vehicle and stating therein 
+                      the tampering done on the engine or chassis, if any</li>
+                  <li>Original Certificate of re-stamping in case of tampered engine / chassis</li>
+              </ol>
+              <h4>Reactivation of Storage:</h4>
+              <ol style="padding-left: 2rem;">
+                  <li>LTO Copy and electronically transmitted appropriate insurance Certificate of Cover (COC)</li>
+                  <li>Duly accomplished Original Motor Vehicle Inspection Report (MVIR)</li>
+                  <li>Original Certificate of Emission Compliance (CEC)</li>
+                  <li>Original Receipt of Return Plate and Licenses (RRPL)</li>
+                  <li>If for hire, electronic confirmation of valid franchise or PA or extension of validity or Motorized Tricycle Operator's 
+                      Permit (MTOP) with valid Official Receipt (OR)
+                      CLIENT STEPS</li>
+              </ol>
+  
+              <h4>VALIDITY:</h4>
+              <ol style="padding-left: 2rem;">
+                  <li> As a general rule, the government agency is requiring all motorists to renew their registration every year, 
+                      fter the initial three-year registration validity on brand-new cars.</li>
+              </ol>
+          </div>
+          </div>
+      </div>
+
+        </div>
+      </main>
+      <!-- End Main -->
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
+
+    <script src="../src/a_reqView.js"></script>
+    <script src="../src/a_dashboard.js"></script>
+  </body>
+</html>

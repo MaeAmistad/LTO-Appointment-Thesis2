@@ -66,8 +66,12 @@ if (tt == "Motor Vehicle Registration"){
     User_AT: at
 }).then(() => {
 
-    var full_name = "Mr/Miss " + localStorage.getItem("last_name") + ", " + localStorage.getItem("first_name") + " " + localStorage.getItem("middle_name");
-    const tt = "Hi " + full_name + ",";
+    var full_name = localStorage.getItem("first_name");
+    const tt = "Hi " + full_name + "<br/>" + "<br/>";
+    const r2 = "YOUR APPLICATION HAS BEEN SET " +  "<u>" + "SUCCESFULLY." + "</u>" + "<br/>" + "<br/>";
+    const r3 = "Come to the office on " + localStorage.getItem("date") + " at " + localStorage.getItem("time");
+    const r4 = " and please remember to bring your requirements together with your proof of appointment." + TranID + "<br/>" + "<br/>";
+    const r5 = "If you didn't set an appointment, please disregard this email."
 
     Email.send({
         Host : "smtp.elasticemail.com",
@@ -76,7 +80,7 @@ if (tt == "Motor Vehicle Registration"){
         To : email,
         From : "advocsbscs@gmail.com",
         Subject : "LTO APPOINTMENT APPLICATION",
-        Body : tt
+        Body : tt + r2 + r3 + r4 + r5
     }).then(
         Swal.fire({
             title: 'Your proof of appointment has been sent to your email.',
@@ -119,7 +123,7 @@ localStorage.removeItem("toa");
     // c
 })
 }
-else if (tt == "License"){
+else if (tt == "Licensing"){
   if (at == "Revision of Records"){
     addDoc (collection(db,"Appointment"),{
       User_Stat: "Pending",
@@ -140,8 +144,12 @@ else if (tt == "License"){
       User_AT: at
   }).then(() => {
   
-      var full_name = "Mr/Miss " + localStorage.getItem("last_name") + ", " + localStorage.getItem("first_name") + " " + localStorage.getItem("middle_name");
-      const tt = "Hi " + full_name + ",";
+    var full_name = localStorage.getItem("first_name");
+    const tt = "Hi " + full_name + "<br/>" + "<br/>";
+    const r2 = "YOUR APPLICATION HAS BEEN SET " +  "<u>" + "SUCCESFULLY." + "</u>" + "<br/>" + "<br/>";
+    const r3 = "Come to the office on " + localStorage.getItem("date") + " at " + localStorage.getItem("time");
+    const r4 = " and please remember to bring your requirements together with your proof of appointment." + TranID + "<br/>" + "<br/>";
+    const r5 = "If you didn't set an appointment, please disregard this email."
   
       Email.send({
           Host : "smtp.elasticemail.com",
@@ -150,7 +158,7 @@ else if (tt == "License"){
           To : email,
           From : "advocsbscs@gmail.com",
           Subject : "LTO APPOINTMENT APPLICATION",
-          Body : tt
+          Body : tt + r2 + r3 + r4 + r5
       }).then(
           Swal.fire({
               title: 'Your proof of appointment has been sent to your email.',
@@ -212,8 +220,12 @@ else if (tt == "License"){
       User_AT: at
   }).then(() => {
   
-      var full_name = "Mr/Miss " + localStorage.getItem("last_name") + ", " + localStorage.getItem("first_name") + " " + localStorage.getItem("middle_name");
-      const tt = "Hi " + full_name + ",";
+    var full_name = localStorage.getItem("first_name");
+    const tt = "Hi " + full_name + "<br/>" + "<br/>";
+    const r2 = "YOUR APPLICATION HAS BEEN SET " +  "<u>" + "SUCCESFULLY." + "</u>" + "<br/>" + "<br/>";
+    const r3 = "Come to the office on " + localStorage.getItem("date") + " at " + localStorage.getItem("time");
+    const r4 = " and please remember to bring your requirements together with your proof of appointment." + TranID + "<br/>" + "<br/>";
+    const r5 = "If you didn't set an appointment, please disregard this email."
   
       Email.send({
           Host : "smtp.elasticemail.com",
@@ -222,7 +234,7 @@ else if (tt == "License"){
           To : email,
           From : "advocsbscs@gmail.com",
           Subject : "LTO APPOINTMENT APPLICATION",
-          Body : tt
+          Body : tt + r2 + r3 + r4 + r5
       }).then(
           Swal.fire({
               title: 'Your proof of appointment has been sent to your email.',

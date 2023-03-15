@@ -231,7 +231,7 @@ else{
                 confirmButtonText:`OK`
               }).then((result) => {
                 if (result.value) {
-                    // window.location = ("a_useraccTable.html")
+                    window.location = ("a_accMan.html")
                 }
               });
         // window.location = ("a_login.html")
@@ -274,7 +274,7 @@ else{
                 confirmButtonText:`OK`
               }).then((result) => {
                 if (result.value) {
-                    // window.location = ("a_useraccTable.html")
+                    window.location = ("a_accMan.html")
                 }
               });
         });

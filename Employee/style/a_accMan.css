@@ -133,12 +133,8 @@ img{
 }
 .dropdown-container{
  color: #e6e8ed;
- padding-top: 10px; 
+ padding-top: 10px;
  margin-top: 20px;
-}
-.dropdown-container a{
-  text-decoration: none;
-  color: white;
 }
 /* Style the sidenav links and the dropdown button */
 .sidenav a, .dropdown-btn {
@@ -160,13 +156,20 @@ img{
 }
 
 /* Main content */
-
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
 /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
 .dropdown-container {
   display: none;
   padding-left: 8px;
 }
-
+.dropdown-container a{
+  text-decoration: none;
+  color: white;
+}
 /* Optional: Style the caret down icon */
 .fa-caret-down {
   float: right;
@@ -184,68 +187,56 @@ img{
     */
     z-index: 12 !important;
   }
-  /*Table for appointment*/
-  .main2{
-    margin-left: 200px; /* Same as the width of the sidenav */
-    font-size: 20px; /* Increased text to enable scrolling */
-    padding: 0px 10px;
-    margin-top: -36px;
-    width: 1080px;
+  
+  
+  /* ---------- MAIN ---------- */
+  
+  .main-container {
+    grid-area: main;
+    overflow-y: auto;
+    padding: 20px 20px;
   }
-  .main2{
+  
+  .main-title {
     display: flex;
-    padding: 1% ;
-	margin-top: 5px;
-}
-  .content-table {
-    border-collapse: collapse;
-    font-size: 14px;
-    width: 84%;
-    margin-left: 10px;
-    background-color: white;
-    color: black;
-    border: 1px solid black; 
-    cursor: pointer;
-    
-}
-.content-table thead .sp{
-    color: black;
-    text-align: center;
-    font-weight: bold;
+    justify-content: space-between;
+  }
+  
+  .main-title > p {
     font-size: 20px;
-    height: 40px;
-    background: rgba(150, 148, 148, 0.753);
+  }
+  
+  table tr{
+    padding: 5px;
 }
-.content-table th,
-.content-table td {
-    padding: 3px;
-    border: 1px solid black;
-}
-#bck_AL{
-    border: 1px solid gray;
+th, tr, td{
     padding: 10px;
+    text-align: left;
+}
+.btn_useracc button{
+    border: none;
+    padding: 5px;
+    margin: 5px;
     width: 100px;
     border-radius: 5px;
     text-transform: uppercase;
-    margin: 10px 0 10px 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: rgb(209, 207, 207);
     cursor: pointer;
 }
-.btnOptn button{
-    margin: 5px;
-	padding: 8px;
-	width: 100px;
-
+tr th, tr th{
+    background-color: gainsboro;
 }
-#comp_btn{
-    margin-left: -190px;
+.table tr:not(:first-child){
+    cursor: pointer;
+    background-color: #f2f2f23b;
 }
-#incomp_btn{
-    margin-left: -80px;
+.table tr:hover{
+    background: gainsboro;
 }
 
-
-
-    
+  
   /* Extra Small <= 576px */
   @media screen and (max-width: 576px) {
     .header-left {

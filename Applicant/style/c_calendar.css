@@ -41,7 +41,7 @@ nav ul ul li{
     display: list-item;
     position: relative;
 }
-nav ul li:hover > ul{
+nav ul li:hover > ul{ 
     display: block;
 }
 .navbar ul li a{
@@ -56,12 +56,13 @@ nav ul li:hover > ul{
 
 .main{
     position: relative;
+    left: 32%;
   max-width: 500px;
   width: 100%;
   padding: 25px;
   background: white; 
   margin-top: 20px;
-  margin-left: 440px;
+  /* margin-left: 440px; */
   margin-bottom: 10px; 
   border: 1px solid #b3b3b3;
 }

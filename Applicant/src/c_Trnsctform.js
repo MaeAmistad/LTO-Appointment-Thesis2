@@ -128,7 +128,7 @@ function trnsct(){
 
     // for storage
     if (list1.value == "lscnc"){
-        var  tot = "License"
+        var  tot = "Licensing"
     }
     else if(list1.value == "mtrvhcl"){
         var  tot = "Motor Vehicle Registration"

@@ -10,7 +10,7 @@ document.getElementById('em').innerHTML=localStorage.getItem("email");
 document.getElementById('dt_L').innerHTML=localStorage.getItem("date");
 document.getElementById('dt_t').innerHTML=localStorage.getItem("time");
 
-if (localStorage.getItem("tot") == "License"){
+if (localStorage.getItem("tot") == "Licensing"){
     document.getElementById('tt').innerHTML=localStorage.getItem("tot");
     document.getElementById('at').innerHTML=localStorage.getItem("laa") + " ( " + localStorage.getItem("toa") + " )  ";
 }
