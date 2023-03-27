@@ -90,20 +90,6 @@ const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9
             }
           })
  }
-  else if (middle_name === ''){
-    //  alert('Please input N/A if not Applicable. (Middle Name)');
-     console.log("6")
-     Swal.fire({
-        title: 'Please input N/A if not Applicable. (Middle Name)',
-        confirmButtonColor: '#132aaa',
-        showClass: {
-          popup: 'animate__animated animate__fadeInDown'
-        },
-        hideClass: {
-          popup: 'animate__animated animate__fadeOutUp'
-        }
-      })
- }
  else if (!middle_name.match(letters)){
     //  alert('Please input alphabet characters only. (Middle Name)');
      console.log("7")
@@ -210,7 +196,7 @@ else{
         .then((userCredential) => {
         const user = userCredential.user;
         setDoc (doc(db, "Users","Employee","EmployeeData", user.uid), {
-            user_Type: "Processing_Officer",
+            user_Type: "Processing Officer",
             user_LN: last_name,
             user_FN: first_name,
             user_MN: middle_name,

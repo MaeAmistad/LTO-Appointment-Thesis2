@@ -99,10 +99,13 @@ button{
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-    margin-left: 60px;
+    margin-left: 70px;
 }
 .emp2 input[value="1"]{
-    margin-left: 40px;
+    margin-left: 25px;
+}
+.emp2 input[value="2"]{
+    margin-left: 25px;
 }
 .inf.success input{
     border-color: rgb(10, 185, 10);

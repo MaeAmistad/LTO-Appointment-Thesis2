@@ -85,6 +85,7 @@ p{
     margin-top: 40px;
     font-weight: 600;
     text-align: justify ;
+    cursor: default ;
 }   
 .content-table {
     border-collapse: collapse;

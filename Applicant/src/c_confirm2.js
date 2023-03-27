@@ -41,13 +41,24 @@ text += char_list.charAt(Math.floor(Math.random() * char_list.length));
 }
 return text;
 }
-console.log(makeid(6));
 
+var yy = new Date().getFullYear().toString().substr(2);
+var mm = new Date().getMonth() + 1;
+var mmm = ("0" + mm).slice(-2);
+var dd = new Date().getDate();
+var ddd = ("0" + dd).slice(-2);
+var hh = new Date().getHours();
+var hhh = ("0" + hh).slice(-2);
+var m = new Date().getMinutes(); 
+var mnn = ("0" + m).slice(-2);
+
+var trnid = yy+mmm+ddd+hhh+mnn+makeid(2);
+console.log(trnid)
 cnfrm.addEventListener('click', (e) => {
 
-const TranID = makeid(6);
+const TranID = trnid;
 
-if (tt == "Motor Vehicle Registration"){
+if (tt == "MOTOR VEHICLE REGISTRATION"){
 
   addDoc (collection(db,"Appointment"),{
     User_Stat: "Pending",
@@ -75,7 +86,7 @@ if (tt == "Motor Vehicle Registration"){
 
     Email.send({
         Host : "smtp.elasticemail.com",
-        Username : "advocsbscs@gmail.com",
+        Username : "advocsbscs@gmail.com", 
         Password : "436A106EEF29101EB7EDEE2AB028A1BFBEB9",
         To : email,
         From : "advocsbscs@gmail.com",
@@ -100,7 +111,7 @@ if (tt == "Motor Vehicle Registration"){
                 timer: 2000
             })
             
-            window.location = "c_homepage.html";
+            window.location = "c_firstpage.html";
             // console.log("Email Sent")
           })
     );
@@ -118,13 +129,16 @@ localStorage.removeItem("time");
 localStorage.removeItem("laa");
 localStorage.removeItem("tot");
 localStorage.removeItem("toa");
+localStorage.removeItem("ID");
+localStorage.removeItem("stat");
+localStorage.removeItem("rvsnofrcrds");
 
 // window.location = "c_homepage.html";
     // c
 })
-}
-else if (tt == "Licensing"){
-  if (at == "Revision of Records"){
+} 
+else if (tt == "LICENSING"){
+  if (at == "REVISION OF RECORDS"){
     addDoc (collection(db,"Appointment"),{
       User_Stat: "Pending",
       User_AppID: TranID,
@@ -178,7 +192,7 @@ else if (tt == "Licensing"){
                   timer: 2000
               })
               
-              window.location = "c_homepage.html";
+              window.location = "c_firstpage.html";
               // console.log("Email Sent")
             })
       );
@@ -221,7 +235,7 @@ else if (tt == "Licensing"){
   }).then(() => {
   
     var full_name = localStorage.getItem("first_name");
-    const tt = "Hi " + full_name + "<br/>" + "<br/>";
+    const tt = "Hi " + full_name + "," + "<br/>" + "<br/>";
     const r2 = "YOUR APPLICATION HAS BEEN SET " +  "<u>" + "SUCCESFULLY." + "</u>" + "<br/>" + "<br/>";
     const r3 = "Come to the office on " + localStorage.getItem("date") + " at " + localStorage.getItem("time");
     const r4 = " and please remember to bring your requirements together with your proof of appointment." + TranID + "<br/>" + "<br/>";
@@ -254,7 +268,7 @@ else if (tt == "Licensing"){
                   timer: 2000
               })
               
-              window.location = "c_homepage.html";
+              window.location = "c_firstpage.html";
               // console.log("Email Sent")
             })
       );

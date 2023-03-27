@@ -3,7 +3,7 @@ btnfdt.style.backgroundColor = 'gainsboro';
 btnfdt.disabled = true;
 
 function chckbx() {
-    var checkBox = document.getElementById("chckbx");
+    var checkBox = document.getElementById("chck");
     var btnfdt = document.getElementById("btnfdt");
     
     if (checkBox.checked == true){

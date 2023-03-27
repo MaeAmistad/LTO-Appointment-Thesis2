@@ -107,6 +107,7 @@ select{
   margin-bottom: 5px;
   box-sizing: border-box;
   outline: none;
+  text-transform: uppercase;
 }
 #license{
   margin-top: 10px;

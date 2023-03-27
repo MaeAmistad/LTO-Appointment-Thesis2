@@ -36,18 +36,18 @@
         <div class="instruc"> 
             <h4>Please fill-out all field.</h4>
         </div> 
-
+ 
     <form>
         <div class="info form">
 
             <div class="inf">
-                <label>Family Name: </label>   
+                <label>Family Name: <span class="imptnt"></span></label>
                 <input type="text" id="lname">
                 <div class="error"></div>
             </div>
 
             <div class="inf">
-                <label>First Name: </label> 
+                <label>First Name: <span class="imptnt"></span></label> 
                 <input type="text" id="fname">
                 <div class="error"></div>
             </div>
@@ -59,35 +59,35 @@
             </div>
 
             <div class="inf infdob">
-                <label>Date of Birth:</label>"
+                <label>Date of Birth: <span class="imptnt"></span></label>
                 <input type="date" id="dob" placeholder="dd-mm-yyyy" max="2016-12-31"/>
                 <div class="error"></div>
             </div>
 
             <div class="inf">
-                <label>Gender</label>
+                <label>Gender: <span class="imptnt"></span></label>
                     <Select class="gender" id="gen">
                         <option value="s">Select:</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
+                        <option value="Male">MALE</option>
+                        <option value="Female">FEMALE</option>
                     </select>
             </div>
             
             <div class="inf addrss">
-                <label>Address:</label>
+                <label>Address: <span class="imptnt"></span></label>
                 <p>No., Street, City/Municipality, Province</p>
                 <input type="text" id="addrss">
                 <div class="error"></div>
             </div>
 
             <div class="inf">
-                <label>Contact Number</label>
+                <label>Contact Number: <span class="imptnt"></span></label>
                 <input type="tel" id="con_num" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
                 <div class="error"></div>
             </div>
 
             <div class="inf">
-                <label for="email">Email Address</label>
+                <label for="email">Email Address: <span class="imptnt"></span></label>
                 <input type="email" id="email" name="email" type="text">
                 <div class="error"></div>
             </div>

@@ -40,7 +40,8 @@ nextL.addEventListener('click' , (e) => {
 })
 
 back1.addEventListener('click' , (e) => {
-    window.location = "c_calendar.html";
+    // window.location = "c_calendar.html";
+    history.back();
 })
 
 var list1 = document.getElementById("selectText1");
@@ -134,7 +135,7 @@ function trnsct(){
         var  tot = "Motor Vehicle Registration"
     }
     
-    localStorage.setItem("tot",tot);
+    localStorage.setItem("tot",tot.toUpperCase());
 
 }
 
@@ -436,8 +437,8 @@ else if (list3.value == "cct"){
     var toa = "Change of Clutch Type"
 }
 
-    localStorage.setItem("laa",laa);
-    localStorage.setItem("toa",toa);
+    localStorage.setItem("laa",laa.toUpperCase());
+    localStorage.setItem("toa",toa.toUpperCase());
 
 // revision of records
     if(list3.value == "rr"){
@@ -485,7 +486,7 @@ function lic_rr(){
         var rvsnofrcrds = "Others"
     }
 
-    localStorage.setItem("rvsnofrcrds",rvsnofrcrds);
+    localStorage.setItem("rvsnofrcrds",rvsnofrcrds.toUpperCase());
 
 }
 
@@ -559,6 +560,6 @@ function mv_toa(){
         document.getElementById("Rctivtncd").style.display="none";
     }
 
-    localStorage.setItem("toa",toa);
+    localStorage.setItem("toa",toa.toUpperCase());
 }
 

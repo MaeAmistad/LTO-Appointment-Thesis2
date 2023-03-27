@@ -32,7 +32,7 @@ const db = getFirestore(app);
        
             if (transID == doc2.data().User_AppID){
 
-                if (doc2.data().User_AT == "Revision of Records"){
+                if (doc2.data().User_AT == "REVISION OF RECORDS"){
                     document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
                     document.getElementById("dof").innerHTML = doc2.data().User_BD;
                     document.getElementById("gndr").innerHTML = doc2.data().User_GN;
@@ -46,7 +46,7 @@ const db = getFirestore(app);
                     document.getElementById("em").innerHTML = doc2.data().User_E;
                     document.getElementById("mnn").innerHTML = doc2.data().User_CN;
                 }
-                else if (doc2.data().User_TT == "Licensing"){
+                else if (doc2.data().User_TT == "LICENSING"){
                     document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
                     document.getElementById("dof").innerHTML = doc2.data().User_BD;
                     document.getElementById("gndr").innerHTML = doc2.data().User_GN;
@@ -60,7 +60,7 @@ const db = getFirestore(app);
                     document.getElementById("em").innerHTML = doc2.data().User_E;
                     document.getElementById("mnn").innerHTML = doc2.data().User_CN;
                 }
-                else if (doc2.data().User_TT == "Motor Vehicle Registration"){
+                else if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
                     document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
                     document.getElementById("dof").innerHTML = doc2.data().User_BD;
                     document.getElementById("gndr").innerHTML = doc2.data().User_GN;
