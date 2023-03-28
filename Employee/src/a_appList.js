@@ -67,7 +67,7 @@ document.getElementById("dte").value = today;
                 localStorage.setItem('stat',doc2.data().User_AppID)    
                 localStorage.setItem('ID', doc2.id)
 
-                window.location = "pc_reqdata.html";
+                window.location = "a_reqdata.html";
             });
             
             }

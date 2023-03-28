@@ -35,9 +35,8 @@ const db = getFirestore(app);
 
       querySnapshot2.forEach(doc2 => {
 //  
-        if(doc2.data().User_Stat == "Complete" && doc2.data().User_TT == "LICENSING"){
+        if(doc2.data().User_Stat == "Approved" && doc2.data().User_TT == "LICENSING"){
 
-            if (doc2.data().User_Laa == "STUDENT-DRIVER'S PERMIT" || doc2.data().User_Laa == "NON-PROFESSIONAL DRIVER'S LICENSE" || doc2.data().User_Laa == "PROFESSIONAL DRIVER'S LICENSE"){
                 if (doc2.data().User_AT == "REVISION OF RECORDS"){
                     let trow = document.createElement('tr'); 
                     let t_ID = document.createElement('td'); 
@@ -127,7 +126,6 @@ const db = getFirestore(app);
 
                     tbody.appendChild(trow);
                 }
-            }
   
                 // else if( doc2.data().User_Laa == "Student-Driver's Permit"){
 

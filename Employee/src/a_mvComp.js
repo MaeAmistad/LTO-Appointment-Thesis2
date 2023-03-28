@@ -1,6 +1,6 @@
-bck_AL.addEventListener('click',(e) => {
-    window.location = "pc_homepage.html";
-});
+// bck_AL.addEventListener('click',(e) => {
+//     window.location = "pc_homepage.html";
+// });
 
 comp_btn.addEventListener('click',(e) => {
     window.location = "pc_mvComp.html";
@@ -35,7 +35,7 @@ const db = getFirestore(app);
 
       querySnapshot2.forEach(doc2 => {
 
-          if (doc2.data().User_Stat == "Complete" && doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
+          if (doc2.data().User_Stat == "Approved" && doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
 
             let trow = document.createElement('tr'); 
             let t_ID = document.createElement('td'); 

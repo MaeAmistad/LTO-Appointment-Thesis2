@@ -68,76 +68,75 @@ img{
   }
   
   
-  /* ---------- SIDEBAR ---------- */
+ /* ---------- SIDEBAR ---------- */
   
-  #sidebar {
-    grid-area: sidebar;
-    height: 100%;
-    background-color: #032d89;
-    color: white;
-    overflow-y: auto;
-    transition: all 0.5s;
-    -webkit-transition: all 0.5s;
-  }
-  
-  .sidebar-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 20px 20px 20px;
-    margin-bottom: 30px;
-  }
-  
-  .sidebar-title > span {
-    display: none;
-  }
-  
-  .sidebar-brand {
-    margin-top: 15px;
-    font-size: 20px;
-    font-weight: 700;
-  }
-  
-  .sidebar-list {
-    padding: 0;
-    margin-top: 15px;
-    list-style-type: none;
-  }
-  
-  .sidebar-list-item {
-    padding: 20px 15px 20px 20px;
-  }
-  
-  .sidebar-list-item:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    cursor: pointer;
-  }
-  
-  .sidebar-list-item > a {
-    text-decoration: none;
-    color: white;
-  }
- #sidebar ul ul li a{
-  text-decoration: none;
+ #sidebar {
+  grid-area: sidebar;
+  height: 100%;
+  background-color: #032d89;
   color: white;
-
- }
-#sidebar ul ul li a{
-    text-decoration: none;
-    color: white;
+  overflow-y: auto;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
 }
-#sidebar ul ul li {    
-  list-style: none;
-  padding: 10px 20px 10px 10px;
+
+.sidebar-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 20px 20px;
+  margin-bottom: 30px;
+}
+
+.sidebar-title > span {
   display: none;
 }
-.dropdown-container{
- color: #e6e8ed;
- padding-top: 10px;
- margin-top: 20px;
+
+.sidebar-brand {
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: 700;
 }
-/* Style the sidenav links and the dropdown button */
-.sidenav a, .dropdown-btn {
+
+.sidebar-list {
+  padding: 0;
+  margin-top: 15px;
+  list-style-type: none;
+}
+
+.sidebar-list-item {
+  padding: 20px 15px 20px 20px;
+}
+
+.sidebar-list-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+.sidebar-list > a {
+  text-decoration: none;
+  color: white;
+}
+#sidebar ul ul li {    
+list-style: none;
+padding: 10px 20px 10px 10px;
+display: none;
+}
+.dropdown-container{
+color: #e6e8ed;
+padding-top: 10px;
+margin-top: 20px;
+}
+.dropdown-container .con-lic, .dropdown-container .con-mv{
+padding: 20px 15px 0px 20px;
+margin-top: -20px;
+}
+.dropdown-container a{
+  text-decoration: none;
+  color: white;
+}
+.sidebar-list-item1 button{
+  padding: 20px 15px 20px 20px;
   text-decoration: none;
   font-size: 16px;
   color: white;
@@ -146,29 +145,30 @@ img{
   background: none;
   width:100%;
   text-align: left;
-  cursor: pointer;
+  cursor: default;
   outline: none;
 }
 
 /* On mouse-over */
-.sidenav a:hover, .dropdown-btn:hover {
-  color: #f1f1f1;
+.dropdown-btn:hover {
+background-color: rgba(255, 255, 255, 0.2);
 }
-
+.con-lic:hover{
+background-color: rgba(255, 255, 255, 0.2);
+}
+.con-mv:hover {
+background-color: rgba(255, 255, 255, 0.2);
+}
 /* Main content */
 .main {
-  margin-left: 200px; /* Same as the width of the sidenav */
-  font-size: 20px; /* Increased text to enable scrolling */
-  padding: 0px 10px;
+margin-left: 200px; /* Same as the width of the sidenav */
+font-size: 20px; /* Increased text to enable scrolling */
+/* padding: 0px 10px; */
 }
 /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
 .dropdown-container {
-  display: none;
-  padding-left: 8px;
-}
-.dropdown-container a{
-  text-decoration: none;
-  color: white;
+display: none;
+padding-left: 8px;
 }
 /* Optional: Style the caret down icon */
 .fa-caret-down {

@@ -107,25 +107,16 @@ img{
   .sidebar-list-item {
     padding: 20px 15px 20px 20px;
   }
-  
+
   .sidebar-list-item:hover {
     background-color: rgba(255, 255, 255, 0.2);
     cursor: pointer;
   }
   
-  .sidebar-list-item > a {
+  .sidebar-list > a {
     text-decoration: none;
     color: white;
   }
- #sidebar ul ul li a{
-  text-decoration: none;
-  color: white;
-
- }
-#sidebar ul ul li a{
-    text-decoration: none;
-    color: white;
-}
 #sidebar ul ul li {    
   list-style: none;
   padding: 10px 20px 10px 10px;
@@ -136,35 +127,48 @@ img{
  padding-top: 10px;
  margin-top: 20px;
 }
-/* Style the sidenav links and the dropdown button */
-.sidenav a, .dropdown-btn {
-  text-decoration: none;
-  font-size: 16px;
-  color: white;
-  display: block;
-  border: none;
-  background: none;
-  width:100%;
-  text-align: left;
-  cursor: pointer;
-  outline: none;
+.dropdown-container .con-lic, .dropdown-container .con-mv{
+  padding: 20px 15px 0px 20px;
+  margin-top: -20px;
 }
+.dropdown-container a{
+  text-decoration: none; 
+  color: white;
+}
+  .sidebar-list-item1 button{
+    padding: 20px 15px 20px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    color: white;
+    display: block;
+    border: none;
+    background: none;
+    width:100%;
+    text-align: left;
+    cursor: default;
+    outline: none;
+  }
 
 /* On mouse-over */
-.sidenav a:hover, .dropdown-btn:hover {
-  color: #f1f1f1;
+.dropdown-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
-
+.con-lic:hover{
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.con-mv:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
 /* Main content */
-
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  /* padding: 0px 10px; */
+}
 /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
 .dropdown-container {
   display: none;
   padding-left: 8px;
-}
-.dropdown-container a{
-  text-decoration: none;
-  color: white;
 }
 /* Optional: Style the caret down icon */
 .fa-caret-down {
@@ -193,9 +197,9 @@ img{
   }
   .content-table {
     border-collapse: collapse;
-    font-size: 0.9em;
+    font-size: 14px;
     width: 100%;
-    margin-left: -190px;
+    margin-left: -200px;
     background-color: white;
     color: black;
     border: 1px solid black; 

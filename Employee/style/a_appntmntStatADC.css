@@ -107,25 +107,16 @@ img{
   .sidebar-list-item {
     padding: 20px 15px 20px 20px;
   }
-  
+
   .sidebar-list-item:hover {
     background-color: rgba(255, 255, 255, 0.2);
     cursor: pointer;
   }
   
-  .sidebar-list-item > a {
+  .sidebar-list > a {
     text-decoration: none;
     color: white;
   }
- #sidebar ul ul li a{
-  text-decoration: none;
-  color: white;
-
- }
-#sidebar ul ul li a{
-    text-decoration: none;
-    color: white;
-}
 #sidebar ul ul li {    
   list-style: none;
   padding: 10px 20px 10px 10px;
@@ -133,34 +124,47 @@ img{
 }
 .dropdown-container{
  color: #e6e8ed;
- padding-top: 10px; 
+ padding-top: 10px;
  margin-top: 20px;
+}
+.dropdown-container .con-lic, .dropdown-container .con-mv{
+  padding: 20px 15px 0px 20px;
+  margin-top: -20px;
 }
 .dropdown-container a{
   text-decoration: none;
   color: white;
 }
-/* Style the sidenav links and the dropdown button */
-.sidenav a, .dropdown-btn {
-  text-decoration: none;
-  font-size: 16px;
-  color: white;
-  display: block;
-  border: none;
-  background: none;
-  width:100%;
-  text-align: left;
-  cursor: pointer;
-  outline: none;
-}
+  .sidebar-list-item1 button{
+    padding: 20px 15px 20px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    color: white;
+    display: block;
+    border: none;
+    background: none;
+    width:100%;
+    text-align: left;
+    cursor: default;
+    outline: none;
+  }
 
 /* On mouse-over */
-.sidenav a:hover, .dropdown-btn:hover {
-  color: #f1f1f1;
+.dropdown-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
-
+.con-lic:hover{
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.con-mv:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
 /* Main content */
-
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  /* padding: 0px 10px; */
+}
 /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
 .dropdown-container {
   display: none;
@@ -186,7 +190,7 @@ img{
   }
   /*Table for appointment*/
   .main2{
-    margin-left: 200px; /* Same as the width of the sidenav */
+    /* margin-left: 100px; Same as the width of the sidenav */
     font-size: 20px; /* Increased text to enable scrolling */
     padding: 0px 10px;
     margin-top: -36px;
@@ -195,20 +199,20 @@ img{
   .main2{
     display: flex;
     padding: 1% ;
-	margin-top: 5px;
+	  margin-top: 5px;
 }
   .content-table {
     border-collapse: collapse;
     font-size: 14px;
-    width: 84%;
-    margin-left: 10px;
+    width: 100%;
     background-color: white;
     color: black;
     border: 1px solid black; 
     cursor: pointer;
+    margin-left: -195px;
     
 }
-.content-table thead .sp{
+.content-table thead .sp{ 
     color: black;
     text-align: center;
     font-weight: bold;
@@ -218,33 +222,25 @@ img{
 }
 .content-table th,
 .content-table td {
-    padding: 3px;
+    padding: 2px;
     border: 1px solid black;
-}
-#bck_AL{
-    border: 1px solid gray;
-    padding: 10px;
-    width: 100px;
-    border-radius: 5px;
-    text-transform: uppercase;
-    margin: 10px 0 10px 10px;
-    cursor: pointer;
 }
 .btnOptn button{
     margin: 5px;
 	padding: 8px;
 	width: 100px;
+  text-transform: uppercase;
 
 }
-#comp_btn{
-    margin-left: -190px;
+.dropdown-user{
+  margin-left: -205px;
+  margin-top: 5px;
+  margin-right: 5px;
 }
-#incomp_btn{
-    margin-left: -80px;
+.dropdown-user select{
+  padding: 8px;
+  text-transform: uppercase;
 }
-
-
-
     
   /* Extra Small <= 576px */
   @media screen and (max-width: 576px) {

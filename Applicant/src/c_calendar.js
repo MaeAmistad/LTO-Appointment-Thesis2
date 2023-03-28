@@ -5,7 +5,7 @@ $(function () {
       startDate: new Date(),
       endDate: '+2m',
       multidate: false,
-      format: "dd-MM-yyyy",
+      format: "dd-mm-yyyy",
       language: 'en',
       todayHighlight: true,
       daysOfWeekDisabled: [0, 6],
