@@ -1,6 +1,6 @@
 bck.addEventListener('click',() => {
     window.location = "a_appList.html";
-});
+}); 
 
 apprd.addEventListener('click',() => {
     document.getElementById('cnfrm_modal').style.visibility = "visible";
@@ -9,10 +9,12 @@ dclnd.addEventListener('click',() => {
     document.getElementById('cnfrm_modal2').style.visibility = "visible";
 });
 cnl.addEventListener('click',() => {
-    window.location = "pc_reqdata.html";
+    // window.location = "pc_reqdata.html";
+    document.getElementById('cnfrm_modal').style.visibility = "hidden";
 });
 cnl2.addEventListener('click',() => {
-    window.location = "pc_reqdata.html";
+    // window.location = "pc_reqdata.html";
+    document.getElementById('cnfrm_modal2').style.visibility = "hidden";
 });
 
 var tranID = localStorage.getItem("stat");
@@ -125,20 +127,20 @@ const db = getFirestore(app);
                 if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
                     if (stt == doc2.data().User_AppID){
                         updateDoc(updateStat, {
-                            User_Stat: "Approved",
+                            User_Stat: "APPROVED",
                             User_TransID: trnidmvr 
                         }).then(() => {
-                            window.location = "pc_homepage.html"
+                            window.location = "a_appList.html"
                         })
                     }
                 }
                 else if(doc2.data().User_TT == "LICENSING"){
                     if (stt == doc2.data().User_AppID){
                         updateDoc(updateStat, {
-                            User_Stat: "Approved",
+                            User_Stat: "APPROVED",
                             User_TransID: trnidlic 
                         }).then(() => {
-                            window.location = "pc_homepage.html"
+                            window.location = "a_appList.html"
                         })
                     }
                 }
@@ -151,9 +153,9 @@ const db = getFirestore(app);
 
                 if (stt == doc2.data().User_AppID){
                     updateDoc(updateStat, {
-                        User_Stat: "Declined"
+                        User_Stat: "DECLINED"
                     }).then(() => {
-                        window.location = "pc_homepage.html"
+                        window.location = "a_appList.html"
                     })
                 }
             })

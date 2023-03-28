@@ -106,19 +106,19 @@
             <div class="main2">
                 <div class="dropdown-user">
                   <select id="user" onchange="user(this.value)">
-                    <option value="a_pcLIApprved.html" selected>Evaluator</option>
-                    <option value="a_caLIComp.html">Cashier</option>
-                    <option value="a_exLIPass.html">Examiner</option>
+                    <option value="a_pcmvApprved.html">Evaluator</option>
+                    <option value="a_camvComp.html">Cashier</option>
+                    <option value="a_exmvPass.html" selected>Examiner</option>
                   </select>
                 </div>
 
                 <div class="btnOptn">
-                    <button id="comp_btn" style="background:#032d8983; color: white;">Approved</button>
+                    <button id="comp_btn" style="background:#032d8983; color: white;">Passed</button>
                 </div>
                 <div class="btnOptn">
-                    <button id="incomp_btn">Declined</button>
+                    <button id="incomp_btn">failed</button>
                 </div>
-            </div> 
+            </div>
 
             <table class="content-table">
               <thead>
@@ -126,7 +126,7 @@
                 <th class="sp" colspan="5">Appointments</th>
               </tr>
               <tr>
-                    <th>Application ID.</th>
+                    <th>Transaction ID.</th>
                     <th>Full Name</th>
                     <th>Transaction Type</th>
                     <th>Date</th>      
@@ -145,7 +145,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
 
-    <script type="module" src="../src/a_LIComp.js"></script>
+    <script type="module" src="../src/a_exmvPass.js"></script>
     <script src="../src/a_dashboard.js"></script>
 
   </body>

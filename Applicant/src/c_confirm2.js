@@ -61,7 +61,7 @@ const TranID = trnid;
 if (tt == "MOTOR VEHICLE REGISTRATION"){
 
   addDoc (collection(db,"Appointment"),{
-    User_Stat: "Pending",
+    User_Stat: "PENDING",
     User_AppID: TranID, 
     User_LN: ln,
     User_FN: fn,
@@ -140,7 +140,7 @@ localStorage.removeItem("rvsnofrcrds");
 else if (tt == "LICENSING"){
   if (at == "REVISION OF RECORDS"){
     addDoc (collection(db,"Appointment"),{
-      User_Stat: "Pending",
+      User_Stat: "PENDING",
       User_AppID: TranID,
       User_Laa: laa,
       User_Rev: rr, 
@@ -217,7 +217,7 @@ else if (tt == "LICENSING"){
   }
   else{
     addDoc (collection(db,"Appointment"),{
-      User_Stat: "Pending",
+      User_Stat: "PENDING",
       User_AppID: TranID,
       User_Laa: laa,
       User_LN: ln,

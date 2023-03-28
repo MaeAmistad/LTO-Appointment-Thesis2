@@ -1,15 +1,7 @@
 // var usr = document.getElementById("user").value;
-// function user(){
-//     if (usr == "evltr"){
-//         window.location = "a_pcLIApprved.html";
-//     }
-//     else if (usr == "cshr"){
-//         window.location = "a_reqview.html";
-//     }
-//     else if(usr == "exmntr"){
-//         window.location = "a_applist.html";
-//     }
-// }
+function user(src){
+  window.location = src;  
+}
 
 // SIDEBAR TOGGLE
 

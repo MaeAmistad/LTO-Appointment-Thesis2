@@ -100,37 +100,36 @@
       <main class="main-container">
 
         <div class="main"> 
-
-            <!-- <button id="bck_AL">BACK</button> -->
-            
-            <div class="main2">
-                <div class="btnOptn">
-                    <button id="comp_btn" >Complete</button>
-                </div>
-                <div class="btnOptn">
-                    <button id="incomp_btn" style="background:#032d8983; color: white;">Incomplete</button>
-                </div>
+          <div class="main2">
+            <div class="dropdown-user">
+              <select id="user" onchange="user(this.value)">
+                <option value="a_pcLIApprved.html" selected>Evaluator</option>
+                <option value="a_caLIComp.html">Cashier</option>
+                <option value="a_exLIPass.html">Examiner</option>
+              </select>
             </div>
+
+            <div class="btnOptn">
+                <button id="comp_btn" >Approved</button>
+            </div>
+            <div class="btnOptn">
+                <button id="incomp_btn" style="background:#032d8983; color: white;">Declined</button>
+            </div>
+        </div>
 
             <table class="content-table">
               <thead>
               <tr>
-                <th class="sp" colspan="12">Appointments</th>
+                <th class="sp" colspan="11">Appointments</th>
               </tr>
               <tr>
-                    <th>Application ID.</th>
-                    <th>Full Name</th>
-                    <th>Birthday</th>
-                    <th>Gender</th>
-                    <th>Address</th>
-                    <th>Transaction Type</th>
-                    <th>Application Type</th>
-                    <th>Date of Appointment</th>      
-                    <th>Time of Appointment</th>                
-                    <th>Contact Number</th>
-                    <th>Email Address</th>
-              </tr> 
-                <tbody id="tbody1"> </tbody>
+                <th>Application ID.</th>
+                <th>Full Name</th>
+                <th>Transaction Type</th>
+                <th>Date</th>      
+                <th>Time</th>  
+          </tr>
+                <tbody id="tbody1"> </tbody> 
               </table>
           </div>
 
