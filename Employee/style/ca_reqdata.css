@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
+
+body {
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    background-color: white;
+}
+.main{
+    position: relative;
+    max-width: 1000px;
+    width: 100%;
+    padding: 25px;
+    background: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); 
+    padding: 20px;
+    margin-left: 145px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.btn button{
+	padding: 4px;
+	width: 100px;
+    outline: none;
+	padding: 10px;
+    margin: 10px;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.btn{
+    display: flex;
+}
+#inc{
+    margin-left: 550px;
+}
+#bck{
+    margin-left: 80px;
+}
+p{
+    font-size: 25px;
+    font-weight: 700;
+    margin-left: 50px;
+}
+table{
+    margin-left: 80px;
+}
+table td{
+    padding-left: 20px;
+}
+.cnfrm_modal{
+    width: 500px;
+    /* height: 200px; */
+    background-color: white;
+    user-select: none;
+    border: 1px solid #b3b3b3;
+    box-shadow: 5px 5px 5px rgb(70, 69, 69);
+    color: black;
+    padding: 20px;
+    visibility: hidden; 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.4s, top 0.4s;
+}
+.cnfrm_modal p{
+    font-weight: 700;
+    letter-spacing: 5px;
+}
+#cnfrm_modal .btn{
+    
+}
