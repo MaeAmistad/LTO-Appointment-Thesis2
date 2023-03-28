@@ -1,5 +1,5 @@
 bck.addEventListener('click',() => {
-    window.location = "pc_homepage.html";
+    window.location = "a_appList.html";
 });
 
 apprd.addEventListener('click',() => {

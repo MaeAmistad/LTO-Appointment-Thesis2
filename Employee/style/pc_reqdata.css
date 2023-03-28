@@ -19,7 +19,7 @@ body {
     margin-top: 20px;
     margin-bottom: 10px;
 }
-.btn button{
+.btn button, .btn2 button{
 	padding: 4px;
 	width: 100px;
     outline: none;
@@ -50,8 +50,8 @@ table{
 table td{
     padding-left: 20px;
 }
-.cnfrm_modal{
-    width: 500px;
+.cnfrm_modal,.cnfrm_modal2{
+    width: 550px;
     /* height: 200px; */
     background-color: white;
     user-select: none;
@@ -59,18 +59,24 @@ table td{
     box-shadow: 5px 5px 5px rgb(70, 69, 69);
     color: black;
     padding: 20px;
-    /* visibility: hidden; */
+    visibility: hidden;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     transition: transform 0.4s, top 0.4s;
 }
-.cnfrm_modal p{
-    text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: 5px;
+.cnfrm_modal h1, .cnfrm_modal2 h1{
+    letter-spacing: 3px;
+    text-align: center;
 }
-#cnfrm{
-    
+.cnfrm_modal p, .cnfrm_modal2 p{
+    font-weight: 500;
+    letter-spacing: 3px;
+}
+.cnfrm_modal2 p{
+    margin-left: 100px;
+}
+#cnl, #cnl2{
+    margin-left: 300px;
 }

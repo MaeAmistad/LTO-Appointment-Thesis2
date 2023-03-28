@@ -1,6 +1,6 @@
-bck_AL.addEventListener('click',(e) => {
-    window.location = "pc_homepage.html";
-});
+// bck_AL.addEventListener('click',(e) => {
+//     window.location = "pc_homepage.html";
+// });
 
 comp_btn.addEventListener('click',(e) => {
     window.location = "pc_LIComp.html";
@@ -35,7 +35,7 @@ const db = getFirestore(app);
 
       querySnapshot2.forEach(doc2 => {
 //  
-        if(doc2.data().User_Stat == "Incomplete" && doc2.data().User_TT == "LICENSING"){
+        if(doc2.data().User_Stat == "Declined" && doc2.data().User_TT == "LICENSING"){
 
             if (doc2.data().User_Laa == "STUDENT-DRIVER'S PERMIT" || doc2.data().User_Laa == "NON-PROFESSIONAL DRIVER'S LICENSE" || doc2.data().User_Laa == "PROFESSIONAL DRIVER'S LICENSE"){
                 if (doc2.data().User_AT == "REVISION OF RECORDS"){
