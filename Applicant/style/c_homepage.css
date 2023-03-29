@@ -44,7 +44,7 @@ nav ul ul li{
 }
 nav ul li:hover > ul{
     display: block;
-}
+} 
 .navbar ul li a{
     color: white;
     text-decoration: none;
