@@ -1,5 +1,5 @@
 bck.addEventListener('click',() => {
-    window.location = "ca_homepage.html";
+    window.location = "a_reqdataex.html";
 });
 cmplt.addEventListener('click',() => {
     document.getElementById('complete_modal').style.visibility = "visible"
@@ -13,7 +13,6 @@ cnl1.addEventListener('click', () => {
 cnl2.addEventListener('click', () => {
     document.getElementById('inc_modal').style.visibility = "hidden"
 });
-
 // var tranID = localStorage.getItem("stat");
 // document.getElementById('tranID').innerHTML = tranID;
 
@@ -57,45 +56,20 @@ const db = getFirestore(app);
                     document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
                     document.getElementById("em").innerHTML = doc2.data().User_E;
                     document.getElementById("mnn").innerHTML = doc2.data().User_CN;
-
-                    document.getElementById("exmt").style.display = "none"
-                    document.getElementById("et").style.display = "none"
                 }
                 else if (doc2.data().User_TT == "LICENSING"){
-                    if (doc2.data().User_Stat == "PASSED"){
-                        document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
-                        document.getElementById("dof").innerHTML = doc2.data().User_BD;
-                        document.getElementById("gndr").innerHTML = doc2.data().User_GN;
-                        document.getElementById("tID").innerHTML = doc2.data().User_TransID; 
-                        document.getElementById("tt").innerHTML = doc2.data().User_TT;
-                        document.getElementById("laa").innerHTML = doc2.data().User_Laa;
-                        document.getElementById("at").innerHTML = doc2.data().User_AT;
-                        document.getElementById("et").innerHTML = doc2.data().User_examType;
-                        document.getElementById("dt_L").innerHTML = doc2.data().User_D;
-                        document.getElementById("dt_t").innerHTML = doc2.data().User_T;
-                        document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
-                        document.getElementById("em").innerHTML = doc2.data().User_E;
-                        document.getElementById("mnn").innerHTML = doc2.data().User_CN;
-
-                    }
-                    else{
-
-                        document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
-                        document.getElementById("dof").innerHTML = doc2.data().User_BD;
-                        document.getElementById("gndr").innerHTML = doc2.data().User_GN;
-                        document.getElementById("tID").innerHTML = doc2.data().User_TransID; 
-                        document.getElementById("tt").innerHTML = doc2.data().User_TT;
-                        document.getElementById("laa").innerHTML = doc2.data().User_Laa;
-                        document.getElementById("at").innerHTML = doc2.data().User_AT;
-                        document.getElementById("dt_L").innerHTML = doc2.data().User_D;
-                        document.getElementById("dt_t").innerHTML = doc2.data().User_T;
-                        document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
-                        document.getElementById("em").innerHTML = doc2.data().User_E;
-                        document.getElementById("mnn").innerHTML = doc2.data().User_CN;
-
-                        document.getElementById("exmt").style.display = "none"
-                        document.getElementById("et").style.display = "none"
-                    }
+                    document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
+                    document.getElementById("dof").innerHTML = doc2.data().User_BD;
+                    document.getElementById("gndr").innerHTML = doc2.data().User_GN;
+                    document.getElementById("tID").innerHTML = doc2.data().User_TransID; 
+                    document.getElementById("tt").innerHTML = doc2.data().User_TT;
+                    document.getElementById("laa").innerHTML = doc2.data().User_Laa;
+                    document.getElementById("at").innerHTML = doc2.data().User_AT;
+                    document.getElementById("dt_L").innerHTML = doc2.data().User_D;
+                    document.getElementById("dt_t").innerHTML = doc2.data().User_T;
+                    document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
+                    document.getElementById("em").innerHTML = doc2.data().User_E;
+                    document.getElementById("mnn").innerHTML = doc2.data().User_CN;
                 }
                 else if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
                     document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
@@ -112,37 +86,39 @@ const db = getFirestore(app);
 
                     document.getElementById("laa").style.display = "none"
                     document.getElementById("laa2").style.display = "none"
-                    document.getElementById("exmt").style.display = "none"
-                    document.getElementById("et").style.display = "none"
                 }
-  
             }
 
             cnfrm1.addEventListener('click', (e) => {
                 const updateStat = doc(db, "Appointment", doc2.id)
                 var stt = localStorage.getItem("stat")
+                var exmtyp = document.getElementById("exmTyp").value;
 
-                    if (stt == doc2.data().User_TransID){
-                        updateDoc(updateStat, {
-                            User_Stat: "COMPLETED"
-                        }).then(() => {
-                            window.location = "ca_homepage.html"
-                        })
-                    } 
-
+                if (stt == doc2.data().User_TransID){
+                    updateDoc(updateStat, {
+                        User_Stat: "PASSED",
+                        User_examType: exmtyp
+                    }).then(() => {
+                        window.location = "a_reqdataex.html"
+                    })
+                }
             })
  
             cnfrm2.addEventListener('click', (e) => {
                 const updateStat = doc(db, "Appointment", doc2.id)
                 var stt = localStorage.getItem("stat")
+                var exmtyp = document.getElementById("exmTyp").value;
 
                 if (stt == doc2.data().User_TransID){
                     updateDoc(updateStat, {
-                        User_Stat: "INCOMPLETED"
+                        User_Stat: "FAILED",
+                        User_examType: exmtyp
                     }).then(() => {
-                        window.location = "ca_homepage.html"
+                        window.location = "a_reqdataex.html"
                     })
                 }
             })
     });
+
+
 

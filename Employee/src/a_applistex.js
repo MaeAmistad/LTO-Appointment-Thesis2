@@ -18,6 +18,18 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 var tbody = document.getElementById('tbody1');
+var dte = document.getElementById("dte");
+
+var date = new Date();
+var day = date.getDate();
+var month = date.getMonth() + 1;
+var year = date.getFullYear();
+if (month < 10) month = "0" + month;
+if (day < 10) day = "0" + day;
+var today = year + "-" + month + "-" + day;       
+document.getElementById("dte").value = today;
+
+var tbody = document.getElementById('tbody1');
 
     const querySnapshot2 = await getDocs(collection(db,"Appointment"));
         querySnapshot2.forEach(doc2 => {
@@ -50,7 +62,7 @@ var tbody = document.getElementById('tbody1');
                             localStorage.setItem('stat',doc2.data().User_TransID)    
                             localStorage.setItem('ID', doc2.id)
             
-                            window.location = "ex_reqdata.html";
+                            window.location = "a_reqdataex.html";
                         });
                         
                         }
@@ -83,7 +95,7 @@ var tbody = document.getElementById('tbody1');
                             localStorage.setItem('stat',doc2.data().User_TransID)    
                             localStorage.setItem('ID', doc2.id)
             
-                            window.location = "ex_reqdata.html";
+                            window.location = "a_reqdataex.html";
                         });
                          
                         }
@@ -116,7 +128,7 @@ var tbody = document.getElementById('tbody1');
                             localStorage.setItem('stat',doc2.data().User_TransID)    
                             localStorage.setItem('ID', doc2.id)
             
-                            window.location = "ex_reqdata.html";
+                            window.location = "a_reqdataex.html";
                         });
                         
                         }

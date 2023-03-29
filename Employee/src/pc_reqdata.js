@@ -17,8 +17,8 @@ cnl2.addEventListener('click',() => {
     document.getElementById('cnfrm_modal2').style.visibility = "hidden";
 });
 
-var tranID = localStorage.getItem("stat");
-document.getElementById('tranID').innerHTML = tranID;
+// var tranID = localStorage.getItem("stat");
+// document.getElementById('tranID').innerHTML = tranID;
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import { getFirestore, getDocs, collection, updateDoc,doc } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
@@ -160,6 +160,3 @@ const db = getFirestore(app);
                 }
             })
     });
-
-
-

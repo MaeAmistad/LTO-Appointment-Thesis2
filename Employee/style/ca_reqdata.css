@@ -19,9 +19,9 @@ body {
     margin-top: 20px;
     margin-bottom: 10px;
 }
-.btn button{
+.btn button, .btn2 button{
 	padding: 4px;
-	width: 100px;
+	width: 100px; 
     outline: none;
 	padding: 10px;
     margin: 10px;
@@ -51,7 +51,7 @@ table td{
     padding-left: 20px;
 }
 .cnfrm_modal{
-    width: 500px;
+    width: 550px;
     /* height: 200px; */
     background-color: white;
     user-select: none;
@@ -59,17 +59,36 @@ table td{
     box-shadow: 5px 5px 5px rgb(70, 69, 69);
     color: black;
     padding: 20px;
-    visibility: hidden; 
+    visibility: hidden;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     transition: transform 0.4s, top 0.4s;
 }
-.cnfrm_modal p{
-    font-weight: 700;
-    letter-spacing: 5px;
+.cnfrm_modal h1, .cnfrm_modal2 h1{
+    letter-spacing: 3px;
+    text-align: center;
 }
-#cnfrm_modal .btn{
-    
+.cnfrm_modal p, .cnfrm_modal2 p{
+    font-weight: 500;
+    letter-spacing: 3px;
+}
+.cnfrm_modal2 p{
+    margin-left: 100px;
+}
+#cnl1, #cnl2{
+    margin-left: 300px;
+}
+#complete_modal label, #inc_modal label{
+    padding-left: 50px;
+}
+#complete_modal input, #inc_modal input{
+    padding: 5px;
+    width: 300px;
+    font-size: 15px;
+    text-transform: uppercase;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
 }

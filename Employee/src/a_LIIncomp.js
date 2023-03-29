@@ -56,6 +56,14 @@ const db = getFirestore(app);
                     trow.appendChild(td4);
 
                     tbody.appendChild(trow);
+                    
+                    trow.addEventListener('click', (e) =>{
+                        trow.style.backgroundColor = 'rgb(218, 216, 216)';
+                        localStorage.setItem('stat',doc2.data().User_AppID)    
+                        localStorage.setItem('ID', doc2.id)
+    
+                        window.location = "a_reqdata2.html";
+                    });
 
                 }
                 else{
@@ -80,6 +88,14 @@ const db = getFirestore(app);
                     trow.appendChild(td4);
 
                     tbody.appendChild(trow);
+
+                    trow.addEventListener('click', (e) =>{
+                        trow.style.backgroundColor = 'rgb(218, 216, 216)';
+                        localStorage.setItem('stat',doc2.data().User_AppID)    
+                        localStorage.setItem('ID', doc2.id)
+    
+                        window.location = "a_reqdata2.html";
+                    });
                 }
 
         }

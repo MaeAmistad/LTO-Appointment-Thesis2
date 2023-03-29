@@ -57,6 +57,14 @@ const db = getFirestore(app);
 
                     tbody.appendChild(trow);
 
+                    trow.addEventListener('click', (e) =>{
+                        trow.style.backgroundColor = 'rgb(218, 216, 216)';
+                        localStorage.setItem('stat',doc2.data().User_AppID)    
+                        localStorage.setItem('ID', doc2.id)
+
+                        window.location = "a_reqdata2.html";
+                    });
+
                 }
                 else{
                     let trow = document.createElement('tr'); 
@@ -83,7 +91,7 @@ const db = getFirestore(app);
                     
                     trow.addEventListener('click', (e) =>{
                         trow.style.backgroundColor = 'rgb(218, 216, 216)';
-                        localStorage.setItem('stat',doc2.data().User_AppID)    
+                        localStorage.setItem('stat',doc2.data().User_TransID)    
                         localStorage.setItem('ID', doc2.id)
 
                         window.location = "a_reqdata2.html";

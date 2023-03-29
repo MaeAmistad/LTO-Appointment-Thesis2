@@ -1,5 +1,5 @@
 bck.addEventListener('click',() => {
-    window.location = "ca_homepage.html";
+    window.location = "a_applistca.html";
 });
 cmplt.addEventListener('click',() => {
     document.getElementById('complete_modal').style.visibility = "visible"
@@ -62,6 +62,7 @@ const db = getFirestore(app);
                     document.getElementById("et").style.display = "none"
                 }
                 else if (doc2.data().User_TT == "LICENSING"){
+
                     if (doc2.data().User_Stat == "PASSED"){
                         document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
                         document.getElementById("dof").innerHTML = doc2.data().User_BD;
@@ -97,6 +98,7 @@ const db = getFirestore(app);
                         document.getElementById("et").style.display = "none"
                     }
                 }
+
                 else if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
                     document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
                     document.getElementById("dof").innerHTML = doc2.data().User_BD;
@@ -126,7 +128,7 @@ const db = getFirestore(app);
                         updateDoc(updateStat, {
                             User_Stat: "COMPLETED"
                         }).then(() => {
-                            window.location = "ca_homepage.html"
+                            window.location = "a_applistca.html"
                         })
                     } 
 
@@ -140,7 +142,7 @@ const db = getFirestore(app);
                     updateDoc(updateStat, {
                         User_Stat: "INCOMPLETED"
                     }).then(() => {
-                        window.location = "ca_homepage.html"
+                        window.location = "a_applistca.html"
                     })
                 }
             })

@@ -4,7 +4,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebas
 import { getFirestore, getDocs, collection } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
 
 // Your web app's Firebase configuration
-const firebaseConfig = { 
+const firebaseConfig = {
     apiKey: "AIzaSyCyNToos3S0HwLl0cZMRdiVjFJcBb4FWFo",
     authDomain: "lto-online-appointment-setter.firebaseapp.com",
     projectId: "lto-online-appointment-setter",
@@ -15,7 +15,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const db = getFirestore(app); 
 
 var tbody = document.getElementById('tbody1');
 var dte = document.getElementById("dte");
@@ -29,7 +29,9 @@ if (day < 10) day = "0" + day;
 var today = year + "-" + month + "-" + day;       
 document.getElementById("dte").value = today;
 
-    const querySnapshot2 = await getDocs(collection(db,"Appointment"));
+var tbody = document.getElementById('tbody1');
+
+    const querySnapshot2 = await getDocs(collection(db,"Appointment")); 
         querySnapshot2.forEach(doc2 => {
 
             var dd = doc2.data().User_D;
@@ -40,7 +42,7 @@ document.getElementById("dte").value = today;
 
             // console.log(doc2.data().User_T.slice(6,8))&& dte.value == dtcon
             
-            if (doc2.data().User_Stat == "PENDING" ){
+            if (doc2.data().User_Stat == "APPROVED" || doc2.data().User_Stat == "PASSED"){
             let trow = document.createElement('tr'); 
             let t_ID = document.createElement('td'); 
             let td1 = document.createElement('td'); 
@@ -48,7 +50,7 @@ document.getElementById("dte").value = today;
             let td7 = document.createElement('td');
             let td8 = document.createElement('td'); 
 
-            t_ID.innerHTML = doc2.data().User_AppID; 
+            t_ID.innerHTML = doc2.data().User_TransID; 
             td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
             td5.innerHTML = doc2.data().User_TT;
             td7.innerHTML = doc2.data().User_D;
@@ -64,10 +66,10 @@ document.getElementById("dte").value = today;
 
             trow.addEventListener('click', (e) =>{
                 trow.style.backgroundColor = 'rgb(218, 216, 216)';
-                localStorage.setItem('stat',doc2.data().User_AppID)    
+                localStorage.setItem('stat',doc2.data().User_TransID)    
                 localStorage.setItem('ID', doc2.id)
 
-                window.location = "a_reqdata.html";
+                window.location = "a_reqdataca.html";
             });
             
             }

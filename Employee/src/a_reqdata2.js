@@ -2,9 +2,6 @@ bck.addEventListener('click', () => {
     history.back(); 
 });
 
-var tranID = localStorage.getItem("stat");
-document.getElementById('tranID').innerHTML = tranID;
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import { getFirestore, getDocs, collection, updateDoc,doc } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
 
@@ -35,7 +32,7 @@ const db = getFirestore(app);
                     document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
                     document.getElementById("dof").innerHTML = doc2.data().User_BD;
                     document.getElementById("gndr").innerHTML = doc2.data().User_GN;
-                    document.getElementById("tID").innerHTML = doc2.data().User_AppID; 
+                    document.getElementById("aID").innerHTML = doc2.data().User_AppID; 
                     document.getElementById("tt").innerHTML = doc2.data().User_TT;
                     document.getElementById("laa").innerHTML = doc2.data().User_Laa;
                     document.getElementById("at").innerHTML = doc2.data().User_AT + " (" +  doc2.data().User_Rev + ")";
@@ -49,7 +46,7 @@ const db = getFirestore(app);
                     document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
                     document.getElementById("dof").innerHTML = doc2.data().User_BD;
                     document.getElementById("gndr").innerHTML = doc2.data().User_GN;
-                    document.getElementById("tID").innerHTML = doc2.data().User_AppID; 
+                    document.getElementById("tID").innerHTML = doc2.data().User_TransID; 
                     document.getElementById("tt").innerHTML = doc2.data().User_TT;
                     document.getElementById("laa").innerHTML = doc2.data().User_Laa;
                     document.getElementById("at").innerHTML = doc2.data().User_AT;
@@ -63,7 +60,7 @@ const db = getFirestore(app);
                     document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
                     document.getElementById("dof").innerHTML = doc2.data().User_BD;
                     document.getElementById("gndr").innerHTML = doc2.data().User_GN;
-                    document.getElementById("tID").innerHTML = doc2.data().User_AppID; 
+                    document.getElementById("aID").innerHTML = doc2.data().User_AppID; 
                     document.getElementById("tt").innerHTML = doc2.data().User_TT;
                     document.getElementById("at").innerHTML = doc2.data().User_AT;
                     document.getElementById("dt_L").innerHTML = doc2.data().User_D;
@@ -75,6 +72,9 @@ const db = getFirestore(app);
                     document.getElementById("laa").style.display = "none"
                     document.getElementById("laa2").style.display = "none"
                 }
+
+                document.getElementById("trnsctnID").style.display = "none"
+                document.getElementById("tID").style.display = "none"
 
             }
             if (transID == doc2.data().User_TransID){
@@ -83,7 +83,7 @@ const db = getFirestore(app);
                     document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
                     document.getElementById("dof").innerHTML = doc2.data().User_BD;
                     document.getElementById("gndr").innerHTML = doc2.data().User_GN;
-                    document.getElementById("tID").innerHTML = doc2.data().User_AppID; 
+                    document.getElementById("tID").innerHTML = doc2.data().User_TransID; 
                     document.getElementById("tt").innerHTML = doc2.data().User_TT;
                     document.getElementById("laa").innerHTML = doc2.data().User_Laa;
                     document.getElementById("at").innerHTML = doc2.data().User_AT + " (" +  doc2.data().User_Rev + ")";
@@ -94,24 +94,45 @@ const db = getFirestore(app);
                     document.getElementById("mnn").innerHTML = doc2.data().User_CN;
                 }
                 else if (doc2.data().User_TT == "LICENSING"){
-                    document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
-                    document.getElementById("dof").innerHTML = doc2.data().User_BD;
-                    document.getElementById("gndr").innerHTML = doc2.data().User_GN;
-                    document.getElementById("tID").innerHTML = doc2.data().User_AppID; 
-                    document.getElementById("tt").innerHTML = doc2.data().User_TT;
-                    document.getElementById("laa").innerHTML = doc2.data().User_Laa;
-                    document.getElementById("at").innerHTML = doc2.data().User_AT;
-                    document.getElementById("dt_L").innerHTML = doc2.data().User_D;
-                    document.getElementById("dt_t").innerHTML = doc2.data().User_T;
-                    document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
-                    document.getElementById("em").innerHTML = doc2.data().User_E;
-                    document.getElementById("mnn").innerHTML = doc2.data().User_CN;
+                    if (doc2.data().User_Stat == "PASSED"){
+                        document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
+                        document.getElementById("dof").innerHTML = doc2.data().User_BD;
+                        document.getElementById("gndr").innerHTML = doc2.data().User_GN;
+                        document.getElementById("tID").innerHTML = doc2.data().User_TransID; 
+                        document.getElementById("tt").innerHTML = doc2.data().User_TT;
+                        document.getElementById("laa").innerHTML = doc2.data().User_Laa;
+                        document.getElementById("at").innerHTML = doc2.data().User_AT;
+                        document.getElementById("et").innerHTML = doc2.data().User_examType;
+                        document.getElementById("dt_L").innerHTML = doc2.data().User_D;
+                        document.getElementById("dt_t").innerHTML = doc2.data().User_T;
+                        document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
+                        document.getElementById("em").innerHTML = doc2.data().User_E;
+                        document.getElementById("mnn").innerHTML = doc2.data().User_CN;
+
+                    }
+                    else{
+                        document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
+                        document.getElementById("dof").innerHTML = doc2.data().User_BD;
+                        document.getElementById("gndr").innerHTML = doc2.data().User_GN;
+                        document.getElementById("tID").innerHTML = doc2.data().User_TransID; 
+                        document.getElementById("tt").innerHTML = doc2.data().User_TT;
+                        document.getElementById("laa").innerHTML = doc2.data().User_Laa;
+                        document.getElementById("at").innerHTML = doc2.data().User_AT;
+                        document.getElementById("dt_L").innerHTML = doc2.data().User_D;
+                        document.getElementById("dt_t").innerHTML = doc2.data().User_T;
+                        document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
+                        document.getElementById("em").innerHTML = doc2.data().User_E;
+                        document.getElementById("mnn").innerHTML = doc2.data().User_CN;
+
+                        document.getElementById("exmt").style.display = "none"
+                        document.getElementById("et").style.display = "none"
+                    }
                 }
                 else if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
                     document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
                     document.getElementById("dof").innerHTML = doc2.data().User_BD;
                     document.getElementById("gndr").innerHTML = doc2.data().User_GN;
-                    document.getElementById("tID").innerHTML = doc2.data().User_AppID; 
+                    document.getElementById("tID").innerHTML = doc2.data().User_TransID; 
                     document.getElementById("tt").innerHTML = doc2.data().User_TT;
                     document.getElementById("at").innerHTML = doc2.data().User_AT;
                     document.getElementById("dt_L").innerHTML = doc2.data().User_D;
@@ -123,6 +144,9 @@ const db = getFirestore(app);
                     document.getElementById("laa").style.display = "none"
                     document.getElementById("laa2").style.display = "none"
                 }
+
+                document.getElementById("appntmntID").style.display = "none"
+                document.getElementById("aID").style.display = "none"
 
             }
 

@@ -1,5 +1,5 @@
 bck.addEventListener('click',() => {
-    window.location = "pc_homepage.html";
+    window.location = "ex_homepage.html";
 });
 cmplt.addEventListener('click',() => {
     document.getElementById('complete_modal').style.visibility = "visible"
@@ -13,8 +13,8 @@ cnl1.addEventListener('click', () => {
 cnl2.addEventListener('click', () => {
     document.getElementById('inc_modal').style.visibility = "hidden"
 });
-var tranID = localStorage.getItem("stat");
-document.getElementById('tranID').innerHTML = tranID;
+// var tranID = localStorage.getItem("stat");
+// document.getElementById('tranID').innerHTML = tranID;
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import { getFirestore, getDocs, collection, updateDoc,doc } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
@@ -47,7 +47,7 @@ const db = getFirestore(app);
                     document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
                     document.getElementById("dof").innerHTML = doc2.data().User_BD;
                     document.getElementById("gndr").innerHTML = doc2.data().User_GN;
-                    document.getElementById("tID").innerHTML = doc2.data().User_AppID; 
+                    document.getElementById("tID").innerHTML = doc2.data().User_TransID; 
                     document.getElementById("tt").innerHTML = doc2.data().User_TT;
                     document.getElementById("laa").innerHTML = doc2.data().User_Laa;
                     document.getElementById("at").innerHTML = doc2.data().User_AT + " (" +  doc2.data().User_Rev + ")";
@@ -61,7 +61,7 @@ const db = getFirestore(app);
                     document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
                     document.getElementById("dof").innerHTML = doc2.data().User_BD;
                     document.getElementById("gndr").innerHTML = doc2.data().User_GN;
-                    document.getElementById("tID").innerHTML = doc2.data().User_AppID; 
+                    document.getElementById("tID").innerHTML = doc2.data().User_TransID; 
                     document.getElementById("tt").innerHTML = doc2.data().User_TT;
                     document.getElementById("laa").innerHTML = doc2.data().User_Laa;
                     document.getElementById("at").innerHTML = doc2.data().User_AT;
@@ -75,7 +75,7 @@ const db = getFirestore(app);
                     document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
                     document.getElementById("dof").innerHTML = doc2.data().User_BD;
                     document.getElementById("gndr").innerHTML = doc2.data().User_GN;
-                    document.getElementById("tID").innerHTML = doc2.data().User_AppID; 
+                    document.getElementById("tID").innerHTML = doc2.data().User_TransID; 
                     document.getElementById("tt").innerHTML = doc2.data().User_TT;
                     document.getElementById("at").innerHTML = doc2.data().User_AT;
                     document.getElementById("dt_L").innerHTML = doc2.data().User_D;
@@ -92,23 +92,27 @@ const db = getFirestore(app);
             cnfrm1.addEventListener('click', (e) => {
                 const updateStat = doc(db, "Appointment", doc2.id)
                 var stt = localStorage.getItem("stat")
+                var exmtyp = document.getElementById("exmTyp").value;
 
                 if (stt == doc2.data().User_TransID){
                     updateDoc(updateStat, {
-                        User_Stat: "PASSED"
+                        User_Stat: "PASSED",
+                        User_examType: exmtyp
                     }).then(() => {
                         window.location = "ex_homepage.html"
                     })
                 }
             })
-
+ 
             cnfrm2.addEventListener('click', (e) => {
                 const updateStat = doc(db, "Appointment", doc2.id)
                 var stt = localStorage.getItem("stat")
+                var exmtyp = document.getElementById("exmTyp").value;
 
                 if (stt == doc2.data().User_TransID){
                     updateDoc(updateStat, {
-                        User_Stat: "FAILED"
+                        User_Stat: "FAILED",
+                        User_examType: exmtyp
                     }).then(() => {
                         window.location = "ex_homepage.html"
                     })

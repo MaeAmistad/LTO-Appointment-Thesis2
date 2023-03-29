@@ -12,7 +12,7 @@ img{
 }
   .material-icons-outlined {
     vertical-align: middle;
-    line-height: 1px;
+    line-height: 1px; 
   }
   
     .text-primary {
@@ -220,7 +220,7 @@ img{
     border: 1px solid black;
 }
 .date{  
-    margin-top: 30px;
+  margin-top: 13px;
 }
 .date input{
     width: 150px;
@@ -231,7 +231,15 @@ img{
     border: none;
 }
 
-
+.dropdown-user{
+  margin-left: 10px;
+  margin-top: 20px;
+  margin-right: 5px;
+}
+.dropdown-user select{
+  padding: 8px;
+  text-transform: uppercase;
+}
 
 
     
