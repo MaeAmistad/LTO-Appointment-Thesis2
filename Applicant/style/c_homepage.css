@@ -63,7 +63,7 @@ h1{
 }
 p{
     width: 500px;
-    margin-left: 425px;
+    margin-left: 585px;
     margin-top: 40px;
     text-align: justify;
     font-size: 20px;
@@ -72,13 +72,13 @@ p{
 ol li{
     width: 500px;
     margin-top: 15px;
-    margin-left: 425px;
+    margin-left: 530px;
     text-align: justify;
 }
 #chckbx{
     width: 500px;
     margin-top: 40px;
-    margin-left: 425px;
+    margin-left: 530px;
     cursor: default;
 }
 #btnfdt{
@@ -92,16 +92,14 @@ ol li{
     border-radius: 10px; 
     margin-bottom: 30px;
     margin-top: 40px;
-    margin-left:580px;
+     margin-left: 665px;
 }
 
 @media only screen and (max-width: 1200px){
     
-    .main, .rem, p,ol li,.chckbx,#btnfdt{
+    .main, .rem, p,ol li,#chckbx,#btnfdt{
         margin-left: 15px;
         width: 400px;
-        align-items: center;
-
         
     }
  
@@ -137,13 +135,6 @@ ol li{
        align-items: center;
 
     }
-    #selectText1, #selectText2, #selectText3, select{
-      margin-left: -45px;
-              align-items: center;
-
-      
-    }
-    
   @media only screen and (min-width: 800){
  
 }
