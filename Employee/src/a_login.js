@@ -34,7 +34,7 @@ if(email == docSnap.data().username && password == docSnap.data().password){
 }
   querySnapshot.forEach(doc => {
 
-    if(doc.data().user_Type == "Processing_Officer" && doc.data().user_E == email){
+    if(doc.data().user_Type == "Processing Officer" && doc.data().user_E == email){
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           const user = userCredential.user;

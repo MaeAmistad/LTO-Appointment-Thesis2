@@ -10,24 +10,24 @@ document.getElementById('em').innerHTML=localStorage.getItem("email");
 document.getElementById('dt_L').innerHTML=localStorage.getItem("date");
 document.getElementById('dt_t').innerHTML=localStorage.getItem("time");
 
-if (localStorage.getItem("tot") == "Licensing"){
+if (localStorage.getItem("tot") == "LICENSING"){
     document.getElementById('tt').innerHTML=localStorage.getItem("tot");
     document.getElementById('at').innerHTML=localStorage.getItem("laa") + " ( " + localStorage.getItem("toa") + " )  ";
 }
-if(localStorage.getItem("toa") == "Revision of Records"){
+if(localStorage.getItem("toa") == "REVISION OF RECORDS"){
     document.getElementById('tt').innerHTML=localStorage.getItem("tot");
     document.getElementById('at').innerHTML=localStorage.getItem("laa") + " ( " + localStorage.getItem("toa") + ", " + localStorage.getItem("rvsnofrcrds") + " )  ";
 }
-else if (localStorage.getItem("tot") == "Motor Vehicle Registration"){
+else if (localStorage.getItem("tot") == "MOTOR VEHICLE REGISTRATION"){
     document.getElementById('tt').innerHTML=localStorage.getItem("tot");
     document.getElementById('at').innerHTML=localStorage.getItem("toa");
 }
 
-// document.getElementById('dt_L').innerHTML=localStorage.getItem("con_num");
-// document.getElementById('dt_t').innerHTML=localStorage.getItem("email");
+console.log(localStorage.getItem("rvsnofrcrds"))
 
 bck.addEventListener('click', (e) => {
-    window.location = "c_PIform.html";
+    // window.location = "c_PIform.html";
+    history.back();
 })
 
 
@@ -35,12 +35,12 @@ document.getElementById("cnfrm").style.backgroundColor = 'gainsboro';
 document.getElementById("cnfrm").disabled = true;
 
 function chckbx() {
-    var checkBox = document.getElementById("chckbx");
+    var checkBox = document.getElementById("chck");
     var btnfdt = document.getElementById("cnfrm");
     
     if (checkBox.checked == true){
         btnfdt.disabled = false;
-        btnfdt.style.backgroundColor = 'rgb(19, 42, 172)';
+        btnfdt.style.backgroundColor = 'rgb(19, 42, 172)'; 
     }
     else{
         btnfdt.disabled = true;

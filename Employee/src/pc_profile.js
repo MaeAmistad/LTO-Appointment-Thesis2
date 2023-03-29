@@ -27,7 +27,7 @@ onAuthStateChanged(auth, (user) => {
         console.log(user.uid)
       onSnapshot(doc(db, "Users", "Employee","EmployeeData",user.uid), (doc1) => {
         
-        if (doc1.data().user_Type == "Processing_Officer"){
+        if (doc1.data().user_Type == "Processing Officer"){
            document.getElementById('fn').innerHTML= doc1.data().user_LN + ", " + doc1.data().user_FN + " " + doc1.data().user_MN;
             document.getElementById('empID').innerHTML= doc1.data().user_EID;
             document.getElementById('eml').innerHTML= doc1.data().user_E;

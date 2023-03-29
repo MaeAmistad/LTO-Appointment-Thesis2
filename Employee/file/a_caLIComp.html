@@ -40,44 +40,57 @@
           <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
         </div>
 
-        <ul class="sidebar-list">
-          <li class="sidebar-list-item">
-            <a href="a_dashboard.html">
-               Dashboard
-            </a>
-          </li>
-          <li class="sidebar-list-item">
-            <a href="a_accMan.html">
-                Account Management
-            </a>
-          </li>
-          <li class="sidebar-list-item">
-            <a href="a_appList.html">
-             List of Appointments
-            </a>
-          </li>
-          <li class="sidebar-list-item">
-            <button class="dropdown-btn">Transactions
-              <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-container">
-              <a href="a_LIComp.html">License <br><br></a>
-              <a href="a_mvComp.html">Motor Vehicle<br><br></a>
-              <a href="a_CLComp.html">Conductor's Driver's License</a>
-            
-            </div>
-          
+        <ul class="sidebar-list"> 
+
+          <a href="a_dashboard.html">
             <li class="sidebar-list-item">
-              <a href="a_reqView.html">
-                  List Of Requirements
-              </a>
+               Dashboard
             </li>
-            
-          <li class="sidebar-list-item">
-            <a id="logout">
-               Log-Out
-            </a>
+          </a> 
+
+          <a href="a_accMan.html">         
+            <li class="sidebar-list-item">
+                Account Management
+            </li>
+          </a>
+
+          <a href="a_appList.html">
+            <li class="sidebar-list-item">
+              List of Appointments
+            </li>
+          </a>
+
+          <li class="sidebar-list-item1">
+            <button class="dropdown-btn">Transactions<i class="fa fa-caret-down"></i></button>
+
+            <div class="dropdown-container">
+              <a href="a_pcLIApprved.html">
+                <div class="con-lic">
+                  License <br><br>
+                </div>
+                </a>
+  
+                <a href="a_pcmvApprved.html">
+                <div class="con-mv">
+                  Motor Vehicle<br><br>
+                </div>
+                </a>
+
+            </div>
           </li>
+
+            <a href="a_reqView.html">
+              <li class="sidebar-list-item">
+                List Of Requirements
+              </li>    
+            </a>
+
+            <a id="logout">
+              <li class="sidebar-list-item">
+                Log-Out
+              </li>               
+            </a>  
+
 
           </ul>
       </aside>
@@ -88,34 +101,36 @@
 
         <div class="main"> 
 
-            <!-- <button id="bck_AL">BACK</button> -->
+
             
             <div class="main2">
+                <div class="dropdown-user">
+                  <select id="user" onchange="user(this.value)">
+                    <option value="a_pcLIApprved.html">Evaluator</option>
+                    <option value="a_caLIComp.html" selected>Cashier</option>
+                    <option value="a_exLIPass.html">Examiner</option>
+                  </select>
+                </div>
+
                 <div class="btnOptn">
-                    <button id="comp_btn" style="background:#032d8983; color: white;">Complete</button>
+                    <button id="comp_btn" style="background:#032d8983; color: white;">COMPLETE</button>
                 </div>
                 <div class="btnOptn">
-                    <button id="incomp_btn">Incomplete</button>
+                    <button id="incomp_btn">INCOMPLETE</button>
                 </div>
             </div>
 
             <table class="content-table">
               <thead>
               <tr>
-                <th class="sp" colspan="11">Appointments</th>
+                <th class="sp" colspan="5">Appointments</th>
               </tr>
               <tr>
                     <th>Transaction ID.</th>
                     <th>Full Name</th>
-                    <th>Birthday</th>
-                    <th>Gender</th>
-                    <th>Address</th>
                     <th>Transaction Type</th>
-                    <th>Application Type</th>
-                    <th>Date of Appointment</th>      
-                    <th>Time of Appointment</th>                
-                    <th>Contact Number</th>
-                    <th>Email Address</th>
+                    <th>Date</th>      
+                    <th>Time</th>  
               </tr> 
                 <tbody id="tbody1"> </tbody>
               </table>
@@ -130,7 +145,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
 
-    <script type="module" src="../src/a_mvComp.js"></script>
+    <script type="module" src="../src/a_caLIComp.js"></script>
     <script src="../src/a_dashboard.js"></script>
 
   </body>

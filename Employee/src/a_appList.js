@@ -4,7 +4,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebas
 import { getFirestore, getDocs, collection } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
+const firebaseConfig = { 
     apiKey: "AIzaSyCyNToos3S0HwLl0cZMRdiVjFJcBb4FWFo",
     authDomain: "lto-online-appointment-setter.firebaseapp.com",
     projectId: "lto-online-appointment-setter",
@@ -40,7 +40,7 @@ document.getElementById("dte").value = today;
 
             // console.log(doc2.data().User_T.slice(6,8))&& dte.value == dtcon
             
-            if (doc2.data().User_Stat == "Pending" ){
+            if (doc2.data().User_Stat == "PENDING" ){
             let trow = document.createElement('tr'); 
             let t_ID = document.createElement('td'); 
             let td1 = document.createElement('td'); 
@@ -67,7 +67,7 @@ document.getElementById("dte").value = today;
                 localStorage.setItem('stat',doc2.data().User_AppID)    
                 localStorage.setItem('ID', doc2.id)
 
-                window.location = "pc_reqdata.html";
+                window.location = "a_reqdata.html";
             });
             
             }

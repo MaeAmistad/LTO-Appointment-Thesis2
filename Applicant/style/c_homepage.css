@@ -75,10 +75,11 @@ ol li{
     margin-left: 425px;
     text-align: justify;
 }
-.chckbx{
+#chckbx{
     width: 500px;
     margin-top: 40px;
     margin-left: 425px;
+    cursor: default;
 }
 #btnfdt{
     height: 50px;

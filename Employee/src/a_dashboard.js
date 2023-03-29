@@ -1,3 +1,8 @@
+// var usr = document.getElementById("user").value;
+function user(src){
+  window.location = src;  
+}
+
 // SIDEBAR TOGGLE
 
 var sidebarOpen = false;

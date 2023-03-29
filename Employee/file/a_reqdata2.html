@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LTO Appointment Setter</title>
+    <link rel="stylesheet" href="../style/pc_reqdata.css">
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+</head>
+<body>
+    <div class="main">
+        <div class="tranID">
+            <p id="tranID"></p>
+
+            <table class="lic_det">
+              <p>Applicant's Information</p>
+              <tr>
+                <td>Full Name:</td>
+                <td id="ln">-</td> 
+              </tr>
+    
+              <tr>
+                <td>Date of Birth:</td>
+                <td id="dof">-</td> 
+              </tr>
+    
+              <tr>
+                <td>Gender:</td>
+                <td id="gndr">-</td> 
+              </tr>
+          </table>
+    
+          <table class="Transaction-table">
+            <p>Appointment's Information</p>
+  
+            <tr>
+              <td id="appntmntID">Appointment ID:</td>
+              <td id="aID" >-</td>
+            </tr>
+
+            <tr>
+              <td id="trnsctnID">Transaction ID:</td>
+              <td id="tID" >-</td>
+            </tr>
+  
+            <tr>
+              <td>Transaction Type:</td>
+              <td id="tt" >-</td>
+            </tr>
+    
+            <tr>
+              <td id="laa2">License Application Applied:</td>
+              <td id="laa" >-</td>
+            </tr>
+  
+            <tr>
+              <td>Application Type:</td>
+              <td id="at" >-</td>
+            </tr>
+            
+            <tr>
+              <td id="exmt">Exam Type:</td>
+              <td id="et" >-</td>
+            </tr>
+            
+            <tr>
+              <td>Date:</td>
+              <td id="dt_L">-</td>
+            </tr>
+    
+            <tr>
+              <td>Time:</td>
+              <td id="dt_t">-</td>
+            </tr>
+          </table>
+    
+          <table class="contact-table">
+            <p>Contact Information</p>
+            <tr>
+              <td>Address:</td>
+              <td id="addrss">-</td> 
+            </tr>
+    
+            <tr>
+              <td>Email:</td>
+              <td id="em">-</td>
+            </tr>
+    
+            <tr>
+              <td>Mobile Number:</td>
+              <td id="mnn">-</td> 
+            </tr>
+          </table>
+
+        </div>
+
+        <div class="btn">
+            <div>
+                <button id="bck">Back</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<script type="module" src="../src/a_reqdata2.js"></script>
+</body>
+</html>

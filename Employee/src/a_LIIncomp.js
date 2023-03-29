@@ -1,13 +1,10 @@
-bck_AL.addEventListener('click',(e) => {
-    window.location = "pc_homepage.html";
-});
 
 comp_btn.addEventListener('click',(e) => {
-    window.location = "pc_LIComp.html";
+    window.location = "a_pcLIApprved.html";
 });
 
 incomp_btn.addEventListener('click',(e) => {
-    window.location = "pc_LIIncomp.html";
+    window.location = "a_pcLIDeclnd.html";
 });
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
@@ -35,36 +32,21 @@ const db = getFirestore(app);
 
       querySnapshot2.forEach(doc2 => {
 //  
-        if(doc2.data().User_Stat == "Incomplete" && doc2.data().User_TT == "Licensing"){
+        if(doc2.data().User_Stat == "DECLINED" && doc2.data().User_TT == "LICENSING"){
 
-            if (doc2.data().User_Laa == "Student-Driver's Permit" || doc2.data().User_Laa == "Non-Professional Driver's License" || doc2.data().User_Laa == "Professional Driver's License"){
-                if (doc2.data().User_AT == "Revision of Records"){
+                if (doc2.data().User_AT == "REVISION OF RECORDS"){
                     let trow = document.createElement('tr'); 
                     let t_ID = document.createElement('td'); 
                     let td1 = document.createElement('td');
                     let td2 = document.createElement('td');
                     let td3 = document.createElement('td'); 
                     let td4 = document.createElement('td'); 
-                    let td5 = document.createElement('td'); 
-                    let td6 = document.createElement('td');
-                    let td7 = document.createElement('td');
-                    let td8 = document.createElement('td'); 
-                    let td9 = document.createElement('td'); 
-                    let td10 = document.createElement('td'); 
-                    let td11 = document.createElement('td'); 
 
                     t_ID.innerHTML = doc2.data().User_AppID; 
                     td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
-                    td2.innerHTML = doc2.data().User_BD;
-                    td3.innerHTML = doc2.data().User_GN;
-                    td4.innerHTML = doc2.data().User_ADD;
-                    td5.innerHTML = doc2.data().User_TT;
-                    td6.innerHTML = doc2.data().User_Laa;
-                    td7.innerHTML = doc2.data().User_AT + " (" +  doc2.data().User_Rev + ")";
-                    td8.innerHTML = doc2.data().User_D;
-                    td9.innerHTML = doc2.data().User_T;
-                    td10.innerHTML = doc2.data().User_CN ;
-                    td11.innerHTML = doc2.data().User_E;
+                    td2.innerHTML = doc2.data().User_TT;
+                    td3.innerHTML = doc2.data().User_D;
+                    td4.innerHTML = doc2.data().User_T;
                     
 
                     trow.appendChild(t_ID);
@@ -72,15 +54,16 @@ const db = getFirestore(app);
                     trow.appendChild(td2);
                     trow.appendChild(td3);
                     trow.appendChild(td4);
-                    trow.appendChild(td5);
-                    trow.appendChild(td6);
-                    trow.appendChild(td7);
-                    trow.appendChild(td8);
-                    trow.appendChild(td9);
-                    trow.appendChild(td10);
-                    trow.appendChild(td11);
 
                     tbody.appendChild(trow);
+                    
+                    trow.addEventListener('click', (e) =>{
+                        trow.style.backgroundColor = 'rgb(218, 216, 216)';
+                        localStorage.setItem('stat',doc2.data().User_AppID)    
+                        localStorage.setItem('ID', doc2.id)
+    
+                        window.location = "a_reqdata2.html";
+                    });
 
                 }
                 else{
@@ -90,26 +73,12 @@ const db = getFirestore(app);
                     let td2 = document.createElement('td');
                     let td3 = document.createElement('td'); 
                     let td4 = document.createElement('td'); 
-                    let td5 = document.createElement('td'); 
-                    let td6 = document.createElement('td');
-                    let td7 = document.createElement('td');
-                    let td8 = document.createElement('td'); 
-                    let td9 = document.createElement('td'); 
-                    let td10 = document.createElement('td'); 
-                    let td11 = document.createElement('td'); 
 
                     t_ID.innerHTML = doc2.data().User_AppID; 
                     td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
-                    td2.innerHTML = doc2.data().User_BD;
-                    td3.innerHTML = doc2.data().User_GN;
-                    td4.innerHTML = doc2.data().User_ADD;
-                    td5.innerHTML = doc2.data().User_TT;
-                    td6.innerHTML = doc2.data().User_Laa;
-                    td7.innerHTML = doc2.data().User_AT;
-                    td8.innerHTML = doc2.data().User_D;
-                    td9.innerHTML = doc2.data().User_T;
-                    td10.innerHTML = doc2.data().User_CN ;
-                    td11.innerHTML = doc2.data().User_E;
+                    td2.innerHTML = doc2.data().User_TT;
+                    td3.innerHTML = doc2.data().User_D;
+                    td4.innerHTML = doc2.data().User_T;
                     
 
                     trow.appendChild(t_ID);
@@ -117,18 +86,24 @@ const db = getFirestore(app);
                     trow.appendChild(td2);
                     trow.appendChild(td3);
                     trow.appendChild(td4);
-                    trow.appendChild(td5);
-                    trow.appendChild(td6);
-                    trow.appendChild(td7);
-                    trow.appendChild(td8);
-                    trow.appendChild(td9);
-                    trow.appendChild(td10);
-                    trow.appendChild(td11);
 
                     tbody.appendChild(trow);
+
+                    trow.addEventListener('click', (e) =>{
+                        trow.style.backgroundColor = 'rgb(218, 216, 216)';
+                        localStorage.setItem('stat',doc2.data().User_AppID)    
+                        localStorage.setItem('ID', doc2.id)
+    
+                        window.location = "a_reqdata2.html";
+                    });
                 }
-            }
 
         }
-      
+
       });
+
+
+
+        // export function user(){
+
+        // }

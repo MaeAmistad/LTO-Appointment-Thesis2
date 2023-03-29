@@ -1,24 +1,25 @@
 btn_cn.addEventListener('click' , (e) => {
-    window.location = "c_Trnsctform.html";
+    // window.location = "c_Trnsctform.html";
+    history.back();
 })
 
 btn_nxt.addEventListener('click' , (e) => {
     // window.location = "c_Trnsctform.html";
 
-    var last_name  = document.getElementById('lname').value;
-    var first_name = document.getElementById('fname').value;
-    var middle_name = document.getElementById('mname').value;
-    var bday = document.getElementById('dob').value;
-    var gen = document.getElementById('gen').value;
-    var addrss = document.getElementById('addrss').value;
-    var con_num = document.getElementById('con_num').value;
-    var email = document.getElementById('email').value;
+    var last_name  = document.getElementById('lname').value.toUpperCase();
+    var first_name = document.getElementById('fname').value.toUpperCase();
+    var middle_name = document.getElementById('mname').value.toUpperCase();
+    var bday = document.getElementById('dob').value.toUpperCase();
+    var gen = document.getElementById('gen').value.toUpperCase();
+    var addrss = document.getElementById('addrss').value.toUpperCase();
+    var con_num = document.getElementById('con_num').value.toUpperCase();
+    var email = document.getElementById('email').value.toUpperCase();
 
 const letters = /^[A-Za-z\s]*$/;
 var numbers = /[0-9]{11}/g;
 const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-if (last_name === '' ){
+if (last_name === '' ){ 
     Swal.fire({
       title: "Please enter your Last Name.",
       confirmButtonColor: '#132aaa',
@@ -68,19 +69,6 @@ else if (!first_name.match(letters)){
             popup: 'animate__animated animate__fadeOutUp'
           }
         })
-}
-else if (middle_name === ''){
-    // alert('Please input N/A if not Applicable. (Middle Name)');
-    Swal.fire({
-      title: 'Please input N/A if not Applicable. (Middle Name)',
-      confirmButtonColor: '#132aaa',
-      showClass: {
-        popup: 'animate__animated animate__fadeInDown'
-      },
-      hideClass: {
-        popup: 'animate__animated animate__fadeOutUp'
-      }
-    })
 }
 else if (bday === ''){
   // alert('Nationality is required.');

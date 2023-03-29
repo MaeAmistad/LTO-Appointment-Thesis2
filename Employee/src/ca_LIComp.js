@@ -1,13 +1,16 @@
 bck_AL.addEventListener('click',(e) => {
-    window.location = "pc_homepage.html";
+    window.location = "ca_homepage.html";
 });
 
 comp_btn.addEventListener('click',(e) => {
-    window.location = "pc_CLComp.html";
+    window.location = "ca_LIComp.html";
 });
 
 incomp_btn.addEventListener('click',(e) => {
-    window.location = "pc_CLIncomp.html";
+    window.location = "ca_LIIncomp.html";
+});
+pssexm_btn.addEventListener('click',(e) => {
+    window.location = "ca_LIPass.html";
 });
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
@@ -35,10 +38,9 @@ const db = getFirestore(app);
 
       querySnapshot2.forEach(doc2 => {
 //  
-        if(doc2.data().User_Stat == "Incomplete" && doc2.data().User_TT == "Licensing"){
+        if(doc2.data().User_Stat == "COMPLETED" && doc2.data().User_TT == "LICENSING"){
 
-            if (doc2.data().User_Laa == "Conductor's License"){
-                if (doc2.data().User_AT == "Revision of Records"){
+                if (doc2.data().User_AT == "REVISION OF RECORDS"){
                     let trow = document.createElement('tr'); 
                     let t_ID = document.createElement('td'); 
                     let td1 = document.createElement('td');
@@ -53,7 +55,7 @@ const db = getFirestore(app);
                     let td10 = document.createElement('td'); 
                     let td11 = document.createElement('td'); 
 
-                    t_ID.innerHTML = doc2.data().User_AppID; 
+                    t_ID.innerHTML = doc2.data().User_TransID; 
                     td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
                     td2.innerHTML = doc2.data().User_BD;
                     td3.innerHTML = doc2.data().User_GN;
@@ -98,7 +100,7 @@ const db = getFirestore(app);
                     let td10 = document.createElement('td'); 
                     let td11 = document.createElement('td'); 
 
-                    t_ID.innerHTML = doc2.data().User_AppID; 
+                    t_ID.innerHTML = doc2.data().User_TransID; 
                     td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
                     td2.innerHTML = doc2.data().User_BD;
                     td3.innerHTML = doc2.data().User_GN;
@@ -127,7 +129,6 @@ const db = getFirestore(app);
 
                     tbody.appendChild(trow);
                 }
-            }
 
         }
       

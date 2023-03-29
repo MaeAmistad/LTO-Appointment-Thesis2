@@ -3,36 +3,22 @@ $(function () {
 
   datePicker = $('.datepickerr').datepicker({
       startDate: new Date(),
-      minDate: 0,
-      multidate: true,
+      endDate: '+2m',
+      multidate: false,
       format: "dd-mm-yyyy",
-      // daysOfWeekHighlighted: "0,6",
       language: 'en',
       todayHighlight: true,
-      daysOfWeekDisabled: [0, 6]
+      daysOfWeekDisabled: [0, 6],
   });
-
   datePicker.on('changeDate', function (e) {
       if (e.dates.length <= 1) {
           selectedDates = e.dates;
-      } else {
-          datePicker.data('datepicker').setDates(selectedDates);
-          // alert('You can only select 1 dates.');
-          Swal.fire({
-            title: 'You can only select 1 dates.',
-            confirmButtonColor: '#132aaa',
-            showClass: {
-              popup: 'animate__animated animate__fadeInDown'
-            },
-            hideClass: {
-              popup: 'animate__animated animate__fadeOutUp'
-            }
-          }) 
-      }
+      } 
+      
   });
   $('#btn_nxt').on('click', function(e) {
       $(this).css('color', 'white');
-      var get_date =  $("#txtdate").val();
+      var get_date =  $("#txtdate").val().toUpperCase();
 
       console.log(get_date) 
       if (get_date == '') {
@@ -78,6 +64,9 @@ $(function () {
         localStorage.removeItem("laa");
         localStorage.removeItem("tot");
         localStorage.removeItem("toa");
+        localStorage.removeItem("ID");
+        localStorage.removeItem("stat");
+        localStorage.removeItem("rvsnofrcrds");
 
         window.location = "c_homepage.html";
       }
@@ -94,7 +83,7 @@ $(document).ready(function(){
     if (btn == "08:00 AM"){
       var b1 = document.getElementById("b1").value
       localStorage.setItem("time",b1)
-      console.log("08:00 AM")
+      // console.log("08:00 AM")
       $(".td1").css("background-color","#032d89");
       $(".td2").css("background-color","inherit");
       $(".td3").css("background-color","inherit");
@@ -103,7 +92,6 @@ $(document).ready(function(){
       $(".td6").css("background-color","inherit");
       $(".td7").css("background-color","inherit");
       $(".td8").css("background-color","inherit");
-      $(".td9").css("background-color","inherit");
     }
     else if(btn == "09:00 AM"){
       var b2 = document.getElementById("b2").value
@@ -117,7 +105,6 @@ $(document).ready(function(){
       $(".td6").css("background-color","inherit");
       $(".td7").css("background-color","inherit");
       $(".td8").css("background-color","inherit");
-      $(".td9").css("background-color","inherit");
     }
     else if(btn == "10:00 AM"){
       var b3 = document.getElementById("b3").value
@@ -130,7 +117,6 @@ $(document).ready(function(){
       $(".td6").css("background-color","inherit");
       $(".td7").css("background-color","inherit");
       $(".td8").css("background-color","inherit");
-      $(".td9").css("background-color","inherit");
     }
     else if(btn == "11:00 AM"){
       var b4 = document.getElementById("b4").value
@@ -156,7 +142,6 @@ $(document).ready(function(){
       $(".td6").css("background-color","inherit");
       $(".td7").css("background-color","inherit");
       $(".td8").css("background-color","inherit");
-      $(".td9").css("background-color","inherit");
     }
     else if(btn == "01:00 PM"){
       var b6 = document.getElementById("b6").value
@@ -169,7 +154,6 @@ $(document).ready(function(){
       $(".td6").css("background-color","#032d89");
       $(".td7").css("background-color","inherit");
       $(".td8").css("background-color","inherit");
-      $(".td9").css("background-color","inherit");
     }
     else if(btn == "02:00 PM"){
       var b7 = document.getElementById("b7").value
@@ -182,7 +166,6 @@ $(document).ready(function(){
       $(".td6").css("background-color","inherit");
       $(".td7").css("background-color","#032d89");
       $(".td8").css("background-color","inherit");
-      $(".td9").css("background-color","inherit");
     }
     else if(btn == "03:00 PM"){
       var b8 = document.getElementById("b8").value
@@ -195,20 +178,6 @@ $(document).ready(function(){
       $(".td6").css("background-color","inherit");
       $(".td7").css("background-color","inherit");
       $(".td8").css("background-color","#032d89");
-      $(".td9").css("background-color","inherit");
-    }
-    else if(btn == "04:00 PM"){
-      var b9 = document.getElementById("b9").value
-      localStorage.setItem("time",b9)
-      $(".td1").css("background-color","inherit");
-      $(".td2").css("background-color","inherit");
-      $(".td3").css("background-color","inherit");
-      $(".td4").css("background-color","inherit");
-      $(".td5").css("background-color","inherit");
-      $(".td6").css("background-color","inherit");
-      $(".td7").css("background-color","inherit");
-      $(".td8").css("background-color","inherit");
-      $(".td9").css("background-color","#032d89");
     }
 
   });

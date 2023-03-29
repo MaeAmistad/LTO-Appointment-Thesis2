@@ -2,8 +2,23 @@ bck.addEventListener('click',() => {
     window.location = "pc_homepage.html";
 });
 
-var tranID = localStorage.getItem("stat");
-document.getElementById('tranID').innerHTML = tranID;
+apprd.addEventListener('click',() => {
+    document.getElementById('cnfrm_modal').style.visibility = "visible";
+});
+dclnd.addEventListener('click',() => {
+    document.getElementById('cnfrm_modal2').style.visibility = "visible";
+});
+cnl.addEventListener('click',() => {
+    // window.location = "pc_reqdata.html";
+    document.getElementById('cnfrm_modal').style.visibility = "hidden";
+});
+cnl2.addEventListener('click',() => {
+    // window.location = "pc_reqdata.html";
+    document.getElementById('cnfrm_modal2').style.visibility = "hidden";
+});
+
+// var tranID = localStorage.getItem("stat");
+// document.getElementById('tranID').innerHTML = tranID;
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import { getFirestore, getDocs, collection, updateDoc,doc } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
@@ -28,11 +43,35 @@ const db = getFirestore(app);
     var transID = localStorage.getItem("stat");
     var ID = localStorage.getItem("ID");
     console.log(ID)
+            function makeid(l)
+            {
+            var text = "";
+            var number = "0123456789"
+            var char_list = (number)
+            for(var i=0; i < l; i++ )
+            {  
+            text += char_list.charAt(Math.floor(Math.random() * char_list.length));
+            }
+            return text;
+            }
+
+            var yy = new Date().getFullYear().toString().substr(2);
+            var mm = new Date().getMonth() + 1;
+            var mmm = ("0" + mm).slice(-2);
+            var dd = new Date().getDate();
+            var ddd = ("0" + dd).slice(-2);
+            var hh = new Date().getHours();
+            var hhh = ("0" + hh).slice(-2);
+            var m = new Date().getMinutes(); 
+            var mnn = ("0" + m).slice(-2);
+
+            var trnidlic ="LTO-LIC-" + yy+mmm+ddd+hhh+mnn+makeid(2);
+            var trnidmvr ="LTO-MVR-" + yy+mmm+ddd+hhh+mnn+makeid(2);
         querySnapshot2.forEach(doc2 => {
        
             if (transID == doc2.data().User_AppID){
 
-                if (doc2.data().User_AT == "Revision of Records"){
+                if (doc2.data().User_AT == "REVISION OF RECORDS"){
                     document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
                     document.getElementById("dof").innerHTML = doc2.data().User_BD;
                     document.getElementById("gndr").innerHTML = doc2.data().User_GN;
@@ -46,7 +85,7 @@ const db = getFirestore(app);
                     document.getElementById("em").innerHTML = doc2.data().User_E;
                     document.getElementById("mnn").innerHTML = doc2.data().User_CN;
                 }
-                else if (doc2.data().User_TT == "Licensing"){
+                else if (doc2.data().User_TT == "LICENSING"){
                     document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
                     document.getElementById("dof").innerHTML = doc2.data().User_BD;
                     document.getElementById("gndr").innerHTML = doc2.data().User_GN;
@@ -60,7 +99,7 @@ const db = getFirestore(app);
                     document.getElementById("em").innerHTML = doc2.data().User_E;
                     document.getElementById("mnn").innerHTML = doc2.data().User_CN;
                 }
-                else if (doc2.data().User_TT == "Motor Vehicle Registration"){
+                else if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
                     document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
                     document.getElementById("dof").innerHTML = doc2.data().User_BD;
                     document.getElementById("gndr").innerHTML = doc2.data().User_GN;
@@ -79,32 +118,45 @@ const db = getFirestore(app);
 
             }
 
-            apprd.addEventListener('click', (e) => {
+
+            // console.log(trnidlic)
+            cnfrm.addEventListener('click', (e) => {
                 const updateStat = doc(db, "Appointment", doc2.id)
                 var stt = localStorage.getItem("stat")
 
-                if (stt == doc2.data().User_AppID){
-                    updateDoc(updateStat, {
-                        User_Stat: "Approved"
-                    }).then(() => {
-                        window.location = "pc_homepage.html"
-                    })
+                if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
+                    if (stt == doc2.data().User_AppID){
+                        updateDoc(updateStat, {
+                            User_Stat: "APPROVED",
+                            User_TransID: trnidmvr 
+                        }).then(() => {
+                            window.location = "pc_homepage.html"
+                        })
+                    }
                 }
+                else if(doc2.data().User_TT == "LICENSING"){
+                    if (stt == doc2.data().User_AppID){
+                        updateDoc(updateStat, {
+                            User_Stat: "APPROVED",
+                            User_TransID: trnidlic 
+                        }).then(() => {
+                            window.location = "pc_homepage.html"
+                        })
+                    }
+                }
+
             })
 
-            dclnd.addEventListener('click', (e) => {
+            cnfrm2.addEventListener('click', (e) => {
                 const updateStat = doc(db, "Appointment", doc2.id)
                 var stt = localStorage.getItem("stat")
 
                 if (stt == doc2.data().User_AppID){
                     updateDoc(updateStat, {
-                        User_Stat: "Declined"
+                        User_Stat: "DECLINED"
                     }).then(() => {
                         window.location = "pc_homepage.html"
                     })
                 }
             })
     });
-
-
-
