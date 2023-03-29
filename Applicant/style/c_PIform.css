@@ -123,5 +123,48 @@ h4{
     margin-left: 39px;
     margin-bottom: -10px;
 }
+@media only screen and (max-width: 1200px){
+    
+    .main, .info input, .chckbx, .confirm, .btn_nxt , .btn_cn, #selectText1, #selectText2,#gen{
+        margin-left: 10px;
+        width: 400px;
+        align-items: center;
 
+    }
+
+    }
+    .main{
+        margin-top: 100px;
+        align-items: center;
+
+    }
+    
+
+
+@media only screen and (min-width: 800){
+    .box {
+        margin-left: -110px;
+        align-items: center;
+
+    }
+
+
+}
+ 
+.main2 {
+    width: 100%;
+    align-items: center;
+
+  }
+  
+  @media only screen and (min-width: 1525px){
+    .box{
+        margin-left: 430px;
+        align-items: center;
+
+
+    }
+
+
+}
 

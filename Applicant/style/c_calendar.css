@@ -130,3 +130,34 @@ table tr td{
 input[type="button"]{
     width: 90px;
 }
+@media only screen and (max-width: 1200px){
+    
+    .main, .instruc, .datepickerr ,.td1,.td2,.td3,.td4,.td5,.td6,.td7,.td8,.td9,.btn,._cn, .btn_sv,.btn{
+        margin-left: 15px;
+        align-items: center;
+      
+        
+    }
+    .main {
+        width: 400px;
+        margin-left: -120px;
+        align-items: center;
+    }
+    .time{
+        margin-left: 80px;
+        align-items: center;
+       
+    }
+    .datepickerr {
+        margin-left: 5px;
+        align-items: center;
+    }
+    .btn{
+        width: 300px;
+        align-items: center;
+    }
+
+  @media only screen and (min-width: 800){
+
+  }
+}

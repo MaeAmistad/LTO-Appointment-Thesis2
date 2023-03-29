@@ -94,22 +94,55 @@ ol li{
     margin-left:580px;
 }
 
-/* @media only screen and (max-width: 1115px){
-    .rem{
-        margin-left: -130px;
+@media only screen and (max-width: 1200px){
+    
+    .main, .rem, p,ol li,.chckbx,#btnfdt{
+        margin-left: 15px;
+        width: 400px;
+        align-items: center;
+
+        
     }
+ 
+    }
+ 
+    .disclaimer1{
+      font-size: 18px;
+      margin-left:-400px;
+      align-items: center;
+
+    }
+    .instruc1 {
+      margin-left: -45px;
+      align-items: center;
+
+    }
+    
+    .main{
+        margin-top: 90px;
+        align-items: center;
+
+      
+    
+    }
+    .main h1{
+        font-size: 21px;
+        margin-left: 40px;
+        align-items: center;
+
+    }
+     .pfp{
+       font-size:15px;
+       align-items: center;
+
+    }
+    #selectText1, #selectText2, #selectText3, select{
+      margin-left: -45px;
+              align-items: center;
+
+      
+    }
+    
+  @media only screen and (min-width: 800){
+ 
 }
-@media only screen and (max-width: 840px){
-    .rem{
-        margin-left: -270px;
-    }
-}
-@media only screen and (max-width: 510px){
-    .rem{
-        margin-left: -390px;
-        font-size: 14px;
-    }
-    h1{
-        font-size: 19px;
-    }
-} */
