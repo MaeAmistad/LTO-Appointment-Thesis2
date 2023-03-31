@@ -1,10 +1,17 @@
-add_acc.addEventListener('click' ,(e) => {
-    window.location = "a_signup.html";
-})
+// add_acc.addEventListener('click' ,(e) => {
+//     window.location = "a_signup.html";
+// })
+add_acc.addEventListener('click',() => {
+    document.getElementById('createAcc_modal').style.visibility = "visible"
+
+});
+closePop.addEventListener('click',() => {
+    document.getElementById('createAcc_modal').style.visibility = "hidden"
+
+});
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
 import { getFirestore, getDocs, collection } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
-
 // Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyCyNToos3S0HwLl0cZMRdiVjFJcBb4FWFo",
@@ -12,7 +19,7 @@ const firebaseConfig = {
     projectId: "lto-online-appointment-setter",
     storageBucket: "lto-online-appointment-setter.appspot.com",
     messagingSenderId: "382579903791",
-    appId: "1:382579903791:web:5d98bbe4ea8b38a43065da"
+    appId: "1:382579903791:web:5d98bbe4ea8b38a43065da" 
 };
 
 // Initialize Firebase
@@ -74,7 +81,8 @@ async function GetAllDataOnce(){
 
 }
 
-window.onload = GetAllDataOnce;
+window
+.onload = GetAllDataOnce;
 
 document.getElementById("edit_acc").disabled = true;
 document.getElementById("delete_acc").disabled = true;
@@ -91,4 +99,3 @@ if (trow.click()){
     trow.style.backgroundColor = 'gainsboro';
 }
 */
-
