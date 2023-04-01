@@ -19,7 +19,7 @@ const db = getFirestore(app);
 
 var tbody = document.getElementById('tbody1');
 
-    const querySnapshot2 = await getDocs(collection(db,"Appointment"));
+    const querySnapshot2 = await getDocs(collection(db,"Applicants"));
         querySnapshot2.forEach(doc2 => {
 // 
                 if(doc2.data().User_TT == "LICENSING" && doc2.data().User_AT == "NEW" && doc2.data().User_Laa == "DRIVER'S LICENSE" ){

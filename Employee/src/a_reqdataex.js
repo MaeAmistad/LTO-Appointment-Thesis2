@@ -34,7 +34,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 //get all data
-    const querySnapshot2 = await getDocs(collection(db,"Appointment"));
+    const querySnapshot2 = await getDocs(collection(db,"Applications"));
 
     var transID = localStorage.getItem("stat");
     var ID = localStorage.getItem("ID");
@@ -90,7 +90,7 @@ const db = getFirestore(app);
             }
 
             cnfrm1.addEventListener('click', (e) => {
-                const updateStat = doc(db, "Appointment", doc2.id)
+                const updateStat = doc(db, "Applicants", doc2.id)
                 var stt = localStorage.getItem("stat")
                 var exmtyp = document.getElementById("exmTyp").value;
 
@@ -105,7 +105,7 @@ const db = getFirestore(app);
             })
  
             cnfrm2.addEventListener('click', (e) => {
-                const updateStat = doc(db, "Appointment", doc2.id)
+                const updateStat = doc(db, "Applicants", doc2.id)
                 var stt = localStorage.getItem("stat")
                 var exmtyp = document.getElementById("exmTyp").value;
 

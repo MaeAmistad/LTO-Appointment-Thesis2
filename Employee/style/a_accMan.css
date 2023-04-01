@@ -235,7 +235,18 @@ tr th, tr th{
 .table tr:hover{
     background: gainsboro;
 }
-
+/* .crtacc{
+  width: 560px;
+  height: 500px;
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  border: 1px solid grey;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+} */
   
   /* Extra Small <= 576px */
   @media screen and (max-width: 576px) {

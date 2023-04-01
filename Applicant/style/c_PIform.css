@@ -122,30 +122,3 @@ h4{
     color: red;
 }
 
-@media only screen and (min-width: 800){
-    .box {
-        margin-left: -110px;
-        align-items: center;
-
-    }
-
-
-}
- 
-.main2 {
-    width: 100%;
-    align-items: center;
-
-  }
-  
-  @media only screen and (min-width: 1525px){
-    .box{
-        margin-left: 430px;
-        align-items: center;
-
-
-    }
-
-
-}
-

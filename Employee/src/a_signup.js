@@ -63,7 +63,7 @@ const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9
           })
  }
  else if (first_name === ''){
-    //  alert('First Name is required.');
+    //  alert('First Name is required.'); 
      console.log("3")
      Swal.fire({
         title: 'Please enter First Name.',
@@ -190,7 +190,7 @@ else if(cpass !== password){
   }
 else{
     if (user.value == '0') {
-        console.log("User Created");
+        // console.log("User Created");
         
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
@@ -217,12 +217,13 @@ else{
                 confirmButtonText:`OK`
               }).then((result) => {
                 if (result.value) {
-                    window.location = ("a_accMan.html")
+                    // window.location = ("a_accMan.html")
+                    console.log("user Created")
                 }
               });
         // window.location = ("a_login.html")
         });
-        })
+        })  
         .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
@@ -231,7 +232,7 @@ else{
         });
         
     } else if (user.value == '1') {
-        console.log("User Created");
+        // console.log("User Created");
         
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
@@ -260,7 +261,8 @@ else{
                 confirmButtonText:`OK`
               }).then((result) => {
                 if (result.value) {
-                    window.location = ("a_accMan.html")
+                    // window.location = ("a_accMan.html")
+                    console.log("user Created")
                 }
               });
         });

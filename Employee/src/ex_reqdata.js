@@ -17,7 +17,7 @@ cnl2.addEventListener('click', () => {
 // document.getElementById('tranID').innerHTML = tranID;
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
-import { getFirestore, getDocs, collection, updateDoc,doc } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
+import { getFirestore, getDocs, collection, updateDoc,doc,setDoc,addDoc } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -34,13 +34,13 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 //get all data
-    const querySnapshot2 = await getDocs(collection(db,"Appointment"));
+    const querySnapshot2 = await getDocs(collection(db,"Applicants"));
 
     var transID = localStorage.getItem("stat");
     var ID = localStorage.getItem("ID");
-    console.log(ID)
+    // console.log(ID)
         querySnapshot2.forEach(doc2 => {
-       
+
             if (transID == doc2.data().User_TransID){
 
                 if (doc2.data().User_AT == "REVISION OF RECORDS"){
@@ -90,34 +90,74 @@ const db = getFirestore(app);
             }
 
             cnfrm1.addEventListener('click', (e) => {
-                const updateStat = doc(db, "Appointment", doc2.id)
+                const updateStat = doc(db, "Applicants", doc2.id)
                 var stt = localStorage.getItem("stat")
-                var exmtyp = document.getElementById("exmTyp").value;
+                var exmtyp = document.getElementById("exmTyp1").value.toUpperCase();
 
                 if (stt == doc2.data().User_TransID){
                     updateDoc(updateStat, {
-                        User_Stat: "PASSED",
-                        User_examType: exmtyp
+                        User_Stat: "PASSED"
                     }).then(() => {
                         window.location = "ex_homepage.html"
                     })
+                    if (exmtyp == "PRACTICAL"){
+                        setDoc(doc(db,"Practical",ID),{
+                            User_TransID: doc2.data().User_TransID,
+                            result: "PASSED",
+                            examType:exmtyp
+                        }).then(() => {
+                                window.location = "ex_homepage.html"
+                            })
+                    }
+                    else if(exmtyp == "WRITTEN"){
+                        setDoc(doc(db,"Written",ID),{
+                            User_TransID: doc2.data().User_TransID,
+                            result: "PASSED",
+                            examType:exmtyp
+                        }).then(() => {
+                            window.location = "ex_homepage.html"
+                        })
+                    }
                 }
+                console.log(exmtyp);
             })
  
             cnfrm2.addEventListener('click', (e) => {
-                const updateStat = doc(db, "Appointment", doc2.id)
+                const updateStat = doc(db, "Applicants", doc2.id)
                 var stt = localStorage.getItem("stat")
-                var exmtyp = document.getElementById("exmTyp").value;
+                var exmtyp = document.getElementById("exmTyp2").value.toUpperCase();
 
                 if (stt == doc2.data().User_TransID){
                     updateDoc(updateStat, {
-                        User_Stat: "FAILED",
-                        User_examType: exmtyp
+                        User_Stat: "FAILED"
                     }).then(() => {
                         window.location = "ex_homepage.html"
                     })
+                    if (exmtyp == "PRACTICAL"){
+                        setDoc(doc(db,"Practical",ID),{
+                            User_TransID: doc2.data().User_TransID,
+                            result: "FAILED",
+                            examType:exmtyp
+                        }).then(() => {
+                                window.location = "ex_homepage.html"
+                            })
+                    }
+                    else if(exmtyp == "WRITTEN"){
+                        setDoc(doc(db,"Written",ID),{
+                            User_TransID: doc2.data().User_TransID,
+                            result: "FAILED",
+                            examType:exmtyp
+                        }).then(() => {
+                            window.location = "ex_homepage.html"
+                        })
+                    }
                 }
+
+                 console.log(exmtyp);
+
             })
+
+           
     });
 
 

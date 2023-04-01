@@ -51,61 +51,46 @@ p{
 @media only screen and (max-width: 900px){
     .main{
         width: 700px;
-        align-items: center;
     }
     p{
         font-size: 30px;
-        align-items: center;
     }
     #st_appntmnt{
         margin-left: 75px;
-        align-items: center;
     }
 }
 
 @media only screen and (max-width: 720px){
     .main{
         width: 500px;
-        align-items: center;
     }
     .main img{
         width: 250px;
         height: 250px;
         margin-top: 80px;
-        align-items: center;
     }
     p{
         margin-top: 70px;
         font-size: 26px;
-        align-items: center;
     }
     #st_appntmnt{
         margin-left: 50px; 
-        align-items: center;
     }
 }
 @media only screen and (max-width: 510px){
     .main{
         width: 400px;
-        align-items: center;
-
     }
     .main img{
         width: 250px;
         height: 250px;
         margin-top: 80px;
-        align-items: center;
-
     }
     p{
         margin-top: 70px;
         font-size: 26px;
-        align-items: center;
-
     }
     #st_appntmnt{
         margin-left: 40px;
-        align-items: center;
-
     }
 }
