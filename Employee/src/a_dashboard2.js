@@ -36,8 +36,13 @@ var barChartOptions = {
       type: 'bar',
       height: 350,
       toolbar: {
-        show: false
+        show: true
       },
+      events: {
+        legendClick: function(chartContext, seriesIndex, config) {
+          window.location = "a_licdashboard.html"
+        }
+      }
     },
     colors: [
       "#246dec",
@@ -55,7 +60,7 @@ var barChartOptions = {
       enabled: false
     },
     legend: {
-      show: false
+      show: true
     },
     xaxis: {
       categories: ["LICENSE", "MVR"],
@@ -70,7 +75,7 @@ var barChartOptions = {
   var barChart = new ApexCharts(document.querySelector("#bar-chart"), barChartOptions);
   barChart.render();
 
-document.getElementById("bar-chart").addEventListener('click', cl_Div);
-function cl_Div() {
-  window.location = "a_licdashboard.html"
-}
+// document.getElementById("bar-chart").addEventListener('click', cl_Div);
+// function cl_Div() {
+//   window.location = "a_licdashboard.html"
+// }

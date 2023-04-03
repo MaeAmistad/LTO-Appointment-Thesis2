@@ -35,15 +35,17 @@ const db = getFirestore(app);
 
 var barChartOptions = {
     series: [{
+      name: 'PASSED',
       data: [wpass.data().count, ppass.data().count]
     }, {
+      name: 'FAILED',
       data: [wfail.data().count, pfail.data().count]
     }],
     chart: {
       type: 'bar',
       height: 350,
       toolbar: {
-        show: false
+        show: true
       },
     },
     colors: [
@@ -52,7 +54,6 @@ var barChartOptions = {
     ],
     plotOptions: {
       bar: {
-        distributed: true,
         borderRadius: 4,
         horizontal: false,
         columnWidth: '40%',
@@ -62,7 +63,10 @@ var barChartOptions = {
       enabled: false
     },
     legend: {
-      show: false
+      show: true,
+      onItemHover: {
+        highlightDataSeries: true
+      }
     },
     stroke: {
       show: true,
@@ -91,20 +95,36 @@ var barChartOptions = {
 // }
 
 // BAR CHART 2
-
 const querySnapshot = await getDocs(collection(db, "Applicants"));
+let countn1 = 0;
+let countn2 = 0;
+let countrn1 = 0;
+let countrn2 = 0;
 querySnapshot.forEach((doc) => {
   if(doc.data().User_TT == "LICENSING"){
-    if(doc.data().User_AT == "NEW" || doc.data().User_AT == "RENEWAL"){
+    if(doc.data().User_AT == "NEW"){
       if(doc.data().User_GN == "FEMALE"){
-        // const coll = collection(db, "Applicants");
-        // const snapshot = getCountFromServer(coll);
-        // console.log('count: ', snapshot.data().count);
-
-        var fem = doc.data().User_GN;
-        console.log(fem)
+        var femcount = countn1+=1;
+        // console.log(femcount)
+        localStorage.setItem("femn",femcount)
+      }
+      if(doc.data().User_GN == "MALE"){
+        var malcount = countn2+=1;
+        localStorage.setItem("maln",malcount)
       }
 
+    }
+
+    if (doc.data().User_AT == "RENEWAL"){
+      if(doc.data().User_GN == "FEMALE"){
+        var femcount = countrn1+=1;
+        // console.log(femcount)
+        localStorage.setItem("femrn",femcount)
+      }
+      if(doc.data().User_GN == "MALE"){
+        var malcount = countrn2+=1;
+        localStorage.setItem("malrn",malcount)
+      }
     }
     
   }
@@ -117,23 +137,26 @@ const n2 = query(dlpinw, where("User_GN", "==", "MALE"));
 const f1 = await getCountFromServer(n1); 
 const m1 = await getCountFromServer(n2);
 
-const dlpirnw = collection(db,"Applicants");
-const r1 = query(dlpirnw, where("User_GN", "==", "FEMALE"));
-const r2 = query(dlpirnw, where("User_GN", "==", "MALE"));
-const f2 = await getCountFromServer(r1);
-const m2 = await getCountFromServer(r2);
+// const dlpirnw = collection(db,"Applicants");
+// const r1 = query(dlpirnw, where("User_GN", "==", "FEMALE"));
+// const r2 = query(dlpirnw, where("User_GN", "==", "MALE"));
+// const f2 = await getCountFromServer(r1);
+// const m2 = await getCountFromServer(r2);
+
 
 var barChartOptions = {
     series: [{
-      data: [f1.data().count, f2.data().count]
+      name: 'FEMALE',
+      data: [localStorage.getItem("femn"), localStorage.getItem("femrn")]
     }, {
-      data: [m1.data().count, m2.data().count]
+      name: 'MALE',
+      data: [localStorage.getItem("maln"), localStorage.getItem("malrn")]
     }],
     chart: {
       type: 'bar',
       height: 350,
       toolbar: {
-        show: false
+        show: true
       },
     },
     colors: [
@@ -142,17 +165,20 @@ var barChartOptions = {
     ],
     plotOptions: {
       bar: {
-        distributed: true,
         borderRadius: 4,
         horizontal: false,
-        columnWidth: '40%',
-      }
+        columnWidth: '40%'
+      },
     },
+    
     dataLabels: {
-      enabled: false
+      enabled: false,
     },
     legend: {
-      show: false
+      show: true,
+      onItemHover: {
+        highlightDataSeries: true
+      }
     },    
     stroke: {
       show: true,

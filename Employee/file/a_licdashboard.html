@@ -106,10 +106,12 @@
         </div>
 
         <div>
+          
           <div class="dropdown-user">
+            <button id="bcklic">BACK</button>
             <select id="user" onchange="user(this.value)">
-              <option value="" selected>LICENSE</option>
-              <option value="">MOTOR VEHICLE</option>
+              <option value="a_licdashboard.html" selected>LICENSE</option>
+              <option value="a_mvdashboard.html">MOTOR VEHICLE</option>
             </select>
           </div>
         </div>
@@ -118,16 +120,16 @@
 
           <div class="charts-card g2">
             <p class="chart-title">APPLICANTS EXAMINED</p>
-            <p class="wrttn"> WRITTEN</p><i class="fa-sharp1  fa-solid fa-circle "></i>
-            <p class="prctcl">PRACTICAL</p><i class="fa-sharp2 fa-solid fa-circle"></i>
+            <!-- <p class="wrttn"> WRITTEN</p><i class="fa-sharp1  fa-solid fa-circle "></i>
+            <p class="prctcl">PRACTICAL</p><i class="fa-sharp2 fa-solid fa-circle"></i> -->
 
             <div id="bar-chart1"></div>
           </div>
 
           <div class="charts-card g3">
             <p class="chart-title">DRIVER'S LICENSE & PERMIT ISSUED</p>
-            <p class="nw">NEW</p><i class="fa-sharp1  fa-solid fa-circle"></i>
-            <p class="rnwl">RENEWAL  </p><i class="fa-sharp2 fa-solid fa-circle"></i>
+            <!-- <p class="nw">NEW</p><i class="fa-sharp1  fa-solid fa-circle"></i>
+            <p class="rnwl">RENEWAL  </p><i class="fa-sharp2 fa-solid fa-circle"></i> -->
 
             <div id="bar-chart2"></div>
           </div>
@@ -145,7 +147,7 @@
 
     <!-- Scripts -->
     <!-- ApexCharts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <!-- Custom JS -->
     <script src="../src/a_dashboard.js"></script>
     <script type="module" src="../src/a_licdashboard2.js"></script>

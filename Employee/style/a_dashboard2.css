@@ -187,7 +187,7 @@ img{
     font-size: 20px;
   }
   
-  .main-cards {
+  /* .main-cards {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 20px;
@@ -269,8 +269,22 @@ img{
     border-radius: 5px;
     box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
   }
-  
-  
+   */
+   .dropdown-user{
+    margin-top: 5px;
+    margin-right: 5px;
+  }
+  .dropdown-user select{
+    padding: 8px;
+    text-transform: uppercase;
+    outline: none;
+  }
+   .dropdown-user button{
+    margin: 5px;
+    padding: 8px;
+    width: 100px;
+    text-transform: uppercase;
+   }
    .wrttn, .prctcl,.nw,.rnwl{
     text-align: left;
     font-size: 10px;
