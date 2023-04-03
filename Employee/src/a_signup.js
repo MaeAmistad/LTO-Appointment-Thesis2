@@ -2,7 +2,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
  import { getFirestore, setDoc,doc  } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
  import { getAuth, createUserWithEmailAndPassword, sendEmailVerification} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
-const firebaseConfig = {
+
+ const firebaseConfig = {
   apiKey: "AIzaSyCyNToos3S0HwLl0cZMRdiVjFJcBb4FWFo",
   authDomain: "lto-online-appointment-setter.firebaseapp.com",
   projectId: "lto-online-appointment-setter",
@@ -30,6 +31,8 @@ var cpass = document.getElementById('cpass').value;
  if(validateInputs()){
     e.preventDefault();
  }*/
+
+
 const letters = /^[A-Za-z\s]*$/;
 var numbers = /[0-9]{11}/g;
 const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -47,6 +50,7 @@ const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9
           popup: 'animate__animated animate__fadeOutUp'
         }
       })
+      // document.getElementById('createAcc_modal').style.visibility = "visible";
  }
  else if (!last_name.match(letters)){
         //  alert('Please input alphabet characters only. (Last Name)');
@@ -61,6 +65,7 @@ const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9
               popup: 'animate__animated animate__fadeOutUp'
             }
           })
+          // document.getElementById('createAcc_modal').style.visibility = "visible";
  }
  else if (first_name === ''){
     //  alert('First Name is required.');
@@ -190,20 +195,20 @@ else if(cpass !== password){
   }
 else{
     if (user.value == '0') {
-        console.log("User Created");
+        // console.log("User Created");
         
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
         const user = userCredential.user;
         setDoc (doc(db, "Users","Employee","EmployeeData", user.uid), {
-            user_Type: "Processing Officer",
+            user_Type: "Evaluator",
             user_LN: last_name,
             user_FN: first_name,
             user_MN: middle_name,
             user_E: email,
             user_PWD: password,
             user_EID: emp_IDa
-        });
+        })
         sendEmailVerification(auth.currentUser)
         .then(() => {
 
@@ -217,7 +222,7 @@ else{
                 confirmButtonText:`OK`
               }).then((result) => {
                 if (result.value) {
-                    window.location = ("a_accMan.html")
+                  //document.getElementById('createAcc_modal').style.visibility = "hidden"
                 }
               });
         // window.location = ("a_login.html")
@@ -231,13 +236,13 @@ else{
         });
         
     } else if (user.value == '1') {
-        console.log("User Created");
+        // console.log("User Created");
         
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
         const user = userCredential.user;
         setDoc (doc(db, "Users","Employee","EmployeeData",user.uid) , {
-        user_Type: "System Administrator",
+        user_Type: "Cashier",
         user_LN: last_name,
         user_FN: first_name,
         user_MN: middle_name,
@@ -246,7 +251,6 @@ else{
         user_EID: emp_IDa
             
         });
-
         sendEmailVerification(auth.currentUser)
         .then(() => {
 
@@ -260,9 +264,10 @@ else{
                 confirmButtonText:`OK`
               }).then((result) => {
                 if (result.value) {
-                    window.location = ("a_accMan.html")
+                  //document.getElementById('createAcc_modal').style.visibility = "hidden"
                 }
               });
+        // window.location = ("a_login.html")
         });
         })
         .catch((error) => {
@@ -270,9 +275,88 @@ else{
         const errorMessage = error.message;
         console.log(errorMessage);
         });
+      }
+        else if (user.value == '2') {
+          // console.log("User Created");
+          
+          createUserWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+          const user = userCredential.user;
+          setDoc (doc(db, "Users","Employee","EmployeeData",user.uid) , {
+          user_Type: "Examiner",
+          user_LN: last_name,
+          user_FN: first_name,
+          user_MN: middle_name,
+          user_E: email,
+          user_PWD: password,
+          user_EID: emp_IDa              
+          });
+          sendEmailVerification(auth.currentUser)
+          .then(() => {
+  
+              Swal.fire({
+                  title: '<strong>An email has been sent please verify.</strong>', 
+                  showCloseButton: true,
+                  focusConfirm: false,
+                  reverseButtons: true,
+                  focusCancel: true,
+                  confirmButtonColor: '#132aaa',
+                  confirmButtonText:`OK`
+                }).then((result) => {
+                  if (result.value) {
+                    //document.getElementById('createAcc_modal').style.visibility = "visible"
+                  }
+                });
+          // window.location = ("a_login.html")
+          });
+          })
+          .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorMessage);
+          });    
+      }
 
-}
-
+      else if (user.value == '3') {
+          // console.log("User Created");
+          
+          createUserWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+          const user = userCredential.user;
+          setDoc (doc(db, "Users","Employee","EmployeeData",user.uid) , {
+          user_Type: "System Administrator",
+          user_LN: last_name,
+          user_FN: first_name,
+          user_MN: middle_name,
+          user_E: email,
+          user_PWD: password,
+          user_EID: emp_IDa                
+          });
+          sendEmailVerification(auth.currentUser)
+          .then(() => {
+  
+              Swal.fire({
+                  title: '<strong>An email has been sent please verify.</strong>', 
+                  showCloseButton: true,
+                  focusConfirm: false,
+                  reverseButtons: true,
+                  focusCancel: true,
+                  confirmButtonColor: '#132aaa',
+                  confirmButtonText:`OK`
+                }).then((result) => {
+                  if (result.value) {
+                    //document.getElementById('createAcc_modal').style.visibility = "visible"
+                  }
+                });
+          // window.location = ("a_login.html")
+          });
+          })
+          .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorMessage);
+          });  
+      }   
 }
 
 });
