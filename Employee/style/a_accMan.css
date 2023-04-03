@@ -333,7 +333,7 @@ h4{
   background: none;
   margin-top: 15px;
   outline: none;
-  text-transform: capitalize;
+  text-transform: uppercase;
 }
 .inf.success input{
   border-color: rgb(10, 185, 10);
@@ -354,9 +354,8 @@ h4{
   font-weight: 20px;
   height: 13px;
   width: 370px;
-  margin-top: 15px;
-  margin-left: 185px;
-  margin-bottom: 10px;
+  margin-top: 70px;
+  margin-left: -390px;
 }
 #email{
   text-transform: lowercase;
@@ -433,10 +432,6 @@ h4{
 }
 .infcpass{
   margin-top: 55px; 
-}
-.hme{
-  text-align: center;
-  margin: 20px 0 20px 0;
 }
 
   

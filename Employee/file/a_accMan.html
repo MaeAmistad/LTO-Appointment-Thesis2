@@ -11,6 +11,7 @@
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <link rel="stylesheet" href="https://kit.fontawesome.com/8ec04d5e4f.css" crossorigin="anonymous">
+    
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="https://kit.fontawesome.com/8ec04d5e4f.js" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -24,7 +25,8 @@
         <div class="menu-icon" onclick="openSidebar()">
           <span class="material-icons-outlined">menu</span>
         </div>
-        <div class="header-left">
+        <div class="
+        header-left">
           <span class="material-icons-outlined">search</span>
         </div>
         <div class="header-right">
@@ -137,9 +139,8 @@
                         <input type="radio" name="emp" value="0" checked>Evaluator  
                         <input type="radio" name="emp" value="1">Cashier
                         <input type="radio" name="emp" value="2">Examiner
-                      <input type="radio" name="emp" value="3">System Administrator
-                    </div>
-                    
+                        <input type="radio" name="emp" value="3">System Administrator
+                    </div>                   
             </div>
    <form>
       <div class="info">
@@ -177,28 +178,31 @@
                 <label>Password</label>
                 <input type="password" id="password">
                 <div class="error"></div>
+
+                <div class="passwordChar">
+                  <div id="error1">
+                    Password must has at least that include at least 1 lowercase character, 1 uppercase characters, 1 number, and 1 special character.
+                </div> 
+                <div id="lowercase">
+                    The password should contain at least one lowercase letter.
+                </div>
+                <div id="uppercase">
+                    The password should contain at least one uppercase letter.
+                </div>
+                <div id="num">
+                    The password should contain at least one number.
+                </div>
+                <div id="spclchrctr">
+                    The password should contain at least one Special Character (!@#$%^&*).
+                </div>
+                <div id="length">
+                    Password must be 8 characters.
+                </div>          
+                </div>
+                  
             </div> 
 
-            <div class="passwordChar">
-              <div id="error1">
-                Password must has at least that include at least 1 lowercase character, 1 uppercase characters, 1 number, and 1 special character.
-            </div> 
-            <div id="lowercase">
-                The password should contain at least one lowercase letter.
-            </div>
-            <div id="uppercase">
-                The password should contain at least one uppercase letter.
-            </div>
-            <div id="num">
-                The password should contain at least one number.
-            </div>
-            <div id="spclchrctr">
-                The password should contain at least one Special Character (!@#$%^&*).
-            </div>
-            <div id="length">
-                Password must be 8 characters.
-            </div>
-            </div>
+            
             <div class="inf infcpass">
                 <label for="cpass">Confirm Password</label>
                 <input type="password" id="cpass" name="cpss" type="text">
@@ -244,7 +248,7 @@
    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>-->
 
     <script type="module" src="../src/a_accMan.js"></script>
-    <script type="module" src="../src/a_signup.js"></script>
+    <!--  <script type="module" src="../src/a_signup.js"></script>  -->
     <script src="../src/a_dashboard.js"></script>
 
   </body>

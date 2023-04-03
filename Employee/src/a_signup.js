@@ -1,5 +1,4 @@
 
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
  import { getFirestore, setDoc,doc  } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
  import { getAuth, createUserWithEmailAndPassword, sendEmailVerification} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
@@ -223,7 +222,7 @@ else{
                 confirmButtonText:`OK`
               }).then((result) => {
                 if (result.value) {
-                  document.getElementById('createAcc_modal').style.visibility = "hidden"
+                  //document.getElementById('createAcc_modal').style.visibility = "hidden"
                 }
               });
         // window.location = ("a_login.html")
@@ -265,7 +264,7 @@ else{
                 confirmButtonText:`OK`
               }).then((result) => {
                 if (result.value) {
-                  document.getElementById('createAcc_modal').style.visibility = "hidden"
+                  //document.getElementById('createAcc_modal').style.visibility = "hidden"
                 }
               });
         // window.location = ("a_login.html")
@@ -305,7 +304,7 @@ else{
                   confirmButtonText:`OK`
                 }).then((result) => {
                   if (result.value) {
-                    document.getElementById('createAcc_modal').style.visibility = "visible"
+                    //document.getElementById('createAcc_modal').style.visibility = "visible"
                   }
                 });
           // window.location = ("a_login.html")
@@ -346,7 +345,7 @@ else{
                   confirmButtonText:`OK`
                 }).then((result) => {
                   if (result.value) {
-                    document.getElementById('createAcc_modal').style.visibility = "visible"
+                    //document.getElementById('createAcc_modal').style.visibility = "visible"
                   }
                 });
           // window.location = ("a_login.html")
