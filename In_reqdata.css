@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
+
+body {
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    background-color: white;
+} 
+.main{
+    position: relative;
+    max-width: 1000px;
+    width: 100%;
+    padding: 25px;
+    background: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); 
+    padding: 20px;
+    margin-left: 145px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.btn button, .btn2 button{
+	padding: 4px;
+	width: 100px; 
+    outline: none;
+	padding: 10px;
+    margin: 10px;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.btn{
+    display: flex;
+}
+#mvinfo{
+    margin-left: 380px;
+    width: 150px;
+    background-color: blue;
+    color: white;
+    outline: none;
+}
+#bck{
+    margin-left: 80px;
+}
+p{
+    font-size: 25px;
+    font-weight: 700;
+    margin-left: 50px;
+}
+table{
+    margin-left: 80px;
+}
+table td{
+    padding-left: 20px;
+}
+.cnfrm_modal,.cnfrm_modal2{
+    width: 550px;
+    /* height: 200px; */
+    background-color: white;
+    user-select: none;
+    border: 1px solid #b3b3b3;
+    box-shadow: 5px 5px 5px rgb(70, 69, 69);
+    color: black;
+    padding: 20px;
+    visibility: hidden;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.4s, top 0.4s;
+}
+.addinf{
+    width: 35%;
+    background-color: white;    
+    border: 1px solid #b3b3b3;
+    box-shadow: 5px 5px 5px rgb(70, 69, 69);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    max-width: 500px;
+    min-width: 400px;
+    margin-top: -690px;
+    position: relative;
+    visibility: hidden;
+    z-index: 999;
+}
+.addinf input{
+    outline: none;
+    margin-left: auto;
+    width: 50%;
+    height: 25px;
+
+}
+.info{
+    display: flex;
+    padding: 5px;
+}
+.cnfrm_modal h1, .cnfrm_modal2 h1 , .addinf h1{
+    letter-spacing: 3px;
+    text-align: center;
+}
+.cnfrm_modal p, .cnfrm_modal2 p{
+    font-weight: 500;
+    letter-spacing: 3px;
+}
+.cnfrm_modal2 p{
+    margin-left: 100px;
+}
+#cnl, #cnl2{
+    margin-left: 300px;
+}
+#cnl3{
+    margin-left: 220px;
+}
