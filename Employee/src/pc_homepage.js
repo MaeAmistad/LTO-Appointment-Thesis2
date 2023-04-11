@@ -38,13 +38,16 @@ document.getElementById("dte").value = today;
             // var yysp = dd.slice(6,10);
             // var dtcon = yysp + "-" + mmsp + "-" + ddsp;
 
-            var time = doc2.data().User_T;
-            var tsl = time.slice(6,9);
+            // var time = doc2.data().User_T;
+            // var tsl = time.slice(6,9); 
+
             // console.log(tsl == "AM")
-            if (tsl == "AM"){
-                console.log(doc2.data().User_T)
-            }
+            // if (tsl == "AM"){
+            //     console.log(doc2.data().User_T)
+            // }
             // console.log(doc2.data().User_T.slice(6,8))&& dte.value == dtcon
+
+            
             if (doc2.data().User_Stat == "PENDING" ){
             let trow = document.createElement('tr'); 
             let t_ID = document.createElement('td'); 
