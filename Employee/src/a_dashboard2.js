@@ -1,7 +1,7 @@
 // ---------- CHARTS ----------
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
-import { getFirestore, query, collection,getCountFromServer,where } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
+import { getFirestore, query, collection,getCountFromServer,where, getDocs } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -17,12 +17,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const coll = collection(db,"Applicants");
+const coll = collection(db,"License");
 const q = query(coll, where("User_TT", "==", "LICENSING"));
 const snapshot = await getCountFromServer(q);
 // console.log('count: ', snapshot.data().count);
 
-const coll2 = collection(db,"Applicants");
+const coll2 = collection(db,"Motor Vehicle");
 const q2 = query(coll2, where("User_TT", "==", "MOTOR VEHICLE REGISTRATION"));
 const snapshot2 = await getCountFromServer(q2);
 // console.log('count: ', snapshot2.data().count);
@@ -30,8 +30,9 @@ const snapshot2 = await getCountFromServer(q2);
 // BAR CHART
 var barChartOptions = {
     series: [{
+      name: "TOTAL",
       data: [snapshot.data().count, snapshot2.data().count]
-    }],
+    }], 
     chart: {
       type: 'bar',
       height: 350,
@@ -39,8 +40,8 @@ var barChartOptions = {
         show: true
       },
       events: {
-        legendClick: function(chartContext, seriesIndex, config) {
-          window.location = "a_licdashboard.html"
+        dataPointSelection: function(event, chartContext, config) {
+          window.location = "a_licdashboard.html";
         }
       }
     },
@@ -75,7 +76,30 @@ var barChartOptions = {
   var barChart = new ApexCharts(document.querySelector("#bar-chart"), barChartOptions);
   barChart.render();
 
-// document.getElementById("bar-chart").addEventListener('click', cl_Div);
-// function cl_Div() {
-//   window.location = "a_licdashboard.html"
-// }
+  // total Count in bar CHART
+  // document.getElementById("total").innerHTML = snapshot.data().count + snapshot2.data().count;
+  // Appointments Count
+const appnmts = collection(db,"Applicants");
+const cnt = await getCountFromServer(appnmts);
+document.getElementById("appnt").innerHTML = cnt.data().count; 
+
+// Evaluator Count
+const querySnapshottotlDLPI = await getDocs(collection(db, "Applicants"));
+let totlE = 0;
+let totlC = 0;
+let totlEx = 0;
+querySnapshottotlDLPI.forEach((doc) => {
+  if(doc.data().User_Stat == "PENDING"){
+          var total = totlE+=1;
+          document.getElementById("evltr").innerHTML = total; 
+  }
+  if(doc.data().User_Stat == "APPROVED" || doc.data().User_Stat == "PASSED"){
+    var total = totlC+=1;
+    document.getElementById("cshr").innerHTML = total; 
+}
+if(doc.data().User_Stat == "COMPLETED" ){
+  var total = totlEx+=1;
+  document.getElementById("exmnr").innerHTML = total; 
+}
+
+});

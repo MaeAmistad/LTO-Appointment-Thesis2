@@ -1,3 +1,9 @@
+bcklic.addEventListener('click' , () => {
+  window.location = "a_dashboard.html"
+})
+btnReport.addEventListener('click',()=>{
+  window.location = "a_licreport.html"
+})
 // ---------- CHARTS ----------
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
@@ -19,7 +25,7 @@ const db = getFirestore(app);
 
 
 
-// BAR CHART1
+// Applicants Examined Bar chart
 
   const wrttn = collection(db,"Written");
   const w1 = query(wrttn, where("result", "==", "PASSED"));
@@ -47,10 +53,11 @@ var barChartOptions = {
       toolbar: {
         show: true
       },
+      
     },
     colors: [
-      "#4f35a1",
-      "#FF8B13"
+      "#361626",
+      "#c49baf"
     ],
     plotOptions: {
       bar: {
@@ -68,6 +75,11 @@ var barChartOptions = {
         highlightDataSeries: true
       }
     },
+  //   states: {
+  //     active: {
+  //         allowMultipleDataPointsSelection: true,
+  //     },
+  // },
     stroke: {
       show: true,
       width: 1,
@@ -86,21 +98,13 @@ var barChartOptions = {
   var barChart = new ApexCharts(document.querySelector("#bar-chart1"), barChartOptions);
   barChart.render();
 
-
-
-
-// document.getElementById("bar-chart1").addEventListener('click', cl_Div1);
-// function cl_Div1() {
-//   window.location = "a_appList.html"
-// }
-
-// BAR CHART 2
-const querySnapshot = await getDocs(collection(db, "Applicants"));
+// DL  & Permit Issued BarChart
+const DLIPissued = await getDocs(collection(db, "Applicants"));
 let countn1 = 0;
 let countn2 = 0;
 let countrn1 = 0;
 let countrn2 = 0;
-querySnapshot.forEach((doc) => {
+DLIPissued.forEach((doc) => {
   if(doc.data().User_TT == "LICENSING"){
     if(doc.data().User_AT == "NEW"){
       if(doc.data().User_GN == "FEMALE"){
@@ -131,19 +135,6 @@ querySnapshot.forEach((doc) => {
   
 });
 
-const dlpinw = collection(db,"Applicants");
-const n1 = query(dlpinw, where("User_GN", "==", "FEMALE"));
-const n2 = query(dlpinw, where("User_GN", "==", "MALE"));
-const f1 = await getCountFromServer(n1); 
-const m1 = await getCountFromServer(n2);
-
-// const dlpirnw = collection(db,"Applicants");
-// const r1 = query(dlpirnw, where("User_GN", "==", "FEMALE"));
-// const r2 = query(dlpirnw, where("User_GN", "==", "MALE"));
-// const f2 = await getCountFromServer(r1);
-// const m2 = await getCountFromServer(r2);
-
-
 var barChartOptions = {
     series: [{
       name: 'FEMALE',
@@ -160,8 +151,8 @@ var barChartOptions = {
       },
     },
     colors: [
-      "#408E91",
-      "#D27685"
+      "#C59336",
+      "#FAD48E"
     ],
     plotOptions: {
       bar: {
@@ -198,7 +189,93 @@ var barChartOptions = {
   var barChart = new ApexCharts(document.querySelector("#bar-chart2"), barChartOptions);
   barChart.render();
 
-// document.getElementById("bar-chart2").addEventListener('click', cl_Div2);
-// function cl_Div2() {
-//   window.location = "a_appList.html"
-// }
+//main chart
+const querySnapshottotlDLPI = await getDocs(collection(db, "Applicants"));
+let totl1 = 0;
+querySnapshottotlDLPI.forEach((doc) => {
+  if(doc.data().User_Stat == "COMPLETED"){
+    if(doc.data().User_TT == "LICENSING"){
+      if(doc.data().User_AT == "NEW" || doc.data().User_AT == "RENEWAL"){
+        if(doc.data().User_GN == "FEMALE" || doc.data().User_GN == "MALE"){
+          var total = totl1+=1;
+          localStorage.setItem("totl",total)
+          // console.log(doc.data().User_GN)
+        } 
+      }
+    }
+  }
+
+});
+
+const dpch = collection(db,"Applicants");
+const sp = query(dpch, where("User_Laa", "==", "STUDENT-DRIVER'S PERMIT"));
+const cl = query(dpch, where("User_Laa", "==", "CONDUCTOR'S LICENSE"));
+const dl = query(dpch, where("User_Laa", "==", "DRIVER'S LICENSE"));
+const spt = await getCountFromServer(sp);
+const clt = await getCountFromServer(cl);
+const dlt = await getCountFromServer(dl);
+
+var AEtotl = wpass.data().count + ppass.data().count + wfail.data().count + pfail.data().count;
+var dpchtotl = spt.data().count + clt.data().count + dlt.data().count;
+var DLItotl = localStorage.getItem("totl");
+
+var barChartOptions = {
+  series: [{
+    name: "TOTAL",
+    data: [ AEtotl , DLItotl , 0 , dpchtotl]
+  }],
+  chart: { 
+    type: 'bar',
+    height: 350,
+    toolbar: {
+      show: true
+    },
+    events: {
+      dataPointSelection: function(event, chartContext, config) {
+        // console.log("Good")
+        console.log(config.w.config.series[config.dataPointIndex])
+      }
+    }
+  },
+  plotOptions: {
+    bar: {
+      borderRadius: 4,
+      horizontal: false,
+      columnWidth: '40%',
+      distributed: true
+    }
+  },
+  dataLabels: {
+    enabled: false
+  },
+  colors: [
+    '#89375F',
+    '#F7B844',
+    '#0EA293',
+    '#B8621B'
+  ],
+  legend: {
+    show: false,
+    onItemHover: {
+      highlightDataSeries: true
+    }
+  },
+  stroke: {
+    show: true,
+    width: 1,
+    colors: ['#fff']
+  },
+  xaxis: {
+    categories: ["APPLICANTS EXAMINED", "DL & PERMIT ISSUED", "MISC TXN", "DL & PERMITS CASES HANDLED"],
+  },
+  yaxis: {
+    title: {
+      text: "Count"
+    }
+  }
+};
+
+var barChart = new ApexCharts(document.querySelector("#bar-chart3"), barChartOptions);
+barChart.render();
+
+

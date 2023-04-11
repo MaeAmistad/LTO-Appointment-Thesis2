@@ -27,7 +27,7 @@ const db = getFirestore(app);
 
 
 //get all data
-  const querySnapshot2 = await getDocs(collection(db,"Applications"));
+  const querySnapshot2 = await getDocs(collection(db,"Applicants"));
   var tbody = document.getElementById('tbody1');
 
       querySnapshot2.forEach(doc2 => {

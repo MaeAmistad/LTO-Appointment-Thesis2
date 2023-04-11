@@ -28,7 +28,7 @@
         </div>
         <div class="header-right">
           <!-- <span class="material-icons-outlined">email</span> -->
-        </div>
+        </div> 
       </header>
       <!-- End Header -->
 
@@ -108,14 +108,34 @@
         <div>
           
           <div class="dropdown-user">
+
             <button id="bcklic">BACK</button>
+
             <select id="user" onchange="user(this.value)">
               <option value="a_licdashboard.html" selected>LICENSE</option>
               <option value="a_mvdashboard.html">MOTOR VEHICLE</option>
-            </select>
+            </select> 
+
+            <button id="btnReport">REPORT</button>
+            
           </div>
+
+
         </div>
 
+        <div class="charts1">
+
+          <div class="charts-card g4">
+            <p class="chart-title">TYPE OF LICENSE</p>
+            <!-- <p class="nw">NEW</p><i class="fa-sharp1  fa-solid fa-circle"></i>
+            <p class="rnwl">RENEWAL  </p><i class="fa-sharp2 fa-solid fa-circle"></i> -->
+
+            <div id="bar-chart3"></div>
+          </div>
+
+        </div>
+
+        
         <div class="charts">
 
           <div class="charts-card g2">
@@ -134,11 +154,6 @@
             <div id="bar-chart2"></div>
           </div>
 
-          <!-- <div class="charts-monthly">
-            <p class="chart-title">Monthly</p>
-            <div id="area-chart"></div>
-          </div> -->
-
         </div>
       </main>
       <!-- End Main -->
@@ -150,6 +165,6 @@
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <!-- Custom JS -->
     <script src="../src/a_dashboard.js"></script>
-    <script type="module" src="../src/a_licdashboard2.js"></script>
+    <script type="module" src="../src/a_licdashboard.js"></script>
   </body>
-</html>
+</html> 

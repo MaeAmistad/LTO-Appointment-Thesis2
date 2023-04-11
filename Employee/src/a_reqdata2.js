@@ -20,7 +20,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 //get all data
-    const querySnapshot2 = await getDocs(collection(db,"Applications"));
+    const querySnapshot2 = await getDocs(collection(db,"Applicants"));
 
     var transID = localStorage.getItem("stat");
     var ID = localStorage.getItem("ID");
