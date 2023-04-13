@@ -389,7 +389,7 @@ else{
     document.getElementById("ExpiredDLvfdl").style.display="none";
     document.getElementById("chngeCT").style.display="none";
 }
-
+ 
 if (list2.value == "sp"){
     var laa = "Student-Driver's Permit"
 }
@@ -418,7 +418,7 @@ else if (list3.value == "cdlc"){
 else if (list3.value == "edlvfdl"){
     var toa = "Expired DL with Valid FDL"
 }
-else if (list3.value == "dplct"){
+else if (list3.value == "dplct"){ 
     var toa = "Duplicate"
 }
 else if (list3.value == "dcardc"){

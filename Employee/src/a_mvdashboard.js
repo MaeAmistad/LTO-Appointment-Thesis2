@@ -4,14 +4,14 @@ bcklic.addEventListener('click' , () => {
 var barChartOptions = {
     series: [{
       name: "Non-AC",
-      data: [ 4 , 2,3,6]
+      data: [ 4,2,3,6,1]
     },{
         name: "R12 CFC",
-        data: [ 4 , 2,1,2]
+        data: [ 4,2,1,2,5]
       },{
           name: "R134a CFC",
-          data: [ 4 , 2,4,5]
-        }
+          data: [ 4,2,4,5,3]
+        } 
   ],
     chart: {
       type: 'bar',

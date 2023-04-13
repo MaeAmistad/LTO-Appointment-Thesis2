@@ -18,15 +18,14 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 const coll = collection(db,"License");
-const q = query(coll, where("User_TT", "==", "LICENSING"));
-const snapshot = await getCountFromServer(q);
+const snapshot = await getCountFromServer(coll);
 // console.log('count: ', snapshot.data().count);
 
 const coll2 = collection(db,"Motor Vehicle");
-const q2 = query(coll2, where("User_TT", "==", "MOTOR VEHICLE REGISTRATION"));
-const snapshot2 = await getCountFromServer(q2);
+const snapshot2 = await getCountFromServer(coll2);
 // console.log('count: ', snapshot2.data().count);
 
+document.getElementById("num_current_rel").innerHTML = snapshot.data().count + snapshot2.data().count;
 // BAR CHART
 var barChartOptions = {
     series: [{
@@ -86,20 +85,52 @@ document.getElementById("appnt").innerHTML = cnt.data().count;
 // Evaluator Count
 const querySnapshottotlDLPI = await getDocs(collection(db, "Applicants"));
 let totlE = 0;
+let totlI = 0;
 let totlC = 0;
 let totlEx = 0;
 querySnapshottotlDLPI.forEach((doc) => {
-  if(doc.data().User_Stat == "PENDING"){
+  if(doc.data().User_TT == "LICENSING"){
+      if(doc.data().User_Stat == "PENDING"){
           var total = totlE+=1;
           document.getElementById("evltr").innerHTML = total; 
+      }
   }
-  if(doc.data().User_Stat == "APPROVED" || doc.data().User_Stat == "PASSED"){
+  else if (doc.data().User_Stat == "APPROVED_TO_PROCEED"){
+    var total = totlE+=1;
+    document.getElementById("evltr").innerHTML = total; 
+  }
+
+  if (doc.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
+    if(doc.data().User_Stat == "PENDING"){
+      var total = totlI+=1;
+      document.getElementById("inspctr").innerHTML = total; 
+  }
+  }
+
+  if(doc.data().User_Stat == "APPROVED_TO_CASHIER" || doc.data().User_Stat == "PASSED"){
     var total = totlC+=1;
     document.getElementById("cshr").innerHTML = total; 
 }
-if(doc.data().User_Stat == "COMPLETED" ){
-  var total = totlEx+=1;
-  document.getElementById("exmnr").innerHTML = total; 
+if(doc.data().User_TT == "LICENSING"){
+  if(doc.data().User_AT == "NEW" && doc.data().User_Laa == "DRIVER'S LICENSE" ){
+    if(doc.data().User_Stat == "COMPLETED" ){
+      var total = totlEx+=1;
+      document.getElementById("exmnr").innerHTML = total; 
+    }
+  }
+  else if(doc.data().User_Laa == "DRIVER'S LICENSE" && doc.data().User_AT == "ADDITIONAL DL CODE OR CATEGORY"){
+    if(doc.data().User_Stat == "COMPLETED" ){
+      var total = totlEx+=1;
+      document.getElementById("exmnr").innerHTML = total; 
+    }
+  }
+  else if( doc.data().User_Laa == "CONDUCTOR'S LICENSE" && doc.data().User_AT == "NEW"){
+    if(doc.data().User_Stat == "COMPLETED" ){
+      var total = totlEx+=1;
+      document.getElementById("exmnr").innerHTML = total; 
+    }
+  }
 }
+
 
 });

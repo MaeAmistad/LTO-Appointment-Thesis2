@@ -6,7 +6,7 @@ body {
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     background-color: white;
-} 
+}  
 .main{
     position: relative;
     max-width: 1000px;
@@ -18,7 +18,7 @@ body {
     margin-left: 145px;
     margin-top: 20px;
     margin-bottom: 10px;
-}
+} 
 .btn button, .btn2 button{
 	padding: 4px;
 	width: 115px; 
@@ -90,7 +90,7 @@ table td{
     margin-left: auto;
     width: 50%;
     height: 25px;
-
+    text-transform: uppercase;
 }
 .info{
     display: flex;
@@ -108,9 +108,9 @@ table td{
     margin-left: 100px;
 }
 #cnl, #cnl2{
-    margin-left: 300px;
+    margin-left: 280px;
 }
 #cnl3{
-    margin-left: 220px;
+    margin-left: 200px;
 }
 

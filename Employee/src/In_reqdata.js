@@ -1,12 +1,26 @@
 bck.addEventListener('click',() => {
-    window.location = "pc_homepage.html";
-});
+    window.location = "In_homepage.html";
+
+    localStorage.removeItem("ui1");
+    localStorage.removeItem("ui2");
+    localStorage.removeItem("ui3");
+    localStorage.removeItem("ui4"); 
+    localStorage.removeItem("ui5");
+    localStorage.removeItem("ui6");
+    localStorage.removeItem("ui7");
+    localStorage.removeItem("ui8");
+    localStorage.removeItem("ui9");
+    localStorage.removeItem("ui10");
+    localStorage.removeItem("ui11");
+}); 
 
 apprd.addEventListener('click',() => {
     document.getElementById('cnfrm_modal').style.visibility = "visible";
+    document.getElementById('cnfrm_modal2').style.visibility = "hidden";
 });
 dclnd.addEventListener('click',() => {
     document.getElementById('cnfrm_modal2').style.visibility = "visible";
+    document.getElementById('cnfrm_modal').style.visibility = "hidden";
 });
 mvinfo.addEventListener('click',() => {
     document.getElementById('addinf').style.visibility = "visible";
@@ -43,17 +57,17 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 add.addEventListener('click',() => {
-    var pltno = document.getElementById("pltno").value;
-    var type = document.getElementById("type").value;
-    var mksrs = document.getElementById("mksrs").value;
-    var mtrno = document.getElementById("mtrno").value;
-    var chassno = document.getElementById("chassno").value;
-    var color = document.getElementById("color").value;
-    var fuel = document.getElementById("fuel").value;
-    var fileno = document.getElementById("fileno").value;
-    var dtrgstrd = document.getElementById("dtrgstrd").value;
-    var trnsctn = document.getElementById("trnsctn").value;
-    var deptagncy = document.getElementById("deptagncy").value;
+    var pltno = document.getElementById("pltno").value.toUpperCase();
+    var type = document.getElementById("type").value.toUpperCase();
+    var mksrs = document.getElementById("mksrs").value.toUpperCase();
+    var mtrno = document.getElementById("mtrno").value.toUpperCase();
+    var chassno = document.getElementById("chassno").value.toUpperCase();
+    var color = document.getElementById("color").value.toUpperCase();
+    var fuel = document.getElementById("fuel").value.toUpperCase();
+    var fileno = document.getElementById("fileno").value.toUpperCase();
+    var dtrgstrd = document.getElementById("dtrgstrd").value.toUpperCase();
+    var trnsctn = document.getElementById("trnsctn").value.toUpperCase();
+    var deptagncy = document.getElementById("deptagncy").value.toUpperCase();
 
     if (pltno == "" && type == "" && mksrs == "" && mtrno == "" && chassno == "" && color == ""&& fuel == ""&& fileno == ""&& dtrgstrd == ""&& trnsctn == ""&& deptagncy == "") {
         Swal.fire({
@@ -80,7 +94,7 @@ add.addEventListener('click',() => {
         localStorage.setItem("ui10",trnsctn);
         localStorage.setItem("ui11",deptagncy);
 
-        document.getElementById('addinf').style.visibility = "hidden";
+        window.location = "In_reqdata.html" 
     }
 });
 //get all data
@@ -114,44 +128,12 @@ add.addEventListener('click',() => {
             var trnidlic ="LTO-LIC-" + yy+mmm+ddd+hhh+mnn+makeid(2);
             var trnidmvr ="LTO-MVR-" + yy+mmm+ddd+hhh+mnn+makeid(2);
         querySnapshot2.forEach(doc2 => {
-       
+            
+
+
             if (transID == doc2.data().User_AppID){
 
-                if (doc2.data().User_AT == "REVISION OF RECORDS"){
-                    document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
-                    document.getElementById("dof").innerHTML = doc2.data().User_BD;
-                    document.getElementById("gndr").innerHTML = doc2.data().User_GN;
-                    document.getElementById("tID").innerHTML = doc2.data().User_AppID; 
-                    document.getElementById("tt").innerHTML = doc2.data().User_TT;
-                    document.getElementById("laa").innerHTML = doc2.data().User_Laa;
-                    document.getElementById("at").innerHTML = doc2.data().User_AT + " (" +  doc2.data().User_Rev + ")";
-                    document.getElementById("dt_L").innerHTML = doc2.data().User_D;
-                    document.getElementById("dt_t").innerHTML = doc2.data().User_T;
-                    document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
-                    document.getElementById("em").innerHTML = doc2.data().User_E;
-                    document.getElementById("mnn").innerHTML = doc2.data().User_CN;
-
-                    document.getElementById("mvinfo").style.display = "none"
-                    document.getElementById("dclnd").style.marginLeft = "550px";
-                }
-                else if (doc2.data().User_TT == "LICENSING"){
-                    document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
-                    document.getElementById("dof").innerHTML = doc2.data().User_BD;
-                    document.getElementById("gndr").innerHTML = doc2.data().User_GN;
-                    document.getElementById("tID").innerHTML = doc2.data().User_AppID; 
-                    document.getElementById("tt").innerHTML = doc2.data().User_TT;
-                    document.getElementById("laa").innerHTML = doc2.data().User_Laa;
-                    document.getElementById("at").innerHTML = doc2.data().User_AT;
-                    document.getElementById("dt_L").innerHTML = doc2.data().User_D;
-                    document.getElementById("dt_t").innerHTML = doc2.data().User_T;
-                    document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
-                    document.getElementById("em").innerHTML = doc2.data().User_E;
-                    document.getElementById("mnn").innerHTML = doc2.data().User_CN;
-
-                    document.getElementById("mvinfo").style.display = "none"
-                    document.getElementById("dclnd").style.marginLeft = "550px";
-                }
-                else if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
+                    if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
                     document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
                     document.getElementById("dof").innerHTML = doc2.data().User_BD;
                     document.getElementById("gndr").innerHTML = doc2.data().User_GN;
@@ -163,9 +145,6 @@ add.addEventListener('click',() => {
                     document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
                     document.getElementById("em").innerHTML = doc2.data().User_E;
                     document.getElementById("mnn").innerHTML = doc2.data().User_CN;
-
-                    document.getElementById("laa").style.display = "none"
-                    document.getElementById("laa2").style.display = "none"
                 }
 
             }
@@ -175,41 +154,53 @@ add.addEventListener('click',() => {
             cnfrm.addEventListener('click', (e) => {
                 const updateStat = doc(db, "Applicants", doc2.id)
                 var stt = localStorage.getItem("stat")
-
-                if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){ 
+            
+                if (localStorage.getItem("ui1") == null && localStorage.getItem("ui2") == null && localStorage.getItem("ui3") == null &&localStorage.getItem("ui4") == null &&localStorage.getItem("ui5") == null &&localStorage.getItem("ui6") == null &&localStorage.getItem("ui7") == null &&localStorage.getItem("ui8") == null &&localStorage.getItem("ui9") == null &&localStorage.getItem("ui10") == null &&localStorage.getItem("ui11") == null) {
+                    Swal.fire({
+                        title: "Motor Vehicle Info is Empty!",
+                        confirmButtonColor: '#132aaa',
+                        showClass: {
+                          popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                          popup: 'animate__animated animate__fadeOutUp'
+                        }
+                      })
+                }
+                else{
                     if (stt == doc2.data().User_AppID){
                         updateDoc(updateStat, {
-                            User_Stat: "APPROVED",
-                            User_TransID: trnidmvr
-                        }), 
-                        setDoc(doc(db,"Applicants", doc2.id,"MV INFO",trnidmvr),{
+                            User_Stat: "APPROVED_TO_PROCEED",
+                            User_TransID: trnidmvr,                            
                             pltno: localStorage.getItem("ui1"),
                             typel:localStorage.getItem("ui2"),
                             mksrs:localStorage.getItem("ui3"),
                             mtrno:localStorage.getItem("ui4"),
                             chassno:localStorage.getItem("ui5"),
                             color:localStorage.getItem("ui6"),
-                            fuel :localStorage.getItem("ui7"),
+                            fuel :localStorage.getItem("ui7"), 
                             fileno:localStorage.getItem("ui8"),
                             dtrgstrd:localStorage.getItem("ui9"),
                             trnsctn:localStorage.getItem("ui10"),
                             deptagncy:localStorage.getItem("ui11")
                         }).then(() => {
-                            window.location = "pc_homepage.html" 
+                            localStorage.removeItem("ui1");
+                            localStorage.removeItem("ui2");
+                            localStorage.removeItem("ui3");
+                            localStorage.removeItem("ui4"); 
+                            localStorage.removeItem("ui5");
+                            localStorage.removeItem("ui6");
+                            localStorage.removeItem("ui7");
+                            localStorage.removeItem("ui8");
+                            localStorage.removeItem("ui9");
+                            localStorage.removeItem("ui10");
+                            localStorage.removeItem("ui11");
+
+                            window.location = "In_homepage.html" 
                         })
                     }
+                }
                     
-                }
-                else if(doc2.data().User_TT == "LICENSING"){
-                    if (stt == doc2.data().User_AppID){
-                        updateDoc(updateStat, {
-                            User_Stat: "APPROVED",
-                            User_TransID: trnidlic 
-                        }).then(() => {
-                            window.location = "pc_homepage.html"
-                        })
-                    }
-                }
 
             }) 
 
@@ -219,11 +210,43 @@ add.addEventListener('click',() => {
 
                 if (stt == doc2.data().User_AppID){
                     updateDoc(updateStat, {
-                        User_Stat: "DECLINED"
+                        User_Stat: "DISSAPPROVED"
                     }).then(() => {
-                        window.location = "pc_homepage.html"
+
+                        localStorage.removeItem("ui1");
+                        localStorage.removeItem("ui2");
+                        localStorage.removeItem("ui3");
+                        localStorage.removeItem("ui4"); 
+                        localStorage.removeItem("ui5");
+                        localStorage.removeItem("ui6");
+                        localStorage.removeItem("ui7");
+                        localStorage.removeItem("ui8");
+                        localStorage.removeItem("ui9");
+                        localStorage.removeItem("ui10");
+                        localStorage.removeItem("ui11");
+
+                        window.location = "In_homepage.html"
                     })
                 }
             })
     });
 
+    document.getElementById('mv-table').style.display = "none";
+    document.getElementById('mvtitle').style.display = "none";
+
+    if (localStorage.getItem("ui1") !== null && localStorage.getItem("ui2") !== null && localStorage.getItem("ui3") !== null &&localStorage.getItem("ui4") !== null &&localStorage.getItem("ui5") !== null &&localStorage.getItem("ui6") !== null &&localStorage.getItem("ui7") !== null &&localStorage.getItem("ui8") !== null &&localStorage.getItem("ui9") !== null &&localStorage.getItem("ui10") !== null &&localStorage.getItem("ui11") !== null) {
+        document.getElementById("plate_num").innerHTML = localStorage.getItem("ui1");
+        document.getElementById("typee").innerHTML = localStorage.getItem("ui2");
+        document.getElementById("mk_seris").innerHTML = localStorage.getItem("ui3");
+        document.getElementById("mot_num").innerHTML = localStorage.getItem("ui4"); 
+        document.getElementById("cha_num").innerHTML = localStorage.getItem("ui5");
+        document.getElementById("colorr").innerHTML = localStorage.getItem("ui6");
+        document.getElementById("fuell").innerHTML = localStorage.getItem("ui7");
+        document.getElementById("filno").innerHTML = localStorage.getItem("ui8");
+        document.getElementById("dt_reg").innerHTML = localStorage.getItem("ui9");
+        document.getElementById("transctionmv").innerHTML = localStorage.getItem("ui10");
+        document.getElementById("deptAgncy").innerHTML = localStorage.getItem("ui11");
+
+        document.getElementById('mv-table').style.display = "block";
+        document.getElementById('mvtitle').style.display = "block";
+      }

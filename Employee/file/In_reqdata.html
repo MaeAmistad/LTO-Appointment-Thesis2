@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LTO Appointment Setter</title>
-    <link rel="stylesheet" href="In_reqdata.css">
+    <link rel="stylesheet" href="../style/In_reqdata.css">
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
@@ -62,6 +62,67 @@
               <td id="dt_t">-</td>
             </tr>
           </table>
+
+          <table id="mv-table" >
+
+            <p id="mvtitle">Motor Vehicle Information</p>
+  
+            <tr>
+              <td>Plate No.:</td>
+              <td id="plate_num" >-</td>
+            </tr>
+  
+            <tr>
+              <td>Type:</td>
+              <td id="typee" >-</td>
+            </tr>
+    
+  
+            <tr>
+              <td>Make/Series:</td>
+              <td id="mk_seris" >-</td>
+            </tr>
+     
+            <tr>
+              <td>Motor Number:</td>
+              <td id="mot_num">-</td>
+            </tr>
+    
+            <tr>
+              <td>Chassis Number:</td>
+              <td id="cha_num">-</td>
+            </tr>
+
+            <tr>
+              <td>Color:</td>
+              <td id="colorr" >-</td>
+            </tr>
+  
+            <tr>
+              <td>Fuel:</td>
+              <td id="fuell" >-</td>
+            </tr>
+  
+            <tr>
+              <td>File No.:</td>
+              <td id="filno" >-</td>
+            </tr>
+     
+            <tr>
+              <td>Date Registered:</td>
+              <td id="dt_reg">-</td>
+            </tr>
+    
+            <tr>
+              <td>Transaction:</td>
+              <td id="transctionmv">-</td>
+            </tr>
+
+            <tr>
+              <td>Dept./Agency:</td>
+              <td id="deptAgncy">-</td>
+            </tr>
+          </table>
     
           <table class="contact-table">
             <p>Contact Information</p>
@@ -102,7 +163,7 @@
 
     <div class="cnfrm_modal" id="cnfrm_modal">
       <h1>Application Approval</h1>
-      <p>The applicant may now proceed to Cashier?</p>
+      <p>The applicant may now proceed to the next station?</p>
 
           <div class="btn2">
               <button id="cnl">Cancel</button>
@@ -127,7 +188,6 @@
       <div class="info">
         <label>Plate No.:</label>
         <input type="text" id="pltno">
-
       </div>
 
       <div class="info">
@@ -189,6 +249,6 @@
  
 
 
-<script type="module" src="In_reqdata.js"></script>
+<script type="module" src="../src/In_reqdata.js"></script>
 </body>
 </html>

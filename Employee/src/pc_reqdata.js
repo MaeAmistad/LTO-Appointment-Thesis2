@@ -8,9 +8,6 @@ apprd.addEventListener('click',() => {
 dclnd.addEventListener('click',() => {
     document.getElementById('cnfrm_modal2').style.visibility = "visible";
 });
-mvinfo.addEventListener('click',() => {
-    document.getElementById('addinf').style.visibility = "visible";
-});
 cnl.addEventListener('click',() => {
     // window.location = "pc_reqdata.html";
     document.getElementById('cnfrm_modal').style.visibility = "hidden";
@@ -19,9 +16,7 @@ cnl2.addEventListener('click',() => {
     // window.location = "pc_reqdata.html";
     document.getElementById('cnfrm_modal2').style.visibility = "hidden";
 });
-cnl3.addEventListener('click',() => {
-    document.getElementById('addinf').style.visibility = "hidden";
-});
+
 // var tranID = localStorage.getItem("stat");
 // document.getElementById('tranID').innerHTML = tranID;
 
@@ -42,52 +37,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-add.addEventListener('click',() => {
-    var pltno = document.getElementById("pltno").value;
-    var type = document.getElementById("type").value;
-    var mksrs = document.getElementById("mksrs").value;
-    var mtrno = document.getElementById("mtrno").value;
-    var chassno = document.getElementById("chassno").value;
-    var color = document.getElementById("color").value;
-    var fuel = document.getElementById("fuel").value;
-    var fileno = document.getElementById("fileno").value;
-    var dtrgstrd = document.getElementById("dtrgstrd").value;
-    var trnsctn = document.getElementById("trnsctn").value;
-    var deptagncy = document.getElementById("deptagncy").value;
-
-    if (pltno == "" && type == "" && mksrs == "" && mtrno == "" && chassno == "" && color == ""&& fuel == ""&& fileno == ""&& dtrgstrd == ""&& trnsctn == ""&& deptagncy == "") {
-        Swal.fire({
-            title: "Field is Empty",
-            confirmButtonColor: '#132aaa',
-            showClass: {
-              popup: 'animate__animated animate__fadeInDown'
-            },
-            hideClass: {
-              popup: 'animate__animated animate__fadeOutUp'
-            }
-          })
-    }
-    else{
-        localStorage.setItem("ui1",pltno);
-        localStorage.setItem("ui2",type);
-        localStorage.setItem("ui3",mksrs);
-        localStorage.setItem("ui4",mtrno);
-        localStorage.setItem("ui5",chassno);
-        localStorage.setItem("ui6",color);
-        localStorage.setItem("ui7",fuel);
-        localStorage.setItem("ui8",fileno);
-        localStorage.setItem("ui9",dtrgstrd);
-        localStorage.setItem("ui10",trnsctn);
-        localStorage.setItem("ui11",deptagncy);
-
-        document.getElementById('addinf').style.visibility = "hidden";
-    }
-});
-//get all data
-    const querySnapshot2 = await getDocs(collection(db,"Applicants"));
-
+//get all data   
     var transID = localStorage.getItem("stat");
     var ID = localStorage.getItem("ID");
+
+    const querySnapshot2 = await getDocs(collection(db,"Applicants"));
+
     console.log(ID)
             function makeid(l)
             {
@@ -113,8 +68,9 @@ add.addEventListener('click',() => {
 
             var trnidlic ="LTO-LIC-" + yy+mmm+ddd+hhh+mnn+makeid(2);
             var trnidmvr ="LTO-MVR-" + yy+mmm+ddd+hhh+mnn+makeid(2);
+
         querySnapshot2.forEach(doc2 => {
-       
+
             if (transID == doc2.data().User_AppID){
 
                 if (doc2.data().User_AT == "REVISION OF RECORDS"){
@@ -131,8 +87,8 @@ add.addEventListener('click',() => {
                     document.getElementById("em").innerHTML = doc2.data().User_E;
                     document.getElementById("mnn").innerHTML = doc2.data().User_CN;
 
-                    document.getElementById("mvinfo").style.display = "none"
-                    document.getElementById("dclnd").style.marginLeft = "550px";
+                    document.getElementById('mv-table').style.display = "none";
+                    document.getElementById('mvtitle').style.display = "none";
                 }
                 else if (doc2.data().User_TT == "LICENSING"){
                     document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
@@ -148,8 +104,8 @@ add.addEventListener('click',() => {
                     document.getElementById("em").innerHTML = doc2.data().User_E;
                     document.getElementById("mnn").innerHTML = doc2.data().User_CN;
 
-                    document.getElementById("mvinfo").style.display = "none"
-                    document.getElementById("dclnd").style.marginLeft = "550px";
+                    document.getElementById('mv-table').style.display = "none";
+                    document.getElementById('mvtitle').style.display = "none";
                 }
                 else if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
                     document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
@@ -164,12 +120,24 @@ add.addEventListener('click',() => {
                     document.getElementById("em").innerHTML = doc2.data().User_E;
                     document.getElementById("mnn").innerHTML = doc2.data().User_CN;
 
+                    document.getElementById("plate_num").innerHTML = doc2.data().pltno;
+                    document.getElementById("typee").innerHTML = doc2.data().typel;
+                    document.getElementById("mk_seris").innerHTML = doc2.data().mksrs;
+                    document.getElementById("mot_num").innerHTML = doc2.data().mtrno; 
+                    document.getElementById("cha_num").innerHTML = doc2.data().chassno;
+                    document.getElementById("colorr").innerHTML = doc2.data().color;
+                    document.getElementById("fuell").innerHTML = doc2.data().fuel;
+                    document.getElementById("filno").innerHTML = doc2.data().fileno;
+                    document.getElementById("dt_reg").innerHTML = doc2.data().dtrgstrd;
+                    document.getElementById("transctionmv").innerHTML = doc2.data().trnsctn;
+                    document.getElementById("deptAgncy").innerHTML = doc2.data().deptagncy;
+
                     document.getElementById("laa").style.display = "none"
                     document.getElementById("laa2").style.display = "none"
                 }
 
             }
-
+            
 
             // console.log(trnidlic)
             cnfrm.addEventListener('click', (e) => {
@@ -179,7 +147,7 @@ add.addEventListener('click',() => {
                 if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){ 
                     if (stt == doc2.data().User_AppID){
                         updateDoc(updateStat, {
-                            User_Stat: "APPROVED",
+                            User_Stat: "APPROVED_TO_CASHIER",
                             User_TransID: trnidmvr
                         }), 
                         setDoc(doc(db,"Applicants", doc2.id,"MV INFO",trnidmvr),{
@@ -197,13 +165,13 @@ add.addEventListener('click',() => {
                         }).then(() => {
                             window.location = "pc_homepage.html" 
                         })
-                    }
+                    } 
                     
                 }
                 else if(doc2.data().User_TT == "LICENSING"){
                     if (stt == doc2.data().User_AppID){
                         updateDoc(updateStat, {
-                            User_Stat: "APPROVED",
+                            User_Stat: "APPROVED_TO_CASHIER",
                             User_TransID: trnidlic 
                         }).then(() => {
                             window.location = "pc_homepage.html"
@@ -226,4 +194,3 @@ add.addEventListener('click',() => {
                 }
             })
     });
-

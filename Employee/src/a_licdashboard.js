@@ -17,7 +17,7 @@ const firebaseConfig = {
     storageBucket: "lto-online-appointment-setter.appspot.com",
     messagingSenderId: "382579903791",
     appId: "1:382579903791:web:5d98bbe4ea8b38a43065da"
-};
+}; 
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -99,27 +99,24 @@ var barChartOptions = {
   barChart.render();
 
 // DL  & Permit Issued BarChart
-const DLIPissued = await getDocs(collection(db, "Applicants"));
+const DLIPissued = await getDocs(collection(db, "License"));
 let countn1 = 0;
 let countn2 = 0;
 let countrn1 = 0;
 let countrn2 = 0;
 DLIPissued.forEach((doc) => {
-  if(doc.data().User_TT == "LICENSING"){
-    if(doc.data().User_AT == "NEW"){
+// NEW
+    if(doc.data().at == "NEW"){
       if(doc.data().User_GN == "FEMALE"){
         var femcount = countn1+=1;
-        // console.log(femcount)
         localStorage.setItem("femn",femcount)
       }
       if(doc.data().User_GN == "MALE"){
         var malcount = countn2+=1;
         localStorage.setItem("maln",malcount)
       }
-
-    }
-
-    if (doc.data().User_AT == "RENEWAL"){
+//RENEWAL
+    if (doc.data().at == "RENEWAL"){
       if(doc.data().User_GN == "FEMALE"){
         var femcount = countrn1+=1;
         // console.log(femcount)
@@ -190,39 +187,45 @@ var barChartOptions = {
   barChart.render();
 
 //main chart
-const querySnapshottotlDLPI = await getDocs(collection(db, "Applicants"));
+
+// mscn txn
+const querySnapshottotlmscn = await getDocs(collection(db, "Applicants"));
+let mscntotl = 0;
+querySnapshottotlmscn.forEach((doc) => {
+  if (doc.data().User_AT == "DUPLICATE" || doc.data().User_AT == "REVISION OF RECORDS"){
+      var mscn = mscntotl +=1;
+      localStorage.setItem("mscntotal",mscn);
+  }
+})
+
+const querySnapshottotlDLPI = await getDocs(collection(db, "License"));
 let totl1 = 0;
 querySnapshottotlDLPI.forEach((doc) => {
-  if(doc.data().User_Stat == "COMPLETED"){
-    if(doc.data().User_TT == "LICENSING"){
-      if(doc.data().User_AT == "NEW" || doc.data().User_AT == "RENEWAL"){
-        if(doc.data().User_GN == "FEMALE" || doc.data().User_GN == "MALE"){
-          var total = totl1+=1;
-          localStorage.setItem("totl",total)
-          // console.log(doc.data().User_GN)
-        } 
-      }
+    if(doc.data().at == "NEW" || doc.data().at == "RENEWAL"){
+      var sdp = totl1+=1;
+      localStorage.setItem("totl_dlpi", sdp);
     }
-  }
-
+    
 });
 
+// dlch
 const dpch = collection(db,"Applicants");
-const sp = query(dpch, where("User_Laa", "==", "STUDENT-DRIVER'S PERMIT"));
-const cl = query(dpch, where("User_Laa", "==", "CONDUCTOR'S LICENSE"));
-const dl = query(dpch, where("User_Laa", "==", "DRIVER'S LICENSE"));
-const spt = await getCountFromServer(sp);
-const clt = await getCountFromServer(cl);
-const dlt = await getCountFromServer(dl);
+const relLic = query(dpch, where("User_Stat", "==", "RELEASED"));
+const incompLic = query(dpch, where("User_Stat", "==", "INCOMPLETED"));
+const failed = query(dpch, where("User_Stat", "==", "FAILED"));
+const RELIC = await getCountFromServer(relLic);
+const INCOMLIC = await getCountFromServer(incompLic);
+const FAILED = await getCountFromServer(failed);
 
+// total of all
 var AEtotl = wpass.data().count + ppass.data().count + wfail.data().count + pfail.data().count;
-var dpchtotl = spt.data().count + clt.data().count + dlt.data().count;
-var DLItotl = localStorage.getItem("totl");
-
+var dpchtotl = RELIC.data().count + INCOMLIC.data().count + + FAILED.data().count;
+var DLPI = localStorage.getItem("totl_dlpi");
+var MSCN = localStorage.getItem("mscntotal");
 var barChartOptions = {
   series: [{
     name: "TOTAL",
-    data: [ AEtotl , DLItotl , 0 , dpchtotl]
+    data: [ AEtotl , DLPI , MSCN , dpchtotl]
   }],
   chart: { 
     type: 'bar',
