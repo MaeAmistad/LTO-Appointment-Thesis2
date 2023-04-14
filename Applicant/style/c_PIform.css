@@ -122,30 +122,24 @@ h4{
     color: red;
 }
 
-@media only screen and (min-width: 800){
-    .box {
-        margin-left: -110px;
+@media only screen and (max-width: 1200px){
+    
+    .main,.btn_nxt ,.btn_cn,.info input, #selectText1, #selectText2,#gen  {
+        margin-left: 10px;
         align-items: center;
+        width: 400px;
+     }
 
+     @media only screen and (min-width: 600px) {
+        .main,.btn_nxt ,.btn_cn,.info input, #selectText1, #selectText2,#gen  {
+            margin-left: 10px;
+            align-items: center;
+            width: 400px;
+            align-items: center;
+         }
+         .main{
+            margin-left: 150px;
+            align-items: center;
+         }
+        }
     }
-
-
-}
- 
-.main2 {
-    width: 100%;
-    align-items: center;
-
-  }
-  
-  @media only screen and (min-width: 1525px){
-    .box{
-        margin-left: 430px;
-        align-items: center;
-
-
-    }
-
-
-}
-

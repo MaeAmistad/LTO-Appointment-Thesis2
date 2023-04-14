@@ -7,10 +7,13 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: white;
 }
+.main,.btn{
+     width: 100%;
+}
 .main{
     position: relative;
-    max-width: 1000px;
-    width: 100%;
+    max-width: 100%;
+    width: 80%;
     padding: 25px;
     background: white;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); 
@@ -22,6 +25,7 @@ body {
 .btn button, .btn2 button{
 	padding: 4px;
 	width: 100px; 
+    align-items: center;
     outline: none;
 	padding: 10px;
     margin: 10px;
@@ -79,4 +83,26 @@ table td{
 }
 #cnl, #cnl2{
     margin-left: 300px;
+}
+@media only screen and (max-width: 1200px){
+    
+    .main, .main2 {
+        margin-left: 10px;
+        align-items: center;
+        width: 115%
+     }
+     #dclnd, #apprd{
+        width:90px;
+        margin-left: 10px;
+     }
+  
+    }
+   
+
+  
+  @media only screen and (min-width: 1525px){
+    .box{
+        margin-left: 430px;
+        align-items: center;
+    }
 }

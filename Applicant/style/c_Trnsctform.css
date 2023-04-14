@@ -199,8 +199,19 @@ select{
 
 }
 
-.main2 {
-  width: 100%;
-}
+@media only screen and (min-width: 600px) {
+  .box  {
+      margin-left: 10px;
+      align-items: center;
+      width: 400px;
+      align-items: center;
+   }
+   .main{
+      margin-left: 150px;
+      align-items: center;
+   }
+  }
+
+
 
 
