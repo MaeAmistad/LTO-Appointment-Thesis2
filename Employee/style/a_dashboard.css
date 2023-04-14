@@ -243,7 +243,9 @@ img{
   .card-inner > span {
     font-size: 35px;
   }
-  
+  #appntment_chrt:hover{
+    background-color:#c3c4ee;
+  }
   .charts {
     display: grid;
     grid-template-columns: 1fr 1fr;

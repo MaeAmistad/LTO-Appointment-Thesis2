@@ -56,18 +56,27 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+const selectElement = document.querySelector("#reftypee");
+
+selectElement.addEventListener("change", (event) => {    
+    let refrityp = document.getElementById("reftypee");
+    var refrigrnt_typ = refrityp.options[refrityp.selectedIndex].text;
+    console.log(refrigrnt_typ)
+});
+
 add.addEventListener('click',() => {
-    var pltno = document.getElementById("pltno").value.toUpperCase();
-    var type = document.getElementById("type").value.toUpperCase();
-    var mksrs = document.getElementById("mksrs").value.toUpperCase();
-    var mtrno = document.getElementById("mtrno").value.toUpperCase();
-    var chassno = document.getElementById("chassno").value.toUpperCase();
-    var color = document.getElementById("color").value.toUpperCase();
-    var fuel = document.getElementById("fuel").value.toUpperCase();
-    var fileno = document.getElementById("fileno").value.toUpperCase();
-    var dtrgstrd = document.getElementById("dtrgstrd").value.toUpperCase();
-    var trnsctn = document.getElementById("trnsctn").value.toUpperCase();
-    var deptagncy = document.getElementById("deptagncy").value.toUpperCase();
+    let pltno = document.getElementById("pltno").value.toUpperCase();
+    let type = document.getElementById("type").value.toUpperCase();
+
+    let mksrs = document.getElementById("mksrs").value.toUpperCase();
+    let mtrno = document.getElementById("mtrno").value.toUpperCase();
+    let chassno = document.getElementById("chassno").value.toUpperCase();
+    let color = document.getElementById("color").value.toUpperCase();
+    let fuel = document.getElementById("fuel").value.toUpperCase();
+    let fileno = document.getElementById("fileno").value.toUpperCase();
+    let dtrgstrd = document.getElementById("dtrgstrd").value.toUpperCase();
+    let trnsctn = document.getElementById("trnsctn").value.toUpperCase();
+    let deptagncy = document.getElementById("deptagncy").value.toUpperCase();
 
     if (pltno == "" && type == "" && mksrs == "" && mtrno == "" && chassno == "" && color == ""&& fuel == ""&& fileno == ""&& dtrgstrd == ""&& trnsctn == ""&& deptagncy == "") {
         Swal.fire({

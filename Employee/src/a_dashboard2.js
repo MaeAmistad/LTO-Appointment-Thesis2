@@ -17,6 +17,59 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+// Evaluator Count
+const querySnapshottotlDLPI = await getDocs(collection(db, "Applicants"));
+let totlE = 0;
+let totlI = 0;
+let totlC = 0;
+let totlEx = 0; 
+querySnapshottotlDLPI.forEach((doc) => {
+  if(doc.data().User_TT == "LICENSING"){
+      if(doc.data().User_Stat == "PENDING"){
+          var total = totlE+=1;
+          document.getElementById("evltr").innerHTML = total; 
+      }
+  }
+  else if (doc.data().User_Stat == "APPROVED_TO_PROCEED"){
+    var total = totlE+=1;
+    document.getElementById("evltr").innerHTML = total; 
+  }
+
+  if (doc.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
+    if(doc.data().User_Stat == "PENDING"){
+      var total = totlI+=1;
+      document.getElementById("inspctr").innerHTML = total; 
+  }
+  }
+
+  if(doc.data().User_Stat == "APPROVED_TO_CASHIER" || doc.data().User_Stat == "PASSED"){
+    var total = totlC+=1;
+    document.getElementById("cshr").innerHTML = total; 
+}
+if(doc.data().User_TT == "LICENSING"){
+  if(doc.data().User_AT == "NEW" && doc.data().User_Laa == "DRIVER'S LICENSE" ){
+    if(doc.data().User_Stat == "COMPLETED" ){
+      var total = totlEx+=1;
+      document.getElementById("exmnr").innerHTML = total; 
+    }
+  }
+  else if(doc.data().User_Laa == "DRIVER'S LICENSE" && doc.data().User_AT == "ADDITIONAL DL CODE OR CATEGORY"){
+    if(doc.data().User_Stat == "COMPLETED" ){
+      var total = totlEx+=1;
+      document.getElementById("exmnr").innerHTML = total; 
+    }
+  }
+  else if( doc.data().User_Laa == "CONDUCTOR'S LICENSE" && doc.data().User_AT == "NEW"){
+    if(doc.data().User_Stat == "COMPLETED" ){
+      var total = totlEx+=1;
+      document.getElementById("exmnr").innerHTML = total; 
+    }
+  }
+}
+
+
+});
+
 const coll = collection(db,"License");
 const snapshot = await getCountFromServer(coll);
 // console.log('count: ', snapshot.data().count);
@@ -82,55 +135,67 @@ const appnmts = collection(db,"Applicants");
 const cnt = await getCountFromServer(appnmts);
 document.getElementById("appnt").innerHTML = cnt.data().count; 
 
-// Evaluator Count
-const querySnapshottotlDLPI = await getDocs(collection(db, "Applicants"));
-let totlE = 0;
-let totlI = 0;
-let totlC = 0;
-let totlEx = 0;
-querySnapshottotlDLPI.forEach((doc) => {
-  if(doc.data().User_TT == "LICENSING"){
-      if(doc.data().User_Stat == "PENDING"){
-          var total = totlE+=1;
-          document.getElementById("evltr").innerHTML = total; 
-      }
-  }
-  else if (doc.data().User_Stat == "APPROVED_TO_PROCEED"){
-    var total = totlE+=1;
-    document.getElementById("evltr").innerHTML = total; 
-  }
 
-  if (doc.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
-    if(doc.data().User_Stat == "PENDING"){
-      var total = totlI+=1;
-      document.getElementById("inspctr").innerHTML = total; 
-  }
-  }
+// MONTHLY count of appointment CHART
 
-  if(doc.data().User_Stat == "APPROVED_TO_CASHIER" || doc.data().User_Stat == "PASSED"){
-    var total = totlC+=1;
-    document.getElementById("cshr").innerHTML = total; 
-}
-if(doc.data().User_TT == "LICENSING"){
-  if(doc.data().User_AT == "NEW" && doc.data().User_Laa == "DRIVER'S LICENSE" ){
-    if(doc.data().User_Stat == "COMPLETED" ){
-      var total = totlEx+=1;
-      document.getElementById("exmnr").innerHTML = total; 
+// const monthlycount = await getDocs(collection(db, "Applicants"));
+// monthlycount.forEach((doc) => {
+//     var dd = doc.data().User_D;
+//     var mmsp = dd.slice(3,5);
+//   console.log(mmsp)
+
+// });
+
+// AREA CHART
+var areaChartOptions = {
+  series: [{
+    name: 'Licensing',
+    data: [0, 0, 0, 0,0,0]
+  }, {
+    name: 'Motor Vehicle Registration',
+    data: [0, 0, 0, 0,0,0]
+  }],
+  chart: {
+    height: 350,
+    type: 'area',
+    toolbar: {
+      show: true,
     }
+  },
+  colors: ["#246dec", "#4f35a1"],
+  dataLabels: {
+    enabled: false,
+  },
+  stroke: {
+    curve: 'smooth'
+  },
+  labels: ["Jan", "Feb", "Mar", "Apr","May","Jun"],
+  markers: {
+    size: 0
+  },
+  yaxis: [ 
+    {
+      title: {
+        text: 'Motor Vehicle Registration',
+      },
+    },
+    {
+      opposite: true,
+      title: {
+        text: 'Licensing',
+      },
+    },
+  ],
+  tooltip: {
+    shared: true,
+    intersect: false,
   }
-  else if(doc.data().User_Laa == "DRIVER'S LICENSE" && doc.data().User_AT == "ADDITIONAL DL CODE OR CATEGORY"){
-    if(doc.data().User_Stat == "COMPLETED" ){
-      var total = totlEx+=1;
-      document.getElementById("exmnr").innerHTML = total; 
-    }
-  }
-  else if( doc.data().User_Laa == "CONDUCTOR'S LICENSE" && doc.data().User_AT == "NEW"){
-    if(doc.data().User_Stat == "COMPLETED" ){
-      var total = totlEx+=1;
-      document.getElementById("exmnr").innerHTML = total; 
-    }
-  }
-}
+  
+};
 
+var areaChart = new ApexCharts(document.querySelector("#area-chart"), areaChartOptions);
+areaChart.render();
 
+appntment_chrt.addEventListener('click', () => {
+    
 });

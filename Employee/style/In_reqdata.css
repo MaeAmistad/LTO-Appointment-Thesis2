@@ -80,17 +80,21 @@ table td{
     padding: 10px;
     max-width: 500px;
     min-width: 400px;
-    margin-top: -690px;
+    margin-top: -690px; 
     position: relative;
     visibility: hidden;
     z-index: 999;
 }
-.addinf input{
+.addinf input, .addinf select{
     outline: none;
     margin-left: auto;
     width: 50%;
     height: 25px;
     text-transform: uppercase;
+}
+.addinf select{
+    width: 51.7%;
+    height: 30px;
 }
 .info{
     display: flex;
