@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
+@import url('a_modal.css');
+
 *
 {
     margin: 0;
@@ -240,7 +242,9 @@ tr th, tr th{
 .table tr:hover{
     background: gainsboro;
 }
-.signup_modal{
+
+
+/* .signup_modal{
     background-color: white;
     user-select: none;
     border: 1px solid #b3b3b3;
@@ -287,6 +291,9 @@ h4{
   margin-bottom: 5px;
   margin-top: 10px;
   align-items: center;
+}
+.signup_modal button:hover{
+  background-color: rgb(48, 83, 211);
 }
 .signup_modal form{
   margin-left: 30px;
@@ -433,6 +440,9 @@ h4{
 .infcpass{
   margin-top: 55px; 
 }
+.error_txt{
+  display: block;
+} */
 
   
   /* Extra Small <= 576px */

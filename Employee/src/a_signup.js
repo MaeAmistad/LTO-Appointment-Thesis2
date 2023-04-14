@@ -201,7 +201,7 @@ else{
         .then((userCredential) => {
         const user = userCredential.user;
         setDoc (doc(db, "Users","Employee","EmployeeData", user.uid), {
-            user_Type: "Evaluator",
+            user_Type: "EVALUATOR",
             user_LN: last_name,
             user_FN: first_name,
             user_MN: middle_name,
@@ -222,7 +222,7 @@ else{
                 confirmButtonText:`OK`
               }).then((result) => {
                 if (result.value) {
-                  //document.getElementById('createAcc_modal').style.visibility = "hidden"
+                  console.log("User Created");
                 }
               });
         // window.location = ("a_login.html")
@@ -264,7 +264,7 @@ else{
                 confirmButtonText:`OK`
               }).then((result) => {
                 if (result.value) {
-                  //document.getElementById('createAcc_modal').style.visibility = "hidden"
+                  console.log("User Created");
                 }
               });
         // window.location = ("a_login.html")
@@ -293,7 +293,6 @@ else{
           });
           sendEmailVerification(auth.currentUser)
           .then(() => {
-  
               Swal.fire({
                   title: '<strong>An email has been sent please verify.</strong>', 
                   showCloseButton: true,
@@ -304,7 +303,7 @@ else{
                   confirmButtonText:`OK`
                 }).then((result) => {
                   if (result.value) {
-                    //document.getElementById('createAcc_modal').style.visibility = "visible"
+                    console.log("User Created");
                   }
                 });
           // window.location = ("a_login.html")
@@ -345,7 +344,7 @@ else{
                   confirmButtonText:`OK`
                 }).then((result) => {
                   if (result.value) {
-                    //document.getElementById('createAcc_modal').style.visibility = "visible"
+                    console.log("User Created")
                   }
                 });
           // window.location = ("a_login.html")
