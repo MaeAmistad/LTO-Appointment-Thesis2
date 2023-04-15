@@ -13,7 +13,7 @@ bck.addEventListener('click',() => {
     localStorage.removeItem("ui10");
     localStorage.removeItem("ui11");
 }); 
-
+ 
 apprd.addEventListener('click',() => {
     document.getElementById('cnfrm_modal').style.visibility = "visible";
     document.getElementById('cnfrm_modal2').style.visibility = "hidden";
@@ -56,18 +56,11 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const selectElement = document.querySelector("#reftypee");
-
-selectElement.addEventListener("change", (event) => {    
-    let refrityp = document.getElementById("reftypee");
-    var refrigrnt_typ = refrityp.options[refrityp.selectedIndex].text;
-    console.log(refrigrnt_typ)
-});
-
 add.addEventListener('click',() => {
     let pltno = document.getElementById("pltno").value.toUpperCase();
     let type = document.getElementById("type").value.toUpperCase();
-
+    let select= document.querySelector('#refrtypee');
+    let refrigernt_typ = select.options[select.selectedIndex].text.toUpperCase();
     let mksrs = document.getElementById("mksrs").value.toUpperCase();
     let mtrno = document.getElementById("mtrno").value.toUpperCase();
     let chassno = document.getElementById("chassno").value.toUpperCase();
@@ -78,7 +71,7 @@ add.addEventListener('click',() => {
     let trnsctn = document.getElementById("trnsctn").value.toUpperCase();
     let deptagncy = document.getElementById("deptagncy").value.toUpperCase();
 
-    if (pltno == "" && type == "" && mksrs == "" && mtrno == "" && chassno == "" && color == ""&& fuel == ""&& fileno == ""&& dtrgstrd == ""&& trnsctn == ""&& deptagncy == "") {
+    if (pltno == "" && type == "" && mksrs == "" && mtrno == "" && refrigernt_typ == "SELECT:" && chassno == "" && color == ""&& fuel == ""&& fileno == ""&& dtrgstrd == ""&& trnsctn == ""&& deptagncy == "") {
         Swal.fire({
             title: "Field is Empty",
             confirmButtonColor: '#132aaa',
@@ -102,9 +95,12 @@ add.addEventListener('click',() => {
         localStorage.setItem("ui9",dtrgstrd);
         localStorage.setItem("ui10",trnsctn);
         localStorage.setItem("ui11",deptagncy);
+        localStorage.setItem("ui12",refrigernt_typ);
 
         window.location = "In_reqdata.html" 
+
     }
+
 });
 //get all data
     const querySnapshot2 = await getDocs(collection(db,"Applicants"));
@@ -164,7 +160,7 @@ add.addEventListener('click',() => {
                 const updateStat = doc(db, "Applicants", doc2.id)
                 var stt = localStorage.getItem("stat")
             
-                if (localStorage.getItem("ui1") == null && localStorage.getItem("ui2") == null && localStorage.getItem("ui3") == null &&localStorage.getItem("ui4") == null &&localStorage.getItem("ui5") == null &&localStorage.getItem("ui6") == null &&localStorage.getItem("ui7") == null &&localStorage.getItem("ui8") == null &&localStorage.getItem("ui9") == null &&localStorage.getItem("ui10") == null &&localStorage.getItem("ui11") == null) {
+                if (localStorage.getItem("ui1") == null && localStorage.getItem("ui2") == null && localStorage.getItem("ui12") == null && localStorage.getItem("ui3") == null &&localStorage.getItem("ui4") == null &&localStorage.getItem("ui5") == null &&localStorage.getItem("ui6") == null &&localStorage.getItem("ui7") == null &&localStorage.getItem("ui8") == null &&localStorage.getItem("ui9") == null &&localStorage.getItem("ui10") == null &&localStorage.getItem("ui11") == null) {
                     Swal.fire({
                         title: "Motor Vehicle Info is Empty!",
                         confirmButtonColor: '#132aaa',
@@ -191,7 +187,8 @@ add.addEventListener('click',() => {
                             fileno:localStorage.getItem("ui8"),
                             dtrgstrd:localStorage.getItem("ui9"),
                             trnsctn:localStorage.getItem("ui10"),
-                            deptagncy:localStorage.getItem("ui11")
+                            deptagncy:localStorage.getItem("ui11"),
+                            refrigerant_typ:localStorage.getItem("ui12")
                         }).then(() => {
                             localStorage.removeItem("ui1");
                             localStorage.removeItem("ui2");
@@ -204,6 +201,7 @@ add.addEventListener('click',() => {
                             localStorage.removeItem("ui9");
                             localStorage.removeItem("ui10");
                             localStorage.removeItem("ui11");
+                            localStorage.removeItem("ui12");
 
                             window.location = "In_homepage.html" 
                         })
@@ -233,6 +231,7 @@ add.addEventListener('click',() => {
                         localStorage.removeItem("ui9");
                         localStorage.removeItem("ui10");
                         localStorage.removeItem("ui11");
+                        localStorage.removeItem("ui12");
 
                         window.location = "In_homepage.html"
                     })
@@ -243,9 +242,10 @@ add.addEventListener('click',() => {
     document.getElementById('mv-table').style.display = "none";
     document.getElementById('mvtitle').style.display = "none";
 
-    if (localStorage.getItem("ui1") !== null && localStorage.getItem("ui2") !== null && localStorage.getItem("ui3") !== null &&localStorage.getItem("ui4") !== null &&localStorage.getItem("ui5") !== null &&localStorage.getItem("ui6") !== null &&localStorage.getItem("ui7") !== null &&localStorage.getItem("ui8") !== null &&localStorage.getItem("ui9") !== null &&localStorage.getItem("ui10") !== null &&localStorage.getItem("ui11") !== null) {
+    if (localStorage.getItem("ui1") !== null && localStorage.getItem("ui2") !== null && localStorage.getItem("ui12") !== null && localStorage.getItem("ui3") !== null &&localStorage.getItem("ui4") !== null &&localStorage.getItem("ui5") !== null &&localStorage.getItem("ui6") !== null &&localStorage.getItem("ui7") !== null &&localStorage.getItem("ui8") !== null &&localStorage.getItem("ui9") !== null &&localStorage.getItem("ui10") !== null &&localStorage.getItem("ui11") !== null) {
         document.getElementById("plate_num").innerHTML = localStorage.getItem("ui1");
         document.getElementById("typee").innerHTML = localStorage.getItem("ui2");
+        document.getElementById("reftypee").innerHTML = localStorage.getItem("ui12");
         document.getElementById("mk_seris").innerHTML = localStorage.getItem("ui3");
         document.getElementById("mot_num").innerHTML = localStorage.getItem("ui4"); 
         document.getElementById("cha_num").innerHTML = localStorage.getItem("ui5");

@@ -14,9 +14,22 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig); 
 const db = getFirestore(app);
 
+// card
+inspctor.addEventListener('click',() => {
+  window.location = "a_applistins.html"
+});
+evluatr.addEventListener('click',() => {
+  window.location = "a_applist.html"
+});
+cashr.addEventListener('click',() => {
+  window.location = "a_applistca.html"
+});
+exminer.addEventListener('click',() => {
+  window.location = "a_applistex.html"
+});
 // Evaluator Count
 const querySnapshottotlDLPI = await getDocs(collection(db, "Applicants"));
 let totlE = 0;

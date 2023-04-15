@@ -4,7 +4,7 @@ bcklic.addEventListener('click' , () => {
 btnReport.addEventListener('click',()=>{
   window.location = "a_licreport.html"
 })
-// ---------- CHARTS ----------
+// ---------- CHARTS ---------- 
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
 import { getFirestore, query, collection,getCountFromServer,where,getDocs } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";

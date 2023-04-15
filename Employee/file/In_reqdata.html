@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../style/In_reqdata.css">
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
 </head>
 <body>
     <div class="main">
@@ -202,8 +203,8 @@
       <div class="info">
         <label>Refrigerant Type:</label>
         <!-- <input type="text" id="deptagncy"> -->
-        <select id="reftypee">
-          <option selected>Select:</option>
+        <select id="refrtypee">
+          <option>Select:</option>
           <option>Non-AC</option>
           <option>R12</option> 
           <option>R134a</option> 
@@ -242,7 +243,7 @@
 
       <div class="info">
         <label>Date Registered:</label>
-        <input type="text" id="dtrgstrd">
+        <input type="date" id="dtrgstrd">
       </div>
 
       <div class="info">
@@ -265,5 +266,6 @@
 
 
 <script type="module" src="../src/In_reqdata.js"></script>
+
 </body>
 </html>

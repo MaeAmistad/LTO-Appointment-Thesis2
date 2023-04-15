@@ -212,13 +212,13 @@ img{
     margin-right: 5px;
   }
   .dropdown-user select{
-    padding: 8px;
+    padding: 5px;
     text-transform: uppercase;
     outline: none;
   }
    .dropdown-user button{
-    margin: 5px;
-    padding: 8px;
+    margin: 4px;
+    padding: 5px;
     width: 100px;
     text-transform: uppercase;
    }
@@ -266,7 +266,9 @@ img{
     padding-left: 10px;
   }
   #btnReport{
-    margin-left: 62%;
+    margin-left: 55%;
+    background-color: #008000e8;
+    color: white;
   }
   /* ---------- SCROLLBARS ---------- */
   

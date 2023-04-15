@@ -122,6 +122,7 @@ const db = getFirestore(app);
 
                     document.getElementById("plate_num").innerHTML = doc2.data().pltno;
                     document.getElementById("typee").innerHTML = doc2.data().typel;
+                    document.getElementById("reftypee").innerHTML = doc2.data().refrigerant_typ;
                     document.getElementById("mk_seris").innerHTML = doc2.data().mksrs;
                     document.getElementById("mot_num").innerHTML = doc2.data().mtrno; 
                     document.getElementById("cha_num").innerHTML = doc2.data().chassno;
@@ -149,19 +150,6 @@ const db = getFirestore(app);
                         updateDoc(updateStat, {
                             User_Stat: "APPROVED_TO_CASHIER",
                             User_TransID: trnidmvr
-                        }), 
-                        setDoc(doc(db,"Applicants", doc2.id,"MV INFO",trnidmvr),{
-                            pltno: localStorage.getItem("ui1"),
-                            typel:localStorage.getItem("ui2"),
-                            mksrs:localStorage.getItem("ui3"),
-                            mtrno:localStorage.getItem("ui4"),
-                            chassno:localStorage.getItem("ui5"),
-                            color:localStorage.getItem("ui6"),
-                            fuel :localStorage.getItem("ui7"),
-                            fileno:localStorage.getItem("ui8"),
-                            dtrgstrd:localStorage.getItem("ui9"),
-                            trnsctn:localStorage.getItem("ui10"),
-                            deptagncy:localStorage.getItem("ui11")
                         }).then(() => {
                             window.location = "pc_homepage.html" 
                         })
