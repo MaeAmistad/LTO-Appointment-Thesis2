@@ -33,7 +33,7 @@ const db = getFirestore(app);
 
 
 //get all data
-  const querySnapshot2 = await getDocs(collection(db,"Appointment"));
+  const querySnapshot2 = await getDocs(collection(db,"Applicants"));
   var tbody = document.getElementById('tbody1');
 
       querySnapshot2.forEach(doc2 => {

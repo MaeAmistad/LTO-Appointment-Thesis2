@@ -21,7 +21,7 @@ cnl2.addEventListener('click',() => {
 // document.getElementById('tranID').innerHTML = tranID;
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
-import { getFirestore, getDocs, collection, updateDoc,doc } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
+import { getFirestore, getDocs, collection, updateDoc,doc,setDoc } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -37,11 +37,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-//get all data
-    const querySnapshot2 = await getDocs(collection(db,"Appointment"));
-
+//get all data   
     var transID = localStorage.getItem("stat");
     var ID = localStorage.getItem("ID");
+
+    const querySnapshot2 = await getDocs(collection(db,"Applicants"));
+
     console.log(ID)
             function makeid(l)
             {
@@ -67,8 +68,9 @@ const db = getFirestore(app);
 
             var trnidlic ="LTO-LIC-" + yy+mmm+ddd+hhh+mnn+makeid(2);
             var trnidmvr ="LTO-MVR-" + yy+mmm+ddd+hhh+mnn+makeid(2);
+
         querySnapshot2.forEach(doc2 => {
-       
+
             if (transID == doc2.data().User_AppID){
 
                 if (doc2.data().User_AT == "REVISION OF RECORDS"){
@@ -84,6 +86,9 @@ const db = getFirestore(app);
                     document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
                     document.getElementById("em").innerHTML = doc2.data().User_E;
                     document.getElementById("mnn").innerHTML = doc2.data().User_CN;
+
+                    document.getElementById('mv-table').style.display = "none";
+                    document.getElementById('mvtitle').style.display = "none";
                 }
                 else if (doc2.data().User_TT == "LICENSING"){
                     document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
@@ -98,6 +103,9 @@ const db = getFirestore(app);
                     document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
                     document.getElementById("em").innerHTML = doc2.data().User_E;
                     document.getElementById("mnn").innerHTML = doc2.data().User_CN;
+
+                    document.getElementById('mv-table').style.display = "none";
+                    document.getElementById('mvtitle').style.display = "none";
                 }
                 else if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
                     document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
@@ -112,32 +120,58 @@ const db = getFirestore(app);
                     document.getElementById("em").innerHTML = doc2.data().User_E;
                     document.getElementById("mnn").innerHTML = doc2.data().User_CN;
 
+                    document.getElementById("plate_num").innerHTML = doc2.data().pltno;
+                    document.getElementById("typee").innerHTML = doc2.data().typel;
+                    document.getElementById("mk_seris").innerHTML = doc2.data().mksrs;
+                    document.getElementById("mot_num").innerHTML = doc2.data().mtrno; 
+                    document.getElementById("cha_num").innerHTML = doc2.data().chassno;
+                    document.getElementById("colorr").innerHTML = doc2.data().color;
+                    document.getElementById("fuell").innerHTML = doc2.data().fuel;
+                    document.getElementById("filno").innerHTML = doc2.data().fileno;
+                    document.getElementById("dt_reg").innerHTML = doc2.data().dtrgstrd;
+                    document.getElementById("transctionmv").innerHTML = doc2.data().trnsctn;
+                    document.getElementById("deptAgncy").innerHTML = doc2.data().deptagncy;
+
                     document.getElementById("laa").style.display = "none"
                     document.getElementById("laa2").style.display = "none"
                 }
 
             }
-
+            
 
             // console.log(trnidlic)
             cnfrm.addEventListener('click', (e) => {
-                const updateStat = doc(db, "Appointment", doc2.id)
+                const updateStat = doc(db, "Applicants", doc2.id)
                 var stt = localStorage.getItem("stat")
 
-                if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
+                if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){ 
                     if (stt == doc2.data().User_AppID){
                         updateDoc(updateStat, {
-                            User_Stat: "APPROVED",
-                            User_TransID: trnidmvr 
+                            User_Stat: "APPROVED_TO_CASHIER",
+                            User_TransID: trnidmvr
+                        }), 
+                        setDoc(doc(db,"Applicants", doc2.id,"MV INFO",trnidmvr),{
+                            pltno: localStorage.getItem("ui1"),
+                            typel:localStorage.getItem("ui2"),
+                            mksrs:localStorage.getItem("ui3"),
+                            mtrno:localStorage.getItem("ui4"),
+                            chassno:localStorage.getItem("ui5"),
+                            color:localStorage.getItem("ui6"),
+                            fuel :localStorage.getItem("ui7"),
+                            fileno:localStorage.getItem("ui8"),
+                            dtrgstrd:localStorage.getItem("ui9"),
+                            trnsctn:localStorage.getItem("ui10"),
+                            deptagncy:localStorage.getItem("ui11")
                         }).then(() => {
-                            window.location = "pc_homepage.html"
+                            window.location = "pc_homepage.html" 
                         })
-                    }
+                    } 
+                    
                 }
                 else if(doc2.data().User_TT == "LICENSING"){
                     if (stt == doc2.data().User_AppID){
                         updateDoc(updateStat, {
-                            User_Stat: "APPROVED",
+                            User_Stat: "APPROVED_TO_CASHIER",
                             User_TransID: trnidlic 
                         }).then(() => {
                             window.location = "pc_homepage.html"
@@ -145,10 +179,10 @@ const db = getFirestore(app);
                     }
                 }
 
-            })
+            }) 
 
             cnfrm2.addEventListener('click', (e) => {
-                const updateStat = doc(db, "Appointment", doc2.id)
+                const updateStat = doc(db, "Applicants", doc2.id)
                 var stt = localStorage.getItem("stat")
 
                 if (stt == doc2.data().User_AppID){

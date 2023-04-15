@@ -68,7 +68,7 @@ const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9
           // document.getElementById('createAcc_modal').style.visibility = "visible";
  }
  else if (first_name === ''){
-    //  alert('First Name is required.');
+    //  alert('First Name is required.'); 
      console.log("3")
      Swal.fire({
         title: 'Please enter First Name.',
@@ -227,7 +227,7 @@ else{
               });
         // window.location = ("a_login.html")
         });
-        })
+        })  
         .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;

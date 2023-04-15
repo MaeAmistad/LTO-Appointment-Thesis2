@@ -18,7 +18,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 var tbody = document.getElementById('tbody1');
-var dte = document.getElementById("dte");
+var dte = document.getElementById("dte"); 
 
 var date = new Date();
 var day = date.getDate();
@@ -29,7 +29,7 @@ if (day < 10) day = "0" + day;
 var today = year + "-" + month + "-" + day;       
 document.getElementById("dte").value = today;
 
-    const querySnapshot2 = await getDocs(collection(db,"Appointment"));
+    const querySnapshot2 = await getDocs(collection(db,"Applicants"));
         querySnapshot2.forEach(doc2 => {
 
             var dd = doc2.data().User_D;

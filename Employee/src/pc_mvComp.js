@@ -30,12 +30,12 @@ const db = getFirestore(app);
 
 
 //get all data
-  const querySnapshot2 = await getDocs(collection(db,"Appointment"));
+  const querySnapshot2 = await getDocs(collection(db,"Applicants"));
   var tbody = document.getElementById('tbody1');
 
       querySnapshot2.forEach(doc2 => {
 
-          if (doc2.data().User_Stat == "APPROVED" && doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
+          if (doc2.data().User_Stat == "APPROVED_TO_CASHIER" && doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
 
             let trow = document.createElement('tr'); 
             let t_ID = document.createElement('td'); 
