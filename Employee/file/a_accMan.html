@@ -11,18 +11,22 @@
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <link rel="stylesheet" href="https://kit.fontawesome.com/8ec04d5e4f.css" crossorigin="anonymous">
+    
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="https://kit.fontawesome.com/8ec04d5e4f.js" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../style/a_accMan.css">
   </head>
   <body> 
-    <div class="grid-container">
+    <div class="grid-container"  id="blur">
 
       <header class="header">
         <div class="menu-icon" onclick="openSidebar()">
           <span class="material-icons-outlined">menu</span>
         </div>
-        <div class="header-left">
+        <div class="
+        header-left">
           <span class="material-icons-outlined">search</span>
         </div>
         <div class="header-right">
@@ -96,11 +100,11 @@
       <!-- End Sidebar -->
 
       <!-- Main -->
-      <main class="main-container">
+      <main class="main-container"  id="blur">
 
         <div class="main2">
             <div class="btn_useracc">
-                <button id="add_acc">Add</button>
+                <button onclick="toggle()" id="add_acc">Add</button>
                 <button id="edit_acc">Edit</button>
                 <button id="delete_acc">Delete</button>
             </div>
@@ -131,9 +135,127 @@
 
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
+    <div class="signup_modal" id="createAcc_modal">
+        <h4 onclick="toggle()" id="closePop">&times;</h2>
+      
+        <h1>Create Account</h1>
+
+            <div class="empp" id="emp_sapo">
+                <label>Type of Employee</label>
+                    <div class="emp2">
+                        <input type="radio" name="emp" value="0" checked>Evaluator  
+                        <input type="radio" name="emp" value="1">Cashier
+                        <input type="radio" name="emp" value="2">Examiner
+                        <input type="radio" name="emp" value="3">System Administrator
+                    </div>                   
+            </div>
+   <form>
+      <div class="info">
+            <div class="inf">
+                <label>Last Name: </label>   
+                <input type="text" id="lname">
+                <div class="error"></div>
+            </div>
+
+            <div class="inf">
+                <label>First Name: </label> 
+                <input type="text" id="fname">
+                <div class="error"></div>
+            </div>
+
+            <div class="inf">
+                <label>Middle Name:</label>
+                <input type="text" id="mname">
+                <div class="error"></div>
+            </div>
+
+            <div class="inf">
+                <label>Employee ID</label>
+                <input type="text" id="emp_id">
+                <div class="error"></div>
+            </div> 
+
+            <div class="inf">
+                <label>Email Address</label>
+                <input type="email" id="email">
+                <div class="error"></div>
+            </div> 
+      
+            <div class="inf">
+                <label>Password</label>
+                <input type="password" id="password">
+                <div class="error"></div>
+
+                <div class="passwordChar">
+                  <div id="error1">
+                    Password must has at least that include at least 1 lowercase character, 1 uppercase characters, 1 number, and 1 special character.
+                </div> 
+                <div id="lowercase">
+                    The password should contain at least one lowercase letter.
+                </div>
+                <div id="uppercase">
+                    The password should contain at least one uppercase letter.
+                </div>
+                <div id="num">
+                    The password should contain at least one number.
+                </div>
+                <div id="spclchrctr">
+                    The password should contain at least one Special Character (!@#$%^&*).
+                </div>
+                <div id="length">
+                    Password must be 8 characters.
+                </div>          
+                </div>
+                  
+            </div> 
+
+            
+            <div class="inf infcpass">
+                <label for="cpass">Confirm Password</label>
+                <input type="password" id="cpass" name="cpss" type="text">
+                <div class="error"></div>
+            </div>
+
+            <div class="showp">
+                <input type="checkbox" onclick="showPwrd()">Show Password
+            </div>
+
+    </form>
+        
+        <button id="signup">
+            Create
+        </button>
+
+    </div>
+    </div>
+
+    <script type="text/javascript">
+      function showPwrd() {
+              var x = document.getElementById("password");
+              var y = document.getElementById("cpass");
+              if (x.type === "password" && y.type === "password") {
+                  x.type = "text";
+                  y.type = "text";
+              } else {
+                  x.type = "password";
+                  y.type = "password";
+              }
+      }
+
+      function toggle(){
+            var blur = document.getElementById('blur');
+            blur.classList.toggle('active');
+
+            var popup = document.getElementById('createAcc_modal');
+            popup.classList.toggle('active');
+
+            console.log("nice");
+      }
+      </script>
+   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>-->
 
     <script type="module" src="../src/a_accMan.js"></script>
+    <!--  <script type="module" src="../src/a_signup.js"></script>  -->
     <script src="../src/a_dashboard.js"></script>
 
   </body>
