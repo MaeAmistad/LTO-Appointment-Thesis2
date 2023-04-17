@@ -1,18 +1,11 @@
 // add_acc.addEventListener('click' ,(e) => {
 //     window.location = "a_signup.html";
 // })
-add_acc.addEventListener('click',() => {
-    document.getElementById('createAcc_modal').style.visibility = "visible"
-
-});
-closePop.addEventListener('click',() => {
-    document.getElementById('createAcc_modal').style.visibility = "hidden"
-
-});
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
-import { getFirestore, getDocs, collection } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
+import { getFirestore, getDocs, setDoc, doc, collection } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
 import { getAuth, createUserWithEmailAndPassword, sendEmailVerification} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
+//  import { create } from "domain";
 // Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyCyNToos3S0HwLl0cZMRdiVjFJcBb4FWFo",
@@ -32,7 +25,7 @@ var tbody = document.getElementById('tbody1');
 
 function AddItemToTable(user_LN, user_FN, user_MN, user_Type, user_EID, user_E, user_PWD){
 
-    let trow = document.createElement('tr'); 
+    var trow = document.createElement('tr'); 
     let td1 = document.createElement('td');
     let td2 = document.createElement('td');
     let td3 = document.createElement('td'); 
@@ -58,6 +51,7 @@ function AddItemToTable(user_LN, user_FN, user_MN, user_Type, user_EID, user_E, 
     trow.appendChild(td7);
 
     tbody.appendChild(trow);
+
 }
 
 function AddAllItemsToTable (Transact){
@@ -68,8 +62,9 @@ function AddAllItemsToTable (Transact){
 
     });
 }
-//get all data
-    
+
+
+//get all data   
 async function GetAllDataOnce(){
     const querySnapshot = await getDocs(collection(db,"Users","Employee", "EmployeeData"));
 
@@ -80,13 +75,19 @@ async function GetAllDataOnce(){
     });
 
     AddAllItemsToTable(transation);
-
 }
 
-window
-.onload = GetAllDataOnce;
+window.onload = GetAllDataOnce;
 
-document.getElementById("edit_acc").disabled = true;
+// var table = document.getElementById("table");
+// var rows = document.getElementsByTagName('tr');
+// for(i = 1; i < rows.length; i++){
+//   rows[i].onclick = function(){
+//     console.log("working")
+//   }
+// }
+
+//document.getElementById("edit_acc").disabled = true;
 document.getElementById("delete_acc").disabled = true;
 
 /*
@@ -102,411 +103,449 @@ if (trow.click()){
 }
 */
 
-signup.addEventListener('click', (e) => {
+// MODAL ITEMS
+const modalAdd = document.getElementById('user-modal');
+const modalEdit = document.getElementById('edit-modal');
+const openModal = document.querySelector('.add_acc');
+const editModal = document.querySelector('.edit_acc')
+const closeModal = document.querySelector('.close-modal');
+const closeModalEdit = document.querySelector('.close-modal-edit');
 
-    var user = document.querySelector('input[name="emp"]:checked');
-    var last_name  = document.getElementById('lname').value;
-    var first_name = document.getElementById('fname').value;
-    var middle_name = document.getElementById('mname').value;
-    var emp_IDa = document.getElementById('emp_id').value;
-    var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
-    var cpass = document.getElementById('cpass').value;
-     /**
-     if(validateInputs()){
-        e.preventDefault();
-     }*/
-    
-    
-    const letters = /^[A-Za-z\s]*$/;
-    var numbers = /[0-9]{11}/g;
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    
-     if (last_name === '' ){
-        // alert("Last Name is required.")
-        // console.log("1")
-         Swal.fire({
-            title: "Please enter Last Name.",
-            confirmButtonColor: '#132aaa',
-            showClass: {
-              popup: 'animate__animated animate__fadeInDown'
-            },
-            hideClass: {
-              popup: 'animate__animated animate__fadeOutUp'
-            }
-          })
-          // document.getElementById('createAcc_modal').style.visibility = "visible";
-     }
-     else if (!last_name.match(letters)){
-            //  alert('Please input alphabet characters only. (Last Name)');
-             console.log("2")
-             Swal.fire({
-                title: 'Please input alphabet characters only. (Last Name)',
-                confirmButtonColor: '#132aaa',
-                showClass: {
-                  popup: 'animate__animated animate__fadeInDown'
-                },
-                hideClass: {
-                  popup: 'animate__animated animate__fadeOutUp'
-                }
-              })
-              // document.getElementById('createAcc_modal').style.visibility = "visible";
-     }
-     else if (first_name === ''){
-        //  alert('First Name is required.');
-         console.log("3")
-         Swal.fire({
-            title: 'Please enter First Name.',
-            confirmButtonColor: '#132aaa',
-            showClass: {
-              popup: 'animate__animated animate__fadeInDown'
-            },
-            hideClass: {
-              popup: 'animate__animated animate__fadeOutUp'
-            }
-          })
-     }
-     else if (!first_name.match(letters)){
-            //  alert('Please input alphabet characters only. (First Name)');
-             console.log("4")
-             Swal.fire({
-                title: 'Please input alphabet characters only. (First Name)',
-                confirmButtonColor: '#132aaa',
-                showClass: {
-                  popup: 'animate__animated animate__fadeInDown'
-                },
-                hideClass: {
-                  popup: 'animate__animated animate__fadeOutUp'
-                }
-              })
-     }
-     else if (!middle_name.match(letters)){
-        //  alert('Please input alphabet characters only. (Middle Name)');
-         console.log("7")
-         Swal.fire({
-            title: 'Please input alphabet characters only. (Middle Name)',
-            confirmButtonColor: '#132aaa',
-            showClass: {
-              popup: 'animate__animated animate__fadeInDown'
-            },
-            hideClass: {
-              popup: 'animate__animated animate__fadeOutUp'
-            }
-          })
-     }
-     else if (emp_IDa === ''){
-        // alert('Employee ID is required.');
-         console.log("5")
-         Swal.fire({
-            title: 'Please enter Employee ID.',
-            confirmButtonColor: '#132aaa',
-            showClass: {
-              popup: 'animate__animated animate__fadeInDown'
-            },
-            hideClass: {
-              popup: 'animate__animated animate__fadeOutUp'
-            }
-          })  
-     }
-     else if(!emp_IDa.match(numbers)){
-        // alert('Invalid Employee ID.');
-        console.log("10")
-        Swal.fire({
-            title: 'Invalid Employee ID.',
-            confirmButtonColor: '#132aaa',
-            showClass: {
-              popup: 'animate__animated animate__fadeInDown'
-            },
-            hideClass: {
-              popup: 'animate__animated animate__fadeOutUp'
-            }
-          })
-    } 
-    else if(password === ''){
-        // alert('Password is required.');
-         console.log("8")
-         Swal.fire({
-            title: 'Please enter Password.',
-            confirmButtonColor: '#132aaa',
-            showClass: {
-              popup: 'animate__animated animate__fadeInDown'
-            },
-            hideClass: {
-              popup: 'animate__animated animate__fadeOutUp'
-            }
-          })
-     } 
-     else if (!email.match(re)){
-        //  alert('Email is invalid.');
-         console.log("9.1")
-         Swal.fire({
-            title: 'Email is invalid.',
-            confirmButtonColor: '#132aaa',
-            showClass: {
-              popup: 'animate__animated animate__fadeInDown'
-            },
-            hideClass: {
-              popup: 'animate__animated animate__fadeOutUp'
-            }
-          })
-     } 
-     else if (email === ''){
-        // alert('Email is required.');
-        console.log("9")
-        Swal.fire({
-            title: 'Please enter Email.',
-            confirmButtonColor: '#132aaa',
-            showClass: {
-              popup: 'animate__animated animate__fadeInDown'
-            },
-            hideClass: {
-              popup: 'animate__animated animate__fadeOutUp'
-            }
-          })
-    
+openModal.addEventListener('click', () => {
+  modalAdd.style.display = 'block';
+});
+closeModal.addEventListener('click', () => {
+  modalAdd.style.display = 'none';
+});
+editModal.addEventListener('click', () => {
+  modalEdit.style.display = 'block';
+});
+closeModalEdit.addEventListener('click', () => {
+  modalEdit.style.display = 'none';
+});
+
+// window.addEventListener('click', (e) => {
+//   if(e.target === modal){
+//     modal.style.display = 'none';
+//   }
+// });
+
+// FORM VALIDATION
+//BLURRED BACKGROUND
+function toggle(){
+  var blur = document.getElementById('blur');
+  blur.classList.toggle('active');
+
+  var popup = document.getElementById('user-modal');
+  popup.classList.toggle('active');
+
+  console.log("nice");
+}
+
+const form = document.getElementById('form');
+const last_name = document.getElementById('lname');
+const first_name = document.getElementById('fname');
+const middle_name = document.getElementById('mname');
+const emp_IDa = document.getElementById('emp_id');
+const email = document.getElementById('email');
+const pass = document.getElementById('password');
+const cpass = document.getElementById('cpass');
+
+var user = document.querySelectorAll("input[name='emp']");
+
+var selected ;
+function findSelected(){
+   selected = document.querySelector("input[name='emp']:checked").value;
+   //console.log(selected)
+}
+findSelected();
+//console.log(selected)
+ 
+
+user.forEach(users => {
+  users.addEventListener("change", findSelected);
+});
+
+//Show Error Message
+function showError(input, message){
+  const formValidation = input.parentElement;
+  formValidation.className = 'form-validation error'
+
+  const errorMessage = formValidation.querySelector('p');
+  errorMessage.innerText = message;
+}
+
+//show valid
+function showValid(input){
+  const formValidation = input.parentElement;
+  formValidation.className = 'form-validation valid'
+}
+
+//Letters only input
+
+const letters = /^[A-Za-z\s]*$/;
+const numbers = /[0-9]{11}/g;
+const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+//fieldName 
+function getFieldName(input){
+  return input.name.charAt(0).toUpperCase() + input.name.slice(1);
+}
+
+function validationForm(){
+  //FOR EMPLOYEE TYPE 
+
+  // LAST NAME
+    if(!last_name.value.match(letters) ){
+      showError(last_name, 'Please enter alphabet only');
     }
-    else if(cpass !== password){
-        // alert('Password not match.');
-        Swal.fire({
-            title: 'Password not match.',
-            confirmButtonColor: '#132aaa',
-            showClass: {
-              popup: 'animate__animated animate__fadeInDown'
-            },
-            hideClass: {
-              popup: 'animate__animated animate__fadeOutUp'
-            }
-          })
-      }
+    else if(last_name.value.match(numbers)){
+      showError(last_name, 'Please enter alphabet only');
+    }
+    else if(last_name.value === ''){
+      showError(last_name, `${getFieldName(last_name)} is required`)
+    }
+  
+  //FIRST NAME
+    else if(!first_name.value.match(letters) ){
+      showError(first_name, 'Please enter alphabet only');
+    }
+    else if(first_name.value.match(numbers)){
+      showError(first_name, 'Please enter alphabet only');
+    }
+    else if(first_name.value === ''){
+      showError(first_name, `${getFieldName(first_name)} is required`)
+    }
+  
+  //MIDDLE NAME
+    else if(!middle_name.value.match(letters) ){
+      showError(middle_name, 'Please enter alphabet only');
+    }
+    else if(middle_name.value.match(numbers)){
+      showError(middle_name, 'Please enter alphabet only');
+    }
+
+  //EMPLOYEE ID
+    else if(!emp_IDa.value.match(numbers) ){
+      showError(emp_IDa, 'Please enter numbers only');
+    }
+    else if(emp_IDa.value.match(letters)){
+      showError(emp_IDa, 'Please enter numbers only');
+    }
+    else if(emp_IDa.value === ''){
+      showError(emp_IDa, `${getFieldName(emp_IDa)} is required`)
+    }
+
+    //Email
+    else if(email.value.trim() === ''){
+      showError(email, `${getFieldName(email)} is required`)
+    }
+
+    //Password Length 
+    else if(pass.value.length< 8){
+      showError(pass, `${getFieldName(pass)} must be at least ${8} characters`);
+    }
+    
+    // Password Match
+    else if(pass.value !== cpass.value){
+      showError(cpass, 'Password do not match')
+    }
     else{
-        if (user.value == '0') {
-            // console.log("User Created");
-            
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
+      showValid(last_name) 
+      showValid(first_name);
+      showValid(middle_name);
+      showValid(emp_IDa);
+      showValid(email);
+      showValid(pass);
+      showValid(cpass);
+   
+      if(selected == 'evaluator'){
+      //console.log("Evaluator");
+
+        createUserWithEmailAndPassword(auth, email.value, pass.value)
+          .then((userCredential) => {
             const user = userCredential.user;
-            setDoc (doc(db, "Users","Employee","EmployeeData", user.uid), {
-                user_Type: "Evaluator",
-                user_LN: last_name,
-                user_FN: first_name,
-                user_MN: middle_name,
-                user_E: email,
-                user_PWD: password,
-                user_EID: emp_IDa
+            setDoc(doc(db, "Users", "Employee", "EmployeeData", user.uid), {
+              user_Type: "EVALUATOR",
+              user_LN: last_name.value.toUpperCase(),
+              user_FN: first_name.value.toUpperCase(),
+              user_MN: middle_name.value.toUpperCase(),
+              user_E: email.value.toUpperCase(),
+              user_PWD: pass.value,
+              user_EID: emp_IDa.value
             })
-            sendEmailVerification(auth.currentUser)
-            .then(() => {
-    
-                Swal.fire({
-                    title: '<strong>An email has been sent please verify.</strong>', 
-                    showCloseButton: true,
-                    focusConfirm: false,
-                    reverseButtons: true,
-                    focusCancel: true,
-                    confirmButtonColor: '#132aaa',
-                    confirmButtonText:`OK`
-                  }).then((result) => {
-                    if (result.value) {
-                      document.getElementById('createAcc_modal').style.visibility = "hidden"
-                    }
-                  });
-            // window.location = ("a_login.html")
-            });
-            })
-            .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-    
-            console.log(errorMessage);
-            });
-            
-        } else if (user.value == '1') {
-            // console.log("User Created");
-            
-            createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-            const user = userCredential.user;
-            setDoc (doc(db, "Users","Employee","EmployeeData",user.uid) , {
-            user_Type: "Cashier",
-            user_LN: last_name,
-            user_FN: first_name,
-            user_MN: middle_name,
-            user_E: email,
-            user_PWD: password,
-            user_EID: emp_IDa
-                
-            });
-            sendEmailVerification(auth.currentUser)
-            .then(() => {
-    
-                Swal.fire({
-                    title: '<strong>An email has been sent please verify.</strong>', 
-                    showCloseButton: true,
-                    focusConfirm: false,
-                    reverseButtons: true,
-                    focusCancel: true,
-                    confirmButtonColor: '#132aaa',
-                    confirmButtonText:`OK`
-                  }).then((result) => {
-                    if (result.value) {
-                      document.getElementById('createAcc_modal').style.visibility = "hidden"
-                    }
-                  });
-            // window.location = ("a_login.html")
-            });
-            })
-            .catch((error) => {
+        sendEmailVerification(auth.currentUser)
+        .then(() => {
+          Swal.fire({
+            title: '<strong> An email has been sent please verify.</strong>',
+            showCloseButton: true,
+            focusConfirm: false,
+            reverseButtons: true,
+            focusCancel: true,
+            confirmButtonColor: '#132aaa',
+            confirmButtonText:`OK`
+          }).then((result) => {
+            if(result.value){
+              console.log("User Created for evaluator")
+              modalAdd.style.display = 'none';
+              toggle();
+            }
+          });
+        });
+          })
+          .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
             console.log(errorMessage);
+          });
+          //console.log("User Created"); 
+      }
+
+      else if(selected == 'cashier'){
+        //console.log("Cashier");
+
+        createUserWithEmailAndPassword(auth, email.value, pass.value)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            setDoc(doc(db, "Users", "Employee", "EmployeeData", user.uid), {
+              user_Type: "CASHIER",
+              user_LN: last_name.value.toUpperCase(),
+              user_FN: first_name.value.toUpperCase(),
+              user_MN: middle_name.value.toUpperCase(),
+              user_E: email.value.toUpperCase(),
+              user_PWD: pass.value,
+              user_EID: emp_IDa.value
+            })
+        sendEmailVerification(auth.currentUser)
+          .then(() => {
+            Swal.fire({
+            title: '<strong> An email has been sent please verify.</strong>',
+            showCloseButton: true,
+            focusConfirm: false,
+            reverseButtons: true,
+            focusCancel: true,
+            confirmButtonColor: '#132aaa',
+            confirmButtonText:`OK`
+        }).then((result) => {
+            if(result.value){
+              console.log("User Created for cashier")
+              modalAdd.style.display = 'none';
+              toggle();
+            }
+        });
+        });
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorMessage);
+          });
+          //console.log("User Created");
+      }
+
+      else if(selected == 'examiner'){
+        //console.log("Examiner");
+
+        createUserWithEmailAndPassword(auth, email.value, pass.value)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            setDoc(doc(db, "Users", "Employee", "EmployeeData", user.uid), {
+              user_Type: "EXAMINER",
+              user_LN: last_name.value.toUpperCase(),
+              user_FN: first_name.value.toUpperCase(),
+              user_MN: middle_name.value.toUpperCase(),
+              user_E: email.value.toUpperCase(),
+              user_PWD: pass.value,
+              user_EID: emp_IDa.value
+            })
+            sendEmailVerification(auth.currentUser)
+            .then(() => {
+              Swal.fire({
+                title: '<strong> An email has been sent please verify.</strong>',
+                showCloseButton: true,
+                focusConfirm: false,
+                reverseButtons: true,
+                focusCancel: true,
+                confirmButtonColor: '#132aaa',
+                confirmButtonText:`OK`
+              }).then((result) => {
+                if(result.value){
+                  console.log("User Created for examiner")
+                  modalAdd.style.display = 'none';
+                  toggle();
+                }
+              });
             });
-          }
-            else if (user.value == '2') {
-              // console.log("User Created");
-              
-              createUserWithEmailAndPassword(auth, email, password)
-              .then((userCredential) => {
-              const user = userCredential.user;
-              setDoc (doc(db, "Users","Employee","EmployeeData",user.uid) , {
-              user_Type: "Examiner",
-              user_LN: last_name,
-              user_FN: first_name,
-              user_MN: middle_name,
-              user_E: email,
-              user_PWD: password,
-              user_EID: emp_IDa              
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+
+            console.log(errorMessage);
+          });  
+          //console.log("User Created");     
+      }
+      else if(selected == 'inspector'){
+        //console.log("Inspector");
+
+        createUserWithEmailAndPassword(auth, email.value, pass.value)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            setDoc(doc(db, "Users", "Employee", "EmployeeData", user.uid), {
+              user_Type: "INSPECTOR",
+              user_LN: last_name.value.toUpperCase(),
+              user_FN: first_name.value.toUpperCase(),
+              user_MN: middle_name.value.toUpperCase(),
+              user_E: email.value.toUpperCase(),
+              user_PWD: pass.value,
+              user_EID: emp_IDa.value
+            })
+            sendEmailVerification(auth.currentUser)
+            .then(() => {
+              Swal.fire({
+                title: '<strong> An email has been sent please verify.</strong>',
+                showCloseButton: true,
+                focusConfirm: false,
+                reverseButtons: true,
+                focusCancel: true,
+                confirmButtonColor: '#132aaa',
+                confirmButtonText:`OK`
+              }).then((result) => {
+                if(result.value){
+                  console.log("User Created for inspector")
+                  modalAdd.style.display = 'none';
+                  toggle();
+                }
               });
-              sendEmailVerification(auth.currentUser)
-              .then(() => {
-      
-                  Swal.fire({
-                      title: '<strong>An email has been sent please verify.</strong>', 
-                      showCloseButton: true,
-                      focusConfirm: false,
-                      reverseButtons: true,
-                      focusCancel: true,
-                      confirmButtonColor: '#132aaa',
-                      confirmButtonText:`OK`
-                    }).then((result) => {
-                      if (result.value) {
-                        document.getElementById('createAcc_modal').style.visibility = "visible"
-                      }
-                    });
-              // window.location = ("a_login.html")
-              });
-              })
-              .catch((error) => {
-              const errorCode = error.code;
-              const errorMessage = error.message;
-              console.log(errorMessage);
-              });    
-          }
-    
-          else if (user.value == '3') {
-              // console.log("User Created");
-              
-              createUserWithEmailAndPassword(auth, email, password)
-              .then((userCredential) => {
-              const user = userCredential.user;
-              setDoc (doc(db, "Users","Employee","EmployeeData",user.uid) , {
-              user_Type: "System Administrator",
-              user_LN: last_name,
-              user_FN: first_name,
-              user_MN: middle_name,
-              user_E: email,
-              user_PWD: password,
-              user_EID: emp_IDa                
-              });
-              sendEmailVerification(auth.currentUser)
-              .then(() => {
-      
-                  Swal.fire({
-                      title: '<strong>An email has been sent please verify.</strong>', 
-                      showCloseButton: true,
-                      focusConfirm: false,
-                      reverseButtons: true,
-                      focusCancel: true,
-                      confirmButtonColor: '#132aaa',
-                      confirmButtonText:`OK`
-                    }).then((result) => {
-                      if (result.value) {
-                        document.getElementById('createAcc_modal').style.visibility = "visible"
-                      }
-                    });
-              // window.location = ("a_login.html")
-              });
-              })
-              .catch((error) => {
-              const errorCode = error.code;
-              const errorMessage = error.message;
-              console.log(errorMessage);
-              });  
-          }   
+            });
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+
+            console.log(errorMessage);
+          });  
+          //console.log("User Created");     
+      }
+      else if(selected == 'admin'){
+        // console.log("Admin");
+
+        createUserWithEmailAndPassword(auth, email.value, pass.value)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            setDoc(doc(db, "Users", "Employee", "EmployeeData", user.uid), {
+              user_Type: "SYSTEM ADMINISTRATOR",
+              user_LN: last_name.value.toUpperCase(),
+              user_FN: first_name.value.toUpperCase(),
+              user_MN: middle_name.value.toUpperCase(),
+              user_E: email.value.toUpperCase(),
+              user_PWD: pass.value,
+              user_EID: emp_IDa.value
+            })
+            sendEmailVerification(auth.currentUser)
+        .then(() => {
+          Swal.fire({
+            title: '<strong> An email has been sent please verify.</strong>',
+            showCloseButton: true,
+            focusConfirm: false,
+            reverseButtons: true,
+            focusCancel: true,
+            confirmButtonColor: '#132aaa',
+            confirmButtonText:`OK`
+          }).then((result) => {
+            if(result.value){
+              console.log("User Created for admin")
+              modalAdd.style.display = 'none';
+              toggle();
+            }
+          });
+        });
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+
+            console.log(errorMessage);
+          });    
+          //console.log("User Created");        
+      }
     }
-    
-    });
-        password.onfocus = function() {
-            document.getElementById("error1").style.display = "block";
-           }
-         
-         password.onblur = function() {
-            document.getElementById("error1").style.display = "none";
-            document.getElementById("lowercase").style.display = "none";
-            document.getElementById("uppercase").style.display = "none";
-            document.getElementById("num").style.display = "none";
-            document.getElementById("length").style.display = "none";
-            document.getElementById("spclchrctr").style.display = "none";
-           }
-        
-        password.onkeyup = function() {
-            var upperCaseLetters = /[A-Z]/g;
-            var lowerCaseLetters = /[a-z]/g;
-            var numbers = /[0-9]/g;
-            var spclchrctr = /[!@#$%^&*]/g;
-            
-            document.getElementById("error1").style.display = "none";
-    
-            if(!password.value.match(lowerCaseLetters)) {  
-                document.getElementById("lowercase").style.display = "block";
-                document.getElementById("uppercase").style.display = "none";
-                document.getElementById("num").style.display = "none";
-                document.getElementById("length").style.display = "none";
-                document.getElementById("spclchrctr").style.display = "none";
-            } 
-            else if(!password.value.match(upperCaseLetters)) {  
-                document.getElementById("uppercase").style.display = "block";
-                document.getElementById("lowercase").style.display = "none";
-                document.getElementById("num").style.display = "none";
-                document.getElementById("length").style.display = "none";
-                document.getElementById("spclchrctr").style.display = "none";
-            } 
-            else if(!password.value.match(numbers)) {  
-                document.getElementById("num").style.display = "block";
-                document.getElementById("lowercase").style.display = "none";
-                document.getElementById("uppercase").style.display = "none";
-                document.getElementById("length").style.display = "none";
-                document.getElementById("spclchrctr").style.display = "none";
-            }
-            else if(!password.value.match(spclchrctr)) {
-                document.getElementById("spclchrctr").style.display = "block";
-                document.getElementById("length").style.display = "none";
-                document.getElementById("lowercase").style.display = "none";
-                document.getElementById("uppercase").style.display = "none";
-                document.getElementById("num").style.display = "none";
-              }
-            else if(password.value.length < 8) {
-                document.getElementById("length").style.display = "block";
-                document.getElementById("lowercase").style.display = "none";
-                document.getElementById("uppercase").style.display = "none";
-                document.getElementById("num").style.display = "none";
-                document.getElementById("spclchrctr").style.display = "none";
-            } 
-            else{
-                document.getElementById("error1").style.display = "none";
-                document.getElementById("lowercase").style.display = "none";
-                document.getElementById("uppercase").style.display = "none";
-                document.getElementById("num").style.display = "none";
-                document.getElementById("length").style.display = "none";
-                document.getElementById("spclchrctr").style.display = "none";
-            }
-            }
+
+}
+
+
+
+//Event listener for create account button
+form.addEventListener('submit',(e) =>{
+  e.preventDefault();
+
+  validationForm();
+
+});
+
+// password.onfocus = function() {
+//   document.getElementById("error1").style.display = "block";
+//  }
+
+// password.onblur = function() {
+//   document.getElementById("error1").style.display = "none";
+//   document.getElementById("lowercase").style.display = "none";
+//   document.getElementById("uppercase").style.display = "none";
+//   document.getElementById("num").style.display = "none";
+//   document.getElementById("length").style.display = "none";
+//   document.getElementById("spclchrctr").style.display = "none";
+//  }
+
+// password.onkeyup = function() {
+//   var upperCaseLetters = /[A-Z]/g;
+//   var lowerCaseLetters = /[a-z]/g;
+//   var numbers = /[0-9]/g;
+//   var spclchrctr = /[!@#$%^&*]/g;
+  
+//   document.getElementById("error1").style.display = "none";
+
+//   if(!password.value.match(lowerCaseLetters)) {  
+//       document.getElementById("lowercase").style.display = "block";
+//       document.getElementById("uppercase").style.display = "none";
+//       document.getElementById("num").style.display = "none";
+//       document.getElementById("length").style.display = "none";
+//       document.getElementById("spclchrctr").style.display = "none";
+//   } 
+//   else if(!password.value.match(upperCaseLetters)) {  
+//       document.getElementById("uppercase").style.display = "block";
+//       document.getElementById("lowercase").style.display = "none";
+//       document.getElementById("num").style.display = "none";
+//       document.getElementById("length").style.display = "none";
+//       document.getElementById("spclchrctr").style.display = "none";
+//   } 
+//   else if(!password.value.match(numbers)) {  
+//       document.getElementById("num").style.display = "block";
+//       document.getElementById("lowercase").style.display = "none";
+//       document.getElementById("uppercase").style.display = "none";
+//       document.getElementById("length").style.display = "none";
+//       document.getElementById("spclchrctr").style.display = "none";
+//   }
+//   else if(!password.value.match(spclchrctr)) {
+//       document.getElementById("spclchrctr").style.display = "block";
+//       document.getElementById("length").style.display = "none";
+//       document.getElementById("lowercase").style.display = "none";
+//       document.getElementById("uppercase").style.display = "none";
+//       document.getElementById("num").style.display = "none";
+//     }
+//   else if(password.value.length < 8) {
+//       document.getElementById("length").style.display = "block";
+//       document.getElementById("lowercase").style.display = "none";
+//       document.getElementById("uppercase").style.display = "none";
+//       document.getElementById("num").style.display = "none";
+//       document.getElementById("spclchrctr").style.display = "none";
+//   } 
+//   else{
+//       document.getElementById("error1").style.display = "none";
+//       document.getElementById("lowercase").style.display = "none";
+//       document.getElementById("uppercase").style.display = "none";
+//       document.getElementById("num").style.display = "none";
+//       document.getElementById("length").style.display = "none";
+//       document.getElementById("spclchrctr").style.display = "none";
+//   }
+//   }
+                    

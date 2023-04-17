@@ -10,7 +10,7 @@
 
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-    <link rel="stylesheet" href="https://kit.fontawesome.com/8ec04d5e4f.css" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://kit.fontawesome.com/8ec04d5e4f.css" crossorigin="anonymous"> -->
     
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="https://kit.fontawesome.com/8ec04d5e4f.js" crossorigin="anonymous"></script>
@@ -25,8 +25,7 @@
         <div class="menu-icon" onclick="openSidebar()">
           <span class="material-icons-outlined">menu</span>
         </div>
-        <div class="
-        header-left">
+        <div class="header-left">
           <span class="material-icons-outlined">search</span>
         </div>
         <div class="header-right">
@@ -46,21 +45,15 @@
         <ul class="sidebar-list"> 
 
           <a href="a_dashboard.html">
-            <li class="sidebar-list-item">
-               Dashboard
-            </li>
+            <li class="sidebar-list-item">Dashboard</li>
           </a> 
 
           <a href="a_accMan.html">         
-            <li class="sidebar-list-item">
-                Account Management
-            </li>
+            <li class="sidebar-list-item">Account Management</li>
           </a>
 
           <a href="a_appList.html">
-            <li class="sidebar-list-item">
-              List of Appointments
-            </li>
+            <li class="sidebar-list-item">List of Appointments</li>
           </a>
 
           <li class="sidebar-list-item1">
@@ -68,33 +61,23 @@
 
             <div class="dropdown-container">
               <a href="a_pcLIApprved.html">
-                <div class="con-lic">
-                  License <br><br>
-                </div>
-                </a>
+                <div class="con-lic">License <br><br></div>
+              </a>
   
-                <a href="a_pcmvApprved.html">
-                <div class="con-mv">
-                  Motor Vehicle<br><br>
-                </div>
-                </a>
+              <a href="a_pcmvApprved.html">
+                <div class="con-mv">Motor Vehicle<br><br></div>
+              </a>
 
             </div>
           </li>
 
             <a href="a_reqView.html">
-              <li class="sidebar-list-item">
-                List Of Requirements
-              </li>    
+              <li class="sidebar-list-item">List Of Requirements</li>    
             </a>
 
             <a id="logout">
-              <li class="sidebar-list-item">
-                Log-Out
-              </li>               
+              <li class="sidebar-list-item">Log-Out</li>               
             </a>  
-
-
           </ul>
       </aside>
       <!-- End Sidebar -->
@@ -104,8 +87,8 @@
 
         <div class="main2">
             <div class="btn_useracc">
-                <button onclick="toggle()" id="add_acc">Add</button>
-                <button id="edit_acc">Edit</button>
+                <button class="add_acc" onclick="toggle()">Add</button>
+                <button class="edit_acc" onclick="toggle2()">Edit</button>
                 <button id="delete_acc">Delete</button>
             </div>
             <table id="table" class="table" style="width:100%">
@@ -135,127 +118,177 @@
 
 
 
-    <div class="signup_modal" id="createAcc_modal">
-        <h4 onclick="toggle()" id="closePop">&times;</h2>
-      
+
+        <!-- CREATE ACCOUNT -->
+    <div class="modal" id="user-modal">
+      <div class="modal-content">
+        <span class="close-modal" onclick="toggle()">&times;</span>
+
         <h1>Create Account</h1>
 
             <div class="empp" id="emp_sapo">
                 <label>Type of Employee</label>
                     <div class="emp2">
-                        <input type="radio" name="emp" value="0" checked>Evaluator  
-                        <input type="radio" name="emp" value="1">Cashier
-                        <input type="radio" name="emp" value="2">Examiner
-                        <input type="radio" name="emp" value="3">System Administrator
+                        <input type="radio" name="emp" id="cashier" value="cashier" checked>Cashier
+                        <input type="radio" name="emp" id="evaluator" value="evaluator" >Evaluator  
+                        <input type="radio" name="emp" id="examiner" value="examiner">Examiner
+                        <input type="radio" name="emp" id="examiner" value="inspector">Inspector
+                        <input type="radio" name="emp" id="admin" value="admin">System Administrator
                     </div>                   
             </div>
-   <form>
-      <div class="info">
-            <div class="inf">
-                <label>Last Name: </label>   
-                <input type="text" id="lname">
-                <div class="error"></div>
-            </div>
 
-            <div class="inf">
-                <label>First Name: </label> 
-                <input type="text" id="fname">
-                <div class="error"></div>
-            </div>
+           <div class="modal-content-create">
+              <form action="/" class="modal-form" id="form" autocomplete="off">
 
-            <div class="inf">
-                <label>Middle Name:</label>
-                <input type="text" id="mname">
-                <div class="error"></div>
-            </div>
-
-            <div class="inf">
-                <label>Employee ID</label>
-                <input type="text" id="emp_id">
-                <div class="error"></div>
-            </div> 
-
-            <div class="inf">
-                <label>Email Address</label>
-                <input type="email" id="email">
-                <div class="error"></div>
-            </div> 
-      
-            <div class="inf">
-                <label>Password</label>
-                <input type="password" id="password">
-                <div class="error"></div>
-
-                <div class="passwordChar">
-                  <div id="error1">
-                    Password must has at least that include at least 1 lowercase character, 1 uppercase characters, 1 number, and 1 special character.
-                </div> 
-                <div id="lowercase">
-                    The password should contain at least one lowercase letter.
+                <div class="info">
+                  <label>Last Name: </label> 
+                  <div class="form-validation">                     
+                    <input type="text" class="modal-input" id="lname" name="last name" placeholder="Last Name">
+                    <p>Error Message</p>
+                  </div>
                 </div>
-                <div id="uppercase">
-                    The password should contain at least one uppercase letter.
+                
+                <div class="info">
+                  <label>First Name: </label>
+                  <div class="form-validation">    
+                    <input type="text" class="modal-input" id="fname" name="first name" placeholder="First Name">
+                    <p>Error Message</p>
+                  </div>
                 </div>
-                <div id="num">
-                    The password should contain at least one number.
+                
+
+                <div class="info">
+                  <label>Middle Name: </label>
+                  <div class="form-validation">   
+                    <input type="text" class="modal-input" id="mname" name="middle name" placeholder="Middle Name">
+                    <p>Error Message</p>
+                  </div>
                 </div>
-                <div id="spclchrctr">
-                    The password should contain at least one Special Character (!@#$%^&*).
+                 
+                <div class="info">
+                  <label>Employee ID: </label>
+                  <div class="form-validation">     
+                    <input type="text" class="modal-input" id="emp_id" name="id" placeholder="Employee ID">
+                    <p>Error Message</p>
+                  </div>
                 </div>
-                <div id="length">
-                    Password must be 8 characters.
-                </div>          
+                
+                <div class="info">
+                  <label>Email Address: </label>
+                  <div class="form-validation">    
+                    <input type="email" class="modal-input" id="email" name="email" placeholder="Email">
+                    <p>Error Message</p>
+                  </div>
                 </div>
-                  
-            </div> 
-
-            
-            <div class="inf infcpass">
-                <label for="cpass">Confirm Password</label>
-                <input type="password" id="cpass" name="cpss" type="text">
-                <div class="error"></div>
-            </div>
-
-            <div class="showp">
-                <input type="checkbox" onclick="showPwrd()">Show Password
-            </div>
-
-    </form>
-        
-        <button id="signup">
-            Create
-        </button>
-
+                
+                <div class="info">
+                  <label>Password: </label> 
+                  <div class="form-validation">  
+                    <input type="password" class="modal-input2" id="password" name="password" placeholder="Password">
+                    <span><i class="fa-regular fa-eye" aria-hidden="true" id="eye1" onclick="showPass()"></i></span>
+                    <p>Error Message</p>
+                  </div>
+                </div>
+                 
+                <div class="info">
+                  <label>Confirm Password: </label>
+                  <div class="form-validation">   
+                    <input type="password" class="modal-input2" id="cpass" name="confirm password" placeholder="Confirm Password">
+                    <span><i class="fa-regular fa-eye" aria-hidden="true" id="eye2" onclick="showPass()"></i></span>
+                    <p>Error Message</p>
+                  </div>
+                </div>
+                
+                <input type="submit" id="btn" class="modal-input-btn" value="Create Account">
+              </form>
+           </div>
+      </div>
     </div>
-    </div>
+
+      <!-- EDIT ACCOUNT FUNCTION-->
+      <div class="modal" id="edit-modal">
+        <div class="modal-edit">
+            <span class="close-modal-edit" onclick="toggle2()">&times;</span>
+
+            <div class="modal-content-edit">
+              <form action="/" class="modal-form-edit" id="form-edit" autocomplete="off">
+                
+                <div class="edit-info">
+                  <label>First Name: </label>
+                  <input type="text" class="modal-input-edit" id="fname-edit" placeholder="First Name">
+                </div>
+              
+                <div class="edit-info">
+                  <label>Last Name: </label>
+                  <input type="text" class="modal-input-edit" id="lname-edit" placeholder="Last Name">
+                </div>
+
+                <div class="edit-info">
+                  <label>Middle Name: </label>
+                  <input type="text" class="modal-input-edit" id="mname-edit" placeholder="Middle Name">
+                </div>
+
+                <div class="edit-info">
+                  <label>Employee ID: </label>
+                  <input type="text" class="modal-input-edit" id="id-edit" placeholder="Employee ID">
+                </div>
+
+                <div class="edit-info">
+                  <label>Email: </label>
+                  <input type="text" class="modal-input-edit" id="email-edit" placeholder="Email">
+                </div>
+                 
+                <div class="edit-info">
+                  <label>Password: </label>
+                  <input type="text" class="modal-input-edit" id="pass-edit" name="first name" placeholder="Password">
+                </div>
+                
+                <input type="submit" id="btnEdit" class="modal-input-edit-btn" value="Update Account">
+              </form>
+           </div>
+
+        </div>
+      </div>
 
     <script type="text/javascript">
-      function showPwrd() {
-              var x = document.getElementById("password");
-              var y = document.getElementById("cpass");
-              if (x.type === "password" && y.type === "password") {
-                  x.type = "text";
-                  y.type = "text";
-              } else {
-                  x.type = "password";
-                  y.type = "password";
-              }
+      function showPass(){
+        var state = false;
+        if(state){
+          document.getElementById("password").setAttribute("type", "password");
+          //document.getElementById('eye').style.color='#7a797e';
+          state = false;
+        }
+        else{
+          document.getElementById("password").setAttribute("type", "text");
+          //document.getElementById('eye').style.color='#5887ef';
+          state = true;
+        }
       }
-
+      
       function toggle(){
             var blur = document.getElementById('blur');
             blur.classList.toggle('active');
 
-            var popup = document.getElementById('createAcc_modal');
+            var popup = document.getElementById('user-modal');
             popup.classList.toggle('active');
 
             console.log("nice");
       }
+      
+      function toggle2(){
+            var blur = document.getElementById('blur');
+            blur.classList.toggle('active');
+
+            var popup = document.getElementById('edit-modal');
+            popup.classList.toggle('active');
+
+            console.log("nice2");
+      }   
       </script>
    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>-->
 
     <script type="module" src="../src/a_accMan.js"></script>
-    <!--  <script type="module" src="../src/a_signup.js"></script>  -->
+    <!-- <script type="module" src="../src/a_signup.js"></script> -->
     <script src="../src/a_dashboard.js"></script>
 
   </body>
