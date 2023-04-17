@@ -241,10 +241,20 @@ tr th, tr th{
 }
 .table tr:hover{
     background: gainsboro;
-}
-
-
-/* .signup_modal{
+ }
+/* .crtacc{
+  width: 560px;
+  height: 500px;
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  border: 1px solid grey;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+} */
+.signup_modal{
     background-color: white;
     user-select: none;
     border: 1px solid #b3b3b3;
@@ -442,7 +452,7 @@ h4{
 }
 .error_txt{
   display: block;
-} */
+}
 
   
   /* Extra Small <= 576px */

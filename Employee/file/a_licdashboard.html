@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <!-- <meta http-equiv="refresh" content="5"> -->
     <title>LTO Appointment Setter</title>
 
     <!-- Montserrat Font -->
@@ -14,7 +13,7 @@
     <!-- <link rel="stylesheet" href="https://kit.fontawesome.com/8ec04d5e4f.css" crossorigin="anonymous"> -->
     <script src="https://kit.fontawesome.com/8ec04d5e4f.js" crossorigin="anonymous"></script>
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../style/a_dashboard.css">
+    <link rel="stylesheet" href="../style/a_dashboard2.css">
   </head>
   <body>
     <div class="grid-container">
@@ -29,7 +28,7 @@
         </div>
         <div class="header-right">
           <!-- <span class="material-icons-outlined">email</span> -->
-        </div>
+        </div> 
       </header>
       <!-- End Header -->
 
@@ -93,7 +92,7 @@
               <li class="sidebar-list-item">
                 Log-Out
               </li>               
-            </a>   
+            </a>  
 
 
           </ul>
@@ -106,76 +105,66 @@
           <p class="font-weight-bold">DASHBOARD</p>
         </div>
 
-        <div class="main-cards">
-
-          <div class="card" id="appntment_chrt">
-            <div class="card-inner">
-              <p class="text-primary">APPOINTMENTS</p>  
-            </div>
-            <span class="text-primary font-weight-bold" id="appnt">0</span>
-          </div>
-
-          <div class="card">
-            <div class="card-inner">
-              <p class="text-primary" >INSPECTOR</p>
-            </div>
-            <span class="text-primary font-weight-bold" id="inspctr">0</span>
-          </div>
-          
-          <div class="card">
-            <div class="card-inner">
-              <p class="text-primary">EVALUATOR</p>
-            </div>
-            <span class="text-primary font-weight-bold" id="evltr">0</span>
-          </div>
-
-          <div class="card">
-            <div class="card-inner">
-              <p class="text-primary" >CASHIER</p>
-            </div>
-            <span class="text-primary font-weight-bold" id="cshr">0</span>
-          </div>
-
-          <div class="card">
-            <div class="card-inner">
-              <p class="text-primary" >EXAMINER</p>
-            </div>
-            <span class="text-primary font-weight-bold" id="exmnr">0</span>
-          </div>
-
-
- 
-        </div> 
         <div>
-            <h1> Statistics</h1>
-        </div>
- 
-        <div class="charts">
-          <div class="charts-card">
+          
+          <div class="dropdown-user">
+
+            <button id="bcklic">BACK</button>
+
+            <select id="user" onchange="user(this.value)">
+              <option value="a_licdashboard.html" selected>LICENSE</option>
+              <option value="a_mvdashboard.html">MOTOR VEHICLE</option>
+            </select> 
+
+            <button id="btnReport">REPORT</button>
             
-            <p class="chart-title">TRANSACTIONS</p>
-            <p class="currntRel">Released/Registered<em>(current)</em></p>
-            <p id="num_current_rel"></p>
-            <p id="total"></p>
-            <div id="bar-chart"></div>
           </div>
 
-          <div class="charts-monthly">
-            <p class="chart-title">MONTHLY</p>
-            <div id="area-chart"></div>
+
+        </div>
+
+        <div class="charts1">
+
+          <div class="charts-card g4">
+            <p class="chart-title">TYPE OF LICENSE</p>
+            <!-- <p class="nw">NEW</p><i class="fa-sharp1  fa-solid fa-circle"></i>
+            <p class="rnwl">RENEWAL  </p><i class="fa-sharp2 fa-solid fa-circle"></i> -->
+
+            <div id="bar-chart3"></div>
+          </div>
+
+        </div>
+
+        
+        <div class="charts">
+
+          <div class="charts-card g2">
+            <p class="chart-title">APPLICANTS EXAMINED</p>
+            <!-- <p class="wrttn"> WRITTEN</p><i class="fa-sharp1  fa-solid fa-circle "></i>
+            <p class="prctcl">PRACTICAL</p><i class="fa-sharp2 fa-solid fa-circle"></i> -->
+
+            <div id="bar-chart1"></div>
+          </div>
+
+          <div class="charts-card g3">
+            <p class="chart-title">DRIVER'S LICENSE & PERMIT ISSUED</p>
+            <!-- <p class="nw">NEW</p><i class="fa-sharp1  fa-solid fa-circle"></i>
+            <p class="rnwl">RENEWAL  </p><i class="fa-sharp2 fa-solid fa-circle"></i> -->
+
+            <div id="bar-chart2"></div>
           </div>
 
         </div>
       </main>
-      <!-- End Main --> 
+      <!-- End Main -->
 
-    </div> 
+    </div>
 
     <!-- Scripts -->
     <!-- ApexCharts -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <!-- Custom JS -->
     <script src="../src/a_dashboard.js"></script>
-    <script type="module" src="../src/a_dashboard2.js"></script>
+    <script type="module" src="../src/a_licdashboard.js"></script>
   </body>
-</html>
+</html> 

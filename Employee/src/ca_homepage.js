@@ -19,7 +19,7 @@ const db = getFirestore(app);
 
 var tbody = document.getElementById('tbody1');
 
-    const querySnapshot2 = await getDocs(collection(db,"Appointment"));
+    const querySnapshot2 = await getDocs(collection(db,"Applicants"));
         querySnapshot2.forEach(doc2 => {
 
             var dd = doc2.data().User_D;
@@ -30,9 +30,9 @@ var tbody = document.getElementById('tbody1');
 
             // console.log(doc2.data().User_T.slice(6,8))&& dte.value == dtcon
             
-            if (doc2.data().User_Stat == "APPROVED" || doc2.data().User_Stat == "PASSED"){
+            if (doc2.data().User_Stat == "APPROVED_TO_CASHIER" || doc2.data().User_Stat == "PASSED"){
             let trow = document.createElement('tr'); 
-            let t_ID = document.createElement('td'); 
+            let t_ID = document.createElement('td');  
             let td1 = document.createElement('td'); 
             let td5 = document.createElement('td'); 
             let td7 = document.createElement('td');
