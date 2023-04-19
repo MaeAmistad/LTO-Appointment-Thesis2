@@ -1,5 +1,5 @@
 bck.addEventListener('click',() => {
-    window.location = "In_homepage.html";
+    window.location = "a_appListins.html";
 
     localStorage.removeItem("ui1");
     localStorage.removeItem("ui2");
@@ -347,7 +347,7 @@ add.addEventListener('click',() => {
                             localStorage.removeItem("ui12");
                             localStorage.removeItem("ui13");
 
-                            window.location = "In_homepage.html" 
+                            window.location = "a_appListins.html" 
                         })
                     }
                 }
@@ -377,7 +377,7 @@ add.addEventListener('click',() => {
                         localStorage.removeItem("ui12");
                         localStorage.removeItem("ui13");
 
-                        window.location = "In_homepage.html"
+                        window.location = "a_appListins.html"
                     })
                 }
             })  

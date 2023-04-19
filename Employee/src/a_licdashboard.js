@@ -21,7 +21,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const db = getFirestore(app); 
 
 
 
@@ -39,6 +39,7 @@ const db = getFirestore(app);
   const ppass = await getCountFromServer(p1);
   const pfail = await getCountFromServer(p2);
 
+  document.getElementById("num_current_exttal").innerHTML = wpass.data().count + ppass.data().count + wfail.data().count + pfail.data().count;
 var barChartOptions = {
     series: [{
       name: 'PASSED',
@@ -132,6 +133,16 @@ DLIPissued.forEach((doc) => {
   
 });
 
+if (localStorage.getItem("femn") == null || localStorage.getItem("femrn") == null){
+  localStorage.setItem("femn",0)
+  localStorage.setItem("femrn",0)
+}
+if (localStorage.getItem("maln") == null || localStorage.getItem("malrn") == null){
+  localStorage.setItem("maln",0)
+  localStorage.setItem("malrn",0)
+}
+
+document.getElementById("num_current_issttal").innerHTML = parseInt(localStorage.getItem("femn")) + parseInt(localStorage.getItem("femrn")) + parseInt(localStorage.getItem("maln")) + parseInt(localStorage.getItem("malrn"));
 var barChartOptions = {
     series: [{
       name: 'FEMALE',
@@ -208,6 +219,11 @@ querySnapshottotlDLPI.forEach((doc) => {
     
 });
 
+if (localStorage.getItem("mscntotal") == null || localStorage.getItem("totl_dlpi") == null){
+  localStorage.setItem("mscntotal",0)
+  localStorage.setItem("totl_dlpi",0)
+}
+
 // dlch
 const dpch = collection(db,"Applicants");
 const relLic = query(dpch, where("User_Stat", "==", "RELEASED"));
@@ -222,6 +238,8 @@ var AEtotl = wpass.data().count + ppass.data().count + wfail.data().count + pfai
 var dpchtotl = RELIC.data().count + INCOMLIC.data().count + + FAILED.data().count;
 var DLPI = localStorage.getItem("totl_dlpi");
 var MSCN = localStorage.getItem("mscntotal");
+
+document.getElementById("num_current_licttal").innerHTML = AEtotl + dpchtotl + parseInt(DLPI) + parseInt(MSCN);
 var barChartOptions = {
   series: [{
     name: "TOTAL",
@@ -280,5 +298,4 @@ var barChartOptions = {
 
 var barChart = new ApexCharts(document.querySelector("#bar-chart3"), barChartOptions);
 barChart.render();
-
 

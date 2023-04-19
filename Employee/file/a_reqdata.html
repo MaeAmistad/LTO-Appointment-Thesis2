@@ -9,120 +9,185 @@
     <script src="https://smtpjs.com/v3/smtp.js"></script>
 </head>
 <body>
-    <div class="main"> 
-        <div class="tranID">
-            <p id="tranID"></p>
+  <div class="main">
+      <div class="tranID">
+          <p id="tranID"></p>
 
-            <table class="lic_det">
-              <p>Applicant's Information</p>
-              <tr>
-                <td>Full Name:</td>
-                <td id="ln">-</td> 
-              </tr>
-    
-              <tr>
-                <td>Date of Birth:</td>
-                <td id="dof">-</td> 
-              </tr>
-    
-              <tr>
-                <td>Gender:</td>
-                <td id="gndr">-</td> 
-              </tr>
-          </table>
-    
-          <table class="Transaction-table">
-            <p>Appointment's Information</p>
-  
+          <table class="lic_det">
+            <p>Applicant's Information</p>
             <tr>
-              <td>Application ID:</td>
-              <td id="tID" >-</td>
+              <td>Full Name:</td>
+              <td id="ln">-</td> 
             </tr>
   
             <tr>
-              <td>Transaction Type:</td>
-              <td id="tt" >-</td>
-            </tr>
-    
-            <tr>
-              <td id="laa2">License Application Applied:</td>
-              <td id="laa" >-</td>
+              <td>Date of Birth:</td>
+              <td id="dof">-</td> 
             </tr>
   
             <tr>
-              <td>Application Type:</td>
-              <td id="at" >-</td>
+              <td>Gender:</td>
+              <td id="gndr">-</td> 
             </tr>
-    
-            <tr>
-              <td>Date:</td>
-              <td id="dt_L">-</td>
-            </tr>
-    
-            <tr>
-              <td>Time:</td>
-              <td id="dt_t">-</td>
-            </tr>
-          </table>
-    
-          <table class="contact-table">
-            <p>Contact Information</p>
-            <tr>
-              <td>Address:</td>
-              <td id="addrss">-</td> 
-            </tr>
-    
-            <tr>
-              <td>Email:</td>
-              <td id="em">-</td>
-            </tr>
-    
-            <tr>
-              <td>Mobile Number:</td>
-              <td id="mnn">-</td> 
-            </tr>
-          </table>
+        </table>
+  
+        <table class="Transaction-table">
+          <p>Appointment's Information</p>
 
-        </div>
+          <tr>
+            <td>Transaction ID:</td>
+            <td id="tID" >-</td>
+          </tr>
 
-        <div class="btn">
-            <div>
-                <button id="bck">Back</button>
-            </div>
-            <div>
-              <button id="dclnd">Declined</button>
-            </div>
-            <div>
-              <button id="apprd">Approved</button>
-            </div>
+          <tr>
+            <td>Transaction Type:</td>
+            <td id="tt" >-</td>
+          </tr>
+  
+          <tr>
+            <td id="laa2">License Application Applied:</td>
+            <td id="laa" >-</td>
+          </tr>
 
-        </div>
-    </div>
+          <tr>
+            <td>Application Type:</td>
+            <td id="at" >-</td>
+          </tr>
+   
+          <tr>
+            <td>Date:</td>
+            <td id="dt_L">-</td>
+          </tr>
+  
+          <tr>
+            <td>Time:</td>
+            <td id="dt_t">-</td>
+          </tr>
+        </table>
+        
+        <table id="mv-table" >
 
-    <div class="cnfrm_modal" id="cnfrm_modal">
-      <h1>Application Approval</h1>
-      <p>The applicant may now proceed to Cashier?</p>
+          <p id="mvtitle">Motor Vehicle Information</p>
 
-          <div class="btn2">
-              <button id="cnl">Cancel</button>
-              <button id="cnfrm">Confirm</button>
+          <tr>
+            <td>Plate No.:</td>
+            <td id="plate_num" >-</td>
+          </tr>
+
+          <tr>
+            <td>Type:</td>
+            <td id="typee" >-</td>
+          </tr>
+  
+          <tr>
+            <td>Refrigerant Type:</td>
+            <td id="reftypee" >-</td>
+          </tr>
+          
+          <tr>
+            <td>Make/Series:</td>
+            <td id="mk_seris" >-</td>
+          </tr>
+   
+          <tr>
+            <td>Motor Number:</td>
+            <td id="mot_num">-</td>
+          </tr>
+  
+          <tr>
+            <td>Chassis Number:</td>
+            <td id="cha_num">-</td>
+          </tr>
+
+          <tr>
+            <td>Color:</td>
+            <td id="colorr" >-</td>
+          </tr>
+
+          <tr>
+            <td>Fuel:</td>
+            <td id="fuell" >-</td>
+          </tr>
+
+          <tr>
+            <td>File No.:</td>
+            <td id="filno" >-</td>
+          </tr>
+   
+          <tr>
+            <td>Date Registered:</td>
+            <td id="dt_reg">-</td>
+          </tr>
+  
+          <tr>
+            <td>Transaction:</td>
+            <td id="transctionmv">-</td>
+          </tr>
+
+          <tr>
+            <td>Dept./Agency:</td>
+            <td id="deptAgncy">-</td>
+          </tr>
+        </table>
+        
+        <table class="contact-table">
+          <p>Contact Information</p>
+          <tr>
+            <td>Address:</td>
+            <td id="addrss">-</td> 
+          </tr>
+  
+          <tr>
+            <td>Email:</td>
+            <td id="em">-</td>
+          </tr>
+  
+          <tr>
+            <td>Mobile Number:</td>
+            <td id="mnn">-</td> 
+          </tr>
+        </table>
+
+      </div>
+
+      <div class="btn">
+          <div>
+              <button id="bck">Back</button>
           </div>
+          <div>
+            <button id="dclnd">Declined</button>
+          </div>
+          <div>
+            <button id="apprd">Approved</button>
+          </div>
+
       </div>
   </div>
 
-  <div class="cnfrm_modal2" id="cnfrm_modal2">
+  <div class="cnfrm_modal" id="cnfrm_modal">
     <h1>Application Approval</h1>
-    <p>Declined Application?</p>
+    <p>The applicant may now proceed to Cashier?</p>
 
         <div class="btn2">
-            <button id="cnl2">Cancel</button>
-            <button id="cnfrm2">Confirm</button>
+            <button id="cnl">Cancel</button>
+            <button id="cnfrm">Confirm</button>
         </div>
     </div>
 </div>
 
+<div class="cnfrm_modal2" id="cnfrm_modal2"> 
+  <h1>Application Approval</h1>
+  <p>Declined Application?</p>
 
+      <div class="btn2">
+          <button id="cnl2">Cancel</button>
+          <button id="cnfrm2">Confirm</button>
+      </div>
+  </div>
+</div>
 
-<script type="module" src="../src/a_reqdata.js"></script>
+</div>
+
+  <script type="module" src="../src/a_reqdata.js"></script>
 </body>
 </html>

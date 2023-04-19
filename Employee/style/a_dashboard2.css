@@ -274,7 +274,7 @@ img{
     margin-top: 5px;
     font-size: 12px;
   }
-  #num_current_mvymttal,#num_current_mvttal{
+  .total_nm{
     font-size: 25px;
     font-weight: 700;
   }

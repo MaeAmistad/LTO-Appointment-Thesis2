@@ -13,7 +13,7 @@ cnl1.addEventListener('click', () => {
 cnl2.addEventListener('click', () => {
     document.getElementById('inc_modal').style.visibility = "hidden"
 });
-
+ 
 // var tranID = localStorage.getItem("stat");
 // document.getElementById('tranID').innerHTML = tranID;
 

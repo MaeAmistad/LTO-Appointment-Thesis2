@@ -31,7 +31,7 @@ let uv2 = 0;
 let uv3 = 0;
 let suv1 = 0;
 let suv2 = 0;
-let suv3 = 0;
+let suv3 = 0; 
 let bus1 = 0;
 let bus2 = 0;
 let bus3 = 0;
@@ -144,6 +144,33 @@ mv_bc.forEach((doc) => {
       var yrmdl5 = ym5+=1
       localStorage.setItem("yr_mdl5",yrmdl5);
     }
+
+    // switch (doc.data().yr_modell) {
+    //   case "2024":
+    //     var yrmdl1 = ym1+=1
+    //     localStorage.setItem("yr_mdl1",yrmdl1);
+    //   break;
+    //   case "2023":
+    //     var yrmdl1 = ym1+=1
+    //     localStorage.setItem("yr_mdl1",yrmdl1);
+    //   break;
+    //   case "2022":
+    //     var yrmdl1 = ym1+=1
+    //     localStorage.setItem("yr_mdl1",yrmdl1);
+    //   break;
+    //   case "2021":
+    //     var yrmdl1 = ym1+=1
+    //     localStorage.setItem("yr_mdl1",yrmdl1);
+    //   break;
+    //   case "2020":
+    //     var yrmdl1 = ym1+=1
+    //     localStorage.setItem("yr_mdl1",yrmdl1);
+    //   break;
+    //   case "2019":
+    //     var yrmdl1 = ym1+=1
+    //     localStorage.setItem("yr_mdl1",yrmdl1);
+    //   break;
+    // }
 });
 
 if (localStorage.getItem("car1") == null || localStorage.getItem("car2") == null || localStorage.getItem("car3") == null){
