@@ -259,7 +259,7 @@ img{
     color: #408E91  ; 
     display: inline-block;
     padding-left: 10px;
-  }
+  } 
   .g3 .fa-sharp2{
     display: inline-block;
     color: #D27685;
@@ -269,6 +269,14 @@ img{
     margin-left: 55%;
     background-color: #008000e8;
     color: white;
+  }
+  .currntRel{
+    margin-top: 5px;
+    font-size: 12px;
+  }
+  #num_current_mvymttal,#num_current_mvttal{
+    font-size: 25px;
+    font-weight: 700;
   }
   /* ---------- SCROLLBARS ---------- */
   
