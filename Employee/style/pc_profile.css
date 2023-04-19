@@ -91,3 +91,17 @@ nav ul li:hover > ul{
     height: 30px;
     margin-left: 850px;
 }
+@media only screen and (max-width: 1200px){
+    
+    .container, .profile-box{
+        margin-left: 5%;
+        align-items: center;
+        width: 90%;
+     }
+     #edt_Profl{
+        margin-left: 80%;
+     }
+    }
+   
+   
+
