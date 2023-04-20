@@ -1,13 +1,13 @@
 bck_AL.addEventListener('click',(e) => {
-    window.location = "ex_homepage.html";
+    window.location = "In_homepage.html";
 });
 
 comp_btn.addEventListener('click',(e) => {
-    window.location = "ex_mvPass.html"; 
+    window.location = "In_mvapprcd.html"; 
 });
 
 incomp_btn.addEventListener('click',(e) => {
-    window.location = "ex_mvFail.html";
+    window.location = "In_mvdisprvd.html";
 }); 
 
 
@@ -36,7 +36,7 @@ const db = getFirestore(app);
 
       querySnapshot2.forEach(doc2 => {
 //  
-        if(doc2.data().User_Stat == "PASSED" && doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
+        if(doc2.data().User_Stat == "DISSAPPROVED" && doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
 
                     let trow = document.createElement('tr'); 
                     let t_ID = document.createElement('td'); 
@@ -49,25 +49,20 @@ const db = getFirestore(app);
                     let td7 = document.createElement('td');
                     let td8 = document.createElement('td'); 
                     let td9 = document.createElement('td'); 
-                    let td10 = document.createElement('td'); 
-                    let td11 = document.createElement('td'); 
-                    let td12 = document.createElement('td'); 
+                    let td10 = document.createElement('td');  
 
-                    t_ID.innerHTML = doc2.data().User_TransID; 
+                    t_ID.innerHTML = doc2.data().User_AppID; 
                     td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
                     td2.innerHTML = doc2.data().User_BD;
                     td3.innerHTML = doc2.data().User_GN;
                     td4.innerHTML = doc2.data().User_ADD;
                     td5.innerHTML = doc2.data().User_TT;
-                    td6.innerHTML = doc2.data().User_Laa;
-                    td7.innerHTML = doc2.data().User_AT;
-                    td8.innerHTML = doc2.data().User_examType;
-                    td9.innerHTML = doc2.data().User_D;
-                    td10.innerHTML = doc2.data().User_T;
-                    td11.innerHTML = doc2.data().User_CN;
-                    td12.innerHTML = doc2.data().User_E;
+                    td6.innerHTML = doc2.data().User_AT;
+                    td7.innerHTML = doc2.data().User_D;
+                    td8.innerHTML = doc2.data().User_T;
+                    td9.innerHTML = doc2.data().User_CN;
+                    td10.innerHTML = doc2.data().User_E;
                     
-
                     trow.appendChild(t_ID);
                     trow.appendChild(td1);
                     trow.appendChild(td2);
@@ -79,8 +74,6 @@ const db = getFirestore(app);
                     trow.appendChild(td8);
                     trow.appendChild(td9);
                     trow.appendChild(td10);
-                    trow.appendChild(td11);
-                    trow.appendChild(td12);
 
                     tbody.appendChild(trow);
 

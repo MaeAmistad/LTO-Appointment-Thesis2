@@ -17,11 +17,8 @@ cnl2.addEventListener('click',() => {
     document.getElementById('cnfrm_modal2').style.visibility = "hidden";
 });
 
-// var tranID = localStorage.getItem("stat");
-// document.getElementById('tranID').innerHTML = tranID;
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
-import { getFirestore, getDocs, collection, updateDoc,doc } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
+import { getFirestore, getDocs, collection, updateDoc,doc,setDoc } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -37,11 +34,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-//get all data
-    const querySnapshot2 = await getDocs(collection(db,"Applicants"));
-
+//get all data   
     var transID = localStorage.getItem("stat");
     var ID = localStorage.getItem("ID");
+
+    const querySnapshot2 = await getDocs(collection(db,"Applicants"));
+
     console.log(ID)
             function makeid(l)
             {
@@ -67,8 +65,9 @@ const db = getFirestore(app);
 
             var trnidlic ="LTO-LIC-" + yy+mmm+ddd+hhh+mnn+makeid(2);
             var trnidmvr ="LTO-MVR-" + yy+mmm+ddd+hhh+mnn+makeid(2);
+
         querySnapshot2.forEach(doc2 => {
-       
+
             if (transID == doc2.data().User_AppID){
 
                 if (doc2.data().User_AT == "REVISION OF RECORDS"){
@@ -84,6 +83,9 @@ const db = getFirestore(app);
                     document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
                     document.getElementById("em").innerHTML = doc2.data().User_E;
                     document.getElementById("mnn").innerHTML = doc2.data().User_CN;
+
+                    document.getElementById('mv-table').style.display = "none";
+                    document.getElementById('mvtitle').style.display = "none";
                 }
                 else if (doc2.data().User_TT == "LICENSING"){
                     document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
@@ -98,6 +100,9 @@ const db = getFirestore(app);
                     document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
                     document.getElementById("em").innerHTML = doc2.data().User_E;
                     document.getElementById("mnn").innerHTML = doc2.data().User_CN;
+
+                    document.getElementById('mv-table').style.display = "none";
+                    document.getElementById('mvtitle').style.display = "none";
                 }
                 else if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
                     document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
@@ -112,32 +117,46 @@ const db = getFirestore(app);
                     document.getElementById("em").innerHTML = doc2.data().User_E;
                     document.getElementById("mnn").innerHTML = doc2.data().User_CN;
 
+                    document.getElementById("plate_num").innerHTML = doc2.data().pltno;
+                    document.getElementById("typee").innerHTML = doc2.data().typel;
+                    document.getElementById("reftypee").innerHTML = doc2.data().refrigerant_typ;
+                    document.getElementById("mk_seris").innerHTML = doc2.data().mksrs;
+                    document.getElementById("mot_num").innerHTML = doc2.data().mtrno; 
+                    document.getElementById("cha_num").innerHTML = doc2.data().chassno;
+                    document.getElementById("colorr").innerHTML = doc2.data().color;
+                    document.getElementById("fuell").innerHTML = doc2.data().fuel;
+                    document.getElementById("filno").innerHTML = doc2.data().fileno;
+                    document.getElementById("dt_reg").innerHTML = doc2.data().dtrgstrd;
+                    document.getElementById("transctionmv").innerHTML = doc2.data().trnsctn;
+                    document.getElementById("deptAgncy").innerHTML = doc2.data().deptagncy;
+
                     document.getElementById("laa").style.display = "none"
                     document.getElementById("laa2").style.display = "none"
                 }
 
             }
-
+            
 
             // console.log(trnidlic)
             cnfrm.addEventListener('click', (e) => {
                 const updateStat = doc(db, "Applicants", doc2.id)
                 var stt = localStorage.getItem("stat")
 
-                if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
+                if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){ 
                     if (stt == doc2.data().User_AppID){
                         updateDoc(updateStat, {
-                            User_Stat: "APPROVED",
-                            User_TransID: trnidmvr 
+                            User_Stat: "APPROVED_TO_CASHIER",
+                            User_TransID: trnidmvr
                         }).then(() => {
-                            window.location = "a_appList.html"
+                            window.location = "a_appList.html" 
                         })
-                    }
+                    } 
+                    
                 }
                 else if(doc2.data().User_TT == "LICENSING"){
                     if (stt == doc2.data().User_AppID){
                         updateDoc(updateStat, {
-                            User_Stat: "APPROVED",
+                            User_Stat: "APPROVED_TO_CASHIER",
                             User_TransID: trnidlic 
                         }).then(() => {
                             window.location = "a_appList.html"
@@ -145,7 +164,7 @@ const db = getFirestore(app);
                     }
                 }
 
-            })
+            }) 
 
             cnfrm2.addEventListener('click', (e) => {
                 const updateStat = doc(db, "Applicants", doc2.id)
@@ -160,6 +179,3 @@ const db = getFirestore(app);
                 }
             })
     });
-
-
-

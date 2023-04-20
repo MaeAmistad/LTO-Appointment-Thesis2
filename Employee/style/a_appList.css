@@ -15,26 +15,6 @@ img{
     line-height: 1px; 
   }
   
-    .text-primary {
-      color: #666666;
-    }
-    
-    .text-blue {
-      color: #032d89;
-    }
-    
-    .text-red {
-      color: #cc3c43;
-    }
-    
-    .text-green {
-      color: #367952;
-    }
-    
-    .text-orange {
-      color: #f5b74f;
-    }
-  
   .font-weight-bold {
     font-weight: 600;
   }
@@ -240,12 +220,15 @@ img{
   padding: 8px;
   text-transform: uppercase;
 }
-
+#tbody1:hover{
+  background-color: #254894c0;
+  color: white;
+}
 
     
-  /* Extra Small <= 576px */
+  /* Extra Small <= 576px
   @media screen and (max-width: 576px) {
     .header-left {
       display: none;
     }
-  }
+  } */
