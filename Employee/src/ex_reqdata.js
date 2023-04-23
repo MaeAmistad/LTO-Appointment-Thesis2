@@ -61,6 +61,7 @@ const db = getFirestore(app);
 
             }
 
+            // Saving Data
             // PASSED BUTTON
             cnfrm1.addEventListener('click', (e) => {
                 const updateStat = doc(db, "Applicants", doc2.id)
@@ -70,7 +71,7 @@ const db = getFirestore(app);
                 if (stt == doc2.data().User_TransID){
                     if (exmtyp1 == "PRACTICAL"){
                         updateDoc(updateStat, {
-                            User_Stat: "PASSED"
+                            User_Stat4: "PASSED"
                         })
                         setDoc(doc(db,"Practical",doc2.data().User_TransID),{
                             User_TransID: doc2.data().User_TransID,
@@ -82,7 +83,7 @@ const db = getFirestore(app);
                     }
                     else if(exmtyp1 == "WRITTEN"){
                         updateDoc(updateStat, {
-                            User_Stat: "PASSED"
+                            User_Stat4: "PASSED"
                         })
                         setDoc(doc(db,"Written",doc2.data().User_TransID),{
                             User_TransID: doc2.data().User_TransID,
@@ -105,28 +106,32 @@ const db = getFirestore(app);
                 if (stt == doc2.data().User_TransID){
                     if (exmtyp2 == "PRACTICAL"){
                         updateDoc(updateStat, {
-                            User_Stat: "FAILED"
+                            User_Stat4: "FAILED"
                         })
                         setDoc(doc(db,"Practical",doc2.data().User_TransID),{
                             User_TransID: doc2.data().User_TransID,
                             result: "FAILED",
-                            examType:exmtyp2
+                            examType:exmtyp2,
+                            dt_App: doc2.data().User_D,
+                            t_app: doc2.data().User_T
                         }).then(() => {
                                 window.location = "ex_homepage.html"
                             })
                     }
                     else if(exmtyp2 == "WRITTEN"){
                         updateDoc(updateStat, {
-                            User_Stat: "FAILED"
+                            User_Stat4: "FAILED"
                         })
                         setDoc(doc(db,"Written",doc2.data().User_TransID),{
                             User_TransID: doc2.data().User_TransID,
                             result: "FAILED",
-                            examType:exmtyp2
+                            examType:exmtyp2,
+                            dt_App: doc2.data().User_D,
+                            t_app: doc2.data().User_T
                         }).then(() => {
                             window.location = "ex_homepage.html"
                         })
-                    }
+                    } 
                 } 
 
             })

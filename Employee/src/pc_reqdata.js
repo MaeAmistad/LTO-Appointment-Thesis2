@@ -42,8 +42,7 @@ const db = getFirestore(app);
     var ID = localStorage.getItem("ID");
 
     const querySnapshot2 = await getDocs(collection(db,"Applicants"));
-
-    console.log(ID)
+            // Random Number for Transact ID
             function makeid(l)
             {
             var text = "";
@@ -80,7 +79,7 @@ const db = getFirestore(app);
                     document.getElementById("tID").innerHTML = doc2.data().User_AppID; 
                     document.getElementById("tt").innerHTML = doc2.data().User_TT;
                     document.getElementById("laa").innerHTML = doc2.data().User_Laa;
-                    document.getElementById("at").innerHTML = doc2.data().User_AT + " (" +  doc2.data().User_Rev + ")";
+                    document.getElementById("at").innerHTML = doc2.data().User_AT + "(" +  doc2.data().User_Rev + ")";
                     document.getElementById("dt_L").innerHTML = doc2.data().User_D;
                     document.getElementById("dt_t").innerHTML = doc2.data().User_T;
                     document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
@@ -140,7 +139,7 @@ const db = getFirestore(app);
             }
             
 
-            // console.log(trnidlic)
+            // Saving Data
             cnfrm.addEventListener('click', (e) => {
                 const updateStat = doc(db, "Applicants", doc2.id)
                 var stt = localStorage.getItem("stat")
@@ -148,7 +147,7 @@ const db = getFirestore(app);
                 if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){ 
                     if (stt == doc2.data().User_AppID){
                         updateDoc(updateStat, {
-                            User_Stat: "APPROVED_TO_CASHIER",
+                            User_Stat2: "APPROVED_TO_CASHIER",
                             User_TransID: trnidmvr
                         }).then(() => {
                             window.location = "pc_homepage.html" 
@@ -159,7 +158,7 @@ const db = getFirestore(app);
                 else if(doc2.data().User_TT == "LICENSING"){
                     if (stt == doc2.data().User_AppID){
                         updateDoc(updateStat, {
-                            User_Stat: "APPROVED_TO_CASHIER",
+                            User_Stat2: "APPROVED_TO_CASHIER",
                             User_TransID: trnidlic 
                         }).then(() => {
                             window.location = "pc_homepage.html"
@@ -175,7 +174,7 @@ const db = getFirestore(app);
 
                 if (stt == doc2.data().User_AppID){
                     updateDoc(updateStat, {
-                        User_Stat: "DECLINED"
+                        User_Stat2: "DECLINED"
                     }).then(() => {
                         window.location = "pc_homepage.html"
                     })

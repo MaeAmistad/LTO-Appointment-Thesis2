@@ -23,30 +23,75 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app); 
 
-
+// Date Today
+var date = new Date();
+var day = date.getDate();
+var month = date.getMonth() + 1;
+var year = date.getFullYear();
+if (month < 10) month = "0" + month;
+if (day < 10) day = "0" + day;
+var today = day + "-" + month + "-" + year;   
 
 // Applicants Examined Bar chart
 
-  const wrttn = collection(db,"Written");
-  const w1 = query(wrttn, where("result", "==", "PASSED"));
-  const w2 = query(wrttn, where("result", "==", "FAILED"));
-  const wpass = await getCountFromServer(w1);
-  const wfail = await getCountFromServer(w2);
+const wrttnlicexam = await getDocs(collection(db, "Written"));
+let wrttn1 = 0;
+let wrttn2 = 0;
 
-  const prctcl = collection(db,"Practical");
-  const p1 = query(prctcl, where("result", "==", "PASSED"));
-  const p2 = query(prctcl, where("result", "==", "FAILED"));
-  const ppass = await getCountFromServer(p1);
-  const pfail = await getCountFromServer(p2);
+wrttnlicexam.forEach((doc) => {
+// Current Count
+    if(doc.data().dt_App == today){
+      if(doc.data().result == "PASSED"){
+        var wrtnn_examP = wrttn1+=1;
+        localStorage.setItem("wrtnn_examP",wrtnn_examP)
+      }
+      if(doc.data().result == "FAILED"){
+        var wrtnn_examF = wrttn2+=1;
+        localStorage.setItem("wrtnn_examF",wrtnn_examF)
+      } 
+    }
+  
+});
 
-  document.getElementById("num_current_exttal").innerHTML = wpass.data().count + ppass.data().count + wfail.data().count + pfail.data().count;
+const praclicexam = await getDocs(collection(db, "Practical"));
+let prac1 = 0;
+let prac2 = 0;
+
+praclicexam.forEach((doc) => {
+// Current Count
+    if(doc.data().dt_App == today){
+      if(doc.data().result == "PASSED"){
+        var prac_examP = prac1+=1;
+        localStorage.setItem("prac_examP",prac_examP)
+      }
+      if(doc.data().result == "FAILED"){
+        var prac_examF = prac2+=1;
+        localStorage.setItem("prac_examF",prac_examF)
+      } 
+    }
+  
+});
+
+// If LocalStorage key Get Null
+if (localStorage.getItem("wrtnn_examP") == null || localStorage.getItem("wrtnn_examF") == null){
+  localStorage.setItem("wrtnn_examP",0);
+  localStorage.setItem("wrtnn_examF",0);
+}
+if (localStorage.getItem("prac_examP") == null || localStorage.getItem("prac_examF") == null){
+  localStorage.setItem("prac_examP",0);
+  localStorage.setItem("prac_examF",0);
+}
+
+let wrtnprac = parseInt(localStorage.getItem("wrtnn_examP")) + parseInt(localStorage.getItem("wrtnn_examF")) + parseInt(localStorage.getItem("prac_examP")) + parseInt(localStorage.getItem("prac_examF"))
+document.getElementById("num_current_exttal").innerHTML = wrtnprac;
+
 var barChartOptions = {
     series: [{
       name: 'PASSED',
-      data: [wpass.data().count, ppass.data().count]
+      data: [localStorage.getItem("wrtnn_examP"), localStorage.getItem("prac_examP")]
     }, {
       name: 'FAILED',
-      data: [wfail.data().count, pfail.data().count]
+      data: [localStorage.getItem("wrtnn_examF"), localStorage.getItem("prac_examF")]
     }],
     chart: {
       type: 'bar',
@@ -103,10 +148,12 @@ var barChartOptions = {
 const DLIPissued = await getDocs(collection(db, "License"));
 let countn1 = 0;
 let countn2 = 0;
+
 let countrn1 = 0;
 let countrn2 = 0;
 DLIPissued.forEach((doc) => {
 // NEW
+if(doc.data().dt_App == today){
     if(doc.data().at == "NEW"){
       if(doc.data().User_GN == "FEMALE"){
         var femcount = countn1+=1;
@@ -116,11 +163,11 @@ DLIPissued.forEach((doc) => {
         var malcount = countn2+=1;
         localStorage.setItem("maln",malcount)
       }
+    }
 //RENEWAL
     if (doc.data().at == "RENEWAL"){
       if(doc.data().User_GN == "FEMALE"){
         var femcount = countrn1+=1;
-        // console.log(femcount)
         localStorage.setItem("femrn",femcount)
       }
       if(doc.data().User_GN == "MALE"){
@@ -128,8 +175,7 @@ DLIPissued.forEach((doc) => {
         localStorage.setItem("malrn",malcount)
       }
     }
-    
-  }
+}
   
 });
 
@@ -200,28 +246,29 @@ var barChartOptions = {
 //main chart
 
 // mscn txn
-const querySnapshottotlmscn = await getDocs(collection(db, "Applicants"));
+const totlmscn = await getDocs(collection(db, "Applicants"));
 let mscntotl = 0;
-querySnapshottotlmscn.forEach((doc) => {
+totlmscn.forEach((doc) => {
   if (doc.data().User_AT == "DUPLICATE" || doc.data().User_AT == "REVISION OF RECORDS"){
       var mscn = mscntotl +=1;
       localStorage.setItem("mscntotal",mscn);
   }
 })
 
-const querySnapshottotlDLPI = await getDocs(collection(db, "License"));
+const totlDLPI = await getDocs(collection(db, "License"));
 let totl1 = 0;
-querySnapshottotlDLPI.forEach((doc) => {
+totlDLPI.forEach((doc) => {
     if(doc.data().at == "NEW" || doc.data().at == "RENEWAL"){
       var sdp = totl1+=1;
       localStorage.setItem("totl_dlpi", sdp);
-    }
+    } 
     
 });
 
+// If LocalStorage key Get Null
 if (localStorage.getItem("mscntotal") == null || localStorage.getItem("totl_dlpi") == null){
-  localStorage.setItem("mscntotal",0)
-  localStorage.setItem("totl_dlpi",0)
+  localStorage.setItem("mscntotal",0);
+  localStorage.setItem("totl_dlpi",0);
 }
 
 // dlch
@@ -234,10 +281,10 @@ const INCOMLIC = await getCountFromServer(incompLic);
 const FAILED = await getCountFromServer(failed);
 
 // total of all
-var AEtotl = wpass.data().count + ppass.data().count + wfail.data().count + pfail.data().count;
+var AEtotl = 0;
 var dpchtotl = RELIC.data().count + INCOMLIC.data().count + + FAILED.data().count;
 var DLPI = localStorage.getItem("totl_dlpi");
-var MSCN = localStorage.getItem("mscntotal");
+var MSCN = localStorage.getItem("mscntotal"); 
 
 document.getElementById("num_current_licttal").innerHTML = AEtotl + dpchtotl + parseInt(DLPI) + parseInt(MSCN);
 var barChartOptions = {
@@ -299,3 +346,17 @@ var barChartOptions = {
 var barChart = new ApexCharts(document.querySelector("#bar-chart3"), barChartOptions);
 barChart.render();
 
+
+// CODE
+
+  // const wrttn = collection(db,"Written");
+  // const w1 = query(wrttn, where("result", "==", "PASSED"));
+  // const w2 = query(wrttn, where("result", "==", "FAILED"));
+  // const wpass = await getCountFromServer(w1);
+  // const wfail = await getCountFromServer(w2);
+ 
+  // const prctcl = collection(db,"Practical");
+  // const p1 = query(prctcl, where("result", "==", "PASSED"));
+  // const p2 = query(prctcl, where("result", "==", "FAILED"));
+  // const ppass = await getCountFromServer(p1);
+  // const pfail = await getCountFromServer(p2);
