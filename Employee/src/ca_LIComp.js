@@ -38,7 +38,7 @@ const db = getFirestore(app);
 
       querySnapshot2.forEach(doc2 => {
 //  
-        if(doc2.data().User_Stat == "COMPLETED" && doc2.data().User_TT == "LICENSING"){
+        if(doc2.data().User_Stat4 == "COMPLETED" && doc2.data().User_TT == "LICENSING"){
 
                 if (doc2.data().User_AT == "REVISION OF RECORDS"){
                     let trow = document.createElement('tr'); 

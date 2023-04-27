@@ -26,7 +26,15 @@ if (month < 10) month = "0" + month;
 if (day < 10) day = "0" + day;
 var today = day + "-" + month + "-" + year;       
 
+// Time Today
+var now = new Date()
+var time = now.getHours() + ":" + now.getMinutes();
+console.log(time)
+
 // card
+appntment_chrt.addEventListener('click',() => {
+  window.location = "a_appntmentCard.html"
+});
 inspctor.addEventListener('click',() => {
   window.location = "a_applistins.html"
 });
@@ -105,7 +113,7 @@ license.forEach((doc) => {
 
 // For Monthly Area Chart
 let dd = doc.data().dt_App;
-let mmsp = dd.slice(3,5);
+let mmsp = dd.slice(3,5); 
 
   if (mmsp == "04"){
     let mm11 = mmlic1+=1;
@@ -282,7 +290,10 @@ appntment_chrt.addEventListener('click', () => {
     
 });
 
-
+if(time == "0:0"){
+  localStorage.removeItem("lic_currentcnt");
+  localStorage.removeItem("mv_currentcnt");
+}
 
 
 // CODE
@@ -300,3 +311,4 @@ appntment_chrt.addEventListener('click', () => {
             // var dtcon = yysp + "-" + mmsp + "-" + ddsp;
 
             // console.log(today)
+

@@ -65,13 +65,22 @@ var tbody = document.getElementById('tbody1');
                 tbody.appendChild(trow);
     
                 trow.addEventListener('click', (e) =>{
-                    trow.style.backgroundColor = 'rgb(218, 216, 216)';
-                    localStorage.setItem('stat',doc2.data().User_TransID)    
+                    trow.style.backgroundColor = '#254894c0';
+                    trow.style.color = "white";
+                    localStorage.setItem('stat',doc2.data().User_AppID)    
                     localStorage.setItem('ID', doc2.id)
     
                     window.location = "a_reqdataca.html";
                 });
-                
+    
+                trow.addEventListener('mouseover',function(){
+                    trow.style.backgroundColor = 'rgb(218, 216, 216)';
+                    trow.style.color = "black";
+                 })
+                 trow.addEventListener('mouseleave',function(){
+                    trow.style.backgroundColor = "";
+                    trow.style.color = "";
+                 })
                 }
 
 });

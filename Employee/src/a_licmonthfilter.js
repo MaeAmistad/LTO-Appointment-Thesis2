@@ -7,7 +7,7 @@ btnReport.addEventListener('click',()=>{
 // ---------- CHARTS ---------- 
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
-import { getFirestore, query, collection,getCountFromServer,where,getDocs } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
+import { getFirestore, collection,getDocs } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -32,6 +32,10 @@ if (month < 10) month = "0" + month;
 if (day < 10) day = "0" + day;
 var today = day + "-" + month + "-" + year;  
 
+// Monthly Filter
+var currentmonth = new Date().getMonth() + 1;
+if (currentmonth < 10)  currentmonth = "0" + currentmonth;
+
 // Applicants Examined Bar chart
 
 const wrttnlicexam = await getDocs(collection(db, "Written"));
@@ -39,15 +43,18 @@ let wrttn1 = 0;
 let wrttn2 = 0;
 
 wrttnlicexam.forEach((doc) => {
+// getting month mon
+let dd = doc.data().dt_App;
+let mmsp = dd.slice(3,5);
 // Current Count
-    if(doc.data().dt_App == today){
+    if(mmsp == currentmonth){
       if(doc.data().result == "PASSED"){
         var wrtnn_examP = wrttn1+=1;
-        localStorage.setItem("wrtnn_examP",wrtnn_examP)
+        localStorage.setItem("wrtnn_examPmon",wrtnn_examP)
       }
       if(doc.data().result == "FAILED"){
         var wrtnn_examF = wrttn2+=1;
-        localStorage.setItem("wrtnn_examF",wrtnn_examF)
+        localStorage.setItem("wrtnn_examFmon",wrtnn_examF)
       } 
     }
   
@@ -58,40 +65,44 @@ let prac1 = 0;
 let prac2 = 0;
 
 praclicexam.forEach((doc) => {
+// getting month
+let dd = doc.data().dt_App;
+let mmsp = dd.slice(3,5);
+// console.log(mmsp) mon
 // Current Count
-    if(doc.data().dt_App == today){
+    if(mmsp == currentmonth){
       if(doc.data().result == "PASSED"){
         var prac_examP = prac1+=1;
-        localStorage.setItem("prac_examP",prac_examP)
+        localStorage.setItem("prac_examPmon",prac_examP)
       }
       if(doc.data().result == "FAILED"){
         var prac_examF = prac2+=1;
-        localStorage.setItem("prac_examF",prac_examF)
+        localStorage.setItem("prac_examFmon",prac_examF)
       } 
     }
   
 });
 
 // If LocalStorage key Get Null
-if (localStorage.getItem("wrtnn_examP") == null || localStorage.getItem("wrtnn_examF") == null){
-  localStorage.setItem("wrtnn_examP",0);
-  localStorage.setItem("wrtnn_examF",0);
+if (localStorage.getItem("wrtnn_examPmon") == null || localStorage.getItem("wrtnn_examFmon") == null){
+  localStorage.setItem("wrtnn_examPmon",0);
+  localStorage.setItem("wrtnn_examFmon",0);
 }
-if (localStorage.getItem("prac_examP") == null || localStorage.getItem("prac_examF") == null){
-  localStorage.setItem("prac_examP",0);
-  localStorage.setItem("prac_examF",0);
+if (localStorage.getItem("prac_examPmon") == null || localStorage.getItem("prac_examFmon") == null){
+  localStorage.setItem("prac_examPmon",0);
+  localStorage.setItem("prac_examFmon",0);
 }
 
-let wrtnprac = parseInt(localStorage.getItem("wrtnn_examP")) + parseInt(localStorage.getItem("wrtnn_examF")) + parseInt(localStorage.getItem("prac_examP")) + parseInt(localStorage.getItem("prac_examF"))
+let wrtnprac = parseInt(localStorage.getItem("wrtnn_examPmon")) + parseInt(localStorage.getItem("wrtnn_examFmon")) + parseInt(localStorage.getItem("prac_examPmon")) + parseInt(localStorage.getItem("prac_examFmon"))
 document.getElementById("num_current_exttal").innerHTML = wrtnprac;
 
 var barChartOptions = {
     series: [{
       name: 'PASSED',
-      data: [localStorage.getItem("wrtnn_examP"), localStorage.getItem("prac_examP")]
+      data: [localStorage.getItem("wrtnn_examPmon"), localStorage.getItem("prac_examPmon")]
     }, {
       name: 'FAILED',
-      data: [localStorage.getItem("wrtnn_examF"), localStorage.getItem("prac_examF")]
+      data: [localStorage.getItem("wrtnn_examFmon"), localStorage.getItem("prac_examFmon")]
     }],
     chart: {
       type: 'bar',
@@ -147,50 +158,53 @@ let countn2 = 0;
 let countrn1 = 0;
 let countrn2 = 0; 
 DLIPissued.forEach((doc) => {
+// getting month
+let dd = doc.data().dt_App;
+let mmsp = dd.slice(3,5);
 // NEW
-if(doc.data().dt_App == today){
+if(mmsp == currentmonth){
     if(doc.data().at == "NEW"){
       if(doc.data().User_GN == "FEMALE"){
         var femcount = countn1+=1;
-        localStorage.setItem("femn",femcount)
+        localStorage.setItem("femnmon",femcount)
       }
       if(doc.data().User_GN == "MALE"){
         var malcount = countn2+=1;
-        localStorage.setItem("maln",malcount)
+        localStorage.setItem("malnmon",malcount)
       }
     }
 //RENEWAL
     if (doc.data().at == "RENEWAL"){
       if(doc.data().User_GN == "FEMALE"){
         var femcount = countrn1+=1;
-        localStorage.setItem("femrn",femcount)
+        localStorage.setItem("femrnmon",femcount)
       }
       if(doc.data().User_GN == "MALE"){
         var malcount = countrn2+=1;
-        localStorage.setItem("malrn",malcount)
+        localStorage.setItem("malrnmon",malcount)
       }
     }
 }
   
 });
 
-if (localStorage.getItem("femn") == null || localStorage.getItem("femrn") == null){
-  localStorage.setItem("femn",0)
-  localStorage.setItem("femrn",0)
+if (localStorage.getItem("femnmon") == null || localStorage.getItem("femrnmon") == null){
+  localStorage.setItem("femnmon",0)
+  localStorage.setItem("femrnmon",0)
 }
-if (localStorage.getItem("maln") == null || localStorage.getItem("malrn") == null){
-  localStorage.setItem("maln",0)
-  localStorage.setItem("malrn",0)
+if (localStorage.getItem("malnmon") == null || localStorage.getItem("malrnmon") == null){
+  localStorage.setItem("malnmon",0)
+  localStorage.setItem("malrnmon",0)
 }
 
-document.getElementById("num_current_issttal").innerHTML = parseInt(localStorage.getItem("femn")) + parseInt(localStorage.getItem("femrn")) + parseInt(localStorage.getItem("maln")) + parseInt(localStorage.getItem("malrn"));
+document.getElementById("num_current_issttal").innerHTML = parseInt(localStorage.getItem("femnmon")) + parseInt(localStorage.getItem("femrnmon")) + parseInt(localStorage.getItem("malnmon")) + parseInt(localStorage.getItem("malrnmon"));
 var barChartOptions = {
     series: [{
       name: 'FEMALE',
-      data: [localStorage.getItem("femn"), localStorage.getItem("femrn")]
+      data: [localStorage.getItem("femnmon"), localStorage.getItem("femrnmon")]
     }, {
       name: 'MALE',
-      data: [localStorage.getItem("maln"), localStorage.getItem("malrn")]
+      data: [localStorage.getItem("malnmon"), localStorage.getItem("malrnmon")]
     }],
     chart: {
       type: 'bar',
@@ -244,10 +258,14 @@ var barChartOptions = {
 const totlmscn = await getDocs(collection(db, "Applicants"));
 let mscntotl = 0;
 totlmscn.forEach((doc) => {
-  if(doc.data().dt_App == today){
+  // getting month
+let dd = doc.data().User_D;
+let mmsp = dd.slice(3,5);
+
+  if(mmsp == currentmonth){
   if (doc.data().User_AT == "DUPLICATE" || doc.data().User_AT == "REVISION OF RECORDS"){
       var mscn = mscntotl +=1;
-      localStorage.setItem("mscntotal",mscn);
+      localStorage.setItem("mscntotalmon",mscn);
   }
 }
 })
@@ -255,18 +273,22 @@ totlmscn.forEach((doc) => {
 const totlDLPI = await getDocs(collection(db, "License"));
 let totl1 = 0;
 totlDLPI.forEach((doc) => {
-  if(doc.data().dt_App == today){
+  // getting month
+let dd = doc.data().dt_App;
+let mmsp = dd.slice(3,5);
+
+  if(mmsp == currentmonth){
     if(doc.data().at == "NEW" || doc.data().at == "RENEWAL"){
       var sdp = totl1+=1;
-      localStorage.setItem("totl_dlpi", sdp);
+      localStorage.setItem("totl_dlpimon", sdp);
     } 
   }
 });
 
 // If LocalStorage key Get Null
-if (localStorage.getItem("mscntotal") == null || localStorage.getItem("totl_dlpi") == null){
-  localStorage.setItem("mscntotal",0);
-  localStorage.setItem("totl_dlpi",0);
+if (localStorage.getItem("mscntotalmon") == null || localStorage.getItem("totl_dlpimon") == null){
+  localStorage.setItem("mscntotalmon",0);
+  localStorage.setItem("totl_dlpimon",0);
 }
 
 // dlch
@@ -276,41 +298,45 @@ let dlch2 = 0;
 let dlch3 = 0;
 let dlch4 = 0;
 dlch_total.forEach((doc) => {
+  // getting month
+let dd = doc.data().User_D;
+let mmsp = dd.slice(3,5);
+
   // Current Count
-      if(doc.data().User_D   == today){
+      if(mmsp == currentmonth){
         if(doc.data().User_Stat == "RELEASED"){
           let dlch_cnt = dlch1+=1;
-          localStorage.setItem("dlch_cnt1",dlch_cnt);
+          localStorage.setItem("dlch_cnt1mon",dlch_cnt);
         }
         else if(doc.data().User_Stat == "FAILED"){
           let dlch_cnt = dlch4+=1;
-          localStorage.setItem("dlch_cnt4",dlch_cnt);
+          localStorage.setItem("dlch_cnt4mon",dlch_cnt);
         }
 
         if(doc.data().User_TT == "License"){
           if(doc.data().User_Stat == "INCOMPLETED"){
           let dlch_cnt = dlch2+=1;
-          localStorage.setItem("dlch_cnt2",dlch_cnt);
+          localStorage.setItem("dlch_cnt2mon",dlch_cnt);
         }
         else if(doc.data().User_Stat == "DECLINED"){
           let dlch_cnt = dlch3+=1;
-          localStorage.setItem("dlch_cnt3",dlch_cnt);
+          localStorage.setItem("dlch_cnt3mon",dlch_cnt);
         }
       }
       }
   });
 
-  if (localStorage.getItem("dlch_cnt1") == null || localStorage.getItem("dlch_cnt2") == null || localStorage.getItem("dlch_cnt3") == null || localStorage.getItem("dlch_cnt4") == null){
-    localStorage.setItem("dlch_cnt1",0);
-    localStorage.setItem("dlch_cnt2",0);
-    localStorage.setItem("dlch_cnt3",0);
-    localStorage.setItem("dlch_cnt4",0);
+  if (localStorage.getItem("dlch_cnt1mon") == null || localStorage.getItem("dlch_cnt2mon") == null || localStorage.getItem("dlch_cnt3mon") == null || localStorage.getItem("dlch_cnt4mon") == null){
+    localStorage.setItem("dlch_cnt1mon",0);
+    localStorage.setItem("dlch_cnt2mon",0);
+    localStorage.setItem("dlch_cnt3mon",0);
+    localStorage.setItem("dlch_cnt4mon",0);
   }
 // total of all
 var AEtotl = wrtnprac;
-var dpchtotl = parseInt(localStorage.getItem("dlch_cnt1")) + parseInt(localStorage.getItem("dlch_cnt2")) + parseInt(localStorage.getItem("dlch_cnt3")) +  parseInt(localStorage.getItem("dlch_cnt4"));
-var DLPI = localStorage.getItem("totl_dlpi");
-var MSCN = localStorage.getItem("mscntotal"); 
+var dpchtotl = parseInt(localStorage.getItem("dlch_cnt1mon")) + parseInt(localStorage.getItem("dlch_cnt2mon")) + parseInt(localStorage.getItem("dlch_cnt3mon")) +  parseInt(localStorage.getItem("dlch_cnt4mon"));
+var DLPI = localStorage.getItem("totl_dlpimon");
+var MSCN = localStorage.getItem("mscntotalmon"); 
 
 document.getElementById("num_current_licttal").innerHTML = AEtotl + dpchtotl + parseInt(DLPI) + parseInt(MSCN);
 var barChartOptions = {
@@ -378,20 +404,20 @@ var time = now.getHours() + ":" + now.getMinutes();
 console.log(time)
 
 if(time == "0:0"){
-  localStorage.removeItem("wrtnn_examP");
-  localStorage.removeItem("wrtnn_examF");
-  localStorage.removeItem("prac_examP");
-  localStorage.removeItem("prac_examF");
-  localStorage.removeItem("femn");
-  localStorage.removeItem("maln");
-  localStorage.removeItem("femrn");
-  localStorage.removeItem("malrn");
-  localStorage.removeItem("mscntotal");
-  localStorage.removeItem("totl_dlpi");
-  localStorage.removeItem("dlch_cnt1");
-  localStorage.removeItem("dlch_cnt2");
-  localStorage.removeItem("dlch_cnt3");
-  localStorage.removeItem("dlch_cnt4");
+  localStorage.removeItem("wrtnn_examPmon");
+  localStorage.removeItem("wrtnn_examFmon");
+  localStorage.removeItem("prac_examPmon");
+  localStorage.removeItem("prac_examFmon");
+  localStorage.removeItem("femnmon");
+  localStorage.removeItem("malnmon");
+  localStorage.removeItem("femrnmon");
+  localStorage.removeItem("malrnmon");
+  localStorage.removeItem("mscntotalmon");
+  localStorage.removeItem("totl_dlpimon");
+  localStorage.removeItem("dlch_cnt1mon");
+  localStorage.removeItem("dlch_cnt2mon");
+  localStorage.removeItem("dlch_cnt3mon");
+  localStorage.removeItem("dlch_cnt4mon");
 }
 
 // CODE

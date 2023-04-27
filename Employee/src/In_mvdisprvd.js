@@ -36,7 +36,7 @@ const db = getFirestore(app);
 
       querySnapshot2.forEach(doc2 => {
 //  
-        if(doc2.data().User_Stat == "DISSAPPROVED" && doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
+        if(doc2.data().User_Stat1 == "DISSAPPROVED" && doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
 
                     let trow = document.createElement('tr'); 
                     let t_ID = document.createElement('td'); 

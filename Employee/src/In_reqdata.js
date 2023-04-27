@@ -319,6 +319,7 @@ add.addEventListener('click',() => {
                     if (stt == doc2.data().User_AppID){
                         updateDoc(updateStat, {
                             User_Stat1: "APPROVED_TO_PROCEED",
+                            User_Stat: "APPROVED_TO_PROCEED",
                             User_TransID: trnidmvr,                            
                             pltno: localStorage.getItem("ui1"),
                             typel:localStorage.getItem("ui2"),
@@ -361,6 +362,7 @@ add.addEventListener('click',() => {
 
                 if (stt == doc2.data().User_AppID){
                     updateDoc(updateStat, {
+                        User_Stat: "DISSAPPROVED",
                         User_Stat1: "DISSAPPROVED"
                     }).then(() => {
 

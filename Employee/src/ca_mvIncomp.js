@@ -2,10 +2,6 @@ bck_AL.addEventListener('click',(e) => {
     window.location = "ca_homepage.html";
 });
 
-comp_btn.addEventListener('click',(e) => {
-    window.location = "ca_mvComp.html";
-});
-
 incomp_btn.addEventListener('click',(e) => {
     window.location = "ca_mvIncomp.html";
 });
@@ -38,7 +34,7 @@ const db = getFirestore(app);
 
       querySnapshot2.forEach(doc2 => {
 //  
-        if(doc2.data().User_Stat == "COMPLETED" && doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
+        if(doc2.data().User_Stat4 == "INCOMPLETED" && doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
 
                 if (doc2.data().User_AT == "REVISION OF RECORDS"){
                     let trow = document.createElement('tr'); 

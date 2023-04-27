@@ -14,7 +14,7 @@ const firebaseConfig = {
 }; 
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig); 
 const db = getFirestore(app);
 
 var tbody = document.getElementById('tbody1');
@@ -64,12 +64,22 @@ document.getElementById("dte").value = today;
                     tbody.appendChild(trow);
 
                     trow.addEventListener('click', (e) =>{
-                        trow.style.backgroundColor = 'rgb(218, 216, 216)';
+                        trow.style.backgroundColor = '#254894c0';
+                        trow.style.color = "white";
                         localStorage.setItem('stat',doc2.data().User_AppID)    
                         localStorage.setItem('ID', doc2.id)
-
+        
                         window.location = "a_reqdata.html";
                     });
+        
+                    trow.addEventListener('mouseover',function(){
+                        trow.style.backgroundColor = 'rgb(218, 216, 216)';
+                        trow.style.color = "black";
+                     })
+                     trow.addEventListener('mouseleave',function(){
+                        trow.style.backgroundColor = "";
+                        trow.style.color = "";
+                     })
                 }
             }
 
@@ -96,12 +106,22 @@ document.getElementById("dte").value = today;
                 tbody.appendChild(trow);
 
                 trow.addEventListener('click', (e) =>{
-                    trow.style.backgroundColor = 'rgb(218, 216, 216)';
+                    trow.style.backgroundColor = '#254894c0';
+                    trow.style.color = "white";
                     localStorage.setItem('stat',doc2.data().User_AppID)    
                     localStorage.setItem('ID', doc2.id)
-
+    
                     window.location = "a_reqdata.html";
                 });
+    
+                trow.addEventListener('mouseover',function(){
+                    trow.style.backgroundColor = 'rgb(218, 216, 216)';
+                    trow.style.color = "black";
+                 })
+                 trow.addEventListener('mouseleave',function(){
+                    trow.style.backgroundColor = "";
+                    trow.style.color = "";
+                 })
             }
 
 });

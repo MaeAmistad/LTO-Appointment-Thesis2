@@ -18,7 +18,7 @@
   <body>
     <div class="grid-container">
 
-      <!-- Header -->
+      <!-- Header --> 
       <header class="header">
         <div class="menu-icon" onclick="openSidebar()">
           <span class="material-icons-outlined">menu</span>
@@ -108,54 +108,36 @@
         <div>
           
           <div class="dropdown-user">
-
             <button id="bcklic">BACK</button>
-
             <select id="user" onchange="user(this.value)">
-              <option value="a_licdashboard.html" selected>LICENSE</option>
-              <option value="a_mvdashboard.html">MOTOR VEHICLE</option>
-            </select> 
-
-            <select id="update_dash" onchange="user(this.value)">
-              <option value="a_licdashboard.html" >Daily</option>
-              <option value="a_licweeklyfltr.html" >weekly</option>
-              <option value="a_licmonthfilter.html" selected>monthly</option>
+              <option value="a_licweeklyfltr.html">LICENSE</option>
+              <option value="a_mvweeklyfltr.html" selected>MOTOR VEHICLE</option>
             </select>
 
-            <button id="btnReport">REPORT</button>
+            <select id="update_dash" onchange="user(this.value)">
+              <option value="a_mvdashboard.html">Daily</option>
+              <option value="a_mvweeklyfltr.html" selected>weekly</option>
+              <option>monthly</option>
+            </select>
             
+            <button id="btnReport">REPORT</button>
           </div>
-
-
         </div>
-
-        <div class="charts1">
-
-          <div class="charts-card g4">
-            <p class="chart-title">TYPE OF LICENSE</p>
+ 
+          <div class="charts-card g2">
+            <p class="chart-title">MOTOR VEHICLE</p>
             <p class="currntRel">Total<em>(current)</em></p>
-            <p id="num_current_licttal" class="total_nm"></p>
-            <div id="bar-chart3"></div>
+            <p id="num_current_mvttal" class="total_nm"></p>
+            <div id="bar-chartmv"></div>  
           </div>
-
-        </div>
-
-        
-        <div class="charts">
 
           <div class="charts-card g2">
-            <p class="chart-title">APPLICANTS EXAMINED</p>
-            <p class="currntRel">Examiner<em>(current)</em></p>
-            <p id="num_current_exttal" class="total_nm"></p>
-            <div id="bar-chart1"></div>
+            <p class="chart-title">YEAR MODEL</p>
+            <p class="currntRel">Total<em>(current)</em></p>
+            <p id="num_current_mvymttal" class="total_nm"></p>
+            <div id="bar-chartmvyrmdl"></div> 
           </div>
 
-          <div class="charts-card g3">
-            <p class="chart-title">DRIVER'S LICENSE & PERMIT ISSUED</p>
-            <p class="currntRel">Issued<em>(current)</em></p>
-            <p id="num_current_issttal" class="total_nm"></p>
-            <div id="bar-chart2"></div>
-          </div>
 
         </div>
       </main>
@@ -164,11 +146,10 @@
     </div>
 
     <!-- Scripts -->
-    <!-- ApexCharts -->
+    <!-- ApexCharts --> 
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <!-- Custom JS -->
     <script src="../src/a_dashboard.js"></script>
-    <script type="module" src="../src/a_licdashboard.js"></script> 
-    <!-- <script src="../src/a_licdashboardfilter.js"></script> -->
+    <script type="module" src="../src/a_mvweeklyfltr.js"></script>
   </body>
 </html> 

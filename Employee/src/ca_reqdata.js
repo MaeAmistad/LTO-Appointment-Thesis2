@@ -151,21 +151,24 @@ const db = getFirestore(app);
                                 if(doc2.data().User_Laa == "DRIVER'S LICENSE" ){
                                     if(doc2.data().User_AT == "NEW"){
                                         updateDoc(updateStat, {
-                                            User_Stat3: "COMPLETED"
+                                            User_Stat4: "COMPLETED",
+                                            User_Stat: "COMPLETED"
                                         }).then(() => {
                                             window.location = "ca_homepage.html"
                                         })
                                     }
                                     else if(doc2.data().User_AT == "ADDITIONAL DL CODE OR CATEGORY"){
                                         updateDoc(updateStat, {
-                                            User_Stat3: "COMPLETED"
+                                            User_Stat4: "COMPLETED",
+                                            User_Stat: "COMPLETED"
                                         }).then(() => {
                                             window.location = "ca_homepage.html"
                                         })
                                     }
                                     else if(doc2.data().User_AT == "CHANGE OF DL CLASSIFICATION"){
                                         updateDoc(updateStat, {
-                                            User_Stat3: "COMPLETED"
+                                            User_Stat4: "COMPLETED",
+                                            User_Stat: "COMPLETED"
                                         }).then(() => {
                                             window.location = "ca_homepage.html"
                                         })
@@ -173,7 +176,8 @@ const db = getFirestore(app);
                                 }
                                 else{
                                     updateDoc(updateStat, {
-                                        User_Stat3: "RELEASED"
+                                        User_Stat4: "RELEASED",
+                                        User_Stat: "RELEASED"
                                     })
                                     setDoc(doc(db,"License",doc2.data().User_TransID),{
                                         User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,
@@ -189,14 +193,16 @@ const db = getFirestore(app);
                                 
                                 if( doc2.data().User_Laa == "CONDUCTOR'S LICENSE" && doc2.data().User_AT == "NEW"){
                                     updateDoc(updateStat, {
-                                        User_Stat3: "COMPLETED"
+                                        User_Stat4: "COMPLETED",
+                                        User_Stat: "COMPLETED"
                                     }).then(() => {
                                         window.location = "ca_homepage.html"
                                     })
                                 }
                                 else{
                                     updateDoc(updateStat, {
-                                        User_Stat3: "RELEASED"
+                                        User_Stat4: "RELEASED",
+                                        User_Stat: "RELEASED"
                                     })
                                     setDoc(doc(db,"License",doc2.data().User_TransID),{
                                         User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,
@@ -215,6 +221,7 @@ const db = getFirestore(app);
                                 if (doc2.data().User_Laa == "DRIVER'S LICENSE" ){
                                     if(doc2.data().User_AT == "NEW"){
                                         updateDoc(updateStat, {
+                                            User_Stat4: "RELEASED",
                                             User_Stat: "RELEASED"
                                         })
                                         setDoc(doc(db,"License",doc2.data().User_TransID),{
@@ -231,6 +238,7 @@ const db = getFirestore(app);
                                     }
                                     else if(doc2.data().User_AT == "ADDITIONAL DL CODE OR CATEGORY"){
                                         updateDoc(updateStat, {
+                                            User_Stat4: "RELEASED",
                                             User_Stat: "RELEASED"
                                         })
                                         setDoc(doc(db,"License",doc2.data().User_TransID),{
@@ -247,6 +255,7 @@ const db = getFirestore(app);
                                 }
                                 else if ( doc2.data().User_Laa == "CONDUCTOR'S LICENSE" && doc2.data().User_AT == "NEW"){
                                     updateDoc(updateStat, {
+                                        User_Stat4: "RELEASED",
                                         User_Stat: "RELEASED"
                                     })
                                     setDoc(doc(db,"License",doc2.data().User_TransID),{
@@ -261,19 +270,22 @@ const db = getFirestore(app);
                                     })
                                 }
 
-                            }
+                            } 
 
                         }
                         else if(doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
                             updateDoc(updateStat, {
-                                User_Stat: "REGISTERED"
+                                User_Stat4: "REGISTERED",
+                                User_Stat: "RELEASED"
                             })
                             setDoc(doc(db,"Motor Vehicle",doc2.data().User_TransID),{
                                 User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,
                                 at: doc2.data().User_AT,
                                 dt_App: doc2.data().User_D,
                                 t_app: doc2.data().User_T,
-                                refrigerant_type: doc2.data().refrigerant_typ
+                                refrigerant_type: doc2.data().refrigerant_typ,
+                                typel: doc2.data().typel,
+                                yr_modell:doc2.data().yr_modell
                             }).then(() => {
                                 window.location = "ca_homepage.html"
                             })
@@ -289,6 +301,7 @@ const db = getFirestore(app);
 
                 if (stt == doc2.data().User_TransID){
                     updateDoc(updateStat, {
+                        User_Stat4: "INCOMPLETED",
                         User_Stat: "INCOMPLETED"
                     }).then(() => {
                         window.location = "ca_homepage.html"

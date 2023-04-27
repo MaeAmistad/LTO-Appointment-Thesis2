@@ -148,6 +148,7 @@ const db = getFirestore(app);
                     if (stt == doc2.data().User_AppID){
                         updateDoc(updateStat, {
                             User_Stat2: "APPROVED_TO_CASHIER",
+                            User_Stat: "APPROVED_TO_CASHIER",
                             User_TransID: trnidmvr
                         }).then(() => {
                             window.location = "pc_homepage.html" 
@@ -159,8 +160,9 @@ const db = getFirestore(app);
                     if (stt == doc2.data().User_AppID){
                         updateDoc(updateStat, {
                             User_Stat2: "APPROVED_TO_CASHIER",
+                            User_Stat: "APPROVED_TO_CASHIER", 
                             User_TransID: trnidlic 
-                        }).then(() => {
+                        }).then(() => { 
                             window.location = "pc_homepage.html"
                         })
                     }
@@ -174,7 +176,8 @@ const db = getFirestore(app);
 
                 if (stt == doc2.data().User_AppID){
                     updateDoc(updateStat, {
-                        User_Stat2: "DECLINED"
+                        User_Stat2: "DECLINED",
+                        User_Stat: "DECLINED"
                     }).then(() => {
                         window.location = "pc_homepage.html"
                     })
