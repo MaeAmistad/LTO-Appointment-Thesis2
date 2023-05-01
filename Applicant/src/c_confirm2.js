@@ -60,7 +60,7 @@ const TranID = trnid;
 
 if (tt == "MOTOR VEHICLE REGISTRATION"){
 
-  addDoc (collection(db,"Appointment"),{
+  addDoc (collection(db,"Applicants"),{
     User_Stat: "PENDING",
     User_AppID: TranID, 
     User_LN: ln,
@@ -79,7 +79,7 @@ if (tt == "MOTOR VEHICLE REGISTRATION"){
 
     var full_name = localStorage.getItem("first_name");
     const tt = "Hi " + full_name + "<br/>" + "<br/>";
-    const r2 = "YOUR APPLICATION HAS BEEN SET " +  "<u>" + "SUCCESFULLY." + "</u>" + "<br/>" + "<br/>";
+    const r2 = "YOUR APPLICATION FOR " + "<u>" +  at  + " HAS BEEN SET SUCCESFULLY." + "</u>" + "<br/>" + "<br/>";
     const r3 = "Come to the office on " + localStorage.getItem("date") + " at " + localStorage.getItem("time");
     const r4 = " and please remember to bring your requirements together with your proof of appointment." + TranID + "<br/>" + "<br/>";
     const r5 = "If you didn't set an appointment, please disregard this email."
@@ -139,7 +139,7 @@ localStorage.removeItem("rvsnofrcrds");
 } 
 else if (tt == "LICENSING"){
   if (at == "REVISION OF RECORDS"){
-    addDoc (collection(db,"Appointment"),{
+    addDoc (collection(db,"Applicants"),{
       User_Stat: "PENDING",
       User_AppID: TranID,
       User_Laa: laa,
@@ -160,7 +160,7 @@ else if (tt == "LICENSING"){
   
     var full_name = localStorage.getItem("first_name");
     const tt = "Hi " + full_name + "<br/>" + "<br/>";
-    const r2 = "YOUR APPLICATION HAS BEEN SET " +  "<u>" + "SUCCESFULLY." + "</u>" + "<br/>" + "<br/>";
+    const r2 = "YOUR APPLICATION FOR " + "<u>" + laa + at  + " HAS BEEN SET SUCCESFULLY." + "</u>" + "<br/>" + "<br/>";
     const r3 = "Come to the office on " + localStorage.getItem("date") + " at " + localStorage.getItem("time");
     const r4 = " and please remember to bring your requirements together with your proof of appointment." + TranID + "<br/>" + "<br/>";
     const r5 = "If you didn't set an appointment, please disregard this email."
@@ -216,7 +216,7 @@ else if (tt == "LICENSING"){
   })
   }
   else{
-    addDoc (collection(db,"Appointment"),{
+    addDoc (collection(db,"Applicants"),{
       User_Stat: "PENDING",
       User_AppID: TranID,
       User_Laa: laa,
@@ -236,7 +236,7 @@ else if (tt == "LICENSING"){
   
     var full_name = localStorage.getItem("first_name");
     const tt = "Hi " + full_name + "," + "<br/>" + "<br/>";
-    const r2 = "YOUR APPLICATION HAS BEEN SET " +  "<u>" + "SUCCESFULLY." + "</u>" + "<br/>" + "<br/>";
+    const r2 = "YOUR APPLICATION FOR " + "<u>" + laa + at  + " HAS BEEN SET SUCCESFULLY.  " + "</u>" + "<br/>" + "<br/>";
     const r3 = "Come to the office on " + localStorage.getItem("date") + " at " + localStorage.getItem("time");
     const r4 = " and please remember to bring your requirements together with your proof of appointment." + TranID + "<br/>" + "<br/>";
     const r5 = "If you didn't set an appointment, please disregard this email."

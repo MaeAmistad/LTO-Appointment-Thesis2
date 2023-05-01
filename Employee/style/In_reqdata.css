@@ -6,11 +6,11 @@ body {
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     background-color: white;
-}
+}  
 .main{
     position: relative;
-    max-width: 100%;
-    width: 80%;
+    max-width: 1000px;
+    width: 100%;
     padding: 25px;
     background: white;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); 
@@ -18,11 +18,10 @@ body {
     margin-left: 145px;
     margin-top: 20px;
     margin-bottom: 10px;
-}
+} 
 .btn button, .btn2 button{
 	padding: 4px;
-	width: 100px; 
-    align-items: center;
+	width: 115px; 
     outline: none;
 	padding: 10px;
     margin: 10px;
@@ -30,12 +29,16 @@ body {
     font-size: 12px;
     margin-top: 20px;
     cursor: pointer;
-}
+}   
 .btn{
     display: flex;
 }
-#dclnd{
-    margin-left: 520px;
+#mvinfo{
+    margin-left: 380px;
+    width: 150px;
+    background-color: blue;
+    color: white;
+    outline: none;
 }
 #bck{
     margin-left: 80px;
@@ -67,12 +70,37 @@ table td{
     transform: translate(-50%, -50%);
     transition: transform 0.4s, top 0.4s;
 }
-
+.addinf{
+    width: 35%;
+    background-color: white;    
+    border: 1px solid #b3b3b3;
+    box-shadow: 5px 5px 5px rgb(70, 69, 69);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    max-width: 500px;
+    min-width: 400px;
+    margin-top: -690px; 
+    position: relative;
+    visibility: hidden;
+    z-index: 999;
+}
+.addinf input, .addinf select{
+    outline: none;
+    margin-left: auto;
+    width: 50%;
+    height: 25px;
+    text-transform: uppercase;
+}
+.addinf select{
+    width: 51.7%;
+    height: 30px;
+}
 .info{
     display: flex;
     padding: 5px;
 }
-.cnfrm_modal h1, .cnfrm_modal2 h1{
+.cnfrm_modal h1, .cnfrm_modal2 h1 , .addinf h1{
     letter-spacing: 3px;
     text-align: center;
 }
@@ -84,28 +112,9 @@ table td{
     margin-left: 100px;
 }
 #cnl, #cnl2{
-    margin-left: 300px;
+    margin-left: 280px;
 }
-@media only screen and (max-width: 1200px){
-    
-    .main, .main2 {
-        margin-left: 10px;
-        align-items: center;
-        width: 115%
-     }
-     #dclnd, #apprd{
-        width:90px;
-        margin-left: 10px;
-     }
-  
-    }
-   
-
-  
-  @media only screen and (min-width: 1525px){
-    .box{
-        margin-left: 430px;
-        align-items: center;
-    }
+#cnl3{
+    margin-left: 200px;
 }
 

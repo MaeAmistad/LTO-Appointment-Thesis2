@@ -95,28 +95,23 @@ ol li{
     margin-left:580px;
 }
 
-@media only screen and (max-width: 1200px){
-    
-    .main, .rem, p,ol li,.chckbx,#btnfdt{
-        margin-left: 15px;
-        width: 400px;
-        align-items: center;
-
-        
+/* @media only screen and (max-width: 1115px){
+    .rem{
+        margin-left: -130px;
     }
- 
+}
+@media only screen and (max-width: 840px){
+    .rem{
+        margin-left: -270px;
     }
- 
-    .disclaimer1{
-      font-size: 18px;
-      margin-left:-400px;
-      align-items: center;
-
+}
+@media only screen and (max-width: 510px){
+    .rem{
+        margin-left: -390px;
+        font-size: 14px;
     }
-    .instruc1 {
-      margin-left: -45px;
-      align-items: center;
-
+    h1{
+        font-size: 19px;
     }
     
     .main{
@@ -155,3 +150,4 @@ ol li{
     @media only screen and (min-width: 800){
     }
     }
+} */

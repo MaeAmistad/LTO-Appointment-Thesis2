@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LTO Appointment Setter</title>
-    <link rel="stylesheet" href="../style/pc_reqdata.css">
+    <link rel="stylesheet" href="../style/In_reqdata.css">
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
@@ -45,10 +46,6 @@
               <td id="tt" >-</td>
             </tr>
     
-            <tr>
-              <td id="laa2">License Application Applied:</td>
-              <td id="laa" >-</td>
-            </tr>
   
             <tr>
               <td>Application Type:</td>
@@ -65,7 +62,7 @@
               <td id="dt_t">-</td>
             </tr>
           </table>
-          
+
           <table id="mv-table" >
 
             <p id="mvtitle">Motor Vehicle Information</p>
@@ -79,8 +76,12 @@
               <td>Type:</td>
               <td id="typee" >-</td>
             </tr>
+
+            <tr>
+              <td>Refrigerant Type:</td>
+              <td id="reftypee" >-</td>
+            </tr>
     
-  
             <tr>
               <td>Make/Series:</td>
               <td id="mk_seris" >-</td>
@@ -126,7 +127,7 @@
               <td id="deptAgncy">-</td>
             </tr>
           </table>
-          
+    
           <table class="contact-table">
             <p>Contact Information</p>
             <tr>
@@ -152,7 +153,10 @@
                 <button id="bck">Back</button>
             </div>
             <div>
-              <button id="dclnd">Declined</button>
+              <button id="mvinfo">ADD MV INFO</button>
+            </div>
+            <div>
+              <button id="dclnd">Dissapproved</button>
             </div>
             <div>
               <button id="apprd">Approved</button>
@@ -163,7 +167,7 @@
 
     <div class="cnfrm_modal" id="cnfrm_modal">
       <h1>Application Approval</h1>
-      <p>The applicant may now proceed to Cashier?</p>
+      <p>The applicant may now proceed to the next station?</p>
 
           <div class="btn2">
               <button id="cnl">Cancel</button>
@@ -183,11 +187,83 @@
     </div>
   </div>
 
+  <div class="addinf" id="addinf">
+    <h1>MV INFO</h1>
+      <div class="info">
+        <label>Plate No.:</label>
+        <input type="text" id="pltno">
+      </div>
+
+      <div class="info">
+        <label>Type:</label>
+        <input type="text" id="type">
+      </div>
+
+      <div class="info">
+        <label>Refrigerant Type:</label>
+        <!-- <input type="text" id="deptagncy"> -->
+        <select id="reftypee">
+          <option selected>Select:</option>
+          <option>Non-AC</option>
+          <option>R12</option> 
+          <option>R134a</option> 
+        </select>
+      </div>
+
+      <div class="info">
+        <label>Make/Series:</label>
+        <input type="text" id="mksrs">
+      </div>
+
+      <div class="info">
+        <label>Motor Number:</label>
+        <input type="text" id="mtrno">
+      </div>
+
+      <div class="info">
+        <label>Chassis Number:</label>
+        <input type="text" id="chassno">
+      </div>
+
+      <div class="info">
+        <label>Color:</label>
+        <input type="text" id="color">
+      </div>
+
+      <div class="info">
+        <label>Fuel:</label>
+        <input type="text" id="fuel">
+      </div>
+
+      <div class="info">
+        <label>File No.:</label>
+        <input type="text" id="fileno">
+      </div>
+
+      <div class="info">
+        <label>Date Registered:</label>
+        <input type="text" id="dtrgstrd">
+      </div>
+
+      <div class="info">
+        <label>Transaction:</label>
+        <input type="text" id="trnsctn">
+      </div>
+
+      <div class="info">
+        <label>Dept./Agency:</label>
+        <input type="text" id="deptagncy">
+      </div>
+
+        <div class="btn2">
+            <button id="cnl3">Cancel</button>
+            <button id="add">ADD</button>
+        </div>
+    </div>
+  </div>
+ 
 
 
-
-
-</div>
-<script type="module" src="../src/pc_reqdata.js"></script>
+<script type="module" src="../src/In_reqdata.js"></script>
 </body>
 </html>

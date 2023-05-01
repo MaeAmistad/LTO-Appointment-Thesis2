@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LTO online Appoinment</title>
     <link rel="stylesheet" href="../style/a_signup.css">
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
@@ -13,14 +14,16 @@
     <div class="main">
         <h1>Create Account</h1>
 
-            <div class="empp" id="emp_sapo">
+            <div class="empp" id="emp_sapo"> 
                 <label>User</label>
                     <div class="emp2">
                         <input type="radio" name="emp" value="0" checked>Evaluator  
                         <input type="radio" name="emp" value="1">Cashier
-                        <input type="radio" name="emp" value="2">System Administrator
+                        <input type="radio" name="emp" value="2">Examiner
+                        <input type="radio" name="emp" value="3">System Administrator
+
                     </div>
-            </div>
+            </div> 
    <form>
       <div class="info">
             <div class="inf">
