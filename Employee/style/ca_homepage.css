@@ -150,6 +150,7 @@ nav ul li:hover > ul{
       
         .menu-icon {
           display: inline;
+          cursor: pointer;
         }
       
         .sidebar-title > span {

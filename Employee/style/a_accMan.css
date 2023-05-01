@@ -258,6 +258,7 @@ tr th, tr th{
   
     .menu-icon {
       display: inline;
+      cursor: pointer;
     }
   
     .sidebar-title > span {

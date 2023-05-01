@@ -1,4 +1,4 @@
-$(function () {
+.$(function () {
   var selectedDates = [];
 
   datePicker = $('.datepickerr').datepicker({

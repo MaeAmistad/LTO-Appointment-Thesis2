@@ -123,23 +123,92 @@ h4{
 }
 
 @media only screen and (max-width: 1200px){
-    
-    .main,.btn_nxt ,.btn_cn,.info input, #selectText1, #selectText2,#gen  {
+   
+    .nav,.main ,.info input, #selectText1, #selectText2,#gen  {
         margin-left: 10px;
         align-items: center;
-        width: 400px;
+        width: 85%;
+            
      }
-
-     @media only screen and (min-width: 600px) {
-        .main,.btn_nxt ,.btn_cn,.info input, #selectText1, #selectText2,#gen  {
-            margin-left: 10px;
+     .btn_nxt{
+        margin-left: 30% ;
+     }
+     @media only screen and (min-width: 700px) {
+        .nav,.main,.info, #selectText1, #selectText2 {
             align-items: center;
-            width: 400px;
-            align-items: center;
-         }
+            width: 100%;
+        }
          .main{
-            margin-left: 150px;
-            align-items: center;
+            margin-left: 5%;
+           
+         }
+         .btn_nxt{
+            margin-left: 30% ;
+         }
+         #gen {
+            width: 88%;
          }
         }
+     @media only screen and (min-width: 600px) {
+        .nav,.main,.info, #selectText1, #selectText2 {
+            align-items: center;
+            width: 60%;
+        }
+         .main{
+            margin-left: 5%;
+           
+         }
+         .btn_nxt{
+            margin-left: 30% ;
+         }
+        }
+           @media only screen and (min-width: 600px) {
+        .nav,.main,.info, #selectText1, #selectText2 {
+            align-items: center;
+            width: 100%;
+        }
+         .main{
+            margin-left: 5%;
+           
+         }
+         .btn_nxt{
+            margin-left: 30% ;
+         }
+         #gen {
+            width: 88%;
+         }
+        }
+        @media only screen and (min-width: 500px) {
+            .nav,.main,.info, #selectText1, #selectText2 {
+                align-items: center;
+                width: 100%;
+            }
+             .main{
+                margin-left: 5%;
+               
+             }
+             .btn_nxt{
+                margin-left: 30% ;
+             }
+             #gen {
+                width: 88%;
+             }
+            }
+            @media only screen and (min-width: 400px) {
+                .nav,.main,.info, #selectText1, #selectText2 {
+                    align-items: center;
+                    width: 87%;
+                }
+                 .main{
+                    margin-left: 5%;
+                   
+                 }
+                 .btn_nxt{
+                    margin-left: 30% ;
+                 }
+                 #gen {
+                    width: 88%;
+                 }
+                }
+        
     }

@@ -58,32 +58,38 @@ nav ul li:hover > ul{
 h1{
     text-align: center;
     margin-top: 20px;
+    width: 40%;
+    margin-left: 25%;
     text-transform: uppercase;
     letter-spacing: 5px;
 }
 p{
-    width: 500px;
-    margin-left: 425px;
+    width: 40%;
+    margin-left: 25%;
     margin-top: 40px;
     text-align: justify;
     font-size: 20px;
     font-weight: 600;
 }
 ol li{
-    width: 500px;
-    margin-top: 15px;
-    margin-left: 425px;
+    width: 40%;
     text-align: justify;
+    margin-top: 15px;
+    margin-left: 25%;
+   
 }
 #chckbx{
-    width: 500px;
+   
+    text-align: justify;
+    width: 40%;
     margin-top: 40px;
-    margin-left: 425px;
+    margin-left: 25%;
     cursor: default;
+    align-items: center;
 }
 #btnfdt{
     height: 50px;
-    width: 200px;
+    width: 30%;
     background-color: rgb(19, 42, 172);
     font-size: 18px;
     color: white;
@@ -92,62 +98,8 @@ ol li{
     border-radius: 10px; 
     margin-bottom: 30px;
     margin-top: 40px;
-    margin-left:580px;
+    margin-left: 30%;
 }
 
-/* @media only screen and (max-width: 1115px){
-    .rem{
-        margin-left: -130px;
-    }
-}
-@media only screen and (max-width: 840px){
-    .rem{
-        margin-left: -270px;
-    }
-}
-@media only screen and (max-width: 510px){
-    .rem{
-        margin-left: -390px;
-        font-size: 14px;
-    }
-    h1{
-        font-size: 19px;
-    }
-    
-    .main{
-        margin-top: 90px;
-        align-items: center;
 
-      
     
-    }
-    .main h1{
-        font-size: 21px;
-        margin-left: 40px;
-        align-items: center;
-
-    }
-     .pfp{
-       font-size:15px;
-       align-items: center;
-
-    }
-    #selectText1, #selectText2, #selectText3, select{
-      margin-left: -45px;
-              align-items: center;
-
-      
-    }
-    
-    @media only screen and (max-width: 1200px){
-    
-        .box, #chckbx, .confirm, .back {
-            margin-left: 10px;
-            align-items: center;
-            width: 400px;
-         }
-    
-    @media only screen and (min-width: 800){
-    }
-    }
-} */
