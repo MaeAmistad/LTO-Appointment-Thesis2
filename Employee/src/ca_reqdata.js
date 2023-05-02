@@ -13,7 +13,7 @@ cnl1.addEventListener('click', () => {
 cnl2.addEventListener('click', () => {
     document.getElementById('inc_modal').style.visibility = "hidden"
 });
-
+ 
 // var tranID = localStorage.getItem("stat");
 // document.getElementById('tranID').innerHTML = tranID;
 
@@ -271,7 +271,8 @@ const db = getFirestore(app);
                                 User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,
                                 at: doc2.data().User_AT,
                                 dt_App: doc2.data().User_D,
-                                t_app: doc2.data().User_T
+                                t_app: doc2.data().User_T,
+                                refrigerant_type: doc2.data().refrigerant_typ
                             }).then(() => {
                                 window.location = "ca_homepage.html"
                             })
