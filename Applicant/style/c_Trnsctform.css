@@ -60,7 +60,7 @@ nav ul li:hover > ul{
   padding: 25px;
   background: white; 
   margin-top: 20px;
-  margin-left: 320px;
+  margin-left:25%;
   margin-bottom: 10px; 
   border: 1px solid #b3b3b3;
 }
@@ -155,7 +155,7 @@ select{
 }
 @media only screen and (max-width: 1200px){
   .main{
-    margin-left: 25%;
+    margin-left: 20%;
     
   }
   .next1{

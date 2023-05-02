@@ -80,7 +80,7 @@ nav ul li:hover > ul{
     font-size: 15px;
 }   
 .btn{
-    width: 100px;
+    width: 30%;
     height: 40px;
     color: black;
     font-size: 14px;
@@ -95,11 +95,11 @@ nav ul li:hover > ul{
 .btn_sv{
     background-color: #032d89;
     color: white;
-    margin-left: 38%;
+    margin-left: 33%;
 }
 .time{
     margin-top: 30px;
-    margin-left: 125px;
+    margin-left: 30%;
     /* border: 1px solid black; */
 }
 table tr th{
@@ -135,26 +135,9 @@ input[type="button"]{
     @media only screen and (max-width: 1100px){
     
         .main, .datepickerr, time{
-            margin-left: -25%;
-            width: 90%;
-            align-items: center;
-            
-        }
-        .datepickerr{
-            width: 100%;
-            margin-left: -3%;
-           
-        }
-        .time{
-            margin-left:25%;
-        }
-     
-    }
-    @media only screen and (max-width: 600px ){
-    
-        .main, .datepickerr, time{
+            margin-left: -2%;
+            width: 40%;
           
-            width: 90%;
             align-items: center;
             
         }
@@ -166,23 +149,31 @@ input[type="button"]{
         .time{
             margin-left:25%;
         }
-       
+        .btn{
+                width: 100%;
+        }
+        .btn_sv{
+            margin-left: -1;
+        }
     }
-    @media only screen and (max-width: 500px){
+  
+    
+    @media only screen and (max-width: 758px){
     
         .main, .datepickerr, time{
-            margin-left: -25%;
-            width: 90%;
+            margin-left: -16%;
+            width: 70%;
             align-items: center;
+            
             
         }
         .datepickerr{
             width: 100%;
-            margin-left: -3%;
+            margin-left: -2%;
            
         }
         .time{
-            margin-left:25%;
+            margin-left:19%;
         }
        
     }
