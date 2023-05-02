@@ -28,7 +28,7 @@
     let start = new Date(now); //copy
     start.setDate(numDay - dayOfWeek);
 // Set an end date
-    let end = new Date(now); //copy
+    let end = new Date(now); //copy 
     end.setDate(numDay + (7 - dayOfWeek));
 
   const d1 = new Date(start);

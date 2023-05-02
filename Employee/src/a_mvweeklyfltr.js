@@ -1,7 +1,9 @@
 bcklic.addEventListener('click' , () => {
     window.location = "a_dashboard.html"
 })
-
+btnReport.addEventListener('click',()=>{
+  window.location = "a_mvreport.html"
+})
 // ---------- CHARTS ---------- 
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
@@ -454,7 +456,7 @@ var barChartOptions = {
 //   localStorage.removeItem("UV_1");
 //   localStorage.removeItem("UV_2");
 //   localStorage.removeItem("UV_3");
-//   localStorage.removeItem("SUV_1");
+//   localStorage.removeItem("SUV_1"); 
 //   localStorage.removeItem("SUV_2");
 //   localStorage.removeItem("SUV_3");
 //   localStorage.removeItem("BUS_1");

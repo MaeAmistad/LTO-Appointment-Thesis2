@@ -110,14 +110,14 @@
           <div class="dropdown-user">
             <button id="bcklic">BACK</button>
             <select id="user" onchange="user(this.value)">
-              <option value="a_licdashboard.html">LICENSE</option>
-              <option value="a_mvdashboard.html" selected>MOTOR VEHICLE</option>
+              <option value="a_licweeklyfltr.html">LICENSE</option>
+              <option value="a_mvweeklyfltr.html" selected>MOTOR VEHICLE</option>
             </select>
 
             <select id="update_dash" onchange="user(this.value)">
-              <option value="a_mvdashboard.html" selected>Daily</option>
+              <option value="a_mvdashboard.html">Daily</option>
               <option value="a_mvweeklyfltr.html">weekly</option>
-              <option value="a_mvmonthfltr.html">monthly</option>
+              <option value="a_mvmonthfltr.html" selected>monthly</option>
             </select>
             
             <button id="btnReport">REPORT</button>
@@ -150,6 +150,6 @@
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <!-- Custom JS -->
     <script src="../src/a_dashboard.js"></script>
-    <script type="module" src="../src/a_mvdashboard.js"></script>
+    <script type="module" src="../src/a_mvmonthfltr.js"></script>
   </body>
 </html> 

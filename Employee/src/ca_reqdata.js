@@ -276,7 +276,7 @@ const db = getFirestore(app);
                         else if(doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
                             updateDoc(updateStat, {
                                 User_Stat4: "REGISTERED",
-                                User_Stat: "RELEASED"
+                                User_Stat: "REGISTERED"
                             })
                             setDoc(doc(db,"Motor Vehicle",doc2.data().User_TransID),{
                                 User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,

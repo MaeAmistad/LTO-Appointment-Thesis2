@@ -317,7 +317,7 @@ var barChartOptions = {
   series: [{
     name: "TOTAL",
     data: [ AEtotl , DLPI , MSCN , dpchtotl]
-  }],
+  }], 
   chart: { 
     type: 'bar',
     height: 350,

@@ -182,9 +182,28 @@ img{
       .main-title > p {
         font-size: 20px;
       }
-      .dropdown-user button{
-        margin: 5px;
-        padding: 8px;
-        width: 100px;
-        text-transform: uppercase;
-       }  
+   .dropdown-user button{
+    margin: 4px;
+    padding: 5px;
+    text-transform: uppercase;
+    min-width: 100px;
+   }
+      #lic_table, #tablemv{
+        margin: 10px;
+        width: auto;
+        border-collapse: collapse;
+        font-size: 12px;
+      }
+      #tablemv tr th{
+        padding: 5px 12px;
+        font-size: 12px;
+      }
+      tr th, tr td{
+        border: 1px solid black;
+        padding: 4px;
+        text-align: left;
+        font-size: 12px;
+      }
+      #rw_ottl, .hdr th, tr td{
+        text-align: center;
+      }

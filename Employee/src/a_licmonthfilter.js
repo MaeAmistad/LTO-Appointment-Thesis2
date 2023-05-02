@@ -23,15 +23,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app); 
 
-// Date Today
-var date = new Date();
-var day = date.getDate();
-var month = date.getMonth() + 1;
-var year = date.getFullYear();
-if (month < 10) month = "0" + month;
-if (day < 10) day = "0" + day;
-var today = day + "-" + month + "-" + year;  
-
 // Monthly Filter
 var currentmonth = new Date().getMonth() + 1;
 if (currentmonth < 10)  currentmonth = "0" + currentmonth;
@@ -47,7 +38,7 @@ wrttnlicexam.forEach((doc) => {
 let dd = doc.data().dt_App;
 let mmsp = dd.slice(3,5);
 // Current Count
-    if(mmsp == currentmonth){
+    if(mmsp == currentmonth){ 
       if(doc.data().result == "PASSED"){
         var wrtnn_examP = wrttn1+=1;
         localStorage.setItem("wrtnn_examPmon",wrtnn_examP)
@@ -321,7 +312,7 @@ let mmsp = dd.slice(3,5);
         else if(doc.data().User_Stat == "DECLINED"){
           let dlch_cnt = dlch3+=1;
           localStorage.setItem("dlch_cnt3mon",dlch_cnt);
-        }
+        } 
       }
       }
   });

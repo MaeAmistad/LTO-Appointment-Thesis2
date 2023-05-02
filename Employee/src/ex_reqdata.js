@@ -79,7 +79,10 @@ const db = getFirestore(app);
                             result: "PASSED",
                             examType:exmtyp1,
                             dt_App: doc2.data().User_D,
-                            t_app: doc2.data().User_T
+                            t_app: doc2.data().User_T,
+                            laa: doc2.data().User_Laa,
+                            gn: doc2.data().User_GN,
+                            at: doc2.data().User_AT
                         }).then(() => {
                                 window.location = "ex_homepage.html"
                             })
@@ -94,7 +97,10 @@ const db = getFirestore(app);
                             result: "PASSED",
                             examType:exmtyp1,
                             dt_App: doc2.data().User_D,
-                            t_app: doc2.data().User_T
+                            t_app: doc2.data().User_T,
+                            laa: doc2.data().User_Laa,
+                            gn: doc2.data().User_GN,
+                            at: doc2.data().User_AT
                         }).then(() => {
                             window.location = "ex_homepage.html"
                         })
@@ -120,7 +126,10 @@ const db = getFirestore(app);
                             result: "FAILED",
                             examType:exmtyp2,
                             dt_App: doc2.data().User_D,
-                            t_app: doc2.data().User_T
+                            t_app: doc2.data().User_T,
+                            laa: doc2.data().User_Laa,
+                            gn: doc2.data().User_GN,
+                            at: doc2.data().User_AT
                         }).then(() => {
                                 window.location = "ex_homepage.html"
                             })
@@ -135,7 +144,10 @@ const db = getFirestore(app);
                             result: "FAILED",
                             examType:exmtyp2,
                             dt_App: doc2.data().User_D,
-                            t_app: doc2.data().User_T
+                            t_app: doc2.data().User_T,
+                            laa: doc2.data().User_Laa,
+                            gn: doc2.data().User_GN,
+                            at: doc2.data().User_AT
                         }).then(() => {
                             window.location = "ex_homepage.html"
                         })

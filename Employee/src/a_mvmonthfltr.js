@@ -4,7 +4,6 @@ bcklic.addEventListener('click' , () => {
 btnReport.addEventListener('click',()=>{
   window.location = "a_mvreport.html"
 })
-
 // ---------- CHARTS ---------- 
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
@@ -24,14 +23,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Date Today
-var date = new Date();
-var day = date.getDate();
-var month = date.getMonth() + 1;
-var year = date.getFullYear();
-if (month < 10) month = "0" + month;
-if (day < 10) day = "0" + day;
-var today = day + "-" + month + "-" + year; 
+// Monthly Filter
+var currentmonth = new Date().getMonth() + 1;
+if (currentmonth < 10)  currentmonth = "0" + currentmonth;
 
 // MV REFRIGERANT
 let c1 = 0;
@@ -68,81 +62,83 @@ let ym15 = 0;
 const mv_bc = await getDocs(collection(db, "Motor Vehicle"));
 mv_bc.forEach((doc) => {
   // CAR
+  let dd = doc.data().dt_App;
+  let mmsp = dd.slice(3,5);
 
-  if(doc.data().dt_App == today){
+  if(mmsp == currentmonth){
 
       if (doc.data().typel == "CAR" || doc.data().typel == "CARS"){
         if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
           var C1 = c1+=1;
-          localStorage.setItem("car1",C1)
+          localStorage.setItem("car1mon",C1)
         } 
         else if (doc.data().refrigerant_type == "R12"){
           var C2 = c2+=1;
-          localStorage.setItem("car2",C2)
+          localStorage.setItem("car2mon",C2)
         } 
         else if (doc.data().refrigerant_type == "R134A"){
           var C3 = c3+=1;
-          localStorage.setItem("car3",C3)
+          localStorage.setItem("car3mon",C3)
         }
       }
       // UV
       else if (doc.data().typel == "UV"){
         if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
           var UV1 = uv1+=1;
-          localStorage.setItem("UV_1",UV1)
+          localStorage.setItem("UV_1mon",UV1)
         } 
         else if (doc.data().refrigerant_type == "R12"){
           var UV2 = uv2+=1;
-          localStorage.setItem("UV_2",UV2)
+          localStorage.setItem("UV_2mon",UV2)
         } 
         else if (doc.data().refrigerant_type == "R134A"){ 
           var UV3 = uv3+=1;
-          localStorage.setItem("UV_3",UV3)
+          localStorage.setItem("UV_3mon",UV3)
         }
       }
         // SUV
         else if (doc.data().typel == "SUV"){
           if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
             var SUV1 = suv1+=1;
-            localStorage.setItem("SUV_1",SUV1)
+            localStorage.setItem("SUV_1mon",SUV1)
           } 
           else if (doc.data().refrigerant_type == "R12"){
             var SUV2 = suv2+=1;
-            localStorage.setItem("SUV_2",SUV2)
+            localStorage.setItem("SUV_2mon",SUV2)
           } 
           else if (doc.data().refrigerant_type == "R134A"){
             var SUV3 = suv3+=1;
-            localStorage.setItem("SUV_3",SUV3)
+            localStorage.setItem("SUV_3mon",SUV3)
           }
         }
         // BUSES
         else if (doc.data().typel == "BUS" || doc.data().typel == "BUSES"){
           if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
             var BUS1 = bus1+=1;
-            localStorage.setItem("BUS_1",BUS1)
+            localStorage.setItem("BUS_1mon",BUS1)
           } 
           else if (doc.data().refrigerant_type == "R12"){
             var BUS2 = bus2+=1;
-            localStorage.setItem("BUS_2",BUS2)
+            localStorage.setItem("BUS_2mon",BUS2)
           } 
           else if (doc.data().refrigerant_type == "R134A"){
             var BUS3 = bus3+=1;
-            localStorage.setItem("BUS_3",BUS3)
+            localStorage.setItem("BUS_3mon",BUS3)
           }
         }
           // TRUCKS
         else if (doc.data().typel == "TRUCK" || doc.data().typel == "TRUCKS"){
           if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
             var TRCK1 = truck1+=1;
-            localStorage.setItem("TRCK_1",TRCK1)
+            localStorage.setItem("TRCK_1mon",TRCK1)
           } 
           else if (doc.data().refrigerant_type == "R12"){
             var TRCK2 = truck2+=1;
-            localStorage.setItem("TRCK_2",TRCK2)
+            localStorage.setItem("TRCK_2mon",TRCK2)
           } 
           else if (doc.data().refrigerant_type == "R134A"){
             var TRCK3 = truck3+=1;
-            localStorage.setItem("TRCK_3",TRCK3)
+            localStorage.setItem("TRCK_3mon",TRCK3)
           }
         }
   }
@@ -166,144 +162,144 @@ mv_bc.forEach((doc) => {
 
     // console.log(year_model15) 
 
-    if(doc.data().dt_App == today){
+    if(mmsp == currentmonth){
         if (year_model1.includes(doc.data().yr_modell)) {
           var yrmdl1 = ym1+=1
-          localStorage.setItem("yr_mdl1",yrmdl1);
+          localStorage.setItem("yr_mdl1mon",yrmdl1);
         }
         if (year_model2.includes(doc.data().yr_modell)) {
           var yrmdl2 = ym2+=1
-          localStorage.setItem("yr_mdl2",yrmdl2);
+          localStorage.setItem("yr_mdl2mon",yrmdl2);
         }
         if (year_model3.includes(doc.data().yr_modell)) {
           var yrmdl3 = ym3+=1
-          localStorage.setItem("yr_mdl3",yrmdl3);
+          localStorage.setItem("yr_mdl3mon",yrmdl3);
         }
         if (year_model4.includes(doc.data().yr_modell)) {
           var yrmdl4 = ym4+=1
-          localStorage.setItem("yr_mdl4",yrmdl4);
+          localStorage.setItem("yr_mdl4mon",yrmdl4);
         }
         if (year_model5.includes(doc.data().yr_modell)) {
           var yrmdl5 = ym5+=1
-          localStorage.setItem("yr_mdl5",yrmdl5);
+          localStorage.setItem("yr_mdl5mon",yrmdl5);
         }
         if (year_model6.includes(doc.data().yr_modell)) {
           var yrmdl6 = ym6+=1
-          localStorage.setItem("yr_mdl6",yrmdl6);
+          localStorage.setItem("yr_mdl6mon",yrmdl6);
         }
         if (year_model7.includes(doc.data().yr_modell)) {
           var yrmdl7 = ym7+=1
-          localStorage.setItem("yr_mdl7",yrmdl7);
+          localStorage.setItem("yr_mdl7mon",yrmdl7);
         }
         if (year_model8.includes(doc.data().yr_modell)) {
           var yrmdl8 = ym8+=1
-          localStorage.setItem("yr_mdl8",yrmdl8);
+          localStorage.setItem("yr_mdl8mon",yrmdl8);
         }
         if (year_model9.includes(doc.data().yr_modell)) {
           var yrmdl9 = ym9+=1
-          localStorage.setItem("yr_mdl9",yrmdl9);
+          localStorage.setItem("yr_mdl9mon",yrmdl9);
         }
         if (year_model10.includes(doc.data().yr_modell)) {
           var yrmdl10 = ym10+=1
-          localStorage.setItem("yr_mdl10",yrmdl10);
+          localStorage.setItem("yr_mdl10mon",yrmdl10);
         }
         if (year_model11.includes(doc.data().yr_modell)) {
           var yrmdl11 = ym11+=1
-          localStorage.setItem("yr_mdl11",yrmdl11);
+          localStorage.setItem("yr_mdl11mon",yrmdl11);
         }
         if (year_model12.includes(doc.data().yr_modell)) {
           var yrmdl12 = ym12+=1
-          localStorage.setItem("yr_mdl12",yrmdl12);
+          localStorage.setItem("yr_mdl12mon",yrmdl12);
         }
         if (year_model13.includes(doc.data().yr_modell)) {
           var yrmdl13 = ym13+=1
-          localStorage.setItem("yr_mdl13",yrmdl13);
+          localStorage.setItem("yr_mdl13mon",yrmdl13);
         }
         if (year_model14.includes(doc.data().yr_modell)) {
           var yrmdl14 = ym14+=1
-          localStorage.setItem("yr_mdl14",yrmdl14);
+          localStorage.setItem("yr_mdl14mon",yrmdl14);
         }
         if (year_model15.includes(doc.data().yr_modell)) {
           var yrmdl15 = ym15+=1
-          localStorage.setItem("yr_mdl15",yrmdl15);
+          localStorage.setItem("yr_mdl15mon",yrmdl15);
         }
   }
 });
 
 // NaN to 0 
 // For MV
-if (localStorage.getItem("car1") == null || localStorage.getItem("car2") == null || localStorage.getItem("car3") == null){
-  localStorage.setItem("car1",0)
-  localStorage.setItem("car2",0)
-  localStorage.setItem("car3",0)
+if (localStorage.getItem("car1monmon") == null || localStorage.getItem("car2mon") == null || localStorage.getItem("car3mon") == null){
+  localStorage.setItem("car1mon",0)
+  localStorage.setItem("car2mon",0)
+  localStorage.setItem("car3mon",0)
 }
-if (localStorage.getItem("UV_1") == null || localStorage.getItem("UV_2") == null || localStorage.getItem("UV_3") == null){
-  localStorage.setItem("UV_1",0)
-  localStorage.setItem("UV_2",0)
-  localStorage.setItem("UV_3",0)
+if (localStorage.getItem("UV_1mon") == null || localStorage.getItem("UV_2mon") == null || localStorage.getItem("UV_3mon") == null){
+  localStorage.setItem("UV_1mon",0)
+  localStorage.setItem("UV_2mon",0)
+  localStorage.setItem("UV_3mon",0)
 }
-if (localStorage.getItem("SUV_1") == null || localStorage.getItem("SUV_2") == null || localStorage.getItem("SUV_3") == null){
-  localStorage.setItem("SUV_1",0)
-  localStorage.setItem("SUV_2",0)
-  localStorage.setItem("SUV_3",0)
+if (localStorage.getItem("SUV_1mon") == null || localStorage.getItem("SUV_2mon") == null || localStorage.getItem("SUV_3mon") == null){
+  localStorage.setItem("SUV_1mon",0)
+  localStorage.setItem("SUV_2mon",0)
+  localStorage.setItem("SUV_3mon",0)
 }
-if (localStorage.getItem("BUS_1") == null || localStorage.getItem("BUS_2") == null || localStorage.getItem("BUS_3") == null){
-  localStorage.setItem("BUS_1",0)
-  localStorage.setItem("BUS_2",0)
-  localStorage.setItem("BUS_3",0)
+if (localStorage.getItem("BUS_1mon") == null || localStorage.getItem("BUS_2mon") == null || localStorage.getItem("BUS_3mon") == null){
+  localStorage.setItem("BUS_1mon",0)
+  localStorage.setItem("BUS_2mon",0)
+  localStorage.setItem("BUS_3mon",0)
 }
-if (localStorage.getItem("TRCK_1") == null || localStorage.getItem("TRCK_2") == null || localStorage.getItem("TRCK_3") == null){
-  localStorage.setItem("TRCK_1",0)
-  localStorage.setItem("TRCK_2",0)
-  localStorage.setItem("TRCK_3",0)
+if (localStorage.getItem("TRCK_1mon") == null || localStorage.getItem("TRCK_2mon") == null || localStorage.getItem("TRCK_3mon") == null){
+  localStorage.setItem("TRCK_1mon",0)
+  localStorage.setItem("TRCK_2mon",0)
+  localStorage.setItem("TRCK_3mon",0)
 }
 
 // For Year Model
-if (localStorage.getItem("yr_mdl1") == null || localStorage.getItem("yr_mdl2") == null || localStorage.getItem("yr_mdl3") == null){
-  localStorage.setItem("yr_mdl1",0)
-  localStorage.setItem("yr_mdl2",0)
-  localStorage.setItem("yr_mdl3",0)
+if (localStorage.getItem("yr_mdl1mon") == null || localStorage.getItem("yr_mdl2mon") == null || localStorage.getItem("yr_mdl3mon") == null){
+  localStorage.setItem("yr_mdl1mon",0)
+  localStorage.setItem("yr_mdl2mon",0)
+  localStorage.setItem("yr_mdl3mon",0)
 }
-if (localStorage.getItem("yr_mdl4") == null || localStorage.getItem("yr_mdl5") == null || localStorage.getItem("yr_mdl6") == null){
-  localStorage.setItem("yr_mdl4",0)
-  localStorage.setItem("yr_mdl5",0)
-  localStorage.setItem("yr_mdl6",0)
+if (localStorage.getItem("yr_mdl4mon") == null || localStorage.getItem("yr_mdl5mon") == null || localStorage.getItem("yr_mdl6mon") == null){
+  localStorage.setItem("yr_mdl4mon",0)
+  localStorage.setItem("yr_mdl5mon",0)
+  localStorage.setItem("yr_mdl6mon",0)
 }
-if (localStorage.getItem("yr_mdl7") == null || localStorage.getItem("yr_mdl8") == null || localStorage.getItem("yr_mdl9") == null){
-  localStorage.setItem("yr_mdl7",0)
-  localStorage.setItem("yr_mdl8",0)
-  localStorage.setItem("yr_mdl9",0)
+if (localStorage.getItem("yr_mdl7mon") == null || localStorage.getItem("yr_mdl8mon") == null || localStorage.getItem("yr_mdl9mon") == null){
+  localStorage.setItem("yr_mdl7mon",0)
+  localStorage.setItem("yr_mdl8mon",0)
+  localStorage.setItem("yr_mdl9mon",0)
 }
-if (localStorage.getItem("yr_mdl10") == null || localStorage.getItem("yr_mdl11") == null || localStorage.getItem("yr_mdl12") == null){
-  localStorage.setItem("yr_mdl10",0)
-  localStorage.setItem("yr_mdl11",0)
-  localStorage.setItem("yr_mdl12",0)
+if (localStorage.getItem("yr_mdl10mon") == null || localStorage.getItem("yr_mdl11mon") == null || localStorage.getItem("yr_mdl12mon") == null){
+  localStorage.setItem("yr_mdl10mon",0)
+  localStorage.setItem("yr_mdl11mon",0)
+  localStorage.setItem("yr_mdl12mon",0)
 }
-if (localStorage.getItem("yr_mdl13") == null || localStorage.getItem("yr_mdl14") == null || localStorage.getItem("yr_mdl15") == null){
-  localStorage.setItem("yr_mdl13",0)
-  localStorage.setItem("yr_mdl14",0)
-  localStorage.setItem("yr_mdl15",0)
+if (localStorage.getItem("yr_mdl13mon") == null || localStorage.getItem("yr_mdl14mon") == null || localStorage.getItem("yr_mdl15mon") == null){
+  localStorage.setItem("yr_mdl13mon",0)
+  localStorage.setItem("yr_mdl14mon",0)
+  localStorage.setItem("yr_mdl15mon",0)
 }
 
 // Total Count of MV
-var mv_totalcar = parseInt(localStorage.getItem("car1")) + parseInt(localStorage.getItem("car2")) + parseInt(localStorage.getItem("car3"))
-var mv_totaluv = parseInt(localStorage.getItem("UV_1")) + parseInt(localStorage.getItem("UV_2")) + parseInt(localStorage.getItem("UV_3"))
-var mv_totalsuv = parseInt(localStorage.getItem("SUV_1")) + parseInt(localStorage.getItem("SUV_2")) + parseInt(localStorage.getItem("SUV_3"))
-var mv_totalbus = parseInt(localStorage.getItem("BUS_1")) + parseInt(localStorage.getItem("BUS_2")) + parseInt(localStorage.getItem("BUS_3"))
-var mv_totaltruck = parseInt(localStorage.getItem("TRCK_1")) + parseInt(localStorage.getItem("TRCK_2")) + parseInt(localStorage.getItem("TRCK_3"))
+var mv_totalcar = parseInt(localStorage.getItem("car1mon")) + parseInt(localStorage.getItem("car2mon")) + parseInt(localStorage.getItem("car3mon"))
+var mv_totaluv = parseInt(localStorage.getItem("UV_1mon")) + parseInt(localStorage.getItem("UV_2mon")) + parseInt(localStorage.getItem("UV_3mon"))
+var mv_totalsuv = parseInt(localStorage.getItem("SUV_1mon")) + parseInt(localStorage.getItem("SUV_2mon")) + parseInt(localStorage.getItem("SUV_3mon"))
+var mv_totalbus = parseInt(localStorage.getItem("BUS_1mon")) + parseInt(localStorage.getItem("BUS_2mon")) + parseInt(localStorage.getItem("BUS_3mon"))
+var mv_totaltruck = parseInt(localStorage.getItem("TRCK_1mon")) + parseInt(localStorage.getItem("TRCK_2mon")) + parseInt(localStorage.getItem("TRCK_3mon"))
 
 document.getElementById("num_current_mvttal").innerHTML =  mv_totalcar + mv_totaluv + mv_totalsuv + mv_totalbus + mv_totaltruck;
 
 var barChartOptions = {
     series: [{
       name: "Non-AC",
-      data: [ localStorage.getItem("car1"),localStorage.getItem("UV_1"),localStorage.getItem("SUV_1"),localStorage.getItem("BUS_1"),localStorage.getItem("TRCK_1")] 
+      data: [ localStorage.getItem("car1mon"),localStorage.getItem("UV_1mon"),localStorage.getItem("SUV_1mon"),localStorage.getItem("BUS_1mon"),localStorage.getItem("TRCK_1mon")] 
     },{
         name: "R12 CFC", 
-        data: [  localStorage.getItem("car2"),localStorage.getItem("UV_2"),localStorage.getItem("SUV_2"),localStorage.getItem("BUS_2"),localStorage.getItem("TRCK_2")]
+        data: [  localStorage.getItem("car2mon"),localStorage.getItem("UV_2mon"),localStorage.getItem("SUV_2mon"),localStorage.getItem("BUS_2mon"),localStorage.getItem("TRCK_2mon")]
       },{
           name: "R134a CFC",  
-          data: [  localStorage.getItem("car3"),localStorage.getItem("UV_3"),localStorage.getItem("SUV_3"),localStorage.getItem("BUS_3"),localStorage.getItem("TRCK_3")]
+          data: [  localStorage.getItem("car3mon"),localStorage.getItem("UV_3mon"),localStorage.getItem("SUV_3mon"),localStorage.getItem("BUS_3mon"),localStorage.getItem("TRCK_3mon")]
         } 
   ],
     chart: {
@@ -354,15 +350,15 @@ var barChartOptions = {
   barChart.render();
 
   // Total count of YEAR MODEL
-  let twnts1 = parseInt(localStorage.getItem("yr_mdl1"));
-  let twnts2 = parseInt(localStorage.getItem("yr_mdl2"));
-  let twnts3 = parseInt(localStorage.getItem("yr_mdl3"));
-  let twnts4 = parseInt(localStorage.getItem("yr_mdl4"));
-  let twnts5 = parseInt(localStorage.getItem("yr_mdl5"));
+  let twnts1 = parseInt(localStorage.getItem("yr_mdl1mon"));
+  let twnts2 = parseInt(localStorage.getItem("yr_mdl2mon"));
+  let twnts3 = parseInt(localStorage.getItem("yr_mdl3mon"));
+  let twnts4 = parseInt(localStorage.getItem("yr_mdl4mon"));
+  let twnts5 = parseInt(localStorage.getItem("yr_mdl5mon"));
 
-  let nineth1 =  parseInt(localStorage.getItem("yr_mdl6")) + parseInt(localStorage.getItem("yr_mdl7")) + parseInt(localStorage.getItem("yr_mdl8"));
-  let nineth2 =  parseInt(localStorage.getItem("yr_mdl9")) + parseInt(localStorage.getItem("yr_mdl10")) + parseInt(localStorage.getItem("yr_mdl11"));
-  let nineth3 =  parseInt(localStorage.getItem("yr_mdl12")) + parseInt(localStorage.getItem("yr_mdl13")) + parseInt(localStorage.getItem("yr_mdl14")) + parseInt(localStorage.getItem("yr_mdl15"));
+  let nineth1 =  parseInt(localStorage.getItem("yr_mdl6mon")) + parseInt(localStorage.getItem("yr_mdl7mon")) + parseInt(localStorage.getItem("yr_mdl8mon"));
+  let nineth2 =  parseInt(localStorage.getItem("yr_mdl9mon")) + parseInt(localStorage.getItem("yr_mdl10mon")) + parseInt(localStorage.getItem("yr_mdl11mon"));
+  let nineth3 =  parseInt(localStorage.getItem("yr_mdl12mon")) + parseInt(localStorage.getItem("yr_mdl13mon")) + parseInt(localStorage.getItem("yr_mdl14mon")) + parseInt(localStorage.getItem("yr_mdl15mon"));
   let nnth = nineth1 + nineth2 + nineth3;
   
   document.getElementById("num_current_mvymttal").innerHTML = twnts1 + twnts2 + twnts3 + twnts4 + twnts5 + nnth;
@@ -419,47 +415,47 @@ var barChartOptions = {
   var barChart = new ApexCharts(document.querySelector("#bar-chartmvyrmdl"), barChartOptions);
   barChart.render();
 
-  // Time Today
-var now = new Date()
-var time = now.getHours() + ":" + now.getMinutes();
-console.log(time)
+// 
 
-if(time == "0:0"){
-  localStorage.removeItem("car1");
-  localStorage.removeItem("car2");
-  localStorage.removeItem("car3");
-  localStorage.removeItem("UV_1");
-  localStorage.removeItem("UV_2");
-  localStorage.removeItem("UV_3");
-  localStorage.removeItem("SUV_1");
-  localStorage.removeItem("SUV_2");
-  localStorage.removeItem("SUV_3");
-  localStorage.removeItem("BUS_1");
-  localStorage.removeItem("BUS_2");
-  localStorage.removeItem("BUS_3");
-  localStorage.removeItem("TRCK_1");
-  localStorage.removeItem("TRCK_2");
-  localStorage.removeItem("TRCK_3");
-
-  localStorage.removeItem("yr_mdl1");
-  localStorage.removeItem("yr_mdl2");
-  localStorage.removeItem("yr_mdl3");
-  localStorage.removeItem("yr_mdl4");
-  localStorage.removeItem("yr_mdl5");
-  localStorage.removeItem("yr_mdl6");
-  localStorage.removeItem("yr_mdl7");
-  localStorage.removeItem("yr_mdl8");
-  localStorage.removeItem("yr_mdl9");
-  localStorage.removeItem("yr_mdl10");
-  localStorage.removeItem("yr_mdl11");
-  localStorage.removeItem("yr_mdl12");
-  localStorage.removeItem("yr_mdl13");
-  localStorage.removeItem("yr_mdl14");
-  localStorage.removeItem("yr_mdl15");
-}
 
 // Code
+  // Time Today
+// var now = new Date()
+// var time = now.getHours() + ":" + now.getMinutes();
+// console.log(time)
+// if(time == "0:0"){
+//   localStorage.removeItem("car1");
+//   localStorage.removeItem("car2");
+//   localStorage.removeItem("car3");
+//   localStorage.removeItem("UV_1");
+//   localStorage.removeItem("UV_2");
+//   localStorage.removeItem("UV_3");
+//   localStorage.removeItem("SUV_1");
+//   localStorage.removeItem("SUV_2");
+//   localStorage.removeItem("SUV_3");
+//   localStorage.removeItem("BUS_1");
+//   localStorage.removeItem("BUS_2");
+//   localStorage.removeItem("BUS_3");
+//   localStorage.removeItem("TRCK_1");
+//   localStorage.removeItem("TRCK_2");
+//   localStorage.removeItem("TRCK_3");
 
+//   localStorage.removeItem("yr_mdl1");
+//   localStorage.removeItem("yr_mdl2");
+//   localStorage.removeItem("yr_mdl3");
+//   localStorage.removeItem("yr_mdl4");
+//   localStorage.removeItem("yr_mdl5");
+//   localStorage.removeItem("yr_mdl6");
+//   localStorage.removeItem("yr_mdl7");
+//   localStorage.removeItem("yr_mdl8");
+//   localStorage.removeItem("yr_mdl9");
+//   localStorage.removeItem("yr_mdl10");
+//   localStorage.removeItem("yr_mdl11");
+//   localStorage.removeItem("yr_mdl12");
+//   localStorage.removeItem("yr_mdl13");
+//   localStorage.removeItem("yr_mdl14");
+//   localStorage.removeItem("yr_mdl15");
+// }
 // switch (doc.data().yr_modell) {
     //   case "2024":
     //     var yrmdl1 = ym1+=1

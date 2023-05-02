@@ -416,7 +416,7 @@ bcklic.addEventListener('click' , () => {
     localStorage.removeItem("dlch_cnt2wk");
     localStorage.removeItem("dlch_cnt3wk");
     localStorage.removeItem("dlch_cnt4wk");
-  }
+  } 
   
   // CODE
   

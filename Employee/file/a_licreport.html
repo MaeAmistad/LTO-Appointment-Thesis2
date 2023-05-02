@@ -10,8 +10,13 @@
 
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-    <link rel="stylesheet" href="https://kit.fontawesome.com/8ec04d5e4f.css" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://kit.fontawesome.com/8ec04d5e4f.css" crossorigin="anonymous"> -->
     <script src="https://kit.fontawesome.com/8ec04d5e4f.js" crossorigin="anonymous"></script>
+    <!-- Excel JS -->
+    <script type="text/javascript" src="../external/jquery-1.8.2.js"></script>
+    <script type="text/javascript" src="../external/jszip.js"></script>
+    <script type="text/javascript" src="../external/FileSaver.js"></script>
+    <script type="text/javascript" src="../external/excel-gen.js"></script>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../style/a_report.css">
   </head>
@@ -24,7 +29,7 @@
           <span class="material-icons-outlined">menu</span>
         </div>
         <div class="header-left">
-          <span class="material-icons-outlined">search</span>
+          <span class="material-icons-outlined">search</span> 
         </div>
         <div class="header-right">
           <!-- <span class="material-icons-outlined">email</span> -->
@@ -107,8 +112,369 @@
      
           <div class="dropdown-user">
             <button id="bcklic">BACK</button>
+            <button id="sav_excl">SAVE TO EXCEL</button>
+            <button id="">SAVE TO PDF</button>
           </div>
 
+
+          <!-- Table -->
+          <table id="lic_table">
+            <thead>
+              <tr class="hdr">
+                <th rowspan="3">TYPRS OF DRIVER'S LICENSE AND PERMITS TRANSACTIONS</th>
+                <th colspan="6">APPLICANTS EXAMINED</th>
+                <th colspan="9">DRIVER'S LICENSE & PERMIT ISSUED</th>
+                <th rowspan="3">MISC TXN</th>
+                <th rowspan="3">DL & PERMIT CASES HANDLED</th>
+              </tr>
+              <tr class="hdr">
+                <th colspan="3">WRITTEN</th>
+                <th colspan="3">PRACTICAL</th>
+                <th colspan="3">NEW</th>
+                <th colspan="3">RENEWAL</th>
+                <th colspan="3">TOTAL</th>
+              </tr>
+              <tr class="hdr">
+                <th>PASSED</th>
+                <th>FAILED</th>
+                <th>TOTAL</th>
+                <th>PASSED</th>
+                <th>FAILED</th>
+                <th>TOTAL</th>
+                <th>MALE</th>
+                <th>FEMALE</th>
+                <th>TOTAL</th>
+                <th>MALE</th>
+                <th>FEMALE</th>
+                <th>TOTAL</th>
+                <th>MALE</th>
+                <th>FEMALE</th>
+                <th>TOTAL</th>
+              </tr>
+              <tr class="hdr">
+                <th>(1)</th>
+                <th>(2.1)</th>
+                <th>(2.2)</th>
+                <th>(2.3)</th>
+                <th>(3.1)</th>
+                <th>(3.2)</th>
+                <th>(3.3)</th>
+                <th>(4.1)</th>
+                <th>(4.2)</th>
+                <th>(4.3)</th>
+                <th>(5.1)</th>
+                <th>(5.2)</th>
+                <th>(5.3)</th>
+                <th>(6.1)</th>
+                <th>(6.2)</th>
+                <th>(6.3)</th>
+                <th>(7)</th>
+                <th>(8)</th>
+              </tr> 
+            </thead>
+            <tbody>
+              <tr>
+                <th>I. STUDENT PERMIT</th>
+                <td id="sp_awp" style="background-color: #cccccc;"></td>
+                <td id="sp_awf" style="background-color: #cccccc;"></td> 
+                <td id="sp_awt" style="background-color: #cccccc;"></td>
+                <td id="sp_app" style="background-color: #cccccc;"></td>
+                <td id="sp_apf" style="background-color: #cccccc;"></td>
+                <td id="sp_apt" style="background-color: #cccccc;"></td>
+                <td id="sp_dnm">0</td>
+                <td id="sp_dnf">0</td>
+                <td id="sp_dnt"></td>
+                <td id="sp_drm">0</td>
+                <td id="sp_drf">0</td>
+                <td id="sp_drt"></td>
+                <td id="sp_dtm"></td>
+                <td id="sp_dtf"></td>
+                <td id="sp_dtt"></td>
+                <td id="sp_mt">0</td>
+                <td id="sp_dpch"></td>
+              </tr>
+              <tr>
+                <th>II. CONDUCTOR'S LICENSE</th>
+                <td id="cl_awp">0</td>
+                <td id="cl_awf">0</td>
+                <td id="cl_awt">0</td>
+                <td id="cl_app"></td>
+                <td id="cl_apf"></td>
+                <td id="cl_apt"></td>
+                <td id="cl_dnm">0</td>
+                <td id="cl_dnf">0</td>
+                <td id="cl_dnt">0</td>
+                <td id="cl_drm">0</td>
+                <td id="cl_drf">0</td>
+                <td id="cl_drt">0</td>
+                <td id="cl_dtm">0</td>
+                <td id="cl_dtf">0</td>
+                <td id="cl_dtt">0</td>
+                <td id="cl_mt">0</td>
+                <td id="cl_dpch"></td>
+              </tr>
+              <tr>
+                <th>III. DRIVER'S LICENSE</th>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+              </tr>
+              <tr>
+                <th style="background-color: #808080; color: white;">A. NEW FROM:</th>
+                <td id="nf_awp" style="background-color: #808080;"></td>
+                <td id="nf_awf" style="background-color: #808080;"></td>
+                <td id="nf_awt" style="background-color: #808080;"></td>
+                <td id="nf_app" style="background-color: #808080;"></td>
+                <td id="nf_apf" style="background-color: #808080;"></td>
+                <td id="nf_apt" style="background-color: #808080;"></td>
+                <td id="nf_dnm" style="background-color: #808080;"></td>
+                <td id="nf_dnf" style="background-color: #808080;"></td>
+                <td id="nf_dnt" style="background-color: #808080;"></td>
+                <td id="nf_drm" style="background-color: #808080;"></td>
+                <td id="nf_drf" style="background-color: #808080;"></td>
+                <td id="nf_drt" style="background-color: #808080;"></td>
+                <td id="nf_dtm" style="background-color: #808080;"></td>
+                <td id="nf_dtf" style="background-color: #808080;"></td>
+                <td id="nf_dtt" style="background-color: #808080;"></td>
+                <td id="nf_mt" style="background-color: #808080;"></td>
+                <td id="nf_dpch" style="background-color: #808080;"></td>
+              </tr>
+              <tr>
+                <th>1. Student Permit</th>
+                <td id="spdl_awp">0</td>
+                <td id="spdl_awf">0</td>
+                <td id="spdl_awt">0</td>
+                <td id="spdl_app">0</td>
+                <td id="spdl_apf">0</td>
+                <td id="spdl_apt">0</td>
+                <td id="spdl_dnm">0</td>
+                <td id="spdl_dnf">0</td>
+                <td id="spdl_dnt">0</td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+              </tr>
+              <tr>
+                <th>2. Foreign License</th>
+                <td id="fl_awp">0</td>
+                <td id="fl_awf">0</td>
+                <td id="fl_awt">0</td>
+                <td id="fl_app">0</td>
+                <td id="fl_apf">0</td>
+                <td id="fl_apt">0</td>
+                <td id="fl_dnm">0</td>
+                <td id="fl_dnf">0</td>
+                <td id="fl_dnt">0</td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+              </tr>
+              <tr>
+                <th style="background-color: #808080; color: white;">B. RENEWAL</th>
+                <td id="" style="background-color: #808080;"></td>
+                <td id="" style="background-color: #808080;"></td>
+                <td id="" style="background-color: #808080;"></td>
+                <td id="" style="background-color: #808080;"></td>
+                <td id="" style="background-color: #808080;"></td>
+                <td id="" style="background-color: #808080;"></td>
+                <td id="" style="background-color: #808080;"></td>
+                <td id="" style="background-color: #808080;"></td>
+                <td id="" style="background-color: #808080;"></td>
+                <td id="" style="background-color: #808080;"></td>
+                <td id="" style="background-color: #808080;"></td>
+                <td id="" style="background-color: #808080;"></td>
+                <td id="" style="background-color: #808080;"></td>
+                <td id="" style="background-color: #808080;"></td>
+                <td id="" style="background-color: #808080;"></td>
+                <td id="" style="background-color: #808080;"></td>
+                <td id="" style="background-color: #808080;"></td>
+              </tr>
+              <tr>
+                <th>1. Normal Renewal</th>
+                <td id="nrn_awp">0</td>
+                <td id="nrn_awf">0</td>
+                <td id="nrn_awt"></td>
+                <td id="nrn_app">0</td>
+                <td id="nrn_apf">0  </td>
+                <td id="nrn_apt"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="nrn_drm">0</td>
+                <td id="nrn_drf">0</td>
+                <td id="nrn_drt"></td>
+                <td id="nrn_dtm"></td>
+                <td id="nrn_dtf"></td>
+                <td id="nrn_dtt"></td>
+                <td id="nrn_misc"></td>
+                <td id="nrn_dpch"></td>
+              </tr>
+              <tr>
+                <th>2. Renewal DL expired for more than 2 yrs</th>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+              </tr>
+              <tr>
+                <th style="background-color: #808080; color: white;">C. MISC DL TRANSACTION</th>
+                <td id="misc_awp" style="background-color: #808080;"></td>
+                <td id="misc_awf" style="background-color: #808080;"></td>
+                <td id="misc_awt" style="background-color: #808080;"></td>
+                <td id="misc_app" style="background-color: #808080;"></td>
+                <td id="misc_apf" style="background-color: #808080;"></td>
+                <td id="misc_apt" style="background-color: #808080;"></td>
+                <td id="misc_dnm" style="background-color: #808080;"></td>
+                <td id="misc_dnf" style="background-color: #808080;"></td>
+                <td id="misc_dnt" style="background-color: #808080;"></td>
+                <td id="misc_drm" style="background-color: #808080;"></td>
+                <td id="misc_drf" style="background-color: #808080;"></td>
+                <td id="misc_drt" style="background-color: #808080;"></td>
+                <td id="misc_dtm" style="background-color: #808080;"></td>
+                <td id="misc_dtf" style="background-color: #808080;"></td>
+                <td id="misc_dtt" style="background-color: #808080;"></td>
+                <td id="misc_mt" style="background-color: #808080;"></td>
+                <td id="misc_dpch" style="background-color: #808080;"></td>
+              </tr>
+              <tr>
+                <th>1. Duplicate Trans.</th>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td id="dt_misc">0</td>
+                <td id="dt_dpch"></td>
+              </tr>
+              <tr>
+                <th>2. Revision of Records</th>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td id="rr_misc">0</td>
+                <td id="rr_misc"></td>
+              </tr>
+              <tr>
+                <th>3. Add'l. DL Code</th>
+                <td id="adc_awp">0</td>
+                <td id="adc_awf">0</td>
+                <td id="adc_awt">0</td>
+                <td id="adc_app">0</td>
+                <td id="adc_apf">0</td>
+                <td id="adc_apt">0</td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="adc_mt">0</td>
+                <td id="adc_dpch"></td>
+              </tr>
+              <tr>
+                <th>4. Others</th>
+                <td id="othr_awp">0</td>
+                <td id="othr_awf">0</td>
+                <td id="othr_awt">0</td>
+                <td id="othr_app">0</td>
+                <td id="othr_apf">0</td>
+                <td id="othr_apt">0</td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="othr_mt"></td>
+                <td id="othr_dpch"></td>
+              </tr>
+              <tr>
+                <th id="rw_ottl">TOTAL</th>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+                <td id=""></td>
+              </tr>
+            </tbody>
+          </table>
       </main>
       <!-- End Main -->
 
@@ -118,5 +484,20 @@
     <!-- Custom JS -->
     <script src="../src/a_dashboard.js"></script>
     <script type="module" src="../src/a_licreport.js"></script>
+    <!-- Seperate Script for excel -->
+    <script>
+      $(document).ready(function () {
+        $("#sav_excl").click(function () {
+		      excel = new ExcelGen({
+            "file_name": "sample_output.csv",
+			"src_id": "lic_table",
+			"show_header": true,
+			"format": "csv"
+		    });
+          excel.generate();
+        });
+      });
+
+    </script>
   </body>
 </html> 
