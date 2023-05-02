@@ -57,7 +57,7 @@ nav ul li:hover > ul{
 .main{
  position: relative;
   left: 32%;
-  width: 35%;
+  width: 500px;
   padding: 25px;
   background: white; 
   margin-top: 20px;
@@ -136,7 +136,7 @@ input[type="button"]{
     
         .main, .datepickerr, time{
             margin-left: -2%;
-            width: 40%;
+            width:400px;
           
             align-items: center;
             
@@ -150,10 +150,10 @@ input[type="button"]{
             margin-left:25%;
         }
         .btn{
-                width: 100%;
+             
         }
         .btn_sv{
-            margin-left: -1;
+            margin-left: 30%;
         }
     }
   
