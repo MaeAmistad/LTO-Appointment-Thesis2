@@ -161,7 +161,10 @@ select{
   .next1{
     margin-left: 20%;
   }
-  .main ul li{
+  .main ul li {
+    width: 90%;
+    margin-left: 10%;
+  }.main h5{
     width: 90%;
     margin-left: 10%;
   }
