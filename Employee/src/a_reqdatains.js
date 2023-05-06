@@ -238,7 +238,7 @@ add.addEventListener('click',() => {
         localStorage.setItem("ui12",refrigernt_typ);
         localStorage.setItem("ui13",yr_mdl);
 
-        window.location = "In_reqdata.html" 
+        window.location = "a_reqdatains.html" 
 
     }
 

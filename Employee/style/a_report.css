@@ -9,7 +9,7 @@
 img{
   width: 80px;
   height: 80px;  
-}
+} 
   .material-icons-outlined {
     vertical-align: middle;
     line-height: 1px;
@@ -188,22 +188,24 @@ img{
     text-transform: uppercase;
     min-width: 100px;
    }
-      #lic_table, #tablemv{
+      #table{
         margin: 10px;
         width: auto;
         border-collapse: collapse;
         font-size: 12px;
       }
-      #tablemv tr th{
-        padding: 5px 12px;
+      .tablemv tr th{
+        padding: 5px 5px;
         font-size: 12px;
       }
       tr th, tr td{
         border: 1px solid black;
-        padding: 4px;
+        padding: 5px;
         text-align: left;
         font-size: 12px;
       }
       #rw_ottl, .hdr th, tr td{
         text-align: center;
       }
+
+      

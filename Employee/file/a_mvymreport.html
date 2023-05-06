@@ -117,22 +117,53 @@
           <!-- Table -->
           <table id="table" class="tablemv">
             <thead>
-                <tr class="hdr">
-                  <th>Item No.</th>
-                  <th>Plate No.</th>
-                  <th>Type</th>
-                  <th>Make/Series</th>
-                  <th>Motor Number</th>
-                  <th>Chassis Number</th>
-                  <th>Color</th>
-                  <th>Fuel</th>
-                  <th>File No.</th>
-                  <th>Date Registered</th>
-                  <th>Transaction</th>
-                  <th>Dept./Agency</th>
+                <tr>
+                  <th rowspan="4">YEAR MODEL</th>
+                  <th colspan="4">CARS</th>
+                  <th colspan="4">UV</th>
+                  <th colspan="4">SUV</th>
+                  <th colspan="4">BUSES</th>
+                  <th colspan="4">TRUCKS</th>
+                  <th colspan="3">TOTAL</th>
+                  <th rowspan="4">GRAND TOTAL</th>
+                </tr>
+                <tr>
+                    <th rowspan="3">NON-AC</th>
+                    <th colspan="2">TYPE OF CFC</th>
+                    <th rowspan="3">TOTAL</th>
+                    <th rowspan="3">NON-AC</th>
+                    <th colspan="2">TYPE OF CFC</th>
+                    <th rowspan="3">TOTAL</th>
+                    <th rowspan="3">NON-AC</th>
+                    <th colspan="2">TYPE OF CFC</th>
+                    <th rowspan="3">TOTAL</th>
+                    <th rowspan="3">NON-AC</th>
+                    <th colspan="2">TYPE OF CFC</th>
+                    <th rowspan="3">TOTAL</th>
+                    <th rowspan="3">NON-AC</th>
+                    <th colspan="2">TYPE OF CFC</th>
+                    <th rowspan="3">TOTAL</th>
+                    <th rowspan="3">NON-AC</th>
+                    <th colspan="2">TYPE OF CFC</th>
+                </tr>
+                <tr>
+                    <th>R12</th>
+                    <th>R134A</th>
+                    <th>R12</th>
+                    <th>R134A</th>
+                    <th>R12</th>
+                    <th>R134A</th>
+                    <th>R12</th>
+                    <th>R134A</th>
+                    <th>R12</th>
+                    <th>R134A</th>
+                    <th>R12</th>
+                    <th>R134A</th>
                 </tr>
             </thead>
-              <tbody id="tbody1"> </tbody>
+            <tbody>
+
+            </tbody>
           </table>
       </main>
       <!-- End Main -->
@@ -142,7 +173,7 @@
     <!-- Scripts -->
     <!-- Custom JS -->
     <script src="../src/a_dashboard.js"></script>
-    <script type="module" src="../src/a_mvreport.js"></script>
+    <script type="module" src="../src/a_mvymreport.js"></script>
     <script>
       sav_excel.addEventListener('click',(e) =>{
         var table2excel = new Table2Excel();

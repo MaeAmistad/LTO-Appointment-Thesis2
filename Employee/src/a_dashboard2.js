@@ -32,9 +32,9 @@ var time = now.getHours() + ":" + now.getMinutes();
 console.log(time)
 
 // card
-appntment_chrt.addEventListener('click',() => {
-  window.location = "a_appntmentCard.html"
-});
+// appntment_chrt.addEventListener('click',() => {
+//   window.location = "a_appntmentCard.html"
+// });
 inspctor.addEventListener('click',() => {
   window.location = "a_applistins.html"
 });

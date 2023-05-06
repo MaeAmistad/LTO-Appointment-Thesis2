@@ -265,10 +265,13 @@ img{
     color: #D27685;
     padding-left: 10px;
   }
-  #btnReport{
+  #btnReport,#btnReportYM{
     margin-left: 55%;
     background-color: #008000e8;
     color: white;
+  }
+  #btnReportYM{
+    margin-left: 88%;
   }
   .currntRel{
     margin-top: 5px;

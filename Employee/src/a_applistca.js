@@ -1,5 +1,3 @@
-
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import { getFirestore, getDocs, collection } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
 
@@ -67,7 +65,7 @@ var tbody = document.getElementById('tbody1');
                 trow.addEventListener('click', (e) =>{
                     trow.style.backgroundColor = '#254894c0';
                     trow.style.color = "white";
-                    localStorage.setItem('stat',doc2.data().User_AppID)    
+                    localStorage.setItem('stat',doc2.data().User_TransID)    
                     localStorage.setItem('ID', doc2.id)
     
                     window.location = "a_reqdataca.html";
@@ -81,6 +79,6 @@ var tbody = document.getElementById('tbody1');
                     trow.style.backgroundColor = "";
                     trow.style.color = "";
                  })
-                }
+                } 
 
 });

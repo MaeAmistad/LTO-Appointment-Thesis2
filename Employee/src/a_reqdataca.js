@@ -39,11 +39,10 @@ const db = getFirestore(app);
 
     var transID = localStorage.getItem("stat");
     var ID = localStorage.getItem("ID");
-    console.log(ID)
+    // console.log(transID)
         querySnapshot2.forEach(doc2 => {
        
             if (transID == doc2.data().User_TransID){
-
                 if (doc2.data().User_AT == "REVISION OF RECORDS"){
                     document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
                     document.getElementById("dof").innerHTML = doc2.data().User_BD;
@@ -154,7 +153,7 @@ const db = getFirestore(app);
                                             User_Stat4: "COMPLETED",
                                             User_Stat: "COMPLETED"
                                         }).then(() => {
-                                            window.location = "ca_homepage.html"
+                                            window.location = "a_applistca.html"
                                         })
                                     }
                                     else if(doc2.data().User_AT == "ADDITIONAL DL CODE OR CATEGORY"){
@@ -162,7 +161,7 @@ const db = getFirestore(app);
                                             User_Stat4: "COMPLETED",
                                             User_Stat: "COMPLETED"
                                         }).then(() => {
-                                            window.location = "ca_homepage.html"
+                                            window.location = "a_applistca.html"
                                         })
                                     }
                                     else if(doc2.data().User_AT == "CHANGE OF DL CLASSIFICATION"){
@@ -170,7 +169,7 @@ const db = getFirestore(app);
                                             User_Stat4: "COMPLETED",
                                             User_Stat: "COMPLETED"
                                         }).then(() => {
-                                            window.location = "ca_homepage.html"
+                                            window.location = "a_applistca.html"
                                         })
                                     }
                                 }
@@ -187,7 +186,7 @@ const db = getFirestore(app);
                                         t_app: doc2.data().User_T,
                                         User_GN: doc2.data().User_GN
                                     }).then(() => {
-                                        window.location = "ca_homepage.html"
+                                        window.location = "a_applistca.html"
                                     })
                                 }
                                 
@@ -196,7 +195,7 @@ const db = getFirestore(app);
                                         User_Stat4: "COMPLETED",
                                         User_Stat: "COMPLETED"
                                     }).then(() => {
-                                        window.location = "ca_homepage.html"
+                                        window.location = "a_applistca.html"
                                     })
                                 }
                                 else{
@@ -212,7 +211,7 @@ const db = getFirestore(app);
                                         t_app: doc2.data().User_T,
                                         User_GN: doc2.data().User_GN
                                     }).then(() => {
-                                        window.location = "ca_homepage.html"
+                                        window.location = "a_applistca.html"
                                     })
                                 }
 
@@ -232,7 +231,7 @@ const db = getFirestore(app);
                                             t_app: doc2.data().User_T,
                                             User_GN: doc2.data().User_GN
                                         }).then(() => {
-                                            window.location = "ca_homepage.html"
+                                            window.location = "a_applistca.html"
                                         })
                                         
                                     }
@@ -249,7 +248,7 @@ const db = getFirestore(app);
                                             t_app: doc2.data().User_T,
                                             User_GN: doc2.data().User_GN
                                         }).then(() => {
-                                            window.location = "ca_homepage.html"
+                                            window.location = "a_applistca.html"
                                         })
                                     }
                                 }
@@ -266,7 +265,7 @@ const db = getFirestore(app);
                                         t_app: doc2.data().User_T,
                                         User_GN: doc2.data().User_GN
                                     }).then(() => {
-                                        window.location = "ca_homepage.html"
+                                        window.location = "a_applistca.html"
                                     })
                                 }
 
@@ -285,9 +284,19 @@ const db = getFirestore(app);
                                 t_app: doc2.data().User_T,
                                 refrigerant_type: doc2.data().refrigerant_typ,
                                 typel: doc2.data().typel,
-                                yr_modell:doc2.data().yr_modell
+                                yr_modell:doc2.data().yr_modell,
+                                pltno:doc2.data().pltno,
+                                typel:doc2.data().typel,
+                                mksrs:doc2.data().mksrs,
+                                mtrno:doc2.data().mtrno,
+                                chassno:doc2.data().chassno,
+                                color:doc2.data().color,
+                                fuel :doc2.data().fuel, 
+                                fileno:doc2.data().fileno,
+                                dtrgstrd:doc2.data().dtrgstrd,
+                                deptagncy:doc2.data().deptagncy
                             }).then(() => {
-                                window.location = "ca_homepage.html"
+                                window.location = "a_applistca.html" 
                             })
                         }
 
