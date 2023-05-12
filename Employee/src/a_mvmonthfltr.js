@@ -1,7 +1,7 @@
 bcklic.addEventListener('click' , () => {
     window.location = "a_dashboard.html"
 })
-btnReport.addEventListener('click',()=>{
+btnReport.addEventListener('click',()=>{ 
   window.location = "a_mvreport.html"
 })
 // ---------- CHARTS ---------- 
@@ -162,7 +162,7 @@ mv_bc.forEach((doc) => {
 
     // console.log(year_model15) 
 
-    if(mmsp == currentmonth){
+    if(mmsp == currentmonth){      
         if (year_model1.includes(doc.data().yr_modell)) {
           var yrmdl1 = ym1+=1
           localStorage.setItem("yr_mdl1mon",yrmdl1);
