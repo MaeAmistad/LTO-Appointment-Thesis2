@@ -17,7 +17,24 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig); 
 const db = getFirestore(app);
 
+// Date Today
+var date = new Date();
+var day = date.getDate();
+var month = date.getMonth() + 1;
+var year = date.getFullYear();
+if (month < 10) month = "0" + month;
+if (day < 10) day = "0" + day;
+var today = day + "-" + month + "-" + year;       
+
+// Time Today
+var now = new Date()
+var time = now.getHours() + ":" + now.getMinutes();
+console.log(time)
+
 // card
+// appntment_chrt.addEventListener('click',() => {
+//   window.location = "a_appntmentCard.html"
+// });
 inspctor.addEventListener('click',() => {
   window.location = "a_applistins.html"
 });
@@ -30,13 +47,16 @@ cashr.addEventListener('click',() => {
 exminer.addEventListener('click',() => {
   window.location = "a_applistex.html"
 });
+
 // Evaluator Count
-const querySnapshottotlDLPI = await getDocs(collection(db, "Applicants"));
+const card_count = await getDocs(collection(db, "Applicants"));
 let totlE = 0;
 let totlI = 0;
 let totlC = 0;
 let totlEx = 0; 
-querySnapshottotlDLPI.forEach((doc) => {
+card_count.forEach((doc) => {
+
+// CARD COUNT
   if(doc.data().User_TT == "LICENSING"){
       if(doc.data().User_Stat == "PENDING"){
           var total = totlE+=1;
@@ -80,23 +100,88 @@ if(doc.data().User_TT == "LICENSING"){
   }
 }
 
+});
+
+// For License
+const license = await getDocs(collection(db, "License"));
+let mmlic1 = 0;
+let mmlic2 = 0;
+let mmlic3 = 0;
+
+let lic_current = 0;
+license.forEach((doc) => {
+
+// For Monthly Area Chart
+let dd = doc.data().dt_App;
+let mmsp = dd.slice(3,5); 
+
+  if (mmsp == "04"){
+    let mm11 = mmlic1+=1;
+    localStorage.setItem("mm_cnt1",mm11)
+  }
+  if (mmsp == "05"){
+    let mm22 = mmlic2+=1;
+    localStorage.setItem("mm_cnt2",mm22)
+  }
+  if (mmsp == "06"){
+    let mm33 = mmlic3+=1;
+    localStorage.setItem("mm_cnt3",mm33)
+  }
+
+// Current Count Chart
+  if(dd == today){
+    let liccnt = lic_current+=1;
+    localStorage.setItem("lic_currentcnt",liccnt)
+  }
+
+});
+// For MV
+const mv = await getDocs(collection(db, "Motor Vehicle"));
+let mmv1 = 0;
+let mmv2 = 0;
+let mmv3 = 0;
+
+let mv_current = 0;
+mv.forEach((doc) => {
+
+// For Monthly Area Chart
+let dd = doc.data().dt_App;
+let mmsp = dd.slice(3,5);
+
+  if (mmsp == "04"){
+    let mv11 = mmv1+=1;
+    localStorage.setItem("mmv_cnt1",mv11)
+  }
+  if (mmsp == "05"){
+    let mv22 = mmv2+=1;
+    localStorage.setItem("mmv_cnt2",mv22)
+  }
+  if (mmsp == "06"){
+    let mv33 = mmv3+=1;
+    localStorage.setItem("mmv_cnt3",mv33)
+  }
+
+  // Current Count Chart
+  if(dd == today){
+    let mvcnt = mv_current+=1;
+    localStorage.setItem("mv_currentcnt",mvcnt)
+  }
 
 });
 
-const coll = collection(db,"License");
-const snapshot = await getCountFromServer(coll);
-// console.log('count: ', snapshot.data().count);
+// If LocalStorage key Get Null
+if (localStorage.getItem("lic_currentcnt") == null || localStorage.getItem("mv_currentcnt") == null){
+  localStorage.setItem("lic_currentcnt",0);
+  localStorage.setItem("mv_currentcnt",0);
+}
 
-const coll2 = collection(db,"Motor Vehicle");
-const snapshot2 = await getCountFromServer(coll2);
-// console.log('count: ', snapshot2.data().count);
+document.getElementById("num_current_rel").innerHTML = parseInt(localStorage.getItem("lic_currentcnt")) + parseInt(localStorage.getItem("mv_currentcnt"));
 
-document.getElementById("num_current_rel").innerHTML = snapshot.data().count + snapshot2.data().count;
 // BAR CHART
 var barChartOptions = {
     series: [{
       name: "TOTAL",
-      data: [snapshot.data().count, snapshot2.data().count]
+      data: [localStorage.getItem("lic_currentcnt"), localStorage.getItem("mv_currentcnt")]
     }], 
     chart: {
       type: 'bar',
@@ -151,22 +236,14 @@ document.getElementById("appnt").innerHTML = cnt.data().count;
 
 // MONTHLY count of appointment CHART
 
-// const monthlycount = await getDocs(collection(db, "Applicants"));
-// monthlycount.forEach((doc) => {
-//     var dd = doc.data().User_D;
-//     var mmsp = dd.slice(3,5);
-//   console.log(mmsp)
-
-// });
-
 // AREA CHART
 var areaChartOptions = {
   series: [{
     name: 'Licensing',
-    data: [0, 0, 0, 0,0,0]
+    data: [0, 0, 0, localStorage.getItem("mm_cnt1") ,localStorage.getItem("mm_cnt2"),localStorage.getItem("mm_cnt3")]
   }, {
     name: 'Motor Vehicle Registration',
-    data: [0, 0, 0, 0,0,0]
+    data: [0, 0, 0,    localStorage.getItem("mmv_cnt1"),localStorage.getItem("mmv_cnt2"),localStorage.getItem("mmv_cnt3")]
   }],
   chart: {
     height: 350,

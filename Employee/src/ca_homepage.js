@@ -36,30 +36,39 @@ var tbody = document.getElementById('tbody1');
             let td1 = document.createElement('td'); 
             let td5 = document.createElement('td'); 
             let td7 = document.createElement('td');
-            let td8 = document.createElement('td'); 
+            // let td8 = document.createElement('td'); 
 
             t_ID.innerHTML = doc2.data().User_TransID; 
             td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
             td5.innerHTML = doc2.data().User_TT;
-            td7.innerHTML = doc2.data().User_D;
-            td8.innerHTML = doc2.data().User_T;
+            td7.innerHTML = doc2.data().User_AT;
+            // td8.innerHTML = doc2.data().User_T;
             
             trow.appendChild(t_ID);
             trow.appendChild(td1);
             trow.appendChild(td5);
             trow.appendChild(td7);
-            trow.appendChild(td8);
+            // trow.appendChild(td8);
 
             tbody.appendChild(trow);
 
             trow.addEventListener('click', (e) =>{
-                trow.style.backgroundColor = 'rgb(218, 216, 216)';
+                trow.style.backgroundColor = '#254894c0';
+                trow.style.color = "white";
                 localStorage.setItem('stat',doc2.data().User_TransID)    
                 localStorage.setItem('ID', doc2.id)
 
                 window.location = "ca_reqdata.html";
             });
             
+            trow.addEventListener('mouseover',function(){
+                trow.style.backgroundColor = 'rgb(218, 216, 216)';
+                trow.style.color = "black";
+             })
+             trow.addEventListener('mouseleave',function(){
+                trow.style.backgroundColor = "";
+                trow.style.color = "";
+             })
             }
 
 });

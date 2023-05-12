@@ -30,29 +30,39 @@ if(doc2.data().User_TT == "LICENSING"){
                 let td1 = document.createElement('td'); 
                 let td2 = document.createElement('td'); 
                 let td3 = document.createElement('td');
-                let td4 = document.createElement('td'); 
+                // let td4 = document.createElement('td'); 
 
                 t_ID.innerHTML = doc2.data().User_TransID; 
                 td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
                 td2.innerHTML = doc2.data().User_TT;
-                td3.innerHTML = doc2.data().User_D;
-                td4.innerHTML = doc2.data().User_T;
+                td3.innerHTML = doc2.data().User_AT;
+                // td4.innerHTML = doc2.data().User_T;
 
                 trow.appendChild(t_ID);
                 trow.appendChild(td1);
                 trow.appendChild(td2);
                 trow.appendChild(td3);
-                trow.appendChild(td4);
+                // trow.appendChild(td4);
 
                 tbody.appendChild(trow);
 
                 trow.addEventListener('click', (e) =>{
-                    trow.style.backgroundColor = 'rgb(218, 216, 216)';
+                    trow.style.backgroundColor = '#254894c0';
+                    trow.style.color = "white";
                     localStorage.setItem('stat',doc2.data().User_TransID)    
                     localStorage.setItem('ID', doc2.id)
 
                     window.location = "ex_reqdata.html";
                 });
+
+                trow.addEventListener('mouseover',function(){
+                    trow.style.backgroundColor = 'rgb(218, 216, 216)';
+                    trow.style.color = "black";
+                 })
+                 trow.addEventListener('mouseleave',function(){
+                    trow.style.backgroundColor = "";
+                    trow.style.color = "";
+                 })
                 
                 }
         }
@@ -79,13 +89,24 @@ if(doc2.data().User_TT == "LICENSING"){
 
                 tbody.appendChild(trow);
 
+
                 trow.addEventListener('click', (e) =>{
-                    trow.style.backgroundColor = 'rgb(218, 216, 216)';
+                    trow.style.backgroundColor = '#254894c0';
+                    trow.style.color = "white";
                     localStorage.setItem('stat',doc2.data().User_TransID)    
                     localStorage.setItem('ID', doc2.id)
 
                     window.location = "ex_reqdata.html";
                 });
+
+                trow.addEventListener('mouseover',function(){
+                    trow.style.backgroundColor = 'rgb(218, 216, 216)';
+                    trow.style.color = "black";
+                 })
+                 trow.addEventListener('mouseleave',function(){
+                    trow.style.backgroundColor = "";
+                    trow.style.color = "";
+                 })
                 
                 }
         }
@@ -112,13 +133,24 @@ if(doc2.data().User_TT == "LICENSING"){
 
                 tbody.appendChild(trow);
 
+
                 trow.addEventListener('click', (e) =>{
-                    trow.style.backgroundColor = 'rgb(218, 216, 216)';
+                    trow.style.backgroundColor = '#254894c0';
+                    trow.style.color = "white";
                     localStorage.setItem('stat',doc2.data().User_TransID)    
                     localStorage.setItem('ID', doc2.id)
 
                     window.location = "ex_reqdata.html";
                 });
+
+                trow.addEventListener('mouseover',function(){
+                    trow.style.backgroundColor = 'rgb(218, 216, 216)';
+                    trow.style.color = "black";
+                 })
+                 trow.addEventListener('mouseleave',function(){
+                    trow.style.backgroundColor = "";
+                    trow.style.color = "";
+                 })
                 
                 }
         }
@@ -147,13 +179,24 @@ if(doc2.data().User_TT == "LICENSING"){
 
             tbody.appendChild(trow);
 
+
             trow.addEventListener('click', (e) =>{
-                trow.style.backgroundColor = 'rgb(218, 216, 216)';
+                trow.style.backgroundColor = '#254894c0';
+                trow.style.color = "white";
                 localStorage.setItem('stat',doc2.data().User_TransID)    
                 localStorage.setItem('ID', doc2.id)
 
                 window.location = "ex_reqdata.html";
             });
+
+            trow.addEventListener('mouseover',function(){
+                trow.style.backgroundColor = 'rgb(218, 216, 216)';
+                trow.style.color = "black";
+             })
+             trow.addEventListener('mouseleave',function(){
+                trow.style.backgroundColor = "";
+                trow.style.color = "";
+             })
             
             }
     }

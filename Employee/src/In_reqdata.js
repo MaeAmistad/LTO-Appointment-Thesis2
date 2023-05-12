@@ -298,7 +298,7 @@ add.addEventListener('click',() => {
             }
 
 
-            // console.log(trnidlic)
+             // Saving Data
             cnfrm.addEventListener('click', (e) => {
                 const updateStat = doc(db, "Applicants", doc2.id)
                 var stt = localStorage.getItem("stat")
@@ -318,6 +318,7 @@ add.addEventListener('click',() => {
                 else{
                     if (stt == doc2.data().User_AppID){
                         updateDoc(updateStat, {
+                            User_Stat1: "APPROVED_TO_PROCEED",
                             User_Stat: "APPROVED_TO_PROCEED",
                             User_TransID: trnidmvr,                            
                             pltno: localStorage.getItem("ui1"),
@@ -361,7 +362,8 @@ add.addEventListener('click',() => {
 
                 if (stt == doc2.data().User_AppID){
                     updateDoc(updateStat, {
-                        User_Stat: "DISSAPPROVED"
+                        User_Stat: "DISSAPPROVED",
+                        User_Stat1: "DISSAPPROVED"
                     }).then(() => {
 
                         localStorage.removeItem("ui1");
@@ -418,9 +420,7 @@ add.addEventListener('click',() => {
 
         document.getElementById("mvinfo").innerText = "EDIT MV INFO";
 
-        // if (localStorage.getItem("ui12") == "NON-AC"){
-        //     document.getElementById("refrtypee").text = "NON-AC"
-        // }
+
       }
 
     });

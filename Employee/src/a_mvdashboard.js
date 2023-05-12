@@ -1,7 +1,12 @@
 bcklic.addEventListener('click' , () => {
     window.location = "a_dashboard.html"
 })
-
+btnReport.addEventListener('click',()=>{
+  window.location = "a_mvreport.html"
+})
+btnReportYM.addEventListener('click',() =>{
+  window.location = "a_mvymreport.html"
+});
 // ---------- CHARTS ---------- 
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
@@ -13,13 +18,22 @@ const firebaseConfig = {
     authDomain: "lto-online-appointment-setter.firebaseapp.com",
     projectId: "lto-online-appointment-setter",
     storageBucket: "lto-online-appointment-setter.appspot.com",
-    messagingSenderId: "382579903791",
+    messagingSenderId: "382579903791", 
     appId: "1:382579903791:web:5d98bbe4ea8b38a43065da" 
 }; 
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
+// Date Today
+var date = new Date();
+var day = date.getDate();
+var month = date.getMonth() + 1;
+var year = date.getFullYear();
+if (month < 10) month = "0" + month;
+if (day < 10) day = "0" + day;
+var today = day + "-" + month + "-" + year; 
 
 // MV REFRIGERANT
 let c1 = 0;
@@ -56,84 +70,85 @@ let ym15 = 0;
 const mv_bc = await getDocs(collection(db, "Motor Vehicle"));
 mv_bc.forEach((doc) => {
   // CAR
-  if (doc.data().typel == "CAR" || doc.data().typel == "CARS"){
-    if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-      var C1 = c1+=1;
-      localStorage.setItem("car1",C1)
-    } 
-    else if (doc.data().refrigerant_type == "R12"){
-      var C2 = c2+=1;
-      localStorage.setItem("car2",C2)
-    } 
-    else if (doc.data().refrigerant_type == "R134A"){
-      var C3 = c3+=1;
-      localStorage.setItem("car3",C3)
-    }
-  }
-  // UV
-  else if (doc.data().typel == "UV"){
-    if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-      var UV1 = uv1+=1;
-      localStorage.setItem("UV_1",UV1)
-    } 
-    else if (doc.data().refrigerant_type == "R12"){
-      var UV2 = uv2+=1;
-      localStorage.setItem("UV_2",UV2)
-    } 
-    else if (doc.data().refrigerant_type == "R134A"){
-      var UV3 = uv3+=1;
-      localStorage.setItem("UV_3",UV3)
-    }
-  }
-    // SUV
-    else if (doc.data().typel == "SUV"){
-      if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-        var SUV1 = suv1+=1;
-        localStorage.setItem("SUV_1",SUV1)
-      } 
-      else if (doc.data().refrigerant_type == "R12"){
-        var SUV2 = suv2+=1;
-        localStorage.setItem("SUV_2",SUV2)
-      } 
-      else if (doc.data().refrigerant_type == "R134A"){
-        var SUV3 = suv3+=1;
-        localStorage.setItem("SUV_3",SUV3)
-      }
-    }
-    // BUSES
-    else if (doc.data().typel == "BUS" || doc.data().typel == "BUSES"){
-      if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-        var BUS1 = bus1+=1;
-        localStorage.setItem("BUS_1",BUS1)
-      } 
-      else if (doc.data().refrigerant_type == "R12"){
-        var BUS2 = bus2+=1;
-        localStorage.setItem("BUS_2",BUS2)
-      } 
-      else if (doc.data().refrigerant_type == "R134A"){
-        var BUS3 = bus3+=1;
-        localStorage.setItem("BUS_3",BUS3)
-      }
-    }
-      // TRUCKS
-    else if (doc.data().typel == "TRUCK" || doc.data().typel == "TRUCKS"){
-      if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-        var TRCK1 = truck1+=1;
-        localStorage.setItem("TRCK_1",TRCK1)
-      } 
-      else if (doc.data().refrigerant_type == "R12"){
-        var TRCK2 = truck2+=1;
-        localStorage.setItem("TRCK_2",TRCK2)
-      } 
-      else if (doc.data().refrigerant_type == "R134A"){
-        var TRCK3 = truck3+=1;
-        localStorage.setItem("TRCK_3",TRCK3)
-      }
-    }
 
+  if(doc.data().dt_App == today){
+
+      if (doc.data().typel == "CAR" || doc.data().typel == "CARS"){
+        if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
+          var C1 = c1+=1;
+          localStorage.setItem("car1",C1)
+        } 
+        else if (doc.data().refrigerant_type == "R12"){
+          var C2 = c2+=1;
+          localStorage.setItem("car2",C2)
+        } 
+        else if (doc.data().refrigerant_type == "R134A"){
+          var C3 = c3+=1;
+          localStorage.setItem("car3",C3)
+        }
+      }
+      // UV
+      else if (doc.data().typel == "UV"){
+        if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
+          var UV1 = uv1+=1;
+          localStorage.setItem("UV_1",UV1)
+        } 
+        else if (doc.data().refrigerant_type == "R12"){
+          var UV2 = uv2+=1;
+          localStorage.setItem("UV_2",UV2)
+        } 
+        else if (doc.data().refrigerant_type == "R134A"){ 
+          var UV3 = uv3+=1;
+          localStorage.setItem("UV_3",UV3)
+        }
+      }
+        // SUV
+        else if (doc.data().typel == "SUV"){
+          if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
+            var SUV1 = suv1+=1;
+            localStorage.setItem("SUV_1",SUV1)
+          } 
+          else if (doc.data().refrigerant_type == "R12"){
+            var SUV2 = suv2+=1;
+            localStorage.setItem("SUV_2",SUV2)
+          } 
+          else if (doc.data().refrigerant_type == "R134A"){
+            var SUV3 = suv3+=1;
+            localStorage.setItem("SUV_3",SUV3)
+          }
+        }
+        // BUSES
+        else if (doc.data().typel == "BUS" || doc.data().typel == "BUSES"){
+          if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
+            var BUS1 = bus1+=1;
+            localStorage.setItem("BUS_1",BUS1)
+          } 
+          else if (doc.data().refrigerant_type == "R12"){
+            var BUS2 = bus2+=1;
+            localStorage.setItem("BUS_2",BUS2)
+          } 
+          else if (doc.data().refrigerant_type == "R134A"){
+            var BUS3 = bus3+=1;
+            localStorage.setItem("BUS_3",BUS3)
+          }
+        }
+          // TRUCKS
+        else if (doc.data().typel == "TRUCK" || doc.data().typel == "TRUCKS"){
+          if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
+            var TRCK1 = truck1+=1;
+            localStorage.setItem("TRCK_1",TRCK1)
+          } 
+          else if (doc.data().refrigerant_type == "R12"){
+            var TRCK2 = truck2+=1;
+            localStorage.setItem("TRCK_2",TRCK2)
+          } 
+          else if (doc.data().refrigerant_type == "R134A"){
+            var TRCK3 = truck3+=1;
+            localStorage.setItem("TRCK_3",TRCK3)
+          }
+        }
+  }
     // YEAR MODEL
-
-
 
     let year_model1 = ["2024", "2023", "2022", "2021", "2020", "2019"]
     let year_model2 = [ "2018", "2017", "2016", "2015", "2014","2013"]
@@ -151,67 +166,70 @@ mv_bc.forEach((doc) => {
     let year_model14 = [ "1920", "1919", "1918", "1917", "1916","1915","1914","1913","1912","1911"]
     let year_model15 = [ "1910", "1909", "1908", "1907", "1906","1905","1904","1903","1902","1901","1900"]
 
-    if (year_model1.includes(doc.data().yr_modell)) {
-      var yrmdl1 = ym1+=1
-      localStorage.setItem("yr_mdl1",yrmdl1);
-    }
-    if (year_model2.includes(doc.data().yr_modell)) {
-      var yrmdl2 = ym2+=1
-      localStorage.setItem("yr_mdl2",yrmdl2);
-    }
-    if (year_model3.includes(doc.data().yr_modell)) {
-      var yrmdl3 = ym3+=1
-      localStorage.setItem("yr_mdl3",yrmdl3);
-    }
-    if (year_model4.includes(doc.data().yr_modell)) {
-      var yrmdl4 = ym4+=1
-      localStorage.setItem("yr_mdl4",yrmdl4);
-    }
-    if (year_model5.includes(doc.data().yr_modell)) {
-      var yrmdl5 = ym5+=1
-      localStorage.setItem("yr_mdl5",yrmdl5);
-    }
-    if (year_model6.includes(doc.data().yr_modell)) {
-      var yrmdl6 = ym6+=1
-      localStorage.setItem("yr_mdl6",yrmdl6);
-    }
-    if (year_model7.includes(doc.data().yr_modell)) {
-      var yrmdl7 = ym7+=1
-      localStorage.setItem("yr_mdl7",yrmdl7);
-    }
-    if (year_model8.includes(doc.data().yr_modell)) {
-      var yrmdl8 = ym8+=1
-      localStorage.setItem("yr_mdl8",yrmdl8);
-    }
-    if (year_model9.includes(doc.data().yr_modell)) {
-      var yrmdl9 = ym9+=1
-      localStorage.setItem("yr_mdl9",yrmdl9);
-    }
-    if (year_model10.includes(doc.data().yr_modell)) {
-      var yrmdl10 = ym10+=1
-      localStorage.setItem("yr_mdl10",yrmdl10);
-    }
-    if (year_model11.includes(doc.data().yr_modell)) {
-      var yrmdl11 = ym11+=1
-      localStorage.setItem("yr_mdl11",yrmdl11);
-    }
-    if (year_model12.includes(doc.data().yr_modell)) {
-      var yrmdl12 = ym12+=1
-      localStorage.setItem("yr_mdl12",yrmdl12);
-    }
-    if (year_model13.includes(doc.data().yr_modell)) {
-      var yrmdl13 = ym13+=1
-      localStorage.setItem("yr_mdl13",yrmdl13);
-    }
-    if (year_model14.includes(doc.data().yr_modell)) {
-      var yrmdl14 = ym14+=1
-      localStorage.setItem("yr_mdl14",yrmdl14);
-    }
-    if (year_model15.includes(doc.data().yr_modell)) {
-      var yrmdl15 = ym15+=1
-      localStorage.setItem("yr_mdl15",yrmdl15);
-    }
+    // console.log(year_model15) 
 
+    if(doc.data().dt_App == today){
+        if (year_model1.includes(doc.data().yr_modell)) {
+          var yrmdl1 = ym1+=1
+          localStorage.setItem("yr_mdl1",yrmdl1);
+        }
+        if (year_model2.includes(doc.data().yr_modell)) {
+          var yrmdl2 = ym2+=1
+          localStorage.setItem("yr_mdl2",yrmdl2);
+        }
+        if (year_model3.includes(doc.data().yr_modell)) {
+          var yrmdl3 = ym3+=1
+          localStorage.setItem("yr_mdl3",yrmdl3);
+        }
+        if (year_model4.includes(doc.data().yr_modell)) {
+          var yrmdl4 = ym4+=1
+          localStorage.setItem("yr_mdl4",yrmdl4);
+        }
+        if (year_model5.includes(doc.data().yr_modell)) {
+          var yrmdl5 = ym5+=1
+          localStorage.setItem("yr_mdl5",yrmdl5);
+        }
+        if (year_model6.includes(doc.data().yr_modell)) {
+          var yrmdl6 = ym6+=1
+          localStorage.setItem("yr_mdl6",yrmdl6);
+        }
+        if (year_model7.includes(doc.data().yr_modell)) {
+          var yrmdl7 = ym7+=1
+          localStorage.setItem("yr_mdl7",yrmdl7);
+        }
+        if (year_model8.includes(doc.data().yr_modell)) {
+          var yrmdl8 = ym8+=1
+          localStorage.setItem("yr_mdl8",yrmdl8);
+        }
+        if (year_model9.includes(doc.data().yr_modell)) {
+          var yrmdl9 = ym9+=1
+          localStorage.setItem("yr_mdl9",yrmdl9);
+        }
+        if (year_model10.includes(doc.data().yr_modell)) {
+          var yrmdl10 = ym10+=1
+          localStorage.setItem("yr_mdl10",yrmdl10);
+        }
+        if (year_model11.includes(doc.data().yr_modell)) {
+          var yrmdl11 = ym11+=1
+          localStorage.setItem("yr_mdl11",yrmdl11);
+        }
+        if (year_model12.includes(doc.data().yr_modell)) {
+          var yrmdl12 = ym12+=1
+          localStorage.setItem("yr_mdl12",yrmdl12);
+        }
+        if (year_model13.includes(doc.data().yr_modell)) {
+          var yrmdl13 = ym13+=1
+          localStorage.setItem("yr_mdl13",yrmdl13);
+        }
+        if (year_model14.includes(doc.data().yr_modell)) {
+          var yrmdl14 = ym14+=1
+          localStorage.setItem("yr_mdl14",yrmdl14);
+        }
+        if (year_model15.includes(doc.data().yr_modell)) {
+          var yrmdl15 = ym15+=1
+          localStorage.setItem("yr_mdl15",yrmdl15);
+        }
+  }
 });
 
 // NaN to 0 
@@ -403,6 +421,44 @@ var barChartOptions = {
   var barChart = new ApexCharts(document.querySelector("#bar-chartmvyrmdl"), barChartOptions);
   barChart.render();
 
+  // Time Today
+var now = new Date()
+var time = now.getHours() + ":" + now.getMinutes();
+console.log(time)
+
+if(time == "0:0"){
+  localStorage.removeItem("car1");
+  localStorage.removeItem("car2");
+  localStorage.removeItem("car3");
+  localStorage.removeItem("UV_1");
+  localStorage.removeItem("UV_2");
+  localStorage.removeItem("UV_3");
+  localStorage.removeItem("SUV_1");
+  localStorage.removeItem("SUV_2");
+  localStorage.removeItem("SUV_3");
+  localStorage.removeItem("BUS_1");
+  localStorage.removeItem("BUS_2");
+  localStorage.removeItem("BUS_3");
+  localStorage.removeItem("TRCK_1");
+  localStorage.removeItem("TRCK_2");
+  localStorage.removeItem("TRCK_3");
+
+  localStorage.removeItem("yr_mdl1");
+  localStorage.removeItem("yr_mdl2");
+  localStorage.removeItem("yr_mdl3");
+  localStorage.removeItem("yr_mdl4");
+  localStorage.removeItem("yr_mdl5");
+  localStorage.removeItem("yr_mdl6");
+  localStorage.removeItem("yr_mdl7");
+  localStorage.removeItem("yr_mdl8");
+  localStorage.removeItem("yr_mdl9");
+  localStorage.removeItem("yr_mdl10");
+  localStorage.removeItem("yr_mdl11");
+  localStorage.removeItem("yr_mdl12");
+  localStorage.removeItem("yr_mdl13");
+  localStorage.removeItem("yr_mdl14");
+  localStorage.removeItem("yr_mdl15");
+}
 
 // Code
 

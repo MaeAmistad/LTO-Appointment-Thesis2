@@ -45,10 +45,10 @@ document.getElementById("dte").value = today;
             // if (tsl == "AM"){
             //     console.log(doc2.data().User_T)
             // }
-            // console.log(doc2.data().User_T.slice(6,8))&& dte.value == dtcon|| doc2.data().User_Stat == "APPROVED"
+            // console.log(doc2.data().User_T.slice(6,8))&& dte.value == dtcon|| doc2.data().User_Stat == "APPROVED" 
 
             if (doc2.data().User_TT == "LICENSING"){
-                if (doc2.data().User_Stat == "PENDING" ){
+                if (doc2.data().User_Stat == "PENDING"){
                     let trow = document.createElement('tr'); 
                     let t_ID = document.createElement('td'); 
                     let td1 = document.createElement('td'); 
@@ -64,19 +64,29 @@ document.getElementById("dte").value = today;
                     
                     trow.appendChild(t_ID);
                     trow.appendChild(td1);
-                    trow.appendChild(td5);
+                    trow.appendChild(td5); 
                     trow.appendChild(td7);
                     trow.appendChild(td8);
         
                     tbody.appendChild(trow);
 
                     trow.addEventListener('click', (e) =>{
-                        trow.style.backgroundColor = 'rgb(218, 216, 216)';
+                        trow.style.backgroundColor = '#254894c0';
+                        trow.style.color = "white";
                         localStorage.setItem('stat',doc2.data().User_AppID)    
                         localStorage.setItem('ID', doc2.id)
-
+                        // console.log("ggg")
                         window.location = "pc_reqdata.html";
                     });
+
+                    trow.addEventListener('mouseover',function(){
+                        trow.style.backgroundColor = 'rgb(218, 216, 216)';
+                        trow.style.color = "black";
+                     })
+                     trow.addEventListener('mouseleave',function(){
+                        trow.style.backgroundColor = "";
+                        trow.style.color = "";
+                     })
                 }
             }
 
@@ -103,12 +113,22 @@ document.getElementById("dte").value = today;
                 tbody.appendChild(trow);
 
                 trow.addEventListener('click', (e) =>{
-                    trow.style.backgroundColor = 'rgb(218, 216, 216)';
+                    trow.style.backgroundColor = '#254894c0';
+                    trow.style.color = "white";
                     localStorage.setItem('stat',doc2.data().User_AppID)    
                     localStorage.setItem('ID', doc2.id)
-
+                    // console.log("ggg")
                     window.location = "pc_reqdata.html";
                 });
+
+                trow.addEventListener('mouseover',function(){
+                    trow.style.backgroundColor = 'rgb(218, 216, 216)';
+                    trow.style.color = "black";
+                 })
+                 trow.addEventListener('mouseleave',function(){
+                    trow.style.backgroundColor = "";
+                    trow.style.color = "";
+                 })
             }
             
 

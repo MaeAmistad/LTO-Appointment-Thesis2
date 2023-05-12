@@ -231,10 +231,6 @@ img{
   padding: 8px;
   text-transform: uppercase;
 }
-#tbody1:hover{
-  background-color: #254894c0;
-  color: white;
-}
 
     /* Medium <= 992px */
   @media screen and (max-width: 992px) {

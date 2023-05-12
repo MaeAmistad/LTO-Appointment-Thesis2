@@ -243,7 +243,7 @@ img{
   .card-inner > span {
     font-size: 35px;
   }
-  #appntment_chrt:hover ,#inspctor:hover,  #evluatr:hover,  #cashr:hover,  #exminer:hover{
+ #inspctor:hover,  #evluatr:hover,  #cashr:hover,  #exminer:hover{
     background-color:#c3c4ee;
     cursor: default;
   }
