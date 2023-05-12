@@ -360,6 +360,7 @@ img{
   
     .menu-icon {
       display: inline;
+      cursor: pointer;
     }
   
     .sidebar-title > span {

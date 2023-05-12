@@ -60,7 +60,7 @@ nav ul li:hover > ul{
   padding: 25px;
   background: white; 
   margin-top: 20px;
-  margin-left: 340px;
+  margin-left: 28%;
   margin-bottom: 10px; 
   border: 1px solid #b3b3b3;
 }
@@ -104,7 +104,7 @@ h4{
 .btn_nxt{
     background-color: #032d89;
     color: white;
-    margin-left: 470px;
+    margin-left: 65%;
 }
 #selectText1, #selectText2,#gen{
     width: 600px;
@@ -122,3 +122,25 @@ h4{
     color: red;
 }
 
+@media only screen and (max-width: 1200px){
+    .main{
+        margin-left: 12px;
+    }
+    .nav,.main ,.info input {
+        align-items: center;
+        width: 85%;
+            
+     }
+     #gen{
+      display: block;
+      width: 87%;
+     }
+     .btn_nxt{
+    
+        margin-left: 1% ;
+     }
+    .btn{
+        width: 100%;
+    }
+        
+    }

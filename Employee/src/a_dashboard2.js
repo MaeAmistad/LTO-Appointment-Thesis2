@@ -285,30 +285,3 @@ var areaChartOptions = {
 
 var areaChart = new ApexCharts(document.querySelector("#area-chart"), areaChartOptions);
 areaChart.render();
-
-appntment_chrt.addEventListener('click', () => {
-    
-});
-
-if(time == "0:0"){
-  localStorage.removeItem("lic_currentcnt");
-  localStorage.removeItem("mv_currentcnt");
-}
-
-
-// CODE
-
-// const coll = collection(db,"License");
-// const snapshot = await getCountFromServer(coll);
-
-// const coll2 = collection(db,"Motor Vehicle");
-// const snapshot2 = await getCountFromServer(coll2);
-
-            // var dd = doc2.data().User_D;
-            // var ddsp = dd.slice(0,2);
-            // var mmsp = dd.slice(3,5);
-            // var yysp = dd.slice(6,10);
-            // var dtcon = yysp + "-" + mmsp + "-" + ddsp;
-
-            // console.log(today)
-

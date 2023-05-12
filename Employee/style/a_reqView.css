@@ -249,7 +249,8 @@ padding-left: 8px;
     
   }
   .lcnsprmtreq-item-body-content{
-      height: 1500px; 
+      height: 100%; 
+      width: 100%;
   }
   
   .lcnsprmtreq-item-body-content h4{
@@ -366,6 +367,7 @@ padding-left: 8px;
   }
   .mvcontent  ul li ol li , .mvcontent  ul li ol li ol li, .mvcontent ul li ol li ol li ol li{
       padding: 5px;
+      
   }
   
   /* ---------- MEDIA QUERIES ---------- */
@@ -383,10 +385,12 @@ padding-left: 8px;
   
     #sidebar {
       display: none;
+      
     }
   
     .menu-icon {
       display: inline;
+      cursor: pointer;
     }
   
     .sidebar-title > span {
@@ -414,3 +418,52 @@ padding-left: 8px;
       display: none;
     }
   }
+  @media screen and (max-width: 1200px) {
+ .lcnsprmtreq-item ul li{
+       width: 100%;
+     
+    }
+    .lcnsprmtreq-item ol li{
+      width: 100%;
+   }
+    .nonprocontent ul li{
+      width: 100%;
+      
+    }
+    .nonprocontent ol li{
+      width: 100%;
+    }
+    .driverscnt ul li{
+      width: 100%;
+    }
+    .driverscnt ol li{
+      width: 100%;
+    }
+    .conductorcontent ul li{
+      width: 100%;
+    }
+    .conductorcontent ol li{
+      width: 100%;
+    }
+    .mvcontent ul li{
+      width: 100%;
+    }
+    .mvcontent ol li{
+      width: 100%;
+    }
+    .nonprocontent{
+      height: 2200px;
+    }
+    .driverscnt{
+      height: 1500px;
+    }
+  .conductorcontent{
+    height: 3500px;
+  }
+  .mvcontent{
+    height: 2000px;
+  }
+
+   
+  }
+  

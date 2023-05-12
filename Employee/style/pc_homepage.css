@@ -141,13 +141,91 @@ nav ul li:hover > ul{
     border-bottom-left-radius: 5px;
     padding-left: 5px;
 }
-/* #tbody1:hover{
-    background-color: #254894c0;
-    color: white;
-} */
-/* 
-@media (max-width: 700px) {
-    .content-table{
-         margin: 5px;
-    }
-} */
+
+    /* Medium <= 992px */
+    @media screen and (max-width: 992px) {
+        .grid-container {
+          grid-template-columns: 1fr;
+          grid-template-rows: 0.2fr 3fr;
+          grid-template-areas:
+            "header"
+            "main";
+        }
+      
+        #sidebar {
+          display: none;
+        }
+      
+        .menu-icon {
+          display: inline;
+        }
+      
+        .sidebar-title > span {
+          display: inline;
+        }
+      }
+      
+    
+      /* Extra Small <= 576px */
+      @media screen and (max-width: 576px) {
+        .header-left {
+          display: none;
+        }
+      }
+    
+      @media only screen and (max-width: 1200px){
+        
+         body {
+        
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+          }
+        .outer-wrapper {
+            margin: 10px;
+            margin-left: 20px;
+            margin-right: 20px;
+            max-width: fit-content;
+            max-height: fit-content;
+        
+            
+        }
+        .table-wrapper {
+        
+            overflow-y: scroll;
+            overflow-x: scroll;
+            height: fit-content;
+            max-height: 66.4vh;
+            
+            margin-top: 22px;
+            
+            margin: 15px;
+            padding-bottom: 20px;
+            
+        }
+        
+        .content-table {
+          border-collapse: collapse;
+          font-size: 14px;
+          margin-left: 5%;
+          width: 200%;
+     
+        }
+        .search,  #srchText{
+            margin-left:4%;
+            width: 65%;
+        }
+       
+        
+      }
+      .date{  
+        margin-top: 13px;
+      }
+      .date input{
+          width: 110px;
+          padding: 5px 15px;
+          margin-left: 10%;
+          border-radius: 5px;
+          outline: none;
+          border: none;
+      }
+    
+    

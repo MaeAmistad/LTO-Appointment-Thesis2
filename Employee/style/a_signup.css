@@ -48,7 +48,7 @@ h1{
     margin-top: 10px;
     margin-left: 40px;
     outline: none;
-    text-transform: capitalize;
+    text-transform: uppercase;
 }
 button{
     height: 50px;

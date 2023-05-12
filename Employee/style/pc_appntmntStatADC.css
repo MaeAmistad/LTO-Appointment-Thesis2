@@ -12,7 +12,7 @@ body {
 
 nav{
     display: flex;
-    padding: 0.6% 6%;
+    padding: 1% 6%;
     justify-content: space-between;
     align-items: center;
     background-color: #032d89;
@@ -27,7 +27,9 @@ nav img{
 .navbar li{
     list-style: none;
     display: inline-block;
-    padding: 8px 7px;
+    
+    padding: 10%, 0%, 0%,;
+    margin: 4px;
     position: relative;
 }
 nav ul ul{
@@ -80,6 +82,8 @@ nav ul li:hover > ul{
 	width: 200px;
 }
 /*Table for appointment*/
+    
+
 .content-table {
     border-collapse: collapse;
     margin: 2x 0;
@@ -113,3 +117,77 @@ nav ul li:hover > ul{
     margin: 10px 0 10px 10px;
     cursor: pointer;
 }
+      /* Extra Small <= 576px */
+      @media screen and (max-width: 576px) {
+        .header-left {
+          display: none;
+        }
+      }
+    
+      @media only screen and (max-width: 1200px){
+        
+       .main2{
+        width:98%;
+       }
+      #comp_btn,#incomp_btn,#pssexm_btn{
+        width: 150%;
+        
+      }
+      .btnOptn{
+        margin-right: 50px;
+       
+      }
+        .outer-wrapper {
+            margin: 10px;
+            margin-left: 20px;
+            margin-right: 20px;
+            max-width: fit-content;
+            max-height: fit-content;
+        
+            
+        }
+        .table-wrapper {
+        
+            overflow-y: scroll;
+            overflow-x: scroll;
+            height: fit-content;
+            max-height: 66.4vh;
+            
+            margin-top: 22px;
+            
+            margin: 15px;
+            padding-bottom: 20px;
+            
+        }
+        .sp{
+            margin-left: 300%;
+        }
+        .content-table {
+          border-collapse: collapse;
+          font-size: 14px;
+          margin-left: 5%;
+          width: 400%;
+     
+        }
+        .search,  #srchText{
+            margin-left: 11%;
+            width: 65%;
+        }
+       
+        
+      }
+      .date{  
+        margin-top: 13px;
+      }
+      .date input{
+          width: 110px;
+          padding: 5px 15px;
+          margin-left: 5%;
+          border-radius: 5px;
+          outline: none;
+          border: none;
+      }
+    
+    
+      
+

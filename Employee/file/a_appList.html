@@ -98,7 +98,8 @@
 
       <!-- Main -->
       <main class="main-container">
-
+        <div class="outer-wrapper">
+          <div class="table-wrapper">
         <div class="dropdown-user">
           <select id="user" onchange="user(this.value)">
             <option value="a_applist.html" selected>Evaluator</option>
@@ -107,13 +108,15 @@
             <option value="a_applistex.html" >Examiner</option> 
           </select>
         </div>
-
+  
         <div class="date">
           <input type="date" id="dte">
         </div>
 
       <div class="main2">
+        
         <table class="content-table" id="table">
+          
           <thead>
           <tr>
             <th class="sp" colspan="5">Appointments</th>
@@ -128,6 +131,8 @@
             <tbody id="tbody1"> </tbody>
           </table>
       </div>
+          </div>
+        </div>
 
 
         </div>

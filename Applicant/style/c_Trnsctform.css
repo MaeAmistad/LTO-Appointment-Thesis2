@@ -55,12 +55,12 @@ nav ul li:hover > ul{
 
 .main{
   position: relative;
-  max-width: 700px;
+  max-width: 50%;
   width: 100%;
   padding: 25px;
   background: white; 
   margin-top: 20px;
-  margin-left: 320px;
+  margin-left:25%;
   margin-bottom: 10px; 
   border: 1px solid #b3b3b3;
 }
@@ -102,6 +102,7 @@ h5{
 }
 select{
   cursor: pointer;
+
   width: 100%;
   padding: 15px  20px;
   margin-bottom: 5px;
@@ -120,7 +121,7 @@ select{
   display: block;
 }
 .next1 , .back1{
-    width: 100px;
+    width: 25%;
     height: 40px;
     color: black;
     font-size: 14px;
@@ -144,11 +145,27 @@ select{
 .next1 {
   background-color: #032d89;
   color: white;
-  margin-left: 420px;
+  margin-left: 30%;
 }
 
 .req ul li{
   /* padding: 5px 20px;  */
   width: 600px;
   margin-left: 60px;
+}
+@media only screen and (max-width: 1200px){
+  .main{
+    margin-left: 20%;
+    
+  }
+  .next1{
+    margin-left: 20%;
+  }
+  .main ul li {
+    width: 90%;
+    margin-left: 10%;
+  }.main h5{
+    width: 90%;
+    margin-left: 10%;
+  }
 }

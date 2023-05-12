@@ -117,4 +117,23 @@ table td{
 #cnl3{
     margin-left: 200px;
 }
-
+@media only screen and (max-width: 1200px){
+    
+    .main {
+        margin-left: 2%;
+        align-items: center;
+        width: 88%
+     }
+   
+     .btn button, .btn2 button, #mvinfo{
+        margin-left: 40%;
+        margin: 10px;
+        width: 90%;
+     }
+     #bck{
+        margin-left: 1%;
+        
+     }
+     }
+  
+    
