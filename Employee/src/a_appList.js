@@ -18,7 +18,6 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 var tbody = document.getElementById('tbody1');
-var dte = document.getElementById("dte"); 
 
 var date = new Date();
 var day = date.getDate();
