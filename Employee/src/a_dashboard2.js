@@ -57,6 +57,7 @@ let totlEx = 0;
 card_count.forEach((doc) => {
 
 // CARD COUNT
+if (doc.data().User_D == today){
   if(doc.data().User_TT == "LICENSING"){
       if(doc.data().User_Stat == "PENDING"){
           var total = totlE+=1;
@@ -99,7 +100,8 @@ if(doc.data().User_TT == "LICENSING"){
     }
   }
 }
-
+}
+  
 });
 
 // For License

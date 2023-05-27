@@ -39,8 +39,8 @@ var tbody = document.getElementById('tbody1');
             var dtcon = yysp + "-" + mmsp + "-" + ddsp;
 
             // console.log(doc2.data().User_T.slice(6,8))&& dte.value == dtcon
-            
-            if (doc2.data().User_Stat == "APPROVED_TO_CASHIER" || doc2.data().User_Stat == "PASSED"){
+            if(today == dtcon){
+                if (doc2.data().User_Stat == "APPROVED_TO_CASHIER" || doc2.data().User_Stat == "PASSED"){
                 let trow = document.createElement('tr'); 
                 let t_ID = document.createElement('td');  
                 let td1 = document.createElement('td'); 
@@ -80,5 +80,7 @@ var tbody = document.getElementById('tbody1');
                     trow.style.color = "";
                  })
                 } 
+            }
+            
 
 });

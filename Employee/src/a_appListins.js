@@ -32,11 +32,11 @@ document.getElementById("dte").value = today;
     const querySnapshot2 = await getDocs(collection(db,"Applicants"));
         querySnapshot2.forEach(doc2 => {
 
-            // var dd = doc2.data().User_D;
-            // var ddsp = dd.slice(0,2);
-            // var mmsp = dd.slice(3,5);
-            // var yysp = dd.slice(6,10);
-            // var dtcon = yysp + "-" + mmsp + "-" + ddsp;
+            var dd = doc2.data().User_D;
+            var ddsp = dd.slice(0,2);
+            var mmsp = dd.slice(3,5);
+            var yysp = dd.slice(6,10);
+            var dtcon = yysp + "-" + mmsp + "-" + ddsp;
 
             // var time = doc2.data().User_T;
             // var tsl = time.slice(6,9);
@@ -46,7 +46,8 @@ document.getElementById("dte").value = today;
             // }
             // console.log(doc2.data().User_T.slice(6,8))&& dte.value == dtcon
 
-            if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
+            if(today == dtcon){
+                if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
                 if (doc2.data().User_Stat == "PENDING" ){
                 let trow = document.createElement('tr'); 
                 let t_ID = document.createElement('td');  
@@ -88,5 +89,7 @@ document.getElementById("dte").value = today;
                  })
                 }
          }
+            }
+            
 
 });

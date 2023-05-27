@@ -10,8 +10,6 @@ body {
     /* color: #d36c6c; */
 }
 /* Navigation Bar*/
-
-
 nav{
     display: flex;
     padding: 0.6% 6%;
@@ -72,7 +70,7 @@ nav ul li:hover > ul{
     border-collapse: collapse;
     font-size: 0.9em;
     width: 99%;
-    margin-top:10px;
+    margin-top:-40px;
     margin-left: 9px;
     background-color: white;
     color: black;
@@ -92,8 +90,6 @@ nav ul li:hover > ul{
 .content-table td {
     padding: 3px;
     border: 1px solid black;
-    justify-content: center;
-    align-items: center;
 }
 .main2{
     display: flex;
@@ -104,6 +100,17 @@ nav ul li:hover > ul{
 }
 .main2 button{
 	padding: 4px;
+}
+.date{  
+    margin-top: 20px;
+}
+.date input{
+    width: 100px;
+    padding: 7px 14px;
+    margin-left: 1190px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
 }
 .search button{
     width: 90px;
@@ -132,9 +139,6 @@ nav ul li:hover > ul{
     border-bottom-left-radius: 5px;
     padding-left: 5px;
 }
-
-
-
     /* Medium <= 992px */
     @media screen and (max-width: 992px) {
         .grid-container {
