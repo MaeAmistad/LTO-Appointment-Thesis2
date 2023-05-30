@@ -20,7 +20,7 @@ nav{
     background-color: #032d89;
 }
 nav img{
-    width: 60px;
+    width: 60px; 
     height: 60px;
 }
 .navbar{
@@ -72,13 +72,12 @@ nav ul li:hover > ul{
     border-collapse: collapse;
     font-size: 0.9em;
     width: 99%;
-    margin-top:10px;
+    margin-top:-40px;
     margin-left: 9px;
     background-color: white;
     color: black;
     border: 1px solid black; 
     cursor: pointer;
-    
 }
 .content-table thead .sp{
     color: black;
@@ -104,6 +103,17 @@ nav ul li:hover > ul{
 }
 .main2 button{
 	padding: 4px;
+}
+.date{  
+  margin-top: 20px;
+}
+.date input{
+  width: 110px;
+  padding: 5px 15px;
+  margin-left: 87%;
+  border-radius: 5px;
+  outline: none;
+  border: none;
 }
 .search button{
     width: 70px;
@@ -206,20 +216,12 @@ nav ul li:hover > ul{
             margin-left: 11%;
             width: 65%;
         }
-       
+        .date input{
+          margin-left: 10%;
+      }
         
       }
-      .date{  
-        margin-top: 13px;
-      }
-      .date input{
-          width: 110px;
-          padding: 5px 15px;
-          margin-left: 5%;
-          border-radius: 5px;
-          outline: none;
-          border: none;
-      }
+
     
     
       

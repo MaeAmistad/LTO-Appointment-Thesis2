@@ -50,14 +50,21 @@ exminer.addEventListener('click',() => {
 
 // Evaluator Count
 const card_count = await getDocs(collection(db, "Applicants"));
+let totlAppT = 0;
 let totlE = 0;
 let totlI = 0;
 let totlC = 0;
 let totlEx = 0; 
+
+
+
 card_count.forEach((doc) => {
 
 // CARD COUNT
 if (doc.data().User_D == today){
+
+  document.getElementById("appnt").innerHTML = totlAppT+=1; 
+
   if(doc.data().User_TT == "LICENSING"){
       if(doc.data().User_Stat == "PENDING"){
           var total = totlE+=1;
@@ -228,13 +235,7 @@ var barChartOptions = {
   var barChart = new ApexCharts(document.querySelector("#bar-chart"), barChartOptions);
   barChart.render();
 
-  // total Count in bar CHART
-  // document.getElementById("total").innerHTML = snapshot.data().count + snapshot2.data().count;
-  // Appointments Count
-const appnmts = collection(db,"Applicants");
-const cnt = await getCountFromServer(appnmts);
-document.getElementById("appnt").innerHTML = cnt.data().count; 
-
+// total Count in bar CHART
 
 // MONTHLY count of appointment CHART
 

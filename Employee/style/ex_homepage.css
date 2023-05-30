@@ -105,9 +105,9 @@ nav ul li:hover > ul{
     margin-top: 20px;
 }
 .date input{
-    width: 100px;
-    padding: 7px 14px;
-    margin-left: 1190px;
+    width: 110px;
+    padding: 5px 15px;
+    margin-left: 87%;
     border-radius: 5px;
     outline: none;
     border: none;
@@ -210,20 +210,12 @@ nav ul li:hover > ul{
             margin-left:4%;
             width: 65%;
         }
-       
+        .date input{
+            margin-left: 10%;
+        }
         
       }
-      .date{  
-        margin-top: 13px;
-      }
-      .date input{
-          width: 110px;
-          padding: 5px 15px;
-          margin-left: 5%;
-          border-radius: 5px;
-          outline: none;
-          border: none;
-      }
+
     
     
       

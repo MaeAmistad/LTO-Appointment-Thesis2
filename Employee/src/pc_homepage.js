@@ -39,7 +39,7 @@ document.getElementById("dte").value = today;
             var dtcon = yysp + "-" + mmsp + "-" + ddsp;
 
             // var time = doc2.data().User_T;
-            // var tsl = time.slice(6,9); 
+            // var tsl = time.slice(6,9);  
 
             // console.log(tsl == "AM")
             // if (tsl == "AM"){
