@@ -72,7 +72,7 @@ nav ul li:hover > ul{
     width: 99%;
     margin-top:-40px;
     margin-left: 9px;
-    background-color: white;
+    background-color: white; 
     color: black;
     border: 1px solid black; 
     cursor: pointer;
@@ -138,6 +138,7 @@ nav ul li:hover > ul{
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     padding-left: 5px;
+    text-transform: uppercase;
 }
     /* Medium <= 992px */
     @media screen and (max-width: 992px) {
