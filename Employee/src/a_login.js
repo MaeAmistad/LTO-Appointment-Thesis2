@@ -5,7 +5,7 @@ cnl.addEventListener('click', (e) => {
 
  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
  import { getFirestore, getDocs, collection,doc, getDoc  } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
- import { getAuth, signInWithEmailAndPassword, sendEmailVerification} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
+ import { getAuth, signInWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
 
  const firebaseConfig = {
   apiKey: "AIzaSyCyNToos3S0HwLl0cZMRdiVjFJcBb4FWFo",
@@ -23,138 +23,413 @@ cnl.addEventListener('click', (e) => {
 const querySnapshot = await getDocs(collection(db, "Users", "Employee", "EmployeeData"));
 const docRef = doc(db, "Users", "DevelopersAccount");
 const docSnap = await getDoc(docRef);
- //console.log(docSnap.data())
-  login.addEventListener('click', (e) => {
 
-  var email = document.getElementById('email').value;
-  var password = document.getElementById('password').value;
 
-if(email == docSnap.data().username && password == docSnap.data().password){
-    window.location = "a_dashboard.html";
+//FINAL
+const form = document.getElementById('form');
+const email = document.getElementById('emaill');
+const password = document.getElementById('password');
+
+//FINAL
+var pass1 = 'Cashier'
+const word1 = pass1.slice(1, 3)
+
+var pass2 = 'Inspector'
+const word2 = pass2.slice(1, 3)
+
+var pass3 = 'Evaluator'
+const word3 = pass3.slice(1, 3)
+
+var pass4 = 'Examiner'
+const word4 = pass4.slice(1, 3)
+
+var pass5 = 'Admin'
+const word5 = pass5.slice(1, 3)
+
+ //Show Error Message - FINAL
+function showError(input, message){
+  const formValidation = input.parentElement;
+  formValidation.className = 'login-form error'
+
+  const errorMessage = formValidation.querySelector('p');
+  errorMessage.innerText = message;
 }
-  querySnapshot.forEach(doc => {
 
-    if(doc.data().user_Type == "Processing Officer" && doc.data().user_E == email){
-      signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
 
-          if (user.emailVerified == true){
-            console.log("User logged in")
-            window.location = "pc_homepage.html";
-          }
-          else{
-            console.log("User not verified")
-            wrnngmsg.classList.add( "wrnngmsg-popup");
-            document.body.classList.add( "wrnngmsg-popup");
-          }
+// LOGIN FORM - FINAL
+form.addEventListener('submit',(e) =>{
+  e.preventDefault();
 
-           sndVrfctn.addEventListener('click', (e) => {
-              wrnngmsg.classList.remove( "wrnngmsg-popup");
-              document.body.classList.remove( "wrnngmsg-popup");
+  if(email.value == docSnap.data().username && password.value == docSnap.data().password){
+    window.location = "a_dashboard.html";
+  }
 
-              sendEmailVerification(auth.currentUser)
-                .then(() => {
-                  // console.log("Email send")
-                  Swal.fire({
-                    title: "Email has been sent.",
-                    confirmButtonColor: '#132aaa',
-                    showClass: {
-                      popup: 'animate__animated animate__fadeInDown'
-                    },
-                    hideClass: {
-                      popup: 'animate__animated animate__fadeOutUp'
-                    }
-                  })
-                });
-            });
+  //loginValidation();
+  if(email.value == ''){
+    showError(email, 'Please enter your email')
+  }
+  else if(password.value == ''){
+    showError(password, 'Please enter your password')
+  }
 
-          window.location = "pc_homepage.html";
+  else{
 
-        })
-        .catch((error) => {
-          
-          console.log("Email or Password is incorrect!");
-         Swal.fire({
-          title: "Email or Password is incorrect!",
-          confirmButtonColor: '#132aaa',
-          showClass: {
-            popup: 'animate__animated animate__fadeInDown'
-          },
-          hideClass: {
-            popup: 'animate__animated animate__fadeOutUp'
-          }
-        })
-
-        console.log(error)
-         
-        });
+    if(email.value == docSnap.data().username && password.value == docSnap.data().password){
+      window.location = "a_dashboard.html";
     }
-    else if(doc.data().user_Type == "System Administrator" && doc.data().user_E == email){
-      signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          // 
-          if (user.emailVerified == true){
-            console.log("User logged in")
-            window.location = "a_dashboard.html";
-          }
-          else{
-            console.log("User not verified")
-            wrnngmsg.classList.add( "wrnngmsg-popup");
-            document.body.classList.add( "wrnngmsg-popup");
-          }
 
-           sndVrfctn.addEventListener('click', (e) => {
-              wrnngmsg.classList.remove( "wrnngmsg-popup");
-              document.body.classList.remove( "wrnngmsg-popup");
+    querySnapshot.forEach(doc => {
 
-              sendEmailVerification(auth.currentUser)
-                .then(() => {
+      if(doc.data().user_E == email.value && doc.data().user_PWD == password.value){
+        
+        if(doc.data().user_Type == "CASHIER" && doc.data().user_Status == "Enabled"){
+          signInWithEmailAndPassword(auth, email.value, password.value)
+              .then((userCredential) => {
+                const user = userCredential.user;
 
-                  Swal.fire({
-                    title: "Email has been sent.",
-                    confirmButtonColor: '#132aaa',
-                    showClass: {
-                      popup: 'animate__animated animate__fadeInDown'
-                    },
-                    hideClass: {
-                      popup: 'animate__animated animate__fadeOutUp'
-                    }
-                  })
-                });
-            });
+                if(user.emailVerified == true){
+                  var curPass = password.value;
+                  const current = curPass.slice(1,3)
+                  console.log(current)
+                  console.log(word1)
+                  
+                  if(current == word1){
+                    window.location = "changePass.html"
+                    localStorage.setItem("ID", doc.id)
+                    localStorage.setItem("Password", curPass)
+                  }     
+                  else{
+                   window.location = "ca_homepage.html"
+                  }          
+                  
+                }
+                else{
+                  wrnngmsg.classList.add( "wrnngmsg-popup");
+                  document.body.classList.add( "wrnngmsg-popup");
+                }
 
-            window.location = "a_dashboard.html";
-        })
-        .catch((error) => {
-            console.log("Email or Password is incorrect!");
+                sndVrfctn.addEventListener('click', (e) => {
+                      wrnngmsg.classList.remove( "wrnngmsg-popup");
+                      document.body.classList.remove( "wrnngmsg-popup");
+                
+                      sendEmailVerification(auth.currentUser)
+                        .then(() => {
+                        // console.log("Email send")
+                        Swal.fire({
+                          title: "Email has been sent.",
+                          confirmButtonColor: '#132aaa',
+                          showClass: {
+                          popup: 'animate__animated animate__fadeInDown'
+                          },
+                          hideClass: {
+                          popup: 'animate__animated animate__fadeOutUp'
+                          }
+                        })
+                      });
+                    });
 
-            // if (!doc.exists()){
-            //   console.log("User does not exist.")
-            // }
-            // else if( email != doc.data().user_E){
-            //   console.log("Email Incorrect")
-            // }
-            // else if(password != doc.data().user_password){
-            //   console.log("password incorrect")
-            // }
-           Swal.fire({
-            title: "Email or Password is incorrect!",
-            confirmButtonColor: '#132aaa',
-            showClass: {
-              popup: 'animate__animated animate__fadeInDown'
-            },
-            hideClass: {
-              popup: 'animate__animated animate__fadeOutUp'
-            }
-          })
+                
+              })
+              .catch((error) => {
+                showError(email,"Email or Password is Incorrect")
+                showError(password,"Email or Password is Incorrect")
 
-          console.log(error)
-        });
-    }      
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorMessage)
+              });
+        }
+
+        if(doc.data().user_Type == "INSPECTOR" && doc.data().user_Status == "Enabled"){
+          signInWithEmailAndPassword(auth, email.value, password.value)
+              .then((userCredential) => {
+                const user = userCredential.user;
+
+                if(user.emailVerified == true){
+                  var curPass = password.value;
+                  const current = curPass.slice(1,3)
+                  console.log(current)
+                  console.log(word2)
+                  
+                  if(current == word2){
+                    window.location = "changePass.html"
+                    localStorage.setItem("ID", doc.id)
+                    localStorage.setItem("Password", curPass)
+                  }     
+                  else{
+                   window.location = "In_homepage.html"
+                  }          
+                  
+                }
+                else{
+                  wrnngmsg.classList.add( "wrnngmsg-popup");
+                  document.body.classList.add( "wrnngmsg-popup");
+                }
+
+                sndVrfctn.addEventListener('click', (e) => {
+                      wrnngmsg.classList.remove( "wrnngmsg-popup");
+                      document.body.classList.remove( "wrnngmsg-popup");
+                
+                      sendEmailVerification(auth.currentUser)
+                        .then(() => {
+                        // console.log("Email send")
+                        Swal.fire({
+                          title: "Email has been sent.",
+                          confirmButtonColor: '#132aaa',
+                          showClass: {
+                          popup: 'animate__animated animate__fadeInDown'
+                          },
+                          hideClass: {
+                          popup: 'animate__animated animate__fadeOutUp'
+                          }
+                        })
+                      });
+                    });
+
+                
+              })
+              .catch((error) => {
+                showError(email,"Email or Password is Incorrect")
+                showError(password,"Email or Password is Incorrect")
+
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorMessage)
+              });
+        }
+
+        if(doc.data().user_Type == "EVALUATOR" && doc.data().user_Status == "Enabled"){
+          signInWithEmailAndPassword(auth, email.value, password.value)
+              .then((userCredential) => {
+                const user = userCredential.user;
+
+                if(user.emailVerified == true){
+                  var curPass = password.value;
+                  const current = curPass.slice(1,3)
+                  console.log(current)
+                  console.log(word3)
+                  
+                  if(current == word3){
+                    window.location = "changePass.html"
+                    localStorage.setItem("ID", doc.id)
+                    localStorage.setItem("Password", curPass)
+                  }     
+                  else{
+                   window.location = "pc_homepage.html"
+                  }          
+                  
+                }
+                else{
+                  wrnngmsg.classList.add( "wrnngmsg-popup");
+                  document.body.classList.add( "wrnngmsg-popup");
+                }
+
+                sndVrfctn.addEventListener('click', (e) => {
+                      wrnngmsg.classList.remove( "wrnngmsg-popup");
+                      document.body.classList.remove( "wrnngmsg-popup");
+                
+                      sendEmailVerification(auth.currentUser)
+                        .then(() => {
+                        // console.log("Email send")
+                        Swal.fire({
+                          title: "Email has been sent.",
+                          confirmButtonColor: '#132aaa',
+                          showClass: {
+                          popup: 'animate__animated animate__fadeInDown'
+                          },
+                          hideClass: {
+                          popup: 'animate__animated animate__fadeOutUp'
+                          }
+                        })
+                      });
+                    });
+
+                
+              })
+              .catch((error) => {
+                showError(email,"Email or Password is Incorrect")
+                showError(password,"Email or Password is Incorrect")
+
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorMessage)
+              });
+        }
+
+        if(doc.data().user_Type == "EXAMINER" && doc.data().user_Status == "Enabled"){
+          signInWithEmailAndPassword(auth, email.value, password.value)
+              .then((userCredential) => {
+                const user = userCredential.user;
+
+                if(user.emailVerified == true){
+                  var curPass = password.value;
+                  const current = curPass.slice(1,3)
+                  console.log(current)
+                  console.log(word4)
+                  
+                  if(current == word4){
+                    window.location = "changePass.html"
+                    localStorage.setItem("ID", doc.id)
+                    localStorage.setItem("Password", curPass)
+                  }     
+                  else{
+                   window.location = "ex_homepage.html"
+                  }          
+                  
+                }
+                else{
+                  wrnngmsg.classList.add( "wrnngmsg-popup");
+                  document.body.classList.add( "wrnngmsg-popup");
+                }
+
+                sndVrfctn.addEventListener('click', (e) => {
+                      wrnngmsg.classList.remove( "wrnngmsg-popup");
+                      document.body.classList.remove( "wrnngmsg-popup");
+                
+                      sendEmailVerification(auth.currentUser)
+                        .then(() => {
+                        // console.log("Email send")
+                        Swal.fire({
+                          title: "Email has been sent.",
+                          confirmButtonColor: '#132aaa',
+                          showClass: {
+                          popup: 'animate__animated animate__fadeInDown'
+                          },
+                          hideClass: {
+                          popup: 'animate__animated animate__fadeOutUp'
+                          }
+                        })
+                      });
+                    });
+
+                
+              })
+              .catch((error) => {
+                showError(email,"Email or Password is Incorrect")
+                showError(password,"Email or Password is Incorrect")
+
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorMessage)
+              });
+        }
+
+        if(doc.data().user_Type == "SYSTEM ADMINISTRATOR" && doc.data().user_Status == "Enabled"){
+          signInWithEmailAndPassword(auth, email.value, password.value)
+              .then((userCredential) => {
+                const user = userCredential.user;
+
+                if(user.emailVerified == true){
+                  var curPass = password.value;
+                  const current = curPass.slice(1,3)
+                  console.log(current)
+                  console.log(word5)
+                  
+                  if(current == word5){
+                    window.location = "changePass.html"
+                    localStorage.setItem("ID", doc.id)
+                    localStorage.setItem("Password", curPass)
+                  }     
+                  else{
+                   window.location = "a_homepage.html"
+                  }          
+                  
+                }
+                else{
+                  wrnngmsg.classList.add( "wrnngmsg-popup");
+                  document.body.classList.add( "wrnngmsg-popup");
+                }
+
+                sndVrfctn.addEventListener('click', (e) => {
+                      wrnngmsg.classList.remove( "wrnngmsg-popup");
+                      document.body.classList.remove( "wrnngmsg-popup");
+                
+                      sendEmailVerification(auth.currentUser)
+                        .then(() => {
+                        // console.log("Email send")
+                        Swal.fire({
+                          title: "Email has been sent.",
+                          confirmButtonColor: '#132aaa',
+                          showClass: {
+                          popup: 'animate__animated animate__fadeInDown'
+                          },
+                          hideClass: {
+                          popup: 'animate__animated animate__fadeOutUp'
+                          }
+                        })
+                      });
+                    });
+
+                
+              })
+              .catch((error) => {
+                showError(email,"Email or Password is Incorrect")
+                showError(password,"Email or Password is Incorrect")
+
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorMessage)
+              });
+        }
+              
+        if(doc.data().user_Status == "Disabled"){
+          showError(email, 'This user does not exist');
+          showError(password, 'This user does not exist')
+        }
+        
+      }
+
+    });
+
+
+  }
+
+});
+//Blurred background - FINAL
+function toggle(){
+  var blur = document.getElementById('blur');
+  blur.classList.toggle('active');
+
+  var popup = document.getElementById('reset_pass');
+  popup.classList.toggle('active');
+}
+
+// For reset password modal - FINAL
+const resetPass = document.getElementById('reset_pass');
+const closeModal = document.querySelector('.cnl2');
+const forgotpass = document.querySelector('.reset');
+const emailReset = document.getElementById('email_reset');
+
+forgotpass.addEventListener('click', () => {
+  resetPass.style.display = 'block';
+});
+closeModal.addEventListener('click', () => {
+  resetPass.style.display = 'none';
+});
+
+resetPass.addEventListener('click', (e) => {
+  sendPasswordResetEmail(auth, emailReset.value)
+  .then(() => {
+    Swal.fire({
+      title: "Reset Password request has been sent to your email",
+      confirmButtonColor: '#132aaa',
+      showClass: {
+      popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+      popup: 'animate__animated animate__fadeOutUp'
+      }
+    }).then((result) => {
+      if(result.value){
+        console.log("Reset password email sent")
+        resetPass.style.display = 'none';
+        toggle()
+      }
+    })
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    
   });
-
-  }); 
-
- 
+});
