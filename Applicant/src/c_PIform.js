@@ -24,7 +24,7 @@ if (last_name === '' ){
       title: "Please enter your Last Name.",
       confirmButtonColor: '#132aaa',
       showClass: {
-        popup: 'animate__animated animate__fadeInDown'
+        popup: 'animate__animated animate__fadeInDown' 
       },
       hideClass: {
         popup: 'animate__animated animate__fadeOutUp'
@@ -84,7 +84,7 @@ else if (bday === ''){
   })
 }
 
-else if (gen == "s"){
+else if (gen == ''){
   // alert("Gender is Required");
   Swal.fire({
     title: "Please enter your Gender.",
