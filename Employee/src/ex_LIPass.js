@@ -36,7 +36,7 @@ const db = getFirestore(app);
 
       querySnapshot2.forEach(doc2 => {
 //  
-        if(doc2.data().User_Stat == "PASSED" && doc2.data().User_TT == "LICENSING"){
+        if(doc2.data().User_Stat3 == "PASSED" && doc2.data().User_TT == "LICENSING"){
 
                 if (doc2.data().User_AT == "REVISION OF RECORDS"){
                     let trow = document.createElement('tr'); 
@@ -45,7 +45,7 @@ const db = getFirestore(app);
                     let td2 = document.createElement('td');
                     let td3 = document.createElement('td'); 
                     let td4 = document.createElement('td');  
-                    let td5 = document.createElement('td'); 
+                    // let td5 = document.createElement('td'); 
                     let td6 = document.createElement('td');
                     let td7 = document.createElement('td');
                     let td8 = document.createElement('td'); 
@@ -59,7 +59,7 @@ const db = getFirestore(app);
                     td2.innerHTML = doc2.data().User_BD;
                     td3.innerHTML = doc2.data().User_GN;
                     td4.innerHTML = doc2.data().User_ADD;
-                    td5.innerHTML = doc2.data().User_TT;
+                    // td5.innerHTML = doc2.data().User_TT;
                     td6.innerHTML = doc2.data().User_Laa;
                     td7.innerHTML = doc2.data().User_AT + " (" +  doc2.data().User_Rev + ")";
                     td8.innerHTML = doc2.data().User_examType;
@@ -74,7 +74,7 @@ const db = getFirestore(app);
                     trow.appendChild(td2);
                     trow.appendChild(td3);
                     trow.appendChild(td4);
-                    trow.appendChild(td5);
+                    // trow.appendChild(td5);
                     trow.appendChild(td6);
                     trow.appendChild(td7);
                     trow.appendChild(td8);
@@ -93,7 +93,7 @@ const db = getFirestore(app);
                     let td2 = document.createElement('td');
                     let td3 = document.createElement('td'); 
                     let td4 = document.createElement('td'); 
-                    let td5 = document.createElement('td'); 
+                    // let td5 = document.createElement('td'); 
                     let td6 = document.createElement('td');
                     let td7 = document.createElement('td');
                     let td8 = document.createElement('td'); 
@@ -107,7 +107,7 @@ const db = getFirestore(app);
                     td2.innerHTML = doc2.data().User_BD;
                     td3.innerHTML = doc2.data().User_GN;
                     td4.innerHTML = doc2.data().User_ADD;
-                    td5.innerHTML = doc2.data().User_TT;
+                    // td5.innerHTML = doc2.data().User_TT;
                     td6.innerHTML = doc2.data().User_Laa;
                     td7.innerHTML = doc2.data().User_AT;
                     td8.innerHTML = doc2.data().User_examType;
@@ -122,7 +122,7 @@ const db = getFirestore(app);
                     trow.appendChild(td2);
                     trow.appendChild(td3);
                     trow.appendChild(td4);
-                    trow.appendChild(td5);
+                    // trow.appendChild(td5);
                     trow.appendChild(td6);
                     trow.appendChild(td7);
                     trow.appendChild(td8);

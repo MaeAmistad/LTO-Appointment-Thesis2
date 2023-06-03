@@ -4,7 +4,7 @@ bck_AL.addEventListener('click',(e) => {
 
 comp_btn.addEventListener('click',(e) => {
     window.location = "pc_LIComp.html";
-});
+}); 
 
 incomp_btn.addEventListener('click',(e) => {
     window.location = "pc_LIIncomp.html";
@@ -35,7 +35,7 @@ const db = getFirestore(app);
 
       querySnapshot2.forEach(doc2 => {
 //  
-        if(doc2.data().User_Stat == "APPROVED_TO_CASHIER" && doc2.data().User_TT == "LICENSING"){
+        if(doc2.data().User_Stat2 == "APPROVED_TO_CASHIER" && doc2.data().User_TT == "LICENSING"){
 
                 if (doc2.data().User_AT == "REVISION OF RECORDS"){
                     let trow = document.createElement('tr'); 

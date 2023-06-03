@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LTO Appointment Setter</title>
+    <link rel="stylesheet" href="../style/In_reqdata.css">
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+</head>
+<body>
+    <div class="main">
+        <div class="tranID">
+            <p id="tranID"></p>
+
+            <table class="lic_det">
+              <p>Applicant's Information</p>
+              <tr>
+                <td>Full Name:</td>
+                <td id="ln">-</td> 
+              </tr>
+    
+              <tr>
+                <td>Date of Birth:</td>
+                <td id="dof">-</td> 
+              </tr>
+    
+              <tr>
+                <td>Gender:</td>
+                <td id="gndr">-</td> 
+              </tr>
+          </table>
+    
+          <table class="Transaction-table">
+            <p>Appointment's Information</p>
+  
+            <tr>
+              <td>Transaction ID:</td>
+              <td id="tID" >-</td>
+            </tr>
+  
+            <tr>
+              <td>Transaction Type:</td>
+              <td id="tt" >-</td>
+            </tr>
+    
+  
+            <tr>
+              <td>Application Type:</td>
+              <td id="at" >-</td>
+            </tr>
+     
+            <tr>
+              <td>Date:</td>
+              <td id="dt_L">-</td>
+            </tr>
+    
+            <tr>
+              <td>Time:</td>
+              <td id="dt_t">-</td>
+            </tr>
+          </table>
+
+          <table id="mv-table" >
+
+            <p id="mvtitle">Motor Vehicle Information</p>
+  
+            <tr>
+              <td>Plate No.:</td>
+              <td id="plate_num" >-</td>
+            </tr>
+  
+            <tr>
+              <td>Type:</td>
+              <td id="typee" >-</td>
+            </tr>
+
+            <tr>
+              <td>Refrigerant Type:</td>
+              <td id="reftypee" >-</td>
+            </tr>
+            
+            <tr>
+              <td>Year Model:</td>
+              <td id="yrmdl" >-</td>
+            </tr>
+
+            <tr>
+              <td>Make/Series:</td>
+              <td id="mk_seris" >-</td>
+            </tr>
+     
+            <tr>
+              <td>Motor Number:</td>
+              <td id="mot_num">-</td>
+            </tr>
+    
+            <tr>
+              <td>Chassis Number:</td>
+              <td id="cha_num">-</td>
+            </tr>
+
+            <tr>
+              <td>Color:</td>
+              <td id="colorr" >-</td>
+            </tr>
+  
+            <tr>
+              <td>Fuel:</td>
+              <td id="fuell" >-</td>
+            </tr>
+  
+            <tr>
+              <td>File No.:</td>
+              <td id="filno" >-</td>
+            </tr>
+     
+            <tr>
+              <td>Date Registered:</td>
+              <td id="dt_reg">-</td>
+            </tr>
+    
+            <tr>
+              <td>Transaction:</td>
+              <td id="transctionmv">-</td>
+            </tr>
+
+            <tr>
+              <td>Dept./Agency:</td>
+              <td id="deptAgncy">-</td>
+            </tr>
+          </table>
+    
+          <table class="contact-table">
+            <p>Contact Information</p>
+            <tr>
+              <td>Address:</td>
+              <td id="addrss">-</td> 
+            </tr>
+    
+            <tr>
+              <td>Email:</td>
+              <td id="em">-</td>
+            </tr>
+    
+            <tr>
+              <td>Mobile Number:</td>
+              <td id="mnn">-</td> 
+            </tr>
+          </table>
+
+        </div>
+
+        <div class="btn">
+            <div>
+                <button id="bck">Back</button>
+            </div>
+            <div>
+              <button id="mvinfo">ADD MV INFO</button>
+            </div>
+            <div>
+              <button id="dclnd">Dissapproved</button>
+            </div>
+            <div>
+              <button id="apprd">Approved</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="cnfrm_modal" id="cnfrm_modal">
+      <h1>Application Approval</h1>
+      <p>The applicant may now proceed to the next station?</p>
+
+          <div class="btn2">
+              <button id="cnl">Cancel</button>
+              <button id="cnfrm">Confirm</button>
+          </div>
+      </div>
+  </div>
+
+  <div class="cnfrm_modal2" id="cnfrm_modal2"> 
+    <h1>Application Approval</h1>
+    <p>Declined Application?</p>
+
+        <div class="btn2">
+            <button id="cnl2">Cancel</button>
+            <button id="cnfrm2">Confirm</button>
+        </div>
+    </div>
+  </div>
+
+  <div class="addinf" id="addinf">
+    <h1>MV INFO</h1>
+      <div class="info">
+        <label>Plate No.:</label>
+        <input type="text" id="pltno">
+      </div>
+
+      <div class="info">
+        <label>Type:</label>
+        <input type="text" id="type">
+      </div>
+
+      <div class="info">
+        <label>Refrigerant Type:</label>
+        <!-- <input type="text" id="deptagncy"> -->
+        <select id="refrtypee">
+          <option>Select:</option>
+          <option>Non-AC</option>
+          <option>R12</option> 
+          <option>R134a</option> 
+        </select>
+      </div>
+
+      <div class="info">
+        <label>Year Model:</label>
+        <input type="text" id="yr_mdl">
+      </div>
+
+      <div class="info">
+        <label>Make/Series:</label>
+        <input type="text" id="mksrs">
+      </div>
+
+      <div class="info">
+        <label>Motor Number:</label>
+        <input type="text" id="mtrno">
+      </div>
+
+      <div class="info">
+        <label>Chassis Number:</label>
+        <input type="text" id="chassno">
+      </div>
+
+      <div class="info">
+        <label>Color:</label>
+        <input type="text" id="color">
+      </div>
+
+      <div class="info">
+        <label>Fuel:</label>
+        <input type="text" id="fuel">
+      </div>
+
+      <div class="info">
+        <label>File No.:</label>
+        <input type="text" id="fileno">
+      </div>
+
+      <div class="info">
+        <label>Date Registered:</label>
+        <input type="date" id="dtrgstrd">
+      </div>
+
+      <div class="info">
+        <label>Transaction:</label>
+        <input type="text" id="trnsctn">
+      </div>
+
+      <div class="info">
+        <label>Dept./Agency:</label>
+        <input type="text" id="deptagncy">
+      </div>
+
+        <div class="btn2">
+            <button id="cnl3">Cancel</button>
+            <button id="add">ADD</button>
+        </div>
+    </div>
+  </div>
+ 
+
+
+<script type="module" src="../src/a_reqdatains.js"></script>
+
+</body>
+</html>

@@ -35,7 +35,7 @@ const db = getFirestore(app);
 
       querySnapshot2.forEach(doc2 => {
 
-          if (doc2.data().User_Stat == "INCOMPLETED" && doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
+          if (doc2.data().User_Stat4 == "INCOMPLETED" && doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
 
             let trow = document.createElement('tr'); 
             let t_ID = document.createElement('td'); 
@@ -60,12 +60,22 @@ const db = getFirestore(app);
             tbody.appendChild(trow);
 
             trow.addEventListener('click', (e) =>{
-                trow.style.backgroundColor = 'rgb(218, 216, 216)';
-                localStorage.setItem('stat',doc2.data().User_TransID)    
+                trow.style.backgroundColor = '#254894c0';
+                trow.style.color = "white";
+                localStorage.setItem('stat',doc2.data().User_AppID)    
                 localStorage.setItem('ID', doc2.id)
 
                 window.location = "a_reqdata2.html";
             });
+
+            trow.addEventListener('mouseover',function(){
+                trow.style.backgroundColor = 'rgb(218, 216, 216)';
+                trow.style.color = "black";
+             })
+             trow.addEventListener('mouseleave',function(){
+                trow.style.backgroundColor = "";
+                trow.style.color = "";
+             })
 
           }
       

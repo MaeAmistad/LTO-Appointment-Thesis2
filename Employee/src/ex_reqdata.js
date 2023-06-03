@@ -21,7 +21,7 @@ import { getFirestore, getDocs, collection, updateDoc,doc,setDoc,addDoc } from "
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyCyNToos3S0HwLl0cZMRdiVjFJcBb4FWFo",
+    apiKey: "AIzaSyCyNToos3S0HwLl0cZMRdiVjFJcBb4FWFo", 
     authDomain: "lto-online-appointment-setter.firebaseapp.com",
     projectId: "lto-online-appointment-setter",
     storageBucket: "lto-online-appointment-setter.appspot.com",
@@ -61,6 +61,7 @@ const db = getFirestore(app);
 
             }
 
+            // Saving Data
             // PASSED BUTTON
             cnfrm1.addEventListener('click', (e) => {
                 const updateStat = doc(db, "Applicants", doc2.id)
@@ -70,24 +71,36 @@ const db = getFirestore(app);
                 if (stt == doc2.data().User_TransID){
                     if (exmtyp1 == "PRACTICAL"){
                         updateDoc(updateStat, {
+                            User_Stat3: "PASSED",
                             User_Stat: "PASSED"
                         })
                         setDoc(doc(db,"Practical",doc2.data().User_TransID),{
                             User_TransID: doc2.data().User_TransID,
                             result: "PASSED",
-                            examType:exmtyp1
+                            examType:exmtyp1,
+                            dt_App: doc2.data().User_D,
+                            t_app: doc2.data().User_T,
+                            laa: doc2.data().User_Laa,
+                            gn: doc2.data().User_GN,
+                            at: doc2.data().User_AT
                         }).then(() => {
                                 window.location = "ex_homepage.html"
                             })
                     }
                     else if(exmtyp1 == "WRITTEN"){
                         updateDoc(updateStat, {
+                            User_Stat3: "PASSED",
                             User_Stat: "PASSED"
                         })
                         setDoc(doc(db,"Written",doc2.data().User_TransID),{
                             User_TransID: doc2.data().User_TransID,
                             result: "PASSED",
-                            examType:exmtyp1
+                            examType:exmtyp1,
+                            dt_App: doc2.data().User_D,
+                            t_app: doc2.data().User_T,
+                            laa: doc2.data().User_Laa,
+                            gn: doc2.data().User_GN,
+                            at: doc2.data().User_AT
                         }).then(() => {
                             window.location = "ex_homepage.html"
                         })
@@ -105,28 +118,40 @@ const db = getFirestore(app);
                 if (stt == doc2.data().User_TransID){
                     if (exmtyp2 == "PRACTICAL"){
                         updateDoc(updateStat, {
+                            User_Stat3: "FAILED",
                             User_Stat: "FAILED"
                         })
                         setDoc(doc(db,"Practical",doc2.data().User_TransID),{
                             User_TransID: doc2.data().User_TransID,
                             result: "FAILED",
-                            examType:exmtyp2
+                            examType:exmtyp2,
+                            dt_App: doc2.data().User_D,
+                            t_app: doc2.data().User_T,
+                            laa: doc2.data().User_Laa,
+                            gn: doc2.data().User_GN,
+                            at: doc2.data().User_AT
                         }).then(() => {
                                 window.location = "ex_homepage.html"
                             })
-                    }
+                    } 
                     else if(exmtyp2 == "WRITTEN"){
                         updateDoc(updateStat, {
+                            User_Stat3: "FAILED",
                             User_Stat: "FAILED"
                         })
                         setDoc(doc(db,"Written",doc2.data().User_TransID),{
                             User_TransID: doc2.data().User_TransID,
                             result: "FAILED",
-                            examType:exmtyp2
+                            examType:exmtyp2,
+                            dt_App: doc2.data().User_D,
+                            t_app: doc2.data().User_T,
+                            laa: doc2.data().User_Laa,
+                            gn: doc2.data().User_GN,
+                            at: doc2.data().User_AT
                         }).then(() => {
                             window.location = "ex_homepage.html"
                         })
-                    }
+                    } 
                 } 
 
             })

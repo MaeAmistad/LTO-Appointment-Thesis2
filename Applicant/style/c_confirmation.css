@@ -55,8 +55,8 @@ nav ul li:hover > ul{
 }
 .box{
   position: relative;
-  max-width: 700px;
-  width: 100%;
+
+  width: 60%;
   padding: 25px;
   background: white; 
   margin-top: 20px;
@@ -157,7 +157,7 @@ p{
     width: 300px;
 }
 button{
-    width: 100px;
+    width: 15%;
     height: 40px;
     color: black;
     font-size: 14px;
@@ -178,3 +178,73 @@ button{
 .confirm, button{
     margin-top: 50px;
 }
+
+     @media only screen and (max-width: 1200px){
+        .box,.border {
+            margin-left: 100%;
+        }
+        .box,.border ,.content-table,.Transaction-table, .contact-table,.chckbx  {
+            margin-left: 10px;
+            align-items: center;
+            width: 85%;
+         }
+         .chckbx{
+            width: 100%;
+         }
+         .confirm,.back{
+            width: 95%;
+            margin-left: 10px;
+         }
+      
+        @media only screen and (max-width: 1100px){
+            .box,.border {
+                margin-left: 100%;
+            }
+            .box,.border ,.content-table,.Transaction-table, .contact-table,.chckbx  {
+                margin-left: 10px;
+                align-items: center;
+                width: 85%;
+             }
+             .chckbx{
+                width: 100%;
+             }
+             .confirm,.back{
+                width: 95%;
+                margin-left: 10px;
+             }
+         
+        }
+        @media only screen and (max-width: 600px ){
+            .box,.border {
+                margin-left: 1%;
+            }
+            }
+            .box,.border ,.content-table,.Transaction-table, .contact-table,.chckbx  {
+                align-items: center;
+                width: 88%;
+             }
+             .chckbx{
+                width: 100%;
+             }
+             .confirm,.back{
+                width: 95%;
+                margin-left: 10px;
+             }
+        }
+        @media only screen and (max-width: 500px){
+            .box,.border ,.content-table,.Transaction-table, .contact-table,.chckbx  {
+                margin-left: 10px;
+                align-items: center;
+                width: 85%;
+             }
+             .chckbx{
+                width: 100%;
+             }
+             .confirm,.back{
+                width: 95%;
+                margin-left: 10px;
+             }
+        }
+       
+    
+    

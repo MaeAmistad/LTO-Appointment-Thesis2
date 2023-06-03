@@ -20,7 +20,7 @@
                     <li><a href="">TRANSACTIONS<i class="fa-solid fa-caret-down"></i></a>
                     <ul>
                         <li><a href="ca_LIComp.html">LICENSE</a></li>
-                        <li><a href="ca_mvComp.html">MOTOR VEHICLE</a></li>
+                        <li><a href="ca_mvPass.html">MOTOR VEHICLE</a></li>
                     </ul>
                     </li>
                     <li id="prfl"><a href="ca_profile.html">PROFILE</a></li>
@@ -30,44 +30,45 @@
         </nav>
     </section>
 
-    <div class="main2">
-		<div class="btnOptn">
-			<button id="comp_btn" >COMPLETE</button>
+    <div class="main2">        
+        <div class="btnOptn">
+			<button id="pssexm_btn">REGISTERED</button>
 		</div>
 		<div class="btnOptn">
 			<button id="incomp_btn" style="background:#032d8983; color: white;">INCOMPLETE</button>
 		</div>
-        <div class="btnOptn">
-			<button id="pssexm_btn">PASSED</button>
-		</div>
+
 	</div>
 
     <div class="main"> 
 
         <button id="bck_AL">BACK</button>
-        
+        <div class="outer-wrapper">
+            <div class="table-wrapper">
         <table class="content-table">
           <thead>
           <tr>
-            <th class="sp" colspan="12">Appointments</th>
+            <th class="sp" colspan="10">MOTOR VEHICLE</th>
           </tr>
           <tr>
-                <th>Application ID.</th>
-                <th>Full Name</th>
-                <th>Birthday</th>
-                <th>Gender</th>
-                <th>Address</th>
-                <th>Transaction Type</th>
-                <th>License Application Applied</th>
-                <th>Application Type</th>
-                <th>Date of Appointment</th>      
-                <th>Time of Appointment</th>                
-                <th>Contact Number</th>
-                <th>Email Address</th>
+            <th>Transaction ID.</th>
+            <th>Full Name</th>
+            <th>Birthday</th>
+            <th>Gender</th>
+            <th>Address</th>
+            <!-- <th>Transaction Type</th>
+            <th>Application Type</th> -->
+            <th>Date of Appointment</th>      
+            <th>Time of Appointment</th>                
+            <th>Contact Number</th>
+            <th>Email Address</th>
+            <th>MV INFO</th>
           </tr> 
             <tbody id="tbody1"> </tbody>
           </table>
       </div>
+        </div>
+    </div>
 
     <script type="module" src="../src/a_logout.js"></script>
     <script type="module" src="../src/ca_mvIncomp.js"></script>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LTO Appointment Setter</title>
+    <link rel="stylesheet" href="../style/pc_appntmntStatADC.css">
+    <script src="https://kit.fontawesome.com/9aa6942f31.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- NAVBAR -->
+	<section class="">
+        <nav>
+            <img src="../img/Land_Transportation_Office.svg.png">
+        
+            <div class="navbar" id="navLinks">
+                <ul>
+                    <li id="hm"><a href="In_homepage.html">HOME</a></li>
+                    <li><a href="In_mvapprcd.html">TRANSACTIONS</a>
+                          </li>
+                          <li id="prfl"><a href="In_profile.html">PROFILE</a></li>
+                    <li id="logout">LOGOUT</li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+
+    <div class="main2">
+		<div class="btnOptn">
+			<button id="comp_btn" style="background:#032d8983; color: white;">APPROVED</button>
+		</div>
+		<div class="btnOptn">
+			<button id="incomp_btn" >DISAPPROVED</button>
+		</div>
+	</div>
+
+    <div class="main"> 
+
+        <button id="bck_AL">BACK</button>
+        <div class="outer-wrapper">
+            <div class="table-wrapper">
+        <table class="content-table">
+          <thead>
+          <tr>
+            <th class="sp" colspan="10">Motor Vehicle</th>
+          </tr>
+          <tr>
+                <th>Application ID.</th>
+                <th>Full Name</th>
+                <th>Birthday</th>
+                <th>Gender</th>
+                <th>Address</th>
+                <th>Date of Appointment</th>      
+                <th>Time of Appointment</th>                
+                <th>Contact Number</th>
+                <th>Email Address</th>
+                <th>MV Info</th>
+          </tr> 
+            <tbody id="tbody1" class="in_mv"> </tbody>
+          </table>
+      </div>
+        </div>
+    </div>
+
+    <script type="module" src="../src/a_logout.js"></script>
+    <script type="module" src="../src/In_mvapprcd.js"></script>
+    
+</body>
+</html>

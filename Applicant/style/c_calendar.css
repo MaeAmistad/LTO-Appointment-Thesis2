@@ -11,7 +11,7 @@ nav{
     display: flex;
     padding: 0.6% 6%;
     justify-content: space-between;
-    align-items: center;
+    align-items: center; 
     background-color: #032d89;
 }
 nav img{
@@ -55,10 +55,9 @@ nav ul li:hover > ul{
 }
 
 .main{
-    position: relative;
-    left: 32%;
-  max-width: 500px;
-  width: 100%;
+ position: relative;
+  left: 32%;
+  width: 500px;
   padding: 25px;
   background: white; 
   margin-top: 20px;
@@ -71,17 +70,15 @@ nav ul li:hover > ul{
 }
 #txtdate{
     outline: none;
-    width: 300px;
+    width: 100%;
+    padding: 10px;
     height: 30px;
-}
-.datepickerr{
-    margin-left: 40px;
 }
 .datepickerr label{
     font-size: 15px;
 }   
 .btn{
-    width: 100px;
+    width: 30%;
     height: 40px;
     color: black;
     font-size: 14px;
@@ -96,11 +93,11 @@ nav ul li:hover > ul{
 .btn_sv{
     background-color: #032d89;
     color: white;
-    margin-left: 215px;
+    margin-left: 33%;
 }
 .time{
     margin-top: 30px;
-    margin-left: 125px;
+    margin-left: 30%;
     /* border: 1px solid black; */
 }
 table tr th{
@@ -116,7 +113,7 @@ table tr td{
     padding: 5px 30px;
 }
 .datepicker{
-    margin-left: 45px;
+    margin-left: 20%;
     margin-top: 10px;
 }
 .datepicker table{
@@ -130,3 +127,48 @@ table tr td{
 input[type="button"]{
     width: 90px;
 }
+    @media only screen and (max-width: 1100px){
+    
+        .main, .datepickerr, time{
+            margin-left: -2%;
+            width:400px;
+            align-items: center;
+            
+        }
+        .datepickerr{
+            width: 100%;
+            margin-left: -3%;
+           
+        }
+        .time{
+            margin-left:25%;
+        }
+        .btn{
+             
+        }
+        .btn_sv{
+            margin-left: 30%;
+        }
+    }
+  
+    
+    @media only screen and (max-width: 758px){
+    
+        .main, .datepickerr, time{
+            margin-left: -16%;
+            width: 70%;
+            align-items: center;
+            
+            
+        }
+        .datepickerr{
+            width: 100%;
+            margin-left: -2%;
+           
+        }
+        .time{
+            margin-left:19%;
+        }
+       
+    }
+   

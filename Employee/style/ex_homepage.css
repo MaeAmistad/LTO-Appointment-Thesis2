@@ -10,8 +10,6 @@ body {
     /* color: #d36c6c; */
 }
 /* Navigation Bar*/
-
-
 nav{
     display: flex;
     padding: 0.6% 6%;
@@ -72,9 +70,9 @@ nav ul li:hover > ul{
     border-collapse: collapse;
     font-size: 0.9em;
     width: 99%;
-    margin-top:10px;
+    margin-top:-40px;
     margin-left: 9px;
-    background-color: white;
+    background-color: white; 
     color: black;
     border: 1px solid black; 
     cursor: pointer;
@@ -92,8 +90,6 @@ nav ul li:hover > ul{
 .content-table td {
     padding: 3px;
     border: 1px solid black;
-    justify-content: center;
-    align-items: center;
 }
 .main2{
     display: flex;
@@ -104,6 +100,17 @@ nav ul li:hover > ul{
 }
 .main2 button{
 	padding: 4px;
+}
+.date{  
+    margin-top: 20px;
+}
+.date input{
+    width: 110px;
+    padding: 5px 15px;
+    margin-left: 87%;
+    border-radius: 5px;
+    outline: none;
+    border: none;
 }
 .search button{
     width: 90px;
@@ -131,10 +138,85 @@ nav ul li:hover > ul{
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     padding-left: 5px;
+    text-transform: uppercase;
 }
+    /* Medium <= 992px */
+    @media screen and (max-width: 992px) {
+        .grid-container {
+          grid-template-columns: 1fr;
+          grid-template-rows: 0.2fr 3fr;
+          grid-template-areas:
+            "header"
+            "main";
+        }
+      
+        #sidebar {
+          display: none;
+        }
+      
+        .menu-icon {
+          display: inline;
+        }
+      
+        .sidebar-title > span {
+          display: inline;
+        }
+      }
+      
+    
+      /* Extra Small <= 576px */
+      @media screen and (max-width: 576px) {
+        .header-left {
+          display: none;
+        }
+      }
+    
+      @media only screen and (max-width: 1200px){
+        
+         body {
+        
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+          }
+        .outer-wrapper {
+            margin: 10px;
+            margin-left: 20px;
+            margin-right: 20px;
+            max-width: fit-content;
+            max-height: fit-content;
+        
+            
+        }
+        .table-wrapper {
+        
+            overflow-y: scroll;
+            overflow-x: scroll;
+            height: fit-content;
+            max-height: 66.4vh;
+            
+            margin-top: 22px;
+            
+            margin: 15px;
+            padding-bottom: 20px;
+            
+        }
+        
+        .content-table {
+          border-collapse: collapse;
+          font-size: 14px;
+          margin-left: 5%;
+          width: 200%;
+     
+        }
+        .search,  #srchText{
+            margin-left:4%;
+            width: 65%;
+        }
+        .date input{
+            margin-left: 10%;
+        }
+        
+      }
 
-@media (max-width: 700px) {
-    .content-table{
-        /* margin: 5px; */
-    }
-}
+    
+    
+      

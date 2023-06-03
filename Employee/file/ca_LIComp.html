@@ -20,7 +20,7 @@
                     <li><a href="">TRANSACTIONS<i class="fa-solid fa-caret-down"></i></a>
                     <ul>
                         <li><a href="ca_LIComp.html">LICENSE</a></li>
-                        <li><a href="ca_mvComp.html">MOTOR VEHICLE</a></li>
+                        <li><a href="ca_mvPass.html">MOTOR VEHICLE</a></li>
                     </ul>
                     </li>
                     <li id="prfl"><a href="ca_profile.html">PROFILE</a></li>
@@ -38,26 +38,25 @@
 			<button id="incomp_btn">INCOMPLETE</button>
 		</div>
         <div class="btnOptn">
-			<button id="pssexm_btn">PASSED</button>
+			<button id="pssexm_btn">RELEASED</button>
 		</div>
 	</div>
 
     <div class="main"> 
-
         <button id="bck_AL">BACK</button>
-        
+        <div class="outer-wrapper">
+            <div class="table-wrapper">
         <table class="content-table">
           <thead>
           <tr>
-            <th class="sp" colspan="12">Appointments</th>
+            <th class="sp" colspan="12">LICENSE</th>
           </tr>
           <tr>
-                <th>Application ID.</th>
+                <th>Transaction ID.</th>
                 <th>Full Name</th>
                 <th>Birthday</th>
                 <th>Gender</th>
                 <th>Address</th>
-                <th>Transaction Type</th>
                 <th>License Application Applied</th>
                 <th>Application Type</th>
                 <th>Date of Appointment</th>      
@@ -68,6 +67,8 @@
             <tbody id="tbody1"> </tbody>
           </table>
       </div>
+        </div>
+    </div>
 
     <script type="module" src="../src/a_logout.js"></script>
     <script type="module" src="../src/ca_LIComp.js"></script>

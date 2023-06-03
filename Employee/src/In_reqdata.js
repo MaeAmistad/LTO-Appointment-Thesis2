@@ -10,10 +10,11 @@ bck.addEventListener('click',() => {
     localStorage.removeItem("ui7");
     localStorage.removeItem("ui8");
     localStorage.removeItem("ui9");
-    localStorage.removeItem("ui10");
     localStorage.removeItem("ui11");
+    localStorage.removeItem("ui12");
+    localStorage.removeItem("ui13");
 }); 
-
+ 
 apprd.addEventListener('click',() => {
     document.getElementById('cnfrm_modal').style.visibility = "visible";
     document.getElementById('cnfrm_modal2').style.visibility = "hidden";
@@ -26,18 +27,14 @@ mvinfo.addEventListener('click',() => {
     document.getElementById('addinf').style.visibility = "visible";
 });
 cnl.addEventListener('click',() => {
-    // window.location = "pc_reqdata.html";
     document.getElementById('cnfrm_modal').style.visibility = "hidden";
 });
 cnl2.addEventListener('click',() => {
-    // window.location = "pc_reqdata.html";
     document.getElementById('cnfrm_modal2').style.visibility = "hidden";
 });
 cnl3.addEventListener('click',() => {
     document.getElementById('addinf').style.visibility = "hidden";
 });
-// var tranID = localStorage.getItem("stat");
-// document.getElementById('tranID').innerHTML = tranID;
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import { getFirestore, getDocs, collection, updateDoc,doc,setDoc } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
@@ -56,18 +53,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const selectElement = document.querySelector("#reftypee");
-
-selectElement.addEventListener("change", (event) => {    
-    let refrityp = document.getElementById("reftypee");
-    var refrigrnt_typ = refrityp.options[refrityp.selectedIndex].text;
-    console.log(refrigrnt_typ)
-});
-
 add.addEventListener('click',() => {
     let pltno = document.getElementById("pltno").value.toUpperCase();
     let type = document.getElementById("type").value.toUpperCase();
-
+    let select= document.querySelector('#refrtypee');
+    let refrigernt_typ = select.options[select.selectedIndex].text.toUpperCase();
+    let yr_mdl = document.getElementById("yr_mdl").value.toUpperCase();
     let mksrs = document.getElementById("mksrs").value.toUpperCase();
     let mtrno = document.getElementById("mtrno").value.toUpperCase();
     let chassno = document.getElementById("chassno").value.toUpperCase();
@@ -75,10 +66,9 @@ add.addEventListener('click',() => {
     let fuel = document.getElementById("fuel").value.toUpperCase();
     let fileno = document.getElementById("fileno").value.toUpperCase();
     let dtrgstrd = document.getElementById("dtrgstrd").value.toUpperCase();
-    let trnsctn = document.getElementById("trnsctn").value.toUpperCase();
     let deptagncy = document.getElementById("deptagncy").value.toUpperCase();
 
-    if (pltno == "" && type == "" && mksrs == "" && mtrno == "" && chassno == "" && color == ""&& fuel == ""&& fileno == ""&& dtrgstrd == ""&& trnsctn == ""&& deptagncy == "") {
+    if (pltno == "" && type == "" && mksrs == "" && mtrno == "" && yr_mdl == "" && refrigernt_typ == "SELECT:" && chassno == "" && color == ""&& fuel == ""&& fileno == ""&& dtrgstrd == ""&& deptagncy == "") {
         Swal.fire({
             title: "Field is Empty",
             confirmButtonColor: '#132aaa',
@@ -90,6 +80,150 @@ add.addEventListener('click',() => {
             }
           })
     }
+    // else if (pltno == ""){
+    //     Swal.fire({
+    //         title: "Plate Number is Empty",
+    //         confirmButtonColor: '#132aaa',
+    //         showClass: {
+    //           popup: 'animate__animated animate__fadeInDown'
+    //         },
+    //         hideClass: {
+    //           popup: 'animate__animated animate__fadeOutUp'
+    //         }
+    //       })
+    // }
+    // else if (type == ""){
+    //     Swal.fire({
+    //         title: "Type is Empty",
+    //         confirmButtonColor: '#132aaa',
+    //         showClass: {
+    //           popup: 'animate__animated animate__fadeInDown'
+    //         },
+    //         hideClass: {
+    //           popup: 'animate__animated animate__fadeOutUp'
+    //         }
+    //       })
+    // }
+    // else if (refrigernt_typ == "SELECT:"){
+    //     Swal.fire({
+    //         title: "Refrigerant Type is Empty",
+    //         confirmButtonColor: '#132aaa',
+    //         showClass: {
+    //           popup: 'animate__animated animate__fadeInDown'
+    //         },
+    //         hideClass: {
+    //           popup: 'animate__animated animate__fadeOutUp'
+    //         }
+    //       })
+    // }
+    // else if (yr_mdl == ""){
+    //     Swal.fire({
+    //         title: "Year Model is Empty",
+    //         confirmButtonColor: '#132aaa',
+    //         showClass: {
+    //           popup: 'animate__animated animate__fadeInDown'
+    //         },
+    //         hideClass: {
+    //           popup: 'animate__animated animate__fadeOutUp'
+    //         }
+    //       })
+    // }
+    // else if (mksrs == ""){
+    //     Swal.fire({
+    //         title: "Make/Series is Empty",
+    //         confirmButtonColor: '#132aaa',
+    //         showClass: {
+    //           popup: 'animate__animated animate__fadeInDown'
+    //         },
+    //         hideClass: {
+    //           popup: 'animate__animated animate__fadeOutUp'
+    //         }
+    //       })
+    // }
+    // else if (mtrno == ""){
+    //     Swal.fire({
+    //         title: "Motor Number is Empty",
+    //         confirmButtonColor: '#132aaa',
+    //         showClass: {
+    //           popup: 'animate__animated animate__fadeInDown'
+    //         },
+    //         hideClass: {
+    //           popup: 'animate__animated animate__fadeOutUp'
+    //         }
+    //       })
+    // }
+    // else if (chassno == ""){
+    //     Swal.fire({
+    //         title: "Chassis Number is Empty",
+    //         confirmButtonColor: '#132aaa',
+    //         showClass: {
+    //           popup: 'animate__animated animate__fadeInDown'
+    //         },
+    //         hideClass: {
+    //           popup: 'animate__animated animate__fadeOutUp'
+    //         }
+    //       })
+    // }
+    // else if (color == ""){
+    //     Swal.fire({
+    //         title: "Color is Empty",
+    //         confirmButtonColor: '#132aaa',
+    //         showClass: {
+    //           popup: 'animate__animated animate__fadeInDown'
+    //         },
+    //         hideClass: {
+    //           popup: 'animate__animated animate__fadeOutUp'
+    //         }
+    //       })
+    // }
+    // else if (fuel == ""){
+    //     Swal.fire({
+    //         title: "Fuel is Empty",
+    //         confirmButtonColor: '#132aaa',
+    //         showClass: {
+    //           popup: 'animate__animated animate__fadeInDown'
+    //         },
+    //         hideClass: {
+    //           popup: 'animate__animated animate__fadeOutUp'
+    //         }
+    //       })
+    // }
+    // else if (fileno == ""){
+    //     Swal.fire({
+    //         title: "File Number is Empty",
+    //         confirmButtonColor: '#132aaa',
+    //         showClass: {
+    //           popup: 'animate__animated animate__fadeInDown'
+    //         },
+    //         hideClass: {
+    //           popup: 'animate__animated animate__fadeOutUp'
+    //         }
+    //       })
+    // }
+    // else if (dtrgstrd == ""){
+    //     Swal.fire({
+    //         title: "Date Registered is Empty",
+    //         confirmButtonColor: '#132aaa',
+    //         showClass: {
+    //           popup: 'animate__animated animate__fadeInDown'
+    //         },
+    //         hideClass: {
+    //           popup: 'animate__animated animate__fadeOutUp'
+    //         }
+    //       })
+    // }
+    // else if (deptagncy == ""){
+    //     Swal.fire({
+    //         title: "Dept/Agency is Empty",
+    //         confirmButtonColor: '#132aaa',
+    //         showClass: {
+    //           popup: 'animate__animated animate__fadeInDown'
+    //         },
+    //         hideClass: {
+    //           popup: 'animate__animated animate__fadeOutUp'
+    //         }
+    //       })
+    // }
     else{
         localStorage.setItem("ui1",pltno);
         localStorage.setItem("ui2",type);
@@ -100,11 +234,14 @@ add.addEventListener('click',() => {
         localStorage.setItem("ui7",fuel);
         localStorage.setItem("ui8",fileno);
         localStorage.setItem("ui9",dtrgstrd);
-        localStorage.setItem("ui10",trnsctn);
         localStorage.setItem("ui11",deptagncy);
+        localStorage.setItem("ui12",refrigernt_typ);
+        localStorage.setItem("ui13",yr_mdl);
 
         window.location = "In_reqdata.html" 
+
     }
+
 });
 //get all data
     const querySnapshot2 = await getDocs(collection(db,"Applicants"));
@@ -154,17 +291,19 @@ add.addEventListener('click',() => {
                     document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
                     document.getElementById("em").innerHTML = doc2.data().User_E;
                     document.getElementById("mnn").innerHTML = doc2.data().User_CN;
+
+                    document.getElementById("trnsctn").value = doc2.data().User_AT;
                 }
 
             }
 
 
-            // console.log(trnidlic)
+             // Saving Data
             cnfrm.addEventListener('click', (e) => {
                 const updateStat = doc(db, "Applicants", doc2.id)
                 var stt = localStorage.getItem("stat")
             
-                if (localStorage.getItem("ui1") == null && localStorage.getItem("ui2") == null && localStorage.getItem("ui3") == null &&localStorage.getItem("ui4") == null &&localStorage.getItem("ui5") == null &&localStorage.getItem("ui6") == null &&localStorage.getItem("ui7") == null &&localStorage.getItem("ui8") == null &&localStorage.getItem("ui9") == null &&localStorage.getItem("ui10") == null &&localStorage.getItem("ui11") == null) {
+                if (localStorage.getItem("ui1") == null && localStorage.getItem("ui2") == null && localStorage.getItem("ui12") == null && localStorage.getItem("ui3") == null &&localStorage.getItem("ui4") == null &&localStorage.getItem("ui5") == null &&localStorage.getItem("ui6") == null &&localStorage.getItem("ui7") == null &&localStorage.getItem("ui8") == null &&localStorage.getItem("ui9") == null &&localStorage.getItem("ui11") == null) {
                     Swal.fire({
                         title: "Motor Vehicle Info is Empty!",
                         confirmButtonColor: '#132aaa',
@@ -179,6 +318,7 @@ add.addEventListener('click',() => {
                 else{
                     if (stt == doc2.data().User_AppID){
                         updateDoc(updateStat, {
+                            User_Stat1: "APPROVED_TO_PROCEED",
                             User_Stat: "APPROVED_TO_PROCEED",
                             User_TransID: trnidmvr,                            
                             pltno: localStorage.getItem("ui1"),
@@ -190,8 +330,10 @@ add.addEventListener('click',() => {
                             fuel :localStorage.getItem("ui7"), 
                             fileno:localStorage.getItem("ui8"),
                             dtrgstrd:localStorage.getItem("ui9"),
-                            trnsctn:localStorage.getItem("ui10"),
-                            deptagncy:localStorage.getItem("ui11")
+                            trnsctn: doc2.data().User_AT,
+                            deptagncy:localStorage.getItem("ui11"),
+                            refrigerant_typ:localStorage.getItem("ui12"),
+                            yr_modell: localStorage.getItem("ui13")
                         }).then(() => {
                             localStorage.removeItem("ui1");
                             localStorage.removeItem("ui2");
@@ -202,8 +344,9 @@ add.addEventListener('click',() => {
                             localStorage.removeItem("ui7");
                             localStorage.removeItem("ui8");
                             localStorage.removeItem("ui9");
-                            localStorage.removeItem("ui10");
                             localStorage.removeItem("ui11");
+                            localStorage.removeItem("ui12");
+                            localStorage.removeItem("ui13");
 
                             window.location = "In_homepage.html" 
                         })
@@ -219,7 +362,8 @@ add.addEventListener('click',() => {
 
                 if (stt == doc2.data().User_AppID){
                     updateDoc(updateStat, {
-                        User_Stat: "DISSAPPROVED"
+                        User_Stat: "DISSAPPROVED",
+                        User_Stat1: "DISSAPPROVED"
                     }).then(() => {
 
                         localStorage.removeItem("ui1");
@@ -231,21 +375,23 @@ add.addEventListener('click',() => {
                         localStorage.removeItem("ui7");
                         localStorage.removeItem("ui8");
                         localStorage.removeItem("ui9");
-                        localStorage.removeItem("ui10");
                         localStorage.removeItem("ui11");
+                        localStorage.removeItem("ui12");
+                        localStorage.removeItem("ui13");
 
                         window.location = "In_homepage.html"
                     })
                 }
-            })
-    });
+            })  
 
     document.getElementById('mv-table').style.display = "none";
     document.getElementById('mvtitle').style.display = "none";
 
-    if (localStorage.getItem("ui1") !== null && localStorage.getItem("ui2") !== null && localStorage.getItem("ui3") !== null &&localStorage.getItem("ui4") !== null &&localStorage.getItem("ui5") !== null &&localStorage.getItem("ui6") !== null &&localStorage.getItem("ui7") !== null &&localStorage.getItem("ui8") !== null &&localStorage.getItem("ui9") !== null &&localStorage.getItem("ui10") !== null &&localStorage.getItem("ui11") !== null) {
+    if (localStorage.getItem("ui1") !== null && localStorage.getItem("ui2") !== null && localStorage.getItem("ui12") !== null && localStorage.getItem("ui3") !== null &&localStorage.getItem("ui4") !== null &&localStorage.getItem("ui5") !== null &&localStorage.getItem("ui6") !== null &&localStorage.getItem("ui7") !== null &&localStorage.getItem("ui8") !== null &&localStorage.getItem("ui9") !== null &&localStorage.getItem("ui11") !== null) {
         document.getElementById("plate_num").innerHTML = localStorage.getItem("ui1");
         document.getElementById("typee").innerHTML = localStorage.getItem("ui2");
+        document.getElementById("reftypee").innerHTML = localStorage.getItem("ui12");
+        document.getElementById("yrmdl").innerHTML = localStorage.getItem("ui13");
         document.getElementById("mk_seris").innerHTML = localStorage.getItem("ui3");
         document.getElementById("mot_num").innerHTML = localStorage.getItem("ui4"); 
         document.getElementById("cha_num").innerHTML = localStorage.getItem("ui5");
@@ -253,9 +399,30 @@ add.addEventListener('click',() => {
         document.getElementById("fuell").innerHTML = localStorage.getItem("ui7");
         document.getElementById("filno").innerHTML = localStorage.getItem("ui8");
         document.getElementById("dt_reg").innerHTML = localStorage.getItem("ui9");
-        document.getElementById("transctionmv").innerHTML = localStorage.getItem("ui10");
         document.getElementById("deptAgncy").innerHTML = localStorage.getItem("ui11");
+        document.getElementById("transctionmv").innerHTML = doc2.data().User_AT;
+
+        document.getElementById("pltno").value = localStorage.getItem("ui1");
+        document.getElementById("type").value = localStorage.getItem("ui2");
+        document.getElementById("refrtypee").text = localStorage.getItem("ui12");
+        document.getElementById("yr_mdl").value = localStorage.getItem("ui13");
+        document.getElementById("mksrs").value = localStorage.getItem("ui3");
+        document.getElementById("mtrno").value = localStorage.getItem("ui4"); 
+        document.getElementById("chassno").value = localStorage.getItem("ui5");
+        document.getElementById("color").value = localStorage.getItem("ui6");
+        document.getElementById("fuel").value = localStorage.getItem("ui7");
+        document.getElementById("fileno").value = localStorage.getItem("ui8");
+        document.getElementById("dtrgstrd").value = localStorage.getItem("ui9");
+        document.getElementById("deptagncy").value = localStorage.getItem("ui11");
 
         document.getElementById('mv-table').style.display = "block";
         document.getElementById('mvtitle').style.display = "block";
+
+        document.getElementById("mvinfo").innerText = "EDIT MV INFO";
+
+
       }
+
+    });
+
+

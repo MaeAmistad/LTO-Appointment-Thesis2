@@ -1,5 +1,5 @@
  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
-*
+* 
 {
     margin: 0;
     padding: 0;
@@ -243,8 +243,9 @@ img{
   .card-inner > span {
     font-size: 35px;
   }
-  #appntment_chrt:hover{
+ #inspctor:hover,  #evluatr:hover,  #cashr:hover,  #exminer:hover{
     background-color:#c3c4ee;
+    cursor: default;
   }
   .charts {
     display: grid;
@@ -359,6 +360,7 @@ img{
   
     .menu-icon {
       display: inline;
+      cursor: pointer;
     }
   
     .sidebar-title > span {

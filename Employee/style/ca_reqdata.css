@@ -7,10 +7,13 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: white;
 }
+.btn button, .btn2 button,.main{
+    width: 100%;
+}
 .main{
     position: relative;
-    max-width: 1000px;
-    width: 100%;
+    max-width: 100%;
+    width: 80%;
     padding: 25px;
     background: white;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); 
@@ -92,3 +95,22 @@ table td{
     border-bottom: 1px solid black;
     outline: none;
 }
+@media only screen and (max-width: 768px){
+    
+    .main, .main2 {
+        margin-left: 2%;
+        align-items: center;
+        width: 115%
+     }
+     #inc, #cmplt{
+        width:100px;
+        margin-left: 10px;
+     }
+  
+    }
+   
+
+  
+
+
+   

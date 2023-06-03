@@ -33,15 +33,19 @@
 </section>
 
         <div class="search">
-            <input type="text" id="srchText" placeholder="Search"> 
+            <input type="text" id="srchText" placeholder="Search Application ID / Name" onkeyup="searchAppID()"> 
             <button id="srchdate">Search</button>    
         </div>          
+
+        <div class="outer-wrapper">
+        <div class="table-wrapper">
 
         <div class="date"> 
           <input type="date" id="dte">
         </div>
 
       <div class="main">
+
         <table class="content-table" id="table">
           <thead>
           <tr>
@@ -57,11 +61,40 @@
             <tbody id="tbody1"> </tbody>
           </table>
       </div>
+    </div>
+  </div>
 
     <script type="module" src="../src/a_logout.js"></script>
     <script type="module" src="../src/pc_homepage.js"></script>
     <script type="module" src="../src/a_logout.js"></script>
+    <script type="module" src="../src/pc_homepage.js"></script> 
+    <script> 
+      const searchAppID = () => {
+          let filter =  document.getElementById('srchText').value.toUpperCase();
+          let mytable = document.getElementById('tbody1');
+          let tr = mytable.getElementsByTagName('tr');
+
+          for(var i=0; i<tr.length; i++){
+              let td = tr[i].getElementsByTagName('td')[0];
+              let td2 = tr[i].getElementsByTagName('td')[1];
+
+              if (td || td2){
+
+                  let textvalue = td.textContent || td.innerHTML;
+                  let textvalue2 = td2.textContent || td2.innerHTML;
+
+                  if(textvalue.toUpperCase().indexOf(filter)> -1 || textvalue2.toUpperCase().indexOf(filter)> -1){
+                      tr[i].style.display = 'NO INFORMATION';
+                  }
+                  else{
+                      tr[i].style.display = 'none';
+                  }
+              }
+          }
+      }
+    </script>
   </body>
 </html>
 </body>
 </html>
+ 
