@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!-- <meta http-equiv="refresh" content="5"> -->
     <title>LTO Appointment Setter</title>
 
     <!-- Montserrat Font -->
@@ -11,7 +12,8 @@
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <!-- <link rel="stylesheet" href="https://kit.fontawesome.com/8ec04d5e4f.css" crossorigin="anonymous"> -->
-    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="https://kit.fontawesome.com/8ec04d5e4f.js" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -88,8 +90,8 @@
         <div class="main2">
             <div class="btn_useracc">
                 <button class="add_acc" onclick="toggle()">Add</button>
-                <button class="edit_acc" onclick="toggle2()">Edit</button>
-                <button id="delete_acc">Delete</button>
+                <button class="edit_acc" id="edit_acc" onclick="toggle2()">Edit</button>
+                <button id="delete_acc" onclick="toggle3()">Delete</button>
             </div>
             <table id="table" class="table" style="width:100%">
                 <tr>
@@ -115,12 +117,9 @@
         </div>
     
       <!-- End Main --> 
-
-
-
-
+  
         <!-- CREATE ACCOUNT -->
-    <div class="modal" id="user-modal">
+    <div class="modal" id="user-modal" >
       <div class="modal-content">
         <span class="close-modal" onclick="toggle()">&times;</span>
 
@@ -141,60 +140,62 @@
               <form action="/" class="modal-form" id="form" autocomplete="off">
 
                 <div class="info">
-                  <label>Last Name: </label> 
+                  <label class="create">Last Name: </label> 
                   <div class="form-validation">                     
-                    <input type="text" class="modal-input" id="lname" name="last name" placeholder="Last Name">
+                    <input type="text" class="modal-input" id="lname" name="last name">
                     <p>Error Message</p>
                   </div>
                 </div>
                 
                 <div class="info">
-                  <label>First Name: </label>
+                  <label class="create">First Name: </label>
                   <div class="form-validation">    
-                    <input type="text" class="modal-input" id="fname" name="first name" placeholder="First Name">
+                    <input type="text" class="modal-input" id="fname" name="first name" >
                     <p>Error Message</p>
                   </div>
                 </div>
                 
 
                 <div class="info">
-                  <label>Middle Name: </label>
+                  <label class="create">Middle Name: </label>
                   <div class="form-validation">   
-                    <input type="text" class="modal-input" id="mname" name="middle name" placeholder="Middle Name">
+                    <input type="text" class="modal-input" id="mname" name="middle name">
                     <p>Error Message</p>
                   </div>
                 </div>
                  
                 <div class="info">
-                  <label>Employee ID: </label>
+                  <label class="create">Employee ID: </label>
                   <div class="form-validation">     
-                    <input type="text" class="modal-input" id="emp_id" name="id" placeholder="Employee ID">
+                    <input type="text" class="modal-input" id="emp_id" name="id">
                     <p>Error Message</p>
                   </div>
                 </div>
                 
                 <div class="info">
-                  <label>Email Address: </label>
+                  <label class="create">Email Address: </label>
                   <div class="form-validation">    
-                    <input type="email" class="modal-input" id="email" name="email" placeholder="Email">
+                    <input type="email" class="modal-input" id="email" name="email">
                     <p>Error Message</p>
                   </div>
                 </div>
                 
                 <div class="info">
-                  <label>Password: </label> 
+                  <label class="create">Password: </label> 
                   <div class="form-validation">  
-                    <input type="password" class="modal-input2" id="password" name="password" placeholder="Password">
-                    <span><i class="fa-regular fa-eye" aria-hidden="true" id="eye1" onclick="showPass()"></i></span>
+                    <input type="password" class="modal-input2" id="password" name="password" >
+                    <i id="showPass" onclick="showPwrd1()"><span id="icon1" class="material-symbols-outlined">
+                  visibility </span></i>
                     <p>Error Message</p>
                   </div>
                 </div>
                  
                 <div class="info">
-                  <label>Confirm Password: </label>
+                  <label class="create">Confirm Password: </label>
                   <div class="form-validation">   
-                    <input type="password" class="modal-input2" id="cpass" name="confirm password" placeholder="Confirm Password">
-                    <span><i class="fa-regular fa-eye" aria-hidden="true" id="eye2" onclick="showPass()"></i></span>
+                    <input type="password" class="modal-input2" id="cpass" name="confirm password">
+                    <i id="showPass" onclick="showPwrd2()"><span id="icon2" class="material-symbols-outlined">
+                      visibility </span></i>
                     <p>Error Message</p>
                   </div>
                 </div>
@@ -206,64 +207,170 @@
     </div>
 
       <!-- EDIT ACCOUNT FUNCTION-->
-      <div class="modal" id="edit-modal">
-        <div class="modal-edit">
+      <div class="modal-edit" id="edit-modal">
+        <div class="modal-content">
             <span class="close-modal-edit" onclick="toggle2()">&times;</span>
+
+            <h1>Edit Account</h1>
 
             <div class="modal-content-edit">
               <form action="/" class="modal-form-edit" id="form-edit" autocomplete="off">
                 
-                <div class="edit-info">
-                  <label>First Name: </label>
-                  <input type="text" class="modal-input-edit" id="fname-edit" placeholder="First Name">
-                </div>
-              
-                <div class="edit-info">
-                  <label>Last Name: </label>
-                  <input type="text" class="modal-input-edit" id="lname-edit" placeholder="Last Name">
-                </div>
-
-                <div class="edit-info">
-                  <label>Middle Name: </label>
-                  <input type="text" class="modal-input-edit" id="mname-edit" placeholder="Middle Name">
-                </div>
-
-                <div class="edit-info">
-                  <label>Employee ID: </label>
-                  <input type="text" class="modal-input-edit" id="id-edit" placeholder="Employee ID">
-                </div>
-
-                <div class="edit-info">
-                  <label>Email: </label>
-                  <input type="text" class="modal-input-edit" id="email-edit" placeholder="Email">
-                </div>
-                 
-                <div class="edit-info">
-                  <label>Password: </label>
-                  <input type="text" class="modal-input-edit" id="pass-edit" name="first name" placeholder="Password">
+                <div class="info">
+                  <label class="edit">Last Name: </label>
+                  <div class="edit-info">
+                    <input type="text" class="modal-input-edit" id="lname-edit" name="last name">
+                    <p>Error Message</p>
+                  </div>
                 </div>
                 
+                <div class="info">
+                  <label class="edit">First Name: </label>
+                  <div class="edit-info">  
+                    <input type="text" class="modal-input-edit" id="fname-edit" name="first name">
+                    <p>Error Message</p>
+                  </div>
+                </div>
+                
+                <div class="info">
+                  <label class="edit">Middle Name: </label>
+                  <div class="edit-info">
+                    <input type="text" class="modal-input-edit" id="mname-edit" name="middle name">
+                    <p>Error Message</p>
+                  </div>
+                </div>
+                
+                <div class="info">
+                  <label class="edit">Position: </label>
+                  <div class="edit-info">        
+                    <input type="text" class="modal-input-edit" id="position-edit" name="position">
+                    <p>Error Message</p>
+                  </div>
+                </div>
+                
+                <div class="info">
+                  <label class="edit">Employee ID: </label>
+                  <div class="edit-info">
+                    <input type="text" class="modal-input-edit" id="id-edit" name="employee ID">
+                    <p>Error Message</p>
+                  </div>
+                </div>
+                
+                <div class="info">
+                  <label class="edit">Email: </label>
+                  <div class="edit-info">        
+                    <input type="text" class="modal-input-edit" id="email-edit" name="email">
+                    <p>Error Message</p>
+                  </div>
+                </div>
+
+                
+                 <div class="info">
+                  <label class="edit">Password: </label>
+                  <div class="edit-info">
+                    <input type="password" class="modal-input-edit-pass" id="pass-edit" name="password">
+                    <i id="showPass" onclick="showPwrd3()"><span id="icon3" class="material-symbols-outlined">
+                      visibility </span></i>
+                    <p>Error Message</p>
+                  </div>
+                 </div>
+
+                 <div class="info">
+                  <label class="edit">Confirm Password: </label>
+                  <div class="edit-info">
+                    <input type="password" class="modal-input-edit-pass" id="cpass-edit" name="confirm password">
+                    <i id="showPass" onclick="showPwrd4()"><span id="icon4" class="material-symbols-outlined">
+                      visibility </span></i>
+                    <p>Error Message</p>
+                  </div>
+                 </div>
+                 
                 <input type="submit" id="btnEdit" class="modal-input-edit-btn" value="Update Account">
               </form>
            </div>
 
         </div>
+
       </div>
 
+
+      <!-- confirmation modal for edit account -->
+      <div class="cnfrm_modal" id="cnfrm_modal_edit">
+        <h1>Update User's Information?</h1>
+            <div class="btn">
+                <button class="cnl">Cancel</button>
+                <button id="cnfrm">Confirm</button>
+            </div>
+      </div>
+    </div>
+    
+    <!-- confirmation modal for delete account -->
+      <div class="cnfrm_modal_delete" id="delete_acc_modal">
+        <h1>Confirm delete this account?</h1>
+            <div class="btn">
+                <button id="cnl2">Cancel</button>
+                <button id="cnfrm2">Confirm</button>
+            </div>
+      </div>
+    </div>
+
     <script type="text/javascript">
-      function showPass(){
-        var state = false;
-        if(state){
-          document.getElementById("password").setAttribute("type", "password");
-          //document.getElementById('eye').style.color='#7a797e';
-          state = false;
+      function showPwrd1() {
+                const passInput = document.getElementById("password")
+                const icon1 = document.getElementById("icon1")
+                
+                if(passInput.type === "password"){
+                  passInput.type = "text"
+                  icon1.innerText = "visibility_off"
+                }
+                else{
+                  password.type = "password"
+                  icon1.innerText = "visibility"
+                }
+
         }
-        else{
-          document.getElementById("password").setAttribute("type", "text");
-          //document.getElementById('eye').style.color='#5887ef';
-          state = true;
+
+        function showPwrd2() {
+                const confirmPass = document.getElementById("cpass")
+                const icon2 = document.getElementById("icon2")
+
+                if(confirmPass.type === "password"){
+                  confirmPass.type = "text"
+                  icon2.innerText = "visibility_off"
+                }
+                else{
+                  confirmPass.type = "password"
+                  icon2.innerText = "visibility"
+                }
         }
-      }
+
+        function showPwrd3() {
+                const pass = document.getElementById("pass-edit")
+                const icon3 = document.getElementById("icon3")
+
+                if(pass.type === "password"){
+                  pass.type = "text"
+                  icon3.innerText = "visibility_off"
+                }
+                else{
+                  pass.type = "password"
+                  icon3.innerText = "visibility"
+                }
+        }
+
+        function showPwrd4() {
+                const cpass = document.getElementById("cpass-edit")
+                const icon4 = document.getElementById("icon4")
+
+                if(cpass.type === "password"){
+                  cpass.type = "text"
+                  icon4.innerText = "visibility_off"
+                }
+                else{
+                  cpass.type = "password"
+                  icon4.innerText = "visibility"
+                }
+        }
       
       function toggle(){
             var blur = document.getElementById('blur');
@@ -271,8 +378,6 @@
 
             var popup = document.getElementById('user-modal');
             popup.classList.toggle('active');
-
-            console.log("nice");
       }
       
       function toggle2(){
@@ -281,9 +386,16 @@
 
             var popup = document.getElementById('edit-modal');
             popup.classList.toggle('active');
-
-            console.log("nice2");
       }   
+
+      function toggle3(){
+            var blur = document.getElementById('blur');
+            blur.classList.toggle('active');
+
+            var popup = document.getElementById('delete_acc_modal');
+            popup.classList.toggle('active');
+      } 
+
       </script>
    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>-->
 

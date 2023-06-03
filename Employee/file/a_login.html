@@ -4,31 +4,39 @@
     <meta charset="utf-8">
     <title>LTO Online Appoinment</title>
     <link rel="stylesheet" href="../style/a_login.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
-    <body>
-      <div class="main">
+    <body >
+      <div class="main" id="blur">
         <img src="../img/Land_Transportation_Office.svg.png" alt="No Image">
         <h1>LTO Appointment Setter</h1>
 
-        <form>
+        <form id="form" autocomplete="on">
 
-            <div class="email">
-                <input type="text" id="email" placeholder="Email"  required>
+            <div class="login-form">
+                <input type="text" id="emaill" placeholder="Email">
+                <p>Error Message</p>
             </div>
-            <div class="password">
-                <input type="password" id="password" placeholder="Password" required>
+            
+            <div class="login-form">
+              <div class="showPass"></div>
+                <input type="password" id="password" placeholder="Password">
+                <i id="showPass" onclick="showPwrd()"><span id="icon" class="material-symbols-outlined">
+                  visibility
+                  </span></i>
+                <p>Error Message</p>
             </div>
-            <div class="showp">
+            <!-- <div class="showp">
               <input type="checkbox" onclick="showPwrd()">Show Password
-          </div>
-            <div class="fp"><a href="../file/a_requestresetpass.html" target="_self">Forgot Password?</a></div>
-
+            </div> -->
+            <div class="fp">
+              <p class="reset" id="forgot" onclick="toggle()">Forgot Password?</p>
+            </div>
+            <input type="submit" id="login" class="modal-input-btn" value="Login">
         </form>
         
-          <button id="login">
-          Log-in
-        </button>
+          
         <!-- <div class="rgtr">
           Don't have an Account? <a href="/Customer/file/c_signup.html" target="_self"> Sign up.</a> here.
         </div> -->
@@ -38,20 +46,46 @@
         <p>Please verify your email first before logging-in.</p>
 
         <div class="buttons">
-            <button id="cnl" >CANCEL</button>
+            <button  id="cnl" >CANCEL</button>
             <button id="sndVrfctn">Send Verification</button>
         </div>
     </div>
 
+    <!-- FOR RESET PASSWORD -->
+    <div class="reset_password" id="reset_pass">
+      <h1>Forgot Password?</h1>
+      <div class="container">
+            <p>Enter your email address to reset your password</p>
+            <input type="email" id="email_reset" placeholder="Email" autocomplete="off">
+            
+            <div class="buttons">
+              <button class="cnl2" onclick="toggle()">CANCEL</button>
+              <button id="reset">Reset Password</button>
+          </div>
+      </div>
+    </div>
+  
       <script>
         function showPwrd() {
-                var x = document.getElementById("password");
-                if (x.type === "password") {
-                    x.type = "text";
-                } else {
-                    x.type = "password";
+                const passInput = document.getElementById("password")
+                const icon = document.getElementById("icon")
+                if(passInput.type === "password"){
+                  passInput.type = "text"
+                  icon.innerText = "visibility_off"
+                }
+                else{
+                  password.type = "password"
+                  icon.innerText = "visibility"
                 }
         }
+
+        function toggle(){
+            var blur = document.getElementById('blur');
+            blur.classList.toggle('active');
+
+            var popup = document.getElementById('reset_pass');
+            popup.classList.toggle('active');
+      }
         </script>
       <script type="module" src="/Employee/src/a_login.js"></script>
     </body>

@@ -93,7 +93,7 @@ const db = getFirestore(app);
                         })
                     }
                 }
-                console.log(exmtyp);
+                console.log(exmtyp1);
             })
  
             // FAILED BUTTON

@@ -67,7 +67,8 @@ const db = getFirestore(app);
 
             var trnidlic ="LTO-LIC-" + yy+mmm+ddd+hhh+mnn+makeid(2);
             var trnidmvr ="LTO-MVR-" + yy+mmm+ddd+hhh+mnn+makeid(2);
-        querySnapshot2.forEach(doc2 => {
+        
+            querySnapshot2.forEach(doc2 => {
        
             if (transID == doc2.data().User_AppID){
 

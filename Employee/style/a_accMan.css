@@ -209,10 +209,10 @@ padding-left: 8px;
   }
   
   table tr{
-    padding: 5px;
+    padding: 4px;
 }
 th, tr, td{
-    padding: 10px;
+    padding: 7px;
     text-align: left;
 }
 .btn_useracc button{
@@ -242,216 +242,14 @@ tr th, tr th{
 .table tr:hover{
     background: gainsboro;
  }
-/* .crtacc{
-  width: 560px;
-  height: 500px;
-  background-color: white;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  border: 1px solid grey;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-} */
-.signup_modal{
-    background-color: white;
-    user-select: none;
-    border: 1px solid #b3b3b3;
-    box-shadow: 5px 5px 5px rgb(70, 69, 69);
-    color: black;
-    padding: 20px;
-    visibility: hidden;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: transform 0.4s, top 0.4s;
-    border-radius: 10px;
-}
-#createAcc_modal.active{
-  top: 50%;
-  visibility: visible;
-  opacity: 1;
-  transform: 0.5s;
-}
-h1{
-  font-size: 30px;
-  text-align: center;
-  border-bottom: 1px solid gray;
-  margin-bottom: 10px;
-}
 h4{
   align-items: end;
   text-align: end;
   cursor: pointer;
 }
-.signup_modal button{
-  height: 40px;
-  width: 70%;
-  border: 1px solid;
-  background-color: rgb(19, 42, 172);
-  font-size: 18px;
+.selected-row{
+  background-color: rgb(19, 42, 172) !important;
   color: white;
-  font-weight: 700;
-  margin: 20px 0 0 80px;
-  border: none;
-  cursor: pointer;
-  border-radius: 10px; 
-  margin-bottom: 5px;
-  margin-top: 10px;
-  align-items: center;
-}
-.signup_modal button:hover{
-  background-color: rgb(48, 83, 211);
-}
-.signup_modal form{
-  margin-left: 30px;
-}
-.empp label{
-  width: 40px;
-  height: 40px;
-  font-size: 16px;
-  margin-top: 30px;
-  margin-left: 20px; 
-}
-.emp2{
-  width: 520px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-  text-align: center;
-  margin-top: 10px;
-  margin-left: 45px;
-  margin-bottom: 10px;
-}
-.emp2 input[value="1"]{
-  margin-left: 25px;
-}
-.emp2 input[value="2"]{
-  margin-left: 25px;
-}
-.emp2 input[value="3"]{
-  margin-left: 25px;
-}
-.inf label{
-  width: 180px;
-}
-.inf{
-  display: flex;
-  align-items: center;
-}
-.info input{
-  width: 350px;
-  padding: 0 5px 0 5px;
-  height: 30px;
-  font-size: 16px;
-  background: none;
-  margin-top: 15px;
-  outline: none;
-  text-transform: uppercase;
-}
-.inf.success input{
-  border-color: rgb(10, 185, 10);
-}
-.inf.error input{
-  border-color: #c50c31;
-}
-.inf .error{
-  color: #c50c31;
-  font-size: 14px;
-  font-weight: 30px;
-  height: 13px;
-  margin-left: 40px;
-}
-.passwordChar{ 
-  color: black;
-  font-size: 14px;
-  font-weight: 20px;
-  height: 13px;
-  width: 370px;
-  margin-top: 70px;
-  margin-left: -390px;
-}
-#email{
-  text-transform: lowercase;
-}
-#password, #cpass{
-  text-transform: none;
-}
-.info .infc{
-  margin-top: 90px;
-}
-.showp input[type="checkbox"]{
-  margin-top: 10px;
-  width: 15px;
-  height: 15px;
-  text-align: end;
-  margin-left: 180px;
-}
-.passwordChar #lowercase{
-  display:none;
-  color: #c50c31;
-  font-size: 14px;
-  font-weight: 30px;
-  height: 13px;
-  width: 360px;
-  margin-top: -10px;
-  margin-bottom: 25px;
-}
-.passwordChar #uppercase{
-  display:none;
-  color: #c50c31;
-  font-size: 14px;
-  font-weight: 30px;
-  height: 13px;
-  width: 360px;
-  margin-top: -10px;
-  margin-bottom: 25px;
-}
-.passwordChar #num{
-  display:none;
-  color: #c50c31;
-  font-size: 14px;
-  font-weight: 30px;
-  height: 13px;
-  width: 360px;
-  margin-top: -10px;
-  margin-bottom: 15px;
-}
-.passwordChar #spclchrctr{
-  display:none;
-  color: #c50c31;
-  font-size: 14px;
-  font-weight: 30px;
-  height: 13px;
-  width: 360px;
-  margin-bottom: 30px;
-}
-.passwordChar #length{
-  display:none;
-  color: #c50c31;
-  font-size: 14px;
-  font-weight: 30px;
-  height: 13px;
-  width: 360px;
-  margin-bottom: 15px;
-}
-.passwordChar #match{
-  display:none;
-  color: #c50c31;
-  font-size: 14px;
-  font-weight: 30px;
-  height: 13px;
-  width: 360px;
-  margin-top: -10px;
-}
-.infcpass{
-  margin-top: 55px; 
-}
-.error_txt{
-  display: block;
 }
 
   

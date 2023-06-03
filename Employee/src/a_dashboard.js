@@ -23,7 +23,6 @@ for (i = 0; i < dropdown.length; i++) {
 }
 
 
-
 function openSidebar() {
   if(!sidebarOpen) {
     sidebar.classList.add("sidebar-responsive");
