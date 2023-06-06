@@ -5,120 +5,221 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Land Transportation Office Appointment Setter</title>
-    <link rel="stylesheet" href="../style/c_confirmation.css">
-    <script src="https://kit.fontawesome.com/9aa6942f31.js" crossorigin="anonymous"></script>
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</head>
-<body>
-
-  <section class="main2">
-    <nav>
-        <img src="../img/Land_Transportation_Office.svg.png">
+        <link rel="stylesheet" href="../style/c_confirmation.css">
+        <script src="https://kit.fontawesome.com/9aa6942f31.js" crossorigin="anonymous"></script>
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js" integrity="sha512-YcsIPGdhPK4P/uRW6/sruonlYj+Q7UHWeKfTAkBW+g83NKM+jMJFJ4iAPfSnVp7BKD4dKMHmVSvICUbE/V1sSw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </head>
+    <body>
     
-        <div class="navbar" id="navLinks">
-            <ul>
-                <li id="hm"><a href="c_homepage.html">HOME</a></li>
-                <!-- <li><a href="">LTO PORTAL<i class="fa-solid fa-caret-down"></i></a>
-                <ul>
-                    <li><a target ="_blank" href="https://lto.gov.ph/frequently-asked-questions/license-permit.html">FAQs</a></li>
-                    <li><a target ="_blank" href="https://lto.gov.ph/lto-forms.html">LTO Application Form</a></li>
-                </ul> -->
-                </li>
-            </ul>
-        </div>
-    </nav>
-</section> 
-
-    <div class="box">
-    <table class="border">
-     <tr>
-            <td> <h4>Please review the details of your Appointment.</h4></td>
-    </tr>
-    </table>
-
-    <table class="content-table">
-          <p>Applicant's Information</p>
-          <tr>
-            <td>Family Name:</td>
-            <td id="ln">-</td> 
-          </tr>
-
-          <tr>
-            <td>First Name:</td>
-            <td id="fn">-</td> 
-          </tr>
-
-          <tr>
-            <td>Middle Name:</td>
-            <td id="mn">-</td> 
-          </tr>
-
-          <tr>
-            <td>Date of Birth:</td>
-            <td id="dof">-</td> 
-          </tr>
-
-          <tr>
-            <td>Gender:</td>
-            <td id="gndr">-</td> 
-          </tr>
-      </table>
-
-      <table class="Transaction-table">
-        <p>Appointment's Information</p>
-        <tr>
-          <td>Transaction Type:</td>
-          <td id="tt" >-</td>
-        </tr>
-
-        <tr>
-          <td>Application Type:</td>
-          <td id="at" >-</td>
-        </tr>
-
-        <tr>
-          <td>Date:</td>
-          <td id="dt_L">-</td>
-        </tr>
-
-        <tr>
-          <td>Time:</td>
-          <td id="dt_t">-</td>
-        </tr>
-      </table>
-
-      <table class="contact-table">
-        <p>Contact Information</p>
-        <tr>
-          <td>Address:</td>
-          <td id="addrss">-</td> 
-        </tr>
-
-        <tr>
-          <td>Email:</td>
-          <td id="em">-</td>
-        </tr>
-
-        <tr>
-          <td>Mobile Number:</td>
-          <td id="mnn">-</td> 
-        </tr>
-      </table>
-
-      <div class="chckbx" onchange="chckbx()">
-        <label><input type="checkbox" id="chck"/> I hereby certify that all information provided are true, accurate and
-        correct to the best of my knowledge. Any misdeclaration or mispresentation may affect the outcome of my application.
-        </label>
+      <section class="main2">
+        <nav>
+            <img src="../img/Land_Transportation_Office.svg.png">
         
-      </div>
+            <div class="navbar" id="navLinks">
+                <ul>
+                    <li id="hm"><a href="c_homepage.html">HOME</a></li>
+                    <!-- <li><a href="">LTO PORTAL<i class="fa-solid fa-caret-down"></i></a>
+                    <ul>
+                        <li><a target ="_blank" href="https://lto.gov.ph/frequently-asked-questions/license-permit.html">FAQs</a></li>
+                        <li><a target ="_blank" href="https://lto.gov.ph/lto-forms.html">LTO Application Form</a></li>
+                    </ul> -->
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </section> 
+    
+    <div class="box">
 
-      <button class="back" id="bck">Back</button>
-     <button class="confirm" id="cnfrm">Confirm</button>
-      
- </div>
+        <table class="border">
+            <tr>
+                <td> <h4>Please review the details of your Appointment.</h4></td>
+            </tr>
+        </table>
 
-<script src="../src/c_confirm.js"></script>
-<script type="module" src="../src/c_confirm2.js"></script>
-</body> 
+    <div id="box">
+        <table class="content-table">
+              <p>Applicant's Information</p>
+              <tr>
+                <td>Family Name:</td>
+                <td id="ln">-</td> 
+              </tr>
+    
+              <tr>
+                <td>First Name:</td>
+                <td id="fn">-</td> 
+              </tr>
+    
+              <tr>
+                <td>Middle Name:</td>
+                <td id="mn">-</td> 
+              </tr>
+    
+              <tr>
+                <td>Date of Birth:</td>
+                <td id="dof">-</td> 
+              </tr>
+    
+              <tr>
+                <td>Gender:</td>
+                <td id="gndr">-</td> 
+              </tr>
+          </table>
+    
+          <table class="Transaction-table">
+            <p>Appointment's Information</p>
+            <tr>
+              <td>Transaction Type:</td>
+              <td id="tt" >-</td>
+            </tr>
+    
+            <tr>
+              <td>Application Type:</td>
+              <td id="at" >-</td>
+            </tr>
+    
+            <tr>
+              <td>Date:</td>
+              <td id="dt_L">-</td>
+            </tr>
+    
+            <tr>
+              <td>Time:</td>
+              <td id="dt_t">-</td>
+            </tr>
+          </table>
+    
+          <table class="contact-table">
+            <p>Contact Information</p>
+            <tr>
+              <td>Address:</td>
+              <td id="addrss">-</td> 
+            </tr>
+    
+            <tr>
+              <td>Email:</td>
+              <td id="em">-</td>
+            </tr>
+    
+            <tr>
+              <td>Mobile Number:</td>
+              <td id="mnn">-</td> 
+            </tr>
+          </table>
+        </div>
+
+          <div class="chckbx" onchange="chckbx()">
+            <label><input type="checkbox" id="chck"/> I hereby certify that all information provided are true, accurate and
+            correct to the best of my knowledge. Any misdeclaration or mispresentation may affect the outcome of my application.
+            </label>
+          </div>
+    
+        <button class="back" id="bck">Back</button>
+        <button class="confirm" id="cnfrm">Confirm</button>
+          
+     </div>
+
+     <div id="proof_of_app">
+        <div id="proof_of_app1">
+        <h3>LAND TRANSPORTATION OFFICE APPPOINTMENT SETTER</h3>
+
+        <p>TRANSACTION NO.</p>
+        <h4 id="transctNum"></h4>
+
+        <table>
+            <tr>
+                <th colspan="2">Applicant's Information</th>  
+            </tr>
+            <tr>
+
+              <td>Family Name:</td>
+              <td id="ln1">-</td> 
+            </tr>
+  
+            <tr>
+              <td>First Name:</td>
+              <td id="fn1">-</td> 
+            </tr>
+  
+            <tr>
+              <td>Middle Name:</td>
+              <td id="mn1">-</td> 
+            </tr>
+  
+            <tr>
+              <td>Date of Birth:</td>
+              <td id="dof1">-</td> 
+            </tr>
+  
+            <tr>
+              <td>Gender:</td>
+              <td id="gndr1">-</td> 
+            </tr>
+            <tr>
+                <th colspan="2">Appointment's Information</th>  
+            </tr>
+          <tr>
+            <td>Transaction Type:</td>
+            <td id="tt1" >-</td>
+          </tr>
+  
+          <tr>
+            <td>Application Type:</td>
+            <td id="at1" >-</td>
+          </tr>
+  
+          <tr>
+            <td>Date:</td>
+            <td id="dt_L1">-</td>
+          </tr>
+  
+          <tr>
+            <td>Time:</td>
+            <td id="dt_t1">-</td>
+          </tr>
+          <tr>
+            <th colspan="2">Contact Information</th>  
+        </tr>
+          <tr>
+            <td>Address:</td>
+            <td id="addrss1">-</td> 
+          </tr>
+  
+          <tr>
+            <td>Email:</td>
+            <td id="em1">-</td>
+          </tr>
+  
+          <tr>
+            <td>Mobile Number:</td>
+            <td id="mnn1">-</td> 
+          </tr>
+        </table>
+    </div>
+     </div>
+
+     <script src="../src/c_confirm.js"></script>
+     <script type="module" src="../src/c_confirm2.js"></script>
+<!-- <script>
+    function generateRprt(){ 
+        var element = document.getElementById('proof_of_app1');
+        var opt = {
+        filename:     'myfile.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2 },
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
+
+        // New Promise-based usage:
+        // html2pdf().set(opt).from(element).save();
+
+        // Old monolithic-style usage:
+        html2pdf(element, opt);
+
+    }
+
+</script> -->
+</body>
 </html>

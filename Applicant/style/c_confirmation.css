@@ -55,8 +55,7 @@ nav ul li:hover > ul{
 }
 .box{
   position: relative;
-
-  width: 60%;
+  width: 55%;
   padding: 25px;
   background: white; 
   margin-top: 20px;
@@ -78,6 +77,9 @@ p{
     border-radius: 10px;
     padding: 10px;
     margin-top: -30px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 } 
 .chckbx{
     width: 650px;
@@ -116,8 +118,7 @@ p{
     min-width: 100px;
     overflow: hidden;  
 }
-.Transaction-table thead tr {
-
+.Transaction-table thead tr { 
     color: #565656;
     text-align: center;
     font-weight: bold;
@@ -125,7 +126,6 @@ p{
 .Transaction-table th,
 .Transaction-table td {
     padding: 12px 15px;
-   
     width: 300px;   
 }
 .Transaction-table {
@@ -177,6 +177,34 @@ button{
 }
 .confirm, button{
     margin-top: 50px;
+}
+
+/* FOR Proof of Appointment */
+
+#proof_of_app{
+    display: none;
+    position: relative;
+    width: 50%;
+    padding: 25px;
+    margin-left: 340px; 
+    margin-bottom: 10px; 
+}
+#proof_of_app1 h3, #proof_of_app1 h4{
+    text-align: center;
+    margin-bottom: 30px;
+}
+#proof_of_app1 p, #proof_of_app1 h4{
+    text-align: center;
+}
+#proof_of_app1 table tr td, #proof_of_app1 table tr th{
+    border: 1px solid black;
+    padding: 5px;
+    width: 250px;
+}
+#proof_of_app1 table{
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
 }
 
      @media only screen and (max-width: 1200px){
