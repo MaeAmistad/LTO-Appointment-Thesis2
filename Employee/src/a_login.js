@@ -100,6 +100,7 @@ form.addEventListener('submit',(e) =>{
                   }     
                   else{
                    window.location = "ca_homepage.html"
+                   console.log("Log-In")
                   }          
                   
                 }
@@ -158,6 +159,7 @@ form.addEventListener('submit',(e) =>{
                   }     
                   else{
                    window.location = "In_homepage.html"
+                   console.log("Log-In")
                   }          
                   
                 }
