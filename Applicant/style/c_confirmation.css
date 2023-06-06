@@ -55,7 +55,7 @@ nav ul li:hover > ul{
 }
 .box{
   position: relative;
-  width: 55%;
+  width: 60%;
   padding: 25px;
   background: white; 
   margin-top: 20px;
@@ -64,6 +64,7 @@ nav ul li:hover > ul{
   border: 1px solid #b3b3b3;
 }
 h4{
+    text-align: center;
     font-size: 19px;
 }
 p{
@@ -71,8 +72,7 @@ p{
     font-size: 17px;
     font-weight: 600;
 }
-.border{    
-    width: 666px;
+.border{   
     height: 100px;
     border-radius: 10px;
     padding: 10px;
@@ -80,6 +80,7 @@ p{
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    /* border: 1px solid black; */
 } 
 .chckbx{
     width: 650px;
@@ -143,7 +144,6 @@ p{
     overflow: hidden;
 }
 .contact-table thead tr {
-   
     color: #565656;
     text-align: center;
     font-weight: bold;
@@ -177,6 +177,13 @@ button{
 }
 .confirm, button{
     margin-top: 50px;
+}
+.chckbx p{
+    color: red;
+    text-align: justify;
+    font-size: 15px;
+    margin-bottom: 10px;
+    font-weight: 100;
 }
 
 /* FOR Proof of Appointment */
@@ -273,6 +280,29 @@ button{
                 margin-left: 10px;
              }
         }
-       
-    
+        @media only screen and (max-width: 1920px){
+         
+            .box,.content-table,.Transaction-table, .contact-table,.chckbx  {
+                /* margin-left: 10px; */
+                align-items: center;
+                width: 50%;
+             }
+             .chckbx{
+                width: 90%;
+             }
+             .confirm,.back{
+                width: 20%;
+                margin-left: 10px;
+             }
+             .box{
+                margin-left: 22%;
+             }
+             .border{
+                margin-left: auto;
+                margin-right: auto;
+             }
+             .confirm{
+                margin-left: 55%;
+             }
+        }
     

@@ -54,7 +54,6 @@ nav ul li:hover > ul{
 .navbar ul li{
     font-size: 15px;
 }
-
 h1{
     text-align: center;
     margin-top: 20px;
@@ -67,25 +66,25 @@ p{
     width: 40%;
     margin-left: 30%;
     margin-top: 40px;
-    text-align: justify;
+    text-align: center;
     font-size: 20px;
     font-weight: 600;
 }
 ol li{
-    width: 40%;
+    width: 30%;
     text-align: justify;
     margin-top: 15px;
-    margin-left: 30%;
-   
+    margin-left: auto;
+    margin-right: auto;
 }
 #chckbx{
-   
     text-align: justify;
-    width: 40%;
+    width: 30%;
     margin-top: 40px;
-    margin-left: 30%;
     cursor: default;
     align-items: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 #btnfdt{
     height: 50px;
@@ -98,7 +97,10 @@ ol li{
     border-radius: 10px; 
     margin-bottom: 30px;
     margin-top: 40px;
-    margin-left: 33%;
 }
-
+.btnfdt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 

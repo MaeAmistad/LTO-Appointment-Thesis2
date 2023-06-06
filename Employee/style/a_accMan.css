@@ -209,10 +209,10 @@ padding-left: 8px;
   }
   
   table tr{
-    padding: 5px;
+    padding: 4px;
 }
 th, tr, td{
-    padding: 10px;
+    padding: 7px;
     text-align: left;
 }
 .btn_useracc button{
@@ -241,6 +241,15 @@ tr th, tr th{
 }
 .table tr:hover{
     background: gainsboro;
+ }
+h4{
+  align-items: end;
+  text-align: end;
+  cursor: pointer;
+}
+.selected-row{
+  background-color: rgb(19, 42, 172) !important;
+  color: white;
 }
   /* Medium <= 992px */
   @media screen and (max-width: 992px) {

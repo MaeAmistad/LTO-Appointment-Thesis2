@@ -49,13 +49,16 @@ h1{
     margin-left: 45px;
     margin-bottom: 10px;
   }
-  .emp2 input[value="1"]{
+  .emp2 input[value="evaluator"]{
     margin-left: 25px;
   }
-  .emp2 input[value="2"]{
+  .emp2 input[value="examiner"]{
     margin-left: 25px;
   }
-  .emp2 input[value="3"]{
+  .emp2 input[value="inspector"]{
+    margin-left: 25px;
+  }
+  .emp2 input[value="admin"]{
     margin-left: 25px;
   }
   .close-modal{
@@ -82,7 +85,7 @@ h1{
     align-items: center;
     display: block;
 }
-label{
+.create{
   font-weight: bold;
   width: 190px;
 }
@@ -119,17 +122,23 @@ label{
   top: 74%;
   cursor: pointer;
 }
+i{
+  position: absolute;
+  margin-top: 2px;
+  right: 2%;
+  cursor: pointer;
+}
 .form-validation p{
   font-size: 11px;
   color: var(--errorColor);
   display: none;
 }
-.form-validation.error{
+.form-validation.error input{
   position: relative;
   border: 1px solid var(--errorColor);
   border-radius: 2px;
 }
-.form-validation.valid{
+.form-validation.valid input{
   position: relative;
   border: 1px solid var(--validColor);
   border-radius: 2px;
@@ -163,39 +172,47 @@ label{
 
 /* EDIT MODAL */
 .modal-edit{
-    background-color: white;
-    user-select: none;
-    border: 1px solid #b3b3b3;
-    box-shadow: 5px 5px 5px rgb(70, 69, 69);
-    color: black;
-    padding: 20px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: transform 0.4s, top 0.4s;
-    border-radius: 10px;
-    display: none;
+  background-color: white;
+  user-select: none;
+  border: 1px solid #b3b3b3;
+  box-shadow: 5px 5px 5px rgb(70, 69, 69);
+  color: black;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.4s, top 0.4s;
+  border-radius: 10px;
+  display: none;
 }
-.modal-edit{
-    background-color: white;
-    width: 100%;
+.close-modal-edit{
+  position: absolute;
+  top: 2%;
+  right: 3%;
+  font-size: 18px;
+  z-index: 1;
+  cursor: pointer;
 }
 .modal-content-edit{
-    position: relative;
-    display: flex;   
+  position: relative;
+  display: flex;   
+}
+.edit-info{
+  display: block;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.edit{
+  font-weight: bold;
+  width: 170px;
 }
 .modal-form-edit{
   margin-left: 20px;
 }
-.edit-info{
-    margin-bottom: 10px;
-    width: 70%;
-    align-items: center;
-    display: block;
-}
 .modal-input-edit{
-  width: 380px;
+  width: 280px;
   padding: 0 5px 0 5px;
   height: 30px;
   font-size: 14px;
@@ -204,7 +221,16 @@ label{
   text-transform: uppercase;
   border-radius: 5px;  
 }
-.modal-input-btn{
+.modal-input-edit-pass{
+  width: 280px;
+  padding: 0 5px 0 5px;
+  height: 30px;
+  font-size: 14px;
+  background: none;
+  outline: none;
+  border-radius: 5px;  
+}
+.modal-input-edit-btn{
   height: 40px;
   width: 70%;
   border: 1px solid;
@@ -224,6 +250,85 @@ label{
   background-color: rgb(48, 83, 211);
   transition: all 0.4s ease-out;
 }
-.modal-input-edit::placeholder{
+.modal-input::placeholder{
   color: var(--lightgray);
+}
+.edit-info p{
+  font-size: 11px;
+  color: var(--errorColor);
+  display: none;
+}
+.edit-info.error input{
+  position: relative;
+  border: 1px solid var(--errorColor);
+  border-radius: 2px;
+}
+.edit-info.valid input{
+  position: relative;
+  border: 1px solid var(--validColor);
+  border-radius: 2px;
+}
+.edit-info.error p{
+  display: block;
+}
+/* .modal#edit-modal.active{
+  filter: blur(10px);
+  user-select: none;
+} */
+
+
+#delete_acc_modal{
+  width: 550px;
+  /* height: 200px; */
+  background-color: white;
+  user-select: none;
+  border: 1px solid #b3b3b3;
+  box-shadow: 5px 5px 5px rgb(70, 69, 69);
+  color: black;
+  padding: 20px;
+  visibility: hidden;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.4s, top 0.4s;
+}
+.cnfrm_modal{
+  width: 550px;
+  /* height: 200px; */
+  background-color: white;
+  user-select: none;
+  border: 1px solid #b3b3b3;
+  box-shadow: 5px 5px 5px rgb(70, 69, 69);
+  color: black;
+  padding: 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.4s, top 0.4s;
+  display: none;
+}
+.cnfrm_modal h1, #delete_acc_modal h1{
+  letter-spacing: 3px;
+  text-align: center;
+}
+.cnl, #cnl2{
+  margin-left: 300px;
+}
+.btn button{
+	padding: 4px;
+	width: 100px; 
+  outline: none;
+	padding: 10px;
+  margin: 10px;
+  text-transform: uppercase;
+  font-size: 12px;
+  margin-top: 20px;
+  cursor: pointer;
+  background-color: var(--blueButton);
+  color:white;
+}
+.btn{
+    display: flex;
 }
