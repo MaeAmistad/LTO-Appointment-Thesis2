@@ -20,7 +20,7 @@ const auth = getAuth(app);
 logout.addEventListener('click', (e) => {
 
     signOut(auth).then(() => {
-        window.location = "a_login.html";
+        window.location = "index.html";
       }).catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
