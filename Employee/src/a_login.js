@@ -21,9 +21,8 @@ cnl.addEventListener('click', (e) => {
  const auth = getAuth();
 
 const querySnapshot = await getDocs(collection(db, "Users", "Employee", "EmployeeData"));
-const docRef = doc(db, "Users", "DevelopersAccount");
-const docSnap = await getDoc(docRef);
-
+const built_in_acc = doc(db, "Users", "DevelopersAccount");
+const docSnap = await getDoc(built_in_acc);
 
 //FINAL
 const form = document.getElementById('form');
@@ -60,17 +59,15 @@ function showError(input, message){
 form.addEventListener('submit',(e) =>{
   e.preventDefault();
 
-  // if(email.value == docSnap.data().username && password.value == docSnap.data().password){
-  //   window.location = "a_dashboard.html";
+  // if(window.navigator.online == false){
+  //   console.log('offline')
+  // }
+  // else{
+  //   console.log('Online')
   // }
 
-  if(window.navigator.online == false){
-    console.log('offline')
-  }
-  else{
-    console.log('Online')
-  }
-  //loginValidation();
+  //loginValidation()
+
   if(email.value == ''){
     showError(email, 'Please enter your email')
   }
@@ -86,9 +83,9 @@ form.addEventListener('submit',(e) =>{
 
     querySnapshot.forEach(doc => {
 
-      console.log(doc.data())
+      console.log(doc.data().user_E)
 
-      if(doc.data().user_E == email.value && doc.data().user_PWD == password.value){
+      if(doc.data().user_E === email.value && doc.data().user_PWD === password.value){
         
         if(doc.data().user_Type == "CASHIER" && doc.data().user_Status == "Enabled"){
           signInWithEmailAndPassword(auth, email.value, password.value)
@@ -386,9 +383,9 @@ form.addEventListener('submit',(e) =>{
         }
         
       }
-      else{
-        console.log("can't access")
-      }
+      // else{
+      //   console.log("can't access")
+      // }
 
     });
 
