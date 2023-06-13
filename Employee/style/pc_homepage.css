@@ -6,7 +6,7 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    background-color: white;
+    background-color: white;  
     /* color: #d36c6c; */
 }
 /* Navigation Bar*/
@@ -70,7 +70,7 @@ nav ul li:hover > ul{
     border-collapse: collapse;
     font-size: 0.9em;
     width: 99%;
-    margin-top:-40px;
+    margin-top:-45px;
     margin-left: 9px;
     background-color: white;
     color: black;
@@ -101,18 +101,19 @@ nav ul li:hover > ul{
 .main2 button{
 	padding: 4px;
 }
-.date{  
-    margin-top: 20px;
-}
-.date input{
-    width: 110px;
+.date{
     padding: 5px 15px;
-    margin-left: 87%;
-    border-radius: 5px;
+    margin-left: 84%;
+}
+.date input{ 
+    margin-top: 10px;
+    padding: 8px;
     outline: none;
+    width: 150px;
+    border-radius: 5px;    
     border: none;
 }
-.search button{
+/* .search button{
     width: 90px;
 	padding: 8px;
     border: 1px solid grey;
@@ -123,7 +124,7 @@ nav ul li:hover > ul{
     margin-left: -5px;
     position: relative;
     top: -1px;
-}
+} */
 #srchdate:hover{
     background: rgb(218, 216, 216);
 }
@@ -134,9 +135,8 @@ nav ul li:hover > ul{
     height: 30px;
     font-size: 15px;
     margin-top: 10px;
-    margin-left: 890px;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    margin-left: 72%;
+    border-radius: 5px;
     padding-left: 5px;
     text-transform: uppercase;
     /* margin-bottom: 10px; */

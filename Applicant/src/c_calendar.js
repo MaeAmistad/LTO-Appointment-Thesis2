@@ -23,7 +23,7 @@ $(function () {
       startDate: new Date(), 
       endDate: '+2m',
       multidate: false,
-      format: "dd-mm-yyyy",
+      format: "dd - mm - yyyy",
       language: 'en',
       todayHighlight: true,
       daysOfWeekDisabled: [0, 6],
@@ -186,6 +186,7 @@ $(function () {
         localStorage.removeItem("ID");
         localStorage.removeItem("stat");
         localStorage.removeItem("rvsnofrcrds");
+        localStorage.removeItem("ltmsID");
 
         window.location = "c_homepage.html";
       }

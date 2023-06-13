@@ -8,6 +8,7 @@
     <title>LTO Appointment Setter</title>
     <link rel="stylesheet" href="../style/pc_homepage.css">
     <script src="https://kit.fontawesome.com/9aa6942f31.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
 
@@ -34,10 +35,10 @@
 
         <div class="search">
             <input type="text" id="srchText" placeholder="Search Application ID / Name" onkeyup="searchAppID()"> 
-            <button id="srchdate">Search</button>    
+            <!-- <button id="srchdate">Search</button>     -->
         </div>          
 
-        <div class="outer-wrapper">
+        <div class="outer-wrapper"> 
         <div class="table-wrapper">
 
         <div class="date"> 
@@ -49,9 +50,10 @@
         <table class="content-table" id="table">
           <thead>
           <tr>
-            <th class="sp" colspan="5">Appointments</th>
+            <th class="sp" colspan="6">Appointments</th>
           </tr>
           <tr>
+                <th>LTMS Client ID</th>
                 <th>Application ID</th>
                 <th>Full Name</th>
                 <th>Transaction Type</th>
@@ -64,10 +66,8 @@
     </div>
   </div>
 
-    <!-- <script type="module" src="../src/a_logout.js"></script> -->
     <script type="module" src="../src/pc_homepage.js"></script>
     <script type="module" src="../src/a_logout.js"></script>
-    <script type="module" src="../src/pc_homepage.js"></script> 
     <script> 
       const searchAppID = () => {
           let filter =  document.getElementById('srchText').value.toUpperCase();
@@ -77,14 +77,16 @@
           for(var i=0; i<tr.length; i++){
               let td = tr[i].getElementsByTagName('td')[0];
               let td2 = tr[i].getElementsByTagName('td')[1]; 
+              let td3 = tr[i].getElementsByTagName('td')[2]; 
 
-              if (td || td2){
+              if (td || td2 || td2){ 
 
                   let textvalue = td.textContent || td.innerHTML;
                   let textvalue2 = td2.textContent || td2.innerHTML;
+                  let textvalue3 = td3.textContent || td3.innerHTML;
 
-                  if(textvalue.toUpperCase().indexOf(filter)> -1 || textvalue2.toUpperCase().indexOf(filter)> -1){
-                      tr[i].style.display = 'NO INFORMATION';
+                  if(textvalue.toUpperCase().indexOf(filter) > -1 || textvalue2.toUpperCase().indexOf(filter) > -1 || textvalue3.toUpperCase().indexOf(filter) > -1){
+                      tr[i].style.display = '';
                   }
                   else{
                       tr[i].style.display = 'none';

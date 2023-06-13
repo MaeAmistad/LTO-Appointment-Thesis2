@@ -55,14 +55,14 @@ nav ul li:hover > ul{
 }
 .main{
     position: relative;
-  max-width: 700px;
-  width: 100%;
-  padding: 25px;
-  background: white; 
-  margin-top: 20px;
-  margin-left: 28%;
-  margin-bottom: 10px; 
-  border: 1px solid #b3b3b3;
+    max-width: 700px;
+    width: 100%;
+    padding: 25px;
+    background: white; 
+    margin-top: 20px;
+    margin-left: 26%;
+    margin-bottom: 10px; 
+    border: 1px solid #b3b3b3;
 }
 .main header{
     text-align: center;
