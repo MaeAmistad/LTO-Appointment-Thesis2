@@ -5,17 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Land Transportation Office Appointment Setter</title>
-    <link rel="stylesheet" href="../style/c_confirmation.css">
-    <script src="https://kit.fontawesome.com/9aa6942f31.js" crossorigin="anonymous"></script>
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</head>
-<body>
-
-  <section class="main2">
-    <nav>
-        <img src="../img/Land_Transportation_Office.svg.png">
+        <link rel="stylesheet" href="../style/c_confirmation.css">
+        <script src="https://kit.fontawesome.com/9aa6942f31.js" crossorigin="anonymous"></script>
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js" integrity="sha512-YcsIPGdhPK4P/uRW6/sruonlYj+Q7UHWeKfTAkBW+g83NKM+jMJFJ4iAPfSnVp7BKD4dKMHmVSvICUbE/V1sSw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </head>
+    <body>
     
+      <section class="main2">
+        <nav>
+            <img src="../img/Land_Transportation_Office.svg.png">
         <div class="navbar" id="navLinks">
             <ul>
                 <li id="hm"><a href="c_homepage.html">HOME</a></li>
@@ -63,6 +63,11 @@
             <td>Gender:</td>
             <td id="gndr">-</td> 
           </tr>
+
+          <tr>
+            <td>LTMS Client ID:</td>
+            <td id="ltmsID">-</td> 
+          </tr>
       </table>
 
       <table class="Transaction-table">
@@ -107,19 +112,122 @@
       </table>
 
       <div class="chckbx" onchange="chckbx()">
-        <p>Note:Please also check your spam or junk mail folder if the email notification is not in your inbox.</p>
+        <!-- <p>Note:Please also check your spam or junk mail folder if the email notification is not in your inbox.</p> -->
         <label><input type="checkbox" id="chck"/> I hereby certify that all information provided are true, accurate and
         correct to the best of my knowledge. Any misdeclaration or mispresentation may affect the outcome of my application. 
         </label>
-        
       </div>
+    
+        <button class="back" id="bck">Cancel</button>
+        <button class="confirm" id="cnfrm">Confirm</button>
+          
+     </div>
 
-      <button class="back" id="bck">Back</button>
-     <button class="confirm" id="cnfrm">Confirm</button>
-      
- </div>
+     <div id="proof_of_app">
+        <div id="proof_of_app1">
+        <h3>LAND TRANSPORTATION OFFICE APPPOINTMENT SETTER</h3>
 
-<script src="../src/c_confirm.js"></script>
-<script type="module" src="../src/c_confirm2.js"></script>
-</body> 
+        <p>APPLICATION NO.</p>
+        <h4 id="transctNum"></h4>
+
+        <table>
+            <tr>
+                <th colspan="2">Applicant's Information</th>  
+            </tr>
+            <tr>
+
+              <td>Family Name:</td>
+              <td id="ln1">-</td> 
+            </tr>
+  
+            <tr>
+              <td>First Name:</td>
+              <td id="fn1">-</td> 
+            </tr>
+  
+            <tr>
+              <td>Middle Name:</td>
+              <td id="mn1">-</td> 
+            </tr>
+  
+            <tr>
+              <td>Date of Birth:</td>
+              <td id="dof1">-</td> 
+            </tr>
+  
+            <tr>
+              <td>Gender:</td>
+              <td id="gndr1">-</td> 
+            </tr>
+
+            <tr>
+              <td>LTMS Client ID:</td>
+              <td id="ltmsID1">-</td> 
+            </tr>
+
+            <tr>
+                <th colspan="2">Appointment's Information</th>  
+            </tr>
+          <tr>
+            <td>Transaction Type:</td>
+            <td id="tt1" >-</td>
+          </tr>
+  
+          <tr>
+            <td>Application Type:</td>
+            <td id="at1" >-</td>
+          </tr>
+  
+          <tr>
+            <td>Date:</td>
+            <td id="dt_L1">-</td>
+          </tr>
+  
+          <tr>
+            <td>Time:</td>
+            <td id="dt_t1">-</td>
+          </tr>
+          <tr>
+            <th colspan="2">Contact Information</th>  
+        </tr>
+          <tr>
+            <td>Address:</td>
+            <td id="addrss1">-</td> 
+          </tr>
+  
+          <tr>
+            <td>Email:</td>
+            <td id="em1">-</td>
+          </tr>
+  
+          <tr>
+            <td>Mobile Number:</td>
+            <td id="mnn1">-</td> 
+          </tr>
+        </table>
+    </div>
+     </div>
+
+     <script src="../src/c_confirm.js"></script>
+     <script type="module" src="../src/c_confirm2.js"></script>
+<!-- <script>
+    function generateRprt(){ 
+        var element = document.getElementById('proof_of_app1');
+        var opt = {
+        filename:     'myfile.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2 },
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
+
+        // New Promise-based usage:
+        // html2pdf().set(opt).from(element).save();
+
+        // Old monolithic-style usage:
+        html2pdf(element, opt);
+
+    }
+
+</script> -->
+</body>
 </html>

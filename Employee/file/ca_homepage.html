@@ -34,7 +34,7 @@
 
         <div class="search">
             <input type="text" id="srchText" placeholder="Search Application ID / Name" onkeyup="searchAppID()"> 
-            <button id="srchdate">Search</button>    
+            <!-- <button id="srchdate">Search</button>     -->
         </div>          
 
       <div class="main">
@@ -77,15 +77,17 @@
 
           for(var i=0; i<tr.length; i++){
               let td = tr[i].getElementsByTagName('td')[0];
-              let td2 = tr[i].getElementsByTagName('td')[1];
+              let td2 = tr[i].getElementsByTagName('td')[1]; 
+              let td3 = tr[i].getElementsByTagName('td')[2]; 
 
-              if (td || td2){
+              if (td || td2 || td2){ 
 
                   let textvalue = td.textContent || td.innerHTML;
                   let textvalue2 = td2.textContent || td2.innerHTML;
+                  let textvalue3 = td3.textContent || td3.innerHTML;
 
-                  if(textvalue.toUpperCase().indexOf(filter)> -1 || textvalue2.toUpperCase().indexOf(filter)> -1){
-                      tr[i].style.display = 'NO INFORMATION';
+                  if(textvalue.toUpperCase().indexOf(filter) > -1 || textvalue2.toUpperCase().indexOf(filter) > -1 || textvalue3.toUpperCase().indexOf(filter) > -1){
+                      tr[i].style.display = '';
                   }
                   else{
                       tr[i].style.display = 'none';

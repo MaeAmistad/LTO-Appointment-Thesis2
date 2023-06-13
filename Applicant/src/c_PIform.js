@@ -14,6 +14,7 @@ btn_nxt.addEventListener('click' , (e) => {
     var addrss = document.getElementById('addrss').value.toUpperCase();
     var con_num = document.getElementById('con_num').value.toUpperCase();
     var email = document.getElementById('email').value.toUpperCase();
+    var ltmsID = document.getElementById('ltmsCLID').value.toUpperCase();
 
 const letters = /^[A-Za-z\s]*$/;
 var numbers = /[0-9]{11}/g;
@@ -185,6 +186,7 @@ else{
   localStorage.setItem("addrss",addrss);
   localStorage.setItem("con_num",con_num);
   localStorage.setItem("email",email);
+  localStorage.setItem("ltmsID",ltmsID);
 
   window.location = "c_confirmation.html";
 

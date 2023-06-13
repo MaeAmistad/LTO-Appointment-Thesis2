@@ -1,7 +1,7 @@
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";;
 import { getFirestore, collection , addDoc } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";;
-
+ 
 const firebaseConfig = {
   apiKey: "AIzaSyCyNToos3S0HwLl0cZMRdiVjFJcBb4FWFo",
   authDomain: "lto-online-appointment-setter.firebaseapp.com",
@@ -29,6 +29,7 @@ var tt = localStorage.getItem("tot");
 var at = localStorage.getItem("toa");
 var laa = localStorage.getItem("laa");
 var rr = localStorage.getItem("rvsnofrcrds");
+var ltmsid = localStorage.getItem("ltmsID");
 
 function makeid(l)
 {
@@ -54,7 +55,25 @@ var mnn = ("0" + m).slice(-2);
 
 var trnid = yy+mmm+ddd+hhh+mnn+makeid(2);
 console.log(trnid)
+document.getElementById('transctNum').innerHTML = trnid;
 cnfrm.addEventListener('click', (e) => {
+
+  // PDF
+    var element = document.getElementById('proof_of_app1');
+    var opt = {
+    filename:     'LTO_proof_of_appointment.pdf',
+    image:        { type: 'jpeg', quality: 0.98 },
+    html2canvas:  { scale: 1 },
+    jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+
+    // New Promise-based usage:
+    html2pdf().set(opt).from(element).save();
+
+    // Old monolithic-style usage:
+    // html2pdf(element, opt);
+
+// Save to firestore
 
 const TranID = trnid;
 
@@ -74,14 +93,15 @@ if (tt == "MOTOR VEHICLE REGISTRATION"){
     User_D: date,
     User_T: time,
     User_TT: tt,
-    User_AT: at
+    User_AT: at,
+    User_LTMS: ltmsid
 }).then(() => {
 
     var full_name = localStorage.getItem("first_name");
     const tt = "Hi " + full_name + "<br/>" + "<br/>";
     const r2 = "YOUR APPLICATION FOR " + "<u>" +  at  + " HAS BEEN SET SUCCESFULLY." + "</u>" + "<br/>" + "<br/>";
     const r3 = "Come to the office on " + localStorage.getItem("date") + " at " + localStorage.getItem("time");
-    const r4 = " and please remember to bring your requirements together with your proof of appointment. " + TranID + "<br/>" + "<br/>";
+    const r4 = " and please remember to bring your requirements together with your proof of appointment." + TranID + "<br/>" + "<br/>";
     const r5 = "If you didn't set an appointment, please disregard this email."
 
     Email.send({
@@ -111,10 +131,19 @@ if (tt == "MOTOR VEHICLE REGISTRATION"){
                 timer: 2000
             })
             
-            window.location = "c_firstpage.html";
+            window.location = "index.html";
             // console.log("Email Sent")
           })
     );
+            // Swal.fire({
+            //     position: 'center',
+            //     icon: 'success',
+            //     title: 'Your Application has been set',
+            //     showConfirmButton: false,
+            //     timer: 2000
+            // }).then(() =>{
+            //     window.location = "c_firstpage.html";
+            //   })
 
 localStorage.removeItem("last_name")
 localStorage.removeItem("first_name")
@@ -132,6 +161,7 @@ localStorage.removeItem("toa");
 localStorage.removeItem("ID");
 localStorage.removeItem("stat");
 localStorage.removeItem("rvsnofrcrds");
+localStorage.removeItem("ltmsID");
 
 // window.location = "c_homepage.html";
     // c
@@ -155,7 +185,8 @@ else if (tt == "LICENSING"){
       User_D: date,
       User_T: time,
       User_TT: tt,
-      User_AT: at
+      User_AT: at,
+      User_LTMS: ltmsid
   }).then(() => {
   
     var full_name = localStorage.getItem("first_name");
@@ -192,10 +223,20 @@ else if (tt == "LICENSING"){
                   timer: 2000
               })
               
-              window.location = "c_firstpage.html";
+              window.location = "index.html";
               // console.log("Email Sent")
             })
       );
+
+  //   Swal.fire({
+  //     position: 'center',
+  //     icon: 'success',
+  //     title: 'Your Application has been set',
+  //     showConfirmButton: false,
+  //     timer: 2000
+  // }).then(() =>{
+  //     window.location = "c_firstpage.html";
+  //   })
   
   localStorage.removeItem("last_name")
   localStorage.removeItem("first_name")
@@ -210,6 +251,7 @@ else if (tt == "LICENSING"){
   localStorage.removeItem("laa");
   localStorage.removeItem("tot");
   localStorage.removeItem("toa");
+  localStorage.removeItem("ltmsID");
   
   // window.location = "c_homepage.html";
       // c
@@ -224,14 +266,15 @@ else if (tt == "LICENSING"){
       User_FN: fn,
       User_MN: mn,
       User_BD: bd,
-      User_GN: gn,
+      User_GN: gn, 
       User_ADD: addrss,
       User_CN: cn,
       User_E: email,
       User_D: date,
       User_T: time,
       User_TT: tt,
-      User_AT: at
+      User_AT: at,
+      User_LTMS: ltmsid
   }).then(() => {
   
     var full_name = localStorage.getItem("first_name");
@@ -268,10 +311,20 @@ else if (tt == "LICENSING"){
                   timer: 2000
               })
               
-              window.location = "c_firstpage.html";
+              window.location = "index.html";
               // console.log("Email Sent")
             })
       );
+
+  //   Swal.fire({
+  //     position: 'center',
+  //     icon: 'success',
+  //     title: 'Your Application has been set',
+  //     showConfirmButton: false,
+  //     timer: 2000
+  // }).then(() =>{
+  //     window.location = "c_firstpage.html";
+  //   })
   
   localStorage.removeItem("last_name")
   localStorage.removeItem("first_name")
@@ -286,6 +339,7 @@ else if (tt == "LICENSING"){
   localStorage.removeItem("laa");
   localStorage.removeItem("tot");
   localStorage.removeItem("toa");
+  localStorage.removeItem("ltmsID");
   
   // window.location = "c_homepage.html";
       // c
