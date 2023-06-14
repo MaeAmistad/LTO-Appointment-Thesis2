@@ -18,7 +18,7 @@ import { getFirestore, getDocs, collection } from "https://www.gstatic.com/fireb
 const firebaseConfig = {
     apiKey: "AIzaSyCyNToos3S0HwLl0cZMRdiVjFJcBb4FWFo",
     authDomain: "lto-online-appointment-setter.firebaseapp.com",
-    projectId: "lto-online-appointment-setter",
+    projectId: "lto-online-appointment-setter", 
     storageBucket: "lto-online-appointment-setter.appspot.com",
     messagingSenderId: "382579903791",
     appId: "1:382579903791:web:5d98bbe4ea8b38a43065da"
@@ -59,7 +59,7 @@ const db = getFirestore(app);
                     td10.innerHTML = doc2.data().User_T;
                     td11.innerHTML = doc2.data().User_CN;
                     td12.innerHTML = doc2.data().User_E;
-                    td13.innerHTML =  '<a href="' + "a_accMan.html "+ '">' + "view details" + '   </a>';
+                    td13.innerHTML =  '<a href="' + "In_mvvd.html "+ '">' + "view details" + '   </a>';
                     
                     trow.appendChild(t_ID);
                     trow.appendChild(td1);
@@ -73,6 +73,10 @@ const db = getFirestore(app);
                     trow.appendChild(td13);
 
                     tbody.appendChild(trow);
+
+                    td13.addEventListener('click',() => {
+                        localStorage.setItem('AppID',doc2.data().User_AppID)
+                    })
 
         }
       

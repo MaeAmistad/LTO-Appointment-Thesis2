@@ -20,7 +20,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app); 
 
 var tbody = document.getElementById('tbody1');
-// Monthly Filter
+// Monthly Filter 
 var currentmonth = new Date().getMonth() + 1;
 if (currentmonth < 10)  currentmonth = "0" + currentmonth;
 let itmNo = 0;
@@ -28,7 +28,7 @@ let itmNo = 0;
         querySnapshot2.forEach(doc2 => {
         // Current Month
           let dd1 = doc2.data().dt_App;
-          let mmsp1 = dd1.slice(3,5);
+          let mmsp1 = dd1.slice(5,7);
         //Date Format
         var dd = doc2.data().dtrgstrd;
         var yysp = dd.slice(0,4);

@@ -337,7 +337,7 @@ bcklic.addEventListener('click' , () => {
   var DLPI = localStorage.getItem("totl_dlpiwk");
   var MSCN = localStorage.getItem("mscntotalwk"); 
   
-  document.getElementById("num_current_licttal").innerHTML = AEtotl + dpchtotl + parseInt(DLPI) + parseInt(MSCN);
+  document.getElementById("num_current_licttal").innerHTML = dpchtotl;
   var barChartOptions = {
     series: [{
       name: "TOTAL",

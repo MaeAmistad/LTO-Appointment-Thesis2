@@ -1,17 +1,25 @@
 bck.addEventListener('click',() => {
     window.location = "ex_homepage.html";
 });
+
+// BLUR BG
+var blur = document.getElementById('blur');
+
 cmplt.addEventListener('click',() => {
     document.getElementById('complete_modal').style.visibility = "visible"
+    blur.classList.toggle('active')
 });
 inc.addEventListener('click', () => {
     document.getElementById('inc_modal').style.visibility = "visible"
+    blur.classList.toggle('active')
 });
 cnl1.addEventListener('click', () => {
     document.getElementById('complete_modal').style.visibility = "hidden"
+    blur.classList.toggle('active')
 });
 cnl2.addEventListener('click', () => {
     document.getElementById('inc_modal').style.visibility = "hidden"
+    blur.classList.toggle('active')
 });
 // var tranID = localStorage.getItem("stat");
 // document.getElementById('tranID').innerHTML = tranID;
@@ -72,7 +80,8 @@ const db = getFirestore(app);
                     if (exmtyp1 == "PRACTICAL"){
                         updateDoc(updateStat, {
                             User_Stat3: "PASSED",
-                            User_Stat: "PASSED"
+                            User_Stat: "PASSED",
+                            User_examType:exmtyp1
                         })
                         setDoc(doc(db,"Practical",doc2.data().User_TransID),{
                             User_TransID: doc2.data().User_TransID,
@@ -90,7 +99,8 @@ const db = getFirestore(app);
                     else if(exmtyp1 == "WRITTEN"){
                         updateDoc(updateStat, {
                             User_Stat3: "PASSED",
-                            User_Stat: "PASSED"
+                            User_Stat: "PASSED",
+                            User_examType:exmtyp1
                         })
                         setDoc(doc(db,"Written",doc2.data().User_TransID),{
                             User_TransID: doc2.data().User_TransID,
@@ -119,14 +129,15 @@ const db = getFirestore(app);
                     if (exmtyp2 == "PRACTICAL"){
                         updateDoc(updateStat, {
                             User_Stat3: "FAILED",
-                            User_Stat: "FAILED"
+                            User_Stat: "FAILED",
+                            User_examType:exmtyp2
                         })
                         setDoc(doc(db,"Practical",doc2.data().User_TransID),{
                             User_TransID: doc2.data().User_TransID,
                             result: "FAILED",
                             examType:exmtyp2,
                             dt_App: doc2.data().User_D,
-                            t_app: doc2.data().User_T,
+                            t_app: doc2.data().User_T, 
                             laa: doc2.data().User_Laa,
                             gn: doc2.data().User_GN,
                             at: doc2.data().User_AT
@@ -137,7 +148,8 @@ const db = getFirestore(app);
                     else if(exmtyp2 == "WRITTEN"){
                         updateDoc(updateStat, {
                             User_Stat3: "FAILED",
-                            User_Stat: "FAILED"
+                            User_Stat: "FAILED",
+                            User_examType:exmtyp2
                         })
                         setDoc(doc(db,"Written",doc2.data().User_TransID),{
                             User_TransID: doc2.data().User_TransID,

@@ -143,60 +143,39 @@ const db = getFirestore(app);
                 const updateStat = doc(db, "Applicants", doc2.id)
                 var stt = localStorage.getItem("stat")
 
-                    if (stt == doc2.data().User_TransID){
+                if (stt == doc2.data().User_TransID){
+                    if(doc2.data().User_TT == "LICENSING"){  
+                        // ATC
+                        if(doc2.data().User_Stat == "APPROVED_TO_CASHIER"){
+                            // DL
+                            if(doc2.data().User_Laa == "DRIVER'S LICENSE" ){
 
-                        if(doc2.data().User_TT == "LICENSING"){
-                            if(doc2.data().User_Stat == "APPROVED_TO_CASHIER"){
-                                if(doc2.data().User_Laa == "DRIVER'S LICENSE" ){
-                                    if(doc2.data().User_AT == "NEW"){
-                                        updateDoc(updateStat, {
-                                            User_Stat4: "COMPLETED",
-                                            User_Stat: "COMPLETED"
-                                        }).then(() => {
-                                            window.location = "a_applistca.html"
-                                        })
-                                    }
-                                    else if(doc2.data().User_AT == "ADDITIONAL DL CODE OR CATEGORY"){
-                                        updateDoc(updateStat, {
-                                            User_Stat4: "COMPLETED",
-                                            User_Stat: "COMPLETED"
-                                        }).then(() => {
-                                            window.location = "a_applistca.html"
-                                        })
-                                    }
-                                    else if(doc2.data().User_AT == "CHANGE OF DL CLASSIFICATION"){
-                                        updateDoc(updateStat, {
-                                            User_Stat4: "COMPLETED",
-                                            User_Stat: "COMPLETED"
-                                        }).then(() => {
-                                            window.location = "a_applistca.html"
-                                        })
-                                    }
-                                }
-                                else{
-                                    updateDoc(updateStat, {
-                                        User_Stat4: "RELEASED",
-                                        User_Stat: "RELEASED"
-                                    })
-                                    setDoc(doc(db,"License",doc2.data().User_TransID),{
-                                        User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,
-                                        laa:doc2.data().User_Laa,
-                                        at: doc2.data().User_AT,
-                                        dt_App: doc2.data().User_D,
-                                        t_app: doc2.data().User_T,
-                                        User_GN: doc2.data().User_GN
-                                    }).then(() => {
-                                        window.location = "a_applistca.html"
-                                    })
-                                }
-                                
-                                if( doc2.data().User_Laa == "CONDUCTOR'S LICENSE" && doc2.data().User_AT == "NEW"){
+                                if(doc2.data().User_AT == "NEW"){
                                     updateDoc(updateStat, {
                                         User_Stat4: "COMPLETED",
                                         User_Stat: "COMPLETED"
                                     }).then(() => {
                                         window.location = "a_applistca.html"
                                     })
+                                    console.log('condition 1')
+                                }
+                                else if(doc2.data().User_AT == "ADDITIONAL DL CODE OR CATEGORY"){
+                                    updateDoc(updateStat, {
+                                        User_Stat4: "COMPLETED",
+                                        User_Stat: "COMPLETED"
+                                    }).then(() => {
+                                        window.location = "a_applistca.html"
+                                    })
+                                    console.log('condition 2')
+                                }
+                                else if(doc2.data().User_AT == "CHANGE OF DL CLASSIFICATION"){
+                                    updateDoc(updateStat, {
+                                        User_Stat4: "COMPLETED",
+                                        User_Stat: "COMPLETED"
+                                    }).then(() => {
+                                        window.location = "a_applistca.html"
+                                    })
+                                    console.log('condition 3')
                                 }
                                 else{
                                     updateDoc(updateStat, {
@@ -213,9 +192,39 @@ const db = getFirestore(app);
                                     }).then(() => {
                                         window.location = "a_applistca.html"
                                     })
+                                console.log('condition 4')
                                 }
-
                             }
+                            // CL  
+                            else if( doc2.data().User_Laa == "CONDUCTOR'S LICENSE" && doc2.data().User_AT == "NEW"){
+                                updateDoc(updateStat, {
+                                    User_Stat4: "COMPLETED",
+                                    User_Stat: "COMPLETED"
+                                }).then(() => {
+                                    window.location = "a_applistca.html"
+                                })
+                                console.log('condition 5')
+                            }
+                            else{
+                                updateDoc(updateStat, {
+                                    User_Stat4: "RELEASED",
+                                    User_Stat: "RELEASED"
+                                })
+                                setDoc(doc(db,"License",doc2.data().User_TransID),{
+                                    User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,
+                                    laa:doc2.data().User_Laa,
+                                    at: doc2.data().User_AT,
+                                    dt_App: doc2.data().User_D,
+                                    t_app: doc2.data().User_T,
+                                    User_GN: doc2.data().User_GN
+                                }).then(() => {
+                                    window.location = "a_applistca.html"
+                                })
+                                console.log('condition 6')
+                            }
+
+                        }
+                            // PASSED
                             else if(doc2.data().User_Stat == "PASSED"){
                                 if (doc2.data().User_Laa == "DRIVER'S LICENSE" ){
                                     if(doc2.data().User_AT == "NEW"){

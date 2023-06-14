@@ -19,7 +19,7 @@ const firebaseConfig = {
     appId: "1:382579903791:web:5d98bbe4ea8b38a43065da" 
 }; 
 
-// Initialize Firebase
+// Initialize Firebase 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
@@ -63,7 +63,7 @@ const mv_bc = await getDocs(collection(db, "Motor Vehicle"));
 mv_bc.forEach((doc) => {
   // CAR
   let dd = doc.data().dt_App;
-  let mmsp = dd.slice(3,5);
+  let mmsp = dd.slice(5,7);
 
   if(mmsp == currentmonth){
 

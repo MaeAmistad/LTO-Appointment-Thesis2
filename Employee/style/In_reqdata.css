@@ -6,7 +6,7 @@ body {
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     background-color: white;
-}  
+}   
 .main{
     position: relative;
     max-width: 1000px;
@@ -43,7 +43,7 @@ body {
 #bck{
     margin-left: 80px;
 }
-p{
+p{ 
     font-size: 25px;
     font-weight: 700;
     margin-left: 50px;
@@ -53,6 +53,11 @@ table{
 }
 table td{
     padding-left: 20px;
+}
+.main#blur.active{
+    filter: blur(10px);
+    pointer-events: none;
+    user-select: none;
 }
 .cnfrm_modal,.cnfrm_modal2{
     width: 550px;
@@ -81,6 +86,7 @@ table td{
     max-width: 500px;
     min-width: 400px;
     margin-top: -690px; 
+    margin-bottom: 15px;
     position: relative;
     visibility: hidden;
     z-index: 999;

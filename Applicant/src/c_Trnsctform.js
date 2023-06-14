@@ -13,7 +13,7 @@ nextL.addEventListener('click' , (e) => {
             confirmButtonColor: '#132aaa',
             width:500,
             showClass: {
-              popup: 'animate__animated animate__fadeInDown'
+              popup: 'animate__animated animate__fadeInDown' 
             },
             hideClass: {
               popup: 'animate__animated animate__fadeOutUp'
@@ -410,7 +410,7 @@ else if (list3.value == "cfdl"){
     var toa = "Conversion of Foreign DL"
 }
 else if (list3.value == "acc"){
-    var toa = "Addiotional Code or Category"
+    var toa = "ADDITIONAL DL CODE OR CATEGORY"
 }
 else if (list3.value == "cdlc"){
     var toa = "Change of DL Classification"

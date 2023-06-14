@@ -36,7 +36,7 @@ let wrttn2 = 0;
 wrttnlicexam.forEach((doc) => {
 // getting month mon
 let dd = doc.data().dt_App;
-let mmsp = dd.slice(3,5);
+let mmsp = dd.slice(5,7);
 // Current Count
     if(mmsp == currentmonth){ 
       if(doc.data().result == "PASSED"){
@@ -58,7 +58,7 @@ let prac2 = 0;
 praclicexam.forEach((doc) => {
 // getting month
 let dd = doc.data().dt_App;
-let mmsp = dd.slice(3,5);
+var mmsp = dd.slice(5,7);
 // console.log(mmsp) mon
 // Current Count
     if(mmsp == currentmonth){
@@ -151,7 +151,7 @@ let countrn2 = 0;
 DLIPissued.forEach((doc) => {
 // getting month
 let dd = doc.data().dt_App;
-let mmsp = dd.slice(3,5);
+var mmsp = dd.slice(5,7);
 // NEW
 if(mmsp == currentmonth){
     if(doc.data().at == "NEW"){
@@ -251,7 +251,7 @@ let mscntotl = 0;
 totlmscn.forEach((doc) => {
   // getting month
 let dd = doc.data().User_D;
-let mmsp = dd.slice(3,5);
+var mmsp = dd.slice(5,7);
 
   if(mmsp == currentmonth){
   if (doc.data().User_AT == "DUPLICATE" || doc.data().User_AT == "REVISION OF RECORDS"){
@@ -266,7 +266,7 @@ let totl1 = 0;
 totlDLPI.forEach((doc) => {
   // getting month
 let dd = doc.data().dt_App;
-let mmsp = dd.slice(3,5);
+var mmsp = dd.slice(5,7);
 
   if(mmsp == currentmonth){
     if(doc.data().at == "NEW" || doc.data().at == "RENEWAL"){
@@ -291,7 +291,7 @@ let dlch4 = 0;
 dlch_total.forEach((doc) => {
   // getting month
 let dd = doc.data().User_D;
-let mmsp = dd.slice(3,5);
+let mmsp = dd.slice(5,7);
 
   // Current Count
       if(mmsp == currentmonth){
@@ -329,7 +329,7 @@ var dpchtotl = parseInt(localStorage.getItem("dlch_cnt1mon")) + parseInt(localSt
 var DLPI = localStorage.getItem("totl_dlpimon");
 var MSCN = localStorage.getItem("mscntotalmon"); 
 
-document.getElementById("num_current_licttal").innerHTML = AEtotl + dpchtotl + parseInt(DLPI) + parseInt(MSCN);
+document.getElementById("num_current_licttal").innerHTML = dpchtotl;
 var barChartOptions = {
   series: [{
     name: "TOTAL",
@@ -394,7 +394,7 @@ var now = new Date()
 var time = now.getHours() + ":" + now.getMinutes();
 console.log(time)
 
-if(time == "0:0"){
+if(time == "1:0"){
   localStorage.removeItem("wrtnn_examPmon");
   localStorage.removeItem("wrtnn_examFmon");
   localStorage.removeItem("prac_examPmon");

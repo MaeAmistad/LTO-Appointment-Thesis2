@@ -1,5 +1,3 @@
-
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import { getFirestore, getDocs, collection } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
 
@@ -60,7 +58,7 @@ querySnapshot2.forEach(doc2 => {
     let td5 = document.createElement('td'); 
     let td7 = document.createElement('td');  
 
-    if(localStorage.getItem("chngeDtIN") == null){
+    if(localStorage.getItem("chngeDtCa") == null){
         if(today == dtcon){
             if (doc2.data().User_Stat == "APPROVED_TO_CASHIER" || doc2.data().User_Stat == "PASSED"){
 

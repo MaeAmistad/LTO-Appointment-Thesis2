@@ -98,13 +98,15 @@ if(localStorage.getItem("chngeDtEv") == null){
             }
         }
         if (doc2.data().User_Stat == "APPROVED_TO_PROCEED"){
-    
+            
+            td6.innerHTML = doc2.data().User_LTMS;
             t_ID.innerHTML = doc2.data().User_AppID; 
             td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
             td5.innerHTML = doc2.data().User_TT;
             td7.innerHTML = doc2.data().User_D;
             td8.innerHTML = doc2.data().User_T;
-                    
+            
+            trow.appendChild(td6);
             trow.appendChild(t_ID);
             trow.appendChild(td1);
             trow.appendChild(td5);
@@ -171,12 +173,14 @@ else{
     }
     if (doc2.data().User_Stat == "APPROVED_TO_PROCEED"){
 
+        td6.innerHTML = doc2.data().User_LTMS;
         t_ID.innerHTML = doc2.data().User_AppID; 
         td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
         td5.innerHTML = doc2.data().User_TT;
         td7.innerHTML = doc2.data().User_D;
         td8.innerHTML = doc2.data().User_T;
-                
+        
+        trow.appendChild(td6);
         trow.appendChild(t_ID);
         trow.appendChild(td1);
         trow.appendChild(td5);

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
 
-body {
+body { 
     margin: 0; 
     padding: 0;
     box-sizing: border-box;
@@ -67,7 +67,11 @@ table td{
     transform: translate(-50%, -50%);
     transition: transform 0.4s, top 0.4s;
 }
-
+.main#blur.active{
+    filter: blur(10px);
+    pointer-events: none;
+    user-select: none;
+}
 .info{
     display: flex;
     padding: 5px;

@@ -312,7 +312,7 @@ var dpchtotl = parseInt(localStorage.getItem("dlch_cnt1")) + parseInt(localStora
 var DLPI = localStorage.getItem("totl_dlpi");
 var MSCN = localStorage.getItem("mscntotal"); 
 
-document.getElementById("num_current_licttal").innerHTML = AEtotl + dpchtotl + parseInt(DLPI) + parseInt(MSCN);
+document.getElementById("num_current_licttal").innerHTML = dpchtotl;
 var barChartOptions = {
   series: [{
     name: "TOTAL",

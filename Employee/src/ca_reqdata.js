@@ -1,17 +1,25 @@
 bck.addEventListener('click',() => {
     window.location = "ca_homepage.html";
 });
+
+// BLUR BG
+var blur = document.getElementById('blur');
+
 cmplt.addEventListener('click',() => {
     document.getElementById('complete_modal').style.visibility = "visible"
+    blur.classList.toggle('active')
 });
 inc.addEventListener('click', () => {
     document.getElementById('inc_modal').style.visibility = "visible"
+    blur.classList.toggle('active')
 });
 cnl1.addEventListener('click', () => {
     document.getElementById('complete_modal').style.visibility = "hidden"
+    blur.classList.toggle('active')
 });
 cnl2.addEventListener('click', () => {
     document.getElementById('inc_modal').style.visibility = "hidden"
+    blur.classList.toggle('active')
 });
  
 // var tranID = localStorage.getItem("stat");
@@ -110,7 +118,7 @@ const db = getFirestore(app);
                     document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
                     document.getElementById("dof").innerHTML = doc2.data().User_BD;
                     document.getElementById("gndr").innerHTML = doc2.data().User_GN;
-                    document.getElementById("tID").innerHTML = doc2.data().User_TransID; 
+                    document.getElementById("tID").innerHTML = doc2.data().User_TransID;  
                     document.getElementById("tt").innerHTML = doc2.data().User_TT;
                     document.getElementById("at").innerHTML = doc2.data().User_AT;
                     document.getElementById("dt_L").innerHTML = doc2.data().User_D;
@@ -145,10 +153,12 @@ const db = getFirestore(app);
                 var stt = localStorage.getItem("stat")
 
                     if (stt == doc2.data().User_TransID){
-
-                        if(doc2.data().User_TT == "LICENSING"){
+                        if(doc2.data().User_TT == "LICENSING"){  
+                            // ATC
                             if(doc2.data().User_Stat == "APPROVED_TO_CASHIER"){
+                                // DL
                                 if(doc2.data().User_Laa == "DRIVER'S LICENSE" ){
+
                                     if(doc2.data().User_AT == "NEW"){
                                         updateDoc(updateStat, {
                                             User_Stat4: "COMPLETED",
@@ -156,6 +166,7 @@ const db = getFirestore(app);
                                         }).then(() => {
                                             window.location = "ca_homepage.html"
                                         })
+                                        console.log('condition 1')
                                     }
                                     else if(doc2.data().User_AT == "ADDITIONAL DL CODE OR CATEGORY"){
                                         updateDoc(updateStat, {
@@ -164,6 +175,7 @@ const db = getFirestore(app);
                                         }).then(() => {
                                             window.location = "ca_homepage.html"
                                         })
+                                        console.log('condition 2')
                                     }
                                     else if(doc2.data().User_AT == "CHANGE OF DL CLASSIFICATION"){
                                         updateDoc(updateStat, {
@@ -172,32 +184,35 @@ const db = getFirestore(app);
                                         }).then(() => {
                                             window.location = "ca_homepage.html"
                                         })
+                                        console.log('condition 3')
+                                    }
+                                    else{
+                                        updateDoc(updateStat, {
+                                            User_Stat4: "RELEASED",
+                                            User_Stat: "RELEASED"
+                                        })
+                                        setDoc(doc(db,"License",doc2.data().User_TransID),{
+                                            User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,
+                                            laa:doc2.data().User_Laa,
+                                            at: doc2.data().User_AT,
+                                            dt_App: doc2.data().User_D,
+                                            t_app: doc2.data().User_T,
+                                            User_GN: doc2.data().User_GN
+                                        }).then(() => {
+                                            window.location = "ca_homepage.html"
+                                        })
+                                    console.log('condition 4')
                                     }
                                 }
-                                else{
-                                    updateDoc(updateStat, {
-                                        User_Stat4: "RELEASED",
-                                        User_Stat: "RELEASED"
-                                    })
-                                    setDoc(doc(db,"License",doc2.data().User_TransID),{
-                                        User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,
-                                        laa:doc2.data().User_Laa,
-                                        at: doc2.data().User_AT,
-                                        dt_App: doc2.data().User_D,
-                                        t_app: doc2.data().User_T,
-                                        User_GN: doc2.data().User_GN
-                                    }).then(() => {
-                                        window.location = "ca_homepage.html"
-                                    })
-                                }
-                                
-                                if( doc2.data().User_Laa == "CONDUCTOR'S LICENSE" && doc2.data().User_AT == "NEW"){
+                                // CL  
+                                else if( doc2.data().User_Laa == "CONDUCTOR'S LICENSE" && doc2.data().User_AT == "NEW"){
                                     updateDoc(updateStat, {
                                         User_Stat4: "COMPLETED",
                                         User_Stat: "COMPLETED"
                                     }).then(() => {
                                         window.location = "ca_homepage.html"
                                     })
+                                    console.log('condition 5')
                                 }
                                 else{
                                     updateDoc(updateStat, {
@@ -214,9 +229,11 @@ const db = getFirestore(app);
                                     }).then(() => {
                                         window.location = "ca_homepage.html"
                                     })
+                                    console.log('condition 6')
                                 }
 
                             }
+                            // PENDING
                             else if(doc2.data().User_Stat == "PASSED"){
                                 if (doc2.data().User_Laa == "DRIVER'S LICENSE" ){
                                     if(doc2.data().User_AT == "NEW"){
@@ -273,6 +290,7 @@ const db = getFirestore(app);
                             } 
 
                         }
+                        // MV
                         else if(doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
                             updateDoc(updateStat, {
                                 User_Stat4: "REGISTERED",
@@ -297,11 +315,12 @@ const db = getFirestore(app);
                                 dtrgstrd:doc2.data().dtrgstrd,
                                 deptagncy:doc2.data().deptagncy
                             }).then(() => {
-                                window.location = "ca_homepage.html"
+                                window.location = "ca_homepage.html" 
                             })
                         }
 
                     } 
+
 
             })
  
