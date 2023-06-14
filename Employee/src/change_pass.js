@@ -134,7 +134,7 @@ form.addEventListener('submit', (e) => {
 
                 updatePassword(user, newPassword)
                 .then(() => {
-                    window.location = "a_login.html"
+                    window.location = "index.html"
                     console.log("User password updated in firebase auth")
                 }).catch((error) => {
                     const errorCode = error.code;
