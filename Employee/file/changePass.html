@@ -36,9 +36,7 @@
                       <i id="showPass" onclick="showPwrd2()"><span id="icon2" class="material-symbols-outlined">
                         visibility_off
                         </span></i>
-                      <p>Error Message</p>
-
-                      
+                      <!-- <p>Error Message</p> -->
                         <div id="error1">
                           Password must be 8 characters, must have least 1 lowercase character, 1 uppercase character, 1 number, and 1 special character. 
                         </div> 
@@ -108,11 +106,11 @@
                 const icon1 = document.getElementById("icon1")
                 if(current.type === "password"){
                   current.type = "text"
-                  icon1.innerText = "visibility_off"
+                  icon1.innerText = "visibility"
                 }
                 else{
                   current.type = "password"
-                  icon1.innerText = "visibility"
+                  icon1.innerText = "visibility_off"
                 }
         }
 

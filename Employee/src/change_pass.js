@@ -14,7 +14,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth();
-// const user = auth.currentUser;
+// const user = auth.currentUser; 
 
 const querySnapshot = await getDocs(collection(db, "Users", "Employee", "EmployeeData"));
 const docRef = doc(db, "Users", "DevelopersAccount");

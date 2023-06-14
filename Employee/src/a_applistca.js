@@ -34,9 +34,9 @@ var tbody = document.getElementById('tbody1');
 
             var dd = doc2.data().User_D;
             var ddsp = dd.slice(0,2);
-            var mmsp = dd.slice(3,5);
-            var yysp = dd.slice(6,10);
-            var dtcon = yysp + "-" + mmsp + "-" + ddsp;
+            var mmsp = dd.slice(5,7);
+            var yysp = dd.slice(10,14);
+            var dtcon = yysp + "-" + mmsp + "-" + ddsp; 
 
             // console.log(doc2.data().User_T.slice(6,8))&& dte.value == dtcon
             if(today == dtcon){

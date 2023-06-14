@@ -103,28 +103,26 @@ nav ul li:hover > ul{
 }
 .date{
     padding: 5px 15px;
-    margin-left: 84%;
+    margin-left: 77%;
+    display: inline-block;
 }
 .date input{ 
     margin-top: 10px;
     padding: 8px;
     outline: none;
     width: 150px;
-    border-radius: 5px;    
+    border-radius: 5px;
     border: none;
 }
-/* .search button{
+.date button{
     width: 90px;
 	padding: 8px;
     border: 1px solid grey;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-radius: 5px;
     cursor: pointer;
-    height: 34px;
-    margin-left: -5px;
-    position: relative;
-    top: -1px;
-} */
+    height: 35px;
+    margin-left: 5px;
+}
 #srchdate:hover{
     background: rgb(218, 216, 216);
 }

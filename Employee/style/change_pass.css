@@ -12,7 +12,7 @@ body{
     height: 100vh;
     overflow-y: auto;
     font-family: 'Poppins', sans-serif;
-    background-image:url("../img/bgforweb.png");
+    background-image:url("../img/bgforweb.png"); 
 }
 .change_password{
     background-color: white;
@@ -27,7 +27,6 @@ body{
     transform: translate(-50%, -50%);
     transition: transform 0.4s, top 0.4s;
     border-radius: 10px;
-    
 }
 .content{
     background-color: white;
@@ -68,7 +67,7 @@ h1{
       display: block;
 }
 #confirm_info{
-  margin-top: 75px;
+  margin-top: 10px;
 }
 .change{
     font-weight: bold;
@@ -112,7 +111,7 @@ h1{
     top: 8.5%;
     cursor: pointer;
   }
-  #eye2{
+#eye2{
     position: absolute;
     right: 15px;
     transform: translate(0,-50%);
@@ -198,17 +197,15 @@ h1{
     filter: blur(10px);
     pointer-events: none;
     user-select: none;
-  }
-
-
+}
 .info #error1{
-    /* display:none; */
+    display:block;
     color: black;
     font-size: 14px;
     font-weight: 30px;
     height: 13px;
-    width: 400px;
-    margin-bottom: 50px;
+    width: 390px;
+    margin-bottom: 10px;
     text-align: justify;
     position: absolute;
 }

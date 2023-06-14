@@ -23,7 +23,7 @@
               <div class="showPass"></div>
                 <input type="password" id="password" placeholder="Password">
                 <i id="showPass" onclick="showPwrd()"><span id="icon" class="material-symbols-outlined">
-                  visibility
+                  visibility_off
                   </span></i>
                 <p>Error Message</p>
             </div>
@@ -71,11 +71,11 @@
                 const icon = document.getElementById("icon")
                 if(passInput.type === "password"){
                   passInput.type = "text"
-                  icon.innerText = "visibility_off"
+                  icon.innerText = "visibility"
                 }
                 else{
                   password.type = "password"
-                  icon.innerText = "visibility"
+                  icon.innerText = "visibility_off"
                 }
         }
 

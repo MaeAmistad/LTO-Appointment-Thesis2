@@ -85,6 +85,7 @@ const db = getFirestore(app);
                     document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
                     document.getElementById("em").innerHTML = doc2.data().User_E;
                     document.getElementById("mnn").innerHTML = doc2.data().User_CN;
+                    document.getElementById("ltmsid").innerHTML = doc2.data().User_LTMS;
 
                     document.getElementById('mv-table').style.display = "none";
                     document.getElementById('mvtitle').style.display = "none";
@@ -102,6 +103,7 @@ const db = getFirestore(app);
                     document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
                     document.getElementById("em").innerHTML = doc2.data().User_E;
                     document.getElementById("mnn").innerHTML = doc2.data().User_CN;
+                    document.getElementById("ltmsid").innerHTML = doc2.data().User_LTMS;
 
                     document.getElementById('mv-table').style.display = "none";
                     document.getElementById('mvtitle').style.display = "none";
@@ -118,6 +120,7 @@ const db = getFirestore(app);
                     document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
                     document.getElementById("em").innerHTML = doc2.data().User_E;
                     document.getElementById("mnn").innerHTML = doc2.data().User_CN;
+                    document.getElementById("ltmsid").innerHTML = doc2.data().User_LTMS;
 
                     document.getElementById("plate_num").innerHTML = doc2.data().pltno;
                     document.getElementById("typee").innerHTML = doc2.data().typel;

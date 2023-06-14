@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LTO Appointment Setter</title>
-    <link rel="stylesheet" href="../style/ca_homepage.css">
+    <link rel="stylesheet" href="../style/pc_homepage.css">
     <script src="https://kit.fontawesome.com/9aa6942f31.js" crossorigin="anonymous"></script>
 </head>
 <body id="body">
@@ -34,7 +34,6 @@
 
         <div class="search">
             <input type="text" id="srchText" placeholder="Search Application ID / Name" onkeyup="searchAppID()"> 
-            <!-- <button id="srchdate">Search</button>     -->
         </div>          
 
       <div class="main">
@@ -43,6 +42,7 @@
 
             <div class="date"> 
               <input type="date" id="dte">
+              <button id="srchdate">Change</button>
             </div>
             
         <table class="content-table" id="table">
@@ -67,7 +67,6 @@
 
     <script type="module" src="../src/a_logout.js"></script>
     <script type="module" src="../src/ca_homepage.js"></script>
-    <script type="module" src="../src/a_logout.js"></script>
     
     <script> 
       const searchAppID = () => {

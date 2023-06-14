@@ -32,11 +32,11 @@ document.getElementById("dte").value = today;
 const querySnapshot2 = await getDocs(collection(db,"Applicants"));
 querySnapshot2.forEach(doc2 => {
 
-            var dd = doc2.data().User_D;
-            var ddsp = dd.slice(0,2);
-            var mmsp = dd.slice(3,5);
-            var yysp = dd.slice(6,10);
-            var dtcon = yysp + "-" + mmsp + "-" + ddsp;
+    var dd = doc2.data().User_D;
+    var ddsp = dd.slice(0,2);
+    var mmsp = dd.slice(5,7);
+    var yysp = dd.slice(10,14);
+    var dtcon = yysp + "-" + mmsp + "-" + ddsp; 
 
     if(today == dtcon){
         if(doc2.data().User_TT == "LICENSING"){
