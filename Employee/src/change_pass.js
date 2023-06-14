@@ -175,7 +175,7 @@ newPass.onkeyup = function(){
     var spclchrctr = /[!@#$%^&*]/g;
 
     if(newPass.value.length < 8) { 
-
+        document.getElementById("error1").style.display = "none";
         document.getElementById("length").style.display = "block";
         document.getElementById("lowercase").style.display = "none";
         document.getElementById("uppercase").style.display = "none";
@@ -183,13 +183,15 @@ newPass.onkeyup = function(){
         document.getElementById("spclchrctr").style.display = "none";
     }
     else if(!newPass.value.match(lowerCaseLetters)) {  
+        document.getElementById("error1").style.display = "none";
         document.getElementById("lowercase").style.display = "block";
         document.getElementById("uppercase").style.display = "none";
         document.getElementById("num").style.display = "none";
         document.getElementById("length").style.display = "none";
         document.getElementById("spclchrctr").style.display = "none";
     } 
-    else if(!newPass.value.match(upperCaseLetters)) {  
+    else if(!newPass.value.match(upperCaseLetters)) {
+        document.getElementById("error1").style.display = "none";  
         document.getElementById("uppercase").style.display = "block";
         document.getElementById("lowercase").style.display = "none";
         document.getElementById("num").style.display = "none";
@@ -197,6 +199,7 @@ newPass.onkeyup = function(){
         document.getElementById("spclchrctr").style.display = "none";
     } 
     else if(!newPass.value.match(numbers)) {  
+        document.getElementById("error1").style.display = "none";
         document.getElementById("num").style.display = "block";
         document.getElementById("lowercase").style.display = "none";
         document.getElementById("uppercase").style.display = "none";
@@ -204,6 +207,7 @@ newPass.onkeyup = function(){
         document.getElementById("spclchrctr").style.display = "none";
     }
     else if(!newPass.value.match(spclchrctr)) {
+        document.getElementById("error1").style.display = "none";
         document.getElementById("spclchrctr").style.display = "block";
         document.getElementById("length").style.display = "none";
         document.getElementById("lowercase").style.display = "none";
