@@ -110,6 +110,14 @@ select{
   outline: none;
   text-transform: uppercase;
 }
+#dplomt h4{
+  text-align: center;
+}
+.req h4{
+  padding-bottom: 10px;
+  padding-top: 15px;
+  text-align: center;
+}
 #license{
   margin-top: 10px;
   display: block;
@@ -145,9 +153,16 @@ select{
 .next1 {
   background-color: #032d89;
   color: white;
-  margin-left: 30%;
+  margin-left: 40%;
 }
-
+#cl_dcardc p{
+  text-align: center;
+  color: red;
+}
+#cl_edl p{
+  text-align: center;
+  color: red;
+}
 .req ul li{
   /* padding: 5px 20px;  */
   width: 600px;
