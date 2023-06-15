@@ -67,9 +67,9 @@
     </div>
   </div>
 
-    <script type="module" src="../src/pc_homepage.js"></script>
-    <script type="module" src="../src/a_logout.js"></script>
-    <script> 
+<script type="module" src="../src/pc_homepage.js"></script>
+<script type="module" src="../src/a_logout.js"></script>
+<script> 
       const searchAppID = () => {
           let filter =  document.getElementById('srchText').value.toUpperCase();
           let mytable = document.getElementById('tbody1');
@@ -95,7 +95,17 @@
               }
           }
       }
-    </script>
-  </body>
+</script>
+<script>
+    var date = new Date();
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+    if (month < 10) month = "0" + month;
+    if (day < 10) day = "0" + day;
+    var today = year + "-" + month + "-" + day ;
+    document.getElementById("dte").setAttribute("min", today);
+</script>
+</body>
 </html>
  

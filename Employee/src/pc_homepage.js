@@ -40,7 +40,7 @@ document.getElementById("dte").value = localStorage.getItem('chngeDtEv');
 
 var changeDate = localStorage.getItem('chngeDtEv')
 async function getData(){
-
+ 
 const querySnapshot = await getDocs(collection(db,"Applicants"));
 querySnapshot.forEach(doc2 => {
     

@@ -8,7 +8,7 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: white;  
     /* color: #d36c6c; */
-}
+} 
 /* Navigation Bar*/
 nav{
     display: flex;
@@ -56,7 +56,6 @@ nav ul li:hover > ul{
 .navbar ul li{
     font-size: 15px;
 }
-
 #logout{
   border: none;
   background-color: #032d89;
@@ -139,7 +138,6 @@ nav ul li:hover > ul{
     text-transform: uppercase;
     /* margin-bottom: 10px; */
 }
-
     /* Medium <= 992px */
     @media screen and (max-width: 992px) {
         .grid-container {

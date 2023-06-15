@@ -13,22 +13,34 @@ const firebaseConfig = {
     appId: "1:382579903791:web:5d98bbe4ea8b38a43065da"
 };
 
-// Initialize Firebase
+// Initialize Firebase 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 var tbody = document.getElementById('tbody1');
-var dte = document.getElementById("dte");
-// date today
+// GET DATE TO LOCALSTORAGE
+document.getElementById('dte').addEventListener('change', (e) => {
+    changeDate = document.getElementById('dte').value
+    localStorage.setItem('chngeDtApplstins',changeDate)
+});
+// GET DATA FROM LOCALSTORAGE
+srchdate.addEventListener('click',() => {
+    localStorage.getItem('chngeDtApplstins')
+    window.location = 'a_appListins.html'
+})
+// DATE TODAY
 var date = new Date();
 var day = date.getDate();
 var month = date.getMonth() + 1;
 var year = date.getFullYear();
 if (month < 10) month = "0" + month;
 if (day < 10) day = "0" + day;
-var today = year + "-" + month + "-" + day;       
-document.getElementById("dte").value = today;
+var today = year + "-" + month + "-" + day ;
 
+document.getElementById("dte").value = localStorage.getItem('chngeDtApplstins');
+
+var changeDate = localStorage.getItem('chngeDtApplstins')
+// To be continued
     const querySnapshot2 = await getDocs(collection(db,"Applicants"));
         querySnapshot2.forEach(doc2 => {
 
@@ -38,23 +50,18 @@ document.getElementById("dte").value = today;
             var yysp = dd.slice(10,14);
             var dtcon = yysp + "-" + mmsp + "-" + ddsp; 
 
-            // var time = doc2.data().User_T;
-            // var tsl = time.slice(6,9);
-            // // console.log(tsl == "AM")
-            // if (tsl == "AM"){
-            //     console.log(doc2.data().User_T)
-            // }
-            // console.log(doc2.data().User_T.slice(6,8))&& dte.value == dtcon
+            let trow = document.createElement('tr'); 
+            let t_ID = document.createElement('td');  
+            let td1 = document.createElement('td'); 
+            let td5 = document.createElement('td'); 
+            let td7 = document.createElement('td');
+            let td8 = document.createElement('td'); 
 
-            if(today == dtcon){
-                if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
-                if (doc2.data().User_Stat == "PENDING" ){
-                let trow = document.createElement('tr'); 
-                let t_ID = document.createElement('td');  
-                let td1 = document.createElement('td'); 
-                let td5 = document.createElement('td'); 
-                let td7 = document.createElement('td');
-                let td8 = document.createElement('td'); 
+
+if(localStorage.getItem("chngeDtApplstins") == null){
+    if(today == dtcon){
+        if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
+            if (doc2.data().User_Stat == "PENDING" ){
 
                 t_ID.innerHTML = doc2.data().User_AppID; 
                 td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
@@ -87,9 +94,48 @@ document.getElementById("dte").value = today;
                     trow.style.backgroundColor = "";
                     trow.style.color = "";
                  })
-                }
-         }
             }
-            
+        }
+    }
+}
+else{
+    if(changeDate == dtcon){
+        if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
+            if (doc2.data().User_Stat == "PENDING" ){
 
+                t_ID.innerHTML = doc2.data().User_AppID; 
+                td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
+                td5.innerHTML = doc2.data().User_TT;
+                td7.innerHTML = doc2.data().User_D;
+                td8.innerHTML = doc2.data().User_T;
+                
+                trow.appendChild(t_ID);
+                trow.appendChild(td1);
+                trow.appendChild(td5);
+                trow.appendChild(td7);
+                trow.appendChild(td8);
+
+                tbody.appendChild(trow);
+
+                trow.addEventListener('click', (e) =>{
+                    trow.style.backgroundColor = '#254894c0';
+                    trow.style.color = "white";
+                    localStorage.setItem('stat',doc2.data().User_AppID)    
+                    localStorage.setItem('ID', doc2.id)
+    
+                    window.location = "a_reqdatains.html";
+                });
+    
+                trow.addEventListener('mouseover',function(){
+                    trow.style.backgroundColor = 'rgb(218, 216, 216)';
+                    trow.style.color = "black";
+                 })
+                 trow.addEventListener('mouseleave',function(){
+                    trow.style.backgroundColor = "";
+                    trow.style.color = "";
+                 })
+            }
+        }
+    }
+}
 });

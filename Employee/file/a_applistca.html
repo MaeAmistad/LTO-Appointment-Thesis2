@@ -16,7 +16,7 @@
   </head>
   <body>
     <div class="grid-container">
-
+ 
       <!-- Header -->
       <header class="header">
         <div class="menu-icon" onclick="openSidebar()">
@@ -115,6 +115,7 @@
 
         <div class="date">
           <input type="date" id="dte">
+          <button id="srchdate">Change</button>
         </div>
 
       <div class="main2">
@@ -174,6 +175,16 @@
               }
           }
       }
+    </script>
+    <script>
+      var date = new Date();
+      var day = date.getDate();
+      var month = date.getMonth() + 1;
+      var year = date.getFullYear();
+      if (month < 10) month = "0" + month;
+      if (day < 10) day = "0" + day;
+      var today = year + "-" + month + "-" + day ;
+      document.getElementById("dte").setAttribute("min", today);
     </script>
   </body>
 </html>
