@@ -103,7 +103,7 @@ if(localStorage.getItem("chngeDtEx") == null){
                         t_ID.innerHTML = doc2.data().User_TransID; 
                         td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
                         td2.innerHTML = doc2.data().User_TT;
-                        td3.innerHTML = doc2.data().User_D;
+                        td3.innerHTML = doc2.data().User_AT;
 
                         trow.appendChild(t_ID);
                         trow.appendChild(td1);
@@ -138,7 +138,7 @@ if(localStorage.getItem("chngeDtEx") == null){
                         t_ID.innerHTML = doc2.data().User_TransID; 
                         td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
                         td2.innerHTML = doc2.data().User_TT;
-                        td3.innerHTML = doc2.data().User_D;
+                        td3.innerHTML = doc2.data().User_AT;
 
                         trow.appendChild(t_ID);
                         trow.appendChild(td1);
@@ -173,7 +173,7 @@ if(localStorage.getItem("chngeDtEx") == null){
                     t_ID.innerHTML = doc2.data().User_TransID; 
                     td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
                     td2.innerHTML = doc2.data().User_TT;
-                    td3.innerHTML = doc2.data().User_D;
+                    td3.innerHTML = doc2.data().User_AT;
 
                     trow.appendChild(t_ID);
                     trow.appendChild(td1);
@@ -250,7 +250,7 @@ else{
                         t_ID.innerHTML = doc2.data().User_TransID; 
                         td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
                         td2.innerHTML = doc2.data().User_TT;
-                        td3.innerHTML = doc2.data().User_D;
+                        td3.innerHTML = doc2.data().User_AT;
 
                         trow.appendChild(t_ID);
                         trow.appendChild(td1);
@@ -285,7 +285,7 @@ else{
                         t_ID.innerHTML = doc2.data().User_TransID; 
                         td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
                         td2.innerHTML = doc2.data().User_TT;
-                        td3.innerHTML = doc2.data().User_D;
+                        td3.innerHTML = doc2.data().User_AT;
 
                         trow.appendChild(t_ID);
                         trow.appendChild(td1);
@@ -320,7 +320,7 @@ else{
                     t_ID.innerHTML = doc2.data().User_TransID; 
                     td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
                     td2.innerHTML = doc2.data().User_TT;
-                    td3.innerHTML = doc2.data().User_D;
+                    td3.innerHTML = doc2.data().User_AT;
 
                     trow.appendChild(t_ID);
                     trow.appendChild(td1);
