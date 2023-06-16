@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../style/a_appntmntStatADC.css">
   </head>
   <body>
-    <div class="grid-container">
+    <div class="grid-container"> 
 
       <!-- Header -->
       <header class="header">
@@ -106,19 +106,20 @@
             <div class="main2">
                 <div class="dropdown-user">
                   <select id="user" onchange="user(this.value)">
-                    <option value="a_pcmvApprved.html">Evaluator</option>
-                    <option value="a_camvComp.html">Cashier</option>
-                    <option value="a_exmvPass.html" selected>Examiner</option>
+                    <option value="a_pcLIApprved.html" >Evaluator</option>
+                    <option value="a_inMVApprvd.html" selected>Inspector</option>
+                    <option value="a_caLIComp.html">Cashier</option>
+                    <!-- <option value="a_exLIPass.html">Examiner</option> -->
                   </select>
                 </div>
 
                 <div class="btnOptn">
-                    <button id="comp_btn">Passed</button>
+                    <button id="comp_btn" >Approved</button>
                 </div>
                 <div class="btnOptn">
-                    <button id="incomp_btn" style="background:#032d8983; color: white;">Failed</button>
+                    <button id="incomp_btn" style="background:#032d8983; color: white;">Disapproved</button>
                 </div>
-            </div>
+            </div> 
 
             <table class="content-table">
               <thead>
@@ -126,9 +127,9 @@
                 <th class="sp" colspan="5">Appointments</th>
               </tr>
               <tr>
-                    <th>Transaction ID.</th>
+                    <th>Application ID.</th>
                     <th>Full Name</th>
-                    <th>Transaction Type</th> 
+                    <th>Transaction Type</th>
                     <th>Date</th>      
                     <th>Time</th>  
               </tr> 
@@ -145,7 +146,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
 
-    <script type="module" src="../src/a_exmvFail.js"></script>
+    <script type="module" src="../src/a_inMVDispprvd.js"></script>
     <script src="../src/a_dashboard.js"></script>
     <script type="module" src="../src/a_logout.js"></script>
   </body>

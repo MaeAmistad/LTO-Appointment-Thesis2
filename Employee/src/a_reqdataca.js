@@ -9,18 +9,34 @@ cmplt.addEventListener('click',() => {
     blur.classList.toggle('active')
 });
 inc.addEventListener('click', () => {
-    document.getElementById('inc_modal').style.visibility = "visible"
+    document.getElementById('inc_modal').style.visibility = "visible" 
+    blur.classList.toggle('active')
+});
+delttr.addEventListener('click',() => {
+    document.getElementById('cnfrm_modal3').style.display = "block";
+    blur.classList.toggle('active')
+});
+edittr.addEventListener('click',() => {
+    document.getElementById('cnfrm_modal4').style.display = "block";
     blur.classList.toggle('active')
 });
 cnl1.addEventListener('click', () => {
     document.getElementById('complete_modal').style.visibility = "hidden"
     blur.classList.toggle('active')
-});
+}); 
 cnl2.addEventListener('click', () => {
     document.getElementById('inc_modal').style.visibility = "hidden"
     blur.classList.toggle('active')
 }); 
-
+cnl3.addEventListener('click',() => {
+    // window.location = "pc_reqdata.html";
+    document.getElementById('cnfrm_modal3').style.visibility = "hidden";
+    blur.classList.toggle('active')
+});
+cnl4.addEventListener('click',() => {
+    window.location = "a_reqdataca.html";
+    blur.classList.toggle('active')
+});
 // var tranID = localStorage.getItem("stat");
 // document.getElementById('tranID').innerHTML = tranID;
 
@@ -40,6 +56,30 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
+// EDIT VALUE
+let fned = document.getElementById("fnedit")
+let lned = document.getElementById("lnedit")
+let mned = document.getElementById("mnedit")
+let dobed = document.getElementById("dobedit")
+let gnrded = document.getElementById("gndredit")
+let added = document.getElementById("addedit")
+let emled = document.getElementById("emledit")
+let mnmed = document.getElementById("mnmedit")
+let ltmsed = document.getElementById("ltmsidedit")
+
+let pltnoed  = document.getElementById("pltno")
+let typed  = document.getElementById("type")
+let refed = document.getElementById("refrtypee")
+let yrmed  = document.getElementById("yr_mdl")
+let mksed  = document.getElementById("mksrs")
+let mtrned  = document.getElementById("mtrno")
+let chssned  = document.getElementById("chassno")
+let cled  = document.getElementById("color")
+let fled  = document.getElementById("fuel")
+let fileed  = document.getElementById("fileno")
+let dtred = document.getElementById("dtrgstrd")
+let depted  = document.getElementById("deptagncy")
 
 //get all data
     const querySnapshot2 = await getDocs(collection(db,"Applicants"));
@@ -66,9 +106,21 @@ const db = getFirestore(app);
 
                     document.getElementById("exmt").style.display = "none"
                     document.getElementById("et").style.display = "none"
-
+                    
+                    // DISPLAY EDIT INFO
+                    fned.value = doc2.data().User_FN;
+                    lned.value = doc2.data().User_LN;
+                    mned.value = doc2.data().User_MN;
+                    dobed.value = doc2.data().User_BD;
+                    gnrded.value = doc2.data().User_GN;
+                    added.value = doc2.data().User_ADD;
+                    emled.value = doc2.data().User_E;
+                    mnmed.value = doc2.data().User_CN;
+                    ltmsed.value = doc2.data().User_LTMS;
+                    // MV
                     document.getElementById('mv-table').style.display = "none";
                     document.getElementById('mvtitle').style.display = "none";
+                    document.getElementById('mvinfo').style.display = "none";
                 }
                 else if (doc2.data().User_TT == "LICENSING"){
                     if (doc2.data().User_Stat == "PASSED"){
@@ -86,12 +138,23 @@ const db = getFirestore(app);
                         document.getElementById("em").innerHTML = doc2.data().User_E;
                         document.getElementById("mnn").innerHTML = doc2.data().User_CN;
 
+                        // DISPLAY EDIT INFO
+                        fned.value = doc2.data().User_FN;
+                        lned.value = doc2.data().User_LN;
+                        mned.value = doc2.data().User_MN;
+                        dobed.value = doc2.data().User_BD;
+                        gnrded.value = doc2.data().User_GN;
+                        added.value = doc2.data().User_ADD;
+                        emled.value = doc2.data().User_E;
+                        mnmed.value = doc2.data().User_CN;
+                        ltmsed.value = doc2.data().User_LTMS;
+
                         document.getElementById('mv-table').style.display = "none";
-                        document.getElementById('mvtitle').style.display = "none"; 
+                        document.getElementById('mvtitle').style.display = "none";
+                        document.getElementById('mvinfo').style.display = "none";
 
                     }
                     else{
-
                         document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
                         document.getElementById("dof").innerHTML = doc2.data().User_BD;
                         document.getElementById("gndr").innerHTML = doc2.data().User_GN;
@@ -108,8 +171,20 @@ const db = getFirestore(app);
                         document.getElementById("exmt").style.display = "none"
                         document.getElementById("et").style.display = "none"
 
+                        // DISPLAY EDIT INFO
+                        fned.value = doc2.data().User_FN;
+                        lned.value = doc2.data().User_LN;
+                        mned.value = doc2.data().User_MN;
+                        dobed.value = doc2.data().User_BD;
+                        gnrded.value = doc2.data().User_GN;
+                        added.value = doc2.data().User_ADD;
+                        emled.value = doc2.data().User_E;
+                        mnmed.value = doc2.data().User_CN;
+                        ltmsed.value = doc2.data().User_LTMS;
+
                         document.getElementById('mv-table').style.display = "none";
                         document.getElementById('mvtitle').style.display = "none";
+                        document.getElementById('mvinfo').style.display = "none";
                     }
                 }
                 else if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
@@ -141,6 +216,34 @@ const db = getFirestore(app);
                     document.getElementById("laa2").style.display = "none"
                     document.getElementById("exmt").style.display = "none"
                     document.getElementById("et").style.display = "none"
+
+                    // DISPLAY EDIT INFO
+                    fned.value = doc2.data().User_FN;
+                    lned.value = doc2.data().User_LN;
+                    mned.value = doc2.data().User_MN;
+                    dobed.value = doc2.data().User_BD;
+                    gnrded.value = doc2.data().User_GN;
+                    added.value = doc2.data().User_ADD;
+                    emled.value = doc2.data().User_E;
+                    mnmed.value = doc2.data().User_CN;
+                    ltmsed.value = doc2.data().User_LTMS;
+
+                    pltnoed.value = doc2.data().pltno;
+                    typed.value = doc2.data().typel;
+                    yrmed.value = doc2.data().yr_modell;
+                    mksed.value = doc2.data().mksrs;
+                    mtrned.value = doc2.data().mtrno;
+                    chssned.value = doc2.data().chassno;
+                    cled.value = doc2.data().color;
+                    fled.value = doc2.data().fuel;
+                    fileed.value = doc2.data().fileno;
+                    dtred.value = doc2.data().dtrgstrd;
+                    depted.value = doc2.data().deptagncy;
+
+                    // MV EDIT INFO
+                    document.getElementById('cnfrm_modal4').style.marginTop = "-580px";
+                    document.getElementById('cnfrm_modal4').style.position = "relative";
+                    document.getElementById('cnfrm_modal4').style.zIndex = "999";
                 }
   
             }
@@ -332,6 +435,37 @@ const db = getFirestore(app);
                         window.location = "ca_homepage.html"
                     })
                 }
+            })
+
+            cnfrm3.addEventListener('click', (e) => {
+                if (stt == doc2.data().User_AppID){
+                    deleteDoc(doc(db, "Applicants", doc2.id)).then(() => {
+                        window.location = "a_appList.html"
+                    });
+                }
+                
+            })
+
+            cnfrm4.addEventListener('click', (e) => {
+                const updateStat = doc(db, "Applicants", doc2.id)
+                // To be Continued, Add MV info 
+                if (stt == doc2.data().User_AppID){
+                    updateDoc(updateStat, {
+                        User_LN: lned.value,
+                        User_FN: fned.value,
+                        User_MN: mned.value,
+                        User_BD: dobed.value,
+                        User_GN: gnrded.value,
+                        User_ADD: added.value,
+                        User_E: emled.value,
+                        User_CN: mned.value,
+                        User_LTMS: ltmsed.value
+                    }).then(() => {
+                        window.location = "a_reqdata.html"
+                        // console.log("EDIT")
+                    })
+                }
+                
             })
     });
 

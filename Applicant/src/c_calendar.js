@@ -1,3 +1,4 @@
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";;
 import { getFirestore, collection , query,where,getCountFromServer, getDocs } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";;
 
@@ -14,7 +15,20 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+// GETDOCS LOCATION
 const data = await getDocs(collection(db,"Applicants"))
+
+// DATE TODAY
+var date = new Date();
+var day = date.getDate();
+var month = date.getMonth() + 1;
+var year = date.getFullYear();
+if (month < 10) month = "0" + month;
+if (day < 10) day = "0" + day;
+var today = day + " - " + month + " - " + year ;
+
+// DISABLE SPECIFIC DATE
+var datesForDisable = [today];
 
 $(function () {
   var selectedDates = [];
@@ -27,6 +41,7 @@ $(function () {
       language: 'en',
       todayHighlight: true,
       daysOfWeekDisabled: [0, 6],
+      datesDisabled: datesForDisable
   });
   datePicker.on('changeDate', function() {
     var get_date =  $("#txtdate").val().toUpperCase();
@@ -152,8 +167,20 @@ $(function () {
               popup: 'animate__animated animate__fadeOutUp'
             }
           })
-      } else {
-          console.log(get_date);
+      } 
+      else if (localStorage.getItem("time") == null){
+        Swal.fire({
+          title: "No time selected",
+          confirmButtonColor: '#132aaa',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
+      }
+      else {
           localStorage.setItem("date",get_date);
           window.location = "c_Trnsctform.html";
       }
@@ -302,4 +329,88 @@ $(document).ready(function(){
 
 });
 
-
+// IF TIME IS NOT NULL
+var timme = localStorage.getItem("time")
+if (timme !== null){
+  if (timme == "08:00 AM"){
+    $(".td1").css("background-color","#032d89");
+    $(".td2").css("background-color","inherit");
+    $(".td3").css("background-color","inherit");
+    $(".td4").css("background-color","inherit");
+    $(".td5").css("background-color","inherit");
+    $(".td6").css("background-color","inherit");
+    $(".td7").css("background-color","inherit");
+    $(".td8").css("background-color","inherit");
+  }
+  else if(timme == "09:00 AM"){
+    $(".td1").css("background-color","inherit");
+    $(".td2").css("background-color","#032d89");
+    $(".td3").css("background-color","inherit");
+    $(".td4").css("background-color","inherit");
+    $(".td5").css("background-color","inherit");
+    $(".td6").css("background-color","inherit");
+    $(".td7").css("background-color","inherit");
+    $(".td8").css("background-color","inherit");
+  }
+  else if(timme == "10:00 AM"){
+    $(".td1").css("background-color","inherit");
+    $(".td2").css("background-color","inherit");
+    $(".td3").css("background-color","#032d89");
+    $(".td4").css("background-color","inherit");
+    $(".td5").css("background-color","inherit");
+    $(".td6").css("background-color","inherit");
+    $(".td7").css("background-color","inherit");
+    $(".td8").css("background-color","inherit");
+  }
+  else if(timme == "11:00 AM"){
+    $(".td1").css("background-color","inherit");
+    $(".td2").css("background-color","inherit");
+    $(".td3").css("background-color","inherit");
+    $(".td4").css("background-color","#032d89");
+    $(".td5").css("background-color","inherit");
+    $(".td6").css("background-color","inherit");
+    $(".td7").css("background-color","inherit");
+    $(".td8").css("background-color","inherit");
+    $(".td9").css("background-color","inherit");
+  }
+  else if(timme == "12:00 PM"){
+    $(".td1").css("background-color","inherit");
+    $(".td2").css("background-color","inherit");
+    $(".td3").css("background-color","inherit");
+    $(".td4").css("background-color","inherit");
+    $(".td5").css("background-color","#032d89");
+    $(".td6").css("background-color","inherit");
+    $(".td7").css("background-color","inherit");
+    $(".td8").css("background-color","inherit");
+  }
+  else if(timme == "01:00 PM"){
+    $(".td1").css("background-color","inherit");
+    $(".td2").css("background-color","inherit");
+    $(".td3").css("background-color","inherit");
+    $(".td4").css("background-color","inherit");
+    $(".td5").css("background-color","inherit");
+    $(".td6").css("background-color","#032d89");
+    $(".td7").css("background-color","inherit");
+    $(".td8").css("background-color","inherit");
+  }
+  else if(timme == "02:00 PM"){
+    $(".td1").css("background-color","inherit");
+    $(".td2").css("background-color","inherit");
+    $(".td3").css("background-color","inherit");
+    $(".td4").css("background-color","inherit");
+    $(".td5").css("background-color","inherit");
+    $(".td6").css("background-color","inherit");
+    $(".td7").css("background-color","#032d89");
+    $(".td8").css("background-color","inherit");
+  }
+  else if(timme == "03:00 PM"){
+    $(".td1").css("background-color","inherit");
+    $(".td2").css("background-color","inherit");
+    $(".td3").css("background-color","inherit");
+    $(".td4").css("background-color","inherit");
+    $(".td5").css("background-color","inherit");
+    $(".td6").css("background-color","inherit");
+    $(".td7").css("background-color","inherit");
+    $(".td8").css("background-color","#032d89");
+  }
+}

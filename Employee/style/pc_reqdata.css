@@ -41,7 +41,7 @@ body {
     margin-left: 80px;
 }
 #delttr{
-    background-color: #D0342C;
+    background-color: #D0342C; 
     color: white;
     /* border: none; */
 }
@@ -107,7 +107,7 @@ table td{
     background-color: white; 
     user-select: none;
     border: 1px solid #b3b3b3;
-    box-shadow: 5px 5px 5px rgb(70, 69, 69);
+    box-shadow: 5px 5px 5px rgb(70, 69, 69); 
     color: black;
     padding: 20px;
     display: none;

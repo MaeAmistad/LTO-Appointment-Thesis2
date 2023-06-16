@@ -22,7 +22,7 @@ var tbody = document.getElementById('tbody1');
 document.getElementById('dte').addEventListener('change', (e) => {
     changeDate = document.getElementById('dte').value
     localStorage.setItem('chngeDtApplstex',changeDate)
-});
+}); 
 // GET DATA FROM LOCALSTORAGE
 srchdate.addEventListener('click',() => {
     localStorage.getItem('chngeDtApplstex')
@@ -55,7 +55,7 @@ querySnapshot2.forEach(doc2 => {
     let td3 = document.createElement('td');
     let td4 = document.createElement('td'); 
 
-if(localStorage.getItem("chngeDtApplstca") == null){
+if(localStorage.getItem("chngeDtApplstex") == null){
     if(today == dtcon){
         if(doc2.data().User_TT == "LICENSING"){
             if(doc2.data().User_Laa == "DRIVER'S LICENSE" ){

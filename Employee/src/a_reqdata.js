@@ -5,7 +5,7 @@ bck.addEventListener('click',() => {
 var blur = document.getElementById('blur');
 
 apprd.addEventListener('click',() => {
-    document.getElementById('cnfrm_modal').style.visibility = "visible";
+    document.getElementById('cnfrm_modal').style.visibility = "visible"; 
     blur.classList.toggle('active')
 });
 dclnd.addEventListener('click',() => {
@@ -278,7 +278,7 @@ let depted  = document.getElementById("deptagncy")
                     })
                 }
             })
-            // to be continued 
+            // to be continued  
             cnfrm3.addEventListener('click', (e) => {
                 if (stt == doc2.data().User_AppID){
                     deleteDoc(doc(db, "Applicants", doc2.id)).then(() => {

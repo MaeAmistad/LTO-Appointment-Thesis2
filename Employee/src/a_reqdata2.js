@@ -41,6 +41,8 @@ const db = getFirestore(app);
                     document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
                     document.getElementById("em").innerHTML = doc2.data().User_E;
                     document.getElementById("mnn").innerHTML = doc2.data().User_CN;
+                    document.getElementById("mv-table").style.display = "none"
+                    document.getElementById("mvtitle").style.display = "none"
                 }
                 else if (doc2.data().User_TT == "LICENSING"){
                     document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
@@ -55,6 +57,8 @@ const db = getFirestore(app);
                     document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
                     document.getElementById("em").innerHTML = doc2.data().User_E;
                     document.getElementById("mnn").innerHTML = doc2.data().User_CN;
+                    document.getElementById("mv-table").style.display = "none"
+                    document.getElementById("mvtitle").style.display = "none"
                 }
                 else if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
                     document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
@@ -69,8 +73,24 @@ const db = getFirestore(app);
                     document.getElementById("em").innerHTML = doc2.data().User_E;
                     document.getElementById("mnn").innerHTML = doc2.data().User_CN;
 
+                    document.getElementById("plate_num").innerHTML = doc2.data().pltno;
+                    document.getElementById("typee").innerHTML = doc2.data().typel;
+                    document.getElementById("reftypee").innerHTML = doc2.data().refrigerant_typ;
+                    document.getElementById("yrmdl").innerHTML = doc2.data().yr_modell;
+                    document.getElementById("mk_seris").innerHTML = doc2.data().mksrs;
+                    document.getElementById("mot_num").innerHTML = doc2.data().mtrno; 
+                    document.getElementById("cha_num").innerHTML = doc2.data().chassno;
+                    document.getElementById("colorr").innerHTML = doc2.data().color;
+                    document.getElementById("fuell").innerHTML = doc2.data().fuel;
+                    document.getElementById("filno").innerHTML = doc2.data().fileno;
+                    document.getElementById("dt_reg").innerHTML = doc2.data().dtrgstrd;
+                    document.getElementById("deptAgncy").innerHTML = doc2.data().deptagncy;
+                    document.getElementById("transctionmv").innerHTML = doc2.data().trnsctn;
+
                     document.getElementById("laa").style.display = "none"
                     document.getElementById("laa2").style.display = "none"
+                    document.getElementById("exmt").style.display = "none"
+                    document.getElementById("et").style.display = "none"
                 }
 
                 document.getElementById("trnsctnID").style.display = "none"
@@ -92,6 +112,9 @@ const db = getFirestore(app);
                     document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
                     document.getElementById("em").innerHTML = doc2.data().User_E;
                     document.getElementById("mnn").innerHTML = doc2.data().User_CN;
+
+                    document.getElementById("mv-table").style.display = "none"
+                    document.getElementById("mvtitle").style.display = "none"
                 }
                 else if (doc2.data().User_TT == "LICENSING"){
                     if (doc2.data().User_Stat == "PASSED"){
@@ -108,7 +131,8 @@ const db = getFirestore(app);
                         document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
                         document.getElementById("em").innerHTML = doc2.data().User_E;
                         document.getElementById("mnn").innerHTML = doc2.data().User_CN;
-
+                        document.getElementById("mv-table").style.display = "none"
+                        document.getElementById("mvtitle").style.display = "none"
                     }
                     else{
                         document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
@@ -126,6 +150,7 @@ const db = getFirestore(app);
 
                         document.getElementById("exmt").style.display = "none"
                         document.getElementById("et").style.display = "none"
+                        document.getElementById("mv-table").style.display = "none"
                     }
                 }
                 else if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
@@ -149,6 +174,9 @@ const db = getFirestore(app);
                 document.getElementById("aID").style.display = "none"
 
             }
+            // if(){
+
+            // }
 
     });
 
