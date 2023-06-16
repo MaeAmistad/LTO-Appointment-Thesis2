@@ -1,17 +1,24 @@
 bck.addEventListener('click',() => {
     window.location = "a_reqdataex.html";
 });
+
+var blur = document.getElementById('blur');
+
 cmplt.addEventListener('click',() => {
     document.getElementById('complete_modal').style.visibility = "visible"
+    blur.classList.toggle('active')
 });
 inc.addEventListener('click', () => {
     document.getElementById('inc_modal').style.visibility = "visible"
+    blur.classList.toggle('active')
 });
 cnl1.addEventListener('click', () => {
     document.getElementById('complete_modal').style.visibility = "hidden"
+    blur.classList.toggle('active')
 });
 cnl2.addEventListener('click', () => {
     document.getElementById('inc_modal').style.visibility = "hidden"
+    blur.classList.toggle('active')
 });
 // var tranID = localStorage.getItem("stat");
 // document.getElementById('tranID').innerHTML = tranID;

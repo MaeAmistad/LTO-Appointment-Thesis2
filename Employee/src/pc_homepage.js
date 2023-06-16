@@ -187,7 +187,7 @@ else{
         trow.appendChild(td7);
         trow.appendChild(td8);
 
-        tbody.appendChild(trow);
+        tbody.appendChild(trow); 
 
         trow.addEventListener('click', (e) =>{
             trow.style.backgroundColor = '#254894c0';

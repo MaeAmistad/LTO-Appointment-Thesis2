@@ -91,8 +91,6 @@ const querySnapshot = await getDocs(collection(db, "Users", "Employee", "Employe
 
 // window.onload = GetAllDataOnce;
 
-
-
 document.getElementById("edit_acc").disabled = true;
 document.getElementById("delete_acc").disabled = true;
 

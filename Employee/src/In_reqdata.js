@@ -13,7 +13,7 @@ bck.addEventListener('click',() => {
     localStorage.removeItem("ui11");
     localStorage.removeItem("ui12");
     localStorage.removeItem("ui13");
-}); 
+});  
  
 // BLUR BG
 var blur = document.getElementById('blur');
