@@ -83,7 +83,6 @@ h1{
   border-radius: 5px;
   letter-spacing: 0.1ch;
 }
-
 .change_pass_btn{
     height: 40px;
     width: 70%;
@@ -125,8 +124,6 @@ h1{
     top: 55.5%;
     cursor: pointer;
   }
-
-
 .form-validation p{
     font-size: 11px;
     color: var(--errorColor);
@@ -166,7 +163,6 @@ h1{
     letter-spacing: 3px;
     text-align: center;
   }
-
   .btn button{
     padding: 4px;
     width: 100px; 
@@ -199,15 +195,12 @@ h1{
     user-select: none;
 }
 .info #error1{
-    display:block;
+    /* display:none; */
     color: black;
     font-size: 14px;
     font-weight: 30px;
-    height: 13px;
     width: 390px;
-    margin-bottom: 10px;
     text-align: justify;
-    position: absolute;
 }
 .info #lowercase{
     display:none;
@@ -216,7 +209,7 @@ h1{
     font-weight: 30px;
     height: 13px;
     width: 400px;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
 }
 .info #uppercase{
     display:none;
@@ -225,7 +218,7 @@ h1{
     font-weight: 30px;
     height: 13px;
     width: 400px;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
 }
 .info #num{
     display:none;
@@ -234,7 +227,7 @@ h1{
     font-weight: 30px;
     height: 13px;
     width: 400px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 .info #spclchrctr{
     display:none;
@@ -243,7 +236,7 @@ h1{
     font-weight: 30px;
     height: 13px;
     width: 400px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 .info #length{
     display:none;
@@ -252,5 +245,5 @@ h1{
     font-weight: 30px;
     height: 13px;
     width: 400px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }

@@ -5,7 +5,7 @@ bck.addEventListener('click',() => {
     localStorage.removeItem("ui2");
     localStorage.removeItem("ui3");
     localStorage.removeItem("ui4"); 
-    localStorage.removeItem("ui5");
+    localStorage.removeItem("ui5"); 
     localStorage.removeItem("ui6");
     localStorage.removeItem("ui7");
     localStorage.removeItem("ui8");
@@ -13,27 +13,194 @@ bck.addEventListener('click',() => {
     localStorage.removeItem("ui11");
     localStorage.removeItem("ui12");
     localStorage.removeItem("ui13");
-}); 
+});  
  
+// BLUR BG
+var blur = document.getElementById('blur');
+
 apprd.addEventListener('click',() => {
+    if (localStorage.getItem("ui1") == null && localStorage.getItem("ui2") == null && localStorage.getItem("ui12") == null && localStorage.getItem("ui3") == null &&localStorage.getItem("ui4") == null &&localStorage.getItem("ui5") == null &&localStorage.getItem("ui6") == null &&localStorage.getItem("ui7") == null &&localStorage.getItem("ui8") == null &&localStorage.getItem("ui9") == null &&localStorage.getItem("ui11") == null) {
+      Swal.fire({
+          title: "Motor Vehicle Info is Empty!",
+          confirmButtonColor: '#132aaa',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
+  }
+  else if (localStorage.getItem("ui1") == null){
+      Swal.fire({
+          title: "PLate Number is Empty!",
+          confirmButtonColor: '#132aaa',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
+  }
+  else if (localStorage.getItem("ui2") == null){
+      Swal.fire({
+          title: "Type is Empty!",
+          confirmButtonColor: '#132aaa',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
+  }
+  else if (localStorage.getItem("ui3") == null){
+      Swal.fire({
+          title: "Make/Series is Empty!",
+          confirmButtonColor: '#132aaa',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
+  }
+  else if (localStorage.getItem("ui4") == null){
+      Swal.fire({
+          title: "Motor Number is Empty!",
+          confirmButtonColor: '#132aaa',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
+  }
+  else if (localStorage.getItem("ui5") == null){
+      Swal.fire({
+          title: "Chassis Number is Empty!",
+          confirmButtonColor: '#132aaa',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
+  }
+  else if (localStorage.getItem("ui6") == null){
+      Swal.fire({
+          title: "Color is Empty!",
+          confirmButtonColor: '#132aaa',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
+  }
+  else if (localStorage.getItem("ui7") == null){
+      Swal.fire({
+          title: "Fuel is Empty!",
+          confirmButtonColor: '#132aaa',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
+  }
+  else if (localStorage.getItem("ui8") == null){
+      Swal.fire({
+          title: "File Number is Empty!",
+          confirmButtonColor: '#132aaa',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
+  }
+  else if (localStorage.getItem("ui9") == null){
+      Swal.fire({
+          title: "Date Registered is Empty!",
+          confirmButtonColor: '#132aaa',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
+  }
+  else if (localStorage.getItem("ui11") == null){
+      Swal.fire({
+          title: "Dept./Agency is Empty!",
+          confirmButtonColor: '#132aaa',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
+  }
+  else if (localStorage.getItem("ui12") == null){
+      Swal.fire({
+          title: "Refrigerant Type is Empty!",
+          confirmButtonColor: '#132aaa',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
+  }
+  else if (localStorage.getItem("ui13") == null){
+      Swal.fire({
+          title: "Year Model is Empty!",
+          confirmButtonColor: '#132aaa',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
+  }
+  else{
     document.getElementById('cnfrm_modal').style.visibility = "visible";
     document.getElementById('cnfrm_modal2').style.visibility = "hidden";
+    blur.classList.toggle('active')
+  }
 });
 dclnd.addEventListener('click',() => {
     document.getElementById('cnfrm_modal2').style.visibility = "visible";
     document.getElementById('cnfrm_modal').style.visibility = "hidden";
+    blur.classList.toggle('active')
 });
 mvinfo.addEventListener('click',() => {
     document.getElementById('addinf').style.visibility = "visible";
+    blur.classList.toggle('active')
 });
 cnl.addEventListener('click',() => {
     document.getElementById('cnfrm_modal').style.visibility = "hidden";
+    blur.classList.toggle('active')
 });
 cnl2.addEventListener('click',() => {
     document.getElementById('cnfrm_modal2').style.visibility = "hidden";
+    blur.classList.toggle('active')
 });
 cnl3.addEventListener('click',() => {
     document.getElementById('addinf').style.visibility = "hidden";
+    blur.classList.toggle('active')
 });
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
@@ -80,150 +247,150 @@ add.addEventListener('click',() => {
             }
           })
     }
-    // else if (pltno == ""){
-    //     Swal.fire({
-    //         title: "Plate Number is Empty",
-    //         confirmButtonColor: '#132aaa',
-    //         showClass: {
-    //           popup: 'animate__animated animate__fadeInDown'
-    //         },
-    //         hideClass: {
-    //           popup: 'animate__animated animate__fadeOutUp'
-    //         }
-    //       })
-    // }
-    // else if (type == ""){
-    //     Swal.fire({
-    //         title: "Type is Empty",
-    //         confirmButtonColor: '#132aaa',
-    //         showClass: {
-    //           popup: 'animate__animated animate__fadeInDown'
-    //         },
-    //         hideClass: {
-    //           popup: 'animate__animated animate__fadeOutUp'
-    //         }
-    //       })
-    // }
-    // else if (refrigernt_typ == "SELECT:"){
-    //     Swal.fire({
-    //         title: "Refrigerant Type is Empty",
-    //         confirmButtonColor: '#132aaa',
-    //         showClass: {
-    //           popup: 'animate__animated animate__fadeInDown'
-    //         },
-    //         hideClass: {
-    //           popup: 'animate__animated animate__fadeOutUp'
-    //         }
-    //       })
-    // }
-    // else if (yr_mdl == ""){
-    //     Swal.fire({
-    //         title: "Year Model is Empty",
-    //         confirmButtonColor: '#132aaa',
-    //         showClass: {
-    //           popup: 'animate__animated animate__fadeInDown'
-    //         },
-    //         hideClass: {
-    //           popup: 'animate__animated animate__fadeOutUp'
-    //         }
-    //       })
-    // }
-    // else if (mksrs == ""){
-    //     Swal.fire({
-    //         title: "Make/Series is Empty",
-    //         confirmButtonColor: '#132aaa',
-    //         showClass: {
-    //           popup: 'animate__animated animate__fadeInDown'
-    //         },
-    //         hideClass: {
-    //           popup: 'animate__animated animate__fadeOutUp'
-    //         }
-    //       })
-    // }
-    // else if (mtrno == ""){
-    //     Swal.fire({
-    //         title: "Motor Number is Empty",
-    //         confirmButtonColor: '#132aaa',
-    //         showClass: {
-    //           popup: 'animate__animated animate__fadeInDown'
-    //         },
-    //         hideClass: {
-    //           popup: 'animate__animated animate__fadeOutUp'
-    //         }
-    //       })
-    // }
-    // else if (chassno == ""){
-    //     Swal.fire({
-    //         title: "Chassis Number is Empty",
-    //         confirmButtonColor: '#132aaa',
-    //         showClass: {
-    //           popup: 'animate__animated animate__fadeInDown'
-    //         },
-    //         hideClass: {
-    //           popup: 'animate__animated animate__fadeOutUp'
-    //         }
-    //       })
-    // }
-    // else if (color == ""){
-    //     Swal.fire({
-    //         title: "Color is Empty",
-    //         confirmButtonColor: '#132aaa',
-    //         showClass: {
-    //           popup: 'animate__animated animate__fadeInDown'
-    //         },
-    //         hideClass: {
-    //           popup: 'animate__animated animate__fadeOutUp'
-    //         }
-    //       })
-    // }
-    // else if (fuel == ""){
-    //     Swal.fire({
-    //         title: "Fuel is Empty",
-    //         confirmButtonColor: '#132aaa',
-    //         showClass: {
-    //           popup: 'animate__animated animate__fadeInDown'
-    //         },
-    //         hideClass: {
-    //           popup: 'animate__animated animate__fadeOutUp'
-    //         }
-    //       })
-    // }
-    // else if (fileno == ""){
-    //     Swal.fire({
-    //         title: "File Number is Empty",
-    //         confirmButtonColor: '#132aaa',
-    //         showClass: {
-    //           popup: 'animate__animated animate__fadeInDown'
-    //         },
-    //         hideClass: {
-    //           popup: 'animate__animated animate__fadeOutUp'
-    //         }
-    //       })
-    // }
-    // else if (dtrgstrd == ""){
-    //     Swal.fire({
-    //         title: "Date Registered is Empty",
-    //         confirmButtonColor: '#132aaa',
-    //         showClass: {
-    //           popup: 'animate__animated animate__fadeInDown'
-    //         },
-    //         hideClass: {
-    //           popup: 'animate__animated animate__fadeOutUp'
-    //         }
-    //       })
-    // }
-    // else if (deptagncy == ""){
-    //     Swal.fire({
-    //         title: "Dept/Agency is Empty",
-    //         confirmButtonColor: '#132aaa',
-    //         showClass: {
-    //           popup: 'animate__animated animate__fadeInDown'
-    //         },
-    //         hideClass: {
-    //           popup: 'animate__animated animate__fadeOutUp'
-    //         }
-    //       })
-    // }
+    else if (pltno == ""){
+        Swal.fire({
+            title: "Plate Number is Empty",
+            confirmButtonColor: '#132aaa',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
+    }
+    else if (type == ""){
+        Swal.fire({
+            title: "Type is Empty",
+            confirmButtonColor: '#132aaa',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
+    }
+    else if (refrigernt_typ == "SELECT:"){
+        Swal.fire({
+            title: "Refrigerant Type is Empty",
+            confirmButtonColor: '#132aaa',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
+    }
+    else if (yr_mdl == ""){
+        Swal.fire({
+            title: "Year Model is Empty",
+            confirmButtonColor: '#132aaa',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
+    }
+    else if (mksrs == ""){
+        Swal.fire({
+            title: "Make/Series is Empty",
+            confirmButtonColor: '#132aaa',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
+    }
+    else if (mtrno == ""){
+        Swal.fire({
+            title: "Motor Number is Empty",
+            confirmButtonColor: '#132aaa',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
+    }
+    else if (chassno == ""){
+        Swal.fire({
+            title: "Chassis Number is Empty",
+            confirmButtonColor: '#132aaa',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
+    }
+    else if (color == ""){
+        Swal.fire({
+            title: "Color is Empty",
+            confirmButtonColor: '#132aaa',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
+    }
+    else if (fuel == ""){
+        Swal.fire({
+            title: "Fuel is Empty",
+            confirmButtonColor: '#132aaa',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
+    }
+    else if (fileno == ""){
+        Swal.fire({
+            title: "File Number is Empty",
+            confirmButtonColor: '#132aaa',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
+    }
+    else if (dtrgstrd == ""){
+        Swal.fire({
+            title: "Date Registered is Empty",
+            confirmButtonColor: '#132aaa',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
+    }
+    else if (deptagncy == ""){
+        Swal.fire({
+            title: "Dept/Agency is Empty",
+            confirmButtonColor: '#132aaa',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
+    }
     else{
         localStorage.setItem("ui1",pltno);
         localStorage.setItem("ui2",type);
@@ -239,7 +406,6 @@ add.addEventListener('click',() => {
         localStorage.setItem("ui13",yr_mdl);
 
         window.location = "In_reqdata.html" 
-
     }
 
 });
@@ -248,7 +414,7 @@ add.addEventListener('click',() => {
 
     var transID = localStorage.getItem("stat");
     var ID = localStorage.getItem("ID");
-    console.log(ID)
+
             function makeid(l)
             {
             var text = "";
@@ -275,8 +441,6 @@ add.addEventListener('click',() => {
             var trnidmvr ="LTO-MVR-" + yy+mmm+ddd+hhh+mnn+makeid(2);
         querySnapshot2.forEach(doc2 => {
             
-
-
             if (transID == doc2.data().User_AppID){
 
                     if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
@@ -303,20 +467,7 @@ add.addEventListener('click',() => {
                 const updateStat = doc(db, "Applicants", doc2.id)
                 var stt = localStorage.getItem("stat")
             
-                if (localStorage.getItem("ui1") == null && localStorage.getItem("ui2") == null && localStorage.getItem("ui12") == null && localStorage.getItem("ui3") == null &&localStorage.getItem("ui4") == null &&localStorage.getItem("ui5") == null &&localStorage.getItem("ui6") == null &&localStorage.getItem("ui7") == null &&localStorage.getItem("ui8") == null &&localStorage.getItem("ui9") == null &&localStorage.getItem("ui11") == null) {
-                    Swal.fire({
-                        title: "Motor Vehicle Info is Empty!",
-                        confirmButtonColor: '#132aaa',
-                        showClass: {
-                          popup: 'animate__animated animate__fadeInDown'
-                        },
-                        hideClass: {
-                          popup: 'animate__animated animate__fadeOutUp'
-                        }
-                      })
-                }
-                else{
-                    if (stt == doc2.data().User_AppID){
+                    if (stt == doc2.data().User_AppID){   
                         updateDoc(updateStat, {
                             User_Stat1: "APPROVED_TO_PROCEED",
                             User_Stat: "APPROVED_TO_PROCEED",
@@ -351,10 +502,7 @@ add.addEventListener('click',() => {
                             window.location = "In_homepage.html" 
                         })
                     }
-                }
-                    
-
-            }) 
+          }) 
 
             cnfrm2.addEventListener('click', (e) => {
                 const updateStat = doc(db, "Applicants", doc2.id)

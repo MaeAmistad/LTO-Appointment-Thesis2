@@ -10,7 +10,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-    <div class="main">
+    <div class="main" id="blur">
         <div class="tranID">
             <p id="tranID"></p>
 
@@ -18,7 +18,7 @@
               <p>Applicant's Information</p>
               <tr>
                 <td>Full Name:</td>
-                <td id="ln">-</td> 
+                <td id="ln">-</td>  
               </tr>
     
               <tr>
@@ -154,7 +154,6 @@
               <td id="mnn">-</td> 
             </tr>
           </table>
-
         </div>
 
         <div class="btn">
@@ -167,9 +166,8 @@
             <div>
               <button id="apprd">Approved</button>
             </div>
-
         </div>
-    </div>
+  </div>
 
     <div class="cnfrm_modal" id="cnfrm_modal">
       <h1>Application Approval</h1>
@@ -179,25 +177,18 @@
               <button id="cnl">Cancel</button>
               <button id="cnfrm">Confirm</button>
           </div>
-      </div>
-  </div>
-
-  <div class="cnfrm_modal2" id="cnfrm_modal2"> 
-    <h1>Application Approval</h1>
-    <p>Declined Application?</p>
-
-        <div class="btn2">
-            <button id="cnl2">Cancel</button>
-            <button id="cnfrm2">Confirm</button>
-        </div>
     </div>
-  </div>
 
+    <div class="cnfrm_modal2" id="cnfrm_modal2"> 
+      <h1>Application Approval</h1>
+      <p>Declined Application?</p>
 
+          <div class="btn2">
+              <button id="cnl2">Cancel</button>
+              <button id="cnfrm2">Confirm</button>
+          </div>
+    </div>
 
-
-
-</div>
 <script type="module" src="../src/pc_reqdata.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
 
-body {
+body { 
     margin: 0; 
     padding: 0;
     box-sizing: border-box;
@@ -34,11 +34,21 @@ body {
 .btn{
     display: flex;
 }
-#dclnd{
-    margin-left: 520px;
+.btnn{
+    margin-left: 33%;
 }
 #bck{
     margin-left: 80px;
+}
+#delttr{
+    background-color: #D0342C;
+    color: white;
+    /* border: none; */
+}
+#apprd{
+    background-color: rgb(19, 42, 172);
+    color: white;
+    /* border: none; */
 }
 p{
     font-size: 25px;
@@ -54,7 +64,7 @@ table td{
 .cnfrm_modal,.cnfrm_modal2{
     width: 550px;
     /* height: 200px; */
-    background-color: white;
+    background-color: white; 
     user-select: none;
     border: 1px solid #b3b3b3;
     box-shadow: 5px 5px 5px rgb(70, 69, 69);
@@ -67,7 +77,11 @@ table td{
     transform: translate(-50%, -50%);
     transition: transform 0.4s, top 0.4s;
 }
-
+.main#blur.active{
+    filter: blur(10px);
+    pointer-events: none;
+    user-select: none;
+}
 .info{
     display: flex;
     padding: 5px;
@@ -86,6 +100,55 @@ table td{
 #cnl, #cnl2{
     margin-left: 300px;
 }
+
+/* Admin Transaction */
+.cnfrm_modal3,.cnfrm_modal4{
+    width: 550px;
+    background-color: white; 
+    user-select: none;
+    border: 1px solid #b3b3b3;
+    box-shadow: 5px 5px 5px rgb(70, 69, 69);
+    color: black;
+    padding: 20px;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.4s, top 0.4s;
+    margin-bottom: 25px;
+} 
+/* .cnfrm_modal4{
+    margin-top: -750px; 
+    position: relative;
+    z-index: 999;
+} */
+.cnfrm_modal3 h1, .cnfrm_modal4 h1{
+    letter-spacing: 3px;
+    text-align: center;
+}
+.cnfrm_modal3 p,.cnfrm_modal4 p{
+    font-weight: 500;
+    letter-spacing: 3px;
+}
+#cnl3, #cnl4{
+    margin-left: 300px;
+}
+.basicinfo input, .basicinfo select{
+    outline: none;
+    margin-left: auto;
+    width: 50%;
+    height: 25px;
+    text-transform: uppercase;
+}
+.basicinfo select{
+    width: 51.7%;
+    height: 30px;
+}
+.info{
+    display: flex;
+    padding: 5px;
+}
 @media only screen and (max-width: 1200px){
     
     .main, .main2 {
@@ -99,9 +162,6 @@ table td{
      }
   
     }
-   
-
-  
   @media only screen and (min-width: 1525px){
     .box{
         margin-left: 430px;

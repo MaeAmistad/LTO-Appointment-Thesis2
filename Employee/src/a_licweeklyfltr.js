@@ -35,7 +35,7 @@ bcklic.addEventListener('click' , () => {
             var year = dt.getFullYear();
             if (month < 10) month = "0" + month;
             if (day < 10) day = "0" + day;
-            var today = day + "-" + month + "-" + year; 
+            var today = day + " - " + month + " - " + year; 
             
             dates.push(today); 
             date.setDate(date.getDate() + 1);
@@ -337,7 +337,7 @@ bcklic.addEventListener('click' , () => {
   var DLPI = localStorage.getItem("totl_dlpiwk");
   var MSCN = localStorage.getItem("mscntotalwk"); 
   
-  document.getElementById("num_current_licttal").innerHTML = AEtotl + dpchtotl + parseInt(DLPI) + parseInt(MSCN);
+  document.getElementById("num_current_licttal").innerHTML = dpchtotl;
   var barChartOptions = {
     series: [{
       name: "TOTAL",

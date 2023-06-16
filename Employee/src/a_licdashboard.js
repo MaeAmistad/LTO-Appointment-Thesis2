@@ -30,7 +30,7 @@ var month = date.getMonth() + 1;
 var year = date.getFullYear();
 if (month < 10) month = "0" + month;
 if (day < 10) day = "0" + day;
-var today = day + "-" + month + "-" + year;  
+var today = day + " - " + month + " - " + year;  
 
 // Applicants Examined Bar chart
 
@@ -312,7 +312,7 @@ var dpchtotl = parseInt(localStorage.getItem("dlch_cnt1")) + parseInt(localStora
 var DLPI = localStorage.getItem("totl_dlpi");
 var MSCN = localStorage.getItem("mscntotal"); 
 
-document.getElementById("num_current_licttal").innerHTML = AEtotl + dpchtotl + parseInt(DLPI) + parseInt(MSCN);
+document.getElementById("num_current_licttal").innerHTML = dpchtotl;
 var barChartOptions = {
   series: [{
     name: "TOTAL",

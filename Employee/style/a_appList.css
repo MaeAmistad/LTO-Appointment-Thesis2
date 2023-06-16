@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
-*
+* 
 {
     margin: 0;
     padding: 0;
@@ -209,19 +209,39 @@ img{
     padding: 3px;
     border: 1px solid black;
 }
-
 .date{  
   margin-top: 13px;
 }
 .date input{
     width: 150px;
     padding: 5px 15px;
-    margin-left: 900px;
+    margin-left: 63%;
     border-radius: 5px;
     outline: none;
     border: none;
 }
-
+.date button{
+  width: 90px;
+  padding: 8px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 35px;
+  margin-left: 5px;
+}
+/* #srchText{
+  outline: none;
+  border: 1px solid grey;
+  width: 350px;
+  height: 30px;
+  font-size: 15px;
+  margin-top: 10px;
+  margin-left: 72%;
+  border-radius: 5px;
+  padding-left: 5px;
+  text-transform: uppercase;
+  /* margin-bottom: 10px; */
+/*  }  */
 .dropdown-user{
   margin-left: 10px;
   margin-top: 20px;
@@ -244,7 +264,6 @@ img{
   text-transform: uppercase;
   /* margin-bottom: 10px; */
 }
-
     /* Medium <= 992px */
   @media screen and (max-width: 992px) {
     .grid-container {
@@ -254,7 +273,6 @@ img{
         "header"
         "main";
     }
-  
     #sidebar {
       display: none;
     }
@@ -281,24 +299,19 @@ img{
       width: 80%;
       max-width: fit-content;
       max-height: fit-content;
-    
-      
     }
     .table-wrapper {
-    
       overflow-y: scroll;
       overflow-x: scroll;
       height: fit-content;
       max-height: 66.4vh;
-      margin-top: 22px;
+      margin-top: 22px; 
       margin: 15px;
       padding-bottom: 20px;
       
     }
     .content-table{
       width: 150%;
-
-    
   }
   .date{  
     margin-top: 13px;

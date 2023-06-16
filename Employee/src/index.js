@@ -77,15 +77,16 @@ form.addEventListener('submit',(e) =>{
 
   else{
 
-    if(email.value == docSnap.data().username && password.value == docSnap.data().password){
+    if(email.value.toUpperCase()== docSnap.data().username && password.value == docSnap.data().password){
       window.location = "a_dashboard.html";
+      // console.log(email)
     }
 
     querySnapshot.forEach(doc => {
 
       console.log(doc.data().user_E)
 
-      if(doc.data().user_E === email.value && doc.data().user_PWD === password.value){
+      if(doc.data().user_E === email.value.toUpperCase() && doc.data().user_PWD === password.value){
         
         if(doc.data().user_Type == "CASHIER" && doc.data().user_Status == "Enabled"){
           signInWithEmailAndPassword(auth, email.value, password.value)

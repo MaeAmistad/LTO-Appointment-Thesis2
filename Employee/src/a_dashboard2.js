@@ -1,5 +1,4 @@
 // ---------- CHARTS ----------
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
 import { getFirestore, query, collection,getCountFromServer,where, getDocs } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
 
@@ -24,7 +23,7 @@ var month = date.getMonth() + 1;
 var year = date.getFullYear();
 if (month < 10) month = "0" + month;
 if (day < 10) day = "0" + day;
-var today = day + "-" + month + "-" + year;       
+var today = day + " - " + month + " - " + year;       
 
 // Time Today
 var now = new Date()
@@ -122,7 +121,7 @@ license.forEach((doc) => {
 
 // For Monthly Area Chart
 let dd = doc.data().dt_App;
-let mmsp = dd.slice(3,5); 
+var mmsp = dd.slice(5,7);
 
   if (mmsp == "04"){
     let mm11 = mmlic1+=1;
@@ -155,7 +154,7 @@ mv.forEach((doc) => {
 
 // For Monthly Area Chart
 let dd = doc.data().dt_App;
-let mmsp = dd.slice(3,5);
+var mmsp = dd.slice(5,7);
 
   if (mmsp == "04"){
     let mv11 = mmv1+=1;
@@ -239,14 +238,20 @@ var barChartOptions = {
 
 // MONTHLY count of appointment CHART
 
+// PAST CODE
+//  localStorage.getItem("mm_cnt1") 
+// localStorage.getItem("mm_cnt2")
+// localStorage.getItem("mmv_cnt1")
+// localStorage.getItem("mmv_cnt2")
+
 // AREA CHART
 var areaChartOptions = {
   series: [{
     name: 'Licensing',
-    data: [0, 0, 0, localStorage.getItem("mm_cnt1") ,localStorage.getItem("mm_cnt2"),localStorage.getItem("mm_cnt3")]
+    data: [0, 0, 0,0,0,localStorage.getItem("mm_cnt3")]
   }, {
     name: 'Motor Vehicle Registration',
-    data: [0, 0, 0,    localStorage.getItem("mmv_cnt1"),localStorage.getItem("mmv_cnt2"),localStorage.getItem("mmv_cnt3")]
+    data: [0, 0, 0,0,0,localStorage.getItem("mmv_cnt3")]
   }],
   chart: {
     height: 350,

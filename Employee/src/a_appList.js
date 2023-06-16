@@ -10,23 +10,37 @@ const firebaseConfig = {
     projectId: "lto-online-appointment-setter",
     storageBucket: "lto-online-appointment-setter.appspot.com",
     messagingSenderId: "382579903791",
-    appId: "1:382579903791:web:5d98bbe4ea8b38a43065da"
+    appId: "1:382579903791:web:5d98bbe4ea8b38a43065da" 
 }; 
-
+ 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig); 
 const db = getFirestore(app);
 
 var tbody = document.getElementById('tbody1');
-
+// GET DATE TO LOCALSTORAGE
+document.getElementById('dte').addEventListener('change', (e) => {
+    changeDate = document.getElementById('dte').value
+    console.log(changeDate)
+    localStorage.setItem('chngeDtApplst',changeDate)
+});
+// GET DATA FROM LOCALSTORAGE
+srchdate.addEventListener('click',() => {
+    localStorage.getItem('chngeDtApplst')
+    window.location = 'a_appList.html'
+})
+// DATE TODAY
 var date = new Date();
 var day = date.getDate();
 var month = date.getMonth() + 1;
 var year = date.getFullYear();
 if (month < 10) month = "0" + month;
 if (day < 10) day = "0" + day;
-var today = year + "-" + month + "-" + day;       
-document.getElementById("dte").value = today;
+var today = year + "-" + month + "-" + day ;
+
+document.getElementById("dte").value = localStorage.getItem('chngeDtApplst');
+
+var changeDate = localStorage.getItem('chngeDtApplst')
 
     const querySnapshot2 = await getDocs(collection(db,"Applicants"));
         querySnapshot2.forEach(doc2 => {
@@ -44,9 +58,10 @@ document.getElementById("dte").value = today;
             let td5 = document.createElement('td'); 
             let td7 = document.createElement('td');
             let td8 = document.createElement('td');
-            
-            if (today == dtcon){
-                if (doc2.data().User_TT == "LICENSING"){
+    
+    if(localStorage.getItem("chngeDtApplst") == null){
+        if (today == dtcon){
+            if (doc2.data().User_TT == "LICENSING"){
                 if (doc2.data().User_Stat == "PENDING" ){
  
                     td6.innerHTML = doc2.data().User_LTMS;
@@ -121,7 +136,86 @@ document.getElementById("dte").value = today;
                     trow.style.color = "";
                  })
             }
+        }
+    }
+    else{
+        if(changeDate == dtcon){
+            if (doc2.data().User_TT == "LICENSING"){
+                if (doc2.data().User_Stat == "PENDING" ){
+
+                    td6.innerHTML = doc2.data().User_LTMS;
+                    t_ID.innerHTML = doc2.data().User_AppID; 
+                    td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
+                    td5.innerHTML = doc2.data().User_TT;
+                    td7.innerHTML = doc2.data().User_D;
+                    td8.innerHTML = doc2.data().User_T;
+                    
+                    trow.appendChild(td6);
+                    trow.appendChild(t_ID);
+                    trow.appendChild(td1);
+                    trow.appendChild(td5); 
+                    trow.appendChild(td7);
+                    trow.appendChild(td8);
+        
+                    tbody.appendChild(trow);
+
+                    trow.addEventListener('click', (e) =>{
+                        trow.style.backgroundColor = '#254894c0';
+                        trow.style.color = "white";
+                        localStorage.setItem('stat',doc2.data().User_AppID)    
+                        localStorage.setItem('ID', doc2.id)
+        
+                        window.location = "a_reqdata.html";
+                    });
+        
+                    trow.addEventListener('mouseover',function(){
+                        trow.style.backgroundColor = 'rgb(218, 216, 216)';
+                        trow.style.color = "black";
+                     })
+                     trow.addEventListener('mouseleave',function(){
+                        trow.style.backgroundColor = "";
+                        trow.style.color = "";
+                     })
+                }
             }
-            
+
+            if (doc2.data().User_Stat == "APPROVED_TO_PROCEED"){
+
+                td6.innerHTML = doc2.data().User_LTMS;
+                t_ID.innerHTML = doc2.data().User_AppID; 
+                td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
+                td5.innerHTML = doc2.data().User_TT;
+                td7.innerHTML = doc2.data().User_D;
+                td8.innerHTML = doc2.data().User_T;
+                
+                trow.appendChild(td6);
+                trow.appendChild(t_ID);
+                trow.appendChild(td1);
+                trow.appendChild(td5); 
+                trow.appendChild(td7);
+                trow.appendChild(td8);
+    
+                tbody.appendChild(trow);
+
+                trow.addEventListener('click', (e) =>{
+                    trow.style.backgroundColor = '#254894c0';
+                    trow.style.color = "white";
+                    localStorage.setItem('stat',doc2.data().User_AppID)    
+                    localStorage.setItem('ID', doc2.id)
+    
+                    window.location = "a_reqdata.html";
+                });
+    
+                trow.addEventListener('mouseover',function(){
+                    trow.style.backgroundColor = 'rgb(218, 216, 216)';
+                    trow.style.color = "black";
+                 })
+                 trow.addEventListener('mouseleave',function(){
+                    trow.style.backgroundColor = "";
+                    trow.style.color = "";
+                 })
+            }
+        }
+    }
 
 });

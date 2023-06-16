@@ -23,19 +23,15 @@ const db = getFirestore(app);
 const auth = getAuth();
 
 onAuthStateChanged(auth, (user) => {
-    if (user) {
-        console.log(user.uid)
-      onSnapshot(doc(db, "Users", "Employee","EmployeeData",user.uid), (doc1) => {
-        
-        if (doc1.data().user_Type == "Processing Officer"){
-           document.getElementById('fn').innerHTML= doc1.data().user_LN + ", " + doc1.data().user_FN + " " + doc1.data().user_MN;
-            document.getElementById('empID').innerHTML= doc1.data().user_EID;
-            document.getElementById('eml').innerHTML= doc1.data().user_E;
-        }
-  
-           
-
-        });
-      }
+  if (user) {
+      console.log(user.uid)
+onSnapshot(doc(db, "Users", "Employee","EmployeeData",user.uid), (doc) => {
+  console.log(doc.data())
+      // if (doc.data().user_Type == "Processing_Officer"){
+         document.getElementById('fn').innerHTML= doc.data().user_LN + ", " + doc.data().user_FN + " " + doc.data().user_MN;
+          document.getElementById('empID').innerHTML= doc.data().user_EID;
+          document.getElementById('eml').innerHTML= doc.data().user_E;
+      // }
+      });
+    }
 });
-

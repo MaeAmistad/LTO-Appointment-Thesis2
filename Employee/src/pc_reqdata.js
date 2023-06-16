@@ -1,20 +1,26 @@
 bck.addEventListener('click',() => {
     window.location = "pc_homepage.html";
 });
+// BLUR BG
+var blur = document.getElementById('blur');
 
 apprd.addEventListener('click',() => {
     document.getElementById('cnfrm_modal').style.visibility = "visible";
+    blur.classList.toggle('active')
 });
 dclnd.addEventListener('click',() => {
     document.getElementById('cnfrm_modal2').style.visibility = "visible";
+    blur.classList.toggle('active')
 });
 cnl.addEventListener('click',() => {
     // window.location = "pc_reqdata.html";
     document.getElementById('cnfrm_modal').style.visibility = "hidden";
+    blur.classList.toggle('active') 
 });
 cnl2.addEventListener('click',() => {
     // window.location = "pc_reqdata.html";
     document.getElementById('cnfrm_modal2').style.visibility = "hidden";
+    blur.classList.toggle('active')
 });
 
 // var tranID = localStorage.getItem("stat");

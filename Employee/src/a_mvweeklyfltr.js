@@ -35,7 +35,7 @@ const db = getFirestore(app);
     var year = dt.getFullYear();
     if (month < 10) month = "0" + month;
     if (day < 10) day = "0" + day;
-    var today = day + "-" + month + "-" + year; 
+    var today = day + " - " + month + " - " + year; 
     
     dates.push(today); 
     date.setDate(date.getDate() + 1);

@@ -15,7 +15,7 @@ const firebaseConfig = {
 }; 
   
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig); 
 const db = getFirestore(app); 
 
 // Monthly Filter
@@ -46,7 +46,7 @@ let rn_mal = 0;
 license.forEach((doc) => {
 // getting month mon
 let dd = doc.data().dt_App;
-let mmsp = dd.slice(3,5);
+let mmsp = dd.slice(5,7);
 
 // Current Count
 if(mmsp == currentmonth){
@@ -166,7 +166,7 @@ let other2_pw = 0;
 let other2_fw = 0;
 AE_licW.forEach((doc) => {
   let dd = doc.data().dt_App;
-  let mmsp = dd.slice(3,5);
+  let mmsp = dd.slice(5,7);
   
   if(mmsp == currentmonth){
   // CL
@@ -275,7 +275,7 @@ let other2_pp = 0;
 let other2_fp = 0;
 AE_licP.forEach((doc) => {
   let dd = doc.data().dt_App;
-  let mmsp = dd.slice(3,5);
+  let mmsp = dd.slice(5,7);
   
   if(mmsp == currentmonth){
     if(doc.data().Laa == "DRIVER'S LICENSE"){
@@ -359,7 +359,7 @@ AE_licP.forEach((doc) => {
    let miscttld4 = 0;
   misc_ttal.forEach((doc) => {
     let dd = doc.data().dt_App;
-    let mmsp = dd.slice(3,5);
+    let mmsp = dd.slice(5,7);
 
     if(mmsp == currentmonth){
       if(doc.data().laa == "STUDENT-DRIVER'S PERMIT"){  

@@ -40,7 +40,7 @@ document.getElementById("dte").value = localStorage.getItem('chngeDtEv');
 
 var changeDate = localStorage.getItem('chngeDtEv')
 async function getData(){
-
+ 
 const querySnapshot = await getDocs(collection(db,"Applicants"));
 querySnapshot.forEach(doc2 => {
     
@@ -98,13 +98,15 @@ if(localStorage.getItem("chngeDtEv") == null){
             }
         }
         if (doc2.data().User_Stat == "APPROVED_TO_PROCEED"){
-    
+            
+            td6.innerHTML = doc2.data().User_LTMS;
             t_ID.innerHTML = doc2.data().User_AppID; 
             td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
             td5.innerHTML = doc2.data().User_TT;
             td7.innerHTML = doc2.data().User_D;
             td8.innerHTML = doc2.data().User_T;
-                    
+            
+            trow.appendChild(td6);
             trow.appendChild(t_ID);
             trow.appendChild(td1);
             trow.appendChild(td5);
@@ -171,19 +173,21 @@ else{
     }
     if (doc2.data().User_Stat == "APPROVED_TO_PROCEED"){
 
+        td6.innerHTML = doc2.data().User_LTMS;
         t_ID.innerHTML = doc2.data().User_AppID; 
         td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
         td5.innerHTML = doc2.data().User_TT;
         td7.innerHTML = doc2.data().User_D;
         td8.innerHTML = doc2.data().User_T;
-                
+        
+        trow.appendChild(td6);
         trow.appendChild(t_ID);
         trow.appendChild(td1);
         trow.appendChild(td5);
         trow.appendChild(td7);
         trow.appendChild(td8);
 
-        tbody.appendChild(trow);
+        tbody.appendChild(trow); 
 
         trow.addEventListener('click', (e) =>{
             trow.style.backgroundColor = '#254894c0';

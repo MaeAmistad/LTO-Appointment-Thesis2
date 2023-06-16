@@ -59,7 +59,7 @@ const db = getFirestore(app);
                     td8.innerHTML = doc2.data().User_T;
                     td9.innerHTML = doc2.data().User_CN;
                     td10.innerHTML = doc2.data().User_E; 
-                    td11.innerHTML = '<a href="' + "a_accMan.html" + '>' + "view details" + '</a>'
+                    td11.innerHTML = '<a href="' + "In_mvvd.html" + '>' + "view details" + '</a>'
                     
                     trow.appendChild(t_ID);
                     trow.appendChild(td1);
@@ -73,6 +73,11 @@ const db = getFirestore(app);
                     trow.appendChild(td11);
 
                     tbody.appendChild(trow);
+
+                    td11.addEventListener('click',() => {
+                        localStorage.setItem('AppID',doc2.data().User_AppID)
+                    })
+
 
         }
       
