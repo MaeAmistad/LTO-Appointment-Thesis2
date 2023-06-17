@@ -100,6 +100,12 @@ h5{
 .next1{
   margin-left: 180px;
 }
+#chngeClssfctn li{
+  margin-left: 80px;
+  text-align: justify;
+ 
+}
+  
 select{
   cursor: pointer;
 
@@ -160,6 +166,7 @@ select{
   color: red;
 }
 #cl_edl p{
+  
   text-align: center;
   color: red;
 }
