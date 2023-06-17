@@ -555,8 +555,14 @@ else if (list3.value == "cct"){
         document.getElementById("rr_ccs").style.display="none";
         document.getElementById("rr_cn").style.display="none";
     }
-    else{
+    else if(list2.value == "dl" && list3.value == "rr"){
         document.getElementById("lic_rr").style.display="block";
+    }
+    else if(list2.value == "cl" && list3.value == "rr"){
+        document.getElementById("lic_rr").style.display="block";
+    }
+    else{
+        document.getElementById("lic_rr").style.display="none";
     }
     // if(list3.value == "rr"){
     //     document.getElementById("lic_rr").style.display="block";
