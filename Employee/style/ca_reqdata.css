@@ -36,9 +36,6 @@ body {
 .btn{
     display: flex;
 }
-#inc{
-    margin-left: 550px;
-}
 #bck{
     margin-left: 80px;
 }
@@ -88,7 +85,7 @@ table td{
 #cnl1, #cnl2{
     margin-left: 300px;
 }
-#complete_modal label, #inc_modal label{
+#complete_modal label, #inc_modal label{ 
     padding-left: 50px;
 }
 #complete_modal input, #inc_modal input{
@@ -99,6 +96,67 @@ table td{
     border: none;
     border-bottom: 1px solid black;
     outline: none;
+}
+/* Admin Transaction */
+.btnn{
+    margin-left: 33%;
+}
+#delttr{
+    background-color: #D0342C;
+    color: white;
+    /* border: none; */
+}
+#cmplt{
+    background-color: rgb(19, 42, 172);
+    color: white;
+    /* border: none; */
+}
+.cnfrm_modal3,.cnfrm_modal4{
+    width: 550px;
+    background-color: white; 
+    user-select: none;
+    border: 1px solid #b3b3b3;
+    box-shadow: 5px 5px 5px rgb(70, 69, 69);
+    color: black;
+    padding: 20px;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.4s, top 0.4s;
+    margin-bottom: 25px;
+} 
+/* .cnfrm_modal4{
+    margin-top: -750px; 
+    position: relative;
+    z-index: 999;
+} */
+.cnfrm_modal3 h1, .cnfrm_modal4 h1{
+    letter-spacing: 3px;
+    text-align: center;
+}
+.cnfrm_modal3 p,.cnfrm_modal4 p{
+    font-weight: 500;
+    letter-spacing: 3px;
+}
+#cnl3, #cnl4{
+    margin-left: 300px;
+}
+.basicinfo input, .basicinfo select{
+    outline: none;
+    margin-left: auto;
+    width: 50%;
+    height: 25px;
+    text-transform: uppercase;
+}
+.basicinfo select{
+    width: 51.7%;
+    height: 30px;
+}
+.info{
+    display: flex;
+    padding: 5px;
 }
 @media only screen and (max-width: 768px){
     

@@ -189,7 +189,7 @@ else{
 
         tbody.appendChild(trow); 
 
-        trow.addEventListener('click', (e) =>{
+        trow.addEventListener('click', (e) =>{ 
             trow.style.backgroundColor = '#254894c0';
             trow.style.color = "white";
             localStorage.setItem('stat',doc2.data().User_AppID)    

@@ -18,6 +18,7 @@ bck.addEventListener('click',() => {
 // BLUR BG
 var blur = document.getElementById('blur');
 
+
 apprd.addEventListener('click',() => {
     if (localStorage.getItem("ui1") == null && localStorage.getItem("ui2") == null && localStorage.getItem("ui12") == null && localStorage.getItem("ui3") == null &&localStorage.getItem("ui4") == null &&localStorage.getItem("ui5") == null &&localStorage.getItem("ui6") == null &&localStorage.getItem("ui7") == null &&localStorage.getItem("ui8") == null &&localStorage.getItem("ui9") == null &&localStorage.getItem("ui11") == null) {
       Swal.fire({

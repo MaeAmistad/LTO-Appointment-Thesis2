@@ -35,9 +35,12 @@ if (month < 10) month = "0" + month;
 if (day < 10) day = "0" + day;
 var today = year + "-" + month + "-" + day ;
 
+
 document.getElementById("dte").value = localStorage.getItem('chngeDtApplstca');
 
 var changeDate = localStorage.getItem('chngeDtApplstca')
+
+var test = [];
 
     const querySnapshot2 = await getDocs(collection(db,"Applicants")); 
         querySnapshot2.forEach(doc2 => {
@@ -48,17 +51,20 @@ var changeDate = localStorage.getItem('chngeDtApplstca')
             var yysp = dd.slice(10,14);
             var dtcon = yysp + "-" + mmsp + "-" + ddsp; 
 
+            var tt = doc2.data().User_T;
+            var tts = tt.slice(6,8);
+            console.log(tts)
+
             let trow = document.createElement('tr'); 
             let t_ID = document.createElement('td');  
             let td1 = document.createElement('td'); 
-            let td5 = document.createElement('td'); 
+            let td5 = document.createElement('td');  
             let td7 = document.createElement('td');
             let td8 = document.createElement('td'); 
 
         if(localStorage.getItem("chngeDtApplstca") == null){
             if(today == dtcon){
                 if (doc2.data().User_Stat == "APPROVED_TO_CASHIER" || doc2.data().User_Stat == "PASSED"){
-    
                 t_ID.innerHTML = doc2.data().User_TransID; 
                 td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
                 td5.innerHTML = doc2.data().User_TT;
