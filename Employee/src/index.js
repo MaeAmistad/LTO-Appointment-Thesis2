@@ -84,8 +84,6 @@ form.addEventListener('submit',(e) =>{
 
     querySnapshot.forEach(doc => {
 
-      console.log(doc.data().user_E)
-
       if(doc.data().user_E === email.value.toUpperCase() && doc.data().user_PWD === password.value){
         
         if(doc.data().user_Type == "CASHIER" && doc.data().user_Status == "Enabled"){
@@ -430,7 +428,7 @@ resetPass.addEventListener('click', (e) => {
       }
     }).then((result) => {
       if(result.value){
-        console.log("Reset password email sent")
+        console.log("Reset password email sent") 
         resetPass.style.display = 'none';
         toggle()
       }
