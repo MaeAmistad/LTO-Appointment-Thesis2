@@ -20,15 +20,27 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app); 
 
 var tbody = document.getElementById('tbody1');
-// Monthly Filter 
-var currentmonth = new Date().getMonth() + 1;
-if (currentmonth < 10)  currentmonth = "0" + currentmonth;
+// // Monthly Filter 
+// var currentmonth = new Date().getMonth() + 1;
+// if (currentmonth < 10)  currentmonth = "0" + currentmonth;
+
+// DATE TODAY
+var date = new Date();
+var day = date.getDate();
+var month = date.getMonth() + 1;
+var year = date.getFullYear();
+if (month < 10) month = "0" + month;
+if (day < 10) day = "0" + day;
+var today = year + "-" + month + "-" + day ;
+
 let itmNo = 0;
     const querySnapshot2 = await getDocs(collection(db,"Motor Vehicle")); 
         querySnapshot2.forEach(doc2 => {
-        // Current Month
-          let dd1 = doc2.data().dt_App;
-          let mmsp1 = dd1.slice(5,7);
+            var dd = doc.data().User_D;
+            var ddsp = dd.slice(0,2);
+            var mmsp = dd.slice(5,7);
+            var yysp = dd.slice(10,14);
+            var dtcon1 = yysp + "-" + mmsp + "-" + ddsp; 
         //Date Format
         var dd = doc2.data().dtrgstrd;
         var yysp = dd.slice(0,4);
@@ -36,7 +48,7 @@ let itmNo = 0;
         var ddsp = dd.slice(8,10);
         var dtcon = mmsp + "/" + ddsp + "/" + yysp;
         
-          if(mmsp1 == currentmonth){
+          if(dtcon1 == today){
                 let trow = document.createElement('tr');   
                 let td1 = document.createElement('td'); 
                 let td2 = document.createElement('td'); 

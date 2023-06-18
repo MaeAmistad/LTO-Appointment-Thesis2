@@ -4,6 +4,9 @@ bcklic.addEventListener('click' , () => {
 btnReport.addEventListener('click',()=>{ 
   window.location = "a_mvreport.html"
 })
+btnReportYM.addEventListener('click',() =>{ 
+  window.location = "a_mvymreport.html"
+});
 // ---------- CHARTS ---------- 
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
