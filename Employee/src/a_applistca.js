@@ -40,8 +40,6 @@ document.getElementById("dte").value = localStorage.getItem('chngeDtApplstca');
 
 var changeDate = localStorage.getItem('chngeDtApplstca')
 
-var test = [];
-
     const querySnapshot2 = await getDocs(collection(db,"Applicants")); 
         querySnapshot2.forEach(doc2 => {
 
@@ -50,10 +48,6 @@ var test = [];
             var mmsp = dd.slice(5,7);
             var yysp = dd.slice(10,14);
             var dtcon = yysp + "-" + mmsp + "-" + ddsp; 
-
-            var tt = doc2.data().User_T;
-            var tts = tt.slice(6,8);
-            console.log(tts)
 
             let trow = document.createElement('tr'); 
             let t_ID = document.createElement('td');  

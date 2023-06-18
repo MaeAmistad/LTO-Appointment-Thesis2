@@ -39,9 +39,12 @@ var today = year + "-" + month + "-" + day ;
 document.getElementById("dte").value = localStorage.getItem('chngeDtEv');
 
 var changeDate = localStorage.getItem('chngeDtEv')
+
+var test = [];
 async function getData(){
  
 const querySnapshot = await getDocs(collection(db,"Applicants"));
+
 querySnapshot.forEach(doc2 => {
     
 // FILTER FOR CURRENT DATE
@@ -50,6 +53,7 @@ var ddsp = dd.slice(0,2);
 var mmsp = dd.slice(5,7);
 var yysp = dd.slice(10,14);
 var dtcon = yysp + "-" + mmsp + "-" + ddsp; 
+   
 // CREATE NEW ELEMENT FOR NEW DATA
 let trow = document.createElement('tr'); 
 let td6 = document.createElement('td'); 
@@ -57,19 +61,21 @@ let t_ID = document.createElement('td');
 let td1 = document.createElement('td'); 
 let td5 = document.createElement('td'); 
 let td7 = document.createElement('td');
-let td8 = document.createElement('td'); 
+let td8 = document.createElement('td');
+
 // CONDITION
 if(localStorage.getItem("chngeDtEv") == null){
     if(today == dtcon){
         if (doc2.data().User_TT == "LICENSING"){ 
             if (doc2.data().User_Stat == "PENDING"){
+
                 td6.innerHTML = doc2.data().User_LTMS;
                 t_ID.innerHTML = doc2.data().User_AppID; 
                 td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
                 td5.innerHTML = doc2.data().User_TT;
                 td7.innerHTML = doc2.data().User_D;
                 td8.innerHTML = doc2.data().User_T;
-                        
+                
                 trow.appendChild(td6);
                 trow.appendChild(t_ID);
                 trow.appendChild(td1);
@@ -137,6 +143,13 @@ else{
     if(changeDate == dtcon){
     if (doc2.data().User_TT == "LICENSING"){ 
         if (doc2.data().User_Stat == "PENDING"){
+
+            // var tt = doc2.data().User_T;
+            // var tst = tt.slice(6,8);
+
+            // test.push(tst)
+            // console.log(test.sort())            
+
             td6.innerHTML = doc2.data().User_LTMS;
             t_ID.innerHTML = doc2.data().User_AppID; 
             td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;

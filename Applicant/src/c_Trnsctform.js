@@ -74,7 +74,7 @@ document.getElementById("addtnlCd").style.display="none";
 document.getElementById("ExpiredDLvfdl").style.display="none";
 document.getElementById("chngeCT").style.display="none";
 
-document.getElementById("rr_ca").style.display="none";
+document.getElementById("rr_cadd").style.display="none";
 document.getElementById("rr_ccs").style.display="none";
 document.getElementById("rr_cn").style.display="none";
 document.getElementById("cl_rrccc").style.display="none";
@@ -113,7 +113,7 @@ function trnsct(){
         document.getElementById("mv_toa").style.display="block";
         document.getElementById("license").style.display="none";
 
-        document.getElementById("rr_ca").style.display="none";
+        // document.getElementById("rr_ca").style.display="none";
         document.getElementById("rr_ccs").style.display="none";
         document.getElementById("rr_cn").style.display="none";
 
@@ -647,9 +647,6 @@ else if (list3.value == "dcardc"){
 else if (list3.value == "rr"){
     var toa = "Revision of Records"
 }
-else if (list3.value == "edl"){
-    var toa = "Enhancement of DL"
-}
 else if (list3.value == "cct"){
     var toa = "Change of Clutch Type"
 }
@@ -683,8 +680,9 @@ else if (list3.value == "cct"){
 }
 
 function lic_rr(){
+    // change add req
     if (list4.value == "rrca"){
-        document.getElementById("rr_ca").style.display="block";
+        document.getElementById("rr_cadd").style.display="block";
         document.getElementById("rr_ccs").style.display="none";
         document.getElementById("rr_cn").style.display="none";  
 
@@ -692,31 +690,17 @@ function lic_rr(){
     }   
     else if(list4.value == "rrccs"){
         document.getElementById("rr_ccs").style.display="block";
-        document.getElementById("rr_ca").style.display="none";
+        document.getElementById("rr_cadd").style.display="none";
         document.getElementById("rr_cn").style.display="none"; 
 
         var rvsnofrcrds = "Change Civil Status"
-    }
+    } 
     else if (list4.value == "rrcn" || list4.value == "rrcbd"){
-        document.getElementById("rr_cn").style.display="block"; 
+        document.getElementById("rr_cn").style.display="block";
+        document.getElementById("rr_cadd").style.display="none"; 
         document.getElementById("rr_ccs").style.display="none";
         document.getElementById("rr_ca").style.display="none";
-        
     }
-    if (list4.value == "cc"){
-        document.getElementById("rr_cc").style.display="block";
-        document.getElementById("rr_ccs").style.display="none";
-        document.getElementById("rr_cn").style.display="none";  
-
-        var rvsnofrcrds = "Change of Citizenship"
-    }   
-    if (list4.value == "rr"){
-        document.getElementById("rr_ca").style.display="block";
-        document.getElementById("rr_ccs").style.display="none";
-        document.getElementById("rr_cn").style.display="none";  
-
-        var rvsnofrcrds = "Change Citizenship"
-    }   
     if (list4.value == "rrcopd"){
         document.getElementById("rr_ca").style.display="none";
         document.getElementById("rr_ccs").style.display="none";
@@ -726,9 +710,9 @@ function lic_rr(){
         var rvsnofrcrds = "Change of Other Personal Details"
     }
     else{   
-        document.getElementById("rr_ca").style.display="none";
         document.getElementById("rr_ccs").style.display="none";
         document.getElementById("rr_cn").style.display="none";
+        document.getElementById("rr_cadd").style.display="none";
     }
 
     if (list4.value == "rrcn"){
