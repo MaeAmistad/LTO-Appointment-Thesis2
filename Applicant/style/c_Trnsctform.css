@@ -162,11 +162,20 @@ select{
   margin-left: 40%;
 }
 #cl_dcardc p{
+  font-size: 20px;
+  font-weight:300;
   text-align: center;
   color: red;
 }
 #cl_edl p{
-  
+  font-size: 20px;
+  font-weight:300;
+  text-align: center;
+  color: red;
+}
+#rr_copd p{
+  font-size: 20px;
+  font-weight:300;
   text-align: center;
   color: red;
 }
