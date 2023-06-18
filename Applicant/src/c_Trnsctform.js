@@ -701,7 +701,22 @@ function lic_rr(){
         document.getElementById("rr_cn").style.display="block"; 
         document.getElementById("rr_ccs").style.display="none";
         document.getElementById("rr_ca").style.display="none";
+        
     }
+    if (list4.value == "cc"){
+        document.getElementById("rr_cc").style.display="block";
+        document.getElementById("rr_ccs").style.display="none";
+        document.getElementById("rr_cn").style.display="none";  
+
+        var rvsnofrcrds = "Change of Citizenship"
+    }   
+    if (list4.value == "rr"){
+        document.getElementById("rr_ca").style.display="block";
+        document.getElementById("rr_ccs").style.display="none";
+        document.getElementById("rr_cn").style.display="none";  
+
+        var rvsnofrcrds = "Change Citizenship"
+    }   
     if (list4.value == "rrcopd"){
         document.getElementById("rr_ca").style.display="none";
         document.getElementById("rr_ccs").style.display="none";
