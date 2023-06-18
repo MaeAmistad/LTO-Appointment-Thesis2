@@ -113,9 +113,9 @@ function trnsct(){
         document.getElementById("mv_toa").style.display="block";
         document.getElementById("license").style.display="none";
 
-        // document.getElementById("rr_ca").style.display="none";
         document.getElementById("rr_ccs").style.display="none";
         document.getElementById("rr_cn").style.display="none";
+        document.getElementById("rr_cadd").style.display="none";
 
         document.getElementById("spn").style.display="none";
         document.getElementById("sprn").style.display="none";
@@ -126,7 +126,7 @@ function trnsct(){
         document.getElementById("cln").style.display="none";
         document.getElementById("clrn").style.display="none";
         document.getElementById("cl_dcardc").style.display="none";
-        document.getElementById("cl_edl").style.display="none";
+        // document.getElementById("cl_edl").style.display="none";
         document.getElementById("dlplct").style.display="none";
         document.getElementById("cofd").style.display="none";
         document.getElementById("chngeClssfctn").style.display="none";
@@ -148,7 +148,7 @@ function trnsct(){
     }
     
     localStorage.setItem("tot",tot.toUpperCase());
-
+    console.log(localStorage.getItem('tot'))
 }
 
 function laaf_lic(){
@@ -169,7 +169,6 @@ if(list2.value == "sp" && list3.value == "nw"){
     document.getElementById("addtnlCd").style.display="none";
     document.getElementById("ExpiredDLvfdl").style.display="none";
     document.getElementById("chngeCT").style.display="none";
-
 }
 else if (list2.value == "sp" && list3.value == "rnw"){
     document.getElementById("sprn").style.display="block";
@@ -619,7 +618,6 @@ else if (list2.value == "dl"){
 else if (list2.value == "cl"){
     var laa = "Conductor's License"
 }
-
 if (list3.value == "nw"){
     var toa = "New"
 }
@@ -654,11 +652,13 @@ else if (list3.value == "cct"){
     localStorage.setItem("laa",laa.toUpperCase());
     localStorage.setItem("toa",toa.toUpperCase());
 
+    console.log(localStorage.getItem('laa'))
+    console.log(localStorage.getItem('toa'))
 // revision of records
     if(list2.value == "sp"){
         document.getElementById("lic_rr").style.display="none";
-        document.getElementById("rr_ca").style.display="none";
         document.getElementById("rr_ccs").style.display="none";
+        document.getElementById("rr_cadd").style.display="none";
         document.getElementById("rr_cn").style.display="none";
     }
     else if(list2.value == "dl" && list3.value == "rr"){
@@ -687,6 +687,8 @@ function lic_rr(){
         document.getElementById("rr_cn").style.display="none";  
 
         var rvsnofrcrds = "Change Address"
+
+        console.log(rvsnofrcrds)
     }   
     else if(list4.value == "rrccs"){
         document.getElementById("rr_ccs").style.display="block";
@@ -699,33 +701,61 @@ function lic_rr(){
         document.getElementById("rr_cn").style.display="block";
         document.getElementById("rr_cadd").style.display="none"; 
         document.getElementById("rr_ccs").style.display="none";
-        document.getElementById("rr_ca").style.display="none";
     }
+    // AWAN PAY NAKAKABIL NGA REQ NA, PAKIKITA NO ADDA
     if (list4.value == "rrcopd"){
-        document.getElementById("rr_ca").style.display="none";
+        document.getElementById("rr_cadd").style.display="none";
         document.getElementById("rr_ccs").style.display="none";
         document.getElementById("rr_cn").style.display="none";  
         
-
         var rvsnofrcrds = "Change of Other Personal Details"
     }
-    else{   
-        document.getElementById("rr_ccs").style.display="none";
-        document.getElementById("rr_cn").style.display="none";
+    if (list4.value == "rro"){
         document.getElementById("rr_cadd").style.display="none";
-    }
-
-    if (list4.value == "rrcn"){
-        var rvsnofrcrds = "Change Name"
-    }
-    else if (list4.value == "rrcbd"){
-        var rvsnofrcrds = "Change Birth date"
-    }
-    else if (list4.value == "rro"){
+        document.getElementById("rr_ccs").style.display="none";
+        document.getElementById("rr_cn").style.display="none";  
+        
         var rvsnofrcrds = "Others"
     }
+    if (list4.value == "cc"){
+        document.getElementById("rr_cadd").style.display="none";
+        document.getElementById("rr_ccs").style.display="none";
+        document.getElementById("rr_cn").style.display="none";  
+        
+        var rvsnofrcrds = "Change of Citizenship"
+    }
+    if (list4.value == "rrcbd"){
+        document.getElementById("rr_cadd").style.display="none";
+        document.getElementById("rr_ccs").style.display="none";
+        document.getElementById("rr_cn").style.display="none";  
+        
+        var rvsnofrcrds = "Correction of Name/Birth Date"
+    }
+    if (list4.value == "lr"){
+        document.getElementById("rr_cadd").style.display="none";
+        document.getElementById("rr_ccs").style.display="none";
+        document.getElementById("rr_cn").style.display="none";  
+        
+        var rvsnofrcrds = "Lost/Replacement"
+    }
+    // else{   
+    //     document.getElementById("rr_ccs").style.display="none";
+    //     document.getElementById("rr_cn").style.display="none";
+    //     // document.getElementById("rr_cadd").style.display="none";
+    // }
+
+    // if (list4.value == "rrcn"){
+    //     var rvsnofrcrds = "Change Name"
+    // }
+    // else if (list4.value == "rrcbd"){
+    //     var rvsnofrcrds = "Change Birth date"
+    // }
+    // else if (list4.value == "rro"){
+    //     var rvsnofrcrds = "Others"
+    // }
 
     localStorage.setItem("rvsnofrcrds",rvsnofrcrds.toUpperCase());
+    console.log(localStorage.getItem('rvsnofrcrds'))
 
 }
 
