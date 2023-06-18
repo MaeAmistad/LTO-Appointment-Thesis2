@@ -1,5 +1,5 @@
 bcklic.addEventListener('click' , () => {
-    window.location = "a_licmonthfilter.html"
+    window.location = "a_licweeklyfltr.html"
 });  
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
 import { getFirestore, collection,getDocs } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";

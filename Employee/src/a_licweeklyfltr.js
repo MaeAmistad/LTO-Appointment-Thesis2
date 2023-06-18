@@ -2,7 +2,7 @@ bcklic.addEventListener('click' , () => {
     window.location = "a_dashboard.html"
   })
   btnReport.addEventListener('click',()=>{
-    window.location = "a_licreport.html"
+    window.location = "a_licreportwekkly.html" 
   })
   // ---------- CHARTS ---------- 
   
