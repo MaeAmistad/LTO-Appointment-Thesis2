@@ -113,7 +113,7 @@ function trnsct(){
         document.getElementById("mv_toa").style.display="block";
         document.getElementById("license").style.display="none";
 
-        document.getElementById("rr_ca").style.display="none";
+        // document.getElementById("rr_ca").style.display="none";
         document.getElementById("rr_ccs").style.display="none";
         document.getElementById("rr_cn").style.display="none";
 
