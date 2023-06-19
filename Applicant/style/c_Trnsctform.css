@@ -162,11 +162,26 @@ select{
   margin-left: 40%;
 }
 #cl_dcardc p{
+  font-size: 20px;
+  font-weight:300;
   text-align: center;
   color: red;
 }
 #cl_edl p{
-  
+  font-size: 20px;
+  font-weight:300;
+  text-align: center;
+  color: red;
+}
+#rr_copd p{
+  font-size: 20px;
+  font-weight:300;
+  text-align: center;
+  color: red;
+}
+#chngeClssfctn p{
+  font-size: 20px;
+  font-weight:300;
   text-align: center;
   color: red;
 }
@@ -174,6 +189,12 @@ select{
   /* padding: 5px 20px;  */
   width: 600px;
   margin-left: 60px;
+}
+#cofd p{
+  font-size: 20px;
+  font-weight:300;
+  text-align: center;
+  color: red; 
 }
 @media only screen and (max-width: 1200px){
   .main{

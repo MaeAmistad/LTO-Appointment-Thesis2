@@ -14,32 +14,32 @@ nextL.addEventListener('click' , (e) => {
             }
           })
     }
-    else if(localStorage.getItem("laa") == null){
-        Swal.fire({
-            title: 'Please complete your transaction to proceed.',
-            confirmButtonColor: '#132aaa',
-            width:500,
-            showClass: {
-              popup: 'animate__animated animate__fadeInDown'
-            },
-            hideClass: {
-              popup: 'animate__animated animate__fadeOutUp'
-            }
-          })
-    }
-    else if(localStorage.getItem("toa") == null){
-        Swal.fire({
-            title: 'Please complete your transaction to proceed.',
-            confirmButtonColor: '#132aaa',
-            width:500,
-            showClass: {
-              popup: 'animate__animated animate__fadeInDown'
-            },
-            hideClass: {
-              popup: 'animate__animated animate__fadeOutUp'
-            }
-          })
-    }
+    // else if(localStorage.getItem("laa") == null){
+    //     Swal.fire({
+    //         title: 'Please complete your transaction to proceed.',
+    //         confirmButtonColor: '#132aaa',
+    //         width:500,
+    //         showClass: {
+    //           popup: 'animate__animated animate__fadeInDown'
+    //         },
+    //         hideClass: {
+    //           popup: 'animate__animated animate__fadeOutUp'
+    //         }
+    //       })
+    // }
+    // else if(localStorage.getItem("toa") == null){
+    //     Swal.fire({
+    //         title: 'Please complete your transaction to proceed.',
+    //         confirmButtonColor: '#132aaa',
+    //         width:500,
+    //         showClass: {
+    //           popup: 'animate__animated animate__fadeInDown'
+    //         },
+    //         hideClass: {
+    //           popup: 'animate__animated animate__fadeOutUp'
+    //         }
+    //       })
+    // }
     // else if()
     else{
         window.location = 'c_PIform.html'
@@ -73,6 +73,11 @@ document.getElementById("chngeClssfctn").style.display="none";
 document.getElementById("addtnlCd").style.display="none";
 document.getElementById("ExpiredDLvfdl").style.display="none";
 document.getElementById("chngeCT").style.display="none";
+document.getElementById("rr_cbd").style.display="none";
+document.getElementById("rr_lr").style.display="none";
+document.getElementById("rr_copd").style.display="none";
+document.getElementById("rr_cc").style.display="none";
+
 
 document.getElementById("rr_cadd").style.display="none";
 document.getElementById("rr_ccs").style.display="none";
@@ -82,6 +87,11 @@ document.getElementById("cl_new").style.display="none";
 document.getElementById("cl_rrcoa").style.display="none";
 document.getElementById("cl_rrcopd").style.display="none";
 document.getElementById("cl_rrlost").style.display="none";
+document.getElementById("rr_cbd").style.display="none";
+document.getElementById("rr_lr").style.display="none";
+document.getElementById("rr_copd").style.display="none";
+document.getElementById("rr_cc").style.display="none";
+document.getElementById("dlplct").style.display="none";
 
 document.getElementById("renewal").style.display="none";
 document.getElementById("dplomt").style.display="none";
@@ -89,11 +99,21 @@ document.getElementById("oevsez").style.display="none";
 document.getElementById("forhre").style.display="none";
 document.getElementById("stolnrcovrd").style.display="none";
 document.getElementById("Rctivtncd").style.display="none";
+document.getElementById("rr_cbd").style.display="none";
+document.getElementById("rr_lr").style.display="none";
+document.getElementById("rr_copd").style.display="none";
+document.getElementById("rr_cc").style.display="none";
+
 
 
 document.getElementById("mv_toa").style.display="none";
 document.getElementById("license").style.display="none";
 document.getElementById("lic_rr").style.display="none";
+document.getElementById("rr_cbd").style.display="none";
+document.getElementById("rr_lr").style.display="none";
+document.getElementById("rr_copd").style.display="none";
+document.getElementById("rr_cc").style.display="none";
+
 
 // for dropdown function
 function trnsct(){
@@ -108,12 +128,22 @@ function trnsct(){
         document.getElementById("forhre").style.display="none";
         document.getElementById("stolnrcovrd").style.display="none";
         document.getElementById("Rctivtncd").style.display="none";
+        document.getElementById("rr_cbd").style.display="none";
+        document.getElementById("rr_lr").style.display="none";
+       document.getElementById("rr_copd").style.display="none";
+       document.getElementById("rr_cc").style.display="none";
+      
     }
     else if(list1.value == "mtrvhcl"){
         document.getElementById("mv_toa").style.display="block";
         document.getElementById("license").style.display="none";
 
         document.getElementById("rr_ccs").style.display="none";
+        document.getElementById("rr_cbd").style.display="none";
+        document.getElementById("rr_lr").style.display="none";
+       document.getElementById("rr_copd").style.display="none";
+       document.getElementById("rr_cc").style.display="none";
+      
         document.getElementById("rr_cn").style.display="none";
         document.getElementById("rr_cadd").style.display="none";
 
@@ -137,6 +167,12 @@ function trnsct(){
     else{
         document.getElementById("mv_toa").style.display="none";
         document.getElementById("license").style.display="none";
+        document.getElementById("rr_cbd").style.display="none";
+        document.getElementById("rr_lr").style.display="none";
+       document.getElementById("rr_copd").style.display="none";
+       document.getElementById("rr_cc").style.display="none";
+       document.getElementById("dlplct").style.display="none";
+      
     }
 
     // for storage
@@ -154,6 +190,7 @@ function trnsct(){
 function laaf_lic(){
 // sp
 if(list2.value == "sp" && list3.value == "nw"){
+    
     document.getElementById("spn").style.display="block";
     document.getElementById("sprn").style.display="none";
     document.getElementById("npdln").style.display="none";
@@ -169,6 +206,12 @@ if(list2.value == "sp" && list3.value == "nw"){
     document.getElementById("addtnlCd").style.display="none";
     document.getElementById("ExpiredDLvfdl").style.display="none";
     document.getElementById("chngeCT").style.display="none";
+    document.getElementById("rr_cbd").style.display="none";
+    document.getElementById("rr_lr").style.display="none";
+    document.getElementById("rr_copd").style.display="none";
+    document.getElementById("rr_cc").style.display="none";
+    
+  
 }
 else if (list2.value == "sp" && list3.value == "rnw"){
     document.getElementById("sprn").style.display="block";
@@ -186,6 +229,11 @@ else if (list2.value == "sp" && list3.value == "rnw"){
     document.getElementById("addtnlCd").style.display="none";
     document.getElementById("ExpiredDLvfdl").style.display="none";
     document.getElementById("chngeCT").style.display="none";
+    document.getElementById("rr_cbd").style.display="none";
+    document.getElementById("rr_lr").style.display="none";
+    document.getElementById("rr_copd").style.display="none";
+    document.getElementById("rr_cc").style.display="none";
+  
 }
 // npdl
 else if(list2.value == "dl" && list3.value == "nw"){
@@ -204,6 +252,11 @@ else if(list2.value == "dl" && list3.value == "nw"){
     document.getElementById("addtnlCd").style.display="none";
     document.getElementById("ExpiredDLvfdl").style.display="none";
     document.getElementById("chngeCT").style.display="none";
+    document.getElementById("rr_cbd").style.display="none";
+    document.getElementById("rr_lr").style.display="none";
+   document.getElementById("rr_copd").style.display="none";
+   document.getElementById("rr_cc").style.display="none";
+  
 }
 else if (list2.value == "dl" && list3.value == "rnw"){
     document.getElementById("npdlrn").style.display="block";
@@ -221,6 +274,11 @@ else if (list2.value == "dl" && list3.value == "rnw"){
     document.getElementById("addtnlCd").style.display="none";
     document.getElementById("ExpiredDLvfdl").style.display="none";
     document.getElementById("chngeCT").style.display="none";
+    document.getElementById("rr_cbd").style.display="none";
+    document.getElementById("rr_lr").style.display="none";
+   document.getElementById("rr_copd").style.display="none";
+   document.getElementById("rr_cc").style.display="none";
+  
 }
 // cl
 else if(list2.value == "cl" && list3.value == "nw"){
@@ -239,6 +297,11 @@ else if(list2.value == "cl" && list3.value == "nw"){
     document.getElementById("addtnlCd").style.display="none";
     document.getElementById("ExpiredDLvfdl").style.display="none";
     document.getElementById("chngeCT").style.display="none";
+    document.getElementById("rr_cbd").style.display="none";
+    document.getElementById("rr_lr").style.display="none";
+   document.getElementById("rr_copd").style.display="none";
+   document.getElementById("rr_cc").style.display="none";
+  
 }
 else if (list2.value == "cl" && list3.value == "rnw"){
     document.getElementById("clrn").style.display="block";
@@ -256,6 +319,11 @@ else if (list2.value == "cl" && list3.value == "rnw"){
     document.getElementById("addtnlCd").style.display="none";
     document.getElementById("ExpiredDLvfdl").style.display="none";
     document.getElementById("chngeCT").style.display="none";
+    document.getElementById("rr_cbd").style.display="none";
+    document.getElementById("rr_lr").style.display="none";
+   document.getElementById("rr_copd").style.display="none";
+   document.getElementById("rr_cc").style.display="none";
+  
     
 }
 
@@ -295,6 +363,11 @@ else if (list2.value == "sp" && list3.value == "dcardc" || list2.value == "cl" &
     document.getElementById("addtnlCd").style.display="none";
     document.getElementById("ExpiredDLvfdl").style.display="none";
     document.getElementById("chngeCT").style.display="none";
+    document.getElementById("rr_cbd").style.display="none";
+    document.getElementById("rr_lr").style.display="none";
+   document.getElementById("rr_copd").style.display="none";
+   document.getElementById("rr_cc").style.display="none";
+  
 }
 else if (list2.value == "dl" && list3.value == "edl" || list2.value == "cl" && list3.value == "edl" || list2.value == "dl" && list3.value == "dcardc"){
     document.getElementById("cl_dcardc").style.display="block";
@@ -312,6 +385,56 @@ else if (list2.value == "dl" && list3.value == "edl" || list2.value == "cl" && l
     document.getElementById("addtnlCd").style.display="none";
     document.getElementById("ExpiredDLvfdl").style.display="none";
     document.getElementById("chngeCT").style.display="none";
+    document.getElementById("rr_cbd").style.display="none";
+    document.getElementById("rr_lr").style.display="none";
+   document.getElementById("rr_copd").style.display="none";
+   document.getElementById("rr_cc").style.display="none";
+  
+}
+else if (list2.value == "dl" && list3.value == "dplct" || list2.value == "cl" && list3.value == "edl" || list2.value == "dl" && list3.value == "dcardc"){
+    document.getElementById("dlplct").style.display="block";
+    document.getElementById("clrn").style.display="none";
+    document.getElementById("pdlrn").style.display="none";
+    document.getElementById("npdlrn").style.display="none";
+    document.getElementById("sprn").style.display="none";
+    document.getElementById("spn").style.display="none";
+    document.getElementById("npdln").style.display="none";
+    document.getElementById("pdln").style.display="none";
+    document.getElementById("cln").style.display="none";
+    document.getElementById("cofd").style.display="none";
+    document.getElementById("chngeClssfctn").style.display="none";
+    document.getElementById("addtnlCd").style.display="none";
+    document.getElementById("ExpiredDLvfdl").style.display="none";
+    document.getElementById("chngeCT").style.display="none";
+    document.getElementById("rr_cbd").style.display="none";
+    document.getElementById("rr_lr").style.display="none";
+   document.getElementById("rr_copd").style.display="none";
+   document.getElementById("rr_cc").style.display="none";
+   document.getElementById("cl_dcardc").style.display="none";
+   
+  
+}
+else if (list2.value == "sp" && list3.value == "dplct" || list2.value == "cl" && list3.value == "edl" || list2.value == "dl" && list3.value == "dcardc"){
+    document.getElementById("dlplct").style.display="block";
+    document.getElementById("clrn").style.display="none";
+    document.getElementById("pdlrn").style.display="none";
+    document.getElementById("npdlrn").style.display="none";
+    document.getElementById("sprn").style.display="none";
+    document.getElementById("spn").style.display="none";
+    document.getElementById("npdln").style.display="none";
+    document.getElementById("pdln").style.display="none";
+    document.getElementById("cln").style.display="none";
+    document.getElementById("cofd").style.display="none";
+    document.getElementById("chngeClssfctn").style.display="none";
+    document.getElementById("addtnlCd").style.display="none";
+    document.getElementById("ExpiredDLvfdl").style.display="none";
+    document.getElementById("chngeCT").style.display="none";
+    document.getElementById("rr_cbd").style.display="none";
+    document.getElementById("rr_lr").style.display="none";
+   document.getElementById("rr_copd").style.display="none";
+   document.getElementById("rr_cc").style.display="none";
+   document.getElementById("cl_dcardc").style.display="none";
+  
 }
 else if (list2.value == "sp" && list3.value == "edl"){
     document.getElementById("cl_dcardc").style.display="block";
@@ -319,6 +442,7 @@ else if (list2.value == "sp" && list3.value == "edl"){
     document.getElementById("pdlrn").style.display="none";
     document.getElementById("npdlrn").style.display="none";
     document.getElementById("sprn").style.display="none";
+
     document.getElementById("spn").style.display="none";
     document.getElementById("npdln").style.display="none";
     document.getElementById("pdln").style.display="none";
@@ -329,6 +453,11 @@ else if (list2.value == "sp" && list3.value == "edl"){
     document.getElementById("addtnlCd").style.display="none";
     document.getElementById("ExpiredDLvfdl").style.display="none";
     document.getElementById("chngeCT").style.display="none";
+    document.getElementById("rr_cbd").style.display="none";
+    document.getElementById("rr_lr").style.display="none";
+   document.getElementById("rr_copd").style.display="none";
+   document.getElementById("rr_cc").style.display="none";
+  
 }
 else if (list2.value == "cl" && list3.value == "acc"){
     document.getElementById("cl_dcardc").style.display="block";
@@ -346,6 +475,11 @@ else if (list2.value == "cl" && list3.value == "acc"){
     document.getElementById("addtnlCd").style.display="none";
     document.getElementById("ExpiredDLvfdl").style.display="none";
     document.getElementById("chngeCT").style.display="none";
+    document.getElementById("rr_cbd").style.display="none";
+    document.getElementById("rr_lr").style.display="none";
+   document.getElementById("rr_copd").style.display="none";
+   document.getElementById("rr_cc").style.display="none";
+  
 }
 else if (list2.value == "cl" && list3.value == "dplct"){
     document.getElementById("cl_dcardc").style.display="block";
@@ -363,6 +497,11 @@ else if (list2.value == "cl" && list3.value == "dplct"){
     document.getElementById("addtnlCd").style.display="none";
     document.getElementById("ExpiredDLvfdl").style.display="none";
     document.getElementById("chngeCT").style.display="none";
+    document.getElementById("rr_cbd").style.display="none";
+    document.getElementById("rr_lr").style.display="none";
+   document.getElementById("rr_copd").style.display="none";
+   document.getElementById("rr_cc").style.display="none";
+  
 }
 else if (list2.value == "cl" && list3.value == "cfdl"){
     document.getElementById("cl_dcardc").style.display="block";
@@ -380,6 +519,11 @@ else if (list2.value == "cl" && list3.value == "cfdl"){
     document.getElementById("addtnlCd").style.display="none";
     document.getElementById("ExpiredDLvfdl").style.display="none";
     document.getElementById("chngeCT").style.display="none";
+    document.getElementById("rr_cbd").style.display="none";
+    document.getElementById("rr_lr").style.display="none";
+   document.getElementById("rr_copd").style.display="none";
+   document.getElementById("rr_cc").style.display="none";
+  
 }
 else if (list2.value == "cl" && list3.value == "cct"){
     document.getElementById("cl_dcardc").style.display="block";
@@ -397,6 +541,11 @@ else if (list2.value == "cl" && list3.value == "cct"){
     document.getElementById("addtnlCd").style.display="none";
     document.getElementById("ExpiredDLvfdl").style.display="none";
     document.getElementById("chngeCT").style.display="none";
+    document.getElementById("rr_cbd").style.display="none";
+    document.getElementById("rr_lr").style.display="none";
+   document.getElementById("rr_copd").style.display="none";
+   document.getElementById("rr_cc").style.display="none";
+  
 }
 
 
@@ -416,6 +565,11 @@ else if (list2.value == "cl" && list3.value == "cdlc"){
     document.getElementById("addtnlCd").style.display="none";
     document.getElementById("ExpiredDLvfdl").style.display="none";
     document.getElementById("chngeCT").style.display="none";
+    document.getElementById("rr_cbd").style.display="none";
+    document.getElementById("rr_lr").style.display="none";
+   document.getElementById("rr_copd").style.display="none";
+   document.getElementById("rr_cc").style.display="none";
+  
 }
 else if (list2.value == "cl" && list3.value == "edlvfdl"){
     document.getElementById("cl_dcardc").style.display="block";
@@ -433,6 +587,11 @@ else if (list2.value == "cl" && list3.value == "edlvfdl"){
     document.getElementById("addtnlCd").style.display="none";
     document.getElementById("ExpiredDLvfdl").style.display="none";
     document.getElementById("chngeCT").style.display="none";
+    document.getElementById("rr_cbd").style.display="none";
+    document.getElementById("rr_lr").style.display="none";
+   document.getElementById("rr_copd").style.display="none";
+   document.getElementById("rr_cc").style.display="none";
+  
 }
 
 else if (list2.value == "sp" && list3.value == "cfdl" || list2.value == "sp" && list3.value == "acc"){
@@ -451,6 +610,11 @@ else if (list2.value == "sp" && list3.value == "cfdl" || list2.value == "sp" && 
     document.getElementById("addtnlCd").style.display="none";
     document.getElementById("ExpiredDLvfdl").style.display="none";
     document.getElementById("chngeCT").style.display="none";
+    document.getElementById("rr_cbd").style.display="none";
+    document.getElementById("rr_lr").style.display="none";
+   document.getElementById("rr_copd").style.display="none";
+   document.getElementById("rr_cc").style.display="none";
+  
 }
 else if (list2.value == "sp" && list3.value == "edlvfdl" || list2.value == "sp" && list3.value == "cdlc"){
     document.getElementById("cl_dcardc").style.display="block";
@@ -468,9 +632,16 @@ else if (list2.value == "sp" && list3.value == "edlvfdl" || list2.value == "sp" 
     document.getElementById("addtnlCd").style.display="none";
     document.getElementById("ExpiredDLvfdl").style.display="none";
     document.getElementById("chngeCT").style.display="none";
+    document.getElementById("rr_cbd").style.display="none";
+    document.getElementById("rr_lr").style.display="none";
+   document.getElementById("rr_copd").style.display="none";
+   document.getElementById("rr_cc").style.display="none";
+
+  
     
 }
 else if (list2.value == "sp" && list3.value == "rr"){
+ 
     document.getElementById("cl_dcardc").style.display="block";
     document.getElementById("clrn").style.display="none";
     document.getElementById("lic_rr").style.display="none";
@@ -487,6 +658,11 @@ else if (list2.value == "sp" && list3.value == "rr"){
     document.getElementById("addtnlCd").style.display="none";
     document.getElementById("ExpiredDLvfdl").style.display="none";
     document.getElementById("chngeCT").style.display="none";
+    document.getElementById("rr_cbd").style.display="none";
+    document.getElementById("rr_lr").style.display="none";
+   document.getElementById("rr_copd").style.display="none";
+   document.getElementById("rr_cc").style.display="none";
+  
 }
 else if (list2.value == "sp" && list3.value == "cct"){
     document.getElementById("cl_dcardc").style.display="block";
@@ -504,13 +680,18 @@ else if (list2.value == "sp" && list3.value == "cct"){
     document.getElementById("addtnlCd").style.display="none";
     document.getElementById("ExpiredDLvfdl").style.display="none";
     document.getElementById("chngeCT").style.display="none";
+    document.getElementById("rr_cbd").style.display="none";
+    document.getElementById("rr_lr").style.display="none";
+   document.getElementById("rr_copd").style.display="none";
+   document.getElementById("rr_cc").style.display="none";
+  
 }
 // OTHER TRANSACTION
 else if (list3.value == "cfdl"){
     document.getElementById("cofd").style.display="block";
     document.getElementById("dlplct").style.display="none";
     document.getElementById("clrn").style.display="none"
-    document.getElementById("cl_dcardc").style.display="none";
+
     document.getElementById("pdlrn").style.display="none";
     document.getElementById("npdlrn").style.display="none";
     document.getElementById("sprn").style.display="none";
@@ -522,6 +703,12 @@ else if (list3.value == "cfdl"){
     document.getElementById("addtnlCd").style.display="none"; 
     document.getElementById("ExpiredDLvfdl").style.display="none";
     document.getElementById("chngeCT").style.display="none";
+    document.getElementById("rr_cbd").style.display="none";
+    document.getElementById("rr_lr").style.display="none";
+   document.getElementById("rr_copd").style.display="none";
+   document.getElementById("rr_cc").style.display="none";
+   document.getElementById("cl_dcardc").style.display="none";
+  
 }
 else if (list3.value == "acc"){
     document.getElementById("addtnlCd").style.display="block"; 
@@ -539,6 +726,11 @@ else if (list3.value == "acc"){
     document.getElementById("chngeClssfctn").style.display="none";
     document.getElementById("ExpiredDLvfdl").style.display="none";
     document.getElementById("chngeCT").style.display="none";
+    document.getElementById("rr_cbd").style.display="none";
+    document.getElementById("rr_lr").style.display="none";
+   document.getElementById("rr_copd").style.display="none";
+   document.getElementById("rr_cc").style.display="none";
+  
 }
 else if (list3.value == "cdlc"){    
     document.getElementById("chngeClssfctn").style.display="block";
@@ -556,6 +748,11 @@ else if (list3.value == "cdlc"){
     document.getElementById("addtnlCd").style.display="none"; 
     document.getElementById("ExpiredDLvfdl").style.display="none";
     document.getElementById("chngeCT").style.display="none";
+    document.getElementById("rr_cbd").style.display="none";
+    document.getElementById("rr_lr").style.display="none";
+   document.getElementById("rr_copd").style.display="none";
+   document.getElementById("rr_cc").style.display="none";
+  
 }
 else if (list3.value == "edlvfdl"){
     document.getElementById("ExpiredDLvfdl").style.display="block";
@@ -573,6 +770,11 @@ else if (list3.value == "edlvfdl"){
     document.getElementById("cln").style.display="none";
     document.getElementById("chngeClssfctn").style.display="none";
     document.getElementById("chngeCT").style.display="none";
+    document.getElementById("rr_cbd").style.display="none";
+    document.getElementById("rr_lr").style.display="none";
+   document.getElementById("rr_copd").style.display="none";
+   document.getElementById("rr_cc").style.display="none";
+  
 }
 else if (list3.value == "cct"){ 
     document.getElementById("chngeCT").style.display="block";   
@@ -590,6 +792,11 @@ else if (list3.value == "cct"){
     document.getElementById("cln").style.display="none";
     document.getElementById("addtnlCd").style.display="none"; 
     document.getElementById("ExpiredDLvfdl").style.display="none";
+    document.getElementById("rr_cbd").style.display="none";
+    document.getElementById("rr_lr").style.display="none";
+   document.getElementById("rr_copd").style.display="none";
+   document.getElementById("rr_cc").style.display="none";
+  
 }
 else{
     document.getElementById("spn").style.display="none";
@@ -607,6 +814,12 @@ else{
     document.getElementById("addtnlCd").style.display="none";
     document.getElementById("ExpiredDLvfdl").style.display="none";
     document.getElementById("chngeCT").style.display="none";
+    document.getElementById("rr_cbd").style.display="none";
+    document.getElementById("rr_lr").style.display="none";
+   document.getElementById("rr_copd").style.display="none";
+   document.getElementById("rr_cc").style.display="none";
+   document.getElementById("cl_dcardc").style.display="none";
+  
 }
  
 if (list2.value == "sp"){
@@ -681,10 +894,42 @@ else if (list3.value == "cct"){
 
 function lic_rr(){
     // change add req
+    if(list2.value == "sp"){
+        document.getElementById("lic_rr").style.display="none";
+        document.getElementById("rr_ccs").style.display="none";
+        document.getElementById("rr_cadd").style.display="none";
+        document.getElementById("rr_cn").style.display="none";
+    }
+    else if(list2.value == "dl" && list3.value == "rr"){
+        document.getElementById("lic_rr").style.display="block";
+    }
+    else if(list2.value == "cl" && list3.value == "rr"){
+        document.getElementById("lic_rr").style.display="block";
+    }
+    else{
+        document.getElementById("lic_rr").style.display="none";
+    }
+    // if(list3.value == "rr"){
+    //     document.getElementById("lic_rr").style.display="block";
+    // }
+    // else{
+    //     document.getElementById("lic_rr").style.display="none";
+    // }
+
+}
+
+function lic_rr(){
+    // change add req
+
+   
     if (list4.value == "rrca"){
         document.getElementById("rr_cadd").style.display="block";
+        document.getElementById("rr_copd").style.display="none";
         document.getElementById("rr_ccs").style.display="none";
         document.getElementById("rr_cn").style.display="none";  
+        document.getElementById("rr_lr").style.display="none";
+        document.getElementById("rr_cbd").style.display="none";
+        document.getElementById("rr_cc").style.display="none";
 
         var rvsnofrcrds = "Change Address"
 
@@ -694,6 +939,11 @@ function lic_rr(){
         document.getElementById("rr_ccs").style.display="block";
         document.getElementById("rr_cadd").style.display="none";
         document.getElementById("rr_cn").style.display="none"; 
+        document.getElementById("rr_copd").style.display="none";
+        document.getElementById("rr_lr").style.display="none";
+        document.getElementById("rr_cbd").style.display="none";
+        document.getElementById("rr_cc").style.display="none";
+          
 
         var rvsnofrcrds = "Change Civil Status"
     } 
@@ -701,40 +951,79 @@ function lic_rr(){
         document.getElementById("rr_cn").style.display="block";
         document.getElementById("rr_cadd").style.display="none"; 
         document.getElementById("rr_ccs").style.display="none";
+        document.getElementById("rr_copd").style.display="none";
+        document.getElementById("rr_cbd").style.display="none";
+        document.getElementById("rr_lr").style.display="none";
+        document.getElementById("rr_cc").style.display="none";
+     
     }
     // AWAN PAY NAKAKABIL NGA REQ NA, PAKIKITA NO ADDA
     if (list4.value == "rrcopd"){
+        document.getElementById("rr_copd").style.display="block";
         document.getElementById("rr_cadd").style.display="none";
         document.getElementById("rr_ccs").style.display="none";
         document.getElementById("rr_cn").style.display="none";  
-        
+        document.getElementById("rr_lr").style.display="none";
+        document.getElementById("rr_cbd").style.display="none"
+        document.getElementById("rr_cc").style.display="none";
+      
         var rvsnofrcrds = "Change of Other Personal Details"
     }
+    if (list4.value == "rrcopd"){
+        document.getElementById("rr_copd").style.display="block";
+        document.getElementById("rr_cadd").style.display="none";
+        document.getElementById("rr_ccs").style.display="none";
+        document.getElementById("rr_cn").style.display="none";  
+        document.getElementById("rr_lr").style.display="none";
+        document.getElementById("rr_cbd").style.display="none";
+        document.getElementById("rr_cc").style.display="none";
+       
+        var rvsnofrcrds = "Change of Other Personal Details"
+    }
+    
+
     if (list4.value == "rro"){
         document.getElementById("rr_cadd").style.display="none";
         document.getElementById("rr_ccs").style.display="none";
         document.getElementById("rr_cn").style.display="none";  
-        
+        document.getElementById("rr_copd").style.display="none";
+        document.getElementById("rr_lr").style.display="none";
+        document.getElementById("rr_cbd").style.display="none";
+        document.getElementById("rr_cc").style.display="none";
+    
         var rvsnofrcrds = "Others"
     }
     if (list4.value == "cc"){
+        document.getElementById("rr_cc").style.display="block";
         document.getElementById("rr_cadd").style.display="none";
         document.getElementById("rr_ccs").style.display="none";
         document.getElementById("rr_cn").style.display="none";  
-        
+        document.getElementById("rr_copd").style.display="none";
+        document.getElementById("rr_lr").style.display="none";
+        document.getElementById("rr_cbd").style.display="none";
         var rvsnofrcrds = "Change of Citizenship"
     }
     if (list4.value == "rrcbd"){
+        document.getElementById("rr_cbd").style.display="block";
+        document.getElementById("rr_cc").style.display="none";
         document.getElementById("rr_cadd").style.display="none";
         document.getElementById("rr_ccs").style.display="none";
-        document.getElementById("rr_cn").style.display="none";  
+        document.getElementById("rr_cn").style.display="none"; 
+        document.getElementById("rr_copd").style.display="none";
+        document.getElementById("rr_lr").style.display="none";
         
         var rvsnofrcrds = "Correction of Name/Birth Date"
     }
     if (list4.value == "lr"){
+        document.getElementById("rr_cbd").style.display="none";
+        document.getElementById("rr_lr").style.display="block";
         document.getElementById("rr_cadd").style.display="none";
         document.getElementById("rr_ccs").style.display="none";
-        document.getElementById("rr_cn").style.display="none";  
+        document.getElementById("rr_cn").style.display="none";
+        document.getElementById("rr_copd").style.display="none";  
+        document.getElementById("rr_cc").style.display="none";
+        
+        
         
         var rvsnofrcrds = "Lost/Replacement"
     }
@@ -831,4 +1120,5 @@ function mv_toa(){
 
     localStorage.setItem("toa",toa.toUpperCase());
 }
+
 
