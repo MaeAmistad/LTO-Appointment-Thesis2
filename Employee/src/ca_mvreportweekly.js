@@ -1,6 +1,10 @@
 bcklic.addEventListener('click' , () => {
-    window.location = "a_mvdashboard.html"
+    window.location = "ca_homepage.html"
 });
+yrmv.addEventListener('click' , () => {
+    window.location = "ca_mvyrdashboardweekly.html"
+});
+
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import { getFirestore, getDocs, collection } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
@@ -20,27 +24,15 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app); 
 
 var tbody = document.getElementById('tbody1');
-// // Monthly Filter 
-// var currentmonth = new Date().getMonth() + 1;
-// if (currentmonth < 10)  currentmonth = "0" + currentmonth;
-
-// DATE TODAY
-var date = new Date();
-var day = date.getDate();
-var month = date.getMonth() + 1;
-var year = date.getFullYear();
-if (month < 10) month = "0" + month;
-if (day < 10) day = "0" + day;
-var today = year + "-" + month + "-" + day ;
-
+// Monthly Filter 
+var currentmonth = new Date().getMonth() + 1;
+if (currentmonth < 10)  currentmonth = "0" + currentmonth;
 let itmNo = 0;
     const querySnapshot2 = await getDocs(collection(db,"Motor Vehicle")); 
-        querySnapshot2.forEach(doc2 => { 
-            var dd = doc2.data().User_D;
-            var ddsp = dd.slice(0,2);
-            var mmsp = dd.slice(5,7);
-            var yysp = dd.slice(10,14);
-            var dtcon1 = yysp + "-" + mmsp + "-" + ddsp; 
+        querySnapshot2.forEach(doc2 => {
+        // Current Month
+          let dd1 = doc2.data().dt_App;
+          let mmsp1 = dd1.slice(5,7);
         //Date Format
         var dd = doc2.data().dtrgstrd;
         var yysp = dd.slice(0,4);
@@ -48,7 +40,7 @@ let itmNo = 0;
         var ddsp = dd.slice(8,10);
         var dtcon = mmsp + "/" + ddsp + "/" + yysp;
         
-          if(dtcon1 == today){
+          if(mmsp1 == currentmonth){
                 let trow = document.createElement('tr');   
                 let td1 = document.createElement('td'); 
                 let td2 = document.createElement('td'); 

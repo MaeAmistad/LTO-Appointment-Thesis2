@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
+
+body {
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    background-color: white;  
+    /* color: #d36c6c; */
+} 
+/* Navigation Bar*/
+nav{
+    display: flex;
+    padding: 0.6% 6%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #032d89;
+}
+nav img{
+    width: 60px;
+    height: 60px;
+}
+.navbar{
+    text-align: left;
+}
+.navbar li{
+    list-style: none;
+    display: inline-block;
+    padding: 8px 7px;
+    position: relative;
+}
+nav ul ul{
+    position: absolute; 
+    top: 60px;
+    right: -10px;
+    display: none;
+    background-color: #032d89;
+    margin-top: -20px;
+    margin-right: -50px;
+}
+nav ul ul li{
+    width: 200px;
+    float:none;
+    display: list-item;
+    position: relative;
+}
+nav ul li:hover > ul{
+    display: block;
+}
+.navbar ul li a , #logout{
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+.navbar ul li{
+    font-size: 15px;
+}
+#logout{
+  border: none;
+  background-color: #032d89;
+  color: white;
+  text-transform: uppercase;
+  font-size: 15px;
+  cursor: pointer;
+}
+.dropdown-user button{
+    border: 1px solid gray;
+    padding: 10px;
+    /* width: 100px; */
+    border-radius: 5px;
+    text-transform: uppercase; 
+    margin: 10px 0 10px 10px;
+    cursor: pointer;
+   }
+   .dropdown-user{
+    margin-top: 5px;
+    margin-right: 5px;
+  }
+  .dropdown-user select{
+    padding: 5px;
+    text-transform: uppercase;
+    outline: none;
+  }
+      #table, .tablemv{
+        margin: 10px;
+        width: auto;
+        border-collapse: collapse;
+        font-size: 12px;
+      }
+      .tablemv tr th{
+        padding: 5px 5px;
+        font-size: 12px;
+      }
+      tr th, tr td{
+        border: 1px solid black;
+        padding: 5px;
+        text-align: left;
+        font-size: 12px;
+      }
+      #rw_ottl, .hdr th, tr td{
+        text-align: center;
+      }
+/* .font-weight-bold{
+    font-size: 20px;
+    margin-left: 10px;
+} */

@@ -1,19 +1,19 @@
 bcklic.addEventListener('click' , () => {
-    window.location = "a_licdashboard.html"
-});  
+  window.location = "ca_homepage.html"
+}); 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
 import { getFirestore, collection,getDocs } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
-  
-  // Your web app's Firebase configuration
+
+// Your web app's Firebase configuration
 const firebaseConfig = { 
-      apiKey: "AIzaSyCyNToos3S0HwLl0cZMRdiVjFJcBb4FWFo",
-      authDomain: "lto-online-appointment-setter.firebaseapp.com",
-      projectId: "lto-online-appointment-setter",
-      storageBucket: "lto-online-appointment-setter.appspot.com",
-      messagingSenderId: "382579903791",
-      appId: "1:382579903791:web:5d98bbe4ea8b38a43065da"
+    apiKey: "AIzaSyCyNToos3S0HwLl0cZMRdiVjFJcBb4FWFo",
+    authDomain: "lto-online-appointment-setter.firebaseapp.com", 
+    projectId: "lto-online-appointment-setter",
+    storageBucket: "lto-online-appointment-setter.appspot.com",
+    messagingSenderId: "382579903791",
+    appId: "1:382579903791:web:5d98bbe4ea8b38a43065da"
 }; 
-  
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig); 
 const db = getFirestore(app); 
@@ -53,107 +53,107 @@ let flnw_mal = 0;
 let rn_fem = 0;
 let rn_mal = 0;
 license.forEach((doc) => {
-  var dd = doc.data().User_D;
-  var ddsp = dd.slice(0,2);
-  var mmsp = dd.slice(5,7);
-  var yysp = dd.slice(10,14);
-  var dtcon = yysp + "-" + mmsp + "-" + ddsp; 
- 
+var dd = doc.data().User_D;
+var ddsp = dd.slice(0,2);
+var mmsp = dd.slice(5,7);
+var yysp = dd.slice(10,14);
+var dtcon = yysp + "-" + mmsp + "-" + ddsp; 
+
 
 // Current Count
 if(dtcon == today){
-  if(doc.data().laa == "STUDENT-DRIVER'S PERMIT"){    
-    // document.getElementById("sp_dpch").innerHTML = spttal+=1;
+if(doc.data().laa == "STUDENT-DRIVER'S PERMIT"){    
+  // document.getElementById("sp_dpch").innerHTML = spttal+=1;
 
-    if(doc.data().at == "NEW"){
-      if(doc.data().User_GN == "MALE"){
-        let sp_nm = sp1n+=1;        
-        localStorage.setItem("sp_dnmmd",sp_nm);
-      }
-      else if(doc.data().User_GN == "FEMALE"){
-        let sp_nf = sp2n+=1;        
-        localStorage.setItem("sp_dnffd",sp_nf);
-      }
+  if(doc.data().at == "NEW"){
+    if(doc.data().User_GN == "MALE"){
+      let sp_nm = sp1n+=1;        
+      localStorage.setItem("sp_dnmmd",sp_nm);
     }
-
-    if(doc.data().at == "RENEWAL"){
-      if(doc.data().User_GN == "MALE"){
-        let sp_rnm = sp1rn+=1;        
-        localStorage.setItem("sp_rnmmd",sp_rnm);
-      }
-      else if(doc.data().User_GN == "FEMALE"){
-        let sp_rnf = sp2rn+=1;        
-        localStorage.setItem("sp_rnffd",sp_rnf); 
-      }
+    else if(doc.data().User_GN == "FEMALE"){
+      let sp_nf = sp2n+=1;        
+      localStorage.setItem("sp_dnffd",sp_nf);
     }
   }
 
-  // Conductors License
-  if(doc.data().laa == "CONDUCTOR'S LICENSE"){
-    if(doc.data().at == "NEW"){
-      if(doc.data().User_GN == "MALE"){
-        let cl_nm = cl1n+=1;        
-        localStorage.setItem("cl_dnmmd",cl_nm);
-      }
-      else if(doc.data().User_GN == "FEMALE"){
-        let cl_nf = cl2n+=1;        
-        localStorage.setItem("cl_dnffd",cl_nf);
-      }
+  if(doc.data().at == "RENEWAL"){
+    if(doc.data().User_GN == "MALE"){
+      let sp_rnm = sp1rn+=1;        
+      localStorage.setItem("sp_rnmmd",sp_rnm);
     }
+    else if(doc.data().User_GN == "FEMALE"){
+      let sp_rnf = sp2rn+=1;        
+      localStorage.setItem("sp_rnffd",sp_rnf); 
+    }
+  }
+}
 
-    if(doc.data().at == "RENEWAL"){
-      if(doc.data().User_GN == "MALE"){
-        let cl_rnm = cl1rn+=1;        
-        localStorage.setItem("cl_rnmmd",cl_rnm);
-      }
-      else if(doc.data().User_GN == "FEMALE"){
-        let cl_rnf = cl2rn+=1;        
-        localStorage.setItem("cl_rnffd",cl_rnf);
-      }
+// Conductors License
+if(doc.data().laa == "CONDUCTOR'S LICENSE"){
+  if(doc.data().at == "NEW"){
+    if(doc.data().User_GN == "MALE"){
+      let cl_nm = cl1n+=1;        
+      localStorage.setItem("cl_dnmmd",cl_nm);
+    }
+    else if(doc.data().User_GN == "FEMALE"){
+      let cl_nf = cl2n+=1;        
+      localStorage.setItem("cl_dnffd",cl_nf);
     }
   }
 
-  if(doc.data().laa == "DRIVER'S LICENSE"){
-    if(doc.data().at == "NEW"){
-      if(doc.data().User_GN == "MALE"){
-        let  spn_m = spnw_mal+=1;        
-        localStorage.setItem("spn_mld",spn_m);
-      }
-      else if(doc.data().User_GN == "FEMALE"){
-        let spn_f = spnw_fem+=1;        
-        localStorage.setItem("spn_fmd",spn_f);
-      }
+  if(doc.data().at == "RENEWAL"){
+    if(doc.data().User_GN == "MALE"){
+      let cl_rnm = cl1rn+=1;        
+      localStorage.setItem("cl_rnmmd",cl_rnm);
     }
-
-    else if(doc.data().at == "CONVERSION OF FOREIGN DL"){
-      if(doc.data().User_GN == "MALE"){
-        let  spn_m = flnw_mal+=1;        
-        localStorage.setItem("fl_dnmd",spn_m);
-      }
-      else if(doc.data().User_GN == "FEMALE"){
-        let spn_f = flnw_fem+=1;        
-        localStorage.setItem("fl_dnfd",spn_f);
-      }
+    else if(doc.data().User_GN == "FEMALE"){
+      let cl_rnf = cl2rn+=1;        
+      localStorage.setItem("cl_rnffd",cl_rnf);
     }
+  }
+}
 
-    if(doc.data().at == "RENEWAL"){
-      if(doc.data().User_GN == "MALE"){
-        let  spn_m = rn_mal+=1;        
-        localStorage.setItem("rn_drnmd",spn_m);
-      }
-      else if(doc.data().User_GN == "FEMALE"){
-        let spn_f = rn_fem+=1;        
-        localStorage.setItem("rn_drnfd",spn_f);
-      }
+if(doc.data().laa == "DRIVER'S LICENSE"){
+  if(doc.data().at == "NEW"){
+    if(doc.data().User_GN == "MALE"){
+      let  spn_m = spnw_mal+=1;        
+      localStorage.setItem("spn_mld",spn_m);
+    }
+    else if(doc.data().User_GN == "FEMALE"){
+      let spn_f = spnw_fem+=1;        
+      localStorage.setItem("spn_fmd",spn_f);
     }
   }
 
-  
+  else if(doc.data().at == "CONVERSION OF FOREIGN DL"){
+    if(doc.data().User_GN == "MALE"){
+      let  spn_m = flnw_mal+=1;        
+      localStorage.setItem("fl_dnmd",spn_m);
+    }
+    else if(doc.data().User_GN == "FEMALE"){
+      let spn_f = flnw_fem+=1;        
+      localStorage.setItem("fl_dnfd",spn_f);
+    }
+  }
+
+  if(doc.data().at == "RENEWAL"){
+    if(doc.data().User_GN == "MALE"){
+      let  spn_m = rn_mal+=1;        
+      localStorage.setItem("rn_drnmd",spn_m);
+    }
+    else if(doc.data().User_GN == "FEMALE"){
+      let spn_f = rn_fem+=1;        
+      localStorage.setItem("rn_drnfd",spn_f);
+    }
+  }
+}
+
+
 
 }
 
 });
- 
+
 // AE Count Written
 const AE_licW = await getDocs(collection(db,"Written"))
 // cl
@@ -177,98 +177,98 @@ let other1_fw = 0;
 let other2_pw = 0;
 let other2_fw = 0;
 AE_licW.forEach((doc) => {
-  var dd = doc.data().User_D;
-  var ddsp = dd.slice(0,2);
-  var mmsp = dd.slice(5,7);
-  var yysp = dd.slice(10,14);
-  var dtcon = yysp + "-" + mmsp + "-" + ddsp; 
-  
-  if(dtcon == today){
-  // CL
-    if(doc.data().laa == "CONDUCTOR'S LICENSE"){
-      // document.getElementById("cl_dpch").innerHtml = clttl+=1;
-      if(doc.data().result == "PASSED"){
-        let cl_wf = cl_pw+=1;      
-        localStorage.setItem("cl_pwd",cl_wf);
-      }
-      else if(doc.data().result == "FAILED"){
-        let cl_wp = cl_fw+=1;      
-        localStorage.setItem("cl_fwd",cl_wp);
-      }
+var dd = doc.data().User_D;
+var ddsp = dd.slice(0,2);
+var mmsp = dd.slice(5,7);
+var yysp = dd.slice(10,14);
+var dtcon = yysp + "-" + mmsp + "-" + ddsp; 
+
+if(dtcon == today){
+// CL
+  if(doc.data().laa == "CONDUCTOR'S LICENSE"){
+    // document.getElementById("cl_dpch").innerHtml = clttl+=1;
+    if(doc.data().result == "PASSED"){
+      let cl_wf = cl_pw+=1;      
+      localStorage.setItem("cl_pwd",cl_wf);
     }
-   
-    if(doc.data().Laa == "DRIVER'S LICENSE"){
-       // DL New
-      if(doc.data().at == "NEW"){
-        if(doc.data().result == "PASSED"){
-          let  nw_pw = new_pw+=1;
-          localStorage.setItem("new_wpd",nw_pw);
-        }
-        else if(doc.data().result == "FAILED"){
-          let nw_fw = new_fw+=1;
-          localStorage.setItem("new_wfd",nw_fw);
-        }
-      }
-      // DL ADC
-      if(doc.data().at == "ADDITIONAL CODE OR CATEGORY"){
-        if(doc.data().result == "PASSED"){
-          let adl_pp = adl_pw+=1;
-          localStorage.setItem("adc_pwd",adl_pp);
-        }
-        else if(doc.data().result == "FAILED"){
-          let adl_pf = adl_fw+=1;
-          localStorage.setItem("adc_fwd",adl_pf);
-        }
-      }
-
-      else if (doc.data().at == "CHANGE OF DL CLASSIFICATION" || doc.data().at == "EXPIRED DL WITH VALID FDL" || doc.data().at == "DROPPING OF CATEGORY OR ADD'L OR REMOVAL OF DRIVING CONDITIONS"){
-        if(doc.data().result == "PASSED"){
-          let othr_1 = other1_pw+=1;
-          localStorage.setItem("othr1_awpd",othr_1);
-        }
-        else if(doc.data().result == "FAILED"){
-          let othr_2 = other1_fw+=1;
-          localStorage.setItem("othr1_awfd",othr_2);
-        }
-      }
-
-      else if(doc.data().at == "ENHANCEMENT OF DL" || doc.data().at == "CHANGE OF CLUTCH TYPE"){
-        if(doc.data().result == "PASSED"){
-          let othr_1 = other2_pw+=1;
-          localStorage.setItem("othr2_awpd",othr_1);
-        }
-        else if(doc.data().result == "FAILED"){
-          let othr_2 = other2_fw+=1;
-          localStorage.setItem("othr2_awfd",othr_2);
-        }
-      }
-
-      // FL
-      else if(doc.data().at == "CONVERSION OF FOREIGN DL"){
-        if(doc.data().result == "PASSED"){
-          let othr_1 = fl_pw+=1;
-          localStorage.setItem("fl_awpd",othr_1);
-        }
-        else if(doc.data().result == "FAILED"){
-          let othr_2 = fl_fw+=1;
-          localStorage.setItem("fl_awfd",othr_2);
-        }
-      }
-
-      else if(doc.data().at == "RENEWAL"){
-        if(doc.data().result == "PASSED"){
-          let othr_1 = rn_pw+=1;
-          localStorage.setItem("rn_awpd",othr_1);
-        }
-        else if(doc.data().result == "FAILED"){
-          let othr_2 = rn_fw+=1;
-          localStorage.setItem("rn_awfd",othr_2);
-        }
-      }
-      
+    else if(doc.data().result == "FAILED"){
+      let cl_wp = cl_fw+=1;      
+      localStorage.setItem("cl_fwd",cl_wp);
     }
   }
-  });
+ 
+  if(doc.data().Laa == "DRIVER'S LICENSE"){
+     // DL New
+    if(doc.data().at == "NEW"){
+      if(doc.data().result == "PASSED"){
+        let  nw_pw = new_pw+=1;
+        localStorage.setItem("new_wpd",nw_pw);
+      }
+      else if(doc.data().result == "FAILED"){
+        let nw_fw = new_fw+=1;
+        localStorage.setItem("new_wfd",nw_fw);
+      }
+    }
+    // DL ADC
+    if(doc.data().at == "ADDITIONAL CODE OR CATEGORY"){
+      if(doc.data().result == "PASSED"){
+        let adl_pp = adl_pw+=1;
+        localStorage.setItem("adc_pwd",adl_pp);
+      }
+      else if(doc.data().result == "FAILED"){
+        let adl_pf = adl_fw+=1;
+        localStorage.setItem("adc_fwd",adl_pf);
+      }
+    }
+
+    else if (doc.data().at == "CHANGE OF DL CLASSIFICATION" || doc.data().at == "EXPIRED DL WITH VALID FDL" || doc.data().at == "DROPPING OF CATEGORY OR ADD'L OR REMOVAL OF DRIVING CONDITIONS"){
+      if(doc.data().result == "PASSED"){
+        let othr_1 = other1_pw+=1;
+        localStorage.setItem("othr1_awpd",othr_1);
+      }
+      else if(doc.data().result == "FAILED"){
+        let othr_2 = other1_fw+=1;
+        localStorage.setItem("othr1_awfd",othr_2);
+      }
+    }
+
+    else if(doc.data().at == "ENHANCEMENT OF DL" || doc.data().at == "CHANGE OF CLUTCH TYPE"){
+      if(doc.data().result == "PASSED"){
+        let othr_1 = other2_pw+=1;
+        localStorage.setItem("othr2_awpd",othr_1);
+      }
+      else if(doc.data().result == "FAILED"){
+        let othr_2 = other2_fw+=1;
+        localStorage.setItem("othr2_awfd",othr_2);
+      }
+    }
+
+    // FL
+    else if(doc.data().at == "CONVERSION OF FOREIGN DL"){
+      if(doc.data().result == "PASSED"){
+        let othr_1 = fl_pw+=1;
+        localStorage.setItem("fl_awpd",othr_1);
+      }
+      else if(doc.data().result == "FAILED"){
+        let othr_2 = fl_fw+=1;
+        localStorage.setItem("fl_awfd",othr_2);
+      }
+    }
+
+    else if(doc.data().at == "RENEWAL"){
+      if(doc.data().result == "PASSED"){
+        let othr_1 = rn_pw+=1;
+        localStorage.setItem("rn_awpd",othr_1);
+      }
+      else if(doc.data().result == "FAILED"){
+        let othr_2 = rn_fw+=1;
+        localStorage.setItem("rn_awfd",othr_2);
+      }
+    }
+    
+  }
+}
+});
 
 const AE_licP = await getDocs(collection(db,"Practical"));
 // NEW
@@ -289,189 +289,189 @@ let other1_fp = 0;
 let other2_pp = 0;
 let other2_fp = 0;
 AE_licP.forEach((doc) => {
+var dd = doc.data().User_D;
+var ddsp = dd.slice(0,2);
+var mmsp = dd.slice(5,7);
+var yysp = dd.slice(10,14);
+var dtcon = yysp + "-" + mmsp + "-" + ddsp; 
+
+if(dtcon == today){
+  if(doc.data().Laa == "DRIVER'S LICENSE"){
+  // DL New
+  if(doc.data().at == "NEW"){
+    if(doc.data().result == "PASSED"){
+      let  nw_pw = new_pp+=1;
+      localStorage.setItem("new_ppd",nw_pw); 
+    }
+    else if(doc.data().result == "FAILED"){
+      let nw_fw = new_fp+=1;
+      localStorage.setItem("new_pfd",nw_fw);
+    }
+  }
+    // DL ADC
+    if(doc.data().at == "ADDITIONAL CODE OR CATEGORY"){
+      if(doc.data().result == "PASSED"){
+        let adc_pp = adl_pp+=1;
+        localStorage.setItem("adc_ppd",adc_pp);
+      }
+      else if(doc.data().result == "FAILED"){
+        let adl_pf = adl_fp+=1;
+        localStorage.setItem("adc_fpd",adl_pf);
+      }
+    }
+// other
+    else if (doc.data().at == "CHANGE OF DL CLASSIFICATION" || doc.data().at == "EXPIRED DL WITH VALID FDL" || doc.data().at == "DROPPING OF CATEGORY OR ADD'L OR REMOVAL OF DRIVING CONDITIONS"){
+      if(doc.data().result == "PASSED"){
+        let othr_1 = other1_pp+=1;
+        localStorage.setItem("othr1_appd",othr_1);
+      }
+      else if(doc.data().result == "FAILED"){
+        let othr_2 = other1_fp+=1;
+        localStorage.setItem("othr1_apfd",othr_2);
+      }
+    }
+
+    else if(doc.data().at == "ENHANCEMENT OF DL" || doc.data().at == "CHANGE OF CLUTCH TYPE"){
+      if(doc.data().result == "PASSED"){
+        let othr_1 = other2_pp+=1;
+        localStorage.setItem("othr2_appd",othr_1);
+      }
+      else if(doc.data().result == "FAILED"){
+        let othr_2 = other2_fp+=1;
+        localStorage.setItem("othr2_apfd",othr_2);
+      }
+    }
+
+          // FL
+    else if(doc.data().at == "CONVERSION OF FOREIGN DL"){
+      if(doc.data().result == "PASSED"){
+        let othr_1 = fl_pp+=1;
+        localStorage.setItem("fl_appd",othr_1);
+      }
+      else if(doc.data().result == "FAILED"){
+        let othr_2 = fl_fp+=1;
+        localStorage.setItem("fl_apfd",othr_2);
+      }
+    }
+
+    else if(doc.data().at == "RENEWAL"){
+      if(doc.data().result == "PASSED"){
+        let othr_1 = rn_pp+=1;
+        localStorage.setItem("rn_appd",othr_1);
+      }
+      else if(doc.data().result == "FAILED"){
+        let othr_2 = rn_fp+=1;
+        localStorage.setItem("rn_apfd",othr_2);
+      }
+    }
+    
+  }
+
+}
+});
+// MISC TXN
+const misc_ttal = await getDocs(collection(db,"License"));
+ let miscttld1 = 0;
+ let miscttld2 = 0;
+ let miscttld3 = 0;
+ let miscttld4 = 0;
+misc_ttal.forEach((doc) => {
   var dd = doc.data().User_D;
   var ddsp = dd.slice(0,2);
   var mmsp = dd.slice(5,7);
   var yysp = dd.slice(10,14);
   var dtcon = yysp + "-" + mmsp + "-" + ddsp; 
-  
+
   if(dtcon == today){
-    if(doc.data().Laa == "DRIVER'S LICENSE"){
-    // DL New
-    if(doc.data().at == "NEW"){
-      if(doc.data().result == "PASSED"){
-        let  nw_pw = new_pp+=1;
-        localStorage.setItem("new_ppd",nw_pw); 
+    if(doc.data().laa == "STUDENT-DRIVER'S PERMIT"){  
+      if (doc.data().at == "DUPLICATE" || doc.data().at == "REVISION OF RECORDS"){
+        var misc_ttl = miscttld1+=1;
+        localStorage.setItem("sp_mscttld",misc_ttl);
       }
-      else if(doc.data().result == "FAILED"){
-        let nw_fw = new_fp+=1;
-        localStorage.setItem("new_pfd",nw_fw);
+    } 
+    if(doc.data().laa == "CONDUCTOR'S LICENSE"){  
+      if (doc.data().at == "DUPLICATE" || doc.data().at == "REVISION OF RECORDS"){
+        var misc_ttl = miscttld2+=1;
+        localStorage.setItem("cl_mscttld",misc_ttl);
       }
     }
-      // DL ADC
-      if(doc.data().at == "ADDITIONAL CODE OR CATEGORY"){
-        if(doc.data().result == "PASSED"){
-          let adc_pp = adl_pp+=1;
-          localStorage.setItem("adc_ppd",adc_pp);
-        }
-        else if(doc.data().result == "FAILED"){
-          let adl_pf = adl_fp+=1;
-          localStorage.setItem("adc_fpd",adl_pf);
-        }
-      }
-// other
-      else if (doc.data().at == "CHANGE OF DL CLASSIFICATION" || doc.data().at == "EXPIRED DL WITH VALID FDL" || doc.data().at == "DROPPING OF CATEGORY OR ADD'L OR REMOVAL OF DRIVING CONDITIONS"){
-        if(doc.data().result == "PASSED"){
-          let othr_1 = other1_pp+=1;
-          localStorage.setItem("othr1_appd",othr_1);
-        }
-        else if(doc.data().result == "FAILED"){
-          let othr_2 = other1_fp+=1;
-          localStorage.setItem("othr1_apfd",othr_2);
-        }
-      }
-
-      else if(doc.data().at == "ENHANCEMENT OF DL" || doc.data().at == "CHANGE OF CLUTCH TYPE"){
-        if(doc.data().result == "PASSED"){
-          let othr_1 = other2_pp+=1;
-          localStorage.setItem("othr2_appd",othr_1);
-        }
-        else if(doc.data().result == "FAILED"){
-          let othr_2 = other2_fp+=1;
-          localStorage.setItem("othr2_apfd",othr_2);
-        }
-      }
-
-            // FL
-      else if(doc.data().at == "CONVERSION OF FOREIGN DL"){
-        if(doc.data().result == "PASSED"){
-          let othr_1 = fl_pp+=1;
-          localStorage.setItem("fl_appd",othr_1);
-        }
-        else if(doc.data().result == "FAILED"){
-          let othr_2 = fl_fp+=1;
-          localStorage.setItem("fl_apfd",othr_2);
-        }
-      }
-
-      else if(doc.data().at == "RENEWAL"){
-        if(doc.data().result == "PASSED"){
-          let othr_1 = rn_pp+=1;
-          localStorage.setItem("rn_appd",othr_1);
-        }
-        else if(doc.data().result == "FAILED"){
-          let othr_2 = rn_fp+=1;
-          localStorage.setItem("rn_apfd",othr_2);
-        }
-      }
-      
+    if (doc.data().at == "DUPLICATE"){
+      var misc_ttl = miscttld3+=1;
+      localStorage.setItem("dupl_mscttld",misc_ttl);
     }
+    if (doc.data().at == "REVISION OF RECORDS"){
+      var misc_ttl = miscttld4+=1;
+      localStorage.setItem("ror_mscttld",misc_ttl);
+    }
+}
+});
 
-  }
-  });
-  // MISC TXN
-  const misc_ttal = await getDocs(collection(db,"License"));
-   let miscttld1 = 0;
-   let miscttld2 = 0;
-   let miscttld3 = 0;
-   let miscttld4 = 0;
-  misc_ttal.forEach((doc) => {
-    var dd = doc.data().User_D;
-    var ddsp = dd.slice(0,2);
-    var mmsp = dd.slice(5,7);
-    var yysp = dd.slice(10,14);
-    var dtcon = yysp + "-" + mmsp + "-" + ddsp; 
-
-    if(dtcon == today){
-      if(doc.data().laa == "STUDENT-DRIVER'S PERMIT"){  
-        if (doc.data().at == "DUPLICATE" || doc.data().at == "REVISION OF RECORDS"){
-          var misc_ttl = miscttld1+=1;
-          localStorage.setItem("sp_mscttld",misc_ttl);
-        }
-      } 
-      if(doc.data().laa == "CONDUCTOR'S LICENSE"){  
-        if (doc.data().at == "DUPLICATE" || doc.data().at == "REVISION OF RECORDS"){
-          var misc_ttl = miscttld2+=1;
-          localStorage.setItem("cl_mscttld",misc_ttl);
-        }
-      }
-      if (doc.data().at == "DUPLICATE"){
-        var misc_ttl = miscttld3+=1;
-        localStorage.setItem("dupl_mscttld",misc_ttl);
-      }
-      if (doc.data().at == "REVISION OF RECORDS"){
-        var misc_ttl = miscttld4+=1;
-        localStorage.setItem("ror_mscttld",misc_ttl);
-      }
-  }
-  });
-
-  // NAN to int
+// NAN to int
 if (localStorage.getItem("sp_dnmmd") == null || localStorage.getItem("sp_dnffd") == null || localStorage.getItem("sp_rnmmd") == null || localStorage.getItem("sp_rnffd") == null){
-  localStorage.setItem("sp_dnmmd",0);
-  localStorage.setItem("sp_dnffd",0);  
-  localStorage.setItem("sp_rnmmd",0);
-  localStorage.setItem("sp_rnffd",0);
+localStorage.setItem("sp_dnmmd",0);
+localStorage.setItem("sp_dnffd",0);  
+localStorage.setItem("sp_rnmmd",0);
+localStorage.setItem("sp_rnffd",0);
 }
 if (localStorage.getItem("cl_dnmmd") == null || localStorage.getItem("cl_dnffd") == null || localStorage.getItem("cl_rnmmd") == null || localStorage.getItem("cl_rnffd") == null){
-  localStorage.setItem("cl_dnmmd",0);
-  localStorage.setItem("cl_dnffd",0);  
-  localStorage.setItem("cl_rnmmd",0);
-  localStorage.setItem("cl_rnffd",0);
+localStorage.setItem("cl_dnmmd",0);
+localStorage.setItem("cl_dnffd",0);  
+localStorage.setItem("cl_rnmmd",0);
+localStorage.setItem("cl_rnffd",0);
 }
 if (localStorage.getItem("spn_mld") == null || localStorage.getItem("spn_fmd") == null || localStorage.getItem("fl_dnmd") == null || localStorage.getItem("fl_dnfd") == null){
-  localStorage.setItem("spn_mld",0);
-  localStorage.setItem("spn_fmd",0);  
-  localStorage.setItem("fl_dnmd",0);
-  localStorage.setItem("fl_dnfd",0);
+localStorage.setItem("spn_mld",0);
+localStorage.setItem("spn_fmd",0);  
+localStorage.setItem("fl_dnmd",0);
+localStorage.setItem("fl_dnfd",0);
 }
 if (localStorage.getItem("rn_drnfd") == null || localStorage.getItem("rn_drnmd") == null || localStorage.getItem("cl_pwd") == null || localStorage.getItem("cl_fwd") == null){
-  localStorage.setItem("rn_drnfd",0);
-  localStorage.setItem("rn_drnmd",0);  
-  localStorage.setItem("cl_pwd",0);
-  localStorage.setItem("cl_fwd",0);
+localStorage.setItem("rn_drnfd",0);
+localStorage.setItem("rn_drnmd",0);  
+localStorage.setItem("cl_pwd",0);
+localStorage.setItem("cl_fwd",0);
 }
 if (localStorage.getItem("new_wpd") == null || localStorage.getItem("new_wfd") == null || localStorage.getItem("adc_pwd") == null || localStorage.getItem("adc_fwd") == null){
-  localStorage.setItem("new_wpd",0);
-  localStorage.setItem("new_wfd",0);  
-  localStorage.setItem("adc_pwd",0);
-  localStorage.setItem("adc_fwd",0);
+localStorage.setItem("new_wpd",0);
+localStorage.setItem("new_wfd",0);  
+localStorage.setItem("adc_pwd",0);
+localStorage.setItem("adc_fwd",0);
 }
 if (localStorage.getItem("othr1_awpd") == null || localStorage.getItem("othr1_awfd") == null || localStorage.getItem("othr2_awpd") == null || localStorage.getItem("othr2_awfd") == null){
-  localStorage.setItem("othr1_awpd",0);
-  localStorage.setItem("othr1_awfd",0);  
-  localStorage.setItem("othr2_awpd",0);
-  localStorage.setItem("othr2_awfd",0);
+localStorage.setItem("othr1_awpd",0);
+localStorage.setItem("othr1_awfd",0);  
+localStorage.setItem("othr2_awpd",0);
+localStorage.setItem("othr2_awfd",0);
 }
 if (localStorage.getItem("fl_awpd") == null || localStorage.getItem("fl_awfd") == null || localStorage.getItem("rn_awpd") == null || localStorage.getItem("rn_awfd") == null){
-  localStorage.setItem("fl_awpd",0);
-  localStorage.setItem("fl_awfd",0);  
-  localStorage.setItem("rn_awpd",0);
-  localStorage.setItem("rn_awfd",0);
+localStorage.setItem("fl_awpd",0);
+localStorage.setItem("fl_awfd",0);  
+localStorage.setItem("rn_awpd",0);
+localStorage.setItem("rn_awfd",0);
 }
 if (localStorage.getItem("new_ppd") == null || localStorage.getItem("new_pfd") == null || localStorage.getItem("adc_ppd") == null || localStorage.getItem("adc_fpd") == null){
-  localStorage.setItem("new_ppd",0);
-  localStorage.setItem("new_pfd",0);  
-  localStorage.setItem("adc_ppd",0);
-  localStorage.setItem("adc_fpd",0);
+localStorage.setItem("new_ppd",0);
+localStorage.setItem("new_pfd",0);  
+localStorage.setItem("adc_ppd",0);
+localStorage.setItem("adc_fpd",0);
 }
 if (localStorage.getItem("othr1_appd") == null || localStorage.getItem("othr1_apfd") == null || localStorage.getItem("othr2_appd") == null || localStorage.getItem("othr2_apfd") == null){
-  localStorage.setItem("othr1_appd",0);
-  localStorage.setItem("othr1_apfd",0);  
-  localStorage.setItem("othr2_appd",0);
-  localStorage.setItem("othr2_apfd",0);
+localStorage.setItem("othr1_appd",0);
+localStorage.setItem("othr1_apfd",0);  
+localStorage.setItem("othr2_appd",0);
+localStorage.setItem("othr2_apfd",0);
 }
 if (localStorage.getItem("fl_appd") == null || localStorage.getItem("fl_apfd") == null || localStorage.getItem("rn_appd") == null || localStorage.getItem("rn_apfd") == null){
-  localStorage.setItem("fl_appd",0);
-  localStorage.setItem("fl_apfd",0);  
-  localStorage.setItem("rn_appd",0);
-  localStorage.setItem("rn_apfd",0);
+localStorage.setItem("fl_appd",0);
+localStorage.setItem("fl_apfd",0);  
+localStorage.setItem("rn_appd",0);
+localStorage.setItem("rn_apfd",0);
 }
 if (localStorage.getItem("sp_mscttld") == null || localStorage.getItem("cl_mscttld") == null || localStorage.getItem("dupl_mscttld") == null || localStorage.getItem("ror_mscttld") == null){
-  localStorage.setItem("sp_mscttld",0);
-  localStorage.setItem("cl_mscttld",0);  
-  localStorage.setItem("dupl_mscttld",0);
-  localStorage.setItem("ror_mscttld",0);
+localStorage.setItem("sp_mscttld",0);
+localStorage.setItem("cl_mscttld",0);  
+localStorage.setItem("dupl_mscttld",0);
+localStorage.setItem("ror_mscttld",0);
 }
 
 // Count Total
@@ -703,3 +703,4 @@ document.getElementById("ttl_dtf").innerHTML = sp_ttl2 + sp_ttl4 + cl_ttl4 + cl_
 document.getElementById("ttl_dtt").innerHTML = sp_ttl1 + sp_ttl3 + sp_ttl2 + sp_ttl4 + cl_ttl3 + cl_ttl4 + cl_ttl5 + cl_ttl6 + spn_ttl5 + spn_ttl6 + fl_ttl1 + fl_ttl2 + nr_ttl1 + nr_ttl2;
 document.getElementById("ttl_misc").innerHTML = misc_ttl3 + misc_ttl4;
 document.getElementById("ttl_dpch").innerHTML = dpcha1 + dpcha2 + dpcha3;
+  

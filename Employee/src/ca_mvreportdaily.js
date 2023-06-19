@@ -1,5 +1,8 @@
 bcklic.addEventListener('click' , () => {
-    window.location = "a_mvdashboard.html"
+    window.location = "ca_homepage.html"
+});
+yrmv.addEventListener('click' , () => {
+    window.location = "ca_mvyrdashboarddaily.html"
 });
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
