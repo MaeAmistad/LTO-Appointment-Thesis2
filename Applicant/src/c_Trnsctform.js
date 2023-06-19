@@ -14,32 +14,32 @@ nextL.addEventListener('click' , (e) => {
             }
           })
     }
-    else if(localStorage.getItem("laa") == null){
-        Swal.fire({
-            title: 'Please complete your transaction to proceed.',
-            confirmButtonColor: '#132aaa',
-            width:500,
-            showClass: {
-              popup: 'animate__animated animate__fadeInDown'
-            },
-            hideClass: {
-              popup: 'animate__animated animate__fadeOutUp'
-            }
-          })
-    }
-    else if(localStorage.getItem("toa") == null){
-        Swal.fire({
-            title: 'Please complete your transaction to proceed.',
-            confirmButtonColor: '#132aaa',
-            width:500,
-            showClass: {
-              popup: 'animate__animated animate__fadeInDown'
-            },
-            hideClass: {
-              popup: 'animate__animated animate__fadeOutUp'
-            }
-          })
-    }
+    // else if(localStorage.getItem("laa") == null){
+    //     Swal.fire({
+    //         title: 'Please complete your transaction to proceed.',
+    //         confirmButtonColor: '#132aaa',
+    //         width:500,
+    //         showClass: {
+    //           popup: 'animate__animated animate__fadeInDown'
+    //         },
+    //         hideClass: {
+    //           popup: 'animate__animated animate__fadeOutUp'
+    //         }
+    //       })
+    // }
+    // else if(localStorage.getItem("toa") == null){
+    //     Swal.fire({
+    //         title: 'Please complete your transaction to proceed.',
+    //         confirmButtonColor: '#132aaa',
+    //         width:500,
+    //         showClass: {
+    //           popup: 'animate__animated animate__fadeInDown'
+    //         },
+    //         hideClass: {
+    //           popup: 'animate__animated animate__fadeOutUp'
+    //         }
+    //       })
+    // }
     // else if()
     else{
         window.location = 'c_PIform.html'
