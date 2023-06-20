@@ -41,7 +41,7 @@ cnl4.addEventListener('click',() => {
 // document.getElementById('tranID').innerHTML = tranID;
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
-import { getFirestore, getDocs, collection, updateDoc,doc,setDoc } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
+import { getFirestore, getDocs, collection, updateDoc,doc,setDoc,deleteDoc } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -86,7 +86,7 @@ let depted  = document.getElementById("deptagncy")
 
     var transID = localStorage.getItem("stat");
     var ID = localStorage.getItem("ID");
-    // console.log(transID)
+    console.log(transID)
         querySnapshot2.forEach(doc2 => {
        
             if (transID == doc2.data().User_TransID){
@@ -106,7 +106,7 @@ let depted  = document.getElementById("deptagncy")
 
                     document.getElementById("exmt").style.display = "none"
                     document.getElementById("et").style.display = "none"
-                    
+                     
                     // DISPLAY EDIT INFO
                     fned.value = doc2.data().User_FN;
                     lned.value = doc2.data().User_LN;
@@ -198,7 +198,7 @@ let depted  = document.getElementById("deptagncy")
                     document.getElementById("dt_t").innerHTML = doc2.data().User_T;
                     document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
                     document.getElementById("em").innerHTML = doc2.data().User_E;
-                    document.getElementById("mnn").innerHTML = doc2.data().User_CN;
+                    document.getElementById("mnn").innerHTML = doc2.data().User_CN; 
 
                     document.getElementById("plate_num").innerHTML = doc2.data().pltno;
                     document.getElementById("typee").innerHTML = doc2.data().typel;
@@ -432,15 +432,16 @@ let depted  = document.getElementById("deptagncy")
                         User_Stat4: "INCOMPLETED",
                         User_Stat: "INCOMPLETED"
                     }).then(() => {
-                        window.location = "ca_homepage.html"
+                        window.location = "a_applistca.html"
                     })
                 }
             })
 
             cnfrm3.addEventListener('click', (e) => {
-                if (stt == doc2.data().User_AppID){
+                var stt = localStorage.getItem("stat")
+                if (stt == doc2.data().User_TransID){
                     deleteDoc(doc(db, "Applicants", doc2.id)).then(() => {
-                        window.location = "a_appList.html"
+                        window.location = "a_applistca.html"
                     });
                 }
                 
@@ -448,8 +449,9 @@ let depted  = document.getElementById("deptagncy")
 
             cnfrm4.addEventListener('click', (e) => {
                 const updateStat = doc(db, "Applicants", doc2.id)
+                var stt = localStorage.getItem("stat")
                 // To be Continued, Add MV info 
-                if (stt == doc2.data().User_AppID){
+                if (stt == doc2.data().User_TransID){
                     updateDoc(updateStat, {
                         User_LN: lned.value,
                         User_FN: fned.value,
@@ -461,7 +463,7 @@ let depted  = document.getElementById("deptagncy")
                         User_CN: mned.value,
                         User_LTMS: ltmsed.value
                     }).then(() => {
-                        window.location = "a_reqdata.html"
+                        window.location = "a_applistca.html"
                         // console.log("EDIT")
                     })
                 }

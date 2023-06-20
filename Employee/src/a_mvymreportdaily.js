@@ -146,7 +146,7 @@ var today = year + "-" + month + "-" + day ;
 const mv_bc = await getDocs(collection(db, "Motor Vehicle"));
 mv_bc.forEach((doc) => {
   // CAR
-  var dd = doc.data().User_D;
+  var dd = doc.data().dt_App;
   var ddsp = dd.slice(0,2);
   var mmsp = dd.slice(5,7);
   var yysp = dd.slice(10,14);

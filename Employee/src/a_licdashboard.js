@@ -16,7 +16,7 @@ const firebaseConfig = {
     projectId: "lto-online-appointment-setter",
     storageBucket: "lto-online-appointment-setter.appspot.com",
     messagingSenderId: "382579903791",
-    appId: "1:382579903791:web:5d98bbe4ea8b38a43065da"
+    appId: "1:382579903791:web:5d98bbe4ea8b38a43065da" 
 }; 
 
 // Initialize Firebase
@@ -241,11 +241,11 @@ var barChartOptions = {
 //main chart
 
 // mscn txn
-const totlmscn = await getDocs(collection(db, "Applicants"));
+const totlmscn = await getDocs(collection(db, "License"));
 let mscntotl = 0;
 totlmscn.forEach((doc) => {
   if(doc.data().dt_App == today){
-  if (doc.data().User_AT == "DUPLICATE" || doc.data().User_AT == "REVISION OF RECORDS"){
+  if (doc.data().at == "DUPLICATE" || doc.data().at == "REVISION OF RECORDS"){
       var mscn = mscntotl +=1;
       localStorage.setItem("mscntotal",mscn);
   }

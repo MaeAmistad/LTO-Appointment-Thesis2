@@ -21,7 +21,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app); 
+const db = getFirestore(app);   
 
 // Monthly Filter
 var currentmonth = new Date().getMonth() + 1;
@@ -246,15 +246,15 @@ var barChartOptions = {
 //main chart
 
 // mscn txn
-const totlmscn = await getDocs(collection(db, "Applicants"));
+const totlmscn = await getDocs(collection(db, "License"));
 let mscntotl = 0;
 totlmscn.forEach((doc) => {
   // getting month
-let dd = doc.data().User_D;
+let dd = doc.data().dt_App;
 var mmsp = dd.slice(5,7);
 
-  if(mmsp == currentmonth){
-  if (doc.data().User_AT == "DUPLICATE" || doc.data().User_AT == "REVISION OF RECORDS"){
+if(mmsp == currentmonth){
+  if (doc.data().at == "DUPLICATE" || doc.data().at == "REVISION OF RECORDS"){
       var mscn = mscntotl +=1;
       localStorage.setItem("mscntotalmon",mscn);
   }

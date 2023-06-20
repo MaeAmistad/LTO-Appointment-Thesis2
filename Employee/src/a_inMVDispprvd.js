@@ -29,7 +29,7 @@ const db = getFirestore(app);
   const querySnapshot2 = await getDocs(collection(db,"Applicants"));
   var tbody = document.getElementById('tbody1');
 
-      querySnapshot2.forEach(doc2 => {
+      querySnapshot2.forEach(doc2 => { 
 //  
         if(doc2.data().User_Stat1 == "DISSAPPROVED" && doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
 

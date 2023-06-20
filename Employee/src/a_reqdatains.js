@@ -23,8 +23,9 @@ delttr.addEventListener('click',() => {
   blur.classList.toggle('active')
 });
 edittr.addEventListener('click',() => {
-  document.getElementById('cnfrm_modal4').style.display = "block";
+  document.getElementById('cnfrm_modal4').style.display = "block"; 
   blur.classList.toggle('active')
+
 });
 cnl4.addEventListener('click',() => {
   // window.location = "pc_reqdata.html";
@@ -237,6 +238,16 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+// EDIT VALUE
+let fned = document.getElementById("fnedit")
+let lned = document.getElementById("lnedit")
+let mned = document.getElementById("mnedit")
+let dobed = document.getElementById("dobedit")
+let gnrded = document.getElementById("gndredit")
+let added = document.getElementById("addedit")
+let emled = document.getElementById("emledit")
+let mnmed = document.getElementById("mnmedit")
+let ltmsed = document.getElementById("ltmsidedit")
 add.addEventListener('click',() => {
   let pltno = document.getElementById("pltno").value.toUpperCase();
   let type = document.getElementById("type").value.toUpperCase();
@@ -473,6 +484,17 @@ add.addEventListener('click',() => {
                   document.getElementById("em").innerHTML = doc2.data().User_E;
                   document.getElementById("mnn").innerHTML = doc2.data().User_CN;
 
+                    // DISPLAY EDIT INFO
+                    fned.value = doc2.data().User_FN;
+                    lned.value = doc2.data().User_LN;
+                    mned.value = doc2.data().User_MN;
+                    dobed.value = doc2.data().User_BD;
+                    gnrded.value = doc2.data().User_GN;
+                    added.value = doc2.data().User_ADD;
+                    emled.value = doc2.data().User_E;
+                    mnmed.value = doc2.data().User_CN;
+                    ltmsed.value = doc2.data().User_LTMS;
+
                   document.getElementById("trnsctn").value = doc2.data().User_AT;
               }
 
@@ -549,7 +571,7 @@ add.addEventListener('click',() => {
               }
           })  
 
-          cnfrm3.addEventListener('click', (e) => {
+          cnfrm4.addEventListener('click', (e) => {
             if (stt == doc2.data().User_AppID){
                 deleteDoc(doc(db, "Applicants", doc2.id)).then(() => {
                     window.location = "a_appListins.html"
@@ -558,7 +580,7 @@ add.addEventListener('click',() => {
             
         })
 
-        cnfrm4.addEventListener('click', (e) => {
+        cnfrm5.addEventListener('click', (e) => {
             const updateStat = doc(db, "Applicants", doc2.id)
             // To be Continued, Add MV info 
             if (stt == doc2.data().User_AppID){

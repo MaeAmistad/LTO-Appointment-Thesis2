@@ -17,7 +17,7 @@ const firebaseConfig = {
     messagingSenderId: "382579903791",
     appId: "1:382579903791:web:5d98bbe4ea8b38a43065da"
 };
-
+ 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app); 
@@ -39,7 +39,7 @@ var today = year + "-" + month + "-" + day ;
 let itmNo = 0;
     const querySnapshot2 = await getDocs(collection(db,"Motor Vehicle")); 
         querySnapshot2.forEach(doc2 => { 
-            var dd = doc2.data().User_D;
+            var dd = doc2.data().dt_App;
             var ddsp = dd.slice(0,2);
             var mmsp = dd.slice(5,7);
             var yysp = dd.slice(10,14);

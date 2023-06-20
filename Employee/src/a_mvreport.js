@@ -1,5 +1,5 @@
 bcklic.addEventListener('click' , () => {
-    window.location = "a_mvdashboard.html"
+    window.location = "a_mvmonthfltr.html"
 });
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
@@ -23,7 +23,7 @@ var tbody = document.getElementById('tbody1');
 // Monthly Filter 
 var currentmonth = new Date().getMonth() + 1;
 if (currentmonth < 10)  currentmonth = "0" + currentmonth;
-let itmNo = 0;
+let itmNo = 0; 
     const querySnapshot2 = await getDocs(collection(db,"Motor Vehicle")); 
         querySnapshot2.forEach(doc2 => {
         // Current Month

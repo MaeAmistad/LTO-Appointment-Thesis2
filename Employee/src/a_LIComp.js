@@ -16,7 +16,7 @@ const firebaseConfig = {
     projectId: "lto-online-appointment-setter",
     storageBucket: "lto-online-appointment-setter.appspot.com",
     messagingSenderId: "382579903791",
-    appId: "1:382579903791:web:5d98bbe4ea8b38a43065da"
+    appId: "1:382579903791:web:5d98bbe4ea8b38a43065da" 
 };
 
 // Initialize Firebase
@@ -31,7 +31,7 @@ const db = getFirestore(app);
 
       querySnapshot2.forEach(doc2 => {
 //  
-        if(doc2.data().User_Stat == "APPROVED" && doc2.data().User_TT == "LICENSING"){
+        if(doc2.data().User_Stat == "APPROVED_TO_CASHIER" && doc2.data().User_TT == "LICENSING"){
 
                 if (doc2.data().User_AT == "REVISION OF RECORDS"){
                     let trow = document.createElement('tr'); 

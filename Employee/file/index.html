@@ -12,7 +12,7 @@
         <img src="../img/Land_Transportation_Office.svg.png" alt="No Image">
         <h1>LTO Appointment Setter</h1>
 
-        <form id="form" autocomplete="on">
+        <form id="form" autocomplete="off">
 
             <div class="login-form">
                 <input type="text" id="emaill" placeholder="Email"> 
@@ -73,7 +73,7 @@
                 const icon = document.getElementById("icon")
                 if(passInput.type === "password"){
                   passInput.type = "text"
-                  icon.innerText = "visibility"
+                  icon.innerText = "visibility" 
                 }
                 else{
                   password.type = "password"

@@ -41,7 +41,7 @@ cnl4.addEventListener('click',() => {
 // document.getElementById('tranID').innerHTML = tranID;
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
-import { getFirestore, getDocs, collection, updateDoc,doc,setDoc,addDoc } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
+import { getFirestore, getDocs, collection, updateDoc,doc,setDoc,deleteDoc } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -177,7 +177,7 @@ let ltmsed = document.getElementById("ltmsidedit")
 
             })
             cnfrm3.addEventListener('click', (e) => {
-                if (stt == doc2.data().User_AppID){
+                if (stt == doc2.data().User_TransID){
                     deleteDoc(doc(db, "Applicants", doc2.id)).then(() => {
                         window.location = "a_applistex.html"
                     });
@@ -188,7 +188,7 @@ let ltmsed = document.getElementById("ltmsidedit")
             cnfrm4.addEventListener('click', (e) => {
                 const updateStat = doc(db, "Applicants", doc2.id)
                 // To be Continued, Add MV info 
-                if (stt == doc2.data().User_AppID){
+                if (stt == doc2.data().User_TransID){
                     updateDoc(updateStat, {
                         User_LN: lned.value,
                         User_FN: fned.value,

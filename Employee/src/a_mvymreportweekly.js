@@ -16,7 +16,7 @@ const firebaseConfig = {
 }; 
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig); 
 const db = getFirestore(app);
 
 //  
@@ -140,7 +140,7 @@ const mv_bc = await getDocs(collection(db, "Motor Vehicle"));
 mv_bc.forEach((doc) => {
   // CAR
   let dd = doc.data().dt_App;
-  let mmsp = dd.slice(3,5); 
+  var mmsp = dd.slice(5,7);
  
   if(mmsp == currentmonth){
     // Year Model 1

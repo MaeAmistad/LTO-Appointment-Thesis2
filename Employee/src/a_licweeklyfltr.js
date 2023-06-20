@@ -265,11 +265,11 @@ bcklic.addEventListener('click' , () => {
   //main chart
   
   // mscn txn
-  const totlmscn = await getDocs(collection(db, "Applicants"));
+  const totlmscn = await getDocs(collection(db, "License"));
   let mscntotl = 0;
   totlmscn.forEach((doc) => {
-    if(today.includes(doc.data().User_D)){
-    if (doc.data().User_AT == "DUPLICATE" || doc.data().User_AT == "REVISION OF RECORDS"){
+    if(today.includes(doc.data().dt_App)){
+    if (doc.data().at == "DUPLICATE" || doc.data().at == "REVISION OF RECORDS"){
         var mscn = mscntotl +=1;
         localStorage.setItem("mscntotalwk",mscn);
     }

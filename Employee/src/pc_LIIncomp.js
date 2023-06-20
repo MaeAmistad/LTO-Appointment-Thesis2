@@ -20,7 +20,7 @@ const firebaseConfig = {
     projectId: "lto-online-appointment-setter",
     storageBucket: "lto-online-appointment-setter.appspot.com",
     messagingSenderId: "382579903791",
-    appId: "1:382579903791:web:5d98bbe4ea8b38a43065da"
+    appId: "1:382579903791:web:5d98bbe4ea8b38a43065da" 
 };
 
 // Initialize Firebase

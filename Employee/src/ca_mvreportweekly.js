@@ -2,7 +2,7 @@ bcklic.addEventListener('click' , () => {
     window.location = "ca_homepage.html"
 });
 yrmv.addEventListener('click' , () => {
-    window.location = "ca_mvyrdashboardweekly.html"
+    window.location = "ca_mvyrdashboardweekly.html" 
 });
 
 

@@ -14,7 +14,7 @@ const firebaseConfig = {
     appId: "1:382579903791:web:5d98bbe4ea8b38a43065da"
 }; 
 
-// Initialize Firebase
+// Initialize Firebase 
 const app = initializeApp(firebaseConfig); 
 const db = getFirestore(app); 
 
@@ -53,7 +53,7 @@ let flnw_mal = 0;
 let rn_fem = 0;
 let rn_mal = 0;
 license.forEach((doc) => {
-var dd = doc.data().User_D;
+var dd = doc.data().dt_App; 
 var ddsp = dd.slice(0,2);
 var mmsp = dd.slice(5,7);
 var yysp = dd.slice(10,14);
@@ -177,7 +177,7 @@ let other1_fw = 0;
 let other2_pw = 0;
 let other2_fw = 0;
 AE_licW.forEach((doc) => {
-var dd = doc.data().User_D;
+var dd = doc.data().dt_App;
 var ddsp = dd.slice(0,2);
 var mmsp = dd.slice(5,7);
 var yysp = dd.slice(10,14);
@@ -289,7 +289,7 @@ let other1_fp = 0;
 let other2_pp = 0;
 let other2_fp = 0;
 AE_licP.forEach((doc) => {
-var dd = doc.data().User_D;
+var dd = doc.data().dt_App;
 var ddsp = dd.slice(0,2);
 var mmsp = dd.slice(5,7);
 var yysp = dd.slice(10,14);
@@ -376,7 +376,7 @@ const misc_ttal = await getDocs(collection(db,"License"));
  let miscttld3 = 0;
  let miscttld4 = 0;
 misc_ttal.forEach((doc) => {
-  var dd = doc.data().User_D;
+  var dd = doc.data().dt_App;
   var ddsp = dd.slice(0,2);
   var mmsp = dd.slice(5,7);
   var yysp = dd.slice(10,14);

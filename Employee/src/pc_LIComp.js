@@ -17,7 +17,7 @@ import { getFirestore, getDocs, collection } from "https://www.gstatic.com/fireb
 const firebaseConfig = {
     apiKey: "AIzaSyCyNToos3S0HwLl0cZMRdiVjFJcBb4FWFo",
     authDomain: "lto-online-appointment-setter.firebaseapp.com",
-    projectId: "lto-online-appointment-setter",
+    projectId: "lto-online-appointment-setter", 
     storageBucket: "lto-online-appointment-setter.appspot.com",
     messagingSenderId: "382579903791",
     appId: "1:382579903791:web:5d98bbe4ea8b38a43065da"
