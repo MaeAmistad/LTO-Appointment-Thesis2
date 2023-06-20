@@ -23,7 +23,7 @@ bcklic.addEventListener('click' , () => {
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
-        // Weekly Date
+        // Weekly Date 
         function getDatesInRange(startDate, endDate) {
             const date = new Date(startDate);
             const dates = [];
@@ -270,7 +270,7 @@ bcklic.addEventListener('click' , () => {
   totlmscn.forEach((doc) => {
     if(today.includes(doc.data().dt_App)){
     if (doc.data().at == "DUPLICATE" || doc.data().at == "REVISION OF RECORDS"){
-        var mscn = mscntotl +=1;
+        var mscn = mscntotl +=1; 
         localStorage.setItem("mscntotalwk",mscn);
     }
   }

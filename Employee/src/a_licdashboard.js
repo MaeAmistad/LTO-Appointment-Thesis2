@@ -37,16 +37,18 @@ var today = day + " - " + month + " - " + year;
 const wrttnlicexam = await getDocs(collection(db, "Written"));
 let wrttn1 = 0;
 let wrttn2 = 0;
-
+let wrttn_all = 0;
 wrttnlicexam.forEach((doc) => {
 // Current Count
     if(doc.data().dt_App == today){
       if(doc.data().result == "PASSED"){
         var wrtnn_examP = wrttn1+=1;
+        wrttn_all =  wrttn_all+=1
         localStorage.setItem("wrtnn_examP",wrtnn_examP)
       }
       if(doc.data().result == "FAILED"){
         var wrtnn_examF = wrttn2+=1;
+        wrttn_all =  wrttn_all+=1
         localStorage.setItem("wrtnn_examF",wrtnn_examF)
       } 
     }
@@ -56,16 +58,18 @@ wrttnlicexam.forEach((doc) => {
 const praclicexam = await getDocs(collection(db, "Practical"));
 let prac1 = 0;
 let prac2 = 0;
-
+let prac_all = 0;
 praclicexam.forEach((doc) => {
 // Current Count
     if(doc.data().dt_App == today){
       if(doc.data().result == "PASSED"){
         var prac_examP = prac1+=1;
+        prac_all = prac_all+=1
         localStorage.setItem("prac_examP",prac_examP)
       }
       if(doc.data().result == "FAILED"){
         var prac_examF = prac2+=1;
+        prac_all = prac_all+=1
         localStorage.setItem("prac_examF",prac_examF)
       } 
     }
@@ -73,17 +77,17 @@ praclicexam.forEach((doc) => {
 });
 
 // If LocalStorage key Get Null
-if (localStorage.getItem("wrtnn_examP") == null || localStorage.getItem("wrtnn_examF") == null){
-  localStorage.setItem("wrtnn_examP",0);
-  localStorage.setItem("wrtnn_examF",0);
-}
-if (localStorage.getItem("prac_examP") == null || localStorage.getItem("prac_examF") == null){
-  localStorage.setItem("prac_examP",0);
-  localStorage.setItem("prac_examF",0);
-}
+// if (localStorage.getItem("wrtnn_examP") == null || localStorage.getItem("wrtnn_examF") == null){
+//   localStorage.setItem("wrtnn_examP",0);
+//   localStorage.setItem("wrtnn_examF",0);
+// }
+// if (localStorage.getItem("prac_examP") == null || localStorage.getItem("prac_examF") == null){
+//   localStorage.setItem("prac_examP",0);
+//   localStorage.setItem("prac_examF",0);
+// }
 
-let wrtnprac = parseInt(localStorage.getItem("wrtnn_examP")) + parseInt(localStorage.getItem("wrtnn_examF")) + parseInt(localStorage.getItem("prac_examP")) + parseInt(localStorage.getItem("prac_examF"))
-document.getElementById("num_current_exttal").innerHTML = wrtnprac;
+// let wrtnprac = parseInt(localStorage.getItem("wrtnn_examP")) + parseInt(localStorage.getItem("wrtnn_examF")) + parseInt(localStorage.getItem("prac_examP")) + parseInt(localStorage.getItem("prac_examF"))
+document.getElementById("num_current_exttal").innerHTML = wrttn_all + prac_all;
 
 var barChartOptions = {
     series: [{
@@ -238,7 +242,7 @@ var barChartOptions = {
   var barChart = new ApexCharts(document.querySelector("#bar-chart2"), barChartOptions);
   barChart.render();
 
-//main chart
+//second chart
 
 // mscn txn
 const totlmscn = await getDocs(collection(db, "License"));
@@ -247,7 +251,7 @@ totlmscn.forEach((doc) => {
   if(doc.data().dt_App == today){
   if (doc.data().at == "DUPLICATE" || doc.data().at == "REVISION OF RECORDS"){
       var mscn = mscntotl +=1;
-      localStorage.setItem("mscntotal",mscn);
+      localStorage.setItem("mscntotal",mscn);                      
   }
 }
 })
@@ -307,7 +311,7 @@ dlch_total.forEach((doc) => {
     localStorage.setItem("dlch_cnt4",0);
   }
 // total of all
-var AEtotl = wrtnprac;
+var AEtotl = wrttn_all + prac_all;
 var dpchtotl = parseInt(localStorage.getItem("dlch_cnt1")) + parseInt(localStorage.getItem("dlch_cnt2")) + parseInt(localStorage.getItem("dlch_cnt3")) +  parseInt(localStorage.getItem("dlch_cnt4"));
 var DLPI = localStorage.getItem("totl_dlpi");
 var MSCN = localStorage.getItem("mscntotal"); 
@@ -393,6 +397,108 @@ if(time == "0:0"){
   localStorage.removeItem("dlch_cnt3");
   localStorage.removeItem("dlch_cnt4");
 }
+
+// MAIN
+
+  // const lic_cnt = collection(db,"License");
+  // const sp_cnt = query(lic_cnt, where("laa", "==", "STUDENT-DRIVER'S PERMIT"));
+  // const dl_cnt = query(lic_cnt, where("laa", "==", "DRIVER'S LICENSE"));
+  // const cl_cnt = query(lic_cnt, where("laa", "==", "CONDUCTOR'S LICENSE"));
+  // const sp_cn = await getCountFromServer(sp_cnt);
+  // const dl_cn = await getCountFromServer(dl_cnt);
+  // const cl_cn = await getCountFromServer(cl_cnt);
+  let sp_liccnt = 0;
+  let dl_liccnt = 0;
+  let cl_liccnt = 0;
+  let lic_all = 0;
+totlmscn.forEach((doc) => {
+  // if(doc.data().dt_App == today){
+    if (doc.data().laa == "STUDENT-DRIVER'S PERMIT"){
+        var mscn = sp_liccnt +=1;
+        lic_all = lic_all+=1
+        localStorage.setItem("sp_liccnt",mscn);                 
+    }
+    else if (doc.data().laa == "DRIVER'S LICENSE"){
+      var mscn = dl_liccnt +=1;
+      lic_all = lic_all+=1
+      localStorage.setItem("dl_liccnt",mscn);                      
+    }
+    else if (doc.data().laa == "CONDUCTOR'S LICENSE"){
+      var mscn = cl_liccnt +=1;
+      lic_all = lic_all+=1
+      localStorage.setItem("cl_liccnt",mscn);                     
+    }
+// }
+})
+
+let spcnt = localStorage.getItem("sp_liccnt")
+let dlcnt = localStorage.getItem("dl_liccnt")
+let clcnt = localStorage.getItem("cl_liccnt")
+document.getElementById("lic_transac").innerHTML = lic_all
+
+var barChartOptions = {
+  series: [{
+    name: "TOTAL",
+    data: [ spcnt, dlcnt,clcnt ]
+  }], 
+  chart: { 
+    type: 'bar',
+    height: 350,
+    toolbar: {
+      show: true
+    },
+    events: {
+      dataPointSelection: function(event, chartContext, config) {
+        window.location = "a_licdbdaily.html";
+      }
+    }
+  },
+  plotOptions: {
+    bar: {
+      borderRadius: 4,
+      horizontal: false,
+      columnWidth: '40%',
+      distributed: true
+    }
+  },
+  dataLabels: {
+    enabled: false
+  },
+  colors: [
+    '#89375F',
+    '#F7B844',
+    '#0EA293', 
+    '#B8621B'
+  ],
+  legend: {
+    show: false,
+    onItemHover: {
+      highlightDataSeries: true
+    }
+  },
+  stroke: {
+    show: true,
+    width: 1,
+    colors: ['#fff']
+  },
+  xaxis: {
+    categories: ["STUDENT-DRIVER'S PERMIT", "DRIVER'S LICENSE", "CONDUCTOR'S LICENSE"],
+  },
+  yaxis: {
+    title: {
+      text: "Count"
+    }
+  }
+};
+
+var barChart = new ApexCharts(document.querySelector("#bar-chart-main"), barChartOptions);
+barChart.render();
+
+// if (localStorage.getItem("sp_liccnt") == null || localStorage.getItem("dl_liccnt") == null || localStorage.getItem("cl_liccnt") == null){
+//   localStorage.setItem("sp_liccnt",0);
+//   localStorage.setItem("dl_liccnt",0);
+//   localStorage.setItem("cl_liccnt",0);
+// }
 
 // CODE
 

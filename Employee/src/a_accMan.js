@@ -23,7 +23,7 @@ var tbody = document.getElementById('tbody1');
 const querySnapshot = await getDocs(collection(db, "Users", "Employee", "EmployeeData"));
   querySnapshot.forEach(doc => {
 
-    if(doc.data().user_Status == "Enabled"){
+    // if(doc.data().user_Status == "Enabled"){
       var trow = document.createElement('tr'); 
       let td1 = document.createElement('td');
       let td2 = document.createElement('td');
@@ -31,7 +31,8 @@ const querySnapshot = await getDocs(collection(db, "Users", "Employee", "Employe
       let td4 = document.createElement('td'); 
       let td5 = document.createElement('td');
       let td6 = document.createElement('td');
-      let td7 = document.createElement('td'); 
+      let td7 = document.createElement('td');  
+      let td8 = document.createElement('td');  
 
       td1.innerHTML = doc.data().user_LN;
       td2.innerHTML = doc.data().user_FN;
@@ -40,6 +41,7 @@ const querySnapshot = await getDocs(collection(db, "Users", "Employee", "Employe
       td5.innerHTML = doc.data().user_EID;
       td6.innerHTML = doc.data().user_E;
       td7.innerHTML = doc.data().user_PWD;
+      td8.innerHTML = doc.data().user_Status;
 
       trow.appendChild(td1);
       trow.appendChild(td2);
@@ -48,6 +50,7 @@ const querySnapshot = await getDocs(collection(db, "Users", "Employee", "Employe
       trow.appendChild(td5);
       trow.appendChild(td6);
       trow.appendChild(td7);
+      trow.appendChild(td8);
 
       tbody.appendChild(trow);
 
@@ -86,7 +89,7 @@ const querySnapshot = await getDocs(collection(db, "Users", "Employee", "Employe
       }
     });
 
-    }
+    // }
   });
 
 // window.onload = GetAllDataOnce;

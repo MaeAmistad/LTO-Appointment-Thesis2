@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!-- <meta http-equiv="refresh" content="5"> -->
-    <title>LTO Appointment Setter</title>
+    <title>LTO Appointment Setter</title> 
 
     <!-- Montserrat Font -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -70,7 +70,7 @@
                 <div class="con-mv">Motor Vehicle<br><br></div>
               </a>
 
-            </div>
+            </div> 
           </li>
 
             <a href="a_reqView.html">
@@ -92,6 +92,9 @@
                 <button class="add_acc" onclick="toggle()">Add</button>
                 <button class="edit_acc" id="edit_acc" onclick="toggle2()">Edit</button>
                 <button id="delete_acc" onclick="toggle3()">Delete</button>
+                <input type="text" id="srchText" placeholder="Search" onkeyup="searchAppID()"> 
+ 
+
             </div>
             <div class="outer-wrapper">
             <div class="table-wrapper">
@@ -104,7 +107,8 @@
                     <th>Position</th>
                     <th>Employee ID</th>
                     <th>Email Address</th>
-                    <th>Password</th>              
+                    <th>Password</th>
+                    <th>Status</th>                
                 </tr>
             <tbody id="tbody1"></tbody>                                                       
             </table>
@@ -394,7 +398,7 @@
 
             var popup = document.getElementById('edit-modal');
             popup.classList.toggle('active');
-      }   
+      }    
 
       function toggle3(){
             var blur = document.getElementById('blur');
@@ -405,6 +409,37 @@
       } 
 
       </script>
+      <script> 
+        const searchAppID = () => {
+            let filter =  document.getElementById('srchText').value.toUpperCase();
+            let mytable = document.getElementById('tbody1');
+            let tr = mytable.getElementsByTagName('tr');
+  
+            for(var i=0; i<tr.length; i++){
+                let td = tr[i].getElementsByTagName('td')[0];
+                let td2 = tr[i].getElementsByTagName('td')[1]; 
+                let td3 = tr[i].getElementsByTagName('td')[2]; 
+                let td4 = tr[i].getElementsByTagName('td')[3]; 
+                let td5 = tr[i].getElementsByTagName('td')[4]; 
+  
+                if (td || td2 || td3 || td4 || td5){  
+  
+                    let textvalue = td.textContent || td.innerHTML;
+                    let textvalue2 = td2.textContent || td2.innerHTML;
+                    let textvalue3 = td3.textContent || td3.innerHTML;
+                    let textvalue4 = td4.textContent || td4.innerHTML;
+                    let textvalue5 = td5.textContent || td5.innerHTML;
+  
+                    if(textvalue.toUpperCase().indexOf(filter) > -1 || textvalue2.toUpperCase().indexOf(filter) > -1 || textvalue3.toUpperCase().indexOf(filter) > -1 || textvalue4.toUpperCase().indexOf(filter) > -1 || textvalue5.toUpperCase().indexOf(filter) > -1){
+                        tr[i].style.display = '';
+                    }
+                    else{
+                        tr[i].style.display = 'none';
+                    }
+                }
+            }
+        }
+  </script>
       
    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>-->
 
