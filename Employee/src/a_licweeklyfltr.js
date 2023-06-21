@@ -36,7 +36,7 @@ bcklic.addEventListener('click' , () => {
             if (month < 10) month = "0" + month;
             if (day < 10) day = "0" + day;
             var today = day + " - " + month + " - " + year; 
-            
+             
             dates.push(today); 
             date.setDate(date.getDate() + 1);
             }
@@ -57,324 +57,83 @@ bcklic.addEventListener('click' , () => {
             let d1 = new Date(start);
             let d2 = new Date(end);
             let today = getDatesInRange(d1, d2);
+            console.log(today)
 
 // Applicants Examined Bar chart
-  const wrttnlicexam = await getDocs(collection(db, "Written"));
-  let wrttn1 = 0;
-  let wrttn2 = 0;
-  wrttnlicexam.forEach((doc) => {
+const wrttnlicexam = await getDocs(collection(db, "Written"));
+let wrttn1 = 0;
+let wrttn2 = 0;
+let wrttn_all = 0;
+wrttnlicexam.forEach((doc) => {
+// Current Count
 
-  // Current Count
-      if(today.includes(doc.data().dt_App)){
-        if(doc.data().result == "PASSED"){
-          var wrtnn_examP = wrttn1+=1;
-          localStorage.setItem("wrtnn_examPwk",wrtnn_examP)
-        }
-        if(doc.data().result == "FAILED"){
-          var wrtnn_examF = wrttn2+=1;
-          localStorage.setItem("wrtnn_examFwk",wrtnn_examF)
-        } 
-      }
-  });
-  
-  const praclicexam = await getDocs(collection(db, "Practical"));
-  let prac1 = 0;
-  let prac2 = 0;
-  
-  praclicexam.forEach((doc) => {
-  // Current Count
-      if(today.includes(doc.data().dt_App)){
-        if(doc.data().result == "PASSED"){
-          var prac_examP = prac1+=1;
-          localStorage.setItem("prac_examPwk",prac_examP)
-        }
-        if(doc.data().result == "FAILED"){
-          var prac_examF = prac2+=1;
-          localStorage.setItem("prac_examFwk",prac_examF)
-        } 
-      }
-    
-  });
-  
-  // If LocalStorage key Get Null
-  if (localStorage.getItem("wrtnn_examPwk") == null || localStorage.getItem("wrtnn_examFwk") == null){
-    localStorage.setItem("wrtnn_examPwk",0);
-    localStorage.setItem("wrtnn_examFwk",0);
-  }
-  if (localStorage.getItem("prac_examPwk") == null || localStorage.getItem("prac_examFwk") == null){
-    localStorage.setItem("prac_examPwk",0);
-    localStorage.setItem("prac_examFwk",0);
-  }
-  
-  let wrtnprac = parseInt(localStorage.getItem("wrtnn_examPwk")) + parseInt(localStorage.getItem("wrtnn_examFwk")) + parseInt(localStorage.getItem("prac_examPwk")) + parseInt(localStorage.getItem("prac_examFwk"))
-  document.getElementById("num_current_exttal").innerHTML = wrtnprac;
-  
-  var barChartOptions = {
-      series: [{
-        name: 'PASSED',
-        data: [localStorage.getItem("wrtnn_examPwk"), localStorage.getItem("prac_examPwk")]
-      }, {
-        name: 'FAILED',
-        data: [localStorage.getItem("wrtnn_examFwk"), localStorage.getItem("prac_examFwk")]
-      }],
-      chart: {
-        type: 'bar',
-        height: 350,
-        toolbar: {
-          show: true
-        },
-        
-      },
-      colors: [
-        "#361626",
-        "#c49baf"
-      ],
-      plotOptions: {
-        bar: {
-          borderRadius: 4,
-          horizontal: false,
-          columnWidth: '40%',
-        }
-      },
-      dataLabels: {
-        enabled: false
-      },
-      legend: {
-        show: true,
-        onItemHover: {
-          highlightDataSeries: true
-        }
-      },
-      stroke: {
-        show: true,
-        width: 1,
-        colors: ['#fff']
-      },
-      xaxis: {
-        categories: ["WRITTEN", "PRACTICAL"],
-      },
-      yaxis: {
-        title: {
-          text: "Count"
-        }
-      }
-    };
-    
-    var barChart = new ApexCharts(document.querySelector("#bar-chart1"), barChartOptions);
-    barChart.render();
-  
-  // DL  & Permit Issued BarChart
-  const DLIPissued = await getDocs(collection(db, "License"));
-  let countn1 = 0;
-  let countn2 = 0;
-  
-  let countrn1 = 0;
-  let countrn2 = 0; 
-  DLIPissued.forEach((doc) => {
-  // NEW
-  if(today.includes(doc.data().dt_App)){
-      if(doc.data().at == "NEW"){
-        if(doc.data().User_GN == "FEMALE"){
-          var femcount = countn1+=1;
-          localStorage.setItem("femnwk",femcount)
-        }
-        if(doc.data().User_GN == "MALE"){
-          var malcount = countn2+=1;
-          localStorage.setItem("malnwk",malcount)
-        }
-      }
-  //RENEWAL
-      if (doc.data().at == "RENEWAL"){
-        if(doc.data().User_GN == "FEMALE"){
-          var femcount = countrn1+=1;
-          localStorage.setItem("femrnwk",femcount)
-        }
-        if(doc.data().User_GN == "MALE"){
-          var malcount = countrn2+=1;
-          localStorage.setItem("malrnwk",malcount)
-        }
-      }
-  }
-    
-  });
-  
-  if (localStorage.getItem("femnwk") == null || localStorage.getItem("femrnwk") == null){
-    localStorage.setItem("femnwk",0)
-    localStorage.setItem("femrnwk",0)
-  }
-  if (localStorage.getItem("malnwk") == null || localStorage.getItem("malrnwk") == null){
-    localStorage.setItem("malnwk",0)
-    localStorage.setItem("malrnwk",0)
-  }
-  
-  document.getElementById("num_current_issttal").innerHTML = parseInt(localStorage.getItem("femnwk")) + parseInt(localStorage.getItem("femrnwk")) + parseInt(localStorage.getItem("malnwk")) + parseInt(localStorage.getItem("malrnwk"));
-  var barChartOptions = {
-      series: [{
-        name: 'FEMALE',
-        data: [localStorage.getItem("femnwk"), localStorage.getItem("femrnwk")]
-      }, {
-        name: 'MALE',
-        data: [localStorage.getItem("malnwk"), localStorage.getItem("malrnwk")]
-      }],
-      chart: {
-        type: 'bar',
-        height: 350,
-        toolbar: {
-          show: true
-        },
-      },
-      colors: [
-        "#C59336",
-        "#FAD48E"
-      ],
-      plotOptions: {
-        bar: {
-          borderRadius: 4,
-          horizontal: false,
-          columnWidth: '40%'
-        },
-      },
-      
-      dataLabels: {
-        enabled: false,
-      },
-      legend: {
-        show: true,
-        onItemHover: {
-          highlightDataSeries: true
-        }
-      },    
-      stroke: {
-        show: true,
-        width: 1,
-        colors: ['#fff']
-      },
-      xaxis: {
-        categories: ["NEW", "RENEWAL"],
-      },
-      yaxis: {
-        title: {
-          text: "Count"
-        }
-      }
-    };
-    
-    var barChart = new ApexCharts(document.querySelector("#bar-chart2"), barChartOptions);
-    barChart.render();
-  
-  //main chart
-  
-  // mscn txn
-  const totlmscn = await getDocs(collection(db, "License"));
-  let mscntotl = 0;
-  totlmscn.forEach((doc) => {
     if(today.includes(doc.data().dt_App)){
-    if (doc.data().at == "DUPLICATE" || doc.data().at == "REVISION OF RECORDS"){
-        var mscn = mscntotl +=1; 
-        localStorage.setItem("mscntotalwk",mscn);
-    }
-  }
-  })
-  
-  const totlDLPI = await getDocs(collection(db, "License"));
-  let totl1 = 0;
-  totlDLPI.forEach((doc) => {
-    if(today.includes(doc.data().dt_App)){
-      if(doc.data().at == "NEW" || doc.data().at == "RENEWAL"){
-        var sdp = totl1+=1;
-        localStorage.setItem("totl_dlpiwk", sdp);
+      if(doc.data().result == "PASSED"){
+        wrttn1 = wrttn1+=1;
+        wrttn_all =  wrttn_all+=1
+      }
+      if(doc.data().result == "FAILED"){
+        wrttn2 = wrttn2+=1;
+        wrttn_all =  wrttn_all+=1
       } 
     }
-  });
   
-  // If LocalStorage key Get Null
-  if (localStorage.getItem("mscntotalwk") == null || localStorage.getItem("totl_dlpiwk") == null){
-    localStorage.setItem("mscntotalwk",0);
-    localStorage.setItem("totl_dlpiwk",0);
-  }
-  
-  // dlch
-  const dlch_total = await getDocs(collection(db, "Applicants"));
-  let dlch1 = 0;
-  let dlch2 = 0;
-  let dlch3 = 0;
-  let dlch4 = 0;
-  dlch_total.forEach((doc) => {
-    // Current Count
-    // console.log(today)
-        if(today.includes(doc.data().User_D)){
-          if(doc.data().User_Stat == "RELEASED"){
-            let dlch_cnt = dlch1+=1;
-            localStorage.setItem("dlch_cnt1wk",dlch_cnt);
-          }
-          else if(doc.data().User_Stat3 == "FAILED"){
-            let dlch_cnt = dlch4+=1;
-            localStorage.setItem("dlch_cnt4wk",dlch_cnt);
-          }
-  
-          if(doc.data().User_TT == "License"){
-            if(doc.data().User_Stat4 == "INCOMPLETED"){
-            let dlch_cnt = dlch2+=1;
-            localStorage.setItem("dlch_cnt2wk",dlch_cnt);
-          }
-          else if(doc.data().User_Stat2 == "DECLINED"){
-            let dlch_cnt = dlch3+=1;
-            localStorage.setItem("dlch_cnt3wk",dlch_cnt);
-          }
-        }
-        }
-    });
-  
-    if (localStorage.getItem("dlch_cnt1wk") == null || localStorage.getItem("dlch_cnt2wk") == null || localStorage.getItem("dlch_cnt3wk") == null || localStorage.getItem("dlch_cnt4wk") == null){
-      localStorage.setItem("dlch_cnt1wk",0);
-      localStorage.setItem("dlch_cnt2wk",0);
-      localStorage.setItem("dlch_cnt3wk",0);
-      localStorage.setItem("dlch_cnt4wk",0);
+});
+
+const praclicexam = await getDocs(collection(db, "Practical"));
+let prac1 = 0;
+let prac2 = 0;
+let prac_all = 0;
+praclicexam.forEach((doc) => {
+// Current Count
+    if(today.includes(doc.data().dt_App)){
+      if(doc.data().result == "PASSED"){
+        prac1 = prac1+=1;
+        prac_all = prac_all+=1
+      }
+      if(doc.data().result == "FAILED"){
+        prac2 = prac2+=1;
+        prac_all = prac_all+=1
+      } 
     }
-  // total of all
-  var AEtotl = wrtnprac;
-  var dpchtotl = parseInt(localStorage.getItem("dlch_cnt1wk")) + parseInt(localStorage.getItem("dlch_cnt2wk")) + parseInt(localStorage.getItem("dlch_cnt3wk")) +  parseInt(localStorage.getItem("dlch_cnt4wk"));
-  var DLPI = localStorage.getItem("totl_dlpiwk");
-  var MSCN = localStorage.getItem("mscntotalwk"); 
   
-  document.getElementById("num_current_licttal").innerHTML = dpchtotl;
-  var barChartOptions = {
+});
+
+
+document.getElementById("num_current_exttal").innerHTML = wrttn_all + prac_all;
+
+var barChartOptions = {
     series: [{
-      name: "TOTAL",
-      data: [ AEtotl , DLPI , MSCN , dpchtotl]
+      name: 'PASSED',
+      data: [wrttn1, prac1]
+    }, {
+      name: 'FAILED',
+      data: [wrttn2, prac2]
     }],
-    chart: { 
+    chart: {
       type: 'bar',
       height: 350,
       toolbar: {
         show: true
       },
-      events: {
-        dataPointSelection: function(event, chartContext, config) {
-          // console.log("Good")
-          console.log(config.w.config.series[config.dataPointIndex])
-        }
-      }
+      
     },
+    colors: [
+      "#361626",
+      "#c49baf"
+    ],
     plotOptions: {
       bar: {
         borderRadius: 4,
         horizontal: false,
         columnWidth: '40%',
-        distributed: true
       }
     },
     dataLabels: {
       enabled: false
     },
-    colors: [
-      '#89375F',
-      '#F7B844',
-      '#0EA293',
-      '#B8621B'
-    ],
     legend: {
-      show: false,
+      show: true,
       onItemHover: {
         highlightDataSeries: true
       }
@@ -385,7 +144,7 @@ bcklic.addEventListener('click' , () => {
       colors: ['#fff']
     },
     xaxis: {
-      categories: ["APPLICANTS EXAMINED", "DL & PERMIT ISSUED", "MISC TXN", "DL & PERMITS CASES HANDLED"],
+      categories: ["WRITTEN", "PRACTICAL"],
     },
     yaxis: {
       title: {
@@ -394,48 +153,427 @@ bcklic.addEventListener('click' , () => {
     }
   };
   
-  var barChart = new ApexCharts(document.querySelector("#bar-chart3"), barChartOptions);
+  var barChart = new ApexCharts(document.querySelector("#bar-chart1"), barChartOptions);
   barChart.render();
+
+// DL  & Permit Issued BarChart
+const DLIPissued = await getDocs(collection(db, "License"));
+let femcountn = 0;
+let malcountn = 0;
+let malfemcntn = 0;
+
+let femcountrn = 0;
+let malcountrn = 0; 
+let malfemcntrn = 0;
+DLIPissued.forEach((doc) => {
+// NEW
+if(today.includes(doc.data().dt_App)){
+    if(doc.data().at == "NEW"){
+      if(doc.data().User_GN == "FEMALE"){
+        femcountn = femcountn+=1;
+        malfemcntn = malfemcntn+=1;
+      }
+      if(doc.data().User_GN == "MALE"){
+        malcountn = malcountn+=1;
+        malfemcntn = malfemcntn+=1;
+      }
+    }
+//RENEWAL
+    if (doc.data().at == "RENEWAL"){
+      if(doc.data().User_GN == "FEMALE"){
+        femcountrn = femcountrn+=1;
+        malfemcntrn = malfemcntrn+=1;
+      }
+      if(doc.data().User_GN == "MALE"){
+        malcountrn = malcountrn+=1;
+        malfemcntrn = malfemcntrn+=1;
+      }
+    }
+}
   
-  // Time Today
-  var now2 = new Date()
-  var time = now2.getHours() + ":" + now2.getMinutes();
+}); 
+
+document.getElementById("num_current_issttal").innerHTML = malfemcntn + malfemcntrn;
+var barChartOptions = {
+    series: [{
+      name: 'FEMALE',
+      data: [femcountn, femcountrn]
+    }, {
+      name: 'MALE',
+      data: [malcountn, malcountrn]
+    }],
+    chart: {
+      type: 'bar',
+      height: 350,
+      toolbar: {
+        show: true
+      },
+    },
+    colors: [
+      "#C59336",
+      "#FAD48E"
+    ],
+    plotOptions: {
+      bar: {
+        borderRadius: 4,
+        horizontal: false,
+        columnWidth: '40%'
+      },
+    },
+    
+    dataLabels: {
+      enabled: false,
+    },
+    legend: {
+      show: true,
+      onItemHover: {
+        highlightDataSeries: true
+      }
+    },    
+    stroke: {
+      show: true,
+      width: 1,
+      colors: ['#fff']
+    },
+    xaxis: {
+      categories: ["NEW", "RENEWAL"],
+    },
+    yaxis: {
+      title: {
+        text: "Count"
+      }
+    }
+  };
   
-  if(time == "0:0"){
-    localStorage.removeItem("wrtnn_examPwk");
-    localStorage.removeItem("wrtnn_examFwk");
-    localStorage.removeItem("prac_examPwk");
-    localStorage.removeItem("prac_examFwk");
-    localStorage.removeItem("femnwk");
-    localStorage.removeItem("malnwk");
-    localStorage.removeItem("femrnwk");
-    localStorage.removeItem("malrnwk");
-    localStorage.removeItem("mscntotalwk");
-    localStorage.removeItem("totl_dlpiwk");
-    localStorage.removeItem("dlch_cnt1wk");
-    localStorage.removeItem("dlch_cnt2wk");
-    localStorage.removeItem("dlch_cnt3wk");
-    localStorage.removeItem("dlch_cnt4wk");
-  } 
-  
-  // CODE
-  
-    // const wrttn = collection(db,"Written");
-    // const w1 = query(wrttn, where("result", "==", "PASSED"));
-    // const w2 = query(wrttn, where("result", "==", "FAILED"));
-    // const wpass = await getCountFromServer(w1);
-    // const wfail = await getCountFromServer(w2);
-   
-    // const prctcl = collection(db,"Practical");
-    // const p1 = query(prctcl, where("result", "==", "PASSED"));
-    // const p2 = query(prctcl, where("result", "==", "FAILED"));
-    // const ppass = await getCountFromServer(p1);
-    // const pfail = await getCountFromServer(p2);
-  
-    // const dpch = collection(db,"Applicants");
-  // const relLic = query(dpch, where("User_Stat", "==", "RELEASED"));
-  // const incompLic = query(dpch, where("User_Stat", "==", "INCOMPLETED"));
-  // const failed = query(dpch, where("User_Stat", "==", "FAILED"));
-  // const RELIC = await getCountFromServer(relLic);
-  // const INCOMLIC = await getCountFromServer(incompLic);
-  // const FAILED = await getCountFromServer(failed);
+  var barChart = new ApexCharts(document.querySelector("#bar-chart2"), barChartOptions);
+  barChart.render();
+
+//second chart
+
+// mscn txn
+const totl = await getDocs(collection(db, "License"));
+let mscntotl = 0;
+totl.forEach((doc) => {
+  if(today.includes(doc.data().dt_App)){
+  if (doc.data().at == "DUPLICATE" || doc.data().at == "REVISION OF RECORDS"){
+      mscntotl = mscntotl +=1;                    
+  }
+}
+})
+
+// DLPI
+let dlpittl = 0;
+totl.forEach((doc) => {
+  if(today.includes(doc.data().dt_App)){
+    if(doc.data().at == "NEW" || doc.data().at == "RENEWAL"){
+      dlpittl = dlpittl+=1;
+    } 
+  }
+});
+
+// dlch
+const dlch_total = await getDocs(collection(db, "Applicants"));
+let dlch1 = 0;
+let dlch2 = 0;
+let dlch3 = 0;
+let dlch4 = 0;
+let dlchall = 0;
+dlch_total.forEach((doc) => {
+  // Current Count
+      if(today.includes(doc.data().dt_App)){
+        if(doc.data().User_Stat == "RELEASED"){
+          dlch1 = dlch1+=1;
+          dlchall = dlchall+=1;
+        }
+        else if(doc.data().User_Stat == "FAILED"){
+          dlch4 = dlch4+=1;
+          dlchall = dlchall+=1;
+        }
+
+        if(doc.data().User_TT == "License"){
+          if(doc.data().User_Stat == "INCOMPLETED"){
+            dlch2 = dlch2+=1;
+            dlchall = dlchall+=1;
+        }
+        else if(doc.data().User_Stat == "DECLINED"){
+          dlch3 = dlch3+=1;
+          dlchall = dlchall+=1;
+        }
+      }
+      }
+  });
+// total of all
+var AEtotl = wrttn_all + prac_all;
+document.getElementById("num_current_licttal").innerHTML = dlchall;
+var barChartOptions = {
+  series: [{
+    name: "TOTAL",
+    data: [ AEtotl , dlpittl , mscntotl , dlchall]
+  }], 
+  chart: { 
+    type: 'bar',
+    height: 350,
+    toolbar: {
+      show: true
+    },
+    events: {
+      dataPointSelection: function(event, chartContext, config) {
+        // console.log("Good")
+        console.log(config.w.config.series[config.dataPointIndex])
+      }
+    }
+  },
+  plotOptions: {
+    bar: {
+      borderRadius: 4,
+      horizontal: false,
+      columnWidth: '40%',
+      distributed: true
+    }
+  },
+  dataLabels: {
+    enabled: false
+  },
+  colors: [
+    '#89375F',
+    '#F7B844',
+    '#0EA293',
+    '#B8621B'
+  ],
+  legend: {
+    show: false,
+    onItemHover: {
+      highlightDataSeries: true
+    }
+  },
+  stroke: {
+    show: true,
+    width: 1,
+    colors: ['#fff']
+  },
+  xaxis: {
+    categories: ["APPLICANTS EXAMINED", "DL & PERMIT ISSUED", "MISC TXN", "DL & PERMITS CASES HANDLED"],
+  },
+  yaxis: {
+    title: {
+      text: "Count"
+    }
+  }
+};
+
+var barChart = new ApexCharts(document.querySelector("#bar-chart3"), barChartOptions);
+barChart.render();
+
+
+// MAIN
+
+let age1 = ["2007", "2006","2005","2004","2003"]
+let age2 = ["2002", "2001","2000","1999","1998"]
+let age3 = ["1997", "1996","1995","1994","1993"]
+let age4 = ["1992", "1991","1990","1989","1988"]
+let age5 = ["1987", "1986","1985","1984","1983"]
+let age6 = ["1982", "1981","1980","1979","1978"]
+let age7 = ["1977", "1976","1975","1974","1973"]
+let age8 = ["1972", "1971","1970","1969","1968"]
+let age9 = ["1967", "1966","1965","1964","1963"] 
+let age10 = ["1962", "1961","1960","1959","1958","1957","1956","1955","1954","1953","1952","1951","1950","1949","1948"]
+
+// LIC
+let sp_liccnt = 0;
+let dl_liccnt = 0;
+let cl_liccnt = 0;
+let lic_all = 0;
+
+// AGE
+let age_1 = 0;
+let age_2 = 0;
+let age_3 = 0;
+let age_4 = 0;
+let age_5 = 0;
+let age_6 = 0;
+let age_7 = 0;
+let age_8 = 0;
+let age_9 = 0;
+let age_10 = 0;
+let age_all = 0;
+
+totl.forEach((doc) => {
+  if(today.includes(doc.data().dt_App)){
+    if (doc.data().laa == "STUDENT-DRIVER'S PERMIT"){
+      sp_liccnt = sp_liccnt +=1;
+        lic_all = lic_all+=1                
+    }
+    else if (doc.data().laa == "DRIVER'S LICENSE"){
+      dl_liccnt = dl_liccnt +=1;
+      lic_all = lic_all+=1                    
+    }
+    else if (doc.data().laa == "CONDUCTOR'S LICENSE"){
+      cl_liccnt = cl_liccnt +=1;
+      lic_all = lic_all+=1                    
+    }
+    // FOR AGE CHART
+    let age = doc.data().User_BD;
+    let age_yr = age.slice(0,4)
+
+    if(age1.includes(age_yr)){
+      age_1 = age_1 +=1;
+      age_all = age_all+=1
+    }
+    else if(age2.includes(age_yr)){
+      age_2 = age_2 +=1;
+      age_all = age_all+=1
+    }
+    else if(age3.includes(age_yr)){
+      age_3 = age_3 +=1;
+      age_all = age_all+=1
+    }
+    else if(age4.includes(age_yr)){
+      age_4 = age_4 +=1;
+      age_all = age_all+=1
+    }
+    else if(age5.includes(age_yr)){
+      age_5 = age_5 +=1;
+      age_all = age_all+=1
+    }
+    else if(age6.includes(age_yr)){
+      age_6 = age_6 +=1;
+      age_all = age_all+=1
+    }
+    else if(age7.includes(age_yr)){
+      age_7 = age_7 +=1;
+      age_all = age_all+=1
+    }
+    else if(age8.includes(age_yr)){
+      age_8 = age_8 +=1;
+      age_all = age_all+=1
+    }
+    else if(age9.includes(age_yr)){
+      age_9 = age_9 +=1;
+      age_all = age_all+=1
+    }
+    else if(age10.includes(age_yr)){
+      age_10 = age_10 +=1;
+      age_all = age_all+=1
+    }
+  }
+})
+
+document.getElementById("lic_transac").innerHTML = lic_all
+
+var barChartOptions = {
+  series: [{
+    name: "TOTAL",
+    data: [ sp_liccnt, dl_liccnt,cl_liccnt ]
+  }], 
+  chart: { 
+    type: 'bar',
+    height: 350,
+    toolbar: {
+      show: true
+    },
+    events: {
+      dataPointSelection: function(event, chartContext, config) {
+        window.location = "a_licdbweekly.html";
+      }
+    }
+  },
+  plotOptions: {
+    bar: {
+      borderRadius: 4,
+      horizontal: false,
+      columnWidth: '40%',
+      distributed: true
+    }
+  },
+  dataLabels: {
+    enabled: false
+  },
+  colors: [
+    '#89375F',
+    '#F7B844',
+    '#0EA293', 
+    '#B8621B'
+  ],
+  legend: {
+    show: false,
+    onItemHover: {
+      highlightDataSeries: true
+    }
+  },
+  stroke: {
+    show: true,
+    width: 1,
+    colors: ['#fff']
+  },
+  xaxis: {
+    categories: ["STUDENT-DRIVER'S PERMIT", "DRIVER'S LICENSE", "CONDUCTOR'S LICENSE"],
+  },
+  yaxis: {
+    title: {
+      text: "Count"
+    }
+  }
+};
+
+var barChart = new ApexCharts(document.querySelector("#bar-chart-main"), barChartOptions);
+barChart.render();
+
+// AGE
+document.getElementById("age_transac").innerHTML = age_all
+var barChartOptions = {
+  series: [{
+    name: "TOTAL",
+    data: [ age_1,age_2,age_3,age_4,age_5,age_6,age_7,age_8,age_9,age_10 ]
+  }], 
+  chart: { 
+    type: 'bar',
+    height: 350,
+    toolbar: {
+      show: true
+    },
+    events: {
+      dataPointSelection: function(event, chartContext, config) {
+        window.location = "a_licdbageweekly.html";
+      }
+    }
+  },
+  plotOptions: {
+    bar: {
+      borderRadius: 4,
+      horizontal: false,
+      columnWidth: '40%',
+      distributed: true
+    }
+  },
+  dataLabels: {
+    enabled: false
+  },
+  colors: [
+    '#89375F',
+    '#F7B844',
+    '#0EA293', 
+    '#B8621B'
+  ],
+  legend: {
+    show: false,
+    onItemHover: {
+      highlightDataSeries: true
+    }
+  },
+  stroke: {
+    show: true,
+    width: 1,
+    colors: ['#fff']
+  },
+  xaxis: {
+    categories: ["16-20", "21-25", "26-30","31-35","36-40","41-45","46-50","51-60","61-65","66-Above"],
+  },
+  yaxis: {
+    title: {
+      text: "Count"
+    }
+  }
+};
+
+var barChart = new ApexCharts(document.querySelector("#bar-chart-age"), barChartOptions);
+barChart.render();

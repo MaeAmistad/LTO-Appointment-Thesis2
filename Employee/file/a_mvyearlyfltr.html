@@ -18,7 +18,7 @@
   <body>
     <div class="grid-container">
 
-      <!-- Header -->
+      <!-- Header --> 
       <header class="header">
         <div class="menu-icon" onclick="openSidebar()">
           <span class="material-icons-outlined">menu</span>
@@ -99,99 +99,80 @@
       </aside>
       <!-- End Sidebar -->
 
-      <!-- Main -->
-      <main class="main-container">
-        <div class="main-title">
-          <p class="font-weight-bold">DASHBOARD</p>
-        </div>
+ <!-- Main -->
+ <main class="main-container">
+  <div class="main-title">
+    <p class="font-weight-bold">DASHBOARD</p>
+  </div>
 
-        <div>
-          
-          <div class="dropdown-user">
+  <div>
+    
+    <div class="dropdown-user">
+      <button id="bcklic">BACK</button>
+      <select id="user" onchange="user(this.value)">
+        <option value="a_licdashboard.html">LICENSE</option>
+        <option value="a_mvdashboard.html" selected>MOTOR VEHICLE</option>
+      </select>
 
-            <button id="bcklic">BACK</button>
+      <select id="update_dash" onchange="user(this.value)">
+        <option value="a_mvdashboard.html" >Daily</option>
+        <option value="a_mvweeklyfltr.html" >weekly</option>
+        <option value="a_mvmonthfltr.html" >monthly</option>
+        <option value="a_mvyearlyfltr.html" selected>yearly</option>
+      </select>
+    </div>
+  </div>
+  
+  <div class="charts-card g2">
+    <p class="chart-title">TRANSACTION</p>
+    <p class="currntRel">Total<em>(current)</em></p>
+    <p id="num_current_mvtransac" class="total_nm"></p>
+    <div id="bar-chart-transac"></div>  
+  </div>
 
-            <select id="user" onchange="user(this.value)">
-              <option value="a_licdashboard.html" selected>LICENSE</option>
-              <option value="a_mvdashboard.html">MOTOR VEHICLE</option>
-            </select> 
+  <div class="charts-card g2">
+    <p class="chart-title">MOTOR VEHICLE</p>
+    <p class="currntRel">Total<em>(current)</em></p>
+    <p id="num_current_mvlst" class="total_nm"></p>
+    <div id="bar-chartmvlst"></div>  
+  </div>
+  
+  <div class="dropdown-user"> 
+    <button id="btnReport">REPORT</button>
+  </div>
 
-            <select id="update_dash" onchange="user(this.value)">
-              <option value="a_licdashboard.html" >Daily</option>
-              <option value="a_licweeklyfltr.html" selected>weekly</option>
-              <option value="a_licmonthfilter.html" >monthly</option>
-              <option value="a_licyearlyfltr.html" >yearly</option>
-            </select>
+    <div class="charts-card g2">
+      <p class="chart-title">MV REFRIGERANT TYPE</p>
+      <p class="currntRel">Total<em>(current)</em></p>
+      <p id="num_current_mvttal" class="total_nm"></p>
+      <div id="bar-chartmv"></div>  
+    </div>
 
-            <button id="btnReport">REPORT</button>
-            
-          </div>
+    <div class="dropdown-user">
+      <button id="btnReportYM">REPORT</button>
+    </div>
+    
 
-        </div>
+    <div class="charts-card g2">
+      <p class="chart-title">YEAR MODEL</p>
+      <p class="currntRel">Total<em>(current)</em></p>
+      <p id="num_current_mvymttal" class="total_nm"></p>
+      <div id="bar-chartmvyrmdl"></div> 
+    </div>
 
-        <div class="main_charts">
 
-          <div class="charts-card g1">
-            <p class="chart-title">TRANSACTION</p>
-            <p class="currntRel">Total<em>(current)</em></p>
-            <p id="lic_transac" class="total_nm"></p>
-            <div id="bar-chart-main"></div> 
-          </div>
-
-        </div>
-
-        <div class="age_charts">
-
-          <div class="charts-card g1"> 
-            <p class="chart-title">AGE</p>
-            <p class="currntRel">Total<em>(current)</em></p>
-            <p id="age_transac" class="total_nm"></p>
-            <div id="bar-chart-age"></div> 
-          </div>
-
-        </div>
-
-        <div class="charts1">
-
-          <div class="charts-card g4">
-            <p class="chart-title">TYPE OF LICENSE</p>
-            <p class="currntRel">Total<em>(current)</em></p>
-            <p id="num_current_licttal" class="total_nm"></p>
-            <div id="bar-chart3"></div>
-          </div>
-
-        </div>
-
-        
-        <div class="charts">
-
-          <div class="charts-card g2">
-            <p class="chart-title">APPLICANTS EXAMINED</p>
-            <p class="currntRel">Examiner<em>(current)</em></p>
-            <p id="num_current_exttal" class="total_nm"></p>
-            <div id="bar-chart1"></div>
-          </div>
-
-          <div class="charts-card g3">
-            <p class="chart-title">DRIVER'S LICENSE & PERMIT ISSUED</p>
-            <p class="currntRel">Issued<em>(current)</em></p>
-            <p id="num_current_issttal" class="total_nm"></p>
-            <div id="bar-chart2"></div>
-          </div>
-
-        </div>
-      </main>
-      <!-- End Main -->
+  </div>
+</main>
+<!-- End Main -->
 
     </div>
- 
-    <!-- Scripts --> 
-    <!-- ApexCharts -->
+
+    <!-- Scripts -->
+    <!-- ApexCharts -->  
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <!-- Custom JS -->
     <script src="../src/a_dashboard.js"></script>
-    <script type="module" src="../src/a_licweeklyfltr.js"></script>  
-    <!-- <script src="../src/a_licdashboardfilter.js"></script> -->
+    <script type="module" src="../src/a_mvyearlyfltr.js"></script>
     <script type="module" src="../src/a_logout.js"></script>
   </body>
 </html> 

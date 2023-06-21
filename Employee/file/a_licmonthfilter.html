@@ -14,7 +14,7 @@
     <script src="https://kit.fontawesome.com/8ec04d5e4f.js" crossorigin="anonymous"></script>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../style/a_dashboard2.css">
-  </head>
+  </head> 
   <body>
     <div class="grid-container">
 
@@ -99,67 +99,89 @@
       </aside>
       <!-- End Sidebar -->
 
-      <!-- Main -->
-      <main class="main-container">
-        <div class="main-title">
-          <p class="font-weight-bold">DASHBOARD</p>
-        </div>
+<!-- Main -->
+<main class="main-container">
+  <div class="main-title">
+    <p class="font-weight-bold">DASHBOARD</p>
+  </div>
 
-        <div>
-          
-          <div class="dropdown-user">
+  <div>
+    
+    <div class="dropdown-user">
 
-            <button id="bcklic">BACK</button>
+      <button id="bcklic">BACK</button>
 
-            <select id="user" onchange="user(this.value)">
-              <option value="a_licmonthfilter.html" selected>LICENSE</option>
-              <option value="a_mvdashboard.html">MOTOR VEHICLE</option>
-            </select> 
+      <select id="user" onchange="user(this.value)">
+        <option value="a_licdashboard.html" selected>LICENSE</option>
+        <option value="a_mvdashboard.html">MOTOR VEHICLE</option>
+      </select> 
 
-            <select id="update_dash" onchange="user(this.value)">
-              <option value="a_licdashboard.html" >Daily</option>
-              <option value="a_licweeklyfltr.html" >weekly</option>
-              <option value="a_licmonthfilter.html" selected>monthly</option>
-            </select>
+      <select id="update_dash" onchange="user(this.value)">
+        <option value="a_licdashboard.html" >Daily</option>
+        <option value="a_licweeklyfltr.html" >weekly</option>
+        <option value="a_licmonthfilter.html" selected>monthly</option>
+        <option value="a_licyearlyfltr.html" >yearly</option>
+      </select>
 
-            <button id="btnReport">REPORT</button>
-            
-          </div>
+      <button id="btnReport">REPORT</button>
+      
+    </div>
 
+  </div>
 
-        </div>
+  <div class="main_charts">
 
-        <div class="charts1">
+    <div class="charts-card g1">
+      <p class="chart-title">TRANSACTION</p>
+      <p class="currntRel">Total<em>(current)</em></p>
+      <p id="lic_transac" class="total_nm"></p>
+      <div id="bar-chart-main"></div> 
+    </div>
 
-          <div class="charts-card g4">
-            <p class="chart-title">TYPE OF LICENSE</p>
-            <p class="currntRel">Total<em>(current)</em></p>
-            <p id="num_current_licttal" class="total_nm"></p>
-            <div id="bar-chart3"></div>
-          </div>
+  </div>
 
-        </div>
+  <div class="age_charts">
 
-        
-        <div class="charts">
+    <div class="charts-card g1"> 
+      <p class="chart-title">AGE</p>
+      <p class="currntRel">Total<em>(current)</em></p>
+      <p id="age_transac" class="total_nm"></p>
+      <div id="bar-chart-age"></div> 
+    </div>
 
-          <div class="charts-card g2">
-            <p class="chart-title">APPLICANTS EXAMINED</p>
-            <p class="currntRel">Examiner<em>(current)</em></p>
-            <p id="num_current_exttal" class="total_nm"></p>
-            <div id="bar-chart1"></div>
-          </div>
+  </div>
 
-          <div class="charts-card g3">
-            <p class="chart-title">DRIVER'S LICENSE & PERMIT ISSUED</p>
-            <p class="currntRel">Issued<em>(current)</em></p>
-            <p id="num_current_issttal" class="total_nm"></p>
-            <div id="bar-chart2"></div>
-          </div>
+  <div class="charts1">
 
-        </div>
-      </main>
-      <!-- End Main -->
+    <div class="charts-card g4">
+      <p class="chart-title">TYPE OF LICENSE</p>
+      <p class="currntRel">Total<em>(current)</em></p>
+      <p id="num_current_licttal" class="total_nm"></p>
+      <div id="bar-chart3"></div>
+    </div>
+
+  </div>
+
+  
+  <div class="charts">
+
+    <div class="charts-card g2">
+      <p class="chart-title">APPLICANTS EXAMINED</p>
+      <p class="currntRel">Examiner<em>(current)</em></p>
+      <p id="num_current_exttal" class="total_nm"></p>
+      <div id="bar-chart1"></div>
+    </div>
+
+    <div class="charts-card g3">
+      <p class="chart-title">DRIVER'S LICENSE & PERMIT ISSUED</p>
+      <p class="currntRel">Issued<em>(current)</em></p>
+      <p id="num_current_issttal" class="total_nm"></p>
+      <div id="bar-chart2"></div>
+    </div>
+
+  </div>
+</main>
+<!-- End Main -->
 
     </div>
 

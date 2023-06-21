@@ -197,7 +197,8 @@ const db = getFirestore(app);
                                             at: doc2.data().User_AT,
                                             dt_App: doc2.data().User_D,
                                             t_app: doc2.data().User_T,
-                                            User_GN: doc2.data().User_GN
+                                            User_GN: doc2.data().User_GN,
+                                            User_BD: doc2.data().User_BD
                                         }).then(() => {
                                             window.location = "ca_homepage.html"
                                         })
@@ -225,7 +226,8 @@ const db = getFirestore(app);
                                         at: doc2.data().User_AT,
                                         dt_App: doc2.data().User_D,
                                         t_app: doc2.data().User_T,
-                                        User_GN: doc2.data().User_GN
+                                        User_GN: doc2.data().User_GN,
+                                        User_BD: doc2.data().User_BD
                                     }).then(() => {
                                         window.location = "ca_homepage.html"
                                     })
@@ -247,7 +249,8 @@ const db = getFirestore(app);
                                             at: doc2.data().User_AT,
                                             dt_App: doc2.data().User_D,
                                             t_app: doc2.data().User_T,
-                                            User_GN: doc2.data().User_GN
+                                            User_GN: doc2.data().User_GN,
+                                            User_BD: doc2.data().User_BD
                                         }).then(() => {
                                             window.location = "ca_homepage.html"
                                         })
@@ -264,7 +267,8 @@ const db = getFirestore(app);
                                             at: doc2.data().User_AT,
                                             dt_App: doc2.data().User_D,
                                             t_app: doc2.data().User_T,
-                                            User_GN: doc2.data().User_GN
+                                            User_GN: doc2.data().User_GN,
+                                            User_BD: doc2.data().User_BD
                                         }).then(() => {
                                             window.location = "ca_homepage.html"
                                         })
@@ -281,7 +285,8 @@ const db = getFirestore(app);
                                         at: doc2.data().User_AT,
                                         dt_App: doc2.data().User_D,
                                         t_app: doc2.data().User_T,
-                                        User_GN: doc2.data().User_GN
+                                        User_GN: doc2.data().User_GN,
+                                        User_BD: doc2.data().User_BD
                                     }).then(() => {
                                         window.location = "ca_homepage.html"
                                     })

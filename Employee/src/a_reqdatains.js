@@ -433,7 +433,7 @@ add.addEventListener('click',() => {
       localStorage.setItem("ui12",refrigernt_typ);
       localStorage.setItem("ui13",yr_mdl);
 
-      window.location = "In_reqdata.html" 
+      window.location = "a_reqdatains.html" 
   }
 
 });
@@ -535,7 +535,7 @@ add.addEventListener('click',() => {
                           localStorage.removeItem("ui8");
                           localStorage.removeItem("ui9");
                           localStorage.removeItem("ui11");
-                          localStorage.removeItem("ui12");
+                          localStorage.removeItem("ui12"); 
                           localStorage.removeItem("ui13");
 
                           window.location = "a_appListins.html" 

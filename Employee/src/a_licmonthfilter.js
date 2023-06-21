@@ -27,25 +27,31 @@ const db = getFirestore(app);
 var currentmonth = new Date().getMonth() + 1;
 if (currentmonth < 10)  currentmonth = "0" + currentmonth;
 
-// Applicants Examined Bar chart
+  // getting month
+  // let dd = doc.data().User_D;
+  // let mmsp = dd.slice(5,7);
+  
+  // mmsp == currentmonth
 
+// Applicants Examined Bar chart
 const wrttnlicexam = await getDocs(collection(db, "Written"));
 let wrttn1 = 0;
 let wrttn2 = 0;
-
+let wrttn_all = 0;
 wrttnlicexam.forEach((doc) => {
-// getting month mon
-let dd = doc.data().dt_App;
-let mmsp = dd.slice(5,7);
-// Current Count
-    if(mmsp == currentmonth){ 
+
+  // getting month
+  let dd = doc.data().dt_App;
+  let mmsp = dd.slice(5,7);
+
+    if(mmsp == currentmonth){
       if(doc.data().result == "PASSED"){
-        var wrtnn_examP = wrttn1+=1;
-        localStorage.setItem("wrtnn_examPmon",wrtnn_examP)
+        wrttn1 = wrttn1+=1;
+        wrttn_all =  wrttn_all+=1
       }
       if(doc.data().result == "FAILED"){
-        var wrtnn_examF = wrttn2+=1;
-        localStorage.setItem("wrtnn_examFmon",wrtnn_examF)
+        wrttn2 = wrttn2+=1;
+        wrttn_all =  wrttn_all+=1
       } 
     }
   
@@ -54,46 +60,35 @@ let mmsp = dd.slice(5,7);
 const praclicexam = await getDocs(collection(db, "Practical"));
 let prac1 = 0;
 let prac2 = 0;
-
+let prac_all = 0;
 praclicexam.forEach((doc) => {
-// getting month
-let dd = doc.data().dt_App;
-var mmsp = dd.slice(5,7);
-// console.log(mmsp) mon
-// Current Count
+ // getting month
+ let dd = doc.data().dt_App;
+ let mmsp = dd.slice(5,7);
+
     if(mmsp == currentmonth){
       if(doc.data().result == "PASSED"){
-        var prac_examP = prac1+=1;
-        localStorage.setItem("prac_examPmon",prac_examP)
+        prac1 = prac1+=1;
+        prac_all = prac_all+=1
       }
       if(doc.data().result == "FAILED"){
-        var prac_examF = prac2+=1;
-        localStorage.setItem("prac_examFmon",prac_examF)
+        prac2 = prac2+=1;
+        prac_all = prac_all+=1
       } 
     }
   
 });
 
-// If LocalStorage key Get Null
-if (localStorage.getItem("wrtnn_examPmon") == null || localStorage.getItem("wrtnn_examFmon") == null){
-  localStorage.setItem("wrtnn_examPmon",0);
-  localStorage.setItem("wrtnn_examFmon",0);
-}
-if (localStorage.getItem("prac_examPmon") == null || localStorage.getItem("prac_examFmon") == null){
-  localStorage.setItem("prac_examPmon",0);
-  localStorage.setItem("prac_examFmon",0);
-}
 
-let wrtnprac = parseInt(localStorage.getItem("wrtnn_examPmon")) + parseInt(localStorage.getItem("wrtnn_examFmon")) + parseInt(localStorage.getItem("prac_examPmon")) + parseInt(localStorage.getItem("prac_examFmon"))
-document.getElementById("num_current_exttal").innerHTML = wrtnprac;
+document.getElementById("num_current_exttal").innerHTML = wrttn_all + prac_all;
 
 var barChartOptions = {
     series: [{
       name: 'PASSED',
-      data: [localStorage.getItem("wrtnn_examPmon"), localStorage.getItem("prac_examPmon")]
+      data: [wrttn1, prac1]
     }, {
       name: 'FAILED',
-      data: [localStorage.getItem("wrtnn_examFmon"), localStorage.getItem("prac_examFmon")]
+      data: [wrttn2, prac2]
     }],
     chart: {
       type: 'bar',
@@ -143,59 +138,54 @@ var barChartOptions = {
 
 // DL  & Permit Issued BarChart
 const DLIPissued = await getDocs(collection(db, "License"));
-let countn1 = 0;
-let countn2 = 0;
+let femcountn = 0;
+let malcountn = 0;
+let malfemcntn = 0;
 
-let countrn1 = 0;
-let countrn2 = 0; 
+let femcountrn = 0;
+let malcountrn = 0; 
+let malfemcntrn = 0;
 DLIPissued.forEach((doc) => {
-// getting month
-let dd = doc.data().dt_App;
-var mmsp = dd.slice(5,7);
+
+   // getting month
+ let dd = doc.data().dt_App;
+ let mmsp = dd.slice(5,7);
+
 // NEW
 if(mmsp == currentmonth){
     if(doc.data().at == "NEW"){
       if(doc.data().User_GN == "FEMALE"){
-        var femcount = countn1+=1;
-        localStorage.setItem("femnmon",femcount)
+        femcountn = femcountn+=1;
+        malfemcntn = malfemcntn+=1;
       }
       if(doc.data().User_GN == "MALE"){
-        var malcount = countn2+=1;
-        localStorage.setItem("malnmon",malcount)
+        malcountn = malcountn+=1;
+        malfemcntn = malfemcntn+=1;
       }
     }
 //RENEWAL
     if (doc.data().at == "RENEWAL"){
       if(doc.data().User_GN == "FEMALE"){
-        var femcount = countrn1+=1;
-        localStorage.setItem("femrnmon",femcount)
+        femcountrn = femcountrn+=1;
+        malfemcntrn = malfemcntrn+=1;
       }
       if(doc.data().User_GN == "MALE"){
-        var malcount = countrn2+=1;
-        localStorage.setItem("malrnmon",malcount)
+        malcountrn = malcountrn+=1;
+        malfemcntrn = malfemcntrn+=1;
       }
     }
 }
   
-});
+}); 
 
-if (localStorage.getItem("femnmon") == null || localStorage.getItem("femrnmon") == null){
-  localStorage.setItem("femnmon",0)
-  localStorage.setItem("femrnmon",0)
-}
-if (localStorage.getItem("malnmon") == null || localStorage.getItem("malrnmon") == null){
-  localStorage.setItem("malnmon",0)
-  localStorage.setItem("malrnmon",0)
-}
-
-document.getElementById("num_current_issttal").innerHTML = parseInt(localStorage.getItem("femnmon")) + parseInt(localStorage.getItem("femrnmon")) + parseInt(localStorage.getItem("malnmon")) + parseInt(localStorage.getItem("malrnmon"));
+document.getElementById("num_current_issttal").innerHTML = malfemcntn + malfemcntrn;
 var barChartOptions = {
     series: [{
       name: 'FEMALE',
-      data: [localStorage.getItem("femnmon"), localStorage.getItem("femrnmon")]
+      data: [femcountn, femcountrn]
     }, {
       name: 'MALE',
-      data: [localStorage.getItem("malnmon"), localStorage.getItem("malrnmon")]
+      data: [malcountn, malcountrn]
     }],
     chart: {
       type: 'bar',
@@ -243,44 +233,38 @@ var barChartOptions = {
   var barChart = new ApexCharts(document.querySelector("#bar-chart2"), barChartOptions);
   barChart.render();
 
-//main chart
+//second chart
 
 // mscn txn
-const totlmscn = await getDocs(collection(db, "License"));
+const totl = await getDocs(collection(db, "License"));
 let mscntotl = 0;
-totlmscn.forEach((doc) => {
-  // getting month
-let dd = doc.data().dt_App;
-var mmsp = dd.slice(5,7);
+totl.forEach((doc) => {
 
-if(mmsp == currentmonth){
+   // getting month
+ let dd = doc.data().dt_App;
+ let mmsp = dd.slice(5,7);
+
+  if(mmsp == currentmonth){
   if (doc.data().at == "DUPLICATE" || doc.data().at == "REVISION OF RECORDS"){
-      var mscn = mscntotl +=1;
-      localStorage.setItem("mscntotalmon",mscn);
+      mscntotl = mscntotl +=1;                    
   }
 }
 })
 
-const totlDLPI = await getDocs(collection(db, "License"));
-let totl1 = 0;
-totlDLPI.forEach((doc) => {
-  // getting month
-let dd = doc.data().dt_App;
-var mmsp = dd.slice(5,7);
+// DLPI
+let dlpittl = 0;
+totl.forEach((doc) => {
+
+   // getting month
+ let dd = doc.data().dt_App;
+ let mmsp = dd.slice(5,7);
 
   if(mmsp == currentmonth){
     if(doc.data().at == "NEW" || doc.data().at == "RENEWAL"){
-      var sdp = totl1+=1;
-      localStorage.setItem("totl_dlpimon", sdp);
+      dlpittl = dlpittl+=1;
     } 
   }
 });
-
-// If LocalStorage key Get Null
-if (localStorage.getItem("mscntotalmon") == null || localStorage.getItem("totl_dlpimon") == null){
-  localStorage.setItem("mscntotalmon",0);
-  localStorage.setItem("totl_dlpimon",0);
-}
 
 // dlch
 const dlch_total = await getDocs(collection(db, "Applicants"));
@@ -288,53 +272,43 @@ let dlch1 = 0;
 let dlch2 = 0;
 let dlch3 = 0;
 let dlch4 = 0;
+let dlchall = 0;
 dlch_total.forEach((doc) => {
-  // getting month
-let dd = doc.data().User_D;
-let mmsp = dd.slice(5,7);
-
   // Current Count
+   // getting month
+ let dd = doc.data().User_D;
+ let mmsp = dd.slice(5,7);
+
       if(mmsp == currentmonth){
         if(doc.data().User_Stat == "RELEASED"){
-          let dlch_cnt = dlch1+=1;
-          localStorage.setItem("dlch_cnt1mon",dlch_cnt);
+          dlch1 = dlch1+=1;
+          dlchall = dlchall+=1;
         }
         else if(doc.data().User_Stat == "FAILED"){
-          let dlch_cnt = dlch4+=1;
-          localStorage.setItem("dlch_cnt4mon",dlch_cnt);
+          dlch4 = dlch4+=1;
+          dlchall = dlchall+=1;
         }
 
         if(doc.data().User_TT == "License"){
           if(doc.data().User_Stat == "INCOMPLETED"){
-          let dlch_cnt = dlch2+=1;
-          localStorage.setItem("dlch_cnt2mon",dlch_cnt);
+            dlch2 = dlch2+=1;
+            dlchall = dlchall+=1;
         }
         else if(doc.data().User_Stat == "DECLINED"){
-          let dlch_cnt = dlch3+=1;
-          localStorage.setItem("dlch_cnt3mon",dlch_cnt);
-        } 
+          dlch3 = dlch3+=1;
+          dlchall = dlchall+=1;
+        }
       }
       }
   });
-
-  if (localStorage.getItem("dlch_cnt1mon") == null || localStorage.getItem("dlch_cnt2mon") == null || localStorage.getItem("dlch_cnt3mon") == null || localStorage.getItem("dlch_cnt4mon") == null){
-    localStorage.setItem("dlch_cnt1mon",0);
-    localStorage.setItem("dlch_cnt2mon",0);
-    localStorage.setItem("dlch_cnt3mon",0);
-    localStorage.setItem("dlch_cnt4mon",0);
-  }
 // total of all
-var AEtotl = wrtnprac;
-var dpchtotl = parseInt(localStorage.getItem("dlch_cnt1mon")) + parseInt(localStorage.getItem("dlch_cnt2mon")) + parseInt(localStorage.getItem("dlch_cnt3mon")) +  parseInt(localStorage.getItem("dlch_cnt4mon"));
-var DLPI = localStorage.getItem("totl_dlpimon");
-var MSCN = localStorage.getItem("mscntotalmon"); 
-
-document.getElementById("num_current_licttal").innerHTML = dpchtotl;
+var AEtotl = wrttn_all + prac_all;
+document.getElementById("num_current_licttal").innerHTML = dlchall;
 var barChartOptions = {
   series: [{
     name: "TOTAL",
-    data: [ AEtotl , DLPI , MSCN , dpchtotl]
-  }],
+    data: [ AEtotl , dlpittl , mscntotl , dlchall]
+  }], 
   chart: { 
     type: 'bar',
     height: 350,
@@ -389,46 +363,221 @@ var barChartOptions = {
 var barChart = new ApexCharts(document.querySelector("#bar-chart3"), barChartOptions);
 barChart.render();
 
-// Time Today
-var now = new Date()
-var time = now.getHours() + ":" + now.getMinutes();
-console.log(time)
 
-if(time == "1:0"){
-  localStorage.removeItem("wrtnn_examPmon");
-  localStorage.removeItem("wrtnn_examFmon");
-  localStorage.removeItem("prac_examPmon");
-  localStorage.removeItem("prac_examFmon");
-  localStorage.removeItem("femnmon");
-  localStorage.removeItem("malnmon");
-  localStorage.removeItem("femrnmon");
-  localStorage.removeItem("malrnmon");
-  localStorage.removeItem("mscntotalmon");
-  localStorage.removeItem("totl_dlpimon");
-  localStorage.removeItem("dlch_cnt1mon");
-  localStorage.removeItem("dlch_cnt2mon");
-  localStorage.removeItem("dlch_cnt3mon");
-  localStorage.removeItem("dlch_cnt4mon");
-}
+// MAIN
 
-// CODE
+let age1 = ["2007", "2006","2005","2004","2003"]
+let age2 = ["2002", "2001","2000","1999","1998"]
+let age3 = ["1997", "1996","1995","1994","1993"]
+let age4 = ["1992", "1991","1990","1989","1988"]
+let age5 = ["1987", "1986","1985","1984","1983"]
+let age6 = ["1982", "1981","1980","1979","1978"]
+let age7 = ["1977", "1976","1975","1974","1973"]
+let age8 = ["1972", "1971","1970","1969","1968"]
+let age9 = ["1967", "1966","1965","1964","1963"] 
+let age10 = ["1962", "1961","1960","1959","1958","1957","1956","1955","1954","1953","1952","1951","1950","1949","1948"]
 
-  // const wrttn = collection(db,"Written");
-  // const w1 = query(wrttn, where("result", "==", "PASSED"));
-  // const w2 = query(wrttn, where("result", "==", "FAILED"));
-  // const wpass = await getCountFromServer(w1);
-  // const wfail = await getCountFromServer(w2);
- 
-  // const prctcl = collection(db,"Practical");
-  // const p1 = query(prctcl, where("result", "==", "PASSED"));
-  // const p2 = query(prctcl, where("result", "==", "FAILED"));
-  // const ppass = await getCountFromServer(p1);
-  // const pfail = await getCountFromServer(p2);
+// LIC
+let sp_liccnt = 0;
+let dl_liccnt = 0;
+let cl_liccnt = 0;
+let lic_all = 0;
 
-  // const dpch = collection(db,"Applicants");
-// const relLic = query(dpch, where("User_Stat", "==", "RELEASED"));
-// const incompLic = query(dpch, where("User_Stat", "==", "INCOMPLETED"));
-// const failed = query(dpch, where("User_Stat", "==", "FAILED"));
-// const RELIC = await getCountFromServer(relLic);
-// const INCOMLIC = await getCountFromServer(incompLic);
-// const FAILED = await getCountFromServer(failed);
+// AGE
+let age_1 = 0;
+let age_2 = 0;
+let age_3 = 0;
+let age_4 = 0;
+let age_5 = 0;
+let age_6 = 0;
+let age_7 = 0;
+let age_8 = 0;
+let age_9 = 0;
+let age_10 = 0;
+let age_all = 0;
+
+totl.forEach((doc) => {
+
+   // getting month
+ let dd = doc.data().dt_App;
+ let mmsp = dd.slice(5,7);
+
+  if(mmsp == currentmonth){
+    if (doc.data().laa == "STUDENT-DRIVER'S PERMIT"){
+      sp_liccnt = sp_liccnt +=1;
+        lic_all = lic_all+=1                
+    }
+    else if (doc.data().laa == "DRIVER'S LICENSE"){
+      dl_liccnt = dl_liccnt +=1;
+      lic_all = lic_all+=1                    
+    }
+    else if (doc.data().laa == "CONDUCTOR'S LICENSE"){
+      cl_liccnt = cl_liccnt +=1;
+      lic_all = lic_all+=1                    
+    }
+    // FOR AGE CHART
+    let age = doc.data().User_BD;
+    let age_yr = age.slice(0,4)
+
+    if(age1.includes(age_yr)){
+      age_1 = age_1 +=1;
+      age_all = age_all+=1
+    }
+    else if(age2.includes(age_yr)){
+      age_2 = age_2 +=1;
+      age_all = age_all+=1
+    }
+    else if(age3.includes(age_yr)){
+      age_3 = age_3 +=1;
+      age_all = age_all+=1
+    }
+    else if(age4.includes(age_yr)){
+      age_4 = age_4 +=1;
+      age_all = age_all+=1
+    }
+    else if(age5.includes(age_yr)){
+      age_5 = age_5 +=1;
+      age_all = age_all+=1
+    }
+    else if(age6.includes(age_yr)){
+      age_6 = age_6 +=1;
+      age_all = age_all+=1
+    }
+    else if(age7.includes(age_yr)){
+      age_7 = age_7 +=1;
+      age_all = age_all+=1
+    }
+    else if(age8.includes(age_yr)){
+      age_8 = age_8 +=1;
+      age_all = age_all+=1
+    }
+    else if(age9.includes(age_yr)){
+      age_9 = age_9 +=1;
+      age_all = age_all+=1
+    }
+    else if(age10.includes(age_yr)){
+      age_10 = age_10 +=1;
+      age_all = age_all+=1
+    }
+  }
+})
+
+document.getElementById("lic_transac").innerHTML = lic_all
+
+var barChartOptions = {
+  series: [{
+    name: "TOTAL",
+    data: [ sp_liccnt, dl_liccnt,cl_liccnt ]
+  }], 
+  chart: { 
+    type: 'bar',
+    height: 350,
+    toolbar: {
+      show: true
+    },
+    events: {
+      dataPointSelection: function(event, chartContext, config) {
+        window.location = "a_licdbmonthly.html";
+      }
+    }
+  },
+  plotOptions: {
+    bar: {
+      borderRadius: 4,
+      horizontal: false,
+      columnWidth: '40%',
+      distributed: true
+    }
+  },
+  dataLabels: {
+    enabled: false
+  },
+  colors: [
+    '#89375F',
+    '#F7B844',
+    '#0EA293', 
+    '#B8621B'
+  ],
+  legend: {
+    show: false,
+    onItemHover: {
+      highlightDataSeries: true
+    }
+  },
+  stroke: {
+    show: true,
+    width: 1,
+    colors: ['#fff']
+  },
+  xaxis: {
+    categories: ["STUDENT-DRIVER'S PERMIT", "DRIVER'S LICENSE", "CONDUCTOR'S LICENSE"],
+  },
+  yaxis: {
+    title: {
+      text: "Count"
+    }
+  }
+};
+
+var barChart = new ApexCharts(document.querySelector("#bar-chart-main"), barChartOptions);
+barChart.render();
+
+// AGE
+document.getElementById("age_transac").innerHTML = age_all
+var barChartOptions = {
+  series: [{
+    name: "TOTAL",
+    data: [ age_1,age_2,age_3,age_4,age_5,age_6,age_7,age_8,age_9,age_10 ]
+  }], 
+  chart: { 
+    type: 'bar',
+    height: 350,
+    toolbar: {
+      show: true
+    },
+    events: {
+      dataPointSelection: function(event, chartContext, config) {
+        window.location = "a_licdbagemonthly.html";
+      }
+    }
+  },
+  plotOptions: {
+    bar: {
+      borderRadius: 4,
+      horizontal: false,
+      columnWidth: '40%',
+      distributed: true
+    }
+  },
+  dataLabels: {
+    enabled: false
+  },
+  colors: [
+    '#89375F',
+    '#F7B844',
+    '#0EA293', 
+    '#B8621B'
+  ],
+  legend: {
+    show: false,
+    onItemHover: {
+      highlightDataSeries: true 
+    }
+  },
+  stroke: {
+    show: true,
+    width: 1,
+    colors: ['#fff']
+  },
+  xaxis: {
+    categories: ["16-20", "21-25", "26-30","31-35","36-40","41-45","46-50","51-60","61-65","66-Above"],
+  },
+  yaxis: {
+    title: {
+      text: "Count"
+    }
+  }
+};
+
+var barChart = new ApexCharts(document.querySelector("#bar-chart-age"), barChartOptions);
+barChart.render();

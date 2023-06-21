@@ -120,23 +120,33 @@
               <option value="a_licdashboard.html" selected>Daily</option>
               <option value="a_licweeklyfltr.html" >weekly</option>
               <option value="a_licmonthfilter.html" >monthly</option>
-              <option value="a_licyearlyfltr" >yearly</option>
+              <option value="a_licyearlyfltr.html" >yearly</option>
             </select>
 
             <button id="btnReport">REPORT</button>
             
           </div>
 
-
         </div>
 
         <div class="main_charts">
 
           <div class="charts-card g1">
-            <p class="chart-title">LICENSE</p>
+            <p class="chart-title">TRANSACTION</p>
             <p class="currntRel">Total<em>(current)</em></p>
             <p id="lic_transac" class="total_nm"></p>
-            <div id="bar-chart-main"></div>
+            <div id="bar-chart-main"></div> 
+          </div>
+
+        </div>
+
+        <div class="age_charts">
+
+          <div class="charts-card g1"> 
+            <p class="chart-title">AGE</p>
+            <p class="currntRel">Total<em>(current)</em></p>
+            <p id="age_transac" class="total_nm"></p>
+            <div id="bar-chart-age"></div> 
           </div>
 
         </div>
@@ -182,6 +192,6 @@
     <script src="../src/a_dashboard.js"></script>
     <script type="module" src="../src/a_licdashboard.js"></script> 
     <!-- <script src="../src/a_licdashboardfilter.js"></script> -->
-    <script type="module" src="../src/a_logout.js"></script>
+    <script type="module" src="../src/a_logout.js"></script> 
   </body> 
 </html> 

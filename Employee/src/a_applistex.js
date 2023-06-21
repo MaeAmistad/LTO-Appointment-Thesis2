@@ -14,9 +14,10 @@ const firebaseConfig = {
 };
  
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig); 
 const db = getFirestore(app);
-
+//get all data
+const querySnapshot2 = await getDocs(collection(db,"Applicants"));
 var tbody = document.getElementById('tbody1');
 // GET DATE TO LOCALSTORAGE
 document.getElementById('dte').addEventListener('change', (e) => {

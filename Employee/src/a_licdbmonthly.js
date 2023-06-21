@@ -1,5 +1,5 @@
 bcklic.addEventListener('click' , () => {
-    window.location = "a_licdashboard.html"
+    window.location = "a_licmonthfilter.html"
   })
 //   btnReport.addEventListener('click',()=>{
 //     window.location = "a_licreportdaily.html"
@@ -7,11 +7,11 @@ bcklic.addEventListener('click' , () => {
   // ---------- CHARTS ---------- 
   
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
-  import { getFirestore, query, collection,getCountFromServer,where,getDocs } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
+  import { getFirestore, collection,getDocs } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
   
   // Your web app's Firebase configuration
   const firebaseConfig = {
-      apiKey: "AIzaSyCyNToos3S0HwLl0cZMRdiVjFJcBb4FWFo", 
+      apiKey: "AIzaSyCyNToos3S0HwLl0cZMRdiVjFJcBb4FWFo",
       authDomain: "lto-online-appointment-setter.firebaseapp.com",
       projectId: "lto-online-appointment-setter",
       storageBucket: "lto-online-appointment-setter.appspot.com",
@@ -24,15 +24,14 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app); 
 const lic_cnt = await getDocs(collection(db, "License"));
 
-// Date Today
-var date = new Date();
-var day = date.getDate();
-var month = date.getMonth() + 1;
-var year = date.getFullYear();
-if (month < 10) month = "0" + month;
-if (day < 10) day = "0" + day;
-var today = day + " - " + month + " - " + year;  
+var currentmonth = new Date().getMonth() + 1;
+if (currentmonth < 10)  currentmonth = "0" + currentmonth;
 
+  // getting month
+  // let dd = doc.data().User_D;
+  // let mmsp = dd.slice(5,7);
+  
+  // mmsp == currentmonth
 
 // SP
 let spn_liccnt = 0;
@@ -56,108 +55,113 @@ let cladc_liccnt = 0;
 let clothrs_liccnt = 0;
 let mscn4 = 0;
 lic_cnt.forEach((doc) => { 
-  if(doc.data().dt_App == today){
+
+// getting month
+  let dd = doc.data().dt_App;
+  let mmsp = dd.slice(5,7);
+
+if(mmsp == currentmonth){
 // SP
 if (doc.data().laa == "STUDENT-DRIVER'S PERMIT"){
-  if (doc.data().at == "NEW"){
-      spn_liccnt = spn_liccnt +=1;
-       mscn2 = mscn2 +=1;                 
-  }
-  else if (doc.data().at == "RENEWAL"){
-      sprn_liccnt = sprn_liccnt +=1;
-     mscn2 = mscn2 +=1;                     
-  }
-  else if (doc.data().at == "DUPLICATE"){
-      spd_liccnt = spd_liccnt +=1;
-     mscn2 = mscn2 +=1;                
-  }                  
+    if (doc.data().at == "NEW"){
+        spn_liccnt = spn_liccnt +=1;
+         mscn2 = mscn2 +=1;                 
+    }
+    else if (doc.data().at == "RENEWAL"){
+        sprn_liccnt = sprn_liccnt +=1;
+       mscn2 = mscn2 +=1;                     
+    }
+    else if (doc.data().at == "DUPLICATE"){
+        spd_liccnt = spd_liccnt +=1;
+       mscn2 = mscn2 +=1;                
+    }                  
 }
 // DL
 else if(doc.data().laa == "DRIVER'S LICENSE"){
-  if (doc.data().at == "NEW"){
-      dln_liccnt = dln_liccnt +=1;
+    if (doc.data().at == "NEW"){
+        dln_liccnt = dln_liccnt +=1;
+         mscn3 = mscn3 +=1;                   
+    }
+    else if (doc.data().at == "RENEWAL"){
+        dlrn_liccnt = dlrn_liccnt +=1;
        mscn3 = mscn3 +=1;                   
-  }
-  else if (doc.data().at == "RENEWAL"){
-      dlrn_liccnt = dlrn_liccnt +=1;
-     mscn3 = mscn3 +=1;                   
-  }
-  else if (doc.data().at == "DUPLICATE"){
-      dld_liccnt = dld_liccnt +=1;
-     mscn3 = mscn3 +=1;          
-  } 
-  else if (doc.data().at == "REVISION OF RECORDS"){
-      dlrr_liccnt = dlrr_liccnt +=1;
-     mscn3 = mscn3 +=1;        
-  }
-  else if (doc.data().at == "ADDITIONAL DL CODE OR CATEGORY"){
-      dladc_liccnt = dladc_liccnt +=1;
-     mscn3 = mscn3 +=1;            
-  }
-  else if (doc.data().at == "CONVERSION OF FOREIGN DL"){
-      dlothrs_liccnt = dlothrs_liccnt +=1;
-     mscn3 = mscn3 +=1;              
-  }
-  else if (doc.data().at == "CHANGE OF DL CLASSIFICATION"){
-      dlothrs_liccnt = dlothrs_liccnt +=1;
-     mscn3 = mscn3 +=1;           
-  }
-  else if (doc.data().at == "EXPIRED DL WITH VALID FDL"){
-      dlothrs_liccnt = dlothrs_liccnt +=1;
-     mscn3 = mscn3 +=1;           
-  }
-  else if (doc.data().at == "CHANGE OF CLUTCH TYPE"){
-      dlothrs_liccnt = dlothrs_liccnt +=1;
-     mscn3 = mscn3 +=1;            
-  }
-  else if (doc.data().at == "DROPPING OF CATEGORY OR ADD'L OR REMOVAL OF DRIVING CONDITIONS"){
-      dlothrs_liccnt = dlothrs_liccnt +=1;
-     mscn3 = mscn3 +=1;              
-  }
+    }
+    else if (doc.data().at == "DUPLICATE"){
+        dld_liccnt = dld_liccnt +=1;
+       mscn3 = mscn3 +=1;          
+    } 
+    else if (doc.data().at == "REVISION OF RECORDS"){
+        dlrr_liccnt = dlrr_liccnt +=1;
+       mscn3 = mscn3 +=1;        
+    }
+    else if (doc.data().at == "ADDITIONAL DL CODE OR CATEGORY"){
+        dladc_liccnt = dladc_liccnt +=1;
+       mscn3 = mscn3 +=1;            
+    }
+    else if (doc.data().at == "CONVERSION OF FOREIGN DL"){
+        dlothrs_liccnt = dlothrs_liccnt +=1;
+       mscn3 = mscn3 +=1;              
+    }
+    else if (doc.data().at == "CHANGE OF DL CLASSIFICATION"){
+        dlothrs_liccnt = dlothrs_liccnt +=1;
+       mscn3 = mscn3 +=1;           
+    }
+    else if (doc.data().at == "EXPIRED DL WITH VALID FDL"){
+        dlothrs_liccnt = dlothrs_liccnt +=1;
+       mscn3 = mscn3 +=1;           
+    }
+    else if (doc.data().at == "CHANGE OF CLUTCH TYPE"){
+        dlothrs_liccnt = dlothrs_liccnt +=1;
+       mscn3 = mscn3 +=1;            
+    }
+    else if (doc.data().at == "DROPPING OF CATEGORY OR ADD'L OR REMOVAL OF DRIVING CONDITIONS"){
+        dlothrs_liccnt = dlothrs_liccnt +=1;
+       mscn3 = mscn3 +=1;              
+    }
 }
 // CL
-else if(doc.data().laa == "CONDUCTOR'S LICENSE"){
-  if (doc.data().at == "NEW"){
-      cln_liccnt = cln_liccnt +=1;
-       mscn4 = mscn4 +=1;                  
+  else if(doc.data().laa == "CONDUCTOR'S LICENSE"){
+    if (doc.data().at == "NEW"){
+        cln_liccnt = cln_liccnt +=1;
+         mscn4 = mscn4 +=1;                  
+    }
+    else if (doc.data().at == "RENEWAL"){
+        clrn_liccnt = clrn_liccnt +=1;
+       mscn4 = mscn4 +=1;                    
+    }
+    else if (doc.data().at == "DUPLICATE"){
+        cdld_liccnt = cdld_liccnt +=1;
+       mscn4 = mscn4 +=1;                    
+    }
+    else if (doc.data().at == "REVISION OF RECORDS"){
+        clrr_liccnt = clrr_liccnt +=1;
+       mscn4 = mscn4 +=1;   
+    }
+    else if (doc.data().at == "ADDITIONAL DL CODE OR CATEGORY"){
+        cladc_liccnt = cladc_liccnt +=1;
+       mscn4 = mscn4 +=1;       
+    }
+    else if (doc.data().at == "CONVERSION OF FOREIGN DL"){
+        clothrs_liccnt = clothrs_liccnt +=1;
+       mscn4 = mscn4 +=1;           
+    }
+    else if (doc.data().at == "CHANGE OF DL CLASSIFICATION"){
+        clothrs_liccnt = clothrs_liccnt +=1;
+       mscn4 = mscn4 +=1;          
+    }
+    else if (doc.data().at == "EXPIRED DL WITH VALID FDL"){
+        clothrs_liccnt = clothrs_liccnt +=1;
+       mscn4 = mscn4 +=1;               
+    }
+    else if (doc.data().at == "CHANGE OF CLUTCH TYPE"){
+        clothrs_liccnt = clothrs_liccnt +=1;
+       mscn4 = mscn4 +=1;                 
+    }
+    else if (doc.data().at == "DROPPING OF CATEGORY OR ADD'L OR REMOVAL OF DRIVING CONDITIONS"){
+        clothrs_liccnt = clothrs_liccnt +=1;
+       mscn4 = mscn4 +=1;              
+    } 
   }
-  else if (doc.data().at == "RENEWAL"){
-      clrn_liccnt = clrn_liccnt +=1;
-     mscn4 = mscn4 +=1;                    
-  }
-  else if (doc.data().at == "DUPLICATE"){
-      cdld_liccnt = cdld_liccnt +=1;
-     mscn4 = mscn4 +=1;                    
-  }
-  else if (doc.data().at == "REVISION OF RECORDS"){
-      clrr_liccnt = clrr_liccnt +=1;
-     mscn4 = mscn4 +=1;   
-  }
-  else if (doc.data().at == "ADDITIONAL DL CODE OR CATEGORY"){
-      cladc_liccnt = cladc_liccnt +=1;
-     mscn4 = mscn4 +=1;       
-  }
-  else if (doc.data().at == "CONVERSION OF FOREIGN DL"){
-      clothrs_liccnt = clothrs_liccnt +=1;
-     mscn4 = mscn4 +=1;           
-  }
-  else if (doc.data().at == "CHANGE OF DL CLASSIFICATION"){
-      clothrs_liccnt = clothrs_liccnt +=1;
-     mscn4 = mscn4 +=1;          
-  }
-  else if (doc.data().at == "EXPIRED DL WITH VALID FDL"){
-      clothrs_liccnt = clothrs_liccnt +=1;
-     mscn4 = mscn4 +=1;               
-  }
-  else if (doc.data().at == "CHANGE OF CLUTCH TYPE"){
-      clothrs_liccnt = clothrs_liccnt +=1;
-     mscn4 = mscn4 +=1;                 
-  }
-  else if (doc.data().at == "DROPPING OF CATEGORY OR ADD'L OR REMOVAL OF DRIVING CONDITIONS"){
-      clothrs_liccnt = clothrs_liccnt +=1;
-     mscn4 = mscn4 +=1;              
-  } 
-}
 }
 })
 

@@ -33,7 +33,6 @@ if (day < 10) day = "0" + day;
 var today = day + " - " + month + " - " + year;  
 
 // Applicants Examined Bar chart
-
 const wrttnlicexam = await getDocs(collection(db, "Written"));
 let wrttn1 = 0;
 let wrttn2 = 0;
@@ -42,14 +41,12 @@ wrttnlicexam.forEach((doc) => {
 // Current Count
     if(doc.data().dt_App == today){
       if(doc.data().result == "PASSED"){
-        var wrtnn_examP = wrttn1+=1;
+        wrttn1 = wrttn1+=1;
         wrttn_all =  wrttn_all+=1
-        localStorage.setItem("wrtnn_examP",wrtnn_examP)
       }
       if(doc.data().result == "FAILED"){
-        var wrtnn_examF = wrttn2+=1;
+        wrttn2 = wrttn2+=1;
         wrttn_all =  wrttn_all+=1
-        localStorage.setItem("wrtnn_examF",wrtnn_examF)
       } 
     }
   
@@ -63,39 +60,27 @@ praclicexam.forEach((doc) => {
 // Current Count
     if(doc.data().dt_App == today){
       if(doc.data().result == "PASSED"){
-        var prac_examP = prac1+=1;
+        prac1 = prac1+=1;
         prac_all = prac_all+=1
-        localStorage.setItem("prac_examP",prac_examP)
       }
       if(doc.data().result == "FAILED"){
-        var prac_examF = prac2+=1;
+        prac2 = prac2+=1;
         prac_all = prac_all+=1
-        localStorage.setItem("prac_examF",prac_examF)
       } 
     }
   
 });
 
-// If LocalStorage key Get Null
-// if (localStorage.getItem("wrtnn_examP") == null || localStorage.getItem("wrtnn_examF") == null){
-//   localStorage.setItem("wrtnn_examP",0);
-//   localStorage.setItem("wrtnn_examF",0);
-// }
-// if (localStorage.getItem("prac_examP") == null || localStorage.getItem("prac_examF") == null){
-//   localStorage.setItem("prac_examP",0);
-//   localStorage.setItem("prac_examF",0);
-// }
 
-// let wrtnprac = parseInt(localStorage.getItem("wrtnn_examP")) + parseInt(localStorage.getItem("wrtnn_examF")) + parseInt(localStorage.getItem("prac_examP")) + parseInt(localStorage.getItem("prac_examF"))
 document.getElementById("num_current_exttal").innerHTML = wrttn_all + prac_all;
 
 var barChartOptions = {
     series: [{
       name: 'PASSED',
-      data: [localStorage.getItem("wrtnn_examP"), localStorage.getItem("prac_examP")]
+      data: [wrttn1, prac1]
     }, {
       name: 'FAILED',
-      data: [localStorage.getItem("wrtnn_examF"), localStorage.getItem("prac_examF")]
+      data: [wrttn2, prac2]
     }],
     chart: {
       type: 'bar',
@@ -145,56 +130,49 @@ var barChartOptions = {
 
 // DL  & Permit Issued BarChart
 const DLIPissued = await getDocs(collection(db, "License"));
-let countn1 = 0;
-let countn2 = 0;
+let femcountn = 0;
+let malcountn = 0;
+let malfemcntn = 0;
 
-let countrn1 = 0;
-let countrn2 = 0; 
+let femcountrn = 0;
+let malcountrn = 0; 
+let malfemcntrn = 0;
 DLIPissued.forEach((doc) => {
 // NEW
 if(doc.data().dt_App == today){
     if(doc.data().at == "NEW"){
       if(doc.data().User_GN == "FEMALE"){
-        var femcount = countn1+=1;
-        localStorage.setItem("femn",femcount)
+        femcountn = femcountn+=1;
+        malfemcntn = malfemcntn+=1;
       }
       if(doc.data().User_GN == "MALE"){
-        var malcount = countn2+=1;
-        localStorage.setItem("maln",malcount)
+        malcountn = malcountn+=1;
+        malfemcntn = malfemcntn+=1;
       }
     }
 //RENEWAL
     if (doc.data().at == "RENEWAL"){
       if(doc.data().User_GN == "FEMALE"){
-        var femcount = countrn1+=1;
-        localStorage.setItem("femrn",femcount)
+        femcountrn = femcountrn+=1;
+        malfemcntrn = malfemcntrn+=1;
       }
       if(doc.data().User_GN == "MALE"){
-        var malcount = countrn2+=1;
-        localStorage.setItem("malrn",malcount)
+        malcountrn = malcountrn+=1;
+        malfemcntrn = malfemcntrn+=1;
       }
     }
 }
   
-});
+}); 
 
-if (localStorage.getItem("femn") == null || localStorage.getItem("femrn") == null){
-  localStorage.setItem("femn",0)
-  localStorage.setItem("femrn",0)
-}
-if (localStorage.getItem("maln") == null || localStorage.getItem("malrn") == null){
-  localStorage.setItem("maln",0)
-  localStorage.setItem("malrn",0)
-}
-
-document.getElementById("num_current_issttal").innerHTML = parseInt(localStorage.getItem("femn")) + parseInt(localStorage.getItem("femrn")) + parseInt(localStorage.getItem("maln")) + parseInt(localStorage.getItem("malrn"));
+document.getElementById("num_current_issttal").innerHTML = malfemcntn + malfemcntrn;
 var barChartOptions = {
     series: [{
       name: 'FEMALE',
-      data: [localStorage.getItem("femn"), localStorage.getItem("femrn")]
+      data: [femcountn, femcountrn]
     }, {
       name: 'MALE',
-      data: [localStorage.getItem("maln"), localStorage.getItem("malrn")]
+      data: [malcountn, malcountrn]
     }],
     chart: {
       type: 'bar',
@@ -245,33 +223,25 @@ var barChartOptions = {
 //second chart
 
 // mscn txn
-const totlmscn = await getDocs(collection(db, "License"));
+const totl = await getDocs(collection(db, "License"));
 let mscntotl = 0;
-totlmscn.forEach((doc) => {
+totl.forEach((doc) => {
   if(doc.data().dt_App == today){
   if (doc.data().at == "DUPLICATE" || doc.data().at == "REVISION OF RECORDS"){
-      var mscn = mscntotl +=1;
-      localStorage.setItem("mscntotal",mscn);                      
+      mscntotl = mscntotl +=1;                    
   }
 }
 })
 
-const totlDLPI = await getDocs(collection(db, "License"));
-let totl1 = 0;
-totlDLPI.forEach((doc) => {
+// DLPI
+let dlpittl = 0;
+totl.forEach((doc) => {
   if(doc.data().dt_App == today){
     if(doc.data().at == "NEW" || doc.data().at == "RENEWAL"){
-      var sdp = totl1+=1;
-      localStorage.setItem("totl_dlpi", sdp);
+      dlpittl = dlpittl+=1;
     } 
   }
 });
-
-// If LocalStorage key Get Null
-if (localStorage.getItem("mscntotal") == null || localStorage.getItem("totl_dlpi") == null){
-  localStorage.setItem("mscntotal",0);
-  localStorage.setItem("totl_dlpi",0);
-}
 
 // dlch
 const dlch_total = await getDocs(collection(db, "Applicants"));
@@ -279,48 +249,38 @@ let dlch1 = 0;
 let dlch2 = 0;
 let dlch3 = 0;
 let dlch4 = 0;
+let dlchall = 0;
 dlch_total.forEach((doc) => {
   // Current Count
       if(doc.data().User_D   == today){
         if(doc.data().User_Stat == "RELEASED"){
-          let dlch_cnt = dlch1+=1;
-          localStorage.setItem("dlch_cnt1",dlch_cnt);
+          dlch1 = dlch1+=1;
+          dlchall = dlchall+=1;
         }
         else if(doc.data().User_Stat == "FAILED"){
-          let dlch_cnt = dlch4+=1;
-          localStorage.setItem("dlch_cnt4",dlch_cnt);
+          dlch4 = dlch4+=1;
+          dlchall = dlchall+=1;
         }
 
         if(doc.data().User_TT == "License"){
           if(doc.data().User_Stat == "INCOMPLETED"){
-          let dlch_cnt = dlch2+=1;
-          localStorage.setItem("dlch_cnt2",dlch_cnt);
+            dlch2 = dlch2+=1;
+            dlchall = dlchall+=1;
         }
         else if(doc.data().User_Stat == "DECLINED"){
-          let dlch_cnt = dlch3+=1;
-          localStorage.setItem("dlch_cnt3",dlch_cnt);
+          dlch3 = dlch3+=1;
+          dlchall = dlchall+=1;
         }
       }
       }
   });
-
-  if (localStorage.getItem("dlch_cnt1") == null || localStorage.getItem("dlch_cnt2") == null || localStorage.getItem("dlch_cnt3") == null || localStorage.getItem("dlch_cnt4") == null){
-    localStorage.setItem("dlch_cnt1",0);
-    localStorage.setItem("dlch_cnt2",0);
-    localStorage.setItem("dlch_cnt3",0);
-    localStorage.setItem("dlch_cnt4",0);
-  }
 // total of all
 var AEtotl = wrttn_all + prac_all;
-var dpchtotl = parseInt(localStorage.getItem("dlch_cnt1")) + parseInt(localStorage.getItem("dlch_cnt2")) + parseInt(localStorage.getItem("dlch_cnt3")) +  parseInt(localStorage.getItem("dlch_cnt4"));
-var DLPI = localStorage.getItem("totl_dlpi");
-var MSCN = localStorage.getItem("mscntotal"); 
-
-document.getElementById("num_current_licttal").innerHTML = dpchtotl;
+document.getElementById("num_current_licttal").innerHTML = dlchall;
 var barChartOptions = {
   series: [{
     name: "TOTAL",
-    data: [ AEtotl , DLPI , MSCN , dpchtotl]
+    data: [ AEtotl , dlpittl , mscntotl , dlchall]
   }], 
   chart: { 
     type: 'bar',
@@ -376,70 +336,106 @@ var barChartOptions = {
 var barChart = new ApexCharts(document.querySelector("#bar-chart3"), barChartOptions);
 barChart.render();
 
-// Time Today
-var now = new Date()
-var time = now.getHours() + ":" + now.getMinutes();
-console.log(time)
-
-if(time == "0:0"){
-  localStorage.removeItem("wrtnn_examP");
-  localStorage.removeItem("wrtnn_examF");
-  localStorage.removeItem("prac_examP");
-  localStorage.removeItem("prac_examF");
-  localStorage.removeItem("femn");
-  localStorage.removeItem("maln");
-  localStorage.removeItem("femrn");
-  localStorage.removeItem("malrn");
-  localStorage.removeItem("mscntotal");
-  localStorage.removeItem("totl_dlpi");
-  localStorage.removeItem("dlch_cnt1");
-  localStorage.removeItem("dlch_cnt2");
-  localStorage.removeItem("dlch_cnt3");
-  localStorage.removeItem("dlch_cnt4");
-}
 
 // MAIN
 
-  // const lic_cnt = collection(db,"License");
-  // const sp_cnt = query(lic_cnt, where("laa", "==", "STUDENT-DRIVER'S PERMIT"));
-  // const dl_cnt = query(lic_cnt, where("laa", "==", "DRIVER'S LICENSE"));
-  // const cl_cnt = query(lic_cnt, where("laa", "==", "CONDUCTOR'S LICENSE"));
-  // const sp_cn = await getCountFromServer(sp_cnt);
-  // const dl_cn = await getCountFromServer(dl_cnt);
-  // const cl_cn = await getCountFromServer(cl_cnt);
-  let sp_liccnt = 0;
-  let dl_liccnt = 0;
-  let cl_liccnt = 0;
-  let lic_all = 0;
-totlmscn.forEach((doc) => {
-  // if(doc.data().dt_App == today){
+let age1 = ["2007", "2006","2005","2004","2003"]
+let age2 = ["2002", "2001","2000","1999","1998"]
+let age3 = ["1997", "1996","1995","1994","1993"]
+let age4 = ["1992", "1991","1990","1989","1988"]
+let age5 = ["1987", "1986","1985","1984","1983"]
+let age6 = ["1982", "1981","1980","1979","1978"]
+let age7 = ["1977", "1976","1975","1974","1973"]
+let age8 = ["1972", "1971","1970","1969","1968"]
+let age9 = ["1967", "1966","1965","1964","1963"] 
+let age10 = ["1962", "1961","1960","1959","1958","1957","1956","1955","1954","1953","1952","1951","1950","1949","1948"]
+
+// LIC
+let sp_liccnt = 0;
+let dl_liccnt = 0;
+let cl_liccnt = 0;
+let lic_all = 0;
+
+// AGE
+let age_1 = 0;
+let age_2 = 0;
+let age_3 = 0;
+let age_4 = 0;
+let age_5 = 0;
+let age_6 = 0;
+let age_7 = 0;
+let age_8 = 0;
+let age_9 = 0;
+let age_10 = 0;
+let age_all = 0;
+
+totl.forEach((doc) => {
+  if(doc.data().dt_App == today){
     if (doc.data().laa == "STUDENT-DRIVER'S PERMIT"){
-        var mscn = sp_liccnt +=1;
-        lic_all = lic_all+=1
-        localStorage.setItem("sp_liccnt",mscn);                 
+      sp_liccnt = sp_liccnt +=1;
+        lic_all = lic_all+=1                
     }
     else if (doc.data().laa == "DRIVER'S LICENSE"){
-      var mscn = dl_liccnt +=1;
-      lic_all = lic_all+=1
-      localStorage.setItem("dl_liccnt",mscn);                      
+      dl_liccnt = dl_liccnt +=1;
+      lic_all = lic_all+=1                    
     }
     else if (doc.data().laa == "CONDUCTOR'S LICENSE"){
-      var mscn = cl_liccnt +=1;
-      lic_all = lic_all+=1
-      localStorage.setItem("cl_liccnt",mscn);                     
+      cl_liccnt = cl_liccnt +=1;
+      lic_all = lic_all+=1                    
     }
-// }
+    // FOR AGE CHART
+    let age = doc.data().User_BD;
+    let age_yr = age.slice(0,4)
+
+    if(age1.includes(age_yr)){
+      age_1 = age_1 +=1;
+      age_all = age_all+=1
+    }
+    else if(age2.includes(age_yr)){
+      age_2 = age_2 +=1;
+      age_all = age_all+=1
+    }
+    else if(age3.includes(age_yr)){
+      age_3 = age_3 +=1;
+      age_all = age_all+=1
+    }
+    else if(age4.includes(age_yr)){
+      age_4 = age_4 +=1;
+      age_all = age_all+=1
+    }
+    else if(age5.includes(age_yr)){
+      age_5 = age_5 +=1;
+      age_all = age_all+=1
+    }
+    else if(age6.includes(age_yr)){
+      age_6 = age_6 +=1;
+      age_all = age_all+=1
+    }
+    else if(age7.includes(age_yr)){
+      age_7 = age_7 +=1;
+      age_all = age_all+=1
+    }
+    else if(age8.includes(age_yr)){
+      age_8 = age_8 +=1;
+      age_all = age_all+=1
+    }
+    else if(age9.includes(age_yr)){
+      age_9 = age_9 +=1;
+      age_all = age_all+=1
+    }
+    else if(age10.includes(age_yr)){
+      age_10 = age_10 +=1;
+      age_all = age_all+=1
+    }
+  }
 })
 
-let spcnt = localStorage.getItem("sp_liccnt")
-let dlcnt = localStorage.getItem("dl_liccnt")
-let clcnt = localStorage.getItem("cl_liccnt")
 document.getElementById("lic_transac").innerHTML = lic_all
 
 var barChartOptions = {
   series: [{
     name: "TOTAL",
-    data: [ spcnt, dlcnt,clcnt ]
+    data: [ sp_liccnt, dl_liccnt,cl_liccnt ]
   }], 
   chart: { 
     type: 'bar',
@@ -494,30 +490,62 @@ var barChartOptions = {
 var barChart = new ApexCharts(document.querySelector("#bar-chart-main"), barChartOptions);
 barChart.render();
 
-// if (localStorage.getItem("sp_liccnt") == null || localStorage.getItem("dl_liccnt") == null || localStorage.getItem("cl_liccnt") == null){
-//   localStorage.setItem("sp_liccnt",0);
-//   localStorage.setItem("dl_liccnt",0);
-//   localStorage.setItem("cl_liccnt",0);
-// }
+// AGE
+document.getElementById("age_transac").innerHTML = age_all
+var barChartOptions = {
+  series: [{
+    name: "TOTAL",
+    data: [ age_1,age_2,age_3,age_4,age_5,age_6,age_7,age_8,age_9,age_10 ]
+  }], 
+  chart: { 
+    type: 'bar',
+    height: 350,
+    toolbar: {
+      show: true
+    },
+    events: {
+      dataPointSelection: function(event, chartContext, config) {
+        window.location = "a_licdbagedaily.html";
+      }
+    }
+  },
+  plotOptions: {
+    bar: {
+      borderRadius: 4,
+      horizontal: false,
+      columnWidth: '40%',
+      distributed: true
+    }
+  },
+  dataLabels: {
+    enabled: false
+  },
+  colors: [
+    '#89375F',
+    '#F7B844',
+    '#0EA293', 
+    '#B8621B'
+  ],
+  legend: {
+    show: false,
+    onItemHover: {
+      highlightDataSeries: true
+    }
+  },
+  stroke: {
+    show: true,
+    width: 1,
+    colors: ['#fff']
+  },
+  xaxis: {
+    categories: ["16-20", "21-25", "26-30","31-35","36-40","41-45","46-50","51-60","61-65","66-Above"],
+  },
+  yaxis: {
+    title: {
+      text: "Count"
+    }
+  }
+};
 
-// CODE
-
-  // const wrttn = collection(db,"Written");
-  // const w1 = query(wrttn, where("result", "==", "PASSED"));
-  // const w2 = query(wrttn, where("result", "==", "FAILED"));
-  // const wpass = await getCountFromServer(w1);
-  // const wfail = await getCountFromServer(w2);
- 
-  // const prctcl = collection(db,"Practical");
-  // const p1 = query(prctcl, where("result", "==", "PASSED"));
-  // const p2 = query(prctcl, where("result", "==", "FAILED"));
-  // const ppass = await getCountFromServer(p1);
-  // const pfail = await getCountFromServer(p2);
-
-  // const dpch = collection(db,"Applicants");
-// const relLic = query(dpch, where("User_Stat", "==", "RELEASED"));
-// const incompLic = query(dpch, where("User_Stat", "==", "INCOMPLETED"));
-// const failed = query(dpch, where("User_Stat", "==", "FAILED"));
-// const RELIC = await getCountFromServer(relLic);
-// const INCOMLIC = await getCountFromServer(incompLic);
-// const FAILED = await getCountFromServer(failed);
+var barChart = new ApexCharts(document.querySelector("#bar-chart-age"), barChartOptions);
+barChart.render();

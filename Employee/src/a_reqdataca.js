@@ -298,7 +298,8 @@ let depted  = document.getElementById("deptagncy")
                                         at: doc2.data().User_AT,
                                         dt_App: doc2.data().User_D,
                                         t_app: doc2.data().User_T,
-                                        User_GN: doc2.data().User_GN
+                                        User_GN: doc2.data().User_GN,
+                                        User_BD: doc2.data().User_BD    
                                     }).then(() => {
                                         window.location = "a_applistca.html"
                                     })
@@ -326,7 +327,8 @@ let depted  = document.getElementById("deptagncy")
                                     at: doc2.data().User_AT,
                                     dt_App: doc2.data().User_D,
                                     t_app: doc2.data().User_T,
-                                    User_GN: doc2.data().User_GN
+                                    User_GN: doc2.data().User_GN,
+                                    User_BD: doc2.data().User_BD
                                 }).then(() => {
                                     window.location = "a_applistca.html"
                                 })
@@ -348,7 +350,8 @@ let depted  = document.getElementById("deptagncy")
                                             at: doc2.data().User_AT,
                                             dt_App: doc2.data().User_D,
                                             t_app: doc2.data().User_T,
-                                            User_GN: doc2.data().User_GN
+                                            User_GN: doc2.data().User_GN,
+                                            User_BD: doc2.data().User_BD
                                         }).then(() => {
                                             window.location = "a_applistca.html"
                                         })
@@ -365,7 +368,8 @@ let depted  = document.getElementById("deptagncy")
                                             at: doc2.data().User_AT,
                                             dt_App: doc2.data().User_D,
                                             t_app: doc2.data().User_T,
-                                            User_GN: doc2.data().User_GN
+                                            User_GN: doc2.data().User_GN,
+                                            User_BD: doc2.data().User_BD
                                         }).then(() => {
                                             window.location = "a_applistca.html"
                                         })
@@ -382,7 +386,8 @@ let depted  = document.getElementById("deptagncy")
                                         at: doc2.data().User_AT,
                                         dt_App: doc2.data().User_D,
                                         t_app: doc2.data().User_T,
-                                        User_GN: doc2.data().User_GN
+                                        User_GN: doc2.data().User_GN,
+                                        User_BD: doc2.data().User_BD
                                     }).then(() => {
                                         window.location = "a_applistca.html"
                                     })
@@ -461,7 +466,7 @@ let depted  = document.getElementById("deptagncy")
                         User_ADD: added.value,
                         User_E: emled.value,
                         User_CN: mned.value,
-                        User_LTMS: ltmsed.value
+                        // User_LTMS: ltmsed.value
                     }).then(() => {
                         window.location = "a_applistca.html"
                         // console.log("EDIT")

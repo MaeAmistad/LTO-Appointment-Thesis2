@@ -111,87 +111,71 @@
 
             <button id="bcklic">BACK</button>
 
-            <select id="user" onchange="user(this.value)">
+            <!-- <select id="user" onchange="user(this.value)">
               <option value="a_licdashboard.html" selected>LICENSE</option>
               <option value="a_mvdashboard.html">MOTOR VEHICLE</option>
-            </select> 
+            </select> -->
 
+            <!-- SOON: Change location -->
             <select id="update_dash" onchange="user(this.value)">
-              <option value="a_licdashboard.html" >Daily</option>
-              <option value="a_licweeklyfltr.html" selected>weekly</option>
-              <option value="a_licmonthfilter.html" >monthly</option>
-              <option value="a_licyearlyfltr.html" >yearly</option>
+              <option value="a_licdbdaily.html" >Daily</option>
+              <option value="a_licdbweekly.html" >weekly</option>
+              <option value="a_licdbmonthly.html" selected>monthly</option>
+              <option value="a_licdbyearly.html">yearly</option>
             </select>
-
-            <button id="btnReport">REPORT</button>
+ 
+            <!-- <button id="btnReport">REPORT</button> -->
             
           </div>
+
 
         </div>
 
         <div class="main_charts">
 
           <div class="charts-card g1">
-            <p class="chart-title">TRANSACTION</p>
+            <p class="chart-title">STUDENT-DRIVER'S PERMIT</p>
             <p class="currntRel">Total<em>(current)</em></p>
             <p id="lic_transac" class="total_nm"></p>
-            <div id="bar-chart-main"></div> 
-          </div>
-
-        </div>
-
-        <div class="age_charts">
-
-          <div class="charts-card g1"> 
-            <p class="chart-title">AGE</p>
-            <p class="currntRel">Total<em>(current)</em></p>
-            <p id="age_transac" class="total_nm"></p>
-            <div id="bar-chart-age"></div> 
+            <div id="bar-chart-main"></div>
           </div>
 
         </div>
 
         <div class="charts1">
 
-          <div class="charts-card g4">
-            <p class="chart-title">TYPE OF LICENSE</p>
+          <div class="charts-card g2">
+            <p class="chart-title">DRIVER'S LICENSE</p>
             <p class="currntRel">Total<em>(current)</em></p>
-            <p id="num_current_licttal" class="total_nm"></p>
+            <p id="num_current_licttal1" class="total_nm"></p>
+            <div id="bar-chart2"></div>
+          </div>
+
+        </div>
+
+        <div class="charts2">
+
+          <div class="charts-card g3">
+            <p class="chart-title">CONDUCTOR'S LICENSE</p>
+            <p class="currntRel">Total<em>(current)</em></p>
+            <p id="num_current_licttal2" class="total_nm"></p>
             <div id="bar-chart3"></div>
           </div>
 
         </div>
 
-        
-        <div class="charts">
-
-          <div class="charts-card g2">
-            <p class="chart-title">APPLICANTS EXAMINED</p>
-            <p class="currntRel">Examiner<em>(current)</em></p>
-            <p id="num_current_exttal" class="total_nm"></p>
-            <div id="bar-chart1"></div>
-          </div>
-
-          <div class="charts-card g3">
-            <p class="chart-title">DRIVER'S LICENSE & PERMIT ISSUED</p>
-            <p class="currntRel">Issued<em>(current)</em></p>
-            <p id="num_current_issttal" class="total_nm"></p>
-            <div id="bar-chart2"></div>
-          </div>
-
-        </div>
       </main>
       <!-- End Main -->
 
     </div>
- 
-    <!-- Scripts --> 
+
+    <!-- Scripts -->
     <!-- ApexCharts -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <!-- Custom JS -->
     <script src="../src/a_dashboard.js"></script>
-    <script type="module" src="../src/a_licweeklyfltr.js"></script>  
+    <script type="module" src="../src/a_licdbmonthly.js"></script> 
     <!-- <script src="../src/a_licdashboardfilter.js"></script> -->
     <script type="module" src="../src/a_logout.js"></script>
-  </body>
+  </body> 
 </html> 

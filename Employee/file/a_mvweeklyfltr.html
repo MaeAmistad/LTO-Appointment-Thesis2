@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../style/a_dashboard2.css">
   </head>
   <body>
-    <div class="grid-container">
+    <div class="grid-container"> 
 
       <!-- Header --> 
       <header class="header">
@@ -110,22 +110,39 @@
           <div class="dropdown-user">
             <button id="bcklic">BACK</button>
             <select id="user" onchange="user(this.value)">
-              <option value="a_licweeklyfltr.html">LICENSE</option>
-              <option value="a_mvweeklyfltr.html" selected>MOTOR VEHICLE</option>
+              <option value="a_licdashboard.html">LICENSE</option>
+              <option value="a_mvdashboard.html" selected>MOTOR VEHICLE</option>
             </select>
-
+ 
             <select id="update_dash" onchange="user(this.value)">
-              <option value="a_mvdashboard.html">Daily</option>
+              <option value="a_mvdashboard.html" >Daily</option>
               <option value="a_mvweeklyfltr.html" selected>weekly</option>
               <option value="a_mvmonthfltr.html">monthly</option>
+              <option value="a_mvyearlyfltr.html">yearly</option>
             </select>
-            
-            <button id="btnReport">REPORT</button>
           </div>
         </div>
- 
+        
+        <div class="charts-card g2">
+          <p class="chart-title">TRANSACTION</p>
+          <p class="currntRel">Total<em>(current)</em></p>
+          <p id="num_current_mvtransac" class="total_nm"></p>
+          <div id="bar-chart-transac"></div>  
+        </div>
+
+        <div class="charts-card g2">
+          <p class="chart-title">MOTOR VEHICLE</p>
+          <p class="currntRel">Total<em>(current)</em></p>
+          <p id="num_current_mvlst" class="total_nm"></p>
+          <div id="bar-chartmvlst"></div>  
+        </div>
+        
+        <div class="dropdown-user"> 
+          <button id="btnReport">REPORT</button>
+        </div>
+
           <div class="charts-card g2">
-            <p class="chart-title">MOTOR VEHICLE</p>
+            <p class="chart-title">MV REFRIGERANT TYPE</p>
             <p class="currntRel">Total<em>(current)</em></p>
             <p id="num_current_mvttal" class="total_nm"></p>
             <div id="bar-chartmv"></div>  
@@ -134,6 +151,7 @@
           <div class="dropdown-user">
             <button id="btnReportYM">REPORT</button>
           </div>
+          
 
           <div class="charts-card g2">
             <p class="chart-title">YEAR MODEL</p>
