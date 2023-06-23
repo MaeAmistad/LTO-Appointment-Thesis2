@@ -1,5 +1,11 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
+:root {
+    --errorColor: #f00e0e;
+    --validColor: #0add0a;
+    --blueButton: rgb(19, 42, 172);
+    --lightgray: #b4b4b4;
+}
 * {
     margin: 0;
     padding: 0;
@@ -120,6 +126,12 @@ h4{
 .imptnt::after{
     content: "*";
     color: red;
+}
+#error{
+    color: red;
+    display: block;
+    margin-left: 37px;
+    font-size: 12px;
 }
 
 @media only screen and (max-width: 1200px){

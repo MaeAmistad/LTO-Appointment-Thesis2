@@ -5,7 +5,7 @@ $(function () {
         startDate: new Date(),
         minDate: 0,
         multidate: true,
-        format: "dd-mm-yyyy",
+        dateFormat: "dd-mm-yyyy",
         // daysOfWeekHighlighted: "0,6",
         language: 'en',
         todayHighlight: true,

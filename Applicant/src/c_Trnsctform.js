@@ -57,7 +57,7 @@ var list2 = document.getElementById("selectText2");
 var list3 = document.getElementById("selectText3");
 var list4 = document.getElementById("selectText4");
 var list5 = document.getElementById("selectText5");
-
+// FOR HIDING REQ
 document.getElementById("spn").style.display="none";
 document.getElementById("sprn").style.display="none";
 document.getElementById("npdln").style.display="none";
@@ -115,7 +115,7 @@ document.getElementById("rr_copd").style.display="none";
 document.getElementById("rr_cc").style.display="none";
 
 
-// for dropdown function
+//FOR LICENSE AND MV
 function trnsct(){
 
     if(list1.value == "lscnc"){
@@ -188,7 +188,7 @@ function trnsct(){
 }
 
 function laaf_lic(){
-// sp
+// SP NEW
 if(list2.value == "sp" && list3.value == "nw"){
     
     document.getElementById("spn").style.display="block";
@@ -210,9 +210,8 @@ if(list2.value == "sp" && list3.value == "nw"){
     document.getElementById("rr_lr").style.display="none";
     document.getElementById("rr_copd").style.display="none";
     document.getElementById("rr_cc").style.display="none";
-    
-  
 }
+// SP RENEW
 else if (list2.value == "sp" && list3.value == "rnw"){
     document.getElementById("sprn").style.display="block";
     document.getElementById("spn").style.display="none";
@@ -235,7 +234,7 @@ else if (list2.value == "sp" && list3.value == "rnw"){
     document.getElementById("rr_cc").style.display="none";
   
 }
-// npdl
+// DL NEW
 else if(list2.value == "dl" && list3.value == "nw"){
     document.getElementById("npdln").style.display="block";
     document.getElementById("spn").style.display="none";
@@ -258,6 +257,7 @@ else if(list2.value == "dl" && list3.value == "nw"){
    document.getElementById("rr_cc").style.display="none";
   
 }
+// DL RENEW
 else if (list2.value == "dl" && list3.value == "rnw"){
     document.getElementById("npdlrn").style.display="block";
     document.getElementById("sprn").style.display="none";
@@ -280,7 +280,7 @@ else if (list2.value == "dl" && list3.value == "rnw"){
    document.getElementById("rr_cc").style.display="none";
   
 }
-// cl
+// CL NEW
 else if(list2.value == "cl" && list3.value == "nw"){
     document.getElementById("cln").style.display="block";
     document.getElementById("pdln").style.display="none";
@@ -303,6 +303,7 @@ else if(list2.value == "cl" && list3.value == "nw"){
    document.getElementById("rr_cc").style.display="none";
   
 }
+// CL RENEW
 else if (list2.value == "cl" && list3.value == "rnw"){
     document.getElementById("clrn").style.display="block";
     document.getElementById("pdlrn").style.display="none";
@@ -687,6 +688,7 @@ else if (list2.value == "sp" && list3.value == "cct"){
   
 }
 // OTHER TRANSACTION
+// CONVERSION OF FOREIGN DL
 else if (list3.value == "cfdl"){
     document.getElementById("cofd").style.display="block";
     document.getElementById("dlplct").style.display="none";
@@ -710,6 +712,7 @@ else if (list3.value == "cfdl"){
    document.getElementById("cl_dcardc").style.display="none";
   
 }
+// ADDITIONAL CODE
 else if (list3.value == "acc"){
     document.getElementById("addtnlCd").style.display="block"; 
     document.getElementById("cofd").style.display="none";
@@ -732,6 +735,7 @@ else if (list3.value == "acc"){
    document.getElementById("rr_cc").style.display="none";
   
 }
+// CHANGE OF CLASSIFICATION
 else if (list3.value == "cdlc"){    
     document.getElementById("chngeClssfctn").style.display="block";
     document.getElementById("cofd").style.display="none";
@@ -754,6 +758,7 @@ else if (list3.value == "cdlc"){
    document.getElementById("rr_cc").style.display="none";
   
 }
+// EXPIRED FOREIGN LICENSE
 else if (list3.value == "edlvfdl"){
     document.getElementById("ExpiredDLvfdl").style.display="block";
     document.getElementById("addtnlCd").style.display="none"; 
@@ -776,6 +781,7 @@ else if (list3.value == "edlvfdl"){
    document.getElementById("rr_cc").style.display="none";
   
 }
+// CHANGE OF CLUTCH TYPE
 else if (list3.value == "cct"){ 
     document.getElementById("chngeCT").style.display="block";   
     document.getElementById("chngeClssfctn").style.display="none";
@@ -867,7 +873,7 @@ else if (list3.value == "cct"){
 
     console.log(localStorage.getItem('laa'))
     console.log(localStorage.getItem('toa'))
-// revision of records
+// FOR HIDING OF REVISION OF RECORDS
     if(list2.value == "sp"){
         document.getElementById("lic_rr").style.display="none";
         document.getElementById("rr_ccs").style.display="none";
@@ -919,9 +925,7 @@ function lic_rr(){
 }
 
 function lic_rr(){
-    // change add req
-
-   
+    // CHANGE ADDRESS
     if (list4.value == "rrca"){
         document.getElementById("rr_cadd").style.display="block";
         document.getElementById("rr_copd").style.display="none";
@@ -932,9 +936,8 @@ function lic_rr(){
         document.getElementById("rr_cc").style.display="none";
 
         var rvsnofrcrds = "Change Address"
-
-        console.log(rvsnofrcrds)
     }   
+    // CHANGE OF CIVIL STATUS
     else if(list4.value == "rrccs"){
         document.getElementById("rr_ccs").style.display="block";
         document.getElementById("rr_cadd").style.display="none";
@@ -947,6 +950,7 @@ function lic_rr(){
 
         var rvsnofrcrds = "Change Civil Status"
     } 
+    // CORRECTION OF NAME/ BIRTH DATE AND CHANGE NAME
     else if (list4.value == "rrcn" || list4.value == "rrcbd"){
         document.getElementById("rr_cn").style.display="block";
         document.getElementById("rr_cadd").style.display="none"; 

@@ -68,6 +68,12 @@
               <td>Time:</td>
               <td id="dt_t">-</td>
             </tr>
+
+            <tr>
+              <td>Amount to Pay:</td>
+              <td id="fees">-</td>
+            </tr>
+            
           </table>
 
           <table id="mv-table" >
@@ -167,8 +173,10 @@
 
     <div class="cnfrm_modal" id="complete_modal">
       <h1>APPLICATION COMPLETE</h1>
-        <p>The applicant successfully paid for their transaction.</p>
-          <div class="btn2">
+        <p>The applicant successfully paid for their transaction with an amount of: </p>
+          <p id="feeTotal"></p>
+        
+        <div class="btn2">
               <button id="cnl1">CANCEL</button>
               <button id="cnfrm1">CONFIRM</button>
           </div>

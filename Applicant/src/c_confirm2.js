@@ -29,7 +29,14 @@ var tt = localStorage.getItem("tot");
 var at = localStorage.getItem("toa");
 var laa = localStorage.getItem("laa");
 var rr = localStorage.getItem("rvsnofrcrds");
-var ltmsid = localStorage.getItem("ltmsID");
+var fee = document.getElementById('fees').value;
+
+//change birthday date format
+var birthday = gn;
+var dd = birthday.slice(0,2);
+var mm = birthday.slice(5,7);
+var yy = birthday.slice(10,14);
+var bdFormat = dd + "/" + mm + "/" + yy;
 
 function makeid(l)
 {
@@ -54,7 +61,7 @@ var m = new Date().getMinutes();
 var mnn = ("0" + m).slice(-2);
 
 var trnid = yy+mmm+ddd+hhh+mnn+makeid(2);
-console.log(trnid)
+
 document.getElementById('transctNum').innerHTML = trnid;
 cnfrm.addEventListener('click', (e) => {
 
@@ -92,9 +99,9 @@ if (tt == "MOTOR VEHICLE REGISTRATION"){
     User_E: email,
     User_D: date,
     User_T: time,
+    User_Payment: fee,
     User_TT: tt,
     User_AT: at,
-    User_LTMS: ltmsid
 }).then(() => {
 
     var full_name = localStorage.getItem("first_name");
@@ -161,7 +168,6 @@ localStorage.removeItem("toa");
 localStorage.removeItem("ID");
 localStorage.removeItem("stat");
 localStorage.removeItem("rvsnofrcrds");
-localStorage.removeItem("ltmsID");
 
 // window.location = "c_homepage.html";
     // c
@@ -184,9 +190,9 @@ else if (tt == "LICENSING"){
       User_E: email,
       User_D: date,
       User_T: time,
+      User_Payment: fee,
       User_TT: tt,
       User_AT: at,
-      User_LTMS: ltmsid
   }).then(() => {
   
     var full_name = localStorage.getItem("first_name");
@@ -251,7 +257,6 @@ else if (tt == "LICENSING"){
   localStorage.removeItem("laa");
   localStorage.removeItem("tot");
   localStorage.removeItem("toa");
-  localStorage.removeItem("ltmsID");
   
   // window.location = "c_homepage.html";
       // c
@@ -272,9 +277,9 @@ else if (tt == "LICENSING"){
       User_E: email,
       User_D: date,
       User_T: time,
+      User_Payment: fee,
       User_TT: tt,
-      User_AT: at,
-      User_LTMS: ltmsid
+      User_AT: at
   }).then(() => {
   
     var full_name = localStorage.getItem("first_name");
@@ -339,7 +344,6 @@ else if (tt == "LICENSING"){
   localStorage.removeItem("laa");
   localStorage.removeItem("tot");
   localStorage.removeItem("toa");
-  localStorage.removeItem("ltmsID");
   
   // window.location = "c_homepage.html";
       // c

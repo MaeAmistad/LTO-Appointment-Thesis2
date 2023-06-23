@@ -92,9 +92,16 @@
                 <button class="add_acc" onclick="toggle()">Add</button>
                 <button class="edit_acc" id="edit_acc" onclick="toggle2()">Edit</button>
                 <button id="delete_acc" onclick="toggle3()">Delete</button>
-                <input type="text" id="srchText" placeholder="Search" onkeyup="searchAppID()"> 
- 
+                <div>
+                  <button id="archived_acc" >See Archives</button>
+                </div>
+                
 
+                
+                <input type="text" id="srchText" placeholder="Search" onkeyup="searchAppID()">
+                
+                 
+ 
             </div>
             <div class="outer-wrapper">
             <div class="table-wrapper">
@@ -107,8 +114,7 @@
                     <th>Position</th>
                     <th>Employee ID</th>
                     <th>Email Address</th>
-                    <th>Password</th>
-                    <th>Status</th>                
+                    <th>Password</th>              
                 </tr>
             <tbody id="tbody1"></tbody>                                                       
             </table>
@@ -143,7 +149,7 @@
                         <input type="radio" name="emp" id="cashier" value="cashier" checked>Cashier
                         <input type="radio" name="emp" id="evaluator" value="evaluator" >Evaluator  
                         <input type="radio" name="emp" id="examiner" value="examiner">Examiner
-                        <input type="radio" name="emp" id="examiner" value="inspector">Inspector
+                        <input type="radio" name="emp" id="inspector" value="inspector">Inspector
                         <input type="radio" name="emp" id="admin" value="admin">System Administrator
                     </div>                   
             </div>
@@ -408,7 +414,7 @@
             popup.classList.toggle('active');
       } 
 
-      </script>
+    </script>
       <script> 
         const searchAppID = () => {
             let filter =  document.getElementById('srchText').value.toUpperCase();
@@ -438,6 +444,8 @@
                     }
                 }
             }
+          
+            
         }
   </script>
       

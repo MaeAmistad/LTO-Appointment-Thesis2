@@ -23,7 +23,7 @@ var tbody = document.getElementById('tbody1');
 const querySnapshot = await getDocs(collection(db, "Users", "Employee", "EmployeeData"));
   querySnapshot.forEach(doc => {
 
-    // if(doc.data().user_Status == "Enabled"){
+     if(doc.data().user_Status == "Active"){
       var trow = document.createElement('tr'); 
       let td1 = document.createElement('td');
       let td2 = document.createElement('td');
@@ -32,7 +32,6 @@ const querySnapshot = await getDocs(collection(db, "Users", "Employee", "Employe
       let td5 = document.createElement('td');
       let td6 = document.createElement('td');
       let td7 = document.createElement('td');  
-      let td8 = document.createElement('td');  
 
       td1.innerHTML = doc.data().user_LN;
       td2.innerHTML = doc.data().user_FN;
@@ -41,7 +40,6 @@ const querySnapshot = await getDocs(collection(db, "Users", "Employee", "Employe
       td5.innerHTML = doc.data().user_EID;
       td6.innerHTML = doc.data().user_E;
       td7.innerHTML = doc.data().user_PWD;
-      td8.innerHTML = doc.data().user_Status;
 
       trow.appendChild(td1);
       trow.appendChild(td2);
@@ -50,7 +48,6 @@ const querySnapshot = await getDocs(collection(db, "Users", "Employee", "Employe
       trow.appendChild(td5);
       trow.appendChild(td6);
       trow.appendChild(td7);
-      trow.appendChild(td8);
 
       tbody.appendChild(trow);
 
@@ -89,7 +86,7 @@ const querySnapshot = await getDocs(collection(db, "Users", "Employee", "Employe
       }
     });
 
-    // }
+     }
   });
 
 // window.onload = GetAllDataOnce;
@@ -201,10 +198,21 @@ function showValidEdit(input){
   formValidation.className = 'edit-info valid'
 }
 
+//validate email input
+email.onkeyup = function(){
+  const expr = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if (!expr.test(email)) {
+      showError(email, 'Invalid Email Address')
+  }
+  else{
+    showValid(email)
+  }
+}
+
 // FINAL
 const letters = /^[A-Za-z\s]*$/;
 const numbers = /[0-9]{11}/g;
-const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const position1 = 'CASHIER'
 const position2 = 'EVALUATOR'
 const position3 = 'EXAMINER'
@@ -330,7 +338,7 @@ form.addEventListener('submit',(e) =>{
             user_E: email.value.toUpperCase(),
             user_PWD: pass.value,
             user_EID: emp_IDa.value,
-            user_Status: "Enabled"
+            user_Status: "Active"
           })
       sendEmailVerification(auth.currentUser)
       .then(() => {
@@ -373,7 +381,7 @@ form.addEventListener('submit',(e) =>{
             user_E: email.value.toUpperCase(),
             user_PWD: pass.value,
             user_EID: emp_IDa.value,
-            user_Status: "Enabled"
+            user_Status: "Active"
           })
       sendEmailVerification(auth.currentUser)
         .then(() => {
@@ -416,7 +424,7 @@ form.addEventListener('submit',(e) =>{
             user_E: email.value.toUpperCase(),
             user_PWD: pass.value,
             user_EID: emp_IDa.value,
-            user_Status: "Enabled"
+            user_Status: "Active"
           })
           sendEmailVerification(auth.currentUser)
           .then(() => {
@@ -459,7 +467,7 @@ form.addEventListener('submit',(e) =>{
             user_E: email.value.toUpperCase(),
             user_PWD: pass.value,
             user_EID: emp_IDa.value,
-            user_Status: "Enabled"
+            user_Status: "Active"
           })
           sendEmailVerification(auth.currentUser)
           .then(() => {
@@ -502,7 +510,7 @@ form.addEventListener('submit',(e) =>{
             user_E: email.value.toUpperCase(),
             user_PWD: pass.value,
             user_EID: emp_IDa.value,
-            user_Status: "Enabled"
+            user_Status: "Active"
           })
           sendEmailVerification(auth.currentUser)
       .then(() => {
@@ -639,6 +647,7 @@ editForm.addEventListener('submit',(e) =>{
       
 });
 
+const currentDateTime = new Date().toLocaleString();
 //FINAL
 const querySnapshot2 = await getDocs(collection(db,"Users","Employee", "EmployeeData"));
 querySnapshot2.forEach(doc2 => {   
@@ -664,13 +673,17 @@ querySnapshot2.forEach(doc2 => {
 
       });
 
+
+
       cnfrm2.addEventListener('click', (e) => {
         const updateStat = doc(db, "Users","Employee", "EmployeeData" , doc2.id)
         var userID = localStorage.getItem("ID")
 
         if(userID == doc2.id){
           updateDoc(updateStat, {
-            user_Status: "Disabled"
+            user_Status: "Inactive",
+            user_DeletedBy: "ADMIN",
+            user_DeletedDate: currentDateTime
           }).then(() => {
             window.location = "a_accMan.html"
           })
@@ -689,3 +702,8 @@ cnl2.addEventListener('click', (e) => {
   document.getElementById('delete_acc_modal').style.visibility = "hidden";
   window.location = "a_accMan.html"
 });
+
+//Button to see archived accounts
+archived_acc.addEventListener('click', (e) => {
+  window.location = "a_accArchives.html"
+})

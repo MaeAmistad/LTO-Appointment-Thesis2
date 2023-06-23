@@ -37,7 +37,7 @@
             <h4>Please fill-out all field.</h4>
         </div> 
  
-    <form>
+    <form autocomplete="off">
         <div class="info form">
 
             <div class="inf">
@@ -80,22 +80,16 @@
                     </select>
             </div>
 
-            <div class="inf infdob">
-                <label>LTMS Client ID:</label>
-                <input type="text" id="ltmsCLID" name="ltmsCLID" placeholder="xx-xxxxxx-xxxxxxx">
-                <div class="error"></div>
-            </div>
-
             <div class="inf">
-                <label>Contact Number: <span class="imptnt"></span></label>
+                <label>Contact Number:</label>
                 <input type="tel" id="con_num" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="09xxxxxxxxx">
                 <div class="error"></div>
             </div>
             
             <div class="inf">
-                <label for="email">Email Address: <span class="imptnt"></span></label>
-                <input type="email" id="email" name="email">
-                <div class="error"></div>
+                <label>Email Address: <span class="imptnt"></span></label>
+                <input type="email" id="email" name="email" onkeyup="ValidateEmail()">
+                <span id="error"></span>
             </div>
 
     </form>    
@@ -107,6 +101,27 @@
     <button class="btn_nxt btn" id="btn_nxt">
         Next
     </button>
+
+    <!-- //Error for existing Application
+    <div class="wrnngmsg" id="wrnngmsg">
+        <p>You have existing application. Pleas</p>
+
+        <div class="buttons">
+            <button  id="cnl" >CANCEL</button>
+            <button id="sndVrfctn">Send Verification</button>
+        </div>
+      </div> -->
+    <script>
+        function ValidateEmail() {
+        var email = document.getElementById("email").value;
+        var lblError = document.getElementById("error");
+        lblError.innerHTML = "";
+        var expr = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+        if (!expr.test(email)) {
+            lblError.innerHTML = "Invalid Email Address.";
+        }
+    }
+    </script>
 
     <script type="module" src="../src/c_PIform.js"></script>
     <!-- <script src="../src/c_PIform2.js"></script> -->
