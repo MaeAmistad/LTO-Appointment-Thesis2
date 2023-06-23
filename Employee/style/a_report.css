@@ -208,4 +208,13 @@ img{
         text-align: center;
       }
 
-      
+      .trnsct_tab {
+        margin-top:10px;
+        margin: 10px;
+
+      }
+.trnsct_tab thead th{
+  text-align:center;
+  padding:10px;
+}
+   

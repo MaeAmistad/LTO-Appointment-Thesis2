@@ -2,10 +2,10 @@ bcklic.addEventListener('click' , () => {
     window.location = "a_dashboard.html"
 })
 btnReport.addEventListener('click',()=>{ 
-  window.location = "a_mvreport.html"
+//   window.location = ".html"
 })
 btnReportYM.addEventListener('click',() =>{ 
-  window.location = "a_mvymreport.html"
+//   window.location = ".html"
 });
 // ---------- CHARTS ---------- 
 
@@ -26,9 +26,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Monthly Filter
-var currentmonth = new Date().getMonth() + 1;
-if (currentmonth < 10)  currentmonth = "0" + currentmonth;
+  // Yearly Filter
+  var date = new Date();
+  var year = date.getFullYear();
 
 
 // MV REFRIGERANT
@@ -92,12 +92,13 @@ let mvlst_all = 0;
 const mv_bc = await getDocs(collection(db, "Motor Vehicle"));
 mv_bc.forEach((doc) => {
 
+  
+// getting Year
 let dd = doc.data().dt_App;
-let mmsp = dd.slice(5,7);
+let mmsp = dd.slice(10,15);
 
-mmsp == currentmonth
   // CAR
-  if(mmsp == currentmonth){
+  if(mmsp == year){
 
       if (doc.data().typel == "CAR" || doc.data().typel == "CARS"){
         car = car+=1
@@ -208,9 +209,7 @@ mmsp == currentmonth
     let year_model14 = [ "1920", "1919", "1918", "1917", "1916","1915","1914","1913","1912","1911"]
     let year_model15 = [ "1910", "1909", "1908", "1907", "1906","1905","1904","1903","1902","1901","1900"]
 
-    // console.log(year_model15) 
-
-    if(mmsp == currentmonth){ 
+    if(mmsp == year){ 
         if (year_model1.includes(doc.data().yr_modell)) {
           ym1 = ym1+=1
           yr_all = yr_all+=1

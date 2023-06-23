@@ -1079,7 +1079,7 @@ function mv_toa(){
         document.getElementById("oevsez").style.display="block";
         document.getElementById("forhre").style.display="none";
         document.getElementById("stolnrcovrd").style.display="none";
-        document.getElementById("Rctivtncd").style.display="none";
+        document.getElementById("Rctivtncd").style.display="none"; 
 
         var toa = "Other Exempt Vehicle (OEV) under Special Economic Zones"
     }

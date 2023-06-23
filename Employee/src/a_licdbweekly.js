@@ -1,5 +1,5 @@
 bcklic.addEventListener('click' , () => {
-    window.location = "a_licdashboard.html"
+    window.location = "a_licweeklyfltr.html"
   })
 //   btnReport.addEventListener('click',()=>{
 //     window.location = "a_licreportdaily.html"
@@ -7,32 +7,58 @@ bcklic.addEventListener('click' , () => {
   // ---------- CHARTS ---------- 
   
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
-  import { getFirestore, query, collection,getCountFromServer,where,getDocs } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
+  import { getFirestore, collection,getDocs } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
   
   // Your web app's Firebase configuration
   const firebaseConfig = {
-      apiKey: "AIzaSyCyNToos3S0HwLl0cZMRdiVjFJcBb4FWFo", 
+      apiKey: "AIzaSyCyNToos3S0HwLl0cZMRdiVjFJcBb4FWFo",
       authDomain: "lto-online-appointment-setter.firebaseapp.com",
       projectId: "lto-online-appointment-setter",
       storageBucket: "lto-online-appointment-setter.appspot.com",
       messagingSenderId: "382579903791",
       appId: "1:382579903791:web:5d98bbe4ea8b38a43065da" 
   }; 
-  
+   
   // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app); 
 const lic_cnt = await getDocs(collection(db, "License"));
 
-// Date Today
-var date = new Date();
-var day = date.getDate();
-var month = date.getMonth() + 1;
-var year = date.getFullYear();
-if (month < 10) month = "0" + month;
-if (day < 10) day = "0" + day;
-var today = day + " - " + month + " - " + year;  
+// WEEK DATE
+function getDatesInRange(startDate, endDate) {
+    const date = new Date(startDate);
+    const dates = [];
+// to push date in an array
+    while (date <= endDate) {
+    let dt = new Date(date)
+    let day = dt.getDate();
+    var month = dt.getMonth() + 1;
+    var year = dt.getFullYear();
+    if (month < 10) month = "0" + month;
+    if (day < 10) day = "0" + day;
+    var today = day + " - " + month + " - " + year; 
+     
+    dates.push(today); 
+    date.setDate(date.getDate() + 1);
+    }
+    return dates;
+}
+// Getting date / Initialization
+    let now = new Date();
+//  For Getting the week date 
+    let dayOfWeek = now.getDay(); //0-6
+    let numDay = now.getDate();
+// Set a start date
+    let start = new Date(now); //copy
+    start.setDate(numDay - dayOfWeek);
+// Set an end date
+    let end = new Date(now); //copy
+    end.setDate(numDay + (7 - dayOfWeek));
 
+    let d1 = new Date(start);
+    let d2 = new Date(end);
+    let today = getDatesInRange(d1, d2);
+    console.log(today)
 
 // SP
 let spn_liccnt = 0;
@@ -55,8 +81,8 @@ let clrr_liccnt = 0;
 let cladc_liccnt = 0;
 let clothrs_liccnt = 0;
 let mscn4 = 0;
-lic_cnt.forEach((doc) => { 
-  if(doc.data().dt_App == today){
+lic_cnt.forEach((doc) => {  
+  if(today.includes(doc.data().dt_App)){
 // SP
 if (doc.data().laa == "STUDENT-DRIVER'S PERMIT"){
   if (doc.data().at == "NEW"){
@@ -160,7 +186,6 @@ else if(doc.data().laa == "CONDUCTOR'S LICENSE"){
 }
 }
 })
-
 document.getElementById("lic_transac").innerHTML = mscn2
 
 var barChartOptions = {

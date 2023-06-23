@@ -120,25 +120,41 @@
               <option value="a_licdashboard.html" selected>Daily</option>
               <option value="a_licweeklyfltr.html" >weekly</option>
               <option value="a_licmonthfilter.html" >monthly</option>
-              <option value="a_licyearlyfltr" >yearly</option>
+              <option value="a_licyearlyfltr.html" >yearly</option>
             </select>
-
-            <button id="btnReport">REPORT</button>
             
-          </div>
+            <button id="btnReporttransct">REPORT</button>
 
+          </div>
 
         </div>
 
         <div class="main_charts">
 
           <div class="charts-card g1">
-            <p class="chart-title">LICENSE</p>
+            <p class="chart-title">TRANSACTION</p>
             <p class="currntRel">Total<em>(current)</em></p>
             <p id="lic_transac" class="total_nm"></p>
-            <div id="bar-chart-main"></div>
+            <div id="bar-chart-main"></div> 
+            <p style="text-align: right; font-size: 14px; color: rgba(0, 0, 0, 0.897); cursor: pointer;" onclick="vwmr_trnsct()">view more -></p>
           </div>
 
+        </div>
+
+        <div class="age_charts">
+
+          <div class="charts-card g1"> 
+            <p class="chart-title">AGE</p>
+            <p class="currntRel">Total<em>(current)</em></p>
+            <p id="age_transac" class="total_nm"></p>
+            <div id="bar-chart-age"></div>
+            <p style="text-align: right; font-size: 14px; color: rgba(0, 0, 0, 0.897); cursor: pointer;" onclick="vwmr_age()">view more -></p>
+          </div>
+
+        </div>
+
+        <div class="dropdown-user">
+          <button id="btnReport">REPORT</button>
         </div>
 
         <div class="charts1">
@@ -174,14 +190,19 @@
       <!-- End Main -->
 
     </div>
-
-    <!-- Scripts -->
     <!-- ApexCharts -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <!-- Custom JS -->
+
     <script src="../src/a_dashboard.js"></script>
     <script type="module" src="../src/a_licdashboard.js"></script> 
-    <!-- <script src="../src/a_licdashboardfilter.js"></script> -->
-    <script type="module" src="../src/a_logout.js"></script>
+    <script type="module" src="../src/a_logout.js"></script> 
+    <script>
+      function vwmr_trnsct(){
+        window.location = "a_licdbdaily.html"
+      }
+      function vwmr_age(){
+        window.location = "a_licdbagedaily.html"
+      }
+    </script>
   </body> 
 </html> 

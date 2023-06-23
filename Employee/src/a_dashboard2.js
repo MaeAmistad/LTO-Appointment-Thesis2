@@ -30,10 +30,6 @@ var now = new Date()
 var time = now.getHours() + ":" + now.getMinutes();
 console.log(time)
 
-// card
-// appntment_chrt.addEventListener('click',() => {
-//   window.location = "a_appntmentCard.html"
-// });
 inspctor.addEventListener('click',() => {
   window.location = "a_applistins.html"
 });
@@ -54,8 +50,6 @@ let totlE = 0;
 let totlI = 0;
 let totlC = 0;
 let totlEx = 0; 
-
-
 
 card_count.forEach((doc) => {
 
@@ -124,22 +118,18 @@ let dd = doc.data().dt_App;
 var mmsp = dd.slice(5,7);
 
   if (mmsp == "04"){
-    let mm11 = mmlic1+=1;
-    localStorage.setItem("mm_cnt1",mm11)
+    mmlic1 = mmlic1+=1;
   }
   if (mmsp == "05"){
-    let mm22 = mmlic2+=1;
-    localStorage.setItem("mm_cnt2",mm22)
+    mmlic2 = mmlic2+=1;
   }
   if (mmsp == "06"){
-    let mm33 = mmlic3+=1;
-    localStorage.setItem("mm_cnt3",mm33)
+    mmlic3 = mmlic3+=1;
   }
 
 // Current Count Chart
   if(dd == today){
-    let liccnt = lic_current+=1;
-    localStorage.setItem("lic_currentcnt",liccnt)
+    lic_current = lic_current+=1;
   }
 
 });
@@ -157,39 +147,28 @@ let dd = doc.data().dt_App;
 var mmsp = dd.slice(5,7);
 
   if (mmsp == "04"){
-    let mv11 = mmv1+=1;
-    localStorage.setItem("mmv_cnt1",mv11)
+    mmv1 = mmv1+=1;
   }
   if (mmsp == "05"){
-    let mv22 = mmv2+=1;
-    localStorage.setItem("mmv_cnt2",mv22)
+    mmv2 = mmv2+=1;
   }
   if (mmsp == "06"){
-    let mv33 = mmv3+=1;
-    localStorage.setItem("mmv_cnt3",mv33)
+    mmv3 = mmv3+=1;
   }
 
   // Current Count Chart
   if(dd == today){
-    let mvcnt = mv_current+=1;
-    localStorage.setItem("mv_currentcnt",mvcnt)
+    mv_current = mv_current+=1;
   }
 
 });
-
-// If LocalStorage key Get Null
-if (localStorage.getItem("lic_currentcnt") == null || localStorage.getItem("mv_currentcnt") == null){
-  localStorage.setItem("lic_currentcnt",0);
-  localStorage.setItem("mv_currentcnt",0);
-}
-
-document.getElementById("num_current_rel").innerHTML = parseInt(localStorage.getItem("lic_currentcnt")) + parseInt(localStorage.getItem("mv_currentcnt"));
+document.getElementById("num_current_rel").innerHTML = lic_current + mv_current;
 
 // BAR CHART
 var barChartOptions = {
     series: [{
       name: "TOTAL",
-      data: [localStorage.getItem("lic_currentcnt"), localStorage.getItem("mv_currentcnt")]
+      data: [lic_current, mv_current]
     }], 
     chart: {
       type: 'bar',
@@ -237,21 +216,14 @@ var barChartOptions = {
 // total Count in bar CHART
 
 // MONTHLY count of appointment CHART
-
-// PAST CODE
-//  localStorage.getItem("mm_cnt1") 
-// localStorage.getItem("mm_cnt2")
-// localStorage.getItem("mmv_cnt1")
-// localStorage.getItem("mmv_cnt2")
-
 // AREA CHART
 var areaChartOptions = {
   series: [{
     name: 'Licensing',
-    data: [0, 0, 0,0,0,localStorage.getItem("mm_cnt3")]
+    data: [0, 0, 0,0,0,mmlic3]
   }, {
     name: 'Motor Vehicle Registration',
-    data: [0, 0, 0,0,0,localStorage.getItem("mmv_cnt3")]
+    data: [0, 0, 0,0,0,mmv3]
   }],
   chart: {
     height: 350,

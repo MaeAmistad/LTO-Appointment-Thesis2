@@ -19,7 +19,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app); 
 
-var tbody = document.getElementById('tbody1');
+var tbody = document.getElementById('tbody2');
+// // Monthly Filter 
+// var currentmonth = new Date().getMonth() + 1;
+// if (currentmonth < 10)  currentmonth = "0" + currentmonth;
 
 // DATE TODAY
 var date = new Date();
@@ -30,6 +33,13 @@ if (month < 10) month = "0" + month;
 if (day < 10) day = "0" + day;
 var today = year + "-" + month + "-" + day ;
 
+
+let hrs = date.getHours();
+let mnts = date.getMinutes();
+let scnds = date.getSeconds();
+let time = hrs + ":" + mnts;
+var today2 = month + "/" + day + "/" + year ;
+document.getElementById('dtt').innerHTML = today2 + " " + time
 let itmNo = 0;
     const querySnapshot2 = await getDocs(collection(db,"Motor Vehicle")); 
         querySnapshot2.forEach(doc2 => { 

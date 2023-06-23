@@ -314,7 +314,8 @@ querySnapshot2.forEach(doc2 => {
                                 at: doc2.data().User_AT,
                                 dt_App: doc2.data().User_D,
                                 t_app: doc2.data().User_T,
-                                User_GN: doc2.data().User_GN
+                                User_GN: doc2.data().User_GN,
+                                        User_BD: doc2.data().User_BD    
                             }).then(() => {
                                 window.location = "a_applistca.html"
                             })
@@ -346,7 +347,8 @@ querySnapshot2.forEach(doc2 => {
                             at: doc2.data().User_AT,
                             dt_App: doc2.data().User_D,
                             t_app: doc2.data().User_T,
-                            User_GN: doc2.data().User_GN
+                            User_GN: doc2.data().User_GN,
+                                    User_BD: doc2.data().User_BD
                         }).then(() => {
                             window.location = "a_applistca.html"
                         })
@@ -370,7 +372,8 @@ querySnapshot2.forEach(doc2 => {
                                 at: doc2.data().User_AT,
                                 dt_App: doc2.data().User_D,
                                 t_app: doc2.data().User_T,
-                                User_GN: doc2.data().User_GN
+                                User_GN: doc2.data().User_GN,
+                                            User_BD: doc2.data().User_BD
                             }).then(() => {
                                 window.location = "a_applistca.html"
                             })
@@ -389,7 +392,8 @@ querySnapshot2.forEach(doc2 => {
                                 at: doc2.data().User_AT,
                                 dt_App: doc2.data().User_D,
                                 t_app: doc2.data().User_T,
-                                User_GN: doc2.data().User_GN
+                                User_GN: doc2.data().User_GN,
+                                            User_BD: doc2.data().User_BD
                             }).then(() => {
                                 window.location = "a_applistca.html"
                             })
@@ -408,7 +412,8 @@ querySnapshot2.forEach(doc2 => {
                             at: doc2.data().User_AT,
                             dt_App: doc2.data().User_D,
                             t_app: doc2.data().User_T,
-                            User_GN: doc2.data().User_GN
+                            User_GN: doc2.data().User_GN,
+                                        User_BD: doc2.data().User_BD
                         }).then(() => {
                             window.location = "a_applistca.html"
                         })

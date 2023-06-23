@@ -109,22 +109,79 @@
           
           <div class="dropdown-user">
 
-            <button id="bcklic">BACK</button>
+            <button id="bcklic">BACK</button> 
 
-            <select id="user" onchange="user(this.value)">
+            <!-- <select id="user" onchange="user(this.value)">
               <option value="a_licdashboard.html" selected>LICENSE</option>
               <option value="a_mvdashboard.html">MOTOR VEHICLE</option>
-            </select> 
+            </select> -->
 
+            <!-- SOON: Change location -->
             <select id="update_dash" onchange="user(this.value)">
-              <option value="a_licdashboard.html" >Daily</option>
-              <option value="a_licweeklyfltr.html" selected>weekly</option>
-              <option value="a_licmonthfilter.html" >monthly</option>
-              <option value="a_licyearlyfltr.html" >yearly</option>
+              <option value="a_licdbagedaily.html" >Daily</option>
+              <option value="a_licdbageweekly.html" selected>weekly</option>
+              <option value="a_licdbagemonthly.html" >monthly</option>
+              <option value="a_licdbageyearly.html">yearly</option>
             </select>
-
-            <button id="btnReport">REPORT</button>
+ 
+            <!-- <button id="btnReport">REPORT</button> -->
             
+          </div>
+
+
+        </div>
+
+        <div class="main_charts">
+
+          <div class="charts-card g1">
+            <p class="chart-title">AGE (16 - 20)</p>
+            <p class="currntRel">Total<em>(current)</em></p>
+            <p id="age_transac1" class="total_nm"></p>
+            <div id="bar-chart1"></div> 
+          </div>
+
+        </div>
+
+        <div class="charts1">
+
+          <div class="charts-card g2">
+            <p class="chart-title">AGE (21 - 25)</p>
+            <p class="currntRel">Total<em>(current)</em></p>
+            <p id="age_transac2" class="total_nm"></p>
+            <div id="bar-chart2"></div>
+          </div>
+
+        </div>
+
+        <div class="charts2">
+
+          <div class="charts-card g3">
+            <p class="chart-title">AGE (26 - 30)</p>
+            <p class="currntRel">Total<em>(current)</em></p>
+            <p id="age_transac3" class="total_nm"></p>
+            <div id="bar-chart3"></div>
+          </div>
+
+        </div>
+
+        <div class="charts2">
+
+          <div class="charts-card g3">
+            <p class="chart-title">AGE (31 - 35)</p>
+            <p class="currntRel">Total<em>(current)</em></p>
+            <p id="age_transac4" class="total_nm"></p>
+            <div id="bar-chart4"></div>
+          </div>
+
+        </div>
+
+        <div class="charts2">
+
+          <div class="charts-card g3">
+            <p class="chart-title">AGE (36 - 40)</p>
+            <p class="currntRel">Total<em>(current)</em></p>
+            <p id="age_transac5" class="total_nm"></p>
+            <div id="bar-chart5"></div>
           </div>
 
         </div>
@@ -132,51 +189,54 @@
         <div class="main_charts">
 
           <div class="charts-card g1">
-            <p class="chart-title">TRANSACTION</p>
+            <p class="chart-title">AGE (41 - 45)</p>
             <p class="currntRel">Total<em>(current)</em></p>
-            <p id="lic_transac" class="total_nm"></p>
-            <div id="bar-chart-main"></div> 
-          </div>
-
-        </div>
-
-        <div class="age_charts">
-
-          <div class="charts-card g1"> 
-            <p class="chart-title">AGE</p>
-            <p class="currntRel">Total<em>(current)</em></p>
-            <p id="age_transac" class="total_nm"></p>
-            <div id="bar-chart-age"></div> 
+            <p id="age_transac6" class="total_nm"></p>
+            <div id="bar-chart6"></div>
           </div>
 
         </div>
 
         <div class="charts1">
 
-          <div class="charts-card g4">
-            <p class="chart-title">TYPE OF LICENSE</p>
+          <div class="charts-card g2">
+            <p class="chart-title">AGE (46 - 50)</p>
             <p class="currntRel">Total<em>(current)</em></p>
-            <p id="num_current_licttal" class="total_nm"></p>
-            <div id="bar-chart3"></div>
+            <p id="age_transac7" class="total_nm"></p>
+            <div id="bar-chart7"></div>
           </div>
 
         </div>
 
-        
-        <div class="charts">
-
-          <div class="charts-card g2">
-            <p class="chart-title">APPLICANTS EXAMINED</p>
-            <p class="currntRel">Examiner<em>(current)</em></p>
-            <p id="num_current_exttal" class="total_nm"></p>
-            <div id="bar-chart1"></div>
-          </div>
+        <div class="charts2">
 
           <div class="charts-card g3">
-            <p class="chart-title">DRIVER'S LICENSE & PERMIT ISSUED</p>
-            <p class="currntRel">Issued<em>(current)</em></p>
-            <p id="num_current_issttal" class="total_nm"></p>
-            <div id="bar-chart2"></div>
+            <p class="chart-title">AGE (51 - 55)</p>
+            <p class="currntRel">Total<em>(current)</em></p>
+            <p id="age_transac8" class="total_nm"></p>
+            <div id="bar-chart8"></div>
+          </div>
+
+        </div>
+
+        <div class="charts2">
+
+          <div class="charts-card g3">
+            <p class="chart-title">AGE (56 - 60)</p>
+            <p class="currntRel">Total<em>(current)</em></p>
+            <p id="age_transac9" class="total_nm"></p>
+            <div id="bar-chart9"></div>
+          </div>
+
+        </div>
+
+        <div class="charts2">
+
+          <div class="charts-card g3">
+            <p class="chart-title">AGE (61 - 70)</p>
+            <p class="currntRel">Total<em>(current)</em></p>
+            <p id="age_transac10" class="total_nm"></p>
+            <div id="bar-chart10"></div>
           </div>
 
         </div>
@@ -184,14 +244,14 @@
       <!-- End Main -->
 
     </div>
- 
-    <!-- Scripts --> 
+
+    <!-- Scripts -->
     <!-- ApexCharts -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <!-- Custom JS -->
     <script src="../src/a_dashboard.js"></script>
-    <script type="module" src="../src/a_licweeklyfltr.js"></script>  
+    <script type="module" src="../src/a_licdbageweekly.js"></script> 
     <!-- <script src="../src/a_licdashboardfilter.js"></script> -->
     <script type="module" src="../src/a_logout.js"></script>
-  </body>
+  </body> 
 </html> 

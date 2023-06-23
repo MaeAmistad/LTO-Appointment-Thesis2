@@ -10,10 +10,10 @@
 
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="https://kit.fontawesome.com/8ec04d5e4f.css" crossorigin="anonymous"> -->
     <script src="https://kit.fontawesome.com/8ec04d5e4f.js" crossorigin="anonymous"></script>
     <!-- Excel/PDF JS -->
     <script src="../src/table2excel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js" integrity="sha512-YcsIPGdhPK4P/uRW6/sruonlYj+Q7UHWeKfTAkBW+g83NKM+jMJFJ4iAPfSnVp7BKD4dKMHmVSvICUbE/V1sSw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../style/a_report.css">
   </head>
@@ -110,11 +110,12 @@
           <div class="dropdown-user">
             <button id="bcklic">BACK</button>
             <button id="sav_excel">SAVE TO EXCEL</button>
-            <!-- <button id="">SAVE TO PDF</button> -->
+            <button id="sav_pdf">SAVE TO PDF</button>
           </div>
 
 
           <!-- Table -->
+
           <table id="table" class="tablemv">
             <thead>
                 <tr class="hdr">
@@ -130,10 +131,62 @@
                   <th>Date Registered</th>
                   <th>Transaction</th>
                   <th>Dept./Agency</th>
+                  <th>MVUC</th>
                 </tr>
             </thead>
               <tbody id="tbody1"> </tbody>
           </table>
+
+        <div class="svrpt" style="display: none;"> 
+        <div id="sav_rprt" style="margin: 10px;">
+          <p id="dtt" style="text-align: center; font-size: 14px;"></p>
+          <p style="text-align: center; font-size: 14px;">Department of Transportation</p>
+          <p style="text-align: center; font-size: 14px; margin-bottom: 20px;">LAND TRANSPORTATION OFFICE<br>San Ildefonso DO</p>
+          <p style="text-align: center; font-size: 14px;">Monitoring Report on Registered Government Vehicle</p>
+          <p style="text-align: center; font-size: 14px;">For the month of June 2023</p>
+          <table id="table" class="tablemv" style="font-size: 14px;">
+            <thead>
+                <tr class="hdr" style="background-color: rgb(228, 222, 222);">
+                  <th>Item No.</th>
+                  <th>Plate No.</th>
+                  <th>Type</th>
+                  <th>Make/Series</th>
+                  <th>Motor Number</th>
+                  <th>Chassis Number</th>
+                  <th>Color</th>
+                  <th>Fuel</th>
+                  <th>File No.</th>
+                  <th>Date Registered</th>
+                  <th>Transaction</th>
+                  <th>Dept./Agency</th>
+                  <th>MVUC</th>
+                </tr>
+            </thead>
+              <tbody id="tbody2"> </tbody>
+          </table>
+
+        <div style="margin-left: 10%;">
+          <p style="margin-left: 1%; margin-top: 20px;">Prepared by:</p>
+          <div style="display: flex;">
+            <p style="border-bottom: 1px solid black; width: 19%; margin-top: 40px; margin-left: 1%;"></p>
+            <p style="border-bottom: 1px solid black; width: 19%; margin-top: 40px; margin-left: 50%;"></p>
+          </div>
+          <div style="display: flex;">
+            <p style="font-size: 12px; margin-left: 1.5%;">(Printed Name & Signature)</p>
+            <p style="font-size: 12px; margin-left: 51.5%;">(Printed Name & Signature)</p>
+          </div>
+          <div style="display: flex;">
+            <p style="border-bottom: 1px solid black; width: 19%; margin-top: 40px; margin-left: 1%;"></p>
+            <p style="border-bottom: 1px solid black; width: 19%; margin-top: 40px; margin-left: 50%;"></p>
+          </div>
+          <div style="display: flex;">
+            <p style="font-size: 12px; margin-left: 7%;">(Position)</p>
+            <p style="font-size: 12px; margin-left: 64%;">(Position)</p>
+          </div>
+        </div>
+
+      </div>
+      </div>
       </main>
       <!-- End Main -->
 
@@ -143,12 +196,33 @@
     <!-- Custom JS -->
     <script src="../src/a_dashboard.js"></script>
     <script type="module" src="../src/a_mvreportdaily.js"></script>
+    <script type="module" src="../src/a_mvreportdailysample.js"></script>
     <script type="module" src="../src/a_logout.js"></script>
     <script>
       sav_excel.addEventListener('click',(e) =>{
         var table2excel = new Table2Excel();
-        table2excel.export(document.querySelectorAll("table"));
+        table2excel.export(document.querySelectorAll("table")); 
       });
     </script>
+    <script>
+      sav_pdf.addEventListener('click', (e) => {
+  // PDF
+        var element = document.getElementById('sav_rprt');
+          var opt = {
+          filename:     'LTO_report.pdf',
+          image:        { type: 'jpeg', quality: 0.98 },
+          html2canvas:  { scale: 1 },
+          jsPDF:        { unit: 'in', format: 'letter', orientation: 'landscape' }
+          };
+
+          // New Promise-based usage:
+          html2pdf().set(opt).from(element).save();
+
+          // Old monolithic-style usage:
+          // html2pdf(element, opt);
+      })
+    
+
+</script>
   </body>
 </html> 
