@@ -124,7 +124,7 @@ lic_cnt.forEach((doc) => {
     let age = doc.data().User_BD;
     let age_yr = age.slice(0,4)
     // AGE1
-    if(doc.data().dt_App == today){
+    if(doc.data().dt_App == today){ 
         if (age_yr == "2007"){
             age1_1 = age1_1+=1
             age_all1 = age_all1+=1

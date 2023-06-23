@@ -20,9 +20,6 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app); 
 
 var tbody = document.getElementById('tbody1');
-// // Monthly Filter 
-// var currentmonth = new Date().getMonth() + 1;
-// if (currentmonth < 10)  currentmonth = "0" + currentmonth;
 
 // DATE TODAY
 var date = new Date();

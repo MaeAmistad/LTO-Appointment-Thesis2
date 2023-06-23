@@ -112,7 +112,7 @@ let ltmsed = document.getElementById("ltmsidedit")
                 const updateStat = doc(db, "Applicants", doc2.id)
                 var stt = localStorage.getItem("stat")
                 var exmtyp1 = document.getElementById("exmTyp1").value.toUpperCase();
-
+                
                 if (stt == doc2.data().User_TransID){
                     if (exmtyp1 == "PRACTICAL"){
                         updateDoc(updateStat, {
@@ -127,6 +127,7 @@ let ltmsed = document.getElementById("ltmsidedit")
                             })
                     }
                     else if(exmtyp1 == "WRITTEN"){
+                        console.log(exmtyp1)
                         updateDoc(updateStat, {
                             User_Stat: "PASSED"
                         })
@@ -139,7 +140,6 @@ let ltmsed = document.getElementById("ltmsidedit")
                         })
                     }
                 }
-                console.log(exmtyp);
             })
  
             // FAILED BUTTON

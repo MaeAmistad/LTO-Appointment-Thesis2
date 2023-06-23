@@ -1,11 +1,11 @@
 bcklic.addEventListener('click' , () => {
     window.location = "a_dashboard.html"
 })
-btnReport.addEventListener('click',()=>{
-  window.location = "a_mvreportdaily.html"
-})
 btnReportYM.addEventListener('click',() =>{ 
   window.location = "a_mvymreportdaily.html"
+});
+btnReporttransct.addEventListener('click',() =>{ 
+  window.location = "a_mvreporttrnsctdaily.html"
 });
 // ---------- CHARTS ---------- 
 
@@ -288,7 +288,7 @@ mv_bc.forEach((doc) => {
           fh = fh+=1
           transct = transct+=1
         }
-        if(doc.data().at == "STOLEN AND RECOVERD"){
+        if(doc.data().at == "STOLEN AND RECOVERED"){
           sar = sar+=1
           transct = transct+=1
         }
@@ -461,7 +461,7 @@ var barChartOptions = {
     colors: ['#fff']
   }, 
   xaxis: {
-    categories: ["RENEWAL", "DIPLOMAT","OEV","FOR HIRE","STOLEN AND RECORD","ROS"]
+    categories: ["RENEWAL", "DIPLOMAT","OEV","FOR HIRE","STOLEN AND RECOVERED","ROS"]
   },
   yaxis: {
     title: {

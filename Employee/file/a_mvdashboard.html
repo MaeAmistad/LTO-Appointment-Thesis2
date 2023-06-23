@@ -118,8 +118,10 @@
               <option value="a_mvdashboard.html" selected>Daily</option>
               <option value="a_mvweeklyfltr.html">weekly</option>
               <option value="a_mvmonthfltr.html">monthly</option>
-              <option value="a_mvyearlyfltr.html">yearly</option>
+              <option value="a_mvyearlyfltr.html">yearly</option> 
             </select>
+
+            <button id="btnReporttransct">REPORT</button>
           </div>
         </div>
         
@@ -138,7 +140,7 @@
         </div>
         
         <div class="dropdown-user"> 
-          <button id="btnReport">REPORT</button>
+          <button id="btnReportYM">REPORT</button>
         </div>
 
           <div class="charts-card g2">
@@ -147,11 +149,6 @@
             <p id="num_current_mvttal" class="total_nm"></p>
             <div id="bar-chartmv"></div>  
           </div>
-
-          <div class="dropdown-user">
-            <button id="btnReportYM">REPORT</button>
-          </div>
-          
 
           <div class="charts-card g2">
             <p class="chart-title">YEAR MODEL</p>
@@ -166,11 +163,8 @@
       <!-- End Main -->
 
     </div>
-
-    <!-- Scripts -->
     <!-- ApexCharts --> 
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <!-- Custom JS -->
     <script src="../src/a_dashboard.js"></script>
     <script type="module" src="../src/a_mvdashboard.js"></script>
     <script type="module" src="../src/a_logout.js"></script>
