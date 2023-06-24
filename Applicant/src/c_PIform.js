@@ -92,6 +92,19 @@ btn_nxt.addEventListener('click', (e) => {
       }
     })
   }
+  else if (addrss === '') {
+    // alert('Address is required.');
+    Swal.fire({
+      title: 'Please enter your Address.',
+      confirmButtonColor: '#132aaa',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      }
+    })
+  }
   else if (bday === '') {
     // alert('Nationality is required.');
     Swal.fire({
@@ -119,19 +132,7 @@ btn_nxt.addEventListener('click', (e) => {
       }
     })
   }
-  else if (addrss === '') {
-    // alert('Address is required.');
-    Swal.fire({
-      title: 'Please enter your Address.',
-      confirmButtonColor: '#132aaa',
-      showClass: {
-        popup: 'animate__animated animate__fadeInDown'
-      },
-      hideClass: {
-        popup: 'animate__animated animate__fadeOutUp'
-      }
-    })
-  }
+
   // else if (con_num.length !== 11) {
   //   // alert('Invalid Number (Contact Number)');
   //   Swal.fire({
@@ -187,91 +188,84 @@ btn_nxt.addEventListener('click', (e) => {
   else {
 
     querySnapshot.forEach(doc => {
-      if (email !== '' && email.match(re) && con_num.match(numbers) && last_name !== '' && last_name.match(letters) && first_name !== '' &&
+      if (email !== '' && email.match(re) && last_name !== '' && last_name.match(letters) && first_name !== '' &&
         first_name.match(letters) && bday !== '' && gen != '' && addrss !== '') {
 
-          if (doc.data().User_Stat == "PENDING") {
-            if (last_name == doc.data().User_LN && first_name == doc.data().User_FN && middle_name == doc.data().User_MN && gen == doc.data().User_GN && bday == doc.data().User_BD) {
-              var date = doc.data().User_D;
-              var time = doc.data().User_T;
-              Swal.fire({
-                title: "You still have an existing appointment application \n" + date + " at " + time,
-                confirmButtonColor: '#132aaa',
-                showClass: {
-                  popup: 'animate__animated animate__fadeInDown'
-                },
-                hideClass: {
-                  popup: 'animate__animated animate__fadeOutUp'
-                }
-              })
+        console.log("okay")
 
-              console.log("existing application is " + date + " at " + time)
-            }
+        if (doc.data().User_Stat == "PENDING") {
+          if (last_name == doc.data().User_LN && first_name == doc.data().User_FN && middle_name == doc.data().User_MN && gen == doc.data().User_GN && bday == doc.data().User_BD) {
+            var date = doc.data().User_D;
+            var time = doc.data().User_T;
+            Swal.fire({
+              title: "You still have an existing appointment application on \n" + date + " at " + time,
+              confirmButtonColor: '#132aaa',
+              showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+              },
+              hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+              }
+            })
+
+            console.log("existing application is " + date + " at " + time)
           }
+        }
 
-          if (doc.data().User_Stat == "APPROVED_TO_CASHIER") {
-            if (last_name == doc.data().User_LN && first_name == doc.data().User_FN && middle_name == doc.data().User_MN && gen == doc.data().User_GN && bday == doc.data().User_BD) {
-              var date = doc.data().User_D;
-              var time = doc.data().User_T;
-              Swal.fire({
-                title: "You still have an ongoing transaction at the moment ",
-                confirmButtonColor: '#132aaa',
-                showClass: {
-                  popup: 'animate__animated animate__fadeInDown'
-                },
-                hideClass: {
-                  popup: 'animate__animated animate__fadeOutUp'
-                }
-              })
+        if (doc.data().User_Stat == "APPROVED_TO_CASHIER") {
+          if (last_name == doc.data().User_LN && first_name == doc.data().User_FN && middle_name == doc.data().User_MN && gen == doc.data().User_GN && bday == doc.data().User_BD) {
+            var date = doc.data().User_D;
+            var time = doc.data().User_T;
+            Swal.fire({
+              title: "You still have an ongoing transaction at the moment ",
+              confirmButtonColor: '#132aaa',
+              showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+              },
+              hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+              }
+            })
 
-              console.log("existing TRANSACTION")
-            }
+            console.log("existing TRANSACTION")
           }
+        }
 
-          if (doc.data().User_Stat == "RELEASED" || doc.data().User_Stat == "REGISTERED") {
-            if (last_name == doc.data().User_LN && first_name == doc.data().User_FN && middle_name == doc.data().User_MN && gen == doc.data().User_GN && bday == doc.data().User_BD) {
+        if (doc.data().User_Stat == "RELEASED" || doc.data().User_Stat == "REGISTERED" || doc.data().User_Stat == "MISSED") {
+          if (last_name == doc.data().User_LN && first_name == doc.data().User_FN && middle_name == doc.data().User_MN && gen == doc.data().User_GN && bday == doc.data().User_BD) {
 
-              localStorage.setItem("last_name", last_name);
-              localStorage.setItem("first_name", first_name);
-              localStorage.setItem("middle_name", middle_name);
-              localStorage.setItem("bday", bday);
-              localStorage.setItem("gen", gen);
-              localStorage.setItem("addrss", addrss);
-              localStorage.setItem("con_num", con_num);
-              localStorage.setItem("email", email);
-              
-              console.log("CAN APPLY AGAIN")
-            }
+            localStorage.setItem("last_name", last_name);
+            localStorage.setItem("first_name", first_name);
+            localStorage.setItem("middle_name", middle_name);
+            localStorage.setItem("bday", bday);
+            localStorage.setItem("gen", gen);
+            localStorage.setItem("addrss", addrss);
+            localStorage.setItem("con_num", con_num);
+            localStorage.setItem("email", email);
+
+            window.location = "c_confirmation.html";
+            console.log("CAN APPLY AGAIN")
           }
-          
-          if(last_name !== doc.data().User_LN && first_name !== doc.data().User_FN && middle_name !== doc.data().User_MN && gen !== doc.data().User_GN && bday !== doc.data().User_BD){
-              localStorage.setItem("last_name", last_name);
-              localStorage.setItem("first_name", first_name);
-              localStorage.setItem("middle_name", middle_name);
-              localStorage.setItem("bday", bday);
-              localStorage.setItem("gen", gen);
-              localStorage.setItem("addrss", addrss);
-              localStorage.setItem("con_num", con_num);
-              localStorage.setItem("email", email);
-    
-              window.location = "c_confirmation.html";
-              console.log("no existing application")
-            
-          }
-        
+        }
+
+        if (last_name !== doc.data().User_LN && first_name !== doc.data().User_FN && middle_name !== doc.data().User_MN && gen !== doc.data().User_GN && bday !== doc.data().User_BD) {
+          localStorage.setItem("last_name", last_name);
+          localStorage.setItem("first_name", first_name);
+          localStorage.setItem("middle_name", middle_name);
+          localStorage.setItem("bday", bday);
+          localStorage.setItem("gen", gen);
+          localStorage.setItem("addrss", addrss);
+          localStorage.setItem("con_num", con_num);
+          localStorage.setItem("email", email);
+
+          window.location = "c_confirmation.html";
+          console.log("no existing application")
+
+        }
       }
 
-
-
-
-    })
-
-
-
+    });
 
   }
-
-
-
 
 });

@@ -50,12 +50,12 @@ if(localStorage.getItem("toa") === "NEW" && localStorage.getItem("laa") === "DRI
     document.getElementById('fees1').innerHTML = "685.00"
     console.log(685.00)
 }
-if(localStorage.getItem("toa") === "RENEW" && localStorage.getItem("laa") === "DRIVER'S LICENSE"){
+if(localStorage.getItem("toa") === "RENEWAL" && localStorage.getItem("laa") === "DRIVER'S LICENSE"){
     document.getElementById('fees').innerHTML = "585.00"
     document.getElementById('fees1').innerHTML = "585.00"
     console.log(585.00)
 }
-if(localStorage.getItem("toa") === "RENEW" && localStorage.getItem("laa") === "CONDUCTOR'S LICENSE"){
+if(localStorage.getItem("toa") === "RENEWAL" && localStorage.getItem("laa") === "CONDUCTOR'S LICENSE"){
     document.getElementById('fees').innerHTML = "585.00"
     document.getElementById('fees1').innerHTML = "585.00"
     console.log(585.00)
@@ -73,6 +73,16 @@ if(localStorage.getItem("toa") === "CHANGE OF DL CLASSIFICATION" && localStorage
 if(localStorage.getItem("toa") === "CONVERSION OF FOERIGN DL" && localStorage.getItem("laa") === "DRIVER'S LICENSE"){
     document.getElementById('fees').innerHTML = "785.00"
     document.getElementById('fees1').innerHTML = "785.00"
+    console.log(785.00)
+}
+if(localStorage.getItem("toa") === "EXPIRED DL WITH VALID DFL" && localStorage.getItem("laa") === "DRIVER'S LICENSE"){
+    document.getElementById('fees').innerHTML = "785.00"
+    document.getElementById('fees1').innerHTML = "785.00"
+    console.log(785.00)
+}
+if(localStorage.getItem("toa") === "CHANGE OF CLUTCH TYPE" && localStorage.getItem("laa") === "DRIVER'S LICENSE"){
+    document.getElementById('fees').innerHTML = "425.00"
+    document.getElementById('fees1').innerHTML = "425.00"
     console.log(785.00)
 }
 
