@@ -106,53 +106,46 @@ if (tt == "MOTOR VEHICLE REGISTRATION"){
     User_AT: at,
 }).then(() => {
 
-    var full_name = localStorage.getItem("first_name");
-    const tt = "Hi " + full_name + "<br/>" + "<br/>";
-    const r2 = "YOUR APPLICATION FOR " + "<u>" +  at  + " HAS BEEN SET SUCCESFULLY." + "</u>" + "<br/>" + "<br/>";
-    const r3 = "Come to the office on " + localStorage.getItem("date") + " at " + localStorage.getItem("time");
-    const r4 = " and please remember to bring your requirements together with your proof of appointment." + TranID + "<br/>" + "<br/>";
-    const r5 = "If you didn't set an appointment, please disregard this email."
+    // var full_name = localStorage.getItem("first_name");
+    // const tt = "Hi " + full_name + "<br/>" + "<br/>";
+    // const r2 = "YOUR APPLICATION FOR " + "<u>" +  at  + " HAS BEEN SET SUCCESFULLY." + "</u>" + "<br/>" + "<br/>";
+    // const r3 = "Come to the office on " + localStorage.getItem("date") + " at " + localStorage.getItem("time");
+    // const r4 = " and please remember to bring your requirements together with your proof of appointment. " + TranID + "<br/>" + "<br/>";
+    // const r5 = "If you didn't set an appointment, please disregard this email."
 
-    Email.send({
-        Host : "smtp.elasticemail.com",
-        Username : "advocsbscs@gmail.com", 
-        Password : "B4F82EA84BAB8CFFF6DD868F33C26985B29B",
-        To : email.toLowerCase(),
-        From : "advocsbscs@gmail.com",
-        Subject : "LTO APPOINTMENT APPLICATION",
-        Body : tt + r2 + r3 + r4 + r5
-    }).then( 
-        Swal.fire({
-            title: 'Your proof of appointment has been sent to your email.',
-            confirmButtonColor: '#132aaa',
-            showClass: {
-              popup: 'animate__animated animate__fadeInDown'
-            },
-            hideClass: {
-              popup: 'animate__animated animate__fadeOutUp'
-            }
-          }).then(() =>{
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Your Application has been sent',
-                showConfirmButton: false,
-                timer: 2000
-            })
+    // Email.send({
+    //     Host : "smtp.elasticemail.com",
+    //     Username : "advocsbscs@gmail.com", 
+    //     Password : "342E004513CF8CC2EC61B156D52548F2EF93",
+    //     To : email.toLowerCase(),
+    //     From : "advocsbscs@gmail.com",
+    //     Subject : "LTO APPOINTMENT APPLICATION",
+    //     Body : tt + r2 + r3 + r4 + r5
+    // }).then( 
+    //     Swal.fire({
+    //         title: 'Your proof of appointment has been sent to your email.',
+    //         confirmButtonColor: '#132aaa',
+    //         showClass: {
+    //           popup: 'animate__animated animate__fadeInDown'
+    //         },
+    //         hideClass: {
+    //           popup: 'animate__animated animate__fadeOutUp'
+    //         }
+    //       }).then(() =>{
+    //         Swal.fire({
+    //             position: 'center',
+    //             icon: 'success',
+    //             title: 'Your Application has been sent',
+    //             showConfirmButton: false,
+    //             timer: 2000
+    //         })
             
-            // window.location = "index.html";
-            console.log("Email Sent")
-          })
-    );
-            // Swal.fire({
-            //     position: 'center',
-            //     icon: 'success',
-            //     title: 'Your Application has been set',
-            //     showConfirmButton: false,
-            //     timer: 2000
-            // }).then(() =>{
-            //     window.location = "c_firstpage.html";
-            //   })
+    //         // window.location = "index.html";
+    //         console.log("Email Sent")
+    //       })
+    // );
+
+    window.location = "index.html";
 
 localStorage.removeItem("last_name")
 localStorage.removeItem("first_name")
@@ -172,8 +165,6 @@ localStorage.removeItem("stat");
 localStorage.removeItem("rvsnofrcrds");
 localStorage.removeItem("fees")
 
-// window.location = "c_homepage.html";
-    // c
 })
 } 
 else if (tt == "LICENSING"){
@@ -198,55 +189,47 @@ else if (tt == "LICENSING"){
       User_AT: at,
   }).then(() => {
   
-    var full_name = localStorage.getItem("first_name");
-    const tt = "Hi " + full_name + "<br/>" + "<br/>";
-    const r2 = "YOUR APPLICATION FOR " + "<u>" + laa + at  + " HAS BEEN SET SUCCESFULLY." + "</u>" + "<br/>" + "<br/>";
-    const r3 = "Come to the office on " + localStorage.getItem("date") + " at " + localStorage.getItem("time");
-    const r4 = " and please remember to bring your requirements together with your proof of appointment." + TranID + "<br/>" + "<br/>";
-    const r5 = "If you didn't set an appointment, please disregard this email."
+    // var full_name = localStorage.getItem("first_name");
+    // const tt = "Hi " + full_name + "<br/>" + "<br/>";
+    // const r2 = "YOUR APPLICATION FOR " + "<u>" + laa + at  + " HAS BEEN SET SUCCESFULLY." + "</u>" + "<br/>" + "<br/>";
+    // const r3 = "Come to the office on " + localStorage.getItem("date") + " at " + localStorage.getItem("time");
+    // const r4 = " and please remember to bring your requirements together with your proof of appointment. " + TranID + "<br/>" + "<br/>";
+    // const r5 = "If you didn't set an appointment, please disregard this email."
   
-      Email.send({
-          Host : "smtp.elasticemail.com",
-          Username : "advocsbscs@gmail.com",
-          Password : "B4F82EA84BAB8CFFF6DD868F33C26985B29B",
-          To : email.toLowerCase(),
-          From : "advocsbscs@gmail.com",
-          Subject : "LTO APPOINTMENT APPLICATION",
-          Body : tt + r2 + r3 + r4 + r5
-      }).then(
-          Swal.fire({
-              title: 'Your proof of appointment has been sent to your email.',
-              confirmButtonColor: '#132aaa',
-              showClass: {
-                popup: 'animate__animated animate__fadeInDown'
-              },
-              hideClass: {
-                popup: 'animate__animated animate__fadeOutUp'
-              }
-            }).then(() =>{
-              Swal.fire({
-                  position: 'center',
-                  icon: 'success',
-                  title: 'Your Application has been sent',
-                  showConfirmButton: false,
-                  timer: 2000
-              })
+    //   Email.send({
+    //       Host : "smtp.elasticemail.com",
+    //       Username : "advocsbscs@gmail.com",
+    //       Password : "342E004513CF8CC2EC61B156D52548F2EF93",
+    //       To : email.toLowerCase(),
+    //       From : "advocsbscs@gmail.com",
+    //       Subject : "LTO APPOINTMENT APPLICATION",
+    //       Body : tt + r2 + r3 + r4 + r5
+    //   }).then(
+    //       Swal.fire({
+    //           title: 'Your proof of appointment has been sent to your email.',
+    //           confirmButtonColor: '#132aaa',
+    //           showClass: {
+    //             popup: 'animate__animated animate__fadeInDown'
+    //           },
+    //           hideClass: {
+    //             popup: 'animate__animated animate__fadeOutUp'
+    //           }
+    //         }).then(() =>{
+    //           Swal.fire({
+    //               position: 'center',
+    //               icon: 'success',
+    //               title: 'Your Application has been sent',
+    //               showConfirmButton: false,
+    //               timer: 2000
+    //           })
               
-              // window.location = "index.html";
-              console.log("Email Sent")
-            })
-      );
+    //           // window.location = "index.html";
+    //           console.log("Email Sent")
+    //         })
+    //   );
 
-  //   Swal.fire({
-  //     position: 'center',
-  //     icon: 'success',
-  //     title: 'Your Application has been set',
-  //     showConfirmButton: false,
-  //     timer: 2000
-  // }).then(() =>{
-  //     window.location = "c_firstpage.html";
-  //   })
-  
+    window.location = "index.html";
+
   localStorage.removeItem("last_name")
   localStorage.removeItem("first_name")
   localStorage.removeItem("middle_name");
@@ -261,9 +244,6 @@ else if (tt == "LICENSING"){
   localStorage.removeItem("tot");
   localStorage.removeItem("toa");
   localStorage.removeItem("fees")
-  
-  // window.location = "c_homepage.html";
-      // c
   })
   }
   else{
@@ -286,76 +266,65 @@ else if (tt == "LICENSING"){
       User_AT: at
   }).then(() => {
   
-    var full_name = localStorage.getItem("first_name");
-    const tt = "Hi " + full_name + "," + "<br/>" + "<br/>";
-    const r2 = "YOUR APPLICATION FOR " + "<u>" + laa + at  + " HAS BEEN SET SUCCESFULLY.  " + "</u>" + "<br/>" + "<br/>";
-    const r3 = "Come to the office on " + localStorage.getItem("date") + " at " + localStorage.getItem("time");
-    const r4 = " and please remember to bring your requirements together with your proof of appointment." + TranID + "<br/>" + "<br/>";
-    const r5 = "If you didn't set an appointment, please disregard this email."
+    // var full_name = localStorage.getItem("first_name");
+    // const tt = "Hi " + full_name + "," + "<br/>" + "<br/>";
+    // const r2 = "YOUR APPLICATION FOR " + "<u>" + laa + at  + " HAS BEEN SET SUCCESFULLY.  " + "</u>" + "<br/>" + "<br/>";
+    // const r3 = "Come to the office on " + localStorage.getItem("date") + " at " + localStorage.getItem("time");
+    // const r4 = " and please remember to bring your requirements together with your proof of appointment. " + TranID + "<br/>" + "<br/>";
+    // const r5 = "If you didn't set an appointment, please disregard this email."
   
-      Email.send({ 
-          Host : "smtp.elasticemail.com",
-          Username : "advocsbscs@gmail.com",
-          Password : "B4F82EA84BAB8CFFF6DD868F33C26985B29B",
-          To : email.toLowerCase(),
-          From : "advocsbscs@gmail.com",
-          Subject : "LTO APPOINTMENT APPLICATION",
-          Body : tt + r2 + r3 + r4 + r5
-      }).then(
-          Swal.fire({
-              title: 'Your proof of appointment has been sent to your email.',
-              confirmButtonColor: '#132aaa',
-              showClass: {
-                popup: 'animate__animated animate__fadeInDown'
-              },
-              hideClass: {
-                popup: 'animate__animated animate__fadeOutUp'
-              }
-            }).then(() =>{
-              Swal.fire({
-                  position: 'center',
-                  icon: 'success',
-                  title: 'Your Application has been sent',
-                  showConfirmButton: false,
-                  timer: 2000
-              })
+    //   Email.send({ 
+    //       Host : "smtp.elasticemail.com",
+    //       Username : "advocsbscs@gmail.com",
+    //       Password : "342E004513CF8CC2EC61B156D52548F2EF93",
+    //       To : email.toLowerCase(),
+    //       From : "advocsbscs@gmail.com",
+    //       Subject : "LTO APPOINTMENT APPLICATION",
+    //       Body : tt + r2 + r3 + r4 + r5
+    //   }).then(
+    //       Swal.fire({
+    //           title: 'Your proof of appointment has been sent to your email.',
+    //           confirmButtonColor: '#132aaa',
+    //           showClass: {
+    //             popup: 'animate__animated animate__fadeInDown'
+    //           },
+    //           hideClass: {
+    //             popup: 'animate__animated animate__fadeOutUp'
+    //           }
+    //         }).then(() =>{
+    //           Swal.fire({
+    //               position: 'center',
+    //               icon: 'success',
+    //               title: 'Your Application has been sent',
+    //               showConfirmButton: false,
+    //               timer: 2000
+    //           })
               
-              // window.location = "index.html";
-              console.log("Email Sent")
-            })
-      );
+    //           // window.location = "index.html";
+    //           console.log("Email Sent")
+    //         })
+    //   );
 
-  //   Swal.fire({
-  //     position: 'center',
-  //     icon: 'success',
-  //     title: 'Your Application has been set',
-  //     showConfirmButton: false,
-  //     timer: 2000
-  // }).then(() =>{
-  //     window.location = "c_firstpage.html";
-  //   })
-  
-  localStorage.removeItem("last_name")
-  localStorage.removeItem("first_name")
-  localStorage.removeItem("middle_name");
-  localStorage.removeItem("bday");
-  localStorage.removeItem("gen");
-  localStorage.removeItem("addrss1");
-  localStorage.removeItem("con_num");
-  localStorage.removeItem("email");
-  localStorage.removeItem("date");
-  localStorage.removeItem("time");
-  localStorage.removeItem("laa");
-  localStorage.removeItem("tot");
-  localStorage.removeItem("toa");
-  localStorage.removeItem("fees")
-  
-  // window.location = "c_homepage.html";
-      // c
-  })
+    window.location = "index.html";
+
+    localStorage.removeItem("last_name")
+    localStorage.removeItem("first_name")
+    localStorage.removeItem("middle_name");
+    localStorage.removeItem("bday");
+    localStorage.removeItem("gen");
+    localStorage.removeItem("addrss1");
+    localStorage.removeItem("con_num");
+    localStorage.removeItem("email");
+    localStorage.removeItem("date");
+    localStorage.removeItem("time");
+    localStorage.removeItem("laa");
+    localStorage.removeItem("tot");
+    localStorage.removeItem("toa");
+    localStorage.removeItem("fees")
+
+    })
   }
 }
-
 
 })
  
