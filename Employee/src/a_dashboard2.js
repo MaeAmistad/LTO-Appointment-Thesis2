@@ -293,7 +293,10 @@ let mv10 = 0;
 let mv11 = 0;
 
 license.forEach(doc =>{
-  if(doc.data().User_Add == ""){
+  if(doc.data().User_Add == "SAN ILDEFONSO,ILOCOS SUR" || doc.data().User_Add == "SAN ILDEFONSO, ILOCOS SUR"){
+
+  }
+  else if(doc.data().User_Add == "VIGAN CITY,ILOCOS SUR" || doc.data().User_Add == "SAN ILDEFONSO, ILOCOS SUR"){
 
   }
 })
@@ -326,7 +329,7 @@ var barChartOptions = {
     bar: {
       distributed: true,
       borderRadius: 4,
-      horizontal: false,
+      horizontal: false, 
       columnWidth: '40%',
     }
   },
