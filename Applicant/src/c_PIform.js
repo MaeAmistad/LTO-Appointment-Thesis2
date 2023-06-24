@@ -33,9 +33,7 @@ btn_nxt.addEventListener('click', (e) => {
   let middle_name = document.getElementById('mname').value.toUpperCase();
   let bday = document.getElementById('dob').value.toUpperCase();
   let gen = document.getElementById('gen').value.toUpperCase();
-  let addrss1 = document.getElementById('addrss1').value.toUpperCase();
-  let addrss2 = document.getElementById('addrss2').value.toUpperCase();
-  let addrss3 = document.getElementById('addrss3').value.toUpperCase();
+  let addrss1 = document.getElementById('addrss').value.toUpperCase();
   let con_num = document.getElementById('con_num').value.toUpperCase();
   let email = document.getElementById('email').value.toUpperCase();
 
@@ -134,7 +132,7 @@ btn_nxt.addEventListener('click', (e) => {
       }
     })
   }
-  else if (addrss1 === '' && addrss2 === '' && addrss3 === '') {
+  else if (addrss1 === '') {
     // alert('Address is required.');
     Swal.fire({
       title: 'Your Address is Incomplete.',
@@ -203,7 +201,7 @@ btn_nxt.addEventListener('click', (e) => {
  
     querySnapshot.forEach(doc => {
       if (email !== '' && email.match(re) && last_name !== '' && last_name.match(letters) && first_name !== '' &&
-        first_name.match(letters) && bday !== '' && gen != '' && addrss1 !== '' && addrss2 !== '' && addrss3 !== '') {
+        first_name.match(letters) && bday !== '' && gen != '' && addrss1 !== '') {
 
         console.log("okay")
 
@@ -254,8 +252,6 @@ btn_nxt.addEventListener('click', (e) => {
               localStorage.setItem("bday", bday);
               localStorage.setItem("gen", gen);
               localStorage.setItem("addrss1", addrss1);
-              localStorage.setItem("addrss2", addrss2);
-              localStorage.setItem("addrss3", addrss3);
               localStorage.setItem("con_num", con_num);
               localStorage.setItem("email", email);
               
@@ -270,8 +266,6 @@ btn_nxt.addEventListener('click', (e) => {
               localStorage.setItem("bday", bday);
               localStorage.setItem("gen", gen);
               localStorage.setItem("addrss1", addrss1);
-              localStorage.setItem("addrss2", addrss2);
-              localStorage.setItem("addrss3", addrss3);
               localStorage.setItem("con_num", con_num);
               localStorage.setItem("email", email);
     

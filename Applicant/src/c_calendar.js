@@ -202,7 +202,7 @@ $(function () {
         localStorage.removeItem("middle_name");
         localStorage.removeItem("bday");
         localStorage.removeItem("gen");
-        localStorage.removeItem("addrss");
+        localStorage.removeItem("addrss1");
         localStorage.removeItem("con_num");
         localStorage.removeItem("email");
         localStorage.removeItem("date");

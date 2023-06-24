@@ -3,7 +3,7 @@ document.getElementById('fn').innerHTML=localStorage.getItem("first_name")
 document.getElementById('mn').innerHTML=localStorage.getItem("middle_name");
 document.getElementById('dof').innerHTML=localStorage.getItem("bday");
 document.getElementById('gndr').innerHTML=localStorage.getItem("gen");
-document.getElementById('addrss').innerHTML=localStorage.getItem("addrss");
+document.getElementById('addrss').innerHTML=localStorage.getItem("addrss1");
 document.getElementById('mnn').innerHTML=localStorage.getItem("con_num");
 document.getElementById('em').innerHTML=localStorage.getItem("email");
 

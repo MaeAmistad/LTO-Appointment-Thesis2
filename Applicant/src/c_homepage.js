@@ -25,8 +25,6 @@ function chckbx() {
     localStorage.removeItem("bday");
     localStorage.removeItem("gen");
     localStorage.removeItem("addrss1");
-    localStorage.removeItem("addrss2");
-    localStorage.removeItem("addrss3");
     localStorage.removeItem("con_num");
     localStorage.removeItem("email");
     localStorage.removeItem("date");

@@ -21,8 +21,6 @@ var mn = localStorage.getItem("middle_name");
 var bd = localStorage.getItem("bday");
 var gn = localStorage.getItem("gen");
 var addrss1 = localStorage.getItem("addrss1");
-var addrss2= localStorage.getItem("addrss2");
-var addrss3 = localStorage.getItem("addrss3");
 var cn = localStorage.getItem("con_num");
 var email = localStorage.getItem("email");
 var date = localStorage.getItem("date");
@@ -32,6 +30,8 @@ var at = localStorage.getItem("toa");
 var laa = localStorage.getItem("laa");
 var rr = localStorage.getItem("rvsnofrcrds");
 var fee = localStorage.getItem("fees");
+
+console.log(email.toLowerCase())
 
 //change birthday date format
 var birthday = gn;
@@ -76,7 +76,7 @@ cnfrm.addEventListener('click', (e) => {
     jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
     };
 
-    // New Promise-based usage:
+    // New Promise-based usage: 
     html2pdf().set(opt).from(element).save();
 
     // Old monolithic-style usage:
@@ -97,8 +97,6 @@ if (tt == "MOTOR VEHICLE REGISTRATION"){
     User_BD: bd,
     User_GN: gn,
     User_ADD1: addrss1,
-    User_ADD2: addrss2,
-    User_ADD3: addrss3,
     User_CN: cn,
     User_E: email,
     User_D: date,
@@ -118,12 +116,12 @@ if (tt == "MOTOR VEHICLE REGISTRATION"){
     Email.send({
         Host : "smtp.elasticemail.com",
         Username : "advocsbscs@gmail.com", 
-        Password : "436A106EEF29101EB7EDEE2AB028A1BFBEB9",
-        To : email,
+        Password : "B4F82EA84BAB8CFFF6DD868F33C26985B29B",
+        To : email.toLowerCase(),
         From : "advocsbscs@gmail.com",
         Subject : "LTO APPOINTMENT APPLICATION",
         Body : tt + r2 + r3 + r4 + r5
-    }).then(
+    }).then( 
         Swal.fire({
             title: 'Your proof of appointment has been sent to your email.',
             confirmButtonColor: '#132aaa',
@@ -142,8 +140,8 @@ if (tt == "MOTOR VEHICLE REGISTRATION"){
                 timer: 2000
             })
             
-            window.location = "index.html";
-            // console.log("Email Sent")
+            // window.location = "index.html";
+            console.log("Email Sent")
           })
     );
             // Swal.fire({
@@ -162,8 +160,6 @@ localStorage.removeItem("middle_name");
 localStorage.removeItem("bday");
 localStorage.removeItem("gen");
 localStorage.removeItem("addrss1");
-localStorage.removeItem("addrss2");
-localStorage.removeItem("addrss3");
 localStorage.removeItem("con_num");
 localStorage.removeItem("email");
 localStorage.removeItem("date");
@@ -193,8 +189,6 @@ else if (tt == "LICENSING"){
       User_BD: bd,
       User_GN: gn,
       User_ADD1: addrss1,
-      User_ADD2: addrss2,
-      User_ADD3: addrss3,
       User_CN: cn,
       User_E: email,
       User_D: date,
@@ -214,8 +208,8 @@ else if (tt == "LICENSING"){
       Email.send({
           Host : "smtp.elasticemail.com",
           Username : "advocsbscs@gmail.com",
-          Password : "436A106EEF29101EB7EDEE2AB028A1BFBEB9",
-          To : email,
+          Password : "B4F82EA84BAB8CFFF6DD868F33C26985B29B",
+          To : email.toLowerCase(),
           From : "advocsbscs@gmail.com",
           Subject : "LTO APPOINTMENT APPLICATION",
           Body : tt + r2 + r3 + r4 + r5
@@ -238,8 +232,8 @@ else if (tt == "LICENSING"){
                   timer: 2000
               })
               
-              window.location = "index.html";
-              // console.log("Email Sent")
+              // window.location = "index.html";
+              console.log("Email Sent")
             })
       );
 
@@ -259,8 +253,6 @@ else if (tt == "LICENSING"){
   localStorage.removeItem("bday");
   localStorage.removeItem("gen");
   localStorage.removeItem("addrss1");
-  localStorage.removeItem("addrss2");
-  localStorage.removeItem("addrss3");
   localStorage.removeItem("con_num");
   localStorage.removeItem("email");
   localStorage.removeItem("date");
@@ -285,8 +277,6 @@ else if (tt == "LICENSING"){
       User_BD: bd,
       User_GN: gn, 
       User_ADD1: addrss1,
-      User_ADD2: addrss2,
-      User_ADD3: addrss3,
       User_CN: cn,
       User_E: email,
       User_D: date,
@@ -303,11 +293,11 @@ else if (tt == "LICENSING"){
     const r4 = " and please remember to bring your requirements together with your proof of appointment." + TranID + "<br/>" + "<br/>";
     const r5 = "If you didn't set an appointment, please disregard this email."
   
-      Email.send({
+      Email.send({ 
           Host : "smtp.elasticemail.com",
           Username : "advocsbscs@gmail.com",
-          Password : "436A106EEF29101EB7EDEE2AB028A1BFBEB9",
-          To : email,
+          Password : "B4F82EA84BAB8CFFF6DD868F33C26985B29B",
+          To : email.toLowerCase(),
           From : "advocsbscs@gmail.com",
           Subject : "LTO APPOINTMENT APPLICATION",
           Body : tt + r2 + r3 + r4 + r5
@@ -330,8 +320,8 @@ else if (tt == "LICENSING"){
                   timer: 2000
               })
               
-              window.location = "index.html";
-              // console.log("Email Sent")
+              // window.location = "index.html";
+              console.log("Email Sent")
             })
       );
 
@@ -351,8 +341,6 @@ else if (tt == "LICENSING"){
   localStorage.removeItem("bday");
   localStorage.removeItem("gen");
   localStorage.removeItem("addrss1");
-  localStorage.removeItem("addrss2");
-  localStorage.removeItem("addrss3");
   localStorage.removeItem("con_num");
   localStorage.removeItem("email");
   localStorage.removeItem("date");
