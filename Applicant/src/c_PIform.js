@@ -33,7 +33,7 @@ btn_nxt.addEventListener('click', (e) => {
   let middle_name = document.getElementById('mname').value.toUpperCase();
   let bday = document.getElementById('dob').value.toUpperCase();
   let gen = document.getElementById('gen').value.toUpperCase();
-  let addrss1 = document.getElementById('addrss').value.toUpperCase();
+  let addrss = document.getElementById('addrss').value.toUpperCase();
   let con_num = document.getElementById('con_num').value.toUpperCase();
   let email = document.getElementById('email').value.toUpperCase();
 
@@ -92,19 +92,6 @@ btn_nxt.addEventListener('click', (e) => {
       }
     })
   }
-  else if (addrss === '') {
-    // alert('Address is required.');
-    Swal.fire({
-      title: 'Please enter your Address.',
-      confirmButtonColor: '#132aaa',
-      showClass: {
-        popup: 'animate__animated animate__fadeInDown'
-      },
-      hideClass: {
-        popup: 'animate__animated animate__fadeOutUp'
-      }
-    })
-  }
   else if (bday === '') {
     // alert('Nationality is required.');
     Swal.fire({
@@ -132,7 +119,7 @@ btn_nxt.addEventListener('click', (e) => {
       }
     })
   }
-  else if (addrss1 === '') {
+  else if (addrss === '') {
     // alert('Address is required.');
     Swal.fire({
       title: 'Your Address is Incomplete.',
@@ -198,12 +185,11 @@ btn_nxt.addEventListener('click', (e) => {
     })
   }
   else {
- 
+
     querySnapshot.forEach(doc => {
       if (email !== '' && email.match(re) && last_name !== '' && last_name.match(letters) && first_name !== '' &&
-        first_name.match(letters) && bday !== '' && gen != '' && addrss1 !== '') {
+        first_name.match(letters) && bday !== '' && gen != '' && addrss !== '') {
 
-        console.log("okay")
 
         if (doc.data().User_Stat == "PENDING") {
           if (last_name == doc.data().User_LN && first_name == doc.data().User_FN && middle_name == doc.data().User_MN && gen == doc.data().User_GN && bday == doc.data().User_BD) {
@@ -246,34 +232,33 @@ btn_nxt.addEventListener('click', (e) => {
         if (doc.data().User_Stat == "RELEASED" || doc.data().User_Stat == "REGISTERED" || doc.data().User_Stat == "MISSED") {
           if (last_name == doc.data().User_LN && first_name == doc.data().User_FN && middle_name == doc.data().User_MN && gen == doc.data().User_GN && bday == doc.data().User_BD) {
 
-              localStorage.setItem("last_name", last_name);
-              localStorage.setItem("first_name", first_name);
-              localStorage.setItem("middle_name", middle_name);
-              localStorage.setItem("bday", bday);
-              localStorage.setItem("gen", gen);
-              localStorage.setItem("addrss1", addrss1);
-              localStorage.setItem("con_num", con_num);
-              localStorage.setItem("email", email);
-              
-              console.log("CAN APPLY AGAIN")
-            }
+            localStorage.setItem("last_name", last_name);
+            localStorage.setItem("first_name", first_name);
+            localStorage.setItem("middle_name", middle_name);
+            localStorage.setItem("bday", bday);
+            localStorage.setItem("gen", gen);
+            localStorage.setItem("addrss1", addrss);
+            localStorage.setItem("con_num", con_num);
+            localStorage.setItem("email", email);
+
+            console.log("CAN APPLY AGAIN")
           }
-          
-          if(last_name !== doc.data().User_LN && first_name !== doc.data().User_FN && middle_name !== doc.data().User_MN && gen !== doc.data().User_GN && bday !== doc.data().User_BD){
-              localStorage.setItem("last_name", last_name);
-              localStorage.setItem("first_name", first_name);
-              localStorage.setItem("middle_name", middle_name);
-              localStorage.setItem("bday", bday);
-              localStorage.setItem("gen", gen);
-              localStorage.setItem("addrss1", addrss1);
-              localStorage.setItem("con_num", con_num);
-              localStorage.setItem("email", email);
-    
-              window.location = "c_confirmation.html";
-              console.log("no existing application")
-            
-          }
-        
+        }
+        if (last_name !== doc.data().User_LN && first_name !== doc.data().User_FN && bday !== doc.data().User_BD) {
+          localStorage.setItem("last_name", last_name);
+          localStorage.setItem("first_name", first_name);
+          localStorage.setItem("middle_name", middle_name);
+          localStorage.setItem("bday", bday);
+          localStorage.setItem("gen", gen);
+          localStorage.setItem("addrss1", addrss);
+          localStorage.setItem("con_num", con_num);
+          localStorage.setItem("email", email);
+
+          window.location = "c_confirmation.html";
+          console.log("no existing application")
+
+        }
+
       }
 
     });
