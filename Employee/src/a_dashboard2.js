@@ -265,3 +265,86 @@ var areaChartOptions = {
 
 var areaChart = new ApexCharts(document.querySelector("#area-chart"), areaChartOptions);
 areaChart.render();
+
+// MUNICIPAL ADDRESS CHART
+
+let lic1 = 0;
+let lic2 = 0;
+let lic3 = 0;
+let lic4 = 0;
+let lic5 = 0;
+let lic6 = 0;
+let lic7 = 0;
+let lic8 = 0;
+let lic9 = 0;
+let lic10 = 0;
+let lic11 = 0; 
+
+let mv1 = 0;
+let mv2 = 0;
+let mv3 = 0;
+let mv4 = 0;
+let mv5 = 0;
+let mv6 = 0;
+let mv7 = 0;
+let mv8 = 0;
+let mv9 = 0;
+let mv10 = 0;
+let mv11 = 0;
+
+license.forEach(doc =>{
+  if(doc.data().User_Add == ""){
+
+  }
+})
+var barChartOptions = {
+  series: [{
+    name: "LICENSE",
+    data: [0,0,0,0,0,0,0,0,0,0,0]
+  },
+  {
+    name: "MVR ",
+    data: [0,0,0,0,0,0,0,0,0,0,0]
+  }], 
+  chart: {
+    type: 'bar',
+    height: 350,
+    toolbar: {
+      show: true
+    },
+    events: {
+      dataPointSelection: function(event, chartContext, config) {
+        // window.location = "a_licdashboard.html";
+      }
+    }
+  },
+  colors: [
+    "#246dec",
+    "#4f35a1"
+  ],
+  plotOptions: {
+    bar: {
+      distributed: true,
+      borderRadius: 4,
+      horizontal: false,
+      columnWidth: '40%',
+    }
+  },
+  dataLabels: {
+    enabled: false
+  },
+  legend: {
+    show: true
+  },
+  xaxis: {
+    categories: ["San Ildefonso", "Vigan City","Bantay","San Vicente","Sta. Catalina","Caoayan","Sto. Domingo","Magsingal","San Juan", "Cabugao","Sinait"],
+  },
+  yaxis: { 
+    title: {
+      text: "Count"
+    }
+  }
+};
+
+var barChart = new ApexCharts(document.querySelector("#bar-chart-add"), barChartOptions);
+barChart.render();

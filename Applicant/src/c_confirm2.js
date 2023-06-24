@@ -20,7 +20,9 @@ var fn = localStorage.getItem("first_name")
 var mn = localStorage.getItem("middle_name");
 var bd = localStorage.getItem("bday");
 var gn = localStorage.getItem("gen");
-var addrss = localStorage.getItem("addrss");
+var addrss1 = localStorage.getItem("addrss1");
+var addrss2= localStorage.getItem("addrss2");
+var addrss3 = localStorage.getItem("addrss3");
 var cn = localStorage.getItem("con_num");
 var email = localStorage.getItem("email");
 var date = localStorage.getItem("date");
@@ -94,7 +96,9 @@ if (tt == "MOTOR VEHICLE REGISTRATION"){
     User_MN: mn,
     User_BD: bd,
     User_GN: gn,
-    User_ADD: addrss,
+    User_ADD1: addrss1,
+    User_ADD2: addrss2,
+    User_ADD3: addrss3,
     User_CN: cn,
     User_E: email,
     User_D: date,
@@ -157,7 +161,9 @@ localStorage.removeItem("first_name")
 localStorage.removeItem("middle_name");
 localStorage.removeItem("bday");
 localStorage.removeItem("gen");
-localStorage.removeItem("addrss");
+localStorage.removeItem("addrss1");
+localStorage.removeItem("addrss2");
+localStorage.removeItem("addrss3");
 localStorage.removeItem("con_num");
 localStorage.removeItem("email");
 localStorage.removeItem("date");
@@ -185,7 +191,9 @@ else if (tt == "LICENSING"){
       User_MN: mn,
       User_BD: bd,
       User_GN: gn,
-      User_ADD: addrss,
+      User_ADD1: addrss1,
+      User_ADD2: addrss2,
+      User_ADD3: addrss3,
       User_CN: cn,
       User_E: email,
       User_D: date,
@@ -249,7 +257,9 @@ else if (tt == "LICENSING"){
   localStorage.removeItem("middle_name");
   localStorage.removeItem("bday");
   localStorage.removeItem("gen");
-  localStorage.removeItem("addrss");
+  localStorage.removeItem("addrss1");
+  localStorage.removeItem("addrss2");
+  localStorage.removeItem("addrss3");
   localStorage.removeItem("con_num");
   localStorage.removeItem("email");
   localStorage.removeItem("date");
@@ -272,7 +282,9 @@ else if (tt == "LICENSING"){
       User_MN: mn,
       User_BD: bd,
       User_GN: gn, 
-      User_ADD: addrss,
+      User_ADD1: addrss1,
+      User_ADD2: addrss2,
+      User_ADD3: addrss3,
       User_CN: cn,
       User_E: email,
       User_D: date,
@@ -336,7 +348,9 @@ else if (tt == "LICENSING"){
   localStorage.removeItem("middle_name");
   localStorage.removeItem("bday");
   localStorage.removeItem("gen");
-  localStorage.removeItem("addrss");
+  localStorage.removeItem("addrss1");
+  localStorage.removeItem("addrss2");
+  localStorage.removeItem("addrss3");
   localStorage.removeItem("con_num");
   localStorage.removeItem("email");
   localStorage.removeItem("date");

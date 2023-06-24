@@ -18,7 +18,7 @@
   <body>
     <div class="grid-container">
 
-      <!-- Header --> 
+      <!-- Header -->
       <header class="header">
         <div class="menu-icon" onclick="openSidebar()">
           <span class="material-icons-outlined">menu</span>
@@ -108,7 +108,9 @@
         <div>
           
           <div class="dropdown-user">
+
             <button id="bcklic">BACK</button>
+            
             <select id="user" onchange="user(this.value)">
               <option value="a_licdashboard.html">LICENSE</option>
               <option value="a_mvdashboard.html" selected>MOTOR VEHICLE</option>
@@ -122,57 +124,57 @@
             </select>
 
             <button id="btnReporttransct">REPORT</button>
+            
           </div>
-        </div>
-        
-        <div class="charts-card g2">
-          <p class="chart-title">TRANSACTION</p>
-          <p class="currntRel">Total<em>(current)</em></p>
-          <p id="num_current_mvtransac" class="total_nm"></p>
-          <div id="bar-chart-transac"></div>  
+
+
         </div>
 
-        <div class="charts-card g2">
-          <p class="chart-title">MOTOR VEHICLE TYPE</p>
-          <p class="currntRel">Total<em>(current)</em></p>
-          <p id="num_current_mvlst" class="total_nm"></p>
-          <div id="bar-chartmvlst"></div>
-          <p style="text-align: right; font-size: 14px; color: rgba(0, 0, 0, 0.897); cursor: pointer;" onclick="vwmr_mvt()">view more -></p>  
+        <div class="main_charts">
+
+          <div class="charts-card g1">
+            <p class="chart-title">PRIVATE</p>
+            <p class="currntRel">Total<em>(current)</em></p>
+            <p id="lic_transac" class="total_nm"></p>
+            <div id="bar-chart-main"></div>
+          </div>
+
         </div>
-        
-        <div class="dropdown-user"> 
-          <button id="btnReportYM">REPORT</button>
-        </div>
+
+        <div class="charts1">
 
           <div class="charts-card g2">
-            <p class="chart-title">MV REFRIGERANT TYPE</p>
+            <p class="chart-title">FOR HIRE</p>
             <p class="currntRel">Total<em>(current)</em></p>
-            <p id="num_current_mvttal" class="total_nm"></p>
-            <div id="bar-chartmv"></div>  
+            <p id="num_current_licttal1" class="total_nm"></p>
+            <div id="bar-chart2"></div>
           </div>
-
-          <div class="charts-card g2"> 
-            <p class="chart-title">YEAR MODEL</p>
-            <p class="currntRel">Total<em>(current)</em></p>
-            <p id="num_current_mvymttal" class="total_nm"></p>
-            <div id="bar-chartmvyrmdl"></div> 
-          </div>
-
 
         </div>
+
+        <div class="charts2">
+
+          <div class="charts-card g3">
+            <p class="chart-title">GOVERNMENT</p>
+            <p class="currntRel">Total<em>(current)</em></p>
+            <p id="num_current_licttal2" class="total_nm"></p>
+            <div id="bar-chart3"></div>
+          </div>
+
+        </div>
+
       </main>
       <!-- End Main -->
 
     </div>
-    <!-- ApexCharts --> 
+
+    <!-- Scripts -->
+    <!-- ApexCharts -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <!-- Custom JS -->
     <script src="../src/a_dashboard.js"></script>
-    <script type="module" src="../src/a_mvdashboard.js"></script>
+    <script type="module" src="../src/a_mvtypedashboaddaily.js"></script> 
+    <!-- <script src="../src/a_licdashboardfilter.js"></script> -->
     <script type="module" src="../src/a_logout.js"></script>
-    <script>
-      function vwmr_mvt(){
-        window.location = "a_mvtypedashboaddaily.html"
-      }
-    </script>
-  </body>
+  </body> 
 </html> 

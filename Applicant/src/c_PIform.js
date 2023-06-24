@@ -28,14 +28,16 @@ btn_cn.addEventListener('click', (e) => {
 btn_nxt.addEventListener('click', (e) => {
   // window.location = "c_Trnsctform.html";
 
-  var last_name = document.getElementById('lname').value.toUpperCase();
-  var first_name = document.getElementById('fname').value.toUpperCase();
-  var middle_name = document.getElementById('mname').value.toUpperCase();
-  var bday = document.getElementById('dob').value.toUpperCase();
-  var gen = document.getElementById('gen').value.toUpperCase();
-  var addrss = document.getElementById('addrss').value.toUpperCase();
-  var con_num = document.getElementById('con_num').value.toUpperCase();
-  var email = document.getElementById('email').value.toUpperCase();
+  let last_name = document.getElementById('lname').value.toUpperCase();
+  let first_name = document.getElementById('fname').value.toUpperCase();
+  let middle_name = document.getElementById('mname').value.toUpperCase();
+  let bday = document.getElementById('dob').value.toUpperCase();
+  let gen = document.getElementById('gen').value.toUpperCase();
+  let addrss1 = document.getElementById('addrss1').value.toUpperCase();
+  let addrss2 = document.getElementById('addrss2').value.toUpperCase();
+  let addrss3 = document.getElementById('addrss3').value.toUpperCase();
+  let con_num = document.getElementById('con_num').value.toUpperCase();
+  let email = document.getElementById('email').value.toUpperCase();
 
   const letters = /^[A-Za-z\s]*$/;
   var numbers = /[0-9]{11}/g;
@@ -119,10 +121,10 @@ btn_nxt.addEventListener('click', (e) => {
       }
     })
   }
-  else if (addrss === '') {
+  else if (addrss1 === '' && addrss2 === '' && addrss3 === '') {
     // alert('Address is required.');
     Swal.fire({
-      title: 'Please enter your Address.',
+      title: 'Your Address is Incomplete.',
       confirmButtonColor: '#132aaa',
       showClass: {
         popup: 'animate__animated animate__fadeInDown'
@@ -185,10 +187,10 @@ btn_nxt.addEventListener('click', (e) => {
     })
   }
   else {
-
+ 
     querySnapshot.forEach(doc => {
       if (email !== '' && email.match(re) && con_num.match(numbers) && last_name !== '' && last_name.match(letters) && first_name !== '' &&
-        first_name.match(letters) && bday !== '' && gen != '' && addrss !== '') {
+        first_name.match(letters) && bday !== '' && gen != '' && addrss1 !== '' && addrss2 !== '' && addrss3 !== '') {
 
           if (doc.data().User_Stat == "PENDING") {
             if (last_name == doc.data().User_LN && first_name == doc.data().User_FN && middle_name == doc.data().User_MN && gen == doc.data().User_GN && bday == doc.data().User_BD) {
@@ -236,7 +238,9 @@ btn_nxt.addEventListener('click', (e) => {
               localStorage.setItem("middle_name", middle_name);
               localStorage.setItem("bday", bday);
               localStorage.setItem("gen", gen);
-              localStorage.setItem("addrss", addrss);
+              localStorage.setItem("addrss1", addrss1);
+              localStorage.setItem("addrss2", addrss2);
+              localStorage.setItem("addrss3", addrss3);
               localStorage.setItem("con_num", con_num);
               localStorage.setItem("email", email);
               
@@ -250,7 +254,9 @@ btn_nxt.addEventListener('click', (e) => {
               localStorage.setItem("middle_name", middle_name);
               localStorage.setItem("bday", bday);
               localStorage.setItem("gen", gen);
-              localStorage.setItem("addrss", addrss);
+              localStorage.setItem("addrss1", addrss1);
+              localStorage.setItem("addrss2", addrss2);
+              localStorage.setItem("addrss3", addrss3);
               localStorage.setItem("con_num", con_num);
               localStorage.setItem("email", email);
     

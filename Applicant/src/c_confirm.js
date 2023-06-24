@@ -111,7 +111,9 @@ bck.addEventListener('click', (e) => {
             localStorage.removeItem("middle_name");
             localStorage.removeItem("bday");
             localStorage.removeItem("gen");
-            localStorage.removeItem("addrss");
+            localStorage.removeItem("addrss1");
+            localStorage.removeItem("addrss2");
+            localStorage.removeItem("addrss3");
             localStorage.removeItem("con_num");
             localStorage.removeItem("email");
             localStorage.removeItem("date");
