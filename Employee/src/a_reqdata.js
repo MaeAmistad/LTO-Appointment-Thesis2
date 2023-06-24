@@ -243,6 +243,7 @@ querySnapshot2.forEach(doc2 => {
     let mnts = date.getMinutes();
     let time = hrs + ":" + mnts;
 
+    var additionalFee = document.getElementById("addFee");
     // console.log(trnidlic)
     cnfrm.addEventListener('click', (e) => {
         const updateStat = doc(db, "Applicants", doc2.id)
@@ -253,7 +254,8 @@ querySnapshot2.forEach(doc2 => {
                     User_Stat: "APPROVED_TO_CASHIER",
                     User_TransID: trnidmvr,
                     User_EvaluatorName: "ADMIN",
-                    User_EvaluatorDate: today + " , " + time
+                    User_EvaluatorDate: today + " , " + time,
+                    User_Payment: additionalFee.value,
                 }).then(() => {
                     window.location = "a_appList.html"
                 })

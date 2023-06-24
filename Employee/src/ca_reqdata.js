@@ -68,6 +68,7 @@ querySnapshot2.forEach(doc2 => {
             document.getElementById("em").innerHTML = doc2.data().User_E;
             document.getElementById("mnn").innerHTML = doc2.data().User_CN;
             document.getElementById("fees").innerHTML = doc2.data().User_Payment;
+            document.getElementById("additional_fee").innerHTML = doc2.data().User_AdditionalFee;
 
             document.getElementById("exmt").style.display = "none"
             document.getElementById("et").style.display = "none"
@@ -91,6 +92,7 @@ querySnapshot2.forEach(doc2 => {
                 document.getElementById("em").innerHTML = doc2.data().User_E;
                 document.getElementById("mnn").innerHTML = doc2.data().User_CN;
                 document.getElementById("fees").innerHTML = doc2.data().User_Payment;
+                document.getElementById("additional_fee").innerHTML = doc2.data().User_AdditionalFee;
 
                 document.getElementById('mv-table').style.display = "none";
                 document.getElementById('mvtitle').style.display = "none";
@@ -111,6 +113,7 @@ querySnapshot2.forEach(doc2 => {
                 document.getElementById("em").innerHTML = doc2.data().User_E;
                 document.getElementById("mnn").innerHTML = doc2.data().User_CN;
                 document.getElementById("fees").innerHTML = doc2.data().User_Payment;
+                document.getElementById("additional_fee").innerHTML = doc2.data().User_AdditionalFee;
 
                 document.getElementById("exmt").style.display = "none"
                 document.getElementById("et").style.display = "none"
@@ -144,6 +147,7 @@ querySnapshot2.forEach(doc2 => {
             document.getElementById("dt_reg").innerHTML = doc2.data().dtrgstrd;
             document.getElementById("transctionmv").innerHTML = doc2.data().trnsctn;
             document.getElementById("deptAgncy").innerHTML = doc2.data().deptagncy;
+    
 
             document.getElementById("laa").style.display = "none"
             document.getElementById("laa2").style.display = "none"
