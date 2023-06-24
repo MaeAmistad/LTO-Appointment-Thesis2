@@ -237,8 +237,9 @@ add.addEventListener('click', () => {
   let fileno = document.getElementById("fileno").value.toUpperCase();
   let dtrgstrd = document.getElementById("dtrgstrd").value.toUpperCase();
   let deptagncy = document.getElementById("deptagncy").value.toUpperCase();
+  let classfctn = document.getElementById('clssfctn').value.toUpperCase();
 
-  if (pltno == "" && type == "" && mksrs == "" && mtrno == "" && yr_mdl == "" && refrigernt_typ == "SELECT:" && chassno == "" && color == "" && fuel == "" && fileno == "" && dtrgstrd == "" && deptagncy == "") {
+  if (pltno == "" && type == "" && mksrs == "" && mtrno == "" && yr_mdl == "" && refrigernt_typ == "SELECT:" && chassno == "" && color == "" && fuel == "" && fileno == "" && dtrgstrd == "" && classfctn == "") {
     Swal.fire({
       title: "Field is Empty",
       confirmButtonColor: '#132aaa',
@@ -382,7 +383,7 @@ add.addEventListener('click', () => {
       }
     })
   }
-  else if (deptagncy == "") {
+  else if (classfctn == "") {
     Swal.fire({
       title: "Dept/Agency is Empty",
       confirmButtonColor: '#132aaa',
@@ -407,6 +408,7 @@ add.addEventListener('click', () => {
     localStorage.setItem("ui11", deptagncy);
     localStorage.setItem("ui12", refrigernt_typ);
     localStorage.setItem("ui13", yr_mdl);
+    localStorage.setItem("ui14", classfctn);
 
     window.location = "In_reqdata.html"
   }
@@ -481,7 +483,7 @@ querySnapshot2.forEach(doc2 => {
       onSnapshot(doc(db, "Users", "Employee", "EmployeeData", user.uid), (doc) => {
         // console.log(doc.data())
 
-        var employees = doc1.data().user_LN + ", " + doc1.data().user_FN + " " + doc1.data().user_MN;
+        var employees = doc.data().user_LN + ", " + doc.data().user_FN + " " + doc.data().user_MN;
 
         cnfrm.addEventListener('click', (e) => {
           const updateStat = doc(db, "Applicants", doc2.id)
@@ -505,6 +507,7 @@ querySnapshot2.forEach(doc2 => {
               deptagncy: localStorage.getItem("ui11"),
               refrigerant_typ: localStorage.getItem("ui12"),
               yr_modell: localStorage.getItem("ui13"),
+              classification: localStorage.getItem("ui14"),
               User_InspectorName: employees,
               User_InspectorDate: today + " , " + time
             }).then(() => {
@@ -520,6 +523,7 @@ querySnapshot2.forEach(doc2 => {
               localStorage.removeItem("ui11");
               localStorage.removeItem("ui12");
               localStorage.removeItem("ui13");
+              localStorage.removeItem("ui14");
 
               window.location = "In_homepage.html"
             })
@@ -550,6 +554,7 @@ querySnapshot2.forEach(doc2 => {
               localStorage.removeItem("ui11");
               localStorage.removeItem("ui12");
               localStorage.removeItem("ui13");
+              localStorage.removeItem("ui14");
 
               window.location = "In_homepage.html"
             })

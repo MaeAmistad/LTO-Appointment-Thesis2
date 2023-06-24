@@ -287,27 +287,95 @@ let mv4 = 0;
 let mv5 = 0;
 let mv6 = 0;
 let mv7 = 0;
-let mv8 = 0;
+let mv8 = 0; 
 let mv9 = 0;
 let mv10 = 0;
 let mv11 = 0;
 
 license.forEach(doc =>{
+
+if(doc.data().User_dt_App == today){
   if(doc.data().User_Add == "SAN ILDEFONSO,ILOCOS SUR" || doc.data().User_Add == "SAN ILDEFONSO, ILOCOS SUR"){
-
+    lic1 = lic1+=1
   }
-  else if(doc.data().User_Add == "VIGAN CITY,ILOCOS SUR" || doc.data().User_Add == "SAN ILDEFONSO, ILOCOS SUR"){
-
+  else if(doc.data().User_Add == "VIGAN CITY,ILOCOS SUR" || doc.data().User_Add == "VIGAN CITY, ILOCOS SUR"){
+    lic2 = lic2+=1
   }
+  else if(doc.data().User_Add == "BANTAY,ILOCOS SUR" || doc.data().User_Add == "BANTAY, ILOCOS SUR"){
+    lic3 = lic3+=1
+  }
+  else if(doc.data().User_Add == "SAN VICENTE,ILOCOS SUR" || doc.data().User_Add == "SAN VICENTE, ILOCOS SUR"){
+    lic4 = lic4+=1
+  }
+  else if(doc.data().User_Add == "STA. CATALINA,ILOCOS SUR" || doc.data().User_Add == "STA. CATALINA, ILOCOS SUR"){
+    lic5 = lic5+=1
+  }
+  else if(doc.data().User_Add == "CAOAYAN,ILOCOS SUR" || doc.data().User_Add == "CAOAYAN, ILOCOS SUR"){
+    lic6 = lic6+=1
+  }
+  else if(doc.data().User_Add == "STO. DOMINGO,ILOCOS SUR" || doc.data().User_Add == "STO. DOMINGO, ILOCOS SUR"){
+    lic7 = lic7+=1
+  }
+  else if(doc.data().User_Add == "MAGSINGAL,ILOCOS SUR" || doc.data().User_Add == "MAGSINGAL, ILOCOS SUR"){
+    lic8 = lic8+=1
+  }
+  else if(doc.data().User_Add == "SAN JUAN,ILOCOS SUR" || doc.data().User_Add == "SAN JUAN, ILOCOS SUR"){
+    lic9 = lic9+=1
+  }
+  else if(doc.data().User_Add == "CABUGAO,ILOCOS SUR" || doc.data().User_Add == "CABUGAO, ILOCOS SUR"){
+    lic10 = lic10+=1
+  }
+  else if(doc.data().User_Add == "SINAIT,ILOCOS SUR" || doc.data().User_Add == "SINAIT, ILOCOS SUR"){
+    lic11 = lic11+=1
+  }
+}
+});
+
+mv.forEach(doc =>{
+if(doc.data().User_dt_App == today){
+  if(doc.data().User_Add == "SAN ILDEFONSO,ILOCOS SUR" || doc.data().User_Add == "SAN ILDEFONSO, ILOCOS SUR"){
+    mv1 = mv1+=1
+  }
+  else if(doc.data().User_Add == "VIGAN CITY,ILOCOS SUR" || doc.data().User_Add == "VIGAN CITY, ILOCOS SUR"){
+    mv2 = mv2+=1
+  }
+  else if(doc.data().User_Add == "BANTAY,ILOCOS SUR" || doc.data().User_Add == "BANTAY, ILOCOS SUR"){
+    mv3 = mv3+=1
+  }
+  else if(doc.data().User_Add == "SAN VICENTE,ILOCOS SUR" || doc.data().User_Add == "SAN VICENTE, ILOCOS SUR"){
+    mv4 = mv4+=1
+  }
+  else if(doc.data().User_Add == "STA. CATALINA,ILOCOS SUR" || doc.data().User_Add == "STA. CATALINA, ILOCOS SUR"){
+    mv5 = mv5+=1
+  }
+  else if(doc.data().User_Add == "CAOAYAN,ILOCOS SUR" || doc.data().User_Add == "CAOAYAN, ILOCOS SUR"){
+    mv6 = mv6+=1
+  }
+  else if(doc.data().User_Add == "STO. DOMINGO,ILOCOS SUR" || doc.data().User_Add == "STO. DOMINGO, ILOCOS SUR"){
+    mv7 = mv7+=1
+  }
+  else if(doc.data().User_Add == "MAGSINGAL,ILOCOS SUR" || doc.data().User_Add == "MAGSINGAL, ILOCOS SUR"){
+    mv8 = mv8+=1
+  }
+  else if(doc.data().User_Add == "SAN JUAN,ILOCOS SUR" || doc.data().User_Add == "SAN JUAN, ILOCOS SUR"){
+    mv9 = mv9+=1
+  }
+  else if(doc.data().User_Add == "CABUGAO,ILOCOS SUR" || doc.data().User_Add == "CABUGAO, ILOCOS SUR"){
+    mv10 = mv10+=1
+  }
+  else if(doc.data().User_Add == "SINAIT,ILOCOS SUR" || doc.data().User_Add == "SINAIT, ILOCOS SUR"){
+    mv11 = mv11+=1
+  }
+}
 })
 var barChartOptions = {
   series: [{
     name: "LICENSE",
-    data: [0,0,0,0,0,0,0,0,0,0,0]
+    data: [lic1,lic2,lic3,lic4,lic5,lic6,lic7,lic8,lic9,lic10,lic11]
   },
   {
-    name: "MVR ",
-    data: [0,0,0,0,0,0,0,0,0,0,0]
+    name: "MVR",
+    data: [mv1,mv2,mv3,mv4,mv5,mv6,mv7,mv8,mv9,mv10,mv11]
   }], 
   chart: {
     type: 'bar',
