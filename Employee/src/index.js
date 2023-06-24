@@ -71,24 +71,20 @@ form.addEventListener('submit', (e) => {
 
   else {
 
-    if (email.value.toUpperCase() === docSnap.data().username && password.value == docSnap.data().password) {
-      window.location = "a_dashboard.html"
-    }
-
-    
-
-    // else if(email.value.toUpperCase() != docSnap.data().username){
-    //   showError(email, 'Email Incorrect')
+    // if (email.value !== '' && password.value == '') {
+    //   if (email.value.toUpperCase() === docSnap.data().username && password.value == docSnap.data().password) {
+    //     window.location = "a_dashboard.html"
+    //   }
     // }
-    // else if(password.value != docSnap.data().password){
-    //   showError(password, 'Password Incorrect')
-    // }
-
+    // else {
     querySnapshot.forEach(doc => {
 
       if (doc.data().user_E === email.value.toUpperCase() && doc.data().user_PWD === password.value) {
 
-        
+        if (doc.data().user_Account == "DEVELOPER'S ACCOUNT") {
+          window.location = "a_dashboard.html"
+        }
+
         if (doc.data().user_Type == "INSPECTOR" && doc.data().user_Status == "Active") {
           signInWithEmailAndPassword(auth, email.value, password.value)
             .then((userCredential) => {
@@ -332,9 +328,23 @@ form.addEventListener('submit', (e) => {
       // }
 
     });
-
-
   }
+
+
+
+
+
+  // else if(email.value.toUpperCase() != docSnap.data().username){
+  //   showError(email, 'Email Incorrect')
+  // }
+  // else if(password.value != docSnap.data().password){
+  //   showError(password, 'Password Incorrect')
+  // }
+
+
+
+
+  // }
 
 });
 //Blurred background - FINAL
