@@ -370,11 +370,12 @@ querySnapshot2.forEach(doc2 => {
                                 mtrno: doc2.data().mtrno,
                                 chassno: doc2.data().chassno,
                                 color: doc2.data().color,
-                                fuel: doc2.data().fuel,
+                                fuel: doc2.data().fuel, 
                                 fileno: doc2.data().fileno,
                                 dtrgstrd: doc2.data().dtrgstrd,
                                 deptagncy: doc2.data().deptagncy,
-                                User_Add: doc2.data().User_ADD
+                                User_Add: doc2.data().User_ADD,
+                                classification:doc2.data().classification
                             }).then(() => {
                                 window.location = "ca_homepage.html"
                             })

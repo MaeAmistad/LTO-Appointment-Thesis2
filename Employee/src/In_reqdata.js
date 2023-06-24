@@ -512,7 +512,7 @@ querySnapshot2.forEach(doc2 => {
               User_InspectorDate: today + " , " + time
             }).then(() => {
               localStorage.removeItem("ui1");
-              localStorage.removeItem("ui2");
+              localStorage.removeItem("ui2"); 
               localStorage.removeItem("ui3");
               localStorage.removeItem("ui4");
               localStorage.removeItem("ui5");

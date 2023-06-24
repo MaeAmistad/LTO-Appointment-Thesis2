@@ -459,7 +459,8 @@ querySnapshot2.forEach(doc2 => {
                     fileno: doc2.data().fileno,
                     dtrgstrd: doc2.data().dtrgstrd,
                     deptagncy: doc2.data().deptagncy,
-                    User_Add: doc2.data().User_ADD
+                    User_Add: doc2.data().User_ADD,
+                    classification:doc2.data().classification
                 }).then(() => {
                     window.location = "a_applistca.html"
                 })

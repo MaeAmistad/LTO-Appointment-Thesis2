@@ -55,7 +55,7 @@ let itmNo = 0;
         var ddsp = dd.slice(8,10);
         var dtcon = mmsp + "/" + ddsp + "/" + yysp;
         
-          if(dtcon1 == today){
+          if(dtcon1 == today){ 
                 let trow = document.createElement('tr');   
                 let td1 = document.createElement('td'); 
                 let td2 = document.createElement('td'); 

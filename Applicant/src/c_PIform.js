@@ -92,19 +92,6 @@ btn_nxt.addEventListener('click', (e) => {
       }
     })
   }
-  else if (addrss === '') {
-    // alert('Address is required.');
-    Swal.fire({
-      title: 'Please enter your Address.',
-      confirmButtonColor: '#132aaa',
-      showClass: {
-        popup: 'animate__animated animate__fadeInDown'
-      },
-      hideClass: {
-        popup: 'animate__animated animate__fadeOutUp'
-      }
-    })
-  }
   else if (bday === '') {
     // alert('Nationality is required.');
     Swal.fire({
