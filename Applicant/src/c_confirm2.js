@@ -31,7 +31,7 @@ var tt = localStorage.getItem("tot");
 var at = localStorage.getItem("toa");
 var laa = localStorage.getItem("laa");
 var rr = localStorage.getItem("rvsnofrcrds");
-var fee = document.getElementById('fees').value;
+var fee = localStorage.getItem("fees");
 
 //change birthday date format
 var birthday = gn;
@@ -174,6 +174,7 @@ localStorage.removeItem("toa");
 localStorage.removeItem("ID");
 localStorage.removeItem("stat");
 localStorage.removeItem("rvsnofrcrds");
+localStorage.removeItem("fees")
 
 // window.location = "c_homepage.html";
     // c
@@ -267,6 +268,7 @@ else if (tt == "LICENSING"){
   localStorage.removeItem("laa");
   localStorage.removeItem("tot");
   localStorage.removeItem("toa");
+  localStorage.removeItem("fees")
   
   // window.location = "c_homepage.html";
       // c
@@ -358,6 +360,7 @@ else if (tt == "LICENSING"){
   localStorage.removeItem("laa");
   localStorage.removeItem("tot");
   localStorage.removeItem("toa");
+  localStorage.removeItem("fees")
   
   // window.location = "c_homepage.html";
       // c

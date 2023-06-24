@@ -1,221 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LTO Appointment Setter</title>
-    
-    <link rel="stylesheet" href="../style/pc_reqdata.css">
-    <script src="https://smtpjs.com/v3/smtp.js"></script> 
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LTO Appointment Setter</title>
+
+  <link rel="stylesheet" href="../style/pc_reqdata.css">
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
 </head>
+
 <body>
   <div class="main" id="blur">
-      <div class="tranID">
-          <p id="tranID"></p>
+    <div class="tranID">
+      <p id="tranID"></p>
 
-          <table class="lic_det">
-            <p>Applicant's Information</p>
-            <tr>
-              <td>Full Name:</td>
-              <td id="ln">-</td> 
-            </tr>
-  
-            <tr>
-              <td>Date of Birth:</td>
-              <td id="dof">-</td> 
-            </tr>
-  
-            <tr>
-              <td>Gender:</td>
-              <td id="gndr">-</td> 
-            </tr>
+      <table class="lic_det">
+        <p>Applicant's Information</p>
+        <tr>
+          <td>Full Name:</td>
+          <td id="ln">-</td>
+        </tr>
 
-        </table>
-  
-        <table class="Transaction-table">
-          <p>Appointment's Information</p>
+        <tr>
+          <td>Date of Birth:</td>
+          <td id="dof">-</td>
+        </tr>
 
-          <tr>
-            <td>Transaction ID:</td>
-            <td id="tID" >-</td>
-          </tr>
+        <tr>
+          <td>Gender:</td>
+          <td id="gndr">-</td>
+        </tr>
 
-          <tr>
-            <td>Transaction Type:</td>
-            <td id="tt" >-</td>
-          </tr>
-  
-          <tr>
-            <td id="laa2">License Application Applied:</td>
-            <td id="laa" >-</td>
-          </tr>
+      </table>
 
-          <tr>
-            <td>Application Type:</td>
-            <td id="at" >-</td>
-          </tr>
-   
-          <tr>
-            <td>Date:</td>
-            <td id="dt_L">-</td>
-          </tr>
-  
-          <tr>
-            <td>Time:</td>
-            <td id="dt_t">-</td>
-          </tr>
+      <table class="Transaction-table">
+        <p>Appointment's Information</p>
 
-          <tr>
-            <td>Amount to Pay:</td>
-            <td id="fees">-</td>
-          </tr>
-        </table>
-        
-        <table id="mv-table" >
+        <tr>
+          <td>Transaction ID:</td>
+          <td id="tID">-</td>
+        </tr>
 
-          <p id="mvtitle">Motor Vehicle Information</p>
+        <tr>
+          <td>Transaction Type:</td>
+          <td id="tt">-</td>
+        </tr>
 
-          <tr>
-            <td>Plate No.:</td>
-            <td id="plate_num" >-</td>
-          </tr>
+        <tr>
+          <td id="laa2">License Application Applied:</td>
+          <td id="laa">-</td>
+        </tr>
 
-          <tr>
-            <td>Type:</td>
-            <td id="typee" >-</td>
-          </tr>
-  
-          <tr>
-            <td>Refrigerant Type:</td>
-            <td id="reftypee" >-</td>
-          </tr>
-          
-          <tr>
-            <td>Make/Series:</td>
-            <td id="mk_seris" >-</td>
-          </tr>
-   
-          <tr>
-            <td>Motor Number:</td>
-            <td id="mot_num">-</td>
-          </tr>
-  
-          <tr>
-            <td>Chassis Number:</td>
-            <td id="cha_num">-</td>
-          </tr>
+        <tr>
+          <td>Application Type:</td>
+          <td id="at">-</td>
+        </tr>
 
-          <tr>
-            <td>Color:</td>
-            <td id="colorr" >-</td>
-          </tr>
+        <tr>
+          <td>Date:</td>
+          <td id="dt_L">-</td>
+        </tr>
 
-          <tr>
-            <td>Fuel:</td>
-            <td id="fuell" >-</td>
-          </tr>
+        <tr>
+          <td>Time:</td>
+          <td id="dt_t">-</td>
+        </tr>
 
-          <tr>
-            <td>File No.:</td>
-            <td id="filno" >-</td>
-          </tr>
-   
-          <tr>
-            <td>Date Registered:</td>
-            <td id="dt_reg">-</td>
-          </tr>
-  
-          <tr>
-            <td>Transaction:</td>
-            <td id="transctionmv">-</td>
-          </tr>
+        <tr>
+          <td>Amount to Pay:</td>
+          <td id="fees">-</td>
+        </tr>
+      </table>
 
-          <tr>
-            <td>Dept./Agency:</td>
-            <td id="deptAgncy">-</td>
-          </tr>
-        </table>
-        
-        <table class="contact-table">
-          <p>Contact Information</p>
-          <tr>
-            <td>Address:</td>
-            <td id="addrss">-</td> 
-          </tr>
-  
-          <tr>
-            <td>Email:</td>
-            <td id="em">-</td>
-          </tr>
-  
-          <tr>
-            <td>Mobile Number:</td>
-            <td id="mnn">-</td> 
-          </tr>
-        </table>
+      <table id="mv-table">
 
+        <p id="mvtitle">Motor Vehicle Information</p>
+
+        <tr>
+          <td>Plate No.:</td>
+          <td id="plate_num">-</td>
+        </tr>
+
+        <tr>
+          <td>Type:</td>
+          <td id="typee">-</td>
+        </tr>
+
+        <tr>
+          <td>Refrigerant Type:</td>
+          <td id="reftypee">-</td>
+        </tr>
+
+        <tr>
+          <td>Make/Series:</td>
+          <td id="mk_seris">-</td>
+        </tr>
+
+        <tr>
+          <td>Motor Number:</td>
+          <td id="mot_num">-</td>
+        </tr>
+
+        <tr>
+          <td>Chassis Number:</td>
+          <td id="cha_num">-</td>
+        </tr>
+
+        <tr>
+          <td>Color:</td>
+          <td id="colorr">-</td>
+        </tr>
+
+        <tr>
+          <td>Fuel:</td>
+          <td id="fuell">-</td>
+        </tr>
+
+        <tr>
+          <td>File No.:</td>
+          <td id="filno">-</td>
+        </tr>
+
+        <tr>
+          <td>Date Registered:</td>
+          <td id="dt_reg">-</td>
+        </tr>
+
+        <tr>
+          <td>Transaction:</td>
+          <td id="transctionmv">-</td>
+        </tr>
+
+        <tr>
+          <td>Dept./Agency:</td>
+          <td id="deptAgncy">-</td>
+        </tr>
+      </table>
+
+      <table class="contact-table">
+        <p>Contact Information</p>
+        <tr>
+          <td>Address:</td>
+          <td id="addrss">-</td>
+        </tr>
+
+        <tr>
+          <td>Email:</td>
+          <td id="em">-</td>
+        </tr>
+
+        <tr>
+          <td>Mobile Number:</td>
+          <td id="mnn">-</td>
+        </tr>
+
+        <tr>
+          <td>Amount to Pay:</td>
+          <td id="fees">-</td>
+        </tr>
+      </table>
+
+    </div>
+
+    <div class="btn">
+      <div>
+        <button id="bck">Back</button>
       </div>
-
-      <div class="btn">
-          <div>
-              <button id="bck">Back</button>
-          </div>
-            <div class="btnn">
-              <button id="edittr">Edit</button>
-            </div>
-            <div>
-              <button id="delttr">Delete</button>
-            </div>
-            <div>
-              <button id="dclnd">Declined</button>
-            </div>
-            <div>
-              <button id="apprd">Approved</button>
-            </div>
+      <div class="btnn">
+        <button id="edittr">Edit</button>
       </div>
+      <div>
+        <button id="delttr">Delete</button>
+      </div>
+      <div>
+        <button id="dclnd">Declined</button>
+      </div>
+      <div>
+        <button id="apprd">Approved</button>
+      </div>
+    </div>
   </div>
 
-<!-- APPROVAL MODAL -->
-<div class="cnfrm_modal" id="cnfrm_modal">
-  <h1>Application Approval</h1>
+  <!-- APPROVAL MODAL -->
+  <div class="cnfrm_modal" id="cnfrm_modal">
+    <h1>Application Approval</h1>
     <p>The applicant may now proceed to Cashier?</p>
 
-        <div class="btn2">
-            <button id="cnl">Cancel</button>
-            <button id="cnfrm">Confirm</button>
-        </div>
+    <div class="payment">
+      <label>Additional Fees (Violations, Penalty etc. if there's any):</label>
+      <input type="number" id="addFee">
     </div>
-</div>
 
-<!-- DECLINED MODAL -->
-<div class="cnfrm_modal2" id="cnfrm_modal2"> 
-  <h1>Application Approval</h1>
+    <div class="btn2">
+      <button id="cnl">Cancel</button>
+      <button id="cnfrm">Confirm</button>
+    </div>
+  </div>
+  </div>
+
+  <!-- DECLINED MODAL -->
+  <div class="cnfrm_modal2" id="cnfrm_modal2">
+    <h1>Application Approval</h1>
     <p>Declined Application?</p>
 
-      <div class="btn2">
-          <button id="cnl2">No</button>
-          <button id="cnfrm2">Yes</button>
-      </div>
-</div>
+    <div class="btn2">
+      <button id="cnl2">No</button>
+      <button id="cnfrm2">Yes</button>
+    </div>
+  </div>
 
-<!-- DELETE MODAL -->
-<div class="cnfrm_modal3" id="cnfrm_modal3"> 
-  <h1>Delete Application</h1>
+  <!-- DELETE MODAL -->
+  <div class="cnfrm_modal3" id="cnfrm_modal3">
+    <h1>Delete Application</h1>
     <p>Are you sure you want to delete this application?</p>
 
-      <div class="btn2">
-          <button id="cnl3">No</button>
-          <button id="cnfrm3">Yes</button>
-      </div>
-</div>
+    <div class="btn2">
+      <button id="cnl3">No</button>
+      <button id="cnfrm3">Yes</button>
+    </div>
+  </div>
 
-<!-- EDIT MODAL -->
-<div class="cnfrm_modal4" id="cnfrm_modal4"> 
-  <h1>Edit Application</h1>
+  <!-- EDIT MODAL -->
+  <div class="cnfrm_modal4" id="cnfrm_modal4">
+    <h1>Edit Application</h1>
 
-  <div id="basicinfo" class="basicinfo">
-    <div class="info">
+    <div id="basicinfo" class="basicinfo">
+      <div class="info">
         <label>Last Name:</label>
         <input type="text" id="lnedit">
       </div>
@@ -256,9 +268,9 @@
         <input type="text" id="mnmedit">
       </div>
 
-  </div>
-  <div id="mvinfo" class="basicinfo">
-    <h1>MV INFO</h1>
+    </div>
+    <div id="mvinfo" class="basicinfo">
+      <h1>MV INFO</h1>
       <div class="info">
         <label>Plate No.:</label>
         <input type="text" id="pltno">
@@ -274,8 +286,8 @@
         <select id="refrtypee">
           <option>Select:</option>
           <option>Non-AC</option>
-          <option>R12</option> 
-          <option>R134a</option> 
+          <option>R12</option>
+          <option>R134a</option>
         </select>
       </div>
 
@@ -291,7 +303,7 @@
 
       <div class="info">
         <label>Motor Number:</label>
-        <input type="text" id="mtrno"> 
+        <input type="text" id="mtrno">
       </div>
 
       <div class="info">
@@ -323,14 +335,15 @@
         <label>Dept./Agency:</label>
         <input type="text" id="deptagncy">
       </div>
+    </div>
+
+    <div class="btn2">
+      <button id="cnl4">Cancel</button>
+      <button id="cnfrm4">Edit</button>
+    </div>
   </div>
 
-      <div class="btn2">
-          <button id="cnl4">Cancel</button>
-          <button id="cnfrm4">Edit</button>
-      </div>
-</div>
-
-<script type="module" src="../src/a_reqdata.js"></script>
+  <script type="module" src="../src/a_reqdata.js"></script>
 </body>
+
 </html>

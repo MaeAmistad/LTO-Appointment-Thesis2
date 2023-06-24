@@ -125,7 +125,6 @@ querySnapshot2.forEach(doc2 => {
             document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
             document.getElementById("em").innerHTML = doc2.data().User_E;
             document.getElementById("mnn").innerHTML = doc2.data().User_CN;
-            document.getElementById("fees").innerHTML = doc2.data().User_Payment;
 
             document.getElementById("plate_num").innerHTML = doc2.data().pltno;
             document.getElementById("typee").innerHTML = doc2.data().typel;
@@ -180,7 +179,7 @@ querySnapshot2.forEach(doc2 => {
                                 User_Stat2: "APPROVED_TO_CASHIER",
                                 User_Stat: "APPROVED_TO_CASHIER",
                                 User_TransID: trnidmvr,
-                                User_AdditionalFee: additionalFee.value,
+                                User_Payment: additionalFee.value,
                                 User_EvaluatorName: employees,
                                 User_EvaluatorDate: today + " , " + time
                             }).then(() => {

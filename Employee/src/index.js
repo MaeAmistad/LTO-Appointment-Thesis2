@@ -89,7 +89,6 @@ form.addEventListener('submit', (e) => {
       if (doc.data().user_E === email.value.toUpperCase() && doc.data().user_PWD === password.value) {
 
         
-
         if (doc.data().user_Type == "INSPECTOR" && doc.data().user_Status == "Active") {
           signInWithEmailAndPassword(auth, email.value, password.value)
             .then((userCredential) => {

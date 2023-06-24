@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
-import { getFirestore, getDocs, collection } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
+import { getFirestore, getDocs, collection, doc, updateDoc } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -222,3 +222,35 @@ else{
 
 window.onload = getData;
 
+// Check if the date of appointment is already past
+const querySnapshot2 = await getDocs(collection(db,"Applicants"));
+
+querySnapshot2.forEach(doc3 => {
+
+    var date = new Date();
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+    if (month < 10) month = "0" + month;
+    if (day < 10) day = "0" + day;
+    
+
+    //fix
+    var appointmentDate = doc3.data().User_D;
+    let today = year + " - " + month + " - " + day;
+    
+
+    // let time1 = current.getTime();
+    // let time2 = past.getTime();
+
+    console.log("today: " + today)
+    console.log("past: " + appointmentDate)
+
+    console.log(appointmentDate < today);
+    const updateStat = doc(db, "Applicants", doc3.id)
+    if(appointmentDate < today){
+        updateDoc(updateStat, {
+            User_Stat: "MISSED"
+        })
+    }
+})

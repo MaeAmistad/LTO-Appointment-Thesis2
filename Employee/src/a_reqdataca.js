@@ -102,6 +102,8 @@ querySnapshot2.forEach(doc2 => {
             document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
             document.getElementById("em").innerHTML = doc2.data().User_E;
             document.getElementById("mnn").innerHTML = doc2.data().User_CN;
+            document.getElementById("fees").innerHTML = doc2.data().User_Payment;
+            document.getElementById("additional_fee").innerHTML = doc2.data().User_AdditionalFee;
 
             document.getElementById("exmt").style.display = "none"
             document.getElementById("et").style.display = "none"
@@ -135,6 +137,8 @@ querySnapshot2.forEach(doc2 => {
                 document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
                 document.getElementById("em").innerHTML = doc2.data().User_E;
                 document.getElementById("mnn").innerHTML = doc2.data().User_CN;
+                document.getElementById("fees").innerHTML = doc2.data().User_Payment;
+                document.getElementById("additional_fee").innerHTML = doc2.data().User_AdditionalFee;
 
                 // DISPLAY EDIT INFO
                 fned.value = doc2.data().User_FN;
@@ -164,6 +168,8 @@ querySnapshot2.forEach(doc2 => {
                 document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
                 document.getElementById("em").innerHTML = doc2.data().User_E;
                 document.getElementById("mnn").innerHTML = doc2.data().User_CN;
+                document.getElementById("fees").innerHTML = doc2.data().User_Payment;
+                document.getElementById("additional_fee").innerHTML = doc2.data().User_AdditionalFee;
 
                 document.getElementById("exmt").style.display = "none"
                 document.getElementById("et").style.display = "none"
@@ -195,6 +201,7 @@ querySnapshot2.forEach(doc2 => {
             document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
             document.getElementById("em").innerHTML = doc2.data().User_E;
             document.getElementById("mnn").innerHTML = doc2.data().User_CN;
+            document.getElementById("fees").innerHTML = doc2.data().User_Payment;
 
             document.getElementById("plate_num").innerHTML = doc2.data().pltno;
             document.getElementById("typee").innerHTML = doc2.data().typel;
@@ -272,8 +279,8 @@ querySnapshot2.forEach(doc2 => {
                             updateDoc(updateStat, {
                                 User_Stat4: "COMPLETED",
                                 User_Stat: "COMPLETED",
-                                User_EvaluatorName: "ADMIN",
-                                User_EvaluatorDate: today + " , " + time
+                                User_CashierName: "ADMIN",
+                                User_CashierDate: today + " , " + time
                             }).then(() => {
                                 window.location = "a_applistca.html"
                             })
@@ -283,8 +290,8 @@ querySnapshot2.forEach(doc2 => {
                             updateDoc(updateStat, {
                                 User_Stat4: "COMPLETED",
                                 User_Stat: "COMPLETED",
-                                User_EvaluatorName: "ADMIN",
-                                User_EvaluatorDate: today + " , " + time
+                                User_CashierName: "ADMIN",
+                                User_CashierDate: today + " , " + time
                             }).then(() => {
                                 window.location = "a_applistca.html"
                             })
@@ -294,8 +301,8 @@ querySnapshot2.forEach(doc2 => {
                             updateDoc(updateStat, {
                                 User_Stat4: "COMPLETED",
                                 User_Stat: "COMPLETED",
-                                User_EvaluatorName: "ADMIN",
-                                User_EvaluatorDate: today + " , " + time
+                                User_CashierName: "ADMIN",
+                                User_CashierDate: today + " , " + time
                             }).then(() => {
                                 window.location = "a_applistca.html"
                             })
@@ -305,8 +312,8 @@ querySnapshot2.forEach(doc2 => {
                             updateDoc(updateStat, {
                                 User_Stat4: "RELEASED",
                                 User_Stat: "RELEASED",
-                                User_EvaluatorName: "ADMIN",
-                                User_EvaluatorDate: today + " , " + time
+                                User_CashierName: "ADMIN",
+                                User_CashierDate: today + " , " + time
                             })
                             setDoc(doc(db, "License", doc2.data().User_TransID), {
                                 User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,
@@ -328,8 +335,8 @@ querySnapshot2.forEach(doc2 => {
                         updateDoc(updateStat, {
                             User_Stat4: "COMPLETED",
                             User_Stat: "COMPLETED",
-                            User_EvaluatorName: "ADMIN",
-                            User_EvaluatorDate: today + " , " + time
+                            User_CashierName: "ADMIN",
+                            User_CashierDate: today + " , " + time
                         }).then(() => {
                             window.location = "a_applistca.html"
                         })
@@ -339,8 +346,8 @@ querySnapshot2.forEach(doc2 => {
                         updateDoc(updateStat, {
                             User_Stat4: "RELEASED",
                             User_Stat: "RELEASED",
-                            User_EvaluatorName: "ADMIN",
-                            User_EvaluatorDate: today + " , " + time
+                            User_CashierName: "ADMIN",
+                            User_CashierDate: today + " , " + time
                         })
                         setDoc(doc(db, "License", doc2.data().User_TransID), {
                             User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,
@@ -365,8 +372,8 @@ querySnapshot2.forEach(doc2 => {
                             updateDoc(updateStat, {
                                 User_Stat4: "RELEASED",
                                 User_Stat: "RELEASED",
-                                User_EvaluatorName: "ADMIN",
-                                User_EvaluatorDate: today + " , " + time
+                                User_CashierName: "ADMIN",
+                                User_CashierDate: today + " , " + time
                             })
                             setDoc(doc(db, "License", doc2.data().User_TransID), {
                                 User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,
@@ -386,8 +393,8 @@ querySnapshot2.forEach(doc2 => {
                             updateDoc(updateStat, {
                                 User_Stat4: "RELEASED",
                                 User_Stat: "RELEASED",
-                                User_EvaluatorName: "ADMIN",
-                                User_EvaluatorDate: today + " , " + time
+                                User_CashierName: "ADMIN",
+                                User_CashierDate: today + " , " + time
                             })
                             setDoc(doc(db, "License", doc2.data().User_TransID), {
                                 User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,
@@ -407,8 +414,8 @@ querySnapshot2.forEach(doc2 => {
                         updateDoc(updateStat, {
                             User_Stat4: "RELEASED",
                             User_Stat: "RELEASED",
-                            User_EvaluatorName: "ADMIN",
-                            User_EvaluatorDate: today + " , " + time
+                            User_CashierName: "ADMIN",
+                            User_CashierDate: today + " , " + time
                         })
                         setDoc(doc(db, "License", doc2.data().User_TransID), {
                             User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,
@@ -431,8 +438,8 @@ querySnapshot2.forEach(doc2 => {
                 updateDoc(updateStat, {
                     User_Stat4: "REGISTERED",
                     User_Stat: "REGISTERED",
-                    User_EvaluatorName: "ADMIN",
-                    User_EvaluatorDate: today + " , " + time
+                    User_CashierName: "ADMIN",
+                    User_CashierDate: today + " , " + time
                 })
                 setDoc(doc(db, "Motor Vehicle", doc2.data().User_TransID), {
                     User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,
@@ -470,8 +477,8 @@ querySnapshot2.forEach(doc2 => {
             updateDoc(updateStat, {
                 User_Stat4: "INCOMPLETED",
                 User_Stat: "INCOMPLETED",
-                User_EvaluatorName: "ADMIN",
-                User_EvaluatorDate: today + " , " + time
+                User_CashierName: "ADMIN",
+                User_CashierDate: today + " , " + time
             }).then(() => {
                 window.location = "a_applistca.html"
             })
