@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>LTO Appointment Setter</title>
+
+    <!-- Montserrat Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://kit.fontawesome.com/8ec04d5e4f.css" crossorigin="anonymous"> -->
+    <script src="https://kit.fontawesome.com/8ec04d5e4f.js" crossorigin="anonymous"></script>
+    <!-- Excel/PDF JS -->
+    <script src="../src/table2excel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js" integrity="sha512-YcsIPGdhPK4P/uRW6/sruonlYj+Q7UHWeKfTAkBW+g83NKM+jMJFJ4iAPfSnVp7BKD4dKMHmVSvICUbE/V1sSw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Custom CSS --> 
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../style/a_report.css">
+  </head>
+  <body>
+    <div class="grid-container">
+
+      <!-- Header -->
+      <header class="header">
+        <div class="menu-icon" onclick="openSidebar()">
+          <span class="material-icons-outlined">menu</span>
+        </div>
+        <div class="header-left">
+          <span class="material-icons-outlined">search</span>
+        </div>
+        <div class="header-right">
+          <!-- <span class="material-icons-outlined">email</span> -->
+        </div> 
+      </header>
+      <!-- End Header -->
+
+      <!-- Sidebar -->
+      <aside id="sidebar">
+        <div class="sidebar-title">
+          <!-- <div class="sidebar-brand">LTO Dashboard</div> -->
+          <img src="../img/Land_Transportation_Office.svg.png">
+          <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+        </div>
+
+         
+        <ul class="sidebar-list"> 
+
+          <a href="a_dashboard.html">
+            <li class="sidebar-list-item">
+               Dashboard
+            </li>
+          </a> 
+
+          <a href="a_accMan.html">         
+            <li class="sidebar-list-item">
+                Account Management
+            </li>
+          </a>
+
+          <a href="a_appList.html">
+            <li class="sidebar-list-item">
+              List of Appointments
+            </li>
+          </a>
+
+          <li class="sidebar-list-item1">
+            <button class="dropdown-btn">Transactions<i class="fa fa-caret-down"></i></button>
+
+            <div class="dropdown-container">
+
+              <a href="a_pcLIApprved.html">
+                <div class="con-lic">
+                  License <br><br>
+                </div>
+                </a>
+  
+                <a href="a_pcmvApprved.html">
+                <div class="con-mv">
+                  Motor Vehicle<br><br>
+                </div>
+                </a>
+
+            </div>
+
+          </li>
+
+            <a href="a_reqView.html">
+              <li class="sidebar-list-item">
+                List Of Requirements
+              </li>    
+            </a>
+
+            <a id="logout">
+              <li class="sidebar-list-item">
+                Log-Out
+              </li>               
+            </a>  
+
+
+          </ul>
+      </aside>
+      <!-- End Sidebar -->
+
+      <!-- Main --> 
+      <main class="main-container">
+        <div class="main-title">
+          <p class="font-weight-bold">DAILY REPORT</p>
+        </div>
+     
+          <div class="dropdown-user">
+            <button id="bcklic">BACK</button>
+
+            <button id="sav_excel">SAVE TO EXCEL</button>
+            <button id="sav_pdf">SAVE TO PDF</button>
+          </div>
+
+
+          <!-- Table -->
+          <table id="table" class="tablemv">
+            <thead>
+                <tr>
+                  <th rowspan="4" style="text-align:center;">ADDRESS</th>
+                  <th colspan="8" style="text-align:center;">TRANSACTION</th>
+                  <th rowspan="4" style="text-align:center;">TOTAL</th>
+                </tr>
+                <tr>
+                  <th colspan="4" style="text-align:center;">LICENSE</th>
+                  <th colspan="4" style="text-align:center;">MOTOR VEHICLE</th>
+                </tr>
+                <tr>
+                  <th style="text-align:center;">Student-Driver's Permit</th>
+                  <th style="text-align:center;">Driver's License</th>
+                  <th style="text-align:center;">Conductor's License</th>
+                  <th style="text-align:center;">Total</th>
+                  <th style="text-align:center;">Renewal</th>
+                  <th style="text-align:center;">Diplomat</th>
+                  <th style="text-align:center;">For Hire</th>
+                  <th style="text-align:center;">Total</th>
+                </tr>
+            </thead>
+            <tbody> 
+              <tr>
+                <th id="" style="width:200px; ">SAN ILDEFONSO</th>
+                <td id="licsp_1"></td>
+                <td id="licdl_1"></td>
+                <td id="liccl_1"></td>
+                <td id="licttl1"></td>
+                <td id="mvrn_1"></td>
+                <td id="mvdplmt_1"></td>
+                <td id="mvfh_1"></td>
+                <td id="mvttl1"></td>
+                <td id="ttl1"></td>
+              </tr>
+              <tr>
+                <th id="">VIGANT CITY</th>
+                <td id="licsp_2"></td>
+                <td id="licdl_2"></td>
+                <td id="liccl_2"></td>
+                <td id="licttl2"></td>
+                <td id="mvrn_2"></td>
+                <td id="mvdplmt_2"></td>
+                <td id="mvfh_2"></td>
+                <td id="mvttl2"></td>
+                <td id="ttl2"></td>
+              </tr>
+              <tr>
+                <th id="">BANTAY</th>
+                <td id="licsp_3"></td>
+                <td id="licdl_3"></td>
+                <td id="liccl_3"></td>
+                <td id="licttl3"></td>
+                <td id="mvrn_3"></td>
+                <td id="mvdplmt_3"></td>
+                <td id="mvfh_3"></td>
+                <td id="mvttl3"></td>
+                <td id="ttl3"></td>
+              </tr>
+              <tr>
+                <th id="">SAN VICENTE</th>
+                <td id="licsp_4"></td>
+                <td id="licdl_4"></td>
+                <td id="liccl_4"></td>
+                <td id="licttl4"></td>
+                <td id="mvrn_4"></td>
+                <td id="mvdplmt_4"></td>
+                <td id="mvfh_4"></td>
+                <td id="mvttl4"></td>
+                <td id="ttl4"></td>
+              </tr>
+              <tr>
+                <th id="">STA. CATALINA</th>
+                <td id="licsp_5"></td>
+                <td id="licdl_5"></td>
+                <td id="liccl_5"></td>
+                <td id="licttl5"></td>
+                <td id="mvrn_5"></td>
+                <td id="mvdplmt_5"></td>
+                <td id="mvfh_5"></td>
+                <td id="mvttl5"></td>
+                <td id="ttl5"></td>
+              </tr>
+              <tr>
+                <th id="">CAOAYAN</th>
+                <td id="licsp_6"></td>
+                <td id="licdl_6"></td>
+                <td id="liccl_6"></td>
+                <td id="licttl6"></td>
+                <td id="mvrn_6"></td>
+                <td id="mvdplmt_6"></td>
+                <td id="mvfh_6"></td>
+                <td id="mvttl6"></td>
+                <td id="ttl6"></td>
+              </tr>
+              <tr>
+                <th id="">STO. DOMINGO</th>
+                <td id="licsp_7"></td>
+                <td id="licdl_7"></td>
+                <td id="liccl_7"></td>
+                <td id="licttl7"></td>
+                <td id="mvrn_7"></td>
+                <td id="mvdplmt_7"></td>
+                <td id="mvfh_7"></td>
+                <td id="mvttl7"></td>
+                <td id="ttl7"></td>
+              </tr>
+              <tr>
+                <th id="">MAGSINGAL</th>
+                <td id="licsp_8"></td>
+                <td id="licdl_8"></td>
+                <td id="liccl_8"></td>
+                <td id="licttl8"></td>
+                <td id="mvrn_8"></td>
+                <td id="mvdplmt_8"></td>
+                <td id="mvfh_8"></td>
+                <td id="mvttl8"></td>
+                <td id="ttl8"></td>
+              </tr>              
+              <tr>
+                <th id="">SAN JUAN</th>
+                <td id="licsp_9"></td>
+                <td id="licdl_9"></td>
+                <td id="liccl_9"></td>
+                <td id="licttl9"></td>
+                <td id="mvrn_9"></td>
+                <td id="mvdplmt_9"></td>
+                <td id="mvfh_9"></td>
+                <td id="mvttl9"></td>
+                <td id="ttl9"></td>
+              </tr>
+              <tr>
+                <th id="">CABUGAO</th>
+                <td id="licsp_10"></td>
+                <td id="licdl_10"></td>
+                <td id="liccl_10"></td>
+                <td id="licttl10"></td>
+                <td id="mvrn_10"></td>
+                <td id="mvdplmt_10"></td>
+                <td id="mvfh_10"></td>
+                <td id="mvttl10"></td>
+                <td id="ttl10"></td>
+              </tr>
+              <tr>
+                <th id="">SINAIT</th>
+                <td id="licsp_11"></td>
+                <td id="licdl_11"></td>
+                <td id="liccl_11"></td>
+                <td id="licttl11"></td>
+                <td id="mvrn_11"></td>
+                <td id="mvdplmt_11"></td>
+                <td id="mvfh_11"></td>
+                <td id="mvttl11"></td>
+                <td id="ttl11"></td>
+              </tr>
+              <tr>
+                <th id="">TOTAL</th>
+                <td id="licsp_12"></td>
+                <td id="licdl_12"></td>
+                <td id="liccl_12"></td>
+                <td id="licttl12"></td>
+                <td id="mvrn_12"></td>
+                <td id="mvdplmt_12"></td>
+                <td id="mvfh_12"></td>
+                <td id="mvttl12"></td>
+                <td id="ttl12"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- PDF -->
+          <div style="display: none;">
+            <div id="sav_rprt">
+              <img src="../img/Land_Transportation_Office.svg.png" style="margin-top:10px; margin-left:48.5%; width:25px; height:25px;">
+              <p style="text-align: center; font-size: 8px;">Department of Transportation</p>
+              <p style="text-align: center; font-size: 8px; margin-bottom: 20px;">LAND TRANSPORTATION OFFICE<br>San Ildefonso DO</p>
+              <p id="typofrprt" style="text-align: center; font-size: 14px; font-weight:700;">DAILY SUMMARY REPORT FOR REGISTERED/RELEASED MOTOR VEHICLE AND LICENSE, by ADDRESS & MV TRANSACTION</p>
+              <p style="text-align: center; font-size: 14px;" id="datee"></p>
+
+              <table id="table" class="tablemv" style=" margin-left:7%; margin-top:20px; margin-bottom:20px;">
+                <thead>
+                    <tr>
+                      <th rowspan="4" style="text-align:center;">ADDRESS</th>
+                      <th colspan="8" style="text-align:center;">TRANSACTION</th>
+                      <th rowspan="4" style="text-align:center;">TOTAL</th>
+                    </tr>
+                    <tr>
+                      <th colspan="4" style="text-align:center;">LICENSE</th>
+                      <th colspan="4" style="text-align:center;">MOTOR VEHICLE</th>
+                    </tr>
+                    <tr>
+                      <th style="text-align:center;">Student-Driver's Permit</th>
+                      <th style="text-align:center;">Driver's License</th>
+                      <th style="text-align:center;">Conductor's License</th>
+                      <th style="text-align:center;">Total</th>
+                      <th style="text-align:center;">Renewal</th>
+                      <th style="text-align:center;">Diplomat</th>
+                      <th style="text-align:center;">For Hire</th>
+                      <th style="text-align:center;">Total</th>
+                    </tr>
+                </thead>
+                <tbody> 
+                  <tr>
+                    <th id="" style="width:200px; ">SAN ILDEFONSO</th>
+                    <td id="licsp_1d"></td>
+                    <td id="licdl_1d"></td>
+                    <td id="liccl_1d"></td>
+                    <td id="licttl1d"></td>
+                    <td id="mvrn_1d"></td>
+                    <td id="mvdplmt_1d"></td>
+                    <td id="mvfh_1d"></td>
+                    <td id="mvttl1d"></td>
+                    <td id="ttl1d"></td>
+                  </tr>
+                  <tr>
+                    <th id="">VIGANT CITY</th>
+                    <td id="licsp_2d"></td>
+                    <td id="licdl_2d"></td>
+                    <td id="liccl_2d"></td>
+                    <td id="licttl2d"></td>
+                    <td id="mvrn_2d"></td>
+                    <td id="mvdplmt_2d"></td>
+                    <td id="mvfh_2d"></td>
+                    <td id="mvttl2d"></td>
+                    <td id="ttl2d"></td>
+                  </tr>
+                  <tr>
+                    <th id="">BANTAY</th>
+                    <td id="licsp_3d"></td>
+                    <td id="licdl_3d"></td>
+                    <td id="liccl_3d"></td>
+                    <td id="licttl3d"></td>
+                    <td id="mvrn_3d"></td>
+                    <td id="mvdplmt_3d"></td>
+                    <td id="mvfh_3d"></td>
+                    <td id="mvttl3d"></td>
+                    <td id="ttl3d"></td>
+                  </tr>
+                  <tr>
+                    <th id="">SAN VICENTE</th>
+                    <td id="licsp_4d"></td>
+                    <td id="licdl_4d"></td>
+                    <td id="liccl_4d"></td>
+                    <td id="licttl4d"></td>
+                    <td id="mvrn_4d"></td>
+                    <td id="mvdplmt_4d"></td>
+                    <td id="mvfh_4d"></td>
+                    <td id="mvttl4d"></td>
+                    <td id="ttl4d"></td>
+                  </tr>
+                  <tr>
+                    <th id="">STA. CATALINA</th>
+                    <td id="licsp_5d"></td>
+                    <td id="licdl_5d"></td>
+                    <td id="liccl_5d"></td>
+                    <td id="licttl5d"></td>
+                    <td id="mvrn_5d"></td>
+                    <td id="mvdplmt_5d"></td>
+                    <td id="mvfh_5d"></td>
+                    <td id="mvttl5d"></td>
+                    <td id="ttl5d"></td>
+                  </tr>
+                  <tr>
+                    <th id="">CAOAYAN</th>
+                    <td id="licsp_6d"></td>
+                    <td id="licdl_6d"></td>
+                    <td id="liccl_6d"></td>
+                    <td id="licttl6d"></td>
+                    <td id="mvrn_6d"></td>
+                    <td id="mvdplmt_6d"></td>
+                    <td id="mvfh_6d"></td>
+                    <td id="mvttl6d"></td>
+                    <td id="ttl6d"></td>
+                  </tr>
+                  <tr>
+                    <th id="">STO. DOMINGO</th>
+                    <td id="licsp_7d"></td>
+                    <td id="licdl_7d"></td>
+                    <td id="liccl_7d"></td>
+                    <td id="licttl7d"></td>
+                    <td id="mvrn_7d"></td>
+                    <td id="mvdplmt_7d"></td>
+                    <td id="mvfh_7d"></td>
+                    <td id="mvttl7d"></td>
+                    <td id="ttl7d"></td>
+                  </tr>
+                  <tr>
+                    <th id="">MAGSINGAL</th>
+                    <td id="licsp_8d"></td>
+                    <td id="licdl_8d"></td>
+                    <td id="liccl_8d"></td>
+                    <td id="licttl8d"></td>
+                    <td id="mvrn_8d"></td>
+                    <td id="mvdplmt_8d"></td>
+                    <td id="mvfh_8d"></td>
+                    <td id="mvttl8d"></td>
+                    <td id="ttl8d"></td>
+                  </tr>              
+                  <tr>
+                    <th id="">SAN JUAN</th>
+                    <td id="licsp_9d"></td>
+                    <td id="licdl_9d"></td>
+                    <td id="liccl_9d"></td>
+                    <td id="licttl9d"></td>
+                    <td id="mvrn_9d"></td>
+                    <td id="mvdplmt_9d"></td>
+                    <td id="mvfh_9d"></td>
+                    <td id="mvttl9d"></td>
+                    <td id="ttl9d"></td>
+                  </tr>
+                  <tr>
+                    <th id="">CABUGAO</th>
+                    <td id="licsp_10d"></td>
+                    <td id="licdl_10d"></td>
+                    <td id="liccl_10d"></td>
+                    <td id="licttl10d"></td>
+                    <td id="mvrn_10d"></td>
+                    <td id="mvdplmt_10d"></td>
+                    <td id="mvfh_10d"></td>
+                    <td id="mvttl10d"></td>
+                    <td id="ttl10d"></td>
+                  </tr>
+                  <tr>
+                    <th id="">SINAIT</th>
+                    <td id="licsp_11d"></td>
+                    <td id="licdl_11d"></td>
+                    <td id="liccl_11d"></td>
+                    <td id="licttl11d"></td>
+                    <td id="mvrn_11d"></td>
+                    <td id="mvdplmt_11d"></td>
+                    <td id="mvfh_11d"></td>
+                    <td id="mvttl11d"></td>
+                    <td id="ttl11d"></td>
+                  </tr>
+                  <tr>
+                    <th id="">TOTAL</th>
+                    <td id="licsp_12d"></td>
+                    <td id="licdl_12d"></td>
+                    <td id="liccl_12d"></td>
+                    <td id="licttl12d"></td>
+                    <td id="mvrn_12d"></td>
+                    <td id="mvdplmt_12d"></td>
+                    <td id="mvfh_12d"></td>
+                    <td id="mvttl12d"></td>
+                    <td id="ttl12d"></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div style="margin-left: 10%;">
+                <p style="margin-left: 1%; margin-top: 20px;">Prepared by:</p>
+                <div style="display: flex;">
+                  <p style="border-bottom: 1px solid black; width: 19%; margin-top: 40px; margin-left: 1%;"></p>
+                  <p style="border-bottom: 1px solid black; width: 19%; margin-top: 40px; margin-left: 50%;"></p>
+                </div>
+                <div style="display: flex;">
+                  <p style="font-size: 12px; margin-left: 1.5%;">(Printed Name & Signature)</p>
+                  <p style="font-size: 12px; margin-left: 51.5%;">(Printed Name & Signature)</p>
+                </div>
+                <div style="display: flex;">
+                  <p style="border-bottom: 1px solid black; width: 19%; margin-top: 40px; margin-left: 1%;"></p>
+                  <p style="border-bottom: 1px solid black; width: 19%; margin-top: 40px; margin-left: 50%;"></p>
+                </div>
+                <div style="display: flex;">
+                  <p style="font-size: 12px; margin-left: 7%;">(Position)</p>
+                  <p style="font-size: 12px; margin-left: 64%;">(Position)</p>
+                </div>
+                <p id="dtt" style="margin-top:20px; margin-left:-80px; font-size: 10px;"></p>
+              </div>
+      </main>
+      <!-- End Main -->
+
+    </div>
+
+    <!-- Scripts -->
+    <!-- Custom JS -->
+    <script src="../src/a_dashboard.js"></script>
+    <script type="module" src="../src/a_transactaddreport.js"></script>
+    <script type="module" src="../src/a_logout.js"></script>
+    <script>
+      sav_excel.addEventListener('click',(e) =>{
+        var table2excel = new Table2Excel();
+        table2excel.export(document.querySelectorAll("table"));
+      });
+
+      sav_pdf.addEventListener('click', (e) => {
+  // PDF
+        var element = document.getElementById('sav_rprt');
+          var opt = {
+          filename:     'LTO_report.pdf',
+          image:        { type: 'jpeg', quality: 0.98 },
+          html2canvas:  { scale: 1 },
+          jsPDF:        { unit: 'in', format: 'letter', orientation: 'landscape' }
+          };
+
+          // New Promise-based usage:
+          html2pdf().set(opt).from(element).save();
+
+          // Old monolithic-style usage:
+          // html2pdf(element, opt);
+      })
+    </script>
+  </body>
+</html> 

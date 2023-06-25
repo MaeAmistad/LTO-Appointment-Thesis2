@@ -83,7 +83,7 @@ img{
     padding: 0;
     margin-top: 15px;
     list-style-type: none;
-  }
+  } 
   
   .sidebar-list-item {
     padding: 20px 15px 20px 20px;
@@ -115,6 +115,11 @@ img{
 .dropdown-container a{
   text-decoration: none;
   color: white;
+}
+.dropdown-user select{
+  padding: 5px;
+  text-transform: uppercase;
+  outline: none;
 }
   .sidebar-list-item1 button{
     padding: 20px 15px 20px 20px;
@@ -207,11 +212,9 @@ img{
       #rw_ottl, .hdr th, tr td{
         text-align: center;
       }
-
       .trnsct_tab {
         margin-top:10px;
         margin: 10px;
-
       }
 .trnsct_tab thead th{
   text-align:center;

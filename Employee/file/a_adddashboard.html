@@ -14,7 +14,7 @@
     <!-- <link rel="stylesheet" href="https://kit.fontawesome.com/8ec04d5e4f.css" crossorigin="anonymous"> -->
     <script src="https://kit.fontawesome.com/8ec04d5e4f.js" crossorigin="anonymous"></script>
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../style/a_dashboard.css">
+    <link rel="stylesheet" href="../style/a_dashboard2.css">
   </head>
   <body> 
     <div class="grid-container">
@@ -102,76 +102,27 @@
 
       <!-- Main -->
       <main class="main-container">
-        <div class="main-title">
-          <p class="font-weight-bold">DASHBOARD</p>
-        </div>
 
-        <div class="main-cards"> 
+        <div class="dropdown-user">
+          <button id="bcklic">BACK</button>
 
-          <div class="card" id="appntment_chrt">
-            <div class="card-inner">
-              <p class="text-primary">TRANSACTIONS</p>  
-            </div>
-            <span class="text-primary font-weight-bold" id="appnt">0</span>
-          </div>
-
-          <div class="card" id="inspctor">
-            <div class="card-inner"> 
-              <p class="text-primary" >INSPECTOR</p>
-            </div>
-            <span class="text-primary font-weight-bold" id="inspctr">0</span>
-          </div>
-          
-          <div class="card" id="evluatr">
-            <div class="card-inner">
-              <p class="text-primary">EVALUATOR</p>
-            </div>
-            <span class="text-primary font-weight-bold" id="evltr">0</span>
-          </div>
-
-          <div class="card" id="cashr">
-            <div class="card-inner">
-              <p class="text-primary">CASHIER</p>
-            </div>
-            <span class="text-primary font-weight-bold" id="cshr">0</span>
-          </div>
-
-          <div class="card" id="exminer">
-            <div class="card-inner">
-              <p class="text-primary" >EXAMINER</p>
-            </div>
-            <span class="text-primary font-weight-bold" id="exmnr">0</span>
-          </div>
- 
+          <select id="user" onchange="user(this.value)">
+            <option value="a_transactaddreport.html" selected>DAILY</option>
+            <option value="a_transactaddreportweek.html">WEEKLY</option>
+            <option value="a_transactaddreportmonth.html">MONTHLY</option>
+            <option value="a_transactaddreportyear.html">YEARLY</option>
+          </select> 
+          <button id="btnReportadd">REPORT</button> 
         </div> 
-        <div>
-            <h1> Statistics</h1>
-        </div>
- 
-        <div class="charts">
-          <div class="charts-card">
-            <p class="chart-title">TRANSACTIONS</p>
-            <p class="currntRel">Released/Registered<em>(current)</em></p>
-            <p id="num_current_rel"></p>
-            <div id="bar-chart"></div> 
-            <p style="text-align: right; font-size: 14px; color: rgba(0, 0, 0, 0.897); cursor: pointer;" onclick="vwmr()">view more -></p>
-          </div>
 
-          <div class="charts-monthly">
-            <p class="chart-title">MONTHLY</p>
-            <div id="area-chart"></div>
-          </div>
-
-        </div>
 
         <div class="charts1">
-
+          
           <div class="charts-card g4">
             <p class="chart-title">MUNICIPALITIES OF 1'ST DISTRICT</p>
             <p class="currntRel">Total<em>(current)</em></p>
-            <p id="num_current_add"></p>
+            <p id="num_current_add" class="total_nm"></p>
             <div id="bar-chart-add"></div> 
-            <p style="text-align: right; font-size: 14px; color: rgba(0, 0, 0, 0.897); cursor: pointer;" onclick="vwadd()">view more -></p>
           </div>
 
         </div>
@@ -185,14 +136,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
     <!-- Custom JS -->
     <script src="../src/a_dashboard.js"></script>
-    <script type="module" src="../src/a_dashboard2.js"></script>
+    <script type="module" src="../src/a_adddashboard.js"></script>
     <script type="module" src="../src/a_logout.js"></script>
     <script>
-      function vwmr(){
-        window.location = "a_licdashboard.html"
-      }
-      function vwadd(){
-        window.location = "a_adddashboard.html"
+      function user(src){
+        window.location = src;  
       }
     </script>
   </body>

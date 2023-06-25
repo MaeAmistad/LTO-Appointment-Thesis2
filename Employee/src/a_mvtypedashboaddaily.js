@@ -69,7 +69,7 @@ mv.forEach(doc => {
         p1 = p1+=1;
         pall = pall+=1;
       }
-      else if(doc.data().typel == "MOTORCYCLE WITHOUT SIDECAR"){
+      else if(doc.data().typel == "MOTORCYCLE WITHOUT SIDECAR" || doc.data().typel == "MC"){
         p2 = p2+=1;
         pall = pall+=1;
       }
@@ -95,7 +95,7 @@ mv.forEach(doc => {
         fh1 = fh1+=1
         fhall = fhall+=1
       }
-      else if(doc.data().typel == "MOTORCYCLE WITHOUT SIDECAR"){
+      else if(doc.data().typel == "MOTORCYCLE WITHOUT SIDECAR" || doc.data().typel == "MC"){
         fh2 = fh2+=1
         fhall = fhall+=1
       }
@@ -117,11 +117,11 @@ mv.forEach(doc => {
       }
     }
     else if(doc.data().classification == "GOVERNMENT"){
-      if(doc.data().typel == "MOTORCYCLE WITH SIDECAR"){
+      if(doc.data().typel == "MOTORCYCLE WITH SIDECAR" ){
         g1 = g1+=1
         gall = gall+=1
       }
-      else if(doc.data().typel == "MOTORCYCLE WITHOUT SIDECAR"){
+      else if(doc.data().typel == "MOTORCYCLE WITHOUT SIDECAR" || doc.data().typel == "MC"){
         g2 = g2+=1
         gall = gall+=1
       }

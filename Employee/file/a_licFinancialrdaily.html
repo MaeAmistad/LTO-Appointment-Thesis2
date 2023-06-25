@@ -7,6 +7,7 @@
 
     <!-- Montserrat Font -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <!-- <link rel="stylesheet" href="https://kit.fontawesome.com/8ec04d5e4f.css" crossorigin="anonymous"> -->
@@ -15,6 +16,7 @@
     <script src="../src/table2excel.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js" integrity="sha512-YcsIPGdhPK4P/uRW6/sruonlYj+Q7UHWeKfTAkBW+g83NKM+jMJFJ4iAPfSnVp7BKD4dKMHmVSvICUbE/V1sSw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Custom CSS --> 
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="../style/a_report.css">
   </head>
   <body>
@@ -26,7 +28,7 @@
           <span class="material-icons-outlined">menu</span>
         </div>
         <div class="header-left">
-          <span class="material-icons-outlined">search</span> 
+          <span class="material-icons-outlined">search</span>
         </div>
         <div class="header-right">
           <!-- <span class="material-icons-outlined">email</span> -->
@@ -87,7 +89,7 @@
             <a href="a_reqView.html">
               <li class="sidebar-list-item">
                 List Of Requirements
-              </li>     
+              </li>    
             </a>
 
             <a id="logout">
@@ -101,7 +103,7 @@
       </aside>
       <!-- End Sidebar -->
 
-      <!-- Main -->
+      <!-- Main --> 
       <main class="main-container">
         <div class="main-title">
           <p class="font-weight-bold">DAILY REPORT</p>
@@ -109,164 +111,38 @@
      
           <div class="dropdown-user">
             <button id="bcklic">BACK</button>
-            <button id="sav_excl">SAVE TO EXCEL</button>
+
+            <button id="sav_excel">SAVE TO EXCEL</button>
             <button id="sav_pdf">SAVE TO PDF</button>
           </div>
 
-          <table style="border-collapse:collapse;" class="trnsct_tab">
+
+          <!-- Table -->
+          <table id="table" class="tablemv">
             <thead>
-              <tr>
-                <th rowspan="2">MV TYPE</th>
-                <th colspan="3" style="background-color:rgb(230, 224, 224);">CLASSFICATION</th>
-                <th rowspan="2">TOTAL</th>
-              </tr>
-              <tr>
-                <th>PRIVATE</th>
-                <th>GOVERNMENT</th>
-                <th>FOR HIRE</th>
-              </tr>
+                <tr>
+                  <th colspan="3">TYPES OF DRIVER'S LICENSE AND PERMITS TRANSACTIONS</th>
+                  <th rowspan="2">DL's & PERMITS CASES HANDLED</th>
+                  <th rowspan="2">TOTAL</th>
+                </tr>
             </thead>
-            <tbody>
+            <tbody> 
               <tr>
-                <th>Motorycle w/ Sidecar</th> 
-                <td id="mws1"></td>
-                <td id="mws2"></td>
-                <td id="mws3"></td>
-                <td id="ttl1"></td>
-              </tr>
-              <tr> 
-                <th>Motorycle w/o Sidecar</th>
-                <td id="mwos1"></td>
-                <td id="mwos2"></td>
-                <td id="mwos3"></td>
-                <td id="ttl2"></td>
-              </tr>
-              <tr>
-                <th>Car</th>
-                <td id="cr1"></td>
-                <td id="cr2"></td>
-                <td id="cr3"></td>
-                <td id="ttl3"></td>
-              </tr>
-              <tr>
-                <th>UV</th>
-                <td id="uv1"></td>
-                <td id="uv2"></td>
-                <td id="uv3"></td>
-                <td id="ttl4"></td>
-              </tr>
-              <tr>
-                <th>SUV</th>
-                <td id="suv1"></td>
-                <td id="suv2"></td>
-                <td id="suv3"></td>
-                <td id="ttl5"></td>
-              </tr>
-              <tr>
-                <th>Bus</th>
-                <td id="bus1"></td>
-                <td id="bus2"></td>
-                <td id="bus3"></td>
-                <td id="ttl6"></td>
-              </tr>
-              <tr>
-                <th>Taxi</th>
-                  <td id="tax1"></td>
-                  <td id="tax2"></td>
-                  <td id="tax3"></td>
-                  <td id="ttl7"></td>   
-              </tr>
-              <tr style="background-color:rgb(230, 224, 224);">
-                <th>Total</th>
-                <td id="tl1"></td>
-                <td id="tl2"></td>
-                <td id="tl3"></td>
-                <td id="ttl8"></td>
+                
               </tr>
             </tbody>
           </table>
-          
+
           <!-- PDF -->
           <div style="display: none;">
             <div id="sav_rprt">
               <img src="../img/Land_Transportation_Office.svg.png" style="margin-top:10px; margin-left:48.5%; width:25px; height:25px;">
               <p style="text-align: center; font-size: 8px;">Department of Transportation</p>
               <p style="text-align: center; font-size: 8px; margin-bottom: 20px;">LAND TRANSPORTATION OFFICE<br>San Ildefonso DO</p>
-              <p id="typofrprt" style="text-align: center; font-size: 14px; font-weight:700;">DAILY SUMMARY REPORT FOR REGISTERED MOTOR VEHICLE, by MV TYPE & MV CLASSIFICATION</p>
+              <p id="typofrprt" style="text-align: center; font-size: 14px; font-weight:700;">DAILY SUMMARY REPORT </p>
               <p style="text-align: center; font-size: 14px;" id="datee"></p>
 
-              <table style="border-collapse:collapse; margin-left:28%; margin-top:20px; margin-bottom:20px;" class="trnsct_tab">
-                <thead>
-                  <tr>
-                    <th rowspan="2">MV TYPE</th>
-                    <th colspan="3" style="background-color:rgb(230, 224, 224);">CLASSFICATION</th>
-                    <th rowspan="2">TOTAL</th>
-                  </tr>
-                  <tr>
-                    <th>PRIVATE</th>
-                    <th>GOVERNMENT</th>
-                    <th>FOR HIRE</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th>Motorycle w/ Sidecar</th> 
-                    <td id="mws1d"></td>
-                    <td id="mws2d"></td>
-                    <td id="mws3d"></td>
-                    <td id="ttl1d"></td>
-                  </tr>
-                  <tr> 
-                    <th>Motorycle w/o Sidecar</th>
-                    <td id="mwos1d"></td>
-                    <td id="mwos2d"></td>
-                    <td id="mwos3d"></td>
-                    <td id="ttl2d"></td>
-                  </tr>
-                  <tr>
-                    <th>Car</th>
-                    <td id="cr1d"></td>
-                    <td id="cr2d"></td>
-                    <td id="cr3d"></td>
-                    <td id="ttl3d"></td>
-                  </tr>
-                  <tr>
-                    <th>UV</th>
-                    <td id="uv1d"></td>
-                    <td id="uv2d"></td>
-                    <td id="uv3d"></td>
-                    <td id="ttl4d"></td>
-                  </tr>
-                  <tr>
-                    <th>SUV</th>
-                    <td id="suv1d"></td>
-                    <td id="suv2d"></td>
-                    <td id="suv3d"></td>
-                    <td id="ttl5d"></td>
-                  </tr>
-                  <tr>
-                    <th>Bus</th>
-                    <td id="bus1d"></td>
-                    <td id="bus2d"></td>
-                    <td id="bus3d"></td>
-                    <td id="ttl6d"></td>
-                  </tr>
-                  <tr>
-                    <th>Taxi</th>
-                      <td id="tax1d"></td>
-                      <td id="tax2d"></td>
-                      <td id="tax3d"></td>
-                      <td id="ttl7d"></td>   
-                  </tr>
-                  <tr style="background-color:rgb(230, 224, 224);">
-                    <th>Total</th>
-                    <td id="tl1d"></td>
-                    <td id="tl2d"></td>
-                    <td id="tl3d"></td>
-                    <td id="ttl8d"></td>
-                  </tr>
-                </tbody>
-              </table>
+              
 
               <div style="margin-left: 10%;">
                 <p style="margin-left: 1%; margin-top: 20px;">Prepared by:</p>
@@ -288,24 +164,18 @@
                 </div>
                 <p id="dtt" style="margin-top:20px; margin-left:-80px; font-size: 10px;"></p>
               </div>
-
-            </div>
-          </div>
-
       </main>
-      <!-- End Main -->   
-      
+      <!-- End Main -->
 
     </div>
 
     <!-- Scripts -->
     <!-- Custom JS -->
     <script src="../src/a_dashboard.js"></script>
-    <script type="module" src="../src/a_mvtypereportdaily.js"></script>
-    <!-- Seperate Script for excel -->
+    <script type="module" src="../src/a_licFinancialrdaily.js"></script>
     <script type="module" src="../src/a_logout.js"></script>
     <script>
-      sav_excl.addEventListener('click',(e) =>{
+      sav_excel.addEventListener('click',(e) =>{
         var table2excel = new Table2Excel();
         table2excel.export(document.querySelectorAll("table"));
       });

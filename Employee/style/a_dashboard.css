@@ -23,7 +23,7 @@ img{
     display: grid;
     grid-template-columns: 260px 1fr 1fr 1fr;
     grid-template-rows: 0.2fr 3fr;
-    grid-template-areas:
+    grid-template-areas: 
       "sidebar header header header"
       "sidebar main main main";
     height: 100vh;
@@ -314,11 +314,22 @@ img{
     margin-top: 5px;
     font-size: 12px;
   }
-  #num_current_rel{
+  #num_current_rel, #num_current_add{
     font-size: 25px;
     font-weight: 700;
   }
-  
+  #btnReportadd{
+    margin-left: 90%;
+  }
+  .charts1 button{
+    background-color: #008000e8;
+    color: white;
+    margin: 4px;
+    padding: 5px;
+    width: 100px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
   /* ---------- SCROLLBARS ---------- */
   
   ::-webkit-scrollbar {

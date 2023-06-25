@@ -205,8 +205,6 @@ img{
     border-radius: 5px;
     box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
   }
-
-
    .dropdown-user{
     margin-top: 5px;
     margin-right: 5px;
@@ -214,7 +212,7 @@ img{
   .dropdown-user select{
     padding: 5px;
     text-transform: uppercase;
-    outline: none;
+    outline: none; 
   }
    .dropdown-user button{
     margin: 4px;
@@ -265,14 +263,26 @@ img{
     color: #D27685;
     padding-left: 10px;
   }
-  #btnReport,#btnReportYM, #btnReporttransct{
+  #btnReport,#btnReportYM, #btnReporttransct,#btnReportadd{
     /* margin-left: 35%; */
     background-color: #008000e8;
     color: white;
   }
-  #btnReporttransct{
-    margin-left: 56%;
+  .charts1 button{
+    margin: 4px;
+    padding: 5px;
+    width: 100px;
+    text-transform: uppercase;
   }
+  #btnReportadd{
+    margin-left: 70%;
+  }
+  #btnReporttransct{
+    /* margin-left: 46%; */
+  }
+#btnReportFR{
+  width:135px
+}
   #btnReport{
     margin-left: 90%;
   }
