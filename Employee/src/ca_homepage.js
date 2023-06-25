@@ -58,9 +58,15 @@ querySnapshot2.forEach(doc2 => {
     let td5 = document.createElement('td'); 
     let td7 = document.createElement('td');  
 
+    //FOR PAYMENT AMOUNT
+    const fee = parseFloat(~~doc2.data().User_Payment);
+    const additionalFee = parseFloat(~~doc2.data().User_AdditionalFee);
+    
+    const total = parseInt(fee) + parseInt(additionalFee);
+    console.log("fee: " + fee)
     if(localStorage.getItem("chngeDtCa") == null){
         if(today == dtcon){
-            if (doc2.data().User_Stat == "APPROVED_TO_CASHIER" || doc2.data().User_Stat == "PASSED"){
+            if (doc2.data().User_Stat == "APPROVED_TO_CASHIER"){
 
                 t_ID.innerHTML = doc2.data().User_TransID; 
                 td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
@@ -79,6 +85,7 @@ querySnapshot2.forEach(doc2 => {
                     trow.style.color = "white";
                     localStorage.setItem('stat',doc2.data().User_TransID)    
                     localStorage.setItem('ID', doc2.id)
+                    localStorage.setItem('payment', total)
 
                     window.location = "ca_reqdata.html";
                 });
@@ -96,7 +103,7 @@ querySnapshot2.forEach(doc2 => {
     }
     else{
         if(changeDate == dtcon){
-            if (doc2.data().User_Stat == "APPROVED_TO_CASHIER" || doc2.data().User_Stat == "PASSED"){
+            if (doc2.data().User_Stat == "APPROVED_TO_CASHIER"){
 
                 t_ID.innerHTML = doc2.data().User_TransID; 
                 td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
@@ -115,6 +122,7 @@ querySnapshot2.forEach(doc2 => {
                     trow.style.color = "white";
                     localStorage.setItem('stat',doc2.data().User_TransID)    
                     localStorage.setItem('ID', doc2.id)
+                    localStorage.setItem('payment', total)
 
                     window.location = "ca_reqdata.html";
                 });

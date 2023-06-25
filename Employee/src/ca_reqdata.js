@@ -50,8 +50,13 @@ const querySnapshot2 = await getDocs(collection(db, "Applicants"));
 var transID = localStorage.getItem("stat");
 var ID = localStorage.getItem("ID");
 console.log(ID)
+
+var total = localStorage.getItem("payment");
+document.getElementById("feeTotal").innerHTML = total + ".00 PESOS";
 querySnapshot2.forEach(doc2 => {
 
+    
+    
     if (transID == doc2.data().User_TransID) {
 
         if (doc2.data().User_AT == "REVISION OF RECORDS") {
@@ -69,6 +74,7 @@ querySnapshot2.forEach(doc2 => {
             document.getElementById("mnn").innerHTML = doc2.data().User_CN;
             document.getElementById("fees").innerHTML = doc2.data().User_Payment;
             document.getElementById("additional_fee").innerHTML = doc2.data().User_AdditionalFee;
+            document.getElementById("total_fee").innerHTML = total + ".00";
 
             document.getElementById("exmt").style.display = "none"
             document.getElementById("et").style.display = "none"
@@ -93,6 +99,7 @@ querySnapshot2.forEach(doc2 => {
                 document.getElementById("mnn").innerHTML = doc2.data().User_CN;
                 document.getElementById("fees").innerHTML = doc2.data().User_Payment;
                 document.getElementById("additional_fee").innerHTML = doc2.data().User_AdditionalFee;
+                document.getElementById("total_fee").innerHTML = total + ".00";
 
                 document.getElementById('mv-table').style.display = "none";
                 document.getElementById('mvtitle').style.display = "none";
@@ -114,6 +121,7 @@ querySnapshot2.forEach(doc2 => {
                 document.getElementById("mnn").innerHTML = doc2.data().User_CN;
                 document.getElementById("fees").innerHTML = doc2.data().User_Payment;
                 document.getElementById("additional_fee").innerHTML = doc2.data().User_AdditionalFee;
+                document.getElementById("total_fee").innerHTML = total + ".00";
 
                 document.getElementById("exmt").style.display = "none"
                 document.getElementById("et").style.display = "none"
@@ -135,6 +143,8 @@ querySnapshot2.forEach(doc2 => {
             document.getElementById("em").innerHTML = doc2.data().User_E;
             document.getElementById("mnn").innerHTML = doc2.data().User_CN;
             document.getElementById("fees").innerHTML = doc2.data().User_Payment;
+            document.getElementById("additional_fee").innerHTML = doc2.data().User_AdditionalFee;
+            document.getElementById("total_fee").innerHTML = total + ".00";
 
             document.getElementById("plate_num").innerHTML = doc2.data().pltno;
             document.getElementById("typee").innerHTML = doc2.data().typel;
@@ -182,6 +192,8 @@ querySnapshot2.forEach(doc2 => {
                     const updateStat = doc(db, "Applicants", doc2.id)
                     var stt = localStorage.getItem("stat")
 
+                    
+
                     if (stt == doc2.data().User_TransID) {
                         if (doc2.data().User_TT == "LICENSING") {
                             // ATC
@@ -194,7 +206,8 @@ querySnapshot2.forEach(doc2 => {
                                             User_Stat4: "COMPLETED",
                                             User_Stat: "COMPLETED",
                                             User_CashierName: employees,
-                                            User_CashierDate: today + " , " + time
+                                            User_CashierDate: today + " , " + time,
+                                            User_TotalPayment: total + ".00"
                                         }).then(() => {
                                             window.location = "ca_homepage.html"
                                         })
@@ -205,7 +218,8 @@ querySnapshot2.forEach(doc2 => {
                                             User_Stat4: "COMPLETED",
                                             User_Stat: "COMPLETED",
                                             User_CashierName: employees,
-                                            User_CashierDate: today + " , " + time
+                                            User_CashierDate: today + " , " + time,
+                                            User_TotalPayment: total + ".00"
                                         }).then(() => {
                                             window.location = "ca_homepage.html"
                                         })
@@ -216,7 +230,8 @@ querySnapshot2.forEach(doc2 => {
                                             User_Stat4: "COMPLETED",
                                             User_Stat: "COMPLETED",
                                             User_CashierName: employees,
-                                            User_CashierDate: today + " , " + time
+                                            User_CashierDate: today + " , " + time,
+                                            User_TotalPayment: total + ".00"
                                         }).then(() => {
                                             window.location = "ca_homepage.html"
                                         })
@@ -227,7 +242,8 @@ querySnapshot2.forEach(doc2 => {
                                             User_Stat4: "RELEASED",
                                             User_Stat: "RELEASED",
                                             User_CashierName: employees,
-                                            User_CashierDate: today + " , " + time
+                                            User_CashierDate: today + " , " + time,
+                                            User_TotalPayment: total + ".00"
                                         })
                                         setDoc(doc(db, "License", doc2.data().User_TransID), {
                                             User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,
@@ -250,7 +266,8 @@ querySnapshot2.forEach(doc2 => {
                                         User_Stat4: "COMPLETED",
                                         User_Stat: "COMPLETED",
                                         User_CashierName: employees,
-                                        User_CashierDate: today + " , " + time
+                                        User_CashierDate: today + " , " + time,
+                                        User_TotalPayment: total + ".00"
                                     }).then(() => {
                                         window.location = "ca_homepage.html"
                                     })
@@ -261,7 +278,8 @@ querySnapshot2.forEach(doc2 => {
                                         User_Stat4: "RELEASED",
                                         User_Stat: "RELEASED",
                                         User_CashierName: employees,
-                                        User_CashierDate: today + " , " + time
+                                        User_CashierDate: today + " , " + time,
+                                        User_TotalPayment: total + ".00"
                                     })
                                     setDoc(doc(db, "License", doc2.data().User_TransID), {
                                         User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,
@@ -287,7 +305,8 @@ querySnapshot2.forEach(doc2 => {
                                             User_Stat4: "RELEASED",
                                             User_Stat: "RELEASED",
                                             User_CashierName: employees,
-                                            User_CashierDate: today + " , " + time
+                                            User_CashierDate: today + " , " + time,
+                                            User_TotalPayment: total + ".00"
                                         })
                                         setDoc(doc(db, "License", doc2.data().User_TransID), {
                                             User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,
@@ -308,7 +327,8 @@ querySnapshot2.forEach(doc2 => {
                                             User_Stat4: "RELEASED",
                                             User_Stat: "RELEASED",
                                             User_CashierName: employees,
-                                            User_CashierDate: today + " , " + time
+                                            User_CashierDate: today + " , " + time,
+                                            User_TotalPayment: total + ".00"
                                         })
                                         setDoc(doc(db, "License", doc2.data().User_TransID), {
                                             User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,
@@ -329,7 +349,8 @@ querySnapshot2.forEach(doc2 => {
                                         User_Stat4: "RELEASED",
                                         User_Stat: "RELEASED",
                                         User_CashierName: employees,
-                                        User_CashierDate: today + " , " + time
+                                        User_CashierDate: today + " , " + time,
+                                        User_TotalPayment: total + ".00"
                                     })
                                     setDoc(doc(db, "License", doc2.data().User_TransID), {
                                         User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,
@@ -354,7 +375,8 @@ querySnapshot2.forEach(doc2 => {
                                 User_Stat4: "REGISTERED",
                                 User_Stat: "REGISTERED",
                                 User_CashierName: employees,
-                                User_CashierDate: today + " , " + time
+                                User_CashierDate: today + " , " + time,
+                                User_TotalPayment: total + ".00"
                             })
                             setDoc(doc(db, "Motor Vehicle", doc2.data().User_TransID), {
                                 User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,

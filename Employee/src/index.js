@@ -55,6 +55,7 @@ function showError(input, message) {
 }
 
 
+
 // LOGIN FORM - FINAL
 form.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -72,17 +73,92 @@ form.addEventListener('submit', (e) => {
   else {
 
     // if (email.value !== '' && password.value == '') {
-    //   if (email.value.toUpperCase() === docSnap.data().username && password.value == docSnap.data().password) {
-    //     window.location = "a_dashboard.html"
-    //   }
+    // if (email.value.toUpperCase() === docSnap.data().username && password.value == docSnap.data().password) {
+    //   window.location = "a_dashboard.html"
+    // }
     // }
     // else {
+
     querySnapshot.forEach(doc => {
+
+      // if (email.value !== '' && password.value == '') {
+      //   if (email.value !== doc.data().user_E && doc.data().user_Type !== "DEVELOPER") {
+      //     // showError(email, 'Admin Email Invalid');
+      //     console.log(email.value !== doc.data().user_E)
+      //   }
+      //   // else if (doc.data().user_PWD !== password.value && doc.data().user_Type === "DEVELOPER") {
+      //   //   showError(password, 'Password Incorrect');
+      //   // }
+      //   // else{
+      //   //   window.location = "a_dashboard.html"
+      //   // }
+      // }
+
+      
 
       if (doc.data().user_E === email.value.toUpperCase() && doc.data().user_PWD === password.value) {
 
-        if (doc.data().user_Account == "DEVELOPER'S ACCOUNT") {
+
+        if (doc.data().user_Type == "DEVELOPER") {
           window.location = "a_dashboard.html"
+        }
+
+        if (doc.data().user_Type == "CASHIER" && doc.data().user_Status == "Active") {
+          signInWithEmailAndPassword(auth, email.value, password.value)
+            .then((userCredential) => {
+              const user = userCredential.user;
+
+              if (user.emailVerified == true) {
+                var curPass = password.value;
+                const current = curPass.slice(1, 3)
+                console.log(current)
+                console.log(word2)
+
+                if (current == word2) {
+                  window.location = "changePass.html"
+                  localStorage.setItem("ID", doc.id)
+                  localStorage.setItem("Password", curPass)
+                }
+                else {
+                  window.location = "ca_homepage.html"
+                }
+
+              }
+              else {
+                wrnngmsg.classList.add("wrnngmsg-popup");
+                document.body.classList.add("wrnngmsg-popup");
+              }
+
+              sndVrfctn.addEventListener('click', (e) => {
+                wrnngmsg.classList.remove("wrnngmsg-popup");
+                document.body.classList.remove("wrnngmsg-popup");
+
+                sendEmailVerification(auth.currentUser)
+                  .then(() => {
+                    // console.log("Email send")
+                    Swal.fire({
+                      title: "Email has been sent.",
+                      confirmButtonColor: '#132aaa',
+                      showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                      },
+                      hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                      }
+                    })
+                  });
+              });
+
+
+            })
+            .catch((error) => {
+              showError(email, "Email or Password is Incorrect")
+              showError(password, "Email or Password is Incorrect")
+
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              console.log(errorMessage)
+            });
         }
 
         if (doc.data().user_Type == "INSPECTOR" && doc.data().user_Status == "Active") {

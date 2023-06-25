@@ -224,7 +224,7 @@ btn_nxt.addEventListener('click', (e) => {
           }
         }
 
-        if (doc.data().User_Stat == "APPROVED_TO_CASHIER") {
+        if (doc.data().User_Stat == "APPROVED_TO_CASHIER" || doc.data().User_Stat == "APPROVED_TO_PROCEED") {
           if (last_name == doc.data().User_LN && first_name == doc.data().User_FN && middle_name == doc.data().User_MN && gen == doc.data().User_GN && bday == doc.data().User_BD) {
             var date = doc.data().User_D;
             var time = doc.data().User_T;

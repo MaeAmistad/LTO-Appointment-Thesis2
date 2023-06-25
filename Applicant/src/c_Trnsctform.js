@@ -872,10 +872,13 @@ function laaf_lic() {
 
     if (toa === "New" && laa === "Student-Driver's Permit") {
         var fees = "250.00"
-    } if (toa === "Rewal" && laa === "Student-Driver's Permit") {
+    } if (toa === "Renewal" && laa === "Student-Driver's Permit") {
         var fees = "150.00"
     }
     if (toa === "New" && laa === "Driver's License") {
+        var fees = "685.00"
+    }
+    if (toa === "New" && laa === "Conductor's License") {
         var fees = "685.00"
     }
     if (toa === "Renewal" && laa === "Driver's License") {
@@ -898,6 +901,12 @@ function laaf_lic() {
     }
     if (toa === "Expired DL with Valid FDL" && laa === "Driver's License") {
         var fees = "785.00"
+    }
+    if (toa === "Duplicate" && laa === "Driver's License") {
+        var fees = "225.00"
+    }
+    if (toa === "Dropping of Category or Add'l or Removal of Driving Conditions" && laa === "Driver's License") {
+        var fees = "325.00"
     }
 
     localStorage.setItem("laa", laa.toUpperCase());
