@@ -1,6 +1,6 @@
 bcklic.addEventListener('click' , () => {
     window.location = "a_mvdashboard.html"
-});
+}); 
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import { getFirestore, getDocs, collection } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
@@ -13,12 +13,12 @@ const firebaseConfig = {
     storageBucket: "lto-online-appointment-setter.appspot.com",
     messagingSenderId: "382579903791",
     appId: "1:382579903791:web:5d98bbe4ea8b38a43065da"
-};
+}; 
  
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app); 
-
+ 
 // DATE TODAY
 var date = new Date();
 var day = date.getDate();

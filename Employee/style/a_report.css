@@ -114,7 +114,7 @@ img{
 }
 .dropdown-container a{
   text-decoration: none;
-  color: white;
+  color: white; 
 }
 .dropdown-user select{
   padding: 5px;
@@ -193,15 +193,17 @@ img{
     text-transform: uppercase;
     min-width: 100px;
    }
-      #table{
+      .tablemv, #table{
         margin: 10px;
         width: auto;
         border-collapse: collapse;
         font-size: 12px;
       }
-      .tablemv tr th{
+      .tablemv tr th,#table tr th{
         padding: 5px 5px;
         font-size: 12px;
+        /* width:200px; */
+        text-align:center;
       }
       tr th, tr td{
         border: 1px solid black;

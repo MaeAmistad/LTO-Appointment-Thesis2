@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>LTO Appointment Setter</title>
+
+    <!-- Montserrat Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://kit.fontawesome.com/8ec04d5e4f.css" crossorigin="anonymous"> -->
+    <script src="https://kit.fontawesome.com/8ec04d5e4f.js" crossorigin="anonymous"></script>
+    <!-- Excel/PDF JS -->
+    <script src="../src/table2excel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js" integrity="sha512-YcsIPGdhPK4P/uRW6/sruonlYj+Q7UHWeKfTAkBW+g83NKM+jMJFJ4iAPfSnVp7BKD4dKMHmVSvICUbE/V1sSw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="../style/a_report.css">
+  </head>
+  <body>
+    <div class="grid-container">
+
+      <!-- Header -->
+      <header class="header">
+        <div class="menu-icon" onclick="openSidebar()">
+          <span class="material-icons-outlined">menu</span>
+        </div>
+        <div class="header-left">
+          <span class="material-icons-outlined">search</span> 
+        </div>
+        <div class="header-right">
+          <!-- <span class="material-icons-outlined">email</span> -->
+        </div> 
+      </header>
+      <!-- End Header -->
+
+      <!-- Sidebar -->
+      <aside id="sidebar">
+        <div class="sidebar-title">
+          <!-- <div class="sidebar-brand">LTO Dashboard</div> -->
+          <img src="../img/Land_Transportation_Office.svg.png">
+          <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+        </div>
+
+         
+        <ul class="sidebar-list"> 
+
+          <a href="a_dashboard.html">
+            <li class="sidebar-list-item">
+               Dashboard
+            </li>
+          </a> 
+
+          <a href="a_accMan.html">         
+            <li class="sidebar-list-item">
+                Account Management
+            </li>
+          </a>
+
+          <a href="a_appList.html">
+            <li class="sidebar-list-item">
+              List of Appointments
+            </li>
+          </a>
+
+          <li class="sidebar-list-item1">
+            <button class="dropdown-btn">Transactions<i class="fa fa-caret-down"></i></button>
+
+            <div class="dropdown-container">
+
+              <a href="a_pcLIApprved.html">
+                <div class="con-lic">
+                  License <br><br>
+                </div>
+                </a>
+  
+                <a href="a_pcmvApprved.html">
+                <div class="con-mv">
+                  Motor Vehicle<br><br>
+                </div>
+                </a>
+
+            </div>
+
+          </li>
+
+            <a href="a_reqView.html">
+              <li class="sidebar-list-item">
+                List Of Requirements
+              </li>     
+            </a>
+
+            <a id="logout">
+              <li class="sidebar-list-item">
+                Log-Out
+              </li>               
+            </a>  
+
+
+          </ul>
+      </aside>
+      <!-- End Sidebar -->
+
+      <!-- Main -->
+      <main class="main-container">
+        <div class="main-title">
+          <p class="font-weight-bold">MONTHLY REPORT</p>
+        </div>
+     
+          <div class="dropdown-user">
+            <button id="bcklic">BACK</button>
+            <button id="sav_excl">SAVE TO EXCEL</button>
+            <button id="sav_pdf">SAVE TO PDF</button>
+          </div>
+
+          <!-- Table -->
+          <table style="border-collapse: collapse; margin-top: 10px;">
+            <thead>
+              <tr>
+                <th rowspan="3" style="text-align: center;">Age</th>
+                <th colspan="16" style="text-align: center; background-color:rgb(230, 224, 224);">TYPES OF DRIVER'S LICENSE AND PERMITS TRANSACTIONS</th>
+                <th rowspan="3" style="text-align: center;">Total</th>
+              </tr>
+              <tr style="background-color:rgb(230, 224, 224);">
+                <th colspan="4" style="text-align: center;">Student-Driver's Permit</th>
+                <th colspan="6" style="text-align: center;">Driver's License</th>
+                <th colspan="6" style="text-align: center;">Conductor License</th>
+              </tr>
+              <tr>
+                <th>New</th>
+                <th>Renewal</th>
+                <th>Duplicate</th>
+                <th>Total</th>
+                <th>New</th>
+                <th>Renewal</th>
+                <th>Duplicate</th>
+                <th>Revision of Records</th>
+                <th>Others</th>
+                <th>Total</th>
+                <th>New</th>
+                <th>Renewal</th>
+                <th>Duplicate</th>
+                <th>Revision of Records</th>
+                <th>Others</th>
+                <th>Total</th>
+              </tr>
+              <tbody>
+                <tr>
+                  <td id="">16-20</td>
+                  <td id="sp_n1"></td>
+                  <td id="sp_rn1"></td>
+                  <td id="sp_dplct1"></td>
+                  <td id="sp_ttl1"></td>
+                  <td id="dl_n1"></td> 
+                  <td id="dl_rn1"></td>
+                  <td id="dl_dplct1"></td> 
+                  <td id="dl_rr1"></td>
+                  <td id="dl_othrs1"></td>
+                  <td id="dl_ttl1"></td>
+                  <td id="cl_n1"></td>
+                  <td id="cl_rn1"></td>
+                  <td id="cl_dplct1"></td>
+                  <td id="cl_rr1"></td>
+                  <td id="cl_othrs1"></td>
+                  <td id="cl_ttl1"></td>
+                  <td id="ttl1"></td>    
+                </tr>
+                <tr>
+                  <td id="">21-25</td>
+                  <td id="sp_n2"></td>
+                  <td id="sp_rn2"></td>
+                  <td id="sp_dplct2"></td>
+                  <td id="sp_ttl2"></td>
+                  <td id="dl_n2"></td>
+                  <td id="dl_rn2"></td>
+                  <td id="dl_dplct2"></td>
+                  <td id="dl_rr2"></td>
+                  <td id="dl_othrs2"></td>
+                  <td id="dl_ttl2"></td>
+                  <td id="cl_n2"></td>
+                  <td id="cl_rn2"></td>
+                  <td id="cl_dplct2"></td>
+                  <td id="cl_rr2"></td>
+                  <td id="cl_othrs2"></td>
+                  <td id="cl_ttl2"></td>
+                  <td id="ttl2"></td>    
+                </tr>
+                <tr>
+                <td id="">26-30</td>
+                <td id="sp_n3"></td>
+                <td id="sp_rn3"></td>
+                <td id="sp_dplct3"></td>
+                <td id="sp_ttl3"></td>
+                <td id="dl_n3"></td>
+                <td id="dl_rn3"></td>
+                <td id="dl_dplct3"></td>
+                <td id="dl_rr3"></td>
+                <td id="dl_othrs3"></td>
+                <td id="dl_ttl3"></td>
+                <td id="cl_n3"></td>
+                <td id="cl_rn3"></td>
+                <td id="cl_dplct3"></td>
+                <td id="cl_rr3"></td>
+                <td id="cl_othrs3"></td>
+                <td id="cl_ttl3"></td>
+                <td id="ttl3"></td>     
+              </tr>
+              <tr>
+                <td id="">31-35</td>
+                <td id="sp_n4"></td>
+                <td id="sp_rn4"></td>
+                <td id="sp_dplct4"></td>
+                <td id="sp_ttl4"></td>
+                <td id="dl_n4"></td>
+                <td id="dl_rn4"></td>
+                <td id="dl_dplct4"></td>
+                <td id="dl_rr4"></td>
+                <td id="dl_othrs4"></td>
+                <td id="dl_ttl4"></td>
+                <td id="cl_n4"></td>
+                <td id="cl_rn4"></td>
+                <td id="cl_dplct4"></td>
+                <td id="cl_rr4"></td>
+                <td id="cl_othrs4"></td>
+                <td id="cl_ttl4"></td>
+                <td id="ttl4"></td>     
+              </tr>
+              <tr>
+                <td id="">35-40</td>
+                <td id="sp_n5"></td>
+                <td id="sp_rn5"></td>
+                <td id="sp_dplct5"></td>
+                <td id="sp_ttl5"></td>
+                <td id="dl_n5"></td>
+                <td id="dl_rn5"></td>
+                <td id="dl_dplct5"></td>
+                <td id="dl_rr5"></td>
+                <td id="dl_othrs5"></td>
+                <td id="dl_ttl5"></td>
+                <td id="cl_n5"></td>
+                <td id="cl_rn5"></td>
+                <td id="cl_dplct5"></td>
+                <td id="cl_rr5"></td>
+                <td id="cl_othrs5"></td>
+                <td id="cl_ttl5"></td>
+                <td id="ttl5"></td>      
+              </tr>
+              <tr>
+                <td id="">41-45</td>
+                <td id="sp_n6"></td>
+                <td id="sp_rn6"></td>
+                <td id="sp_dplct6"></td>
+                <td id="sp_ttl6"></td>
+                <td id="dl_n6"></td>
+                <td id="dl_rn6"></td>
+                <td id="dl_dplct6"></td>
+                <td id="dl_rr6"></td>
+                <td id="dl_othrs6"></td>
+                <td id="dl_ttl6"></td>
+                <td id="cl_n6"></td>
+                <td id="cl_rn6"></td>
+                <td id="cl_dplct6"></td>
+                <td id="cl_rr6"></td>
+                <td id="cl_othrs6"></td>
+                <td id="cl_ttl6"></td>
+                <td id="ttl6"></td>    
+              </tr>
+              <td id="">46-50</td>
+              <td id="sp_n7"></td>
+              <td id="sp_rn7"></td>
+              <td id="sp_dplct7"></td>
+              <td id="sp_ttl7"></td>
+              <td id="dl_n7"></td>
+              <td id="dl_rn7"></td>
+              <td id="dl_dplct7"></td>
+              <td id="dl_rr7"></td>
+              <td id="dl_othrs7"></td>
+              <td id="dl_ttl7"></td>
+              <td id="cl_n7"></td>
+              <td id="cl_rn7"></td>
+              <td id="cl_dplct7"></td>
+              <td id="cl_rr7"></td>
+              <td id="cl_othrs7"></td>
+              <td id="cl_ttl7"></td>
+              <td id="ttl7"></td>    
+            </tr>
+            <tr>
+              <td id="">51-55</td>
+              <td id="sp_n8"></td>
+              <td id="sp_rn8"></td>
+              <td id="sp_dplct8"></td>
+              <td id="sp_ttl8"></td>
+              <td id="dl_n8"></td>
+              <td id="dl_rn8"></td>
+              <td id="dl_dplct8"></td>
+              <td id="dl_rr8"></td>
+              <td id="dl_othrs8"></td>
+              <td id="dl_ttl8"></td>
+              <td id="cl_n8"></td>
+              <td id="cl_rn8"></td>
+              <td id="cl_dplct8"></td>
+              <td id="cl_rr8"></td>
+              <td id="cl_othrs8"></td>
+              <td id="cl_ttl8"></td>
+              <td id="ttl8"></td>    
+            </tr>
+            <tr>
+              <td id="">56-60</td>
+              <td id="sp_n9"></td>
+              <td id="sp_rn9"></td>
+              <td id="sp_dplct9"></td>
+              <td id="sp_ttl9"></td>
+              <td id="dl_n9"></td>
+              <td id="dl_rn9"></td>
+              <td id="dl_dplct9"></td>
+              <td id="dl_rr9"></td>
+              <td id="dl_othrs9"></td>
+              <td id="dl_ttl9"></td>
+              <td id="cl_n9"></td>
+              <td id="cl_rn9"></td>
+              <td id="cl_dplct9"></td>
+              <td id="cl_rr9"></td>
+              <td id="cl_othrs9"></td>
+              <td id="cl_ttl9"></td>
+              <td id="ttl9"></td>    
+            </tr>
+            <tr>
+              <td id="">61 and above</td>
+              <td id="sp_n10"></td>
+              <td id="sp_rn10"></td>
+              <td id="sp_dplct10"></td>
+              <td id="sp_ttl10"></td>
+              <td id="dl_n10"></td>
+              <td id="dl_rn10"></td>
+              <td id="dl_dplct10"></td>
+              <td id="dl_rr10"></td>
+              <td id="dl_othrs10"></td>
+              <td id="dl_ttl10"></td>
+              <td id="cl_n10"></td>
+              <td id="cl_rn10"></td>
+              <td id="cl_dplct10"></td>
+              <td id="cl_rr10"></td>
+              <td id="cl_othrs10"></td>
+              <td id="cl_ttl10"></td>
+              <td id="ttl10"></td>    
+            </tr>
+            <tr style="background-color:rgb(230, 224, 224);">
+              <th style="text-align:center;">Total</th>
+              <td id="ttlal1"></td>
+              <td id="ttlal2"></td>
+              <td id="ttlal3"></td>
+              <td id="ttlal4"></td>
+              <td id="ttlal5"></td>
+              <td id="ttlal6"></td>
+              <td id="ttlal7"></td>
+              <td id="ttlal8"></td>
+              <td id="ttlal9"></td>
+              <td id="ttlal10"></td>
+              <td id="ttlal11"></td>
+              <td id="ttlal12"></td>
+              <td id="ttlal13"></td>
+              <td id="ttlal14"></td>
+              <td id="ttlal15"></td>
+              <td id="ttlal16"></td>
+              <td id="ttlal17"></td>
+            </tr>
+              </tbody>
+            </thead>
+          </table>
+
+          <div style="display: block;">
+            <div id="sav_rprt">
+              <img src="../img/Land_Transportation_Office.svg.png" style="margin-top:10px; margin-left:48.5%; width:25px; height:25px;">
+              <p style="text-align: center; font-size: 8px;">Department of Transportation</p>
+              <p style="text-align: center; font-size: 8px; margin-bottom: 20px;">LAND TRANSPORTATION OFFICE<br>San Ildefonso DO</p>
+              <p id="typofrprt" style="text-align: center; font-size: 14px; font-weight:700;">Monthly Summary Report of Student-Driver's Permit, 
+                Driver's License & Conductor's License by Age</p>
+              <p style="text-align: center; font-size: 14px;" id="datee"></p>
+
+              <table style="border-collapse: collapse; margin: 20px;">
+                <thead>
+                  <tr>
+                    <th rowspan="3" style="text-align: center;">Age</th>
+                    <th colspan="16" style="text-align: center; background-color:rgb(230, 224, 224);">TYPES OF DRIVER'S LICENSE AND PERMITS TRANSACTIONS</th>
+                    <th rowspan="3" style="text-align: center;">Total</th>
+                  </tr>
+                  <tr>
+                    <th colspan="4" style="text-align: center; background-color:rgb(230, 224, 224);">Student-Driver's Permit</th>
+                    <th colspan="6" style="text-align: center; background-color:rgb(230, 224, 224);">Driver's License</th>
+                    <th colspan="6" style="text-align: center; background-color:rgb(230, 224, 224);">Conductor License</th>
+                  </tr>
+                  <tr>
+                    <th>New</th>
+                    <th>Renewal</th>
+                    <th>Duplicate</th>
+                    <th>Total</th>
+                    <th>New</th>
+                    <th>Renewal</th>
+                    <th>Duplicate</th>
+                    <th>Revision of Records</th>
+                    <th>Others</th>
+                    <th>Total</th>
+                    <th>New</th>
+                    <th>Renewal</th>
+                    <th>Duplicate</th>
+                    <th>Revision of Records</th>
+                    <th>Others</th>
+                    <th>Total</th>
+                  </tr>
+                  <tbody>
+                    <tr>
+                      <td id="">16-20</td>
+                      <td id="sp_n1d"></td>
+                      <td id="sp_rn1d"></td>
+                      <td id="sp_dplct1d"></td>
+                      <td id="sp_ttl1d"></td>
+                      <td id="dl_n1d"></td> 
+                      <td id="dl_rn1d"></td>
+                      <td id="dl_dplct1d"></td> 
+                      <td id="dl_rr1d"></td>
+                      <td id="dl_othrs1d"></td>
+                      <td id="dl_ttl1d"></td>
+                      <td id="cl_n1d"></td>
+                      <td id="cl_rn1d"></td>
+                      <td id="cl_dplct1d"></td>
+                      <td id="cl_rr1d"></td>
+                      <td id="cl_othrs1d"></td>
+                      <td id="cl_ttl1d"></td>
+                      <td id="ttl1d"></td>    
+                    </tr>
+                    <tr>
+                      <td id="">21-25</td>
+                      <td id="sp_n2d"></td>
+                      <td id="sp_rn2d"></td>
+                      <td id="sp_dplct2d"></td>
+                      <td id="sp_ttl2d"></td>
+                      <td id="dl_n2d"></td>
+                      <td id="dl_rn2d"></td>
+                      <td id="dl_dplct2d"></td>
+                      <td id="dl_rr2d"></td>
+                      <td id="dl_othrs2d"></td>
+                      <td id="dl_ttl2d"></td>
+                      <td id="cl_n2d"></td>
+                      <td id="cl_rn2d"></td>
+                      <td id="cl_dplct2d"></td>
+                      <td id="cl_rr2d"></td>
+                      <td id="cl_othrs2d"></td>
+                      <td id="cl_ttl2d"></td>
+                      <td id="ttl2d"></td>    
+                    </tr>
+                    <tr>
+                    <td id="">26-30</td>
+                    <td id="sp_n3d"></td>
+                    <td id="sp_rn3d"></td>
+                    <td id="sp_dplct3d"></td>
+                    <td id="sp_ttl3d"></td>
+                    <td id="dl_n3d"></td>
+                    <td id="dl_rn3d"></td>
+                    <td id="dl_dplct3d"></td>
+                    <td id="dl_rr3d"></td>
+                    <td id="dl_othrs3d"></td>
+                    <td id="dl_ttl3d"></td>
+                    <td id="cl_n3d"></td>
+                    <td id="cl_rn3d"></td>
+                    <td id="cl_dplct3d"></td>
+                    <td id="cl_rr3d"></td>
+                    <td id="cl_othrs3d"></td>
+                    <td id="cl_ttl3d"></td>
+                    <td id="ttl3d"></td>     
+                  </tr>
+                  <tr>
+                    <td id="">31-35</td>
+                    <td id="sp_n4d"></td>
+                    <td id="sp_rn4d"></td>
+                    <td id="sp_dplct4d"></td>
+                    <td id="sp_ttl4d"></td>
+                    <td id="dl_n4d"></td>
+                    <td id="dl_rn4d"></td>
+                    <td id="dl_dplct4d"></td>
+                    <td id="dl_rr4d"></td>
+                    <td id="dl_othrs4d"></td>
+                    <td id="dl_ttl4d"></td>
+                    <td id="cl_n4d"></td>
+                    <td id="cl_rn4d"></td>
+                    <td id="cl_dplct4d"></td>
+                    <td id="cl_rr4d"></td>
+                    <td id="cl_othrs4d"></td>
+                    <td id="cl_ttl4d"></td>
+                    <td id="ttl4d"></td>     
+                  </tr>
+                  <tr>
+                    <td id="">35-40</td>
+                    <td id="sp_n5d"></td>
+                    <td id="sp_rn5d"></td>
+                    <td id="sp_dplct5d"></td>
+                    <td id="sp_ttl5d"></td>
+                    <td id="dl_n5d"></td>
+                    <td id="dl_rn5d"></td>
+                    <td id="dl_dplct5d"></td>
+                    <td id="dl_rr5d"></td>
+                    <td id="dl_othrs5d"></td>
+                    <td id="dl_ttl5d"></td>
+                    <td id="cl_n5d"></td>
+                    <td id="cl_rn5d"></td>
+                    <td id="cl_dplct5d"></td>
+                    <td id="cl_rr5d"></td>
+                    <td id="cl_othrs5d"></td>
+                    <td id="cl_ttl5d"></td>
+                    <td id="ttl5d"></td>      
+                  </tr>
+                  <tr>
+                    <td id="">41-45</td>
+                    <td id="sp_n6d"></td>
+                    <td id="sp_rn6d"></td>
+                    <td id="sp_dplct6d"></td>
+                    <td id="sp_ttl6d"></td>
+                    <td id="dl_n6d"></td>
+                    <td id="dl_rn6d"></td>
+                    <td id="dl_dplct6d"></td>
+                    <td id="dl_rr6d"></td>
+                    <td id="dl_othrs6d"></td>
+                    <td id="dl_ttl6d"></td>
+                    <td id="cl_n6d"></td>
+                    <td id="cl_rn6d"></td>
+                    <td id="cl_dplct6d"></td>
+                    <td id="cl_rr6d"></td>
+                    <td id="cl_othrs6d"></td>
+                    <td id="cl_ttl6d"></td>
+                    <td id="ttl6d"></td>    
+                  </tr>
+                  <td id="">46-50</td>
+                  <td id="sp_n7d"></td>
+                  <td id="sp_rn7d"></td>
+                  <td id="sp_dplct7d"></td>
+                  <td id="sp_ttl7d"></td>
+                  <td id="dl_n7d"></td>
+                  <td id="dl_rn7d"></td>
+                  <td id="dl_dplct7d"></td>
+                  <td id="dl_rr7d"></td>
+                  <td id="dl_othrs7d"></td>
+                  <td id="dl_ttl7d"></td>
+                  <td id="cl_n7d"></td>
+                  <td id="cl_rn7d"></td>
+                  <td id="cl_dplct7d"></td>
+                  <td id="cl_rr7d"></td>
+                  <td id="cl_othrs7d"></td>
+                  <td id="cl_ttl7d"></td>
+                  <td id="ttl7d"></td>    
+                </tr>
+                <tr>
+                  <td id="">51-55</td>
+                  <td id="sp_n8d"></td>
+                  <td id="sp_rn8d"></td>
+                  <td id="sp_dplct8d"></td>
+                  <td id="sp_ttl8d"></td>
+                  <td id="dl_n8d"></td>
+                  <td id="dl_rn8d"></td>
+                  <td id="dl_dplct8d"></td>
+                  <td id="dl_rr8d"></td>
+                  <td id="dl_othrs8d"></td>
+                  <td id="dl_ttl8d"></td>
+                  <td id="cl_n8d"></td>
+                  <td id="cl_rn8d"></td>
+                  <td id="cl_dplct8d"></td>
+                  <td id="cl_rr8d"></td>
+                  <td id="cl_othrs8d"></td>
+                  <td id="cl_ttl8d"></td>
+                  <td id="ttl8d"></td>    
+                </tr>
+                <tr>
+                  <td id="">56-60</td>
+                  <td id="sp_n9d"></td>
+                  <td id="sp_rn9d"></td>
+                  <td id="sp_dplct9d"></td>
+                  <td id="sp_ttl9d"></td>
+                  <td id="dl_n9d"></td>
+                  <td id="dl_rn9d"></td>
+                  <td id="dl_dplct9d"></td>
+                  <td id="dl_rr9d"></td>
+                  <td id="dl_othrs9d"></td>
+                  <td id="dl_ttl9d"></td>
+                  <td id="cl_n9d"></td>
+                  <td id="cl_rn9d"></td>
+                  <td id="cl_dplct9d"></td>
+                  <td id="cl_rr9d"></td>
+                  <td id="cl_othrs9d"></td>
+                  <td id="cl_ttl9d"></td>
+                  <td id="ttl9d"></td>    
+                </tr>
+                <tr>
+                  <td id="">61 and above</td>
+                  <td id="sp_n10d"></td>
+                  <td id="sp_rn10d"></td>
+                  <td id="sp_dplct10d"></td>
+                  <td id="sp_ttl10d"></td>
+                  <td id="dl_n10d"></td>
+                  <td id="dl_rn10d"></td>
+                  <td id="dl_dplct10d"></td>
+                  <td id="dl_rr10d"></td>
+                  <td id="dl_othrs10d"></td>
+                  <td id="dl_ttl10d"></td>
+                  <td id="cl_n10d"></td>
+                  <td id="cl_rn10d"></td>
+                  <td id="cl_dplct10d"></td>
+                  <td id="cl_rr10d"></td>
+                  <td id="cl_othrs10d"></td>
+                  <td id="cl_ttl10d"></td>
+                  <td id="ttl10d"></td>    
+                </tr>
+                <tr style="background-color:rgb(230, 224, 224);">
+                  <th style="text-align:center;">Total</th>
+                  <td id="ttlal1d"></td>
+                  <td id="ttlal2d"></td>
+                  <td id="ttlal3d"></td>
+                  <td id="ttlal4d"></td>
+                  <td id="ttlal5d"></td>
+                  <td id="ttlal6d"></td>
+                  <td id="ttlal7d"></td>
+                  <td id="ttlal8d"></td>
+                  <td id="ttlal9d"></td>
+                  <td id="ttlal10d"></td>
+                  <td id="ttlal11d"></td>
+                  <td id="ttlal12d"></td>
+                  <td id="ttlal13d"></td>
+                  <td id="ttlal14d"></td>
+                  <td id="ttlal15d"></td>
+                  <td id="ttlal16d"></td>
+                  <td id="ttlal17d"></td>
+                </tr>
+                  </tbody>
+                </thead>
+              </table>
+
+              <div style="margin-left: 10%;">
+                <p style="margin-left: 1%; margin-top: 20px;">Prepared by:</p>
+                <div style="display: flex;">
+                  <p style="border-bottom: 1px solid black; width: 19%; margin-top: 40px; margin-left: 1%;"></p>
+                  <p style="border-bottom: 1px solid black; width: 19%; margin-top: 40px; margin-left: 50%;"></p>
+                </div>
+                <div style="display: flex;">
+                  <p style="font-size: 12px; margin-left: 1.5%;">(Printed Name & Signature)</p>
+                  <p style="font-size: 12px; margin-left: 51.5%;">(Printed Name & Signature)</p>
+                </div>
+                <div style="display: flex;">
+                  <p style="border-bottom: 1px solid black; width: 19%; margin-top: 40px; margin-left: 1%;"></p>
+                  <p style="border-bottom: 1px solid black; width: 19%; margin-top: 40px; margin-left: 50%;"></p>
+                </div>
+                <div style="display: flex;">
+                  <p style="font-size: 12px; margin-left: 7%;">(Position)</p>
+                  <p style="font-size: 12px; margin-left: 64%;">(Position)</p>
+                </div>
+                <p id="dtt" style="margin-top: 30px; margin-left:-80px; font-size: 10px;"></p>
+              </div>
+
+            </div>
+          </div>
+          
+      </main>
+      <!-- End Main -->   
+      
+
+    </div>
+
+    <!-- Scripts -->
+    <!-- Custom JS -->
+    <script src="../src/a_dashboard.js"></script>
+    <script type="module" src="../src/a_licreporttrnsctmnthly.js"></script>
+    <!-- Seperate Script for excel -->
+    <script type="module" src="../src/a_logout.js"></script>
+    <script>
+      sav_excl.addEventListener('click',(e) =>{
+        var table2excel = new Table2Excel();
+        table2excel.export(document.querySelectorAll("table"));
+      });
+
+      sav_pdf.addEventListener('click', (e) => {
+  // PDF
+        var element = document.getElementById('sav_rprt');
+          var opt = {
+          filename:     'LTO_report.pdf',
+          image:        { type: 'jpeg', quality: 0.98 },
+          html2canvas:  { scale: 1 },
+          jsPDF:        { unit: 'in', format: 'letter', orientation: 'landscape' }
+          };
+
+          // New Promise-based usage:
+          html2pdf().set(opt).from(element).save();
+
+          // Old monolithic-style usage:
+          // html2pdf(element, opt);
+      })
+    </script>
+  </body>
+</html> 

@@ -1,11 +1,14 @@
 bcklic.addEventListener('click' , () => {
     window.location = "a_dashboard.html"
 })
-btnReport.addEventListener('click',()=>{ 
-//   window.location = ".html"
-})
 btnReportYM.addEventListener('click',() =>{ 
-//   window.location = ".html"
+  window.location = "a_mvymreportyr.html"
+});
+btnReportFR.addEventListener('click',() =>{ 
+  window.location = "a_mvFinancialryr.html" 
+});
+btnReporttransct.addEventListener('click',() =>{ 
+  window.location = "a_mvreporttrnsctyr.html"
 });
 // ---------- CHARTS ---------- 
 

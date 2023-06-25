@@ -4,7 +4,7 @@ bcklic.addEventListener('click' , () => {
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import { getFirestore, getDocs, collection } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
-
+ 
 // Your web app's Firebase configuration
 const firebaseConfig = { 
     apiKey: "AIzaSyCyNToos3S0HwLl0cZMRdiVjFJcBb4FWFo",

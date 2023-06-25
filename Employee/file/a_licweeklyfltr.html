@@ -99,7 +99,6 @@
       </aside>
       <!-- End Sidebar -->
 
-      <!-- Main -->
       <main class="main-container">
         <div class="main-title">
           <p class="font-weight-bold">DASHBOARD</p>
@@ -115,27 +114,28 @@
               <option value="a_licdashboard.html" selected>LICENSE</option>
               <option value="a_mvdashboard.html">MOTOR VEHICLE</option>
             </select> 
-
-            <select id="update_dash" onchange="user(this.value)">
+ 
+            <select id="update_dash" onchange="user(this.value)"> 
               <option value="a_licdashboard.html" >Daily</option>
               <option value="a_licweeklyfltr.html" selected>weekly</option>
               <option value="a_licmonthfilter.html" >monthly</option>
               <option value="a_licyearlyfltr.html" >yearly</option>
             </select>
+            <button id="btnReportFR">FINANCIAL REPORT</button> 
+            <button id="btnReporttransct">REPORT</button>  
 
-            <button id="btnReport">REPORT</button>
-            
           </div>
 
-        </div>
+        </div> 
 
-        <div class="main_charts">
+        <div class="main_charts"> 
 
           <div class="charts-card g1">
             <p class="chart-title">TRANSACTION</p>
             <p class="currntRel">Total<em>(current)</em></p>
             <p id="lic_transac" class="total_nm"></p>
             <div id="bar-chart-main"></div> 
+            <p style="text-align: right; font-size: 14px; color: rgba(0, 0, 0, 0.897); cursor: pointer;" onclick="vwmr_trnsct()">view more -></p>
           </div>
 
         </div>
@@ -146,9 +146,14 @@
             <p class="chart-title">AGE</p>
             <p class="currntRel">Total<em>(current)</em></p>
             <p id="age_transac" class="total_nm"></p>
-            <div id="bar-chart-age"></div> 
+            <div id="bar-chart-age"></div>
+            <p style="text-align: right; font-size: 14px; color: rgba(0, 0, 0, 0.897); cursor: pointer;" onclick="vwmr_age()">view more -></p>
           </div>
 
+        </div>
+
+        <div class="dropdown-user">
+          <button id="btnReport">REPORT</button>
         </div>
 
         <div class="charts1">
@@ -185,7 +190,7 @@
 
     </div>
  
-    <!-- Scripts --> 
+    <!-- Scripts -->  
     <!-- ApexCharts -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <!-- Custom JS -->
@@ -193,5 +198,13 @@
     <script type="module" src="../src/a_licweeklyfltr.js"></script>  
     <!-- <script src="../src/a_licdashboardfilter.js"></script> -->
     <script type="module" src="../src/a_logout.js"></script>
+    <script>
+      function vwmr_trnsct(){
+        window.location = "a_licdbweekly.html"
+      }
+      function vwmr_age(){
+        window.location = "a_licdbageweekly.html"
+      }
+    </script>
   </body>
 </html> 

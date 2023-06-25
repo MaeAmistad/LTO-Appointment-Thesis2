@@ -4,6 +4,9 @@ bcklic.addEventListener('click' , () => {
 btnReportYM.addEventListener('click',() =>{ 
   window.location = "a_mvymreportdaily.html"
 });
+btnReportFR.addEventListener('click',() =>{ 
+  window.location = "a_mvFinancialrdaily.html"
+});
 btnReporttransct.addEventListener('click',() =>{ 
   window.location = "a_mvreporttrnsctdaily.html"
 });
@@ -90,7 +93,7 @@ let car = 0;
 let uv = 0;
 let suv = 0;
 let bus = 0;
-let trucks = 0;
+let trucks = 0; 
 let mvlst_all = 0;
 
 const mv_bc = await getDocs(collection(db, "Motor Vehicle"));

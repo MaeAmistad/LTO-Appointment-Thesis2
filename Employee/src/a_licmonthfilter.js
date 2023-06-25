@@ -1,15 +1,21 @@
 bcklic.addEventListener('click' , () => {
   window.location = "a_dashboard.html"
 })
-btnReport.addEventListener('click',()=>{
-  window.location = "a_licreport.html"
+btnReporttransct.addEventListener('click',()=>{
+  window.location = "a_licreporttrnsctmnthly.html" 
 })
+btnReportFR.addEventListener('click',()=>{
+  window.location = "a_licFinancialrmonthly.html" 
+}) 
+btnReport.addEventListener('click',()=>{
+  window.location = "a_licreportmthly.html" 
+}) 
 // ---------- CHARTS ---------- 
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
 import { getFirestore, collection,getDocs } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
 
-// Your web app's Firebase configuration
+// Your web app's Firebase configuration 
 const firebaseConfig = {
     apiKey: "AIzaSyCyNToos3S0HwLl0cZMRdiVjFJcBb4FWFo",
     authDomain: "lto-online-appointment-setter.firebaseapp.com",
@@ -38,7 +44,7 @@ const wrttnlicexam = await getDocs(collection(db, "Written"));
 let wrttn1 = 0;
 let wrttn2 = 0;
 let wrttn_all = 0;
-wrttnlicexam.forEach((doc) => {
+wrttnlicexam.forEach((doc) => { 
 
   // getting month
   let dd = doc.data().dt_App;

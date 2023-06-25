@@ -1,11 +1,14 @@
 bcklic.addEventListener('click' , () => {
     window.location = "a_dashboard.html"
 })
-btnReport.addEventListener('click',()=>{
-  window.location = "a_mvreportweekly.html" 
-})
 btnReportYM.addEventListener('click',() =>{ 
-  window.location = "a_mvymreportweekly.html"
+  window.location = "a_mvymreportwk.html"
+});
+btnReportFR.addEventListener('click',() =>{ 
+  window.location = "a_mvFinancialrwk.html" 
+});
+btnReporttransct.addEventListener('click',() =>{ 
+  window.location = "a_mvreporttrnsctwk.html"
 });
 // ---------- CHARTS ---------- 
 
@@ -128,7 +131,7 @@ mv_bc.forEach((doc) => {
         car = car+=1
         mvlst_all = mvlst_all+=1
         if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-          c1 = c1+=1;
+          c1 = c1+=1; 
           c_all = c_all+=1;
         } 
         else if (doc.data().refrigerant_type == "R12"){

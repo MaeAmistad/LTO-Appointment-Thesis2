@@ -1,5 +1,5 @@
 bcklic.addEventListener('click' , () => {
-    window.location = "a_licmonthfilter.html"
+    window.location = "a_licyearlyfltr.html"
   })
 //   btnReport.addEventListener('click',()=>{
 //     window.location = "a_licreportdaily.html"

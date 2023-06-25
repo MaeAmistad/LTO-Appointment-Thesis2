@@ -27,11 +27,6 @@ const lic_cnt = await getDocs(collection(db, "License"));
 var currentmonth = new Date().getMonth() + 1;
 if (currentmonth < 10)  currentmonth = "0" + currentmonth;
 
-  // getting month
-  // let dd = doc.data().User_D;
-  // let mmsp = dd.slice(5,7);
-  
-  // mmsp == currentmonth
 
 // SP
 let spn_liccnt = 0;

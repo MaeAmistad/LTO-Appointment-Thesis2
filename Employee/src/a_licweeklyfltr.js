@@ -1,9 +1,15 @@
 bcklic.addEventListener('click' , () => {
     window.location = "a_dashboard.html"
   })
-  btnReport.addEventListener('click',()=>{
-    window.location = "a_licreportwekkly.html" 
+  btnReporttransct.addEventListener('click',()=>{
+    window.location = "a_licreporttrnsctwk.html" 
   })
+  btnReportFR.addEventListener('click',()=>{
+    window.location = "a_licFinancialrwk.html" 
+  }) 
+  btnReport.addEventListener('click',()=>{
+    window.location = "a_licreportwk.html" 
+  }) 
   // ---------- CHARTS ---------- 
   
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
@@ -57,7 +63,6 @@ bcklic.addEventListener('click' , () => {
             let d1 = new Date(start);
             let d2 = new Date(end);
             let today = getDatesInRange(d1, d2);
-            console.log(today)
 
 // Applicants Examined Bar chart
 const wrttnlicexam = await getDocs(collection(db, "Written"));
@@ -65,12 +70,12 @@ let wrttn1 = 0;
 let wrttn2 = 0;
 let wrttn_all = 0;
 wrttnlicexam.forEach((doc) => {
-// Current Count
+// Current Count 
 
     if(today.includes(doc.data().dt_App)){
       if(doc.data().result == "PASSED"){
         wrttn1 = wrttn1+=1;
-        wrttn_all =  wrttn_all+=1
+        wrttn_all =  wrttn_all+=1 
       }
       if(doc.data().result == "FAILED"){
         wrttn2 = wrttn2+=1;

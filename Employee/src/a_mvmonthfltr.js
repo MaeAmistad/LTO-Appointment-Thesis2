@@ -1,11 +1,14 @@
 bcklic.addEventListener('click' , () => {
     window.location = "a_dashboard.html"
 })
-btnReport.addEventListener('click',()=>{ 
-  window.location = "a_mvreport.html"
-})
 btnReportYM.addEventListener('click',() =>{ 
-  window.location = "a_mvymreport.html"
+  window.location = "a_mvymreportmnth.html"
+});
+btnReportFR.addEventListener('click',() =>{ 
+  window.location = "a_licFinancialrmonthly.html" 
+});
+btnReporttransct.addEventListener('click',() =>{ 
+  window.location = "a_mvreporttrnsctmnth.html"
 });
 // ---------- CHARTS ---------- 
 
@@ -95,7 +98,7 @@ mv_bc.forEach((doc) => {
 let dd = doc.data().dt_App;
 let mmsp = dd.slice(5,7);
 
-mmsp == currentmonth
+mmsp == currentmonth 
   // CAR
   if(mmsp == currentmonth){
 

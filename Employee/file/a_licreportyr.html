@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>LTO Appointment Setter</title>
+
+    <!-- Montserrat Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8ec04d5e4f.js" crossorigin="anonymous"></script>
+    <!-- Excel/PDF JS -->
+    <script src="../src/table2excel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js" integrity="sha512-YcsIPGdhPK4P/uRW6/sruonlYj+Q7UHWeKfTAkBW+g83NKM+jMJFJ4iAPfSnVp7BKD4dKMHmVSvICUbE/V1sSw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../style/a_report.css">
+  </head>
+  <body>
+    <div class="grid-container">
+
+      <!-- Header -->
+      <header class="header">
+        <div class="menu-icon" onclick="openSidebar()">
+          <span class="material-icons-outlined">menu</span>
+        </div>
+        <div class="header-left">
+          <span class="material-icons-outlined">search</span> 
+        </div>
+        <div class="header-right">
+          <!-- <span class="material-icons-outlined">email</span> -->
+        </div> 
+      </header>
+      <!-- End Header -->
+
+      <!-- Sidebar -->
+      <aside id="sidebar">
+        <div class="sidebar-title">
+          <!-- <div class="sidebar-brand">LTO Dashboard</div> -->
+          <img src="../img/Land_Transportation_Office.svg.png">
+          <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+        </div>
+
+         
+        <ul class="sidebar-list"> 
+
+          <a href="a_dashboard.html">
+            <li class="sidebar-list-item">
+               Dashboard
+            </li>
+          </a> 
+
+          <a href="a_accMan.html">         
+            <li class="sidebar-list-item">
+                Account Management
+            </li>
+          </a>
+
+          <a href="a_appList.html">
+            <li class="sidebar-list-item">
+              List of Appointments
+            </li>
+          </a>
+
+          <li class="sidebar-list-item1">
+            <button class="dropdown-btn">Transactions<i class="fa fa-caret-down"></i></button>
+
+            <div class="dropdown-container">
+
+              <a href="a_pcLIApprved.html">
+                <div class="con-lic">
+                  License <br><br>
+                </div>
+                </a>
+  
+                <a href="a_pcmvApprved.html">
+                <div class="con-mv">
+                  Motor Vehicle<br><br>
+                </div>
+                </a>
+
+            </div>
+
+          </li>
+
+            <a href="a_reqView.html">
+              <li class="sidebar-list-item">
+                List Of Requirements
+              </li>     
+            </a>
+
+            <a id="logout">
+              <li class="sidebar-list-item">
+                Log-Out
+              </li>               
+            </a>  
+
+
+          </ul>
+      </aside>
+      <!-- End Sidebar -->
+
+      <!-- Main -->
+      <main class="main-container">
+        <div class="main-title">
+          <p class="font-weight-bold">YEARLY REPORT</p>
+        </div>
+     
+          <div class="dropdown-user">
+            <button id="bcklic">BACK</button>
+            <button id="sav_excl">SAVE TO EXCEL</button>
+            <button id="sav_pdf">SAVE TO PDF</button>
+          </div>
+
+
+          <!-- Table -->
+          <table id="table" class="tablemv">
+            <thead>
+              <tr class="hdr">
+                <th rowspan="3">TYPES OF DRIVER'S LICENSE AND PERMITS TRANSACTIONS</th>
+                <th colspan="6">APPLICANTS EXAMINED</th>
+                <th colspan="9">DRIVER'S LICENSE & PERMIT ISSUED</th>                
+                <th rowspan="3">MISC TXN</th>
+                <th rowspan="3">DL's & PERMITS CASES HANDLED</th>
+              </tr>
+              <tr class="hdr">
+                <th colspan="3">WRITTEN</th>
+                <th colspan="3">PRACTICAL</th>
+                <th colspan="3">NEW</th>
+                <th colspan="3">RENEWAL</th>
+                <th colspan="3">TOTAL</th>
+              </tr>
+              <tr class="hdr">
+                <th>PASSED</th>
+                <th>FAILED</th>
+                <th>TOTAL</th>
+                <th>PASSED</th>
+                <th>FAILED</th>
+                <th>TOTAL</th>
+                <th>MALE</th>
+                <th>FEMALE</th>
+                <th>TOTAL</th> 
+                <th>MALE</th>
+                <th>FEMALE</th>
+                <th>TOTAL</th>
+                <th>MALE</th>
+                <th>FEMALE</th>
+                <th>TOTAL</th>
+              </tr>
+              <tr class="hdr">
+                <th>(1)</th>
+                <th>(2.1)</th>
+                <th>(2.2)</th>
+                <th>(2.3)</th>
+                <th>(3.1)</th>
+                <th>(3.2)</th>
+                <th>(3.3)</th>
+                <th>(4.1)</th>
+                <th>(4.2)</th>
+                <th>(4.3)</th>
+                <th>(5.1)</th>
+                <th>(5.2)</th>
+                <th>(5.3)</th>
+                <th>(6.1)</th>
+                <th>(6.2)</th>
+                <th>(6.3)</th>
+                <th>(7)</th>
+                <th>(8)</th>
+              </tr> 
+            </thead>
+            <tbody>
+              <tr>
+                <th>I. STUDENT PERMIT</th>
+                <td id="sp_awp" style="background-color: #cccccc;"></td>
+                <td id="sp_awf" style="background-color: #cccccc;"></td> 
+                <td id="sp_awt" style="background-color: #cccccc;"></td>
+                <td id="sp_app" style="background-color: #cccccc;"></td>
+                <td id="sp_apf" style="background-color: #cccccc;"></td>
+                <td id="sp_apt" style="background-color: #cccccc;"></td>
+                <td id="sp_dnm"></td>
+                <td id="sp_dnf"></td>
+                <td id="sp_dnt"></td>
+                <td id="sp_drm"></td>
+                <td id="sp_drf"></td>
+                <td id="sp_drt"></td>
+                <td id="sp_dtm"></td>
+                <td id="sp_dtf"></td>
+                <td id="sp_dtt"></td>
+                <td id="sp_misc"></td>
+                <td id="sp_dpch"></td>
+              </tr>
+              <tr>
+                <th>II. CONDUCTOR'S LICENSE</th>
+                <td id="cl_awp"></td>
+                <td id="cl_awf"></td>
+                <td id="cl_awt"></td>
+                <td id="cl_app" style="background-color: #cccccc;"></td>
+                <td id="cl_apf" style="background-color: #cccccc;"></td>
+                <td id="cl_apt" style="background-color: #cccccc;"></td>
+                <td id="cl_dnm"></td>
+                <td id="cl_dnf"></td>
+                <td id="cl_dnt"></td>
+                <td id="cl_drm"></td>
+                <td id="cl_drf"></td>
+                <td id="cl_drt"></td>
+                <td id="cl_dtm"></td>
+                <td id="cl_dtf"></td>
+                <td id="cl_dtt"></td>
+                <td id="cl_misc"></td>
+                <td id="cl_dpch"></td>
+              </tr>
+              <tr>
+                <th>III. DRIVER'S LICENSE</th>
+                <td id="dl_awp"></td>
+                <td id="dl_awf"></td>
+                <td id="dl_awt"></td>
+                <td id="dl_app"></td>
+                <td id="dl_apf"></td>
+                <td id="dl_apt"></td>
+                <td id="dl_dnm"></td>
+                <td id="dl_dnf"></td>
+                <td id="dl_dnt"></td>
+                <td id="dl_drm"></td>
+                <td id="dl_drf"></td>
+                <td id="dl_drt"></td>
+                <td id="dl_dtm"></td>
+                <td id="dl_dtf"></td>
+                <td id="dl_dtt"></td>
+                <td id="dl_misc"></td>
+                <td id="dl_dpch"></td>
+              </tr>
+              <tr>
+                <th style="background-color: #808080; color: white;">A. NEW FROM:</th>
+                <td id="nf_awp" style="background-color: #808080; color: white;"></td>
+                <td id="nf_awf" style="background-color: #808080; color: white;"></td>
+                <td id="nf_awt" style="background-color: #808080; color: white;"></td>
+                <td id="nf_app" style="background-color: #808080; color: white;"></td>
+                <td id="nf_apf" style="background-color: #808080; color: white;"></td>
+                <td id="nf_apt" style="background-color: #808080; color: white;"></td>
+                <td id="nf_dnm" style="background-color: #808080; color: white;"></td>
+                <td id="nf_dnf" style="background-color: #808080; color: white;"></td>
+                <td id="nf_dnt" style="background-color: #808080; color: white;"></td>
+                <td style="background-color: #808080;"></td>
+                <td style="background-color: #808080;"></td>
+                <td style="background-color: #808080;"></td>
+                <td id="nf_dtm" style="background-color: #808080; color: white;"></td>
+                <td id="nf_dtf" style="background-color: #808080; color: white;"></td>
+                <td id="nf_dtt" style="background-color: #808080; color: white;"></td>
+                <td id="nf_misc" style="background-color: #808080; color: white;"></td>
+                <td id="nf_dpch" style="background-color: #808080; color: white;"></td>
+              </tr>
+              <tr>
+                <th>1. Student Permit</th>
+                <td id="spdl_awp"></td>
+                <td id="spdl_awf"></td>
+                <td id="spdl_awt"></td>
+                <td id="spdl_app"></td>
+                <td id="spdl_apf"></td>
+                <td id="spdl_apt"></td>
+                <td id="spdl_dnm"></td>
+                <td id="spdl_dnf"></td>
+                <td id="spdl_dnt"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="spdl_dtm"></td>
+                <td id="spdl_dtf"></td>
+                <td id="spdl_dtt"></td>
+                <td id="spdl_misc"></td>
+                <td id="spdl_dpch"></td>
+              </tr>
+              <tr>
+                <th>2. Foreign License</th>
+                <td id="fl_awp"></td>
+                <td id="fl_awf"></td>
+                <td id="fl_awt"></td>
+                <td id="fl_app"></td>
+                <td id="fl_apf"></td>
+                <td id="fl_apt"></td>
+                <td id="fl_dnm"></td>
+                <td id="fl_dnf"></td>
+                <td id="fl_dnt"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="fl_dtm"></td>
+                <td id="fl_dtf"></td>
+                <td id="fl_dtt"></td>
+                <td id="fl_misc"></td>
+                <td id="fl_dpch"></td>
+              </tr>
+              <tr>
+                <th style="background-color: #808080; color: white;">B. RENEWAL</th>
+                <td id="rnwl_awp" style="background-color: #808080; color: white;"></td>
+                <td id="rnwl_awf" style="background-color: #808080; color: white;"></td>
+                <td id="rnwl_awt" style="background-color: #808080; color: white;"></td>
+                <td id="rnwl_app" style="background-color: #808080; color: white;"></td>
+                <td id="rnwl_apf" style="background-color: #808080; color: white;"></td>
+                <td id="rnwl_apt" style="background-color: #808080; color: white;"></td>
+                <td id="" style="background-color: #808080;"></td>
+                <td id="" style="background-color: #808080;"></td>
+                <td id="" style="background-color: #808080;"></td>
+                <td id="rnwl_drm" style="background-color: #808080; color: white;"></td>
+                <td id="rnwl_drf" style="background-color: #808080; color: white;"></td>
+                <td id="rnwl_drt" style="background-color: #808080; color: white;"></td>
+                <td id="rnwl_dtm" style="background-color: #808080; color: white;"></td>
+                <td id="rnwl_dtf" style="background-color: #808080; color: white;"></td>
+                <td id="rnwl_dtt" style="background-color: #808080; color: white;"></td>
+                <td id="rnwl_misc" style="background-color: #808080; color: white;"></td>
+                <td id="rnwl_dpch" style="background-color: #808080; color: white;"></td>
+              </tr>
+              <tr>
+                <th>1. Normal Renewal</th>
+                <td id="nrn_awp"></td>
+                <td id="nrn_awf"></td>
+                <td id="nrn_awt"></td>
+                <td id="nrn_app"></td>
+                <td id="nrn_apf"></td>
+                <td id="nrn_apt"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td id="nrn_drm"></td>
+                <td id="nrn_drf"></td>
+                <td id="nrn_drt"></td>
+                <td id="nrn_dtm"></td>
+                <td id="nrn_dtf"></td>
+                <td id="nrn_dtt"></td>
+                <td id="nrn_misc"></td>
+                <td id="nrn_dpch"></td>
+              </tr>
+              <tr>
+                <th style="background-color: #808080; color: white;">C. MISC DL TRANSACTION</th>
+                <td id="misc_awp" style="background-color: #808080; color: white;"></td>
+                <td id="misc_awf" style="background-color: #808080; color: white;"></td>
+                <td id="misc_awt" style="background-color: #808080; color: white;"></td>
+                <td id="misc_app" style="background-color: #808080; color: white;"></td>
+                <td id="misc_apf" style="background-color: #808080; color: white;"></td>
+                <td id="misc_apt" style="background-color: #808080; color: white;"></td>
+                <td id="misc_dnm" style="background-color: #808080; color: white;"></td>
+                <td id="misc_dnf" style="background-color: #808080; color: white;"></td>
+                <td id="misc_dnt" style="background-color: #808080; color: white;"></td>
+                <td id="misc_drm" style="background-color: #808080; color: white;"></td>
+                <td id="misc_drf" style="background-color: #808080; color: white;"></td>
+                <td id="misc_drt" style="background-color: #808080; color: white;"></td>
+                <td id="misc_dtm" style="background-color: #808080; color: white;"></td>
+                <td id="misc_dtf" style="background-color: #808080; color: white;"></td>
+                <td id="misc_dtt" style="background-color: #808080; color: white;"></td>
+                <td id="misc_mt" style="background-color: #808080; color: white;"></td>
+                <td id="misc_dpch" style="background-color: #808080; color: white;"></td>
+              </tr>
+              <tr>
+                <th>1. Duplicate Trans.</th>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td id="dt_misc"></td>
+                <td id="dt_dpch"></td>
+              </tr>
+              <tr>
+                <th>2. Revision of Records</th>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td id="rr_misc"></td>
+                <td id="rr_dpch"></td>
+              </tr>
+              <tr>
+                <th>3. Add'l. DL Code</th>
+                <td id="adc_awp"></td>
+                <td id="adc_awf"></td>
+                <td id="adc_awt"></td>
+                <td id="adc_app"></td>
+                <td id="adc_apf"></td>
+                <td id="adc_apt"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="" style="background-color: #cccccc;"></td>
+                <td id="adc_misc"></td>
+                <td id="adc_dpch"></td>
+              </tr>
+              <tr>
+                <th>4. Others</th>
+                <td id="othr_awp"></td>
+                <td id="othr_awf"></td>
+                <td id="othr_awt"></td>
+                <td id="othr_app"></td>
+                <td id="othr_apf"></td>
+                <td id="othr_apt"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td style="background-color: #cccccc;"></td>
+                <td id="othr_mt"></td>
+                <td id="othr_dpch"></td>
+              </tr> 
+              <tr>
+                <th id="rw_ottl">TOTAL</th>
+                <td id="ttl_awp"></td>
+                <td id="ttl_awf"></td>
+                <td id="ttl_awt"></td>
+                <td id="ttl_app"></td>
+                <td id="ttl_apf"></td>
+                <td id="ttl_apt"></td>
+                <td id="ttl_dnm"></td>
+                <td id="ttl_dnf"></td>
+                <td id="ttl_dnt"></td>
+                <td id="ttl_drm"></td>
+                <td id="ttl_drf"></td>
+                <td id="ttl_drt"></td>
+                <td id="ttl_dtm"></td>
+                <td id="ttl_dtf"></td>
+                <td id="ttl_dtt"></td>
+                <td id="ttl_misc"></td>
+                <td id="ttl_dpch"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div style="display: none;">
+            <div id="sav_rprt">
+              <img src="../img/Land_Transportation_Office.svg.png" style="margin-top:10px; margin-left:48.5%; width:25px; height:25px;">
+              <p style="text-align: center; font-size: 8px;">Department of Transportation</p>
+              <p style="text-align: center; font-size: 8px; margin-bottom: 20px;">LAND TRANSPORTATION OFFICE<br>San Ildefonso DO</p>
+              <p id="typofrprt" style="text-align: center; font-size: 12px; font-weight:700;">SUMMARY REPORT ON APPLICANTS EXAMINED, DL & PERMITS ISSUED, MISC. DL TRANSACTION 
+                Driver's Permit and Conductor's License</p>
+              <p style="text-align: center; font-size: 14px;" id="datee"></p>
+
+              <table id="table">
+                <thead>
+                  <tr class="hdr">
+                    <th rowspan="3">TYPES OF DRIVER'S LICENSE AND PERMITS TRANSACTIONS</th>
+                    <th colspan="6">APPLICANTS EXAMINED</th>
+                    <th colspan="9">DRIVER'S LICENSE & PERMIT ISSUED</th>                
+                    <th rowspan="3">MISC TXN</th>
+                    <th rowspan="3">DL's & PERMITS CASES HANDLED</th>
+                  </tr>
+                  <tr class="hdr">
+                    <th colspan="3">WRITTEN</th>
+                    <th colspan="3">PRACTICAL</th>
+                    <th colspan="3">NEW</th>
+                    <th colspan="3">RENEWAL</th>
+                    <th colspan="3">TOTAL</th>
+                  </tr>
+                  <tr class="hdr">
+                    <th>PASSED</th>
+                    <th>FAILED</th>
+                    <th>TOTAL</th>
+                    <th>PASSED</th>
+                    <th>FAILED</th>
+                    <th>TOTAL</th>
+                    <th>MALE</th>
+                    <th>FEMALE</th>
+                    <th>TOTAL</th> 
+                    <th>MALE</th>
+                    <th>FEMALE</th>
+                    <th>TOTAL</th>
+                    <th>MALE</th>
+                    <th>FEMALE</th>
+                    <th>TOTAL</th>
+                  </tr>
+                  <tr class="hdr">
+                    <th>(1)</th>
+                    <th>(2.1)</th>
+                    <th>(2.2)</th>
+                    <th>(2.3)</th>
+                    <th>(3.1)</th>
+                    <th>(3.2)</th>
+                    <th>(3.3)</th>
+                    <th>(4.1)</th>
+                    <th>(4.2)</th>
+                    <th>(4.3)</th>
+                    <th>(5.1)</th>
+                    <th>(5.2)</th>
+                    <th>(5.3)</th>
+                    <th>(6.1)</th>
+                    <th>(6.2)</th>
+                    <th>(6.3)</th>
+                    <th>(7)</th>
+                    <th>(8)</th>
+                  </tr> 
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>I. STUDENT PERMIT</th>
+                    <td id="sp_awpd" style="background-color: #cccccc;"></td>
+                    <td id="sp_awfd" style="background-color: #cccccc;"></td> 
+                    <td id="sp_awtd" style="background-color: #cccccc;"></td>
+                    <td id="sp_appd" style="background-color: #cccccc;"></td>
+                    <td id="sp_apfd" style="background-color: #cccccc;"></td>
+                    <td id="sp_aptd" style="background-color: #cccccc;"></td>
+                    <td id="sp_dnmd"></td>
+                    <td id="sp_dnfd"></td>
+                    <td id="sp_dntd"></td>
+                    <td id="sp_drmd"></td>
+                    <td id="sp_drfd"></td>
+                    <td id="sp_drtd"></td>
+                    <td id="sp_dtmd"></td>
+                    <td id="sp_dtfd"></td>
+                    <td id="sp_dttd"></td>
+                    <td id="sp_miscd"></td>
+                    <td id="sp_dpchd"></td>
+                  </tr>
+                  <tr>
+                    <th>II. CONDUCTOR'S LICENSE</th>
+                    <td id="cl_awpd"></td>
+                    <td id="cl_awfd"></td>
+                    <td id="cl_awtd"></td>
+                    <td id="cl_appd" style="background-color: #cccccc;"></td>
+                    <td id="cl_apfd" style="background-color: #cccccc;"></td>
+                    <td id="cl_aptd" style="background-color: #cccccc;"></td>
+                    <td id="cl_dnmd"></td>
+                    <td id="cl_dnfd"></td>
+                    <td id="cl_dntd"></td>
+                    <td id="cl_drmd"></td>
+                    <td id="cl_drfd"></td>
+                    <td id="cl_drtd"></td>
+                    <td id="cl_dtmd"></td>
+                    <td id="cl_dtfd"></td>
+                    <td id="cl_dttd"></td>
+                    <td id="cl_miscd"></td>
+                    <td id="cl_dpchd"></td>
+                  </tr>
+                  <tr>
+                    <th>III. DRIVER'S LICENSE</th>
+                    <td id="dl_awpd"></td>
+                    <td id="dl_awfd"></td>
+                    <td id="dl_awtd"></td>
+                    <td id="dl_appd"></td>
+                    <td id="dl_apfd"></td>
+                    <td id="dl_aptd"></td>
+                    <td id="dl_dnmd"></td>
+                    <td id="dl_dnfd"></td>
+                    <td id="dl_dntd"></td>
+                    <td id="dl_drmd"></td>
+                    <td id="dl_drfd"></td>
+                    <td id="dl_drtd"></td>
+                    <td id="dl_dtmd"></td>
+                    <td id="dl_dtfd"></td>
+                    <td id="dl_dttd"></td>
+                    <td id="dl_miscd"></td>
+                    <td id="dl_dpchd"></td>
+                  </tr>
+                  <tr>
+                    <th style="background-color: #808080; color: white;">A. NEW FROM:</th>
+                    <td id="nf_awpd" style="background-color: #808080; color: white;"></td>
+                    <td id="nf_awfd" style="background-color: #808080; color: white;"></td>
+                    <td id="nf_awtd" style="background-color: #808080; color: white;"></td>
+                    <td id="nf_appd" style="background-color: #808080; color: white;"></td>
+                    <td id="nf_apfd" style="background-color: #808080; color: white;"></td>
+                    <td id="nf_aptd" style="background-color: #808080; color: white;"></td>
+                    <td id="nf_dnmd" style="background-color: #808080; color: white;"></td>
+                    <td id="nf_dnfd" style="background-color: #808080; color: white;"></td>
+                    <td id="nf_dntd" style="background-color: #808080; color: white;"></td>
+                    <td style="background-color: #808080;"></td>
+                    <td style="background-color: #808080;"></td>
+                    <td style="background-color: #808080;"></td>
+                    <td id="nf_dtmd" style="background-color: #808080; color: white;"></td>
+                    <td id="nf_dtfd" style="background-color: #808080; color: white;"></td>
+                    <td id="nf_dttd" style="background-color: #808080; color: white;"></td>
+                    <td id="nf_miscd" style="background-color: #808080; color: white;"></td>
+                    <td id="nf_dpchd" style="background-color: #808080; color: white;"></td>
+                  </tr>
+                  <tr>
+                    <th>1. Student Permit</th>
+                    <td id="spdl_awpd"></td>
+                    <td id="spdl_awfd"></td>
+                    <td id="spdl_awtd"></td>
+                    <td id="spdl_appd"></td>
+                    <td id="spdl_apfd"></td>
+                    <td id="spdl_aptd"></td>
+                    <td id="spdl_dnmd"></td>
+                    <td id="spdl_dnfd"></td>
+                    <td id="spdl_dntd"></td>
+                    <td id="" style="background-color: #cccccc;"></td>
+                    <td id="" style="background-color: #cccccc;"></td>
+                    <td id="" style="background-color: #cccccc;"></td>
+                    <td id="spdl_dtmd"></td>
+                    <td id="spdl_dtfd"></td>
+                    <td id="spdl_dttd"></td>
+                    <td id="spdl_miscd"></td>
+                    <td id="spdl_dpchd"></td>
+                  </tr>
+                  <tr>
+                    <th>2. Foreign License</th>
+                    <td id="fl_awpd"></td>
+                    <td id="fl_awfd"></td>
+                    <td id="fl_awtd"></td>
+                    <td id="fl_appd"></td>
+                    <td id="fl_apfd"></td>
+                    <td id="fl_aptd"></td>
+                    <td id="fl_dnmd"></td>
+                    <td id="fl_dnfd"></td>
+                    <td id="fl_dntd"></td>
+                    <td id="" style="background-color: #cccccc;"></td>
+                    <td id="" style="background-color: #cccccc;"></td>
+                    <td id="" style="background-color: #cccccc;"></td>
+                    <td id="fl_dtmd"></td>
+                    <td id="fl_dtfd"></td>
+                    <td id="fl_dttd"></td>
+                    <td id="fl_miscd"></td>
+                    <td id="fl_dpchd"></td>
+                  </tr>
+                  <tr>
+                    <th style="background-color: #808080; color: white;">B. RENEWAL</th>
+                    <td id="rnwl_awpd" style="background-color: #808080; color: white;"></td>
+                    <td id="rnwl_awfd" style="background-color: #808080; color: white;"></td>
+                    <td id="rnwl_awtd" style="background-color: #808080; color: white;"></td>
+                    <td id="rnwl_appd" style="background-color: #808080; color: white;"></td>
+                    <td id="rnwl_apfd" style="background-color: #808080; color: white;"></td>
+                    <td id="rnwl_aptd" style="background-color: #808080; color: white;"></td>
+                    <td id="" style="background-color: #808080;"></td>
+                    <td id="" style="background-color: #808080;"></td>
+                    <td id="" style="background-color: #808080;"></td>
+                    <td id="rnwl_drmd" style="background-color: #808080; color: white;"></td>
+                    <td id="rnwl_drfd" style="background-color: #808080; color: white;"></td>
+                    <td id="rnwl_drtd" style="background-color: #808080; color: white;"></td>
+                    <td id="rnwl_dtmd" style="background-color: #808080; color: white;"></td>
+                    <td id="rnwl_dtfd" style="background-color: #808080; color: white;"></td>
+                    <td id="rnwl_dttd" style="background-color: #808080; color: white;"></td>
+                    <td id="rnwl_miscd" style="background-color: #808080; color: white;"></td>
+                    <td id="rnwl_dpchd" style="background-color: #808080; color: white;"></td>
+                  </tr>
+                  <tr>
+                    <th>1. Normal Renewal</th>
+                    <td id="nrn_awpd"></td>
+                    <td id="nrn_awfd"></td>
+                    <td id="nrn_awtd"></td>
+                    <td id="nrn_appd"></td>
+                    <td id="nrn_apfd"></td>
+                    <td id="nrn_aptd"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td id="nrn_drmd"></td>
+                    <td id="nrn_drfd"></td>
+                    <td id="nrn_drtd"></td>
+                    <td id="nrn_dtmd"></td>
+                    <td id="nrn_dtfd"></td>
+                    <td id="nrn_dttd"></td>
+                    <td id="nrn_miscd"></td>
+                    <td id="nrn_dpchd"></td>
+                  </tr>
+                  <tr>
+                    <th style="background-color: #808080; color: white;">C. MISC DL TRANSACTION</th>
+                    <td id="misc_awpd" style="background-color: #808080; color: white;"></td>
+                    <td id="misc_awfd" style="background-color: #808080; color: white;"></td>
+                    <td id="misc_awtd" style="background-color: #808080; color: white;"></td>
+                    <td id="misc_appd" style="background-color: #808080; color: white;"></td>
+                    <td id="misc_apfd" style="background-color: #808080; color: white;"></td>
+                    <td id="misc_aptd" style="background-color: #808080; color: white;"></td>
+                    <td id="misc_dnmd" style="background-color: #808080; color: white;"></td>
+                    <td id="misc_dnfd" style="background-color: #808080; color: white;"></td>
+                    <td id="misc_dntd" style="background-color: #808080; color: white;"></td>
+                    <td id="misc_drmd" style="background-color: #808080; color: white;"></td>
+                    <td id="misc_drfd" style="background-color: #808080; color: white;"></td>
+                    <td id="misc_drtd" style="background-color: #808080; color: white;"></td>
+                    <td id="misc_dtmd" style="background-color: #808080; color: white;"></td>
+                    <td id="misc_dtfd" style="background-color: #808080; color: white;"></td>
+                    <td id="misc_dttd" style="background-color: #808080; color: white;"></td>
+                    <td id="misc_mtd" style="background-color: #808080; color: white;"></td>
+                    <td id="misc_dpchd" style="background-color: #808080; color: white;"></td>
+                  </tr>
+                  <tr>
+                    <th>1. Duplicate Trans.</th>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td id="dt_miscd"></td>
+                    <td id="dt_dpchd"></td>
+                  </tr>
+                  <tr>
+                    <th>2. Revision of Records</th>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td id="rr_miscd"></td>
+                    <td id="rr_dpchd"></td>
+                  </tr>
+                  <tr>
+                    <th>3. Add'l. DL Code</th>
+                    <td id="adc_awpd"></td>
+                    <td id="adc_awfd"></td>
+                    <td id="adc_awtd"></td>
+                    <td id="adc_appd"></td>
+                    <td id="adc_apfd"></td>
+                    <td id="adc_aptd"></td>
+                    <td id="" style="background-color: #cccccc;"></td>
+                    <td id="" style="background-color: #cccccc;"></td>
+                    <td id="" style="background-color: #cccccc;"></td>
+                    <td id="" style="background-color: #cccccc;"></td>
+                    <td id="" style="background-color: #cccccc;"></td>
+                    <td id="" style="background-color: #cccccc;"></td>
+                    <td id="" style="background-color: #cccccc;"></td>
+                    <td id="" style="background-color: #cccccc;"></td>
+                    <td id="" style="background-color: #cccccc;"></td>
+                    <td id="adc_miscd"></td>
+                    <td id="adc_dpchd"></td>
+                  </tr>
+                  <tr>
+                    <th>4. Others</th>
+                    <td id="othr_awpd"></td>
+                    <td id="othr_awfd"></td>
+                    <td id="othr_awtd"></td>
+                    <td id="othr_appd"></td>
+                    <td id="othr_apfd"></td>
+                    <td id="othr_aptd"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td style="background-color: #cccccc;"></td>
+                    <td id="othr_mtd"></td>
+                    <td id="othr_dpchd"></td>
+                  </tr> 
+                  <tr>
+                    <th id="rw_ottld">TOTAL</th>
+                    <td id="ttl_awpd"></td>
+                    <td id="ttl_awfd"></td>
+                    <td id="ttl_awtd"></td>
+                    <td id="ttl_appd"></td>
+                    <td id="ttl_apfd"></td>
+                    <td id="ttl_aptd"></td>
+                    <td id="ttl_dnmd"></td>
+                    <td id="ttl_dnfd"></td>
+                    <td id="ttl_dntd"></td>
+                    <td id="ttl_drmd"></td>
+                    <td id="ttl_drfd"></td>
+                    <td id="ttl_drtd"></td>
+                    <td id="ttl_dtmd"></td>
+                    <td id="ttl_dtfd"></td>
+                    <td id="ttl_dttd"></td>
+                    <td id="ttl_miscd"></td>
+                    <td id="ttl_dpchd"></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div style="margin-left: 10%;">
+                <p style="margin-left: 1%; margin-top: 0px; font-size: 14px;">Prepared by:</p>
+                <div style="display: flex;">
+                  <p style="border-bottom: 1px solid black; width: 19%; margin-top: 30px; margin-left: 1%;"></p>
+                  <p style="border-bottom: 1px solid black; width: 19%; margin-top: 30px; margin-left: 50%;"></p>
+                </div>
+                <div style="display: flex;">
+                  <p style="font-size: 12px; margin-left: 1.5%;">(Printed Name & Signature)</p>
+                  <p style="font-size: 12px; margin-left: 51.5%;">(Printed Name & Signature)</p>
+                </div>
+                <div style="display: flex;">
+                  <p style="border-bottom: 1px solid black; width: 19%; margin-top:25px; margin-left: 1%;"></p>
+                  <p style="border-bottom: 1px solid black; width: 19%; margin-top: 25px; margin-left: 50%;"></p>
+                </div>
+                <div style="display: flex;">
+                  <p style="font-size: 12px; margin-left: 7%;">(Position)</p>
+                  <p style="font-size: 12px; margin-left: 64%;">(Position)</p>
+                </div>
+                <p id="dtt" style="margin-left:-80px; font-size: 10px;"></p>
+              </div> 
+
+            </div>
+          </div>
+      </main>
+      <!-- End Main -->
+
+    </div>
+
+    <script src="../src/a_dashboard.js"></script>
+    <script type="module" src="../src/a_licreportyr.js"></script>
+    <script type="module" src="../src/a_logout.js"></script>
+    <script>
+      sav_excl.addEventListener('click',(e) =>{
+        var table2excel = new Table2Excel();
+        table2excel.export(document.querySelectorAll("table"));
+      });
+      sav_pdf.addEventListener('click', (e) => {
+  // PDF
+        var element = document.getElementById('sav_rprt');
+          var opt = {
+          filename:     'LTO_report.pdf',
+          image:        { type: 'jpeg', quality: 0.98 },
+          html2canvas:  { scale: 1 },
+          jsPDF:        { unit: 'in', format: 'letter', orientation: 'landscape' }
+          };
+
+          // New Promise-based usage:
+          html2pdf().set(opt).from(element).save();
+
+          // Old monolithic-style usage:
+          // html2pdf(element, opt);
+      })
+    </script>
+  </body>
+</html> 

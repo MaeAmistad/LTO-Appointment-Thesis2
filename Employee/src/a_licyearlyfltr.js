@@ -1,9 +1,15 @@
 bcklic.addEventListener('click' , () => {
     window.location = "a_dashboard.html"
   })
-  btnReport.addEventListener('click',()=>{
-    window.location = ".html"
+  btnReporttransct.addEventListener('click',()=>{
+    window.location = "a_licreporttrnsctyr.html" 
   })
+  btnReportFR.addEventListener('click',()=>{
+    window.location = "a_licFinancialryr.html" 
+  }) 
+  btnReport.addEventListener('click',()=>{
+    window.location = "a_licreportyr.html" 
+  }) 
   // ---------- CHARTS ---------- 
   
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";

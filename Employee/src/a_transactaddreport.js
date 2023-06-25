@@ -17,7 +17,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig); 
-const db = getFirestore(app);
+const db = getFirestore(app); 
 
 const license = await getDocs(collection(db, "License"));
 const mv = await getDocs(collection(db, "Motor Vehicle"));
@@ -29,7 +29,14 @@ var month = date.getMonth() + 1;
 var year = date.getFullYear();
 if (month < 10) month = "0" + month;
 if (day < 10) day = "0" + day;
-var today = day + " - " + month + " - " + year;       
+var today = day + " - " + month + " - " + year;   
+// TIME TODAY 
+let hrs = date.getHours();
+let mnts = date.getMinutes();
+let time = hrs + ":" + mnts;
+var today2 = month + "/" + day + "/" + year ;
+document.getElementById('datee').innerHTML = "June " + day + " " + year
+document.getElementById('dtt').innerHTML = today2 + " " + time    
 
 let sp1 = 0;
 let dl1 = 0;
@@ -147,7 +154,7 @@ license.forEach(doc =>{
                 lic_ttl3 = lic_ttl3+=1
             }
             else if(doc.data().User_Add == "SAN VICENTE,ILOCOS SUR" || doc.data().User_Add == "SAN VICENTE, ILOCOS SUR"){
-                sp4 = sp4+=1
+                sp4 = sp4+=1 
                 lic_ttl4 = lic_ttl4+=1
             }
             else if(doc.data().User_Add == "STA. CATALINA,ILOCOS SUR" || doc.data().User_Add == "STA. CATALINA, ILOCOS SUR"){

@@ -20,7 +20,7 @@ cnl1.addEventListener('click', () => {
 cnl2.addEventListener('click', () => {
     document.getElementById('inc_modal').style.visibility = "hidden"
     blur.classList.toggle('active')
-});
+}); 
 
 // var tranID = localStorage.getItem("stat");
 // document.getElementById('tranID').innerHTML = tranID;
@@ -253,7 +253,10 @@ querySnapshot2.forEach(doc2 => {
                                             t_app: doc2.data().User_T,
                                             User_GN: doc2.data().User_GN,
                                             User_BD: doc2.data().User_BD,
-                                            User_Add: doc2.data().User_ADD
+                                            User_Add: doc2.data().User_ADD,
+                                            User_CashierName: employees,
+                                            User_CashierDate: today + " , " + time,
+                                            User_TotalPayment: total + ".00"
                                         }).then(() => {
                                             window.location = "ca_homepage.html"
                                         })
@@ -289,7 +292,10 @@ querySnapshot2.forEach(doc2 => {
                                         t_app: doc2.data().User_T,
                                         User_GN: doc2.data().User_GN,
                                         User_BD: doc2.data().User_BD,
-                                        User_Add: doc2.data().User_ADD
+                                        User_Add: doc2.data().User_ADD,
+                                        User_CashierName: employees,
+                                        User_CashierDate: today + " , " + time,
+                                        User_TotalPayment: total + ".00"
                                     }).then(() => {
                                         window.location = "ca_homepage.html"
                                     })
@@ -316,7 +322,10 @@ querySnapshot2.forEach(doc2 => {
                                             t_app: doc2.data().User_T,
                                             User_GN: doc2.data().User_GN,
                                             User_BD: doc2.data().User_BD,
-                                            User_Add: doc2.data().User_ADD
+                                            User_Add: doc2.data().User_ADD,
+                                            User_CashierName: employees,
+                                            User_CashierDate: today + " , " + time,
+                                            User_TotalPayment: total + ".00"
                                         }).then(() => {
                                             window.location = "ca_homepage.html"
                                         })
@@ -338,7 +347,10 @@ querySnapshot2.forEach(doc2 => {
                                             t_app: doc2.data().User_T,
                                             User_GN: doc2.data().User_GN,
                                             User_BD: doc2.data().User_BD,
-                                            User_Add: doc2.data().User_ADD
+                                            User_Add: doc2.data().User_ADD,
+                                            User_CashierName: employees,
+                                            User_CashierDate: today + " , " + time,
+                                            User_TotalPayment: total + ".00"
                                         }).then(() => {
                                             window.location = "ca_homepage.html"
                                         })
@@ -360,7 +372,10 @@ querySnapshot2.forEach(doc2 => {
                                         t_app: doc2.data().User_T,
                                         User_GN: doc2.data().User_GN,
                                         User_BD: doc2.data().User_BD,
-                                        User_Add: doc2.data().User_ADD
+                                        User_Add: doc2.data().User_ADD,
+                                        User_CashierName: employees,
+                                        User_CashierDate: today + " , " + time,
+                                        User_TotalPayment: total + ".00"
                                     }).then(() => {
                                         window.location = "ca_homepage.html"
                                     })
@@ -397,7 +412,10 @@ querySnapshot2.forEach(doc2 => {
                                 dtrgstrd: doc2.data().dtrgstrd,
                                 deptagncy: doc2.data().deptagncy,
                                 User_Add: doc2.data().User_ADD,
-                                classification:doc2.data().classification
+                                classification:doc2.data().classification,
+                                User_CashierName: employees,
+                                User_CashierDate: today + " , " + time,
+                                User_TotalPayment: total + ".00"
                             }).then(() => {
                                 window.location = "ca_homepage.html"
                             })

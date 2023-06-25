@@ -99,71 +99,69 @@
       </aside>
       <!-- End Sidebar -->
 
- <!-- Main -->
- <main class="main-container">
-  <div class="main-title">
-    <p class="font-weight-bold">DASHBOARD</p>
-  </div>
-
-  <div>
-    
-    <div class="dropdown-user">
-      <button id="bcklic">BACK</button>
-      <select id="user" onchange="user(this.value)">
-        <option value="a_licdashboard.html">LICENSE</option>
-        <option value="a_mvdashboard.html" selected>MOTOR VEHICLE</option>
-      </select>
-
-      <select id="update_dash" onchange="user(this.value)">
-        <option value="a_mvdashboard.html" >Daily</option>
-        <option value="a_mvweeklyfltr.html" >weekly</option>
-        <option value="a_mvmonthfltr.html" >monthly</option>
-        <option value="a_mvyearlyfltr.html" selected>yearly</option>
-      </select>
-    </div>
-  </div>
+       <!-- Main -->
+       <main class="main-container">
+        <div class="main-title">
+          <p class="font-weight-bold">DASHBOARD</p>
+        </div>
   
-  <div class="charts-card g2">
-    <p class="chart-title">TRANSACTION</p>
-    <p class="currntRel">Total<em>(current)</em></p>
-    <p id="num_current_mvtransac" class="total_nm"></p>
-    <div id="bar-chart-transac"></div>  
-  </div>
-
-  <div class="charts-card g2">
-    <p class="chart-title">MOTOR VEHICLE</p>
-    <p class="currntRel">Total<em>(current)</em></p>
-    <p id="num_current_mvlst" class="total_nm"></p>
-    <div id="bar-chartmvlst"></div>  
-  </div>
+        <div>
+           
+          <div class="dropdown-user">
+            <button id="bcklic">BACK</button>
+            <select id="user" onchange="user(this.value)">
+              <option value="a_licdashboard.html">LICENSE</option>
+              <option value="a_mvdashboard.html" selected>MOTOR VEHICLE</option>
+            </select>
   
-  <div class="dropdown-user"> 
-    <button id="btnReport">REPORT</button>
-  </div>
-
-    <div class="charts-card g2">
-      <p class="chart-title">MV REFRIGERANT TYPE</p>
-      <p class="currntRel">Total<em>(current)</em></p>
-      <p id="num_current_mvttal" class="total_nm"></p>
-      <div id="bar-chartmv"></div>  
-    </div>
-
-    <div class="dropdown-user">
-      <button id="btnReportYM">REPORT</button>
-    </div>
-    
-
-    <div class="charts-card g2">
-      <p class="chart-title">YEAR MODEL</p>
-      <p class="currntRel">Total<em>(current)</em></p>
-      <p id="num_current_mvymttal" class="total_nm"></p>
-      <div id="bar-chartmvyrmdl"></div> 
-    </div>
-
-
-  </div>
-</main>
-<!-- End Main -->
+            <select id="update_dash" onchange="user(this.value)">
+              <option value="a_mvdashboard.html" >Daily</option>
+              <option value="a_mvweeklyfltr.html" >weekly</option>
+              <option value="a_mvmonthfltr.html" >monthly</option>
+              <option value="a_mvyearlyfltr.html" selected>yearly</option> 
+            </select>
+            <button id="btnReportFR">FINANCIAL REPORT</button> 
+            <button id="btnReporttransct">REPORT</button> 
+          </div>
+        </div>
+        
+        <div class="charts-card g2">
+          <p class="chart-title">TRANSACTION</p>
+          <p class="currntRel">Total<em>(current)</em></p>
+          <p id="num_current_mvtransac" class="total_nm"></p>
+          <div id="bar-chart-transac"></div>  
+        </div>
+  
+        <div class="charts-card g2">
+          <p class="chart-title">MOTOR VEHICLE TYPE</p>
+          <p class="currntRel">Total<em>(current)</em></p>
+          <p id="num_current_mvlst" class="total_nm"></p>
+          <div id="bar-chartmvlst"></div>
+          <p style="text-align: right; font-size: 14px; color: rgba(0, 0, 0, 0.897); cursor: pointer;" onclick="vwmr_mvt()">view more -></p>  
+        </div>
+        
+        <div class="dropdown-user"> 
+          <button id="btnReportYM">REPORT</button>
+        </div>
+  
+          <div class="charts-card g2">
+            <p class="chart-title">MV REFRIGERANT TYPE</p>
+            <p class="currntRel">Total<em>(current)</em></p>
+            <p id="num_current_mvttal" class="total_nm"></p>
+            <div id="bar-chartmv"></div>  
+          </div>
+  
+          <div class="charts-card g2"> 
+            <p class="chart-title">YEAR MODEL</p>
+            <p class="currntRel">Total<em>(current)</em></p>
+            <p id="num_current_mvymttal" class="total_nm"></p>
+            <div id="bar-chartmvyrmdl"></div> 
+          </div>
+  
+  
+        </div>
+      </main>
+      <!-- End Main -->
 
     </div>
 
@@ -174,5 +172,10 @@
     <script src="../src/a_dashboard.js"></script>
     <script type="module" src="../src/a_mvyearlyfltr.js"></script>
     <script type="module" src="../src/a_logout.js"></script>
+    <script>
+      function vwmr_mvt(){
+        window.location = "a_mvtypedashboadyr.html"
+      }
+    </script>
   </body>
 </html> 

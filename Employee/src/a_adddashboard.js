@@ -189,7 +189,7 @@ var barChartOptions = {
     "#4f35a1"
   ],
   plotOptions: {
-    bar: {
+    bar: { 
       distributed: true,
       borderRadius: 4,
       horizontal: false,  

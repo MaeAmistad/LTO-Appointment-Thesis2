@@ -323,7 +323,9 @@ querySnapshot2.forEach(doc2 => {
                                 t_app: doc2.data().User_T,
                                 User_GN: doc2.data().User_GN,
                                 User_BD: doc2.data().User_BD,
-                                User_Add: doc2.data().User_ADD  
+                                User_Add: doc2.data().User_ADD,
+                                User_CashierName: "ADMIN",
+                                User_CashierDate: today + " , " + time  
                             }).then(() => {
                                 window.location = "a_applistca.html"
                             })
@@ -357,7 +359,9 @@ querySnapshot2.forEach(doc2 => {
                             t_app: doc2.data().User_T,
                             User_GN: doc2.data().User_GN,
                             User_BD: doc2.data().User_BD,
-                            User_Add: doc2.data().User_ADD
+                            User_Add: doc2.data().User_ADD,
+                            User_CashierName: "ADMIN",
+                            User_CashierDate: today + " , " + time
                         }).then(() => {
                             window.location = "a_applistca.html"
                         })
@@ -383,7 +387,9 @@ querySnapshot2.forEach(doc2 => {
                                 t_app: doc2.data().User_T,
                                 User_GN: doc2.data().User_GN,
                                 User_BD: doc2.data().User_BD,
-                                User_Add: doc2.data().User_ADD
+                                User_Add: doc2.data().User_ADD,
+                                User_CashierName: "ADMIN",
+                                User_CashierDate: today + " , " + time
                             }).then(() => {
                                 window.location = "a_applistca.html"
                             })
@@ -404,7 +410,9 @@ querySnapshot2.forEach(doc2 => {
                                 t_app: doc2.data().User_T,
                                 User_GN: doc2.data().User_GN,
                                 User_BD: doc2.data().User_BD,
-                                User_Add: doc2.data().User_ADD
+                                User_Add: doc2.data().User_ADD,
+                                User_CashierName: "ADMIN",
+                                User_CashierDate: today + " , " + time
                             }).then(() => {
                                 window.location = "a_applistca.html"
                             })
@@ -425,7 +433,9 @@ querySnapshot2.forEach(doc2 => {
                             t_app: doc2.data().User_T,
                             User_GN: doc2.data().User_GN,
                             User_BD: doc2.data().User_BD,
-                            User_Add: doc2.data().User_ADD
+                            User_Add: doc2.data().User_ADD,
+                            User_CashierName: "ADMIN",
+                            User_CashierDate: today + " , " + time
                         }).then(() => {
                             window.location = "a_applistca.html"
                         })
@@ -460,7 +470,9 @@ querySnapshot2.forEach(doc2 => {
                     dtrgstrd: doc2.data().dtrgstrd,
                     deptagncy: doc2.data().deptagncy,
                     User_Add: doc2.data().User_ADD,
-                    classification:doc2.data().classification
+                    classification:doc2.data().classification,
+                    User_CashierName: "ADMIN",
+                    User_CashierDate: today + " , " + time
                 }).then(() => {
                     window.location = "a_applistca.html"
                 })
