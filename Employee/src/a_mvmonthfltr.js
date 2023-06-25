@@ -5,7 +5,7 @@ btnReportYM.addEventListener('click',() =>{
   window.location = "a_mvymreportmnth.html"
 });
 btnReportFR.addEventListener('click',() =>{ 
-  window.location = "a_licFinancialrmonthly.html" 
+  window.location = "a_mvFinancialrmnth.html" 
 });
 btnReporttransct.addEventListener('click',() =>{ 
   window.location = "a_mvreporttrnsctmnth.html"

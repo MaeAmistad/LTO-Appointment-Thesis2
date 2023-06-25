@@ -128,6 +128,7 @@ querySnapshot2.forEach(doc2 => {
             document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
             document.getElementById("em").innerHTML = doc2.data().User_E;
             document.getElementById("mnn").innerHTML = doc2.data().User_CN;
+            document.getElementById("fees").innerHTML = doc2.data().User_Payment;
 
             // DISPLAY EDIT INFO
             fned.value = doc2.data().User_FN;
@@ -156,6 +157,7 @@ querySnapshot2.forEach(doc2 => {
             document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
             document.getElementById("em").innerHTML = doc2.data().User_E;
             document.getElementById("mnn").innerHTML = doc2.data().User_CN;
+            document.getElementById("fees").innerHTML = doc2.data().User_Payment;
 
             // DISPLAY EDIT INFO
             fned.value = doc2.data().User_FN;
@@ -183,6 +185,7 @@ querySnapshot2.forEach(doc2 => {
             document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
             document.getElementById("em").innerHTML = doc2.data().User_E;
             document.getElementById("mnn").innerHTML = doc2.data().User_CN;
+            document.getElementById("fees").innerHTML = doc2.data().User_Payment;
 
             document.getElementById("plate_num").innerHTML = doc2.data().pltno;
             document.getElementById("typee").innerHTML = doc2.data().typel;

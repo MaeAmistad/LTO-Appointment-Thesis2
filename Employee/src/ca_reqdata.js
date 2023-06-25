@@ -415,7 +415,7 @@ querySnapshot2.forEach(doc2 => {
                                 classification:doc2.data().classification,
                                 User_CashierName: employees,
                                 User_CashierDate: today + " , " + time,
-                                User_TotalPayment: total + ".00"
+                                User_TotalPayment: total + ".00" 
                             }).then(() => {
                                 window.location = "ca_homepage.html"
                             })

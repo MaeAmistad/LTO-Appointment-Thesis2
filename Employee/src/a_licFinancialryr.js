@@ -44,7 +44,10 @@ document.getElementById('dtt').innerHTML = today2 + " " + time
 
   
   let itmNo = 0;
-  
+  let num1 = [];
+let num2 = [];
+let num3 = [];
+let numA = [];
   const querySnapshot2 = await getDocs(collection(db,"License")); 
   querySnapshot2.forEach(doc => { 
   
@@ -73,6 +76,50 @@ document.getElementById('dtt').innerHTML = today2 + " " + time
                   trow.appendChild(td5);
     
                   tbody.appendChild(trow);
+
+                  // FOR GETTING SUM
+    if(doc.data().laa == "STUDENT-DRIVER'S PERMIT"){
+      num1.push(parseInt(doc.data().User_TotalPayment));
+      var numss1 = num1;
+      var nums1 = 0; 
+                  
+      for(var i=0; i < numss1.length; i++){
+          nums1 = parseInt(nums1) + parseInt(numss1[i]);
+      }
+      document.getElementById('spttl').innerHTML = nums1 + ".00"
+    }
+    // DL
+    else if(doc.data().laa == "DRIVER'S LICENSE"){
+      num2.push(parseInt(doc.data().User_TotalPayment));
+      var numss2 = num2;
+      var nums2 = 0; 
+                  
+      for(var i=0; i < numss2.length; i++){
+          nums2 = parseInt(nums2) + parseInt(numss2[i]);
+      }
+      document.getElementById('dlttl').innerHTML = nums2 + ".00"
+    }
+    // CL
+    else if(doc.data().laa == "CONDUCTOR'S LICENSE"){
+      num3.push(parseInt(doc.data().User_TotalPayment));
+      var numss3 = num3;
+      var nums3 = 0; 
+                  
+      for(var i=0; i < numss3.length; i++){
+          nums3 = parseInt(nums3) + parseInt(numss3[i]);
+      }
+      document.getElementById('clttl').innerHTML = nums3 + ".00"
+    }
+
+    numA.push(parseInt(doc.data().User_TotalPayment));
+    var numssA = numA;
+    var numsA = 0; 
+                
+    for(var i=0; i < numssA.length; i++){
+        numsA = parseInt(numsA) + parseInt(numssA[i]);
+    }
+    document.getElementById('ttlall').innerHTML = numsA + ".00"
+
             }
   });
 querySnapshot2.forEach(doc => { 
@@ -102,5 +149,49 @@ querySnapshot2.forEach(doc => {
         trow.appendChild(td5);
   
         tbody1.appendChild(trow);
+
+        // FOR GETTING SUM
+    if(doc.data().laa == "STUDENT-DRIVER'S PERMIT"){
+      num1.push(parseInt(doc.data().User_TotalPayment));
+      var numss1 = num1;
+      var nums1 = 0; 
+                  
+      for(var i=0; i < numss1.length; i++){
+          nums1 = parseInt(nums1) + parseInt(numss1[i]);
+      }
+      document.getElementById('spttld').innerHTML = nums1 + ".00"
+    }
+    // DL
+    else if(doc.data().laa == "DRIVER'S LICENSE"){
+      num2.push(parseInt(doc.data().User_TotalPayment));
+      var numss2 = num2;
+      var nums2 = 0; 
+                  
+      for(var i=0; i < numss2.length; i++){
+          nums2 = parseInt(nums2) + parseInt(numss2[i]);
+      }
+      document.getElementById('dlttld').innerHTML = nums2 + ".00"
+    }
+    // CL
+    else if(doc.data().laa == "CONDUCTOR'S LICENSE"){
+      num3.push(parseInt(doc.data().User_TotalPayment));
+      var numss3 = num3;
+      var nums3 = 0; 
+                  
+      for(var i=0; i < numss3.length; i++){
+          nums3 = parseInt(nums3) + parseInt(numss3[i]);
+      }
+      document.getElementById('clttld').innerHTML = nums3 + ".00"
+    }
+
+    numA.push(parseInt(doc.data().User_TotalPayment));
+    var numssA = numA;
+    var numsA = 0; 
+                
+    for(var i=0; i < numssA.length; i++){
+        numsA = parseInt(numsA) + parseInt(numssA[i]);
+    }
+    document.getElementById('ttlalld').innerHTML = numsA + ".00"
+    
   }
   });
