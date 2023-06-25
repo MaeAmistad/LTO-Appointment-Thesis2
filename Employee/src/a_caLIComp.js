@@ -41,19 +41,27 @@ const db = getFirestore(app);
                     let td2 = document.createElement('td');
                     let td3 = document.createElement('td'); 
                     let td4 = document.createElement('td'); 
+                    let td5 = document.createElement('td'); 
+                    let td6 = document.createElement('td'); 
+                    let td7 = document.createElement('td');
 
                     t_ID.innerHTML = doc2.data().User_TransID; 
                     td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
                     td2.innerHTML = doc2.data().User_TT;
                     td3.innerHTML = doc2.data().User_D;
                     td4.innerHTML = doc2.data().User_T;
-                    
+                    td5.innerHTML = doc2.data().User_TotalPayment;
+                    td6.innerHTML = doc2.data().User_CashierName;
+                    td7.innerHTML = doc2.data().User_CashierDate;
 
                     trow.appendChild(t_ID);
                     trow.appendChild(td1); 
                     trow.appendChild(td2);
                     trow.appendChild(td3);
                     trow.appendChild(td4);
+                    trow.appendChild(td5);
+                    trow.appendChild(td6);
+                    trow.appendChild(td7);
 
                     tbody.appendChild(trow);
 
@@ -82,12 +90,18 @@ const db = getFirestore(app);
                     let td2 = document.createElement('td');
                     let td3 = document.createElement('td'); 
                     let td4 = document.createElement('td'); 
+                    let td5 = document.createElement('td');
+                    let td6 = document.createElement('td');
+                    let td7 = document.createElement('td');
 
                     t_ID.innerHTML = doc2.data().User_TransID; 
                     td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
                     td2.innerHTML = doc2.data().User_TT;
                     td3.innerHTML = doc2.data().User_D;
                     td4.innerHTML = doc2.data().User_T;
+                    td5.innerHTML = doc2.data().User_TotalPayment;
+                    td6.innerHTML = doc2.data().User_CashierName;
+                    td7.innerHTML = doc2.data().User_CashierDate;
                     
 
                     trow.appendChild(t_ID);
@@ -95,6 +109,9 @@ const db = getFirestore(app);
                     trow.appendChild(td2);
                     trow.appendChild(td3);
                     trow.appendChild(td4);
+                    trow.appendChild(td5);
+                    trow.appendChild(td6);
+                    trow.appendChild(td7);
 
                     tbody.appendChild(trow);        
                     

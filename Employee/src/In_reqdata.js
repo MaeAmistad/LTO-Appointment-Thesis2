@@ -13,6 +13,7 @@ bck.addEventListener('click', () => {
   localStorage.removeItem("ui11");
   localStorage.removeItem("ui12");
   localStorage.removeItem("ui13");
+  LocatStorage.removeItem("mvuc");
 });
 
 // BLUR BG
@@ -176,6 +177,18 @@ apprd.addEventListener('click', () => {
       }
     })
   }
+  else if (localStorage.getItem("mvuc") == null) {
+    Swal.fire({
+      title: "MVUC is Empty!",
+      confirmButtonColor: '#132aaa',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      }
+    })
+  }
   else {
     document.getElementById('cnfrm_modal').style.visibility = "visible";
     document.getElementById('cnfrm_modal2').style.visibility = "hidden";
@@ -238,10 +251,11 @@ add.addEventListener('click', () => {
   let dtrgstrd = document.getElementById("dtrgstrd").value.toUpperCase();
   let deptagncy = document.getElementById("deptagncy").value.toUpperCase();
   let classfctn = document.getElementById('clssfctn').value.toUpperCase();
+  let mvuc = document.getElementById('mvWeight').value;
 
-  if (pltno == "" && type == "" && mksrs == "" && mtrno == "" && yr_mdl == "" && refrigernt_typ == "SELECT:" && chassno == "" && color == "" && fuel == "" && fileno == "" && dtrgstrd == "" && classfctn == "") {
+  if (pltno == "" && type == "" && mksrs == "" && mtrno == "" && yr_mdl == "" && refrigernt_typ == "SELECT:" && chassno == "" && color == "" && fuel == "" && fileno == "" && dtrgstrd == "" && classfctn == "" && mvuc == "") {
     Swal.fire({
-      title: "Field is Empty",
+      title: "Fields are Empty",
       confirmButtonColor: '#132aaa',
       showClass: {
         popup: 'animate__animated animate__fadeInDown'
@@ -395,6 +409,18 @@ add.addEventListener('click', () => {
       }
     })
   }
+  else if (mvuc == "") {
+    Swal.fire({
+      title: "MVUC is Empty",
+      confirmButtonColor: '#132aaa',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      }
+    })
+  }
   else {
     localStorage.setItem("ui1", pltno);
     localStorage.setItem("ui2", type);
@@ -409,6 +435,7 @@ add.addEventListener('click', () => {
     localStorage.setItem("ui12", refrigernt_typ);
     localStorage.setItem("ui13", yr_mdl);
     localStorage.setItem("ui14", classfctn);
+    localStorage.setItem("mvuc", mvuc);
 
     window.location = "In_reqdata.html"
   }
@@ -480,10 +507,10 @@ querySnapshot2.forEach(doc2 => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       console.log(user.uid)
-      onSnapshot(doc(db, "Users", "Employee", "EmployeeData", user.uid), (doc) => {
+      onSnapshot(doc(db, "Users", "Employee", "EmployeeData", user.uid), (doc1) => {
         // console.log(doc.data())
 
-        var employees = doc.data().user_LN + ", " + doc.data().user_FN + " " + doc.data().user_MN;
+        var employees = doc1.data().user_LN + ", " + doc1.data().user_FN + " " + doc1.data().user_MN;
 
         cnfrm.addEventListener('click', (e) => {
           const updateStat = doc(db, "Applicants", doc2.id)
@@ -508,6 +535,7 @@ querySnapshot2.forEach(doc2 => {
               refrigerant_typ: localStorage.getItem("ui12"),
               yr_modell: localStorage.getItem("ui13"),
               classification: localStorage.getItem("ui14"),
+              User_Payment: localStorage.getItem("mvuc"),
               User_InspectorName: employees,
               User_InspectorDate: today + " , " + time
             }).then(() => {
@@ -524,6 +552,7 @@ querySnapshot2.forEach(doc2 => {
               localStorage.removeItem("ui12");
               localStorage.removeItem("ui13");
               localStorage.removeItem("ui14");
+              localStorage.removeItem("mvuc");
 
               window.location = "In_homepage.html"
             })
@@ -555,6 +584,7 @@ querySnapshot2.forEach(doc2 => {
               localStorage.removeItem("ui12");
               localStorage.removeItem("ui13");
               localStorage.removeItem("ui14");
+              localStorage.removeItem("mvuc")
 
               window.location = "In_homepage.html"
             })
@@ -573,7 +603,7 @@ querySnapshot2.forEach(doc2 => {
   document.getElementById('mv-table').style.display = "none";
   document.getElementById('mvtitle').style.display = "none";
 
-  if (localStorage.getItem("ui1") !== null && localStorage.getItem("ui2") !== null && localStorage.getItem("ui12") !== null && localStorage.getItem("ui3") !== null && localStorage.getItem("ui4") !== null && localStorage.getItem("ui5") !== null && localStorage.getItem("ui6") !== null && localStorage.getItem("ui7") !== null && localStorage.getItem("ui8") !== null && localStorage.getItem("ui9") !== null && localStorage.getItem("ui11") !== null) {
+  if (localStorage.getItem("ui1") !== null && localStorage.getItem("ui2") !== null && localStorage.getItem("ui12") !== null && localStorage.getItem("ui3") !== null && localStorage.getItem("ui4") !== null && localStorage.getItem("ui5") !== null && localStorage.getItem("ui6") !== null && localStorage.getItem("ui7") !== null && localStorage.getItem("ui8") !== null && localStorage.getItem("ui9") !== null && localStorage.getItem("ui11") !== null && localStorage.getItem("mvuc") !== null) {
     document.getElementById("plate_num").innerHTML = localStorage.getItem("ui1");
     document.getElementById("typee").innerHTML = localStorage.getItem("ui2");
     document.getElementById("reftypee").innerHTML = localStorage.getItem("ui12");
@@ -587,6 +617,7 @@ querySnapshot2.forEach(doc2 => {
     document.getElementById("dt_reg").innerHTML = localStorage.getItem("ui9");
     document.getElementById("deptAgncy").innerHTML = localStorage.getItem("ui11");
     document.getElementById("transctionmv").innerHTML = doc2.data().User_AT;
+    document.getElementById("mvuc").innerHTML = localStorage.getItem("mvuc");
 
     document.getElementById("pltno").value = localStorage.getItem("ui1");
     document.getElementById("type").value = localStorage.getItem("ui2");
@@ -600,6 +631,7 @@ querySnapshot2.forEach(doc2 => {
     document.getElementById("fileno").value = localStorage.getItem("ui8");
     document.getElementById("dtrgstrd").value = localStorage.getItem("ui9");
     document.getElementById("deptagncy").value = localStorage.getItem("ui11");
+    document.getElementById("mvuc").value = localStorage.getItem("mvuc");
 
     document.getElementById('mv-table').style.display = "block";
     document.getElementById('mvtitle').style.display = "block";

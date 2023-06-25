@@ -40,12 +40,16 @@ const db = getFirestore(app);
                     let td2 = document.createElement('td');
                     let td3 = document.createElement('td'); 
                     let td4 = document.createElement('td'); 
+                    let td5 = document.createElement('td');
+                    let td6 = document.createElement('td');
 
                     t_ID.innerHTML = doc2.data().User_AppID; 
                     td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
                     td2.innerHTML = doc2.data().User_TT;
                     td3.innerHTML = doc2.data().User_D;
                     td4.innerHTML = doc2.data().User_T;
+                    td5.innerHTML = doc2.data().User_EvaluatorName;
+                    td6.innerHTML = doc2.data().User_EvaluatorDate;
                     
 
                     trow.appendChild(t_ID);
@@ -53,6 +57,8 @@ const db = getFirestore(app);
                     trow.appendChild(td2);
                     trow.appendChild(td3);
                     trow.appendChild(td4);
+                    trow.appendChild(td5);
+                    trow.appendChild(td6);
 
                     tbody.appendChild(trow);
 
@@ -82,12 +88,16 @@ const db = getFirestore(app);
                     let td2 = document.createElement('td');
                     let td3 = document.createElement('td'); 
                     let td4 = document.createElement('td'); 
+                    let td5 = document.createElement('td');
+                    let td6 = document.createElement('td');
 
                     t_ID.innerHTML = doc2.data().User_AppID; 
                     td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
                     td2.innerHTML = doc2.data().User_TT;
                     td3.innerHTML = doc2.data().User_D;
                     td4.innerHTML = doc2.data().User_T;
+                    td5.innerHTML = doc2.data().User_EvaluatorName;
+                    td6.innerHTML = doc2.data().User_EvaluatorDate;
                     
 
                     trow.appendChild(t_ID);
@@ -95,6 +105,8 @@ const db = getFirestore(app);
                     trow.appendChild(td2);
                     trow.appendChild(td3);
                     trow.appendChild(td4);
+                    trow.appendChild(td5);
+                    trow.appendChild(td6);
 
                     tbody.appendChild(trow);
 
