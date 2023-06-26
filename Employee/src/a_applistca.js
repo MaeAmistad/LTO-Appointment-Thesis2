@@ -11,7 +11,7 @@ const firebaseConfig = {
     appId: "1:382579903791:web:5d98bbe4ea8b38a43065da"
 };
 
-// Initialize Firebase
+// Initialize Firebase 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app); 
 
@@ -58,7 +58,7 @@ var changeDate = localStorage.getItem('chngeDtApplstca')
 
         if(localStorage.getItem("chngeDtApplstca") == null){
             if(today == dtcon){
-                if (doc2.data().User_Stat == "APPROVED_TO_CASHIER" || doc2.data().User_Stat == "PASSED"){
+                if (doc2.data().User_Stat == "APPROVED_TO_CASHIER"){
                 t_ID.innerHTML = doc2.data().User_TransID; 
                 td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
                 td5.innerHTML = doc2.data().User_TT;
@@ -95,7 +95,7 @@ var changeDate = localStorage.getItem('chngeDtApplstca')
         }
         else{
             if (changeDate == dtcon){
-                if (doc2.data().User_Stat == "APPROVED_TO_CASHIER" || doc2.data().User_Stat == "PASSED"){
+                if (doc2.data().User_Stat == "APPROVED_TO_CASHIER"){
     
                     t_ID.innerHTML = doc2.data().User_TransID; 
                     td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;

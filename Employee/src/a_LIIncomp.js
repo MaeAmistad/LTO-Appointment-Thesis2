@@ -32,7 +32,7 @@ const db = getFirestore(app);
 
       querySnapshot2.forEach(doc2 => {
 //  
-        if(doc2.data().User_Stat == "DECLINED" && doc2.data().User_TT == "LICENSING"){ 
+        if(doc2.data().User_Stat2 == "DECLINED" && doc2.data().User_TT == "LICENSING"){ 
 
                 if (doc2.data().User_AT == "REVISION OF RECORDS"){
                     let trow = document.createElement('tr'); 
@@ -107,7 +107,7 @@ const db = getFirestore(app);
                     trow.appendChild(td3);
                     trow.appendChild(td4);
                     trow.appendChild(td5);
-                    trow.appendChild(td7);
+                    trow.appendChild(td6);
 
                     tbody.appendChild(trow);
 

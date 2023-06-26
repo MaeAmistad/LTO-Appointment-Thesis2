@@ -12,7 +12,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig); 
 const db = getFirestore(app); 
 
 var tbody = document.getElementById('tbody1');
@@ -35,7 +35,7 @@ var year = date.getFullYear();
 if (month < 10) month = "0" + month;
 if (day < 10) day = "0" + day;
 var today = year + "-" + month + "-" + day ;
-
+var today2 = day + " - " + month + " - " + year ;
 document.getElementById("dte").value = localStorage.getItem('chngeDtEv');
 
 var changeDate = localStorage.getItem('chngeDtEv')
@@ -53,6 +53,13 @@ var ddsp = dd.slice(0,2);
 var mmsp = dd.slice(5,7);
 var yysp = dd.slice(10,14);
 var dtcon = yysp + "-" + mmsp + "-" + ddsp; 
+
+    // TIME TODAY 
+    let hrs = date.getHours();
+    let mnts = date.getMinutes();
+    let time = hrs + ":" + mnts;
+
+    console.log(hrs)
    
 // CREATE NEW ELEMENT FOR NEW DATA
 let trow = document.createElement('tr'); 
@@ -174,9 +181,20 @@ else{
             trow.style.color = "black";
             })
             trow.addEventListener('mouseleave',function(){
-            trow.style.backgroundColor = "";
+            trow.style.backgroundColor = ""; 
             trow.style.color = "";
             })
+            
+            // if(hrs > 17){
+            //     const updateStat = doc(db, "Applicants", doc2.id)
+            //     updateDoc(updateStat, {
+            //         // User_Stat2: "APPROVED_TO_CASHIER",
+            //         User_Stat: "MISSED",
+            //     }).then(() => {
+            //         console.log("Updated!")
+            //     })
+            // }
+
         }
     }
     if (doc2.data().User_Stat == "APPROVED_TO_PROCEED"){
@@ -212,6 +230,7 @@ else{
         })
     }
 }
+
 }
 
 
@@ -243,8 +262,8 @@ querySnapshot2.forEach(doc3 => {
     // let time1 = current.getTime();
     // let time2 = past.getTime();
 
-    console.log("today: " + today)
-    console.log("past: " + appointmentDate)
+    // console.log("today: " + today)
+    // console.log("past: " + appointmentDate)
 
     console.log(appointmentDate < today);
     const updateStat = doc(db, "Applicants", doc3.id)

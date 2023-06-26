@@ -78,7 +78,7 @@ if (doc.data().User_D == today){
   }
   }
 
-  if(doc.data().User_Stat == "APPROVED_TO_CASHIER" || doc.data().User_Stat == "PASSED"){
+  if(doc.data().User_Stat == "APPROVED_TO_CASHIER"){
     var total = totlC+=1;
     document.getElementById("cshr").innerHTML = total; 
 }

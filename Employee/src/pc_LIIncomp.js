@@ -8,7 +8,7 @@ comp_btn.addEventListener('click',(e) => {
 
 incomp_btn.addEventListener('click',(e) => {
     window.location = "pc_LIIncomp.html";
-});
+}); 
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import { getFirestore, getDocs, collection } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";

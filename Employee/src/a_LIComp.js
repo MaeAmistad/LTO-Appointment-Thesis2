@@ -12,7 +12,7 @@ import { getFirestore, getDocs, collection } from "https://www.gstatic.com/fireb
 // Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyCyNToos3S0HwLl0cZMRdiVjFJcBb4FWFo",
-    authDomain: "lto-online-appointment-setter.firebaseapp.com",
+    authDomain: "lto-online-appointment-setter.firebaseapp.com", 
     projectId: "lto-online-appointment-setter",
     storageBucket: "lto-online-appointment-setter.appspot.com",
     messagingSenderId: "382579903791",
@@ -31,7 +31,7 @@ const db = getFirestore(app);
 
       querySnapshot2.forEach(doc2 => {
 //  
-        if(doc2.data().User_Stat == "APPROVED_TO_CASHIER" && doc2.data().User_TT == "LICENSING"){
+        if(doc2.data().User_Stat2 == "APPROVED_TO_CASHIER" && doc2.data().User_TT == "LICENSING"){
 
                 if (doc2.data().User_AT == "REVISION OF RECORDS"){
                     let trow = document.createElement('tr'); 
