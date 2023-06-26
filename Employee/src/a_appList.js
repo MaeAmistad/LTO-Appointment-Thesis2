@@ -105,7 +105,7 @@ var changeDate = localStorage.getItem('chngeDtApplst')
                 td7.innerHTML = doc2.data().User_D;
                 td8.innerHTML = doc2.data().User_T;
                 
-                trow.appendChild(td6);
+
                 trow.appendChild(t_ID);
                 trow.appendChild(td1);
                 trow.appendChild(td5); 
@@ -145,7 +145,7 @@ var changeDate = localStorage.getItem('chngeDtApplst')
                     td7.innerHTML = doc2.data().User_D;
                     td8.innerHTML = doc2.data().User_T;
                     
-                    trow.appendChild(td6);
+
                     trow.appendChild(t_ID);
                     trow.appendChild(td1);
                     trow.appendChild(td5); 

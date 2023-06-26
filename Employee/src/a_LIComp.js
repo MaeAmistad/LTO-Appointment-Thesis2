@@ -5,6 +5,9 @@ comp_btn.addEventListener('click',(e) => {
 incomp_btn.addEventListener('click',(e) => {
     window.location = "a_pcLIDeclnd.html";
 });
+archived_acc.addEventListener('click', (e) => {
+    window.location = "a_archiveReports.html"
+  })
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import { getFirestore, getDocs, collection } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
@@ -31,7 +34,7 @@ const db = getFirestore(app);
 
       querySnapshot2.forEach(doc2 => {
 //  
-        if(doc2.data().User_Stat == "APPROVED_TO_CASHIER" && doc2.data().User_TT == "LICENSING"){
+        if(doc2.data().User_Stat2 == "APPROVED_TO_CASHIER" && doc2.data().User_TT == "LICENSING"){
 
                 if (doc2.data().User_AT == "REVISION OF RECORDS"){
                     let trow = document.createElement('tr'); 

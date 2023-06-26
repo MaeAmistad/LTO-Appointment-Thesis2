@@ -52,7 +52,7 @@ var ID = localStorage.getItem("ID");
 console.log(ID)
 
 var total = localStorage.getItem("payment");
-document.getElementById("feeTotal").innerHTML = total + ".00 PESOS";
+document.getElementById("feeTotal").innerHTML = total + ".00 PHP";
 querySnapshot2.forEach(doc2 => {
 
     
@@ -249,7 +249,7 @@ querySnapshot2.forEach(doc2 => {
                                             User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,
                                             laa: doc2.data().User_Laa,
                                             at: doc2.data().User_AT,
-                                            dt_App: doc2.data().User_D,
+                                            dt_App: doc2.data().User_D, 
                                             t_app: doc2.data().User_T,
                                             User_GN: doc2.data().User_GN,
                                             User_BD: doc2.data().User_BD,
