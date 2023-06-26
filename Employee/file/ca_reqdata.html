@@ -7,6 +7,7 @@
     <title>LTO Appointment Setter</title>
     <link rel="stylesheet" href="../style/ca_reqdata.css">
     <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <div class="main" id="blur">
@@ -187,6 +188,10 @@
         <p>The applicant successfully paid for their transaction with a total amount of: </p>
           <p id="feeTotal" style="font-weight: bold; text-align: center; font-size: 30px;"></p>
         
+          <div class="or">
+            <label>Please Enter Official Receipt (OR) Number of Applicant:</label>
+            <input type="text" id="orNumber" placeholder="xxxx-xxxxxxxxxxxx">
+          </div>
         <div class="btn2">
               <button id="cnl1">CANCEL</button>
               <button id="cnfrm1">CONFIRM</button>
