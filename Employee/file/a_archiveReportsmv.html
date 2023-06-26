@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>LTO Appointment Setter</title>
+
+    <!-- Montserrat Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://kit.fontawesome.com/8ec04d5e4f.css" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/8ec04d5e4f.js" crossorigin="anonymous"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"
+        integrity="sha512-YcsIPGdhPK4P/uRW6/sruonlYj+Q7UHWeKfTAkBW+g83NKM+jMJFJ4iAPfSnVp7BKD4dKMHmVSvICUbE/V1sSw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../style/a_archiveReports.css">
+</head>
+
+<body>
+    <div class="grid-container">
+
+        <!-- Header -->
+        <header class="header">
+            <div class="menu-icon" onclick="openSidebar()">
+                <span class="material-icons-outlined">menu</span>
+            </div>
+            <div class="header-left">
+                <span class="material-icons-outlined">search</span>
+            </div>
+            <div class="header-right">
+                <!-- <span class="material-icons-outlined">email</span> -->
+            </div>
+        </header>
+        <!-- End Header -->
+
+        <!-- Sidebar -->
+        <aside id="sidebar">
+            <div class="sidebar-title">
+                <!-- <div class="sidebar-brand">LTO Dashboard</div> -->
+                <img src="../img/Land_Transportation_Office.svg.png">
+                <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+            </div>
+
+            <ul class="sidebar-list">
+
+                <a href="a_dashboard.html">
+                    <li class="sidebar-list-item">
+                        Dashboard
+                    </li>
+                </a>
+
+                <a href="a_accMan.html">
+                    <li class="sidebar-list-item">
+                        Account Management
+                    </li>
+                </a>
+
+                <a href="a_appList.html">
+                    <li class="sidebar-list-item">
+                        List of Appointments
+                    </li>
+                </a>
+
+                <li class="sidebar-list-item1">
+                    <button class="dropdown-btn">Transactions<i class="fa fa-caret-down"></i></button>
+
+                    <div class="dropdown-container">
+                        <a href="a_pcLIApprved.html">
+                            <div class="con-lic">
+                                License <br><br>
+                            </div>
+                        </a>
+
+                        <a href="a_pcmvApprved.html">
+                            <div class="con-mv">
+                                Motor Vehicle<br><br>
+                            </div>
+                        </a>
+
+                    </div>
+                </li>
+
+                <a href="a_reqView.html">
+                    <li class="sidebar-list-item">
+                        List Of Requirements
+                    </li>
+                </a>
+
+                <a id="logout">
+                    <li class="sidebar-list-item">
+                        Log-Out
+                    </li>
+                </a>
+
+
+            </ul>
+        </aside>
+        <!-- End Sidebar -->
+
+        <!-- Main -->
+        <main class="main-container">
+
+            <div class="main">
+
+                <div class="main2">
+                    <div class="btnOptn">
+                        <button id="back">Back</button>
+                    </div>
+
+                    <!-- <div>
+                  <button id="archived_acc" >See Archives</button>
+                </div> -->
+                </div>
+
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th class="sp" colspan="7">Appointments</th>
+                        </tr>
+                        <tr>
+                            <th>Application ID.</th>
+                            <th>Full Name</th>
+                            <th>Transaction Type</th>
+                            <th>Date Of Appointment</th>
+                            <th>Time Of Appointment</th>
+                            <th>Status</th>
+                        </tr>
+                    <tbody id="tbody1"> </tbody>
+                </table>
+            </div>
+
+
+    </div>
+    </main>
+    <!-- End Main -->
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
+
+    <script type="module" src="../src/a_archiveReportsmv.js"></script>
+    <script src="../src/a_dashboard.js"></script>
+    <script type="module" src="../src/a_logout.js"></script>
+</body>
+
+</html>

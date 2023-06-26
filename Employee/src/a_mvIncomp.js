@@ -1,6 +1,6 @@
-// bck_AL.addEventListener('click',(e) => {
-//     window.location = "pc_homepage.html";
-// });
+archived_acc.addEventListener('click',(e) => {
+    window.location = "a_archiveReportsmv.html";
+});
 
 comp_btn.addEventListener('click',(e) => {
     window.location = "a_pcmvApprved.html"; 

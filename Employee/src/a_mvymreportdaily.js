@@ -459,7 +459,7 @@ mv_bc.forEach((doc) => {
            
           }
         }
-    }
+    } 
     // Year Model 5
     if (year_mdl5.includes(doc.data().yr_modell)){
       if (doc.data().typel == "CAR" || doc.data().typel == "CARS"){

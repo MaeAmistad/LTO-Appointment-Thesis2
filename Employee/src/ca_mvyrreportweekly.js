@@ -1,14 +1,13 @@
 bcklic.addEventListener('click' , () => {
     window.location = "ca_mvweeklyfltr.html"
 })
- 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
 import { getFirestore, collection,getCountFromServer,getDocs } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
  
 // Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyCyNToos3S0HwLl0cZMRdiVjFJcBb4FWFo",
-    authDomain: "lto-online-appointment-setter.firebaseapp.com", 
+    authDomain: "lto-online-appointment-setter.firebaseapp.com",
     projectId: "lto-online-appointment-setter",
     storageBucket: "lto-online-appointment-setter.appspot.com",
     messagingSenderId: "382579903791", 
@@ -19,7 +18,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-//   
+//  
 let cym1 = 0;
 let cym2 = 0;
 let cym3 = 0;
@@ -134,89 +133,125 @@ let yr6m15 = 0;
     ]
 
 
-var currentmonth = new Date().getMonth() + 1;
-if (currentmonth < 10)  currentmonth = "0" + currentmonth;
+// Weekly Date 
+function getDatesInRange(startDate, endDate) {
+    const date = new Date(startDate);
+    const dates = [];
+// to push date in an array
+    while (date <= endDate) {
+    let dt = new Date(date)
+    let day = dt.getDate();
+    var month = dt.getMonth() + 1;
+    var year = dt.getFullYear();
+    if (month < 10) month = "0" + month;
+    if (day < 10) day = "0" + day;
+    var today = day + " - " + month + " - " + year; 
+    
+    dates.push(today); 
+    date.setDate(date.getDate() + 1);
+    }
+    return dates;
+}
+// Getting date / Initialization
+    let now = new Date();
+//  For Getting the week date
+    let dayOfWeek = now.getDay(); //0-6
+    let numDay = now.getDate();
+// Set a start date
+    let start = new Date(now); //copy
+    start.setDate(numDay - dayOfWeek);
+// Set an end date
+    let end = new Date(now); //copy
+    end.setDate(numDay + (7 - dayOfWeek));
+
+    let d1 = new Date(start);
+    let d2 = new Date(end);
+    let today = getDatesInRange(d1, d2);
+
+// DATE TODAY
+var date = new Date();
+var day = date.getDate();
+var month = date.getMonth() + 1;
+var year = date.getFullYear();
+if (month < 10) month = "0" + month;
+if (day < 10) day = "0" + day;
+// TIME TODAY 
+let hrs = date.getHours();
+let mnts = date.getMinutes();
+let time = hrs + ":" + mnts;
+var today2 = month + "/" + day + "/" + year ;
+
 const mv_bc = await getDocs(collection(db, "Motor Vehicle"));
 mv_bc.forEach((doc) => {
   // CAR
-  let dd = doc.data().dt_App;
-  var mmsp = dd.slice(5,7);
- 
-  if(mmsp == currentmonth){
+
+  if(today.includes(doc.data().dt_App)){
     // Year Model 1
     if (year_mdl1.includes(doc.data().yr_modell)){
       if (doc.data().typel == "CAR" || doc.data().typel == "CARS"){
           if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-            var C1 = cym1+=1;
-            localStorage.setItem("car1_yr1",C1)
+            cym1 = cym1+=1; 
           } 
           else if (doc.data().refrigerant_type == "R12"){
-            var C2 = cym2+=1;
-            localStorage.setItem("car2_yr1",C2)
+            cym2 = cym2+=1;
           } 
           else if (doc.data().refrigerant_type == "R134A"){
-            var C3 = cym3+=1;
-            localStorage.setItem("car3_yr1",C3)
+            cym3 = cym3+=1;
           }
       }
       // UV
       else if (doc.data().typel == "UV"){
         if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-          var UV1 = cym4+=1;
-          localStorage.setItem("UV_1yr1",UV1)
+          cym4 = cym4+=1;
         } 
         else if (doc.data().refrigerant_type == "R12"){
-          var UV2 = cym5+=1;
-          localStorage.setItem("UV_2yr1",UV2)
+          cym5 = cym5+=1;
         } 
         else if (doc.data().refrigerant_type == "R134A"){ 
-          var UV3 = cym6+=1;
-          localStorage.setItem("UV_3yr1",UV3)
+          cym6 = cym6+=1;
         }
       }
         // SUV
         else if (doc.data().typel == "SUV"){
           if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-            var SUV1 = cym7+=1;
-            localStorage.setItem("SUV_1yr1",SUV1)
+            cym7 = cym7+=1;
           } 
           else if (doc.data().refrigerant_type == "R12"){
-            var SUV2 = cym8+=1;
-            localStorage.setItem("SUV_2yr1",SUV2)
+            cym8 = cym8+=1;
           } 
           else if (doc.data().refrigerant_type == "R134A"){
-            var SUV3 = cym9+=1;
-            localStorage.setItem("SUV_3yr1",SUV3)
+            cym9 = cym9+=1;
+          
           }
         }
         // BUSES
         else if (doc.data().typel == "BUS" || doc.data().typel == "BUSES"){
           if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-            var BUS1 = cym10+=1;
-            localStorage.setItem("BUS_1yr1",BUS1)
+            cym10 = cym10+=1;
+            
           } 
           else if (doc.data().refrigerant_type == "R12"){
-            var BUS2 = cym11+=1;
-            localStorage.setItem("BUS_2yr1",BUS2)
+            cym11 = cym11+=1;
+            
           } 
           else if (doc.data().refrigerant_type == "R134A"){
-            var BUS3 = cym12+=1;
-            localStorage.setItem("BUS_3yr1",BUS3)
+            cym12 = cym12+=1;
+           
           }
         }
           // TRUCKS
         else if (doc.data().typel == "TRUCK" || doc.data().typel == "TRUCKS"){
           if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-            var TRCK1 = cym13+=1;
-            localStorage.setItem("TRCK_1yr1",TRCK1)
+            cym13 = cym13+=1;
+            
           } 
           else if (doc.data().refrigerant_type == "R12"){
-            var TRCK2 = cym14+=1;
-            localStorage.setItem("TRCK_2yr1",TRCK2)
+            cym14 = cym14+=1;
+            
           } 
           else if (doc.data().refrigerant_type == "R134A"){
-            var TRCK3 = cym15+=1;
-            localStorage.setItem("TRCK_3yr1",TRCK3)
+            cym15 = cym15+=1;
+            
           }
         }
     }
@@ -224,76 +259,76 @@ mv_bc.forEach((doc) => {
     if (year_mdl2.includes(doc.data().yr_modell)){
       if (doc.data().typel == "CAR" || doc.data().typel == "CARS"){
           if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-            var C1 = yr2m1+=1;
-            localStorage.setItem("car1_yr2",C1)
+            yr2m1 = yr2m1+=1;
+            
           } 
           else if (doc.data().refrigerant_type == "R12"){
-            var C2 = yr2m2+=1;
-            localStorage.setItem("car2_yr2",C2)
+            yr2m2 = yr2m2+=1;
+           
           } 
           else if (doc.data().refrigerant_type == "R134A"){
-            var C3 = yr2m3+=1;
-            localStorage.setItem("car3_yr2",C3)
+            yr2m3 = yr2m3+=1;
+            
           }
       }
       // UV
       else if (doc.data().typel == "UV"){
         if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-          var UV1 = yr2m4+=1;
-          localStorage.setItem("UV_1yr2",UV1)
+          yr2m4 = yr2m4+=1;
+          
         } 
         else if (doc.data().refrigerant_type == "R12"){
-          var UV2 = yr2m5+=1;
-          localStorage.setItem("UV_2yr2",UV2)
+          yr2m5 = yr2m5+=1;
+       
         } 
         else if (doc.data().refrigerant_type == "R134A"){ 
-          var UV3 = yr2m6+=1;
-          localStorage.setItem("UV_3yr2",UV3)
+          yr2m6 = yr2m6+=1;
+
         }
       }
         // SUV
         else if (doc.data().typel == "SUV"){
           if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-            var SUV1 = yr2m7+=1;
-            localStorage.setItem("SUV_1yr2",SUV1)
+            yr2m7 = yr2m7+=1;
+       
           } 
           else if (doc.data().refrigerant_type == "R12"){
-            var SUV2 = yr2m8+=1;
-            localStorage.setItem("SUV_2yr2",SUV2)
+            yr2m8 = yr2m8+=1;
+         
           } 
           else if (doc.data().refrigerant_type == "R134A"){
-            var SUV3 = yr2m9+=1;
-            localStorage.setItem("SUV_3yr2",SUV3)
+            yr2m9 = yr2m9+=1;
+         
           }
         }
         // BUSES
         else if (doc.data().typel == "BUS" || doc.data().typel == "BUSES"){
           if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-            var BUS1 = yr2m10+=1;
-            localStorage.setItem("BUS_1yr2",BUS1)
+            yr2m10= yr2m10+=1;
+           
           } 
           else if (doc.data().refrigerant_type == "R12"){
-            var BUS2 = yr2m11+=1;
-            localStorage.setItem("BUS_2yr2",BUS2)
+            yr2m11 = yr2m11+=1;
+          
           } 
           else if (doc.data().refrigerant_type == "R134A"){
-            var BUS3 = yr2m12+=1;
-            localStorage.setItem("BUS_3yr2",BUS3)
+            yr2m12 = yr2m12+=1;
+           
           }
         }
           // TRUCKS
         else if (doc.data().typel == "TRUCK" || doc.data().typel == "TRUCKS"){
           if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-            var TRCK1 = yr2m13+=1;
-            localStorage.setItem("TRCK_1yr2",TRCK1)
+            yr2m13 = yr2m13+=1;
+          
           } 
           else if (doc.data().refrigerant_type == "R12"){
-            var TRCK2 = yr2m14+=1;
-            localStorage.setItem("TRCK_2yr2",TRCK2)
+            yr2m14 = yr2m14+=1;
+          
           } 
           else if (doc.data().refrigerant_type == "R134A"){
-            var TRCK3 = yr2m15+=1;
-            localStorage.setItem("TRCK_3yr2",TRCK3)
+            yr2m15 = yr2m15+=1;
+           
           }
         }
     }
@@ -301,76 +336,76 @@ mv_bc.forEach((doc) => {
     if (year_mdl3.includes(doc.data().yr_modell)){
       if (doc.data().typel == "CAR" || doc.data().typel == "CARS"){
           if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-            var C1 = yr3m1+=1;
-            localStorage.setItem("car1_yr3",C1)
+            yr3m1 = yr3m1+=1;
+           
           } 
           else if (doc.data().refrigerant_type == "R12"){
-            var C2 = yr3m2+=1;
-            localStorage.setItem("car2_yr3",C2)
+            yr3m2 = yr3m2+=1;
+            
           } 
           else if (doc.data().refrigerant_type == "R134A"){
-            var C3 = yr3m3+=1;
-            localStorage.setItem("car3_yr3",C3)
+            yr3m3 = yr3m3+=1;
+            
           }
       }
       // UV
       else if (doc.data().typel == "UV"){
         if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-          var UV1 = yr3m4+=1;
-          localStorage.setItem("UV_1yr3",UV1)
+          yr3m4 = yr3m4+=1;
+         
         } 
         else if (doc.data().refrigerant_type == "R12"){
-          var UV2 = yr3m5+=1;
-          localStorage.setItem("UV_2yr3",UV2)
+          yr3m5 = yr3m5+=1;
+         
         } 
         else if (doc.data().refrigerant_type == "R134A"){ 
-          var UV3 = yr3m6+=1;
-          localStorage.setItem("UV_3yr3",UV3)
+          yr3m6 = yr3m6+=1;
+         
         }
       }
         // SUV
         else if (doc.data().typel == "SUV"){
           if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-            var SUV1 = yr3m7+=1;
-            localStorage.setItem("SUV_1yr3",SUV1)
+            yr3m7 = yr3m7+=1;
+            
           } 
           else if (doc.data().refrigerant_type == "R12"){
-            var SUV2 = yr3m8+=1;
-            localStorage.setItem("SUV_2yr3",SUV2)
+            yr3m8 = yr3m8+=1;
+          
           } 
           else if (doc.data().refrigerant_type == "R134A"){
-            var SUV3 = yr3m9+=1;
-            localStorage.setItem("SUV_3yr3",SUV3)
+            yr3m9 = yr3m9+=1;
+          
           }
         }
         // BUSES
         else if (doc.data().typel == "BUS" || doc.data().typel == "BUSES"){
           if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-            var BUS1 = yr3m10+=1;
-            localStorage.setItem("BUS_1yr3",BUS1)
+            yr3m10 = yr3m10+=1;
+           
           } 
           else if (doc.data().refrigerant_type == "R12"){
-            var BUS2 = yr3m11+=1;
-            localStorage.setItem("BUS_2yr3",BUS2)
+            yr3m11 = yr3m11+=1;
+           
           } 
           else if (doc.data().refrigerant_type == "R134A"){
-            var BUS3 = yr3m12+=1;
-            localStorage.setItem("BUS_3yr3",BUS3)
+            yr3m12 = yr3m12+=1;
+          
           }
         }
           // TRUCKS
         else if (doc.data().typel == "TRUCK" || doc.data().typel == "TRUCKS"){
           if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-            var TRCK1 = yr3m13+=1;
-            localStorage.setItem("TRCK_1yr3",TRCK1)
+            yr3m13 = yr3m13+=1;
+           
           } 
           else if (doc.data().refrigerant_type == "R12"){
-            var TRCK2 = yr3m14+=1;
-            localStorage.setItem("TRCK_2yr3",TRCK2)
+            yr3m14 = yr3m14+=1;
+           
           } 
           else if (doc.data().refrigerant_type == "R134A"){
-            var TRCK3 = yr3m15+=1;
-            localStorage.setItem("TRCK_3yr3",TRCK3)
+            yr3m15 = yr3m15+=1;
+         
           }
         }
     }
@@ -378,76 +413,76 @@ mv_bc.forEach((doc) => {
     if (year_mdl4.includes(doc.data().yr_modell)){
       if (doc.data().typel == "CAR" || doc.data().typel == "CARS"){
           if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-            var C1 = yr4m1+=1;
-            localStorage.setItem("car1_yr4",C1)
+            yr4m1 = yr4m1+=1;
+           
           } 
           else if (doc.data().refrigerant_type == "R12"){
-            var C2 = yr4m2+=1;
-            localStorage.setItem("car2_yr4",C2)
+            yr4m2 = yr4m2+=1;
+           
           } 
           else if (doc.data().refrigerant_type == "R134A"){
-            var C3 = yr4m3+=1;
-            localStorage.setItem("car3_yr4",C3)
+            yr4m3 = yr4m3+=1;
+         
           }
       }
       // UV
       else if (doc.data().typel == "UV"){
         if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-          var UV1 = yr4m4+=1;
-          localStorage.setItem("UV_1yr4",UV1)
+          yr4m4 = yr4m4+=1;
+         
         } 
         else if (doc.data().refrigerant_type == "R12"){
-          var UV2 = yr4m5+=1;
-          localStorage.setItem("UV_2yr4",UV2)
+          yr4m5 = yr4m5+=1;
+     
         } 
         else if (doc.data().refrigerant_type == "R134A"){ 
-          var UV3 = yr4m6+=1;
-          localStorage.setItem("UV_3yr4",UV3)
+          yr4m6 = yr4m6+=1;
+       
         }
       }
         // SUV
         else if (doc.data().typel == "SUV"){
           if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-            var SUV1 = yr4m7+=1;
-            localStorage.setItem("SUV_1yr4",SUV1)
+            yr4m7 = yr4m7+=1;
+            
           } 
           else if (doc.data().refrigerant_type == "R12"){
-            var SUV2 = yr4m8+=1;
-            localStorage.setItem("SUV_2yr4",SUV2)
+            yr4m8 = yr4m8+=1;
+         
           } 
           else if (doc.data().refrigerant_type == "R134A"){
-            var SUV3 = yr4m9+=1;
-            localStorage.setItem("SUV_3yr4",SUV3)
+            yr4m9 = yr4m9+=1;
+            
           }
         }
         // BUSES
         else if (doc.data().typel == "BUS" || doc.data().typel == "BUSES"){
           if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-            var BUS1 = yr4m10+=1;
-            localStorage.setItem("BUS_1yr4",BUS1)
+            yr4m10 = yr4m10+=1;
+           
           } 
           else if (doc.data().refrigerant_type == "R12"){
-            var BUS2 = yr4m11+=1;
-            localStorage.setItem("BUS_2yr4",BUS2)
+            yr4m11 = yr4m11+=1;
+           
           } 
           else if (doc.data().refrigerant_type == "R134A"){
-            var BUS3 = yr4m12+=1;
-            localStorage.setItem("BUS_3yr4",BUS3)
+            yr4m12 = yr4m12+=1;
+           
           }
         }
           // TRUCKS
         else if (doc.data().typel == "TRUCK" || doc.data().typel == "TRUCKS"){
           if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-            var TRCK1 = yr4m13+=1;
-            localStorage.setItem("TRCK_1yr4",TRCK1)
+            yr4m13 = yr4m13+=1;
+            
           } 
           else if (doc.data().refrigerant_type == "R12"){
-            var TRCK2 = yr4m14+=1;
-            localStorage.setItem("TRCK_2yr4",TRCK2)
+            yr4m14 = yr4m14+=1;
+         
           } 
-          else if (doc.data().refrigerant_type == "R134A"){
-            var TRCK3 = yr4m15+=1;
-            localStorage.setItem("TRCK_3yr4",TRCK3)
+          else if (doc.data().refrigerant_type == "R134A"){ 
+            yr4m15 = yr4m15+=1;
+           
           }
         }
     }
@@ -455,76 +490,76 @@ mv_bc.forEach((doc) => {
     if (year_mdl5.includes(doc.data().yr_modell)){
       if (doc.data().typel == "CAR" || doc.data().typel == "CARS"){
           if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-            var C1 = yr5m1+=1;
-            localStorage.setItem("car1_yr5",C1)
+            yr5m1 = yr5m1+=1;
+            
           } 
           else if (doc.data().refrigerant_type == "R12"){
-            var C2 = yr5m2+=1;
-            localStorage.setItem("car2_yr5",C2)
+            yr5m2 = yr5m2+=1;
+        
           } 
           else if (doc.data().refrigerant_type == "R134A"){
-            var C3 = yr5m3+=1;
-            localStorage.setItem("car3_yr5",C3)
+            yr5m3 = yr5m3+=1;
+        
           }
       }
       // UV
       else if (doc.data().typel == "UV"){
         if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-          var UV1 = yr5m4+=1;
-          localStorage.setItem("UV_1yr5",UV1)
+          yr5m4 = yr5m4+=1;
+         
         } 
         else if (doc.data().refrigerant_type == "R12"){
-          var UV2 = yr5m5+=1;
-          localStorage.setItem("UV_2yr5",UV2)
+          yr5m5 = yr5m5+=1;
+      
         } 
         else if (doc.data().refrigerant_type == "R134A"){ 
-          var UV3 = yr5m6+=1;
-          localStorage.setItem("UV_3yr5",UV3)
+          yr5m6 = yr5m6+=1;
+         
         }
       }
         // SUV
         else if (doc.data().typel == "SUV"){
           if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-            var SUV1 = yr5m7+=1;
-            localStorage.setItem("SUV_1yr5",SUV1)
+            yr5m7 = yr5m7+=1;
+            
           } 
           else if (doc.data().refrigerant_type == "R12"){
-            var SUV2 = yr5m8+=1;
-            localStorage.setItem("SUV_2yr5",SUV2)
+            yr5m8 = yr5m8+=1;
+           
           } 
           else if (doc.data().refrigerant_type == "R134A"){
-            var SUV3 = yr5m9+=1;
-            localStorage.setItem("SUV_3yr5",SUV3)
+            yr5m9 = yr5m9+=1;
+            
           }
         }
         // BUSES
         else if (doc.data().typel == "BUS" || doc.data().typel == "BUSES"){
           if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-            var BUS1 = yr5m10+=1;
-            localStorage.setItem("BUS_1yr5",BUS1)
+            yr5m10 = yr5m10+=1;
+           
           } 
           else if (doc.data().refrigerant_type == "R12"){
-            var BUS2 = yr5m11+=1;
-            localStorage.setItem("BUS_2yr5",BUS2)
+            yr5m11 = yr5m11+=1;
+            
           } 
           else if (doc.data().refrigerant_type == "R134A"){
-            var BUS3 = yr5m12+=1;
-            localStorage.setItem("BUS_3yr5",BUS3)
+            yr5m12 = yr5m12+=1;
+           
           }
         }
           // TRUCKS
         else if (doc.data().typel == "TRUCK" || doc.data().typel == "TRUCKS"){
           if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-            var TRCK1 = yr5m13+=1;
-            localStorage.setItem("TRCK_1yr5",TRCK1)
+            yr5m13 = yr5m13+=1;
+           
           } 
           else if (doc.data().refrigerant_type == "R12"){
-            var TRCK2 = yr5m14+=1;
-            localStorage.setItem("TRCK_2yr5",TRCK2)
+            yr5m14 = yr5m14+=1;
+          
           } 
           else if (doc.data().refrigerant_type == "R134A"){
-            var TRCK3 = yr5m15+=1;
-            localStorage.setItem("TRCK_3yr5",TRCK3)
+            yr5m15 = yr5m15+=1;
+           
           }
         }
     }
@@ -532,76 +567,72 @@ mv_bc.forEach((doc) => {
     if (year_mdl6.includes(doc.data().yr_modell)){
       if (doc.data().typel == "CAR" || doc.data().typel == "CARS"){
           if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-            var C1 = yr6m1+=1;
-            localStorage.setItem("car1_yr6",C1)
+            yr6m1 = yr6m1+=1;
+          
           } 
           else if (doc.data().refrigerant_type == "R12"){
-            var C2 = yr6m2+=1;
-            localStorage.setItem("car2_yr6",C2)
+            yr6m2 = yr6m2+=1;
+            
           } 
           else if (doc.data().refrigerant_type == "R134A"){
-            var C3 = yr6m3+=1;
-            localStorage.setItem("car3_yr6",C3)
+            yr6m3 = yr6m3+=1;
+            
           }
       }
       // UV
       else if (doc.data().typel == "UV"){
         if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-          var UV1 = yr6m4+=1;
-          localStorage.setItem("UV_1yr6",UV1)
+          yr6m4 = yr6m4+=1;
+          
         } 
         else if (doc.data().refrigerant_type == "R12"){
-          var UV2 = yr6m5+=1;
-          localStorage.setItem("UV_2yr6",UV2)
+          yr6m5 = yr6m5+=1;
+         
         } 
         else if (doc.data().refrigerant_type == "R134A"){ 
-          var UV3 = yr6m6+=1;
-          localStorage.setItem("UV_3yr6",UV3)
+          yr6m6 = yr6m6+=1;
+         
         }
       }
         // SUV
         else if (doc.data().typel == "SUV"){
           if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-            var SUV1 = yr6m7+=1;
-            localStorage.setItem("SUV_1yr6",SUV1)
+            yr6m7 = yr6m7+=1;
+           
           } 
           else if (doc.data().refrigerant_type == "R12"){
-            var SUV2 = yr6m8+=1;
-            localStorage.setItem("SUV_2yr6",SUV2)
+            yr6m8 = yr6m8+=1;
+          
           } 
           else if (doc.data().refrigerant_type == "R134A"){
-            var SUV3 = yr6m9+=1;
-            localStorage.setItem("SUV_3yr6",SUV3)
+            yr6m9 = yr6m9+=1;
+       
           }
         }
         // BUSES
         else if (doc.data().typel == "BUS" || doc.data().typel == "BUSES"){
           if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-            var BUS1 = yr6m10+=1;
-            localStorage.setItem("BUS_1yr6",BUS1)
+            yr6m10 = yr6m10+=1;
           } 
           else if (doc.data().refrigerant_type == "R12"){
-            var BUS2 = yr6m11+=1;
-            localStorage.setItem("BUS_2yr6",BUS2)
+            yr6m11 = yr6m11+=1;
           } 
           else if (doc.data().refrigerant_type == "R134A"){
-            var BUS3 = yr6m12+=1;
-            localStorage.setItem("BUS_3yr6",BUS3)
+            yr6m11 = yr6m12+=1;
           }
         }
           // TRUCKS
         else if (doc.data().typel == "TRUCK" || doc.data().typel == "TRUCKS"){
           if (doc.data().refrigerant_type == "NON-AC" || doc.data().refrigerant_type == "NONAC"){
-            var TRCK1 = yr6m13+=1;
-            localStorage.setItem("TRCK_1yr6",TRCK1)
+            yr6m13 = yr6m13+=1;
           } 
           else if (doc.data().refrigerant_type == "R12"){
-            var TRCK2 = yr6m14+=1;
-            localStorage.setItem("TRCK_2yr6",TRCK2)
+            yr6m14 = yr6m14+=1;
+           
           } 
           else if (doc.data().refrigerant_type == "R134A"){
-            var TRCK3 = yr6m15+=1;
-            localStorage.setItem("TRCK_3yr6",TRCK3)
+            yr6m15 = yr6m15+=1;
+     
           }
         }
     }
@@ -609,184 +640,28 @@ mv_bc.forEach((doc) => {
   }
   
 });
-// NAN to 0
-// car
-if (localStorage.getItem('car1_yr1') == null || localStorage.getItem('car2_yr1') == null || localStorage.getItem('car3_yr1') == null) {
-  localStorage.setItem('car1_yr1', 0)
-  localStorage.setItem('car2_yr1', 0)
-  localStorage.setItem('car3_yr1',0)
-}
-if (localStorage.getItem('car1_yr2') == null || localStorage.getItem('car2_yr2') == null || localStorage.getItem('car3_yr2') == null) {
-  localStorage.setItem('car1_yr2', 0)
-  localStorage.setItem('car2_yr2', 0)
-  localStorage.setItem('car3_yr2',0)
-}
-if (localStorage.getItem('car1_yr3') == null || localStorage.getItem('car2_yr3') == null || localStorage.getItem('car3_yr3') == null) {
-  localStorage.setItem('car1_yr3', 0)
-  localStorage.setItem('car2_yr3', 0)
-  localStorage.setItem('car3_yr3',0)
-}
-if (localStorage.getItem('car1_yr4') == null || localStorage.getItem('car2_yr4') == null || localStorage.getItem('car3_yr4') == null) {
-  localStorage.setItem('car1_yr4', 0)
-  localStorage.setItem('car2_yr4', 0)
-  localStorage.setItem('car3_yr4',0)
-}
-if (localStorage.getItem('car1_yr5') == null || localStorage.getItem('car2_yr5') == null || localStorage.getItem('car3_yr5') == null) {
-  localStorage.setItem('car1_yr5', 0)
-  localStorage.setItem('car2_yr5', 0)
-  localStorage.setItem('car3_yr5',0)
-}
-if (localStorage.getItem('car1_yr6') == null || localStorage.getItem('car2_yr6') == null || localStorage.getItem('car3_yr6') == null) {
-  localStorage.setItem('car1_yr6', 0)
-  localStorage.setItem('car2_yr6', 0)
-  localStorage.setItem('car3_yr6',0)
-}
-// UV
-if (localStorage.getItem('UV_1yr1') == null || localStorage.getItem('UV_2yr1') == null || localStorage.getItem('UV_2yr1') == null) {
-  localStorage.setItem('UV_1yr1', 0)
-  localStorage.setItem('UV_2yr1', 0)
-  localStorage.setItem('UV_3yr1',0)
-}
-if (localStorage.getItem('UV_1yr2') == null || localStorage.getItem('UV_2yr2') == null || localStorage.getItem('UV_2yr2') == null) {
-  localStorage.setItem('UV_1yr2', 0)
-  localStorage.setItem('UV_2yr2', 0)
-  localStorage.setItem('UV_3yr2',0)
-}
-if (localStorage.getItem('UV_1yr3') == null || localStorage.getItem('UV_2yr3') == null || localStorage.getItem('UV_2yr3') == null) {
-  localStorage.setItem('UV_1yr3', 0)
-  localStorage.setItem('UV_2yr3', 0)
-  localStorage.setItem('UV_3yr3',0)
-}
-if (localStorage.getItem('UV_1yr4') == null || localStorage.getItem('UV_2yr4') == null || localStorage.getItem('UV_2yr4') == null) {
-  localStorage.setItem('UV_1yr4', 0)
-  localStorage.setItem('UV_2yr4', 0)
-  localStorage.setItem('UV_3yr4',0)
-}
-if (localStorage.getItem('UV_1yr5') == null || localStorage.getItem('UV_2yr5') == null || localStorage.getItem('UV_2yr5') == null) {
-  localStorage.setItem('UV_1yr5', 0)
-  localStorage.setItem('UV_2yr5', 0)
-  localStorage.setItem('UV_3yr5',0)
-}
-if (localStorage.getItem('UV_1yr6') == null || localStorage.getItem('UV_2yr6') == null || localStorage.getItem('UV_2yr6') == null) {
-  localStorage.setItem('UV_1yr6', 0)
-  localStorage.setItem('UV_2yr6', 0)
-  localStorage.setItem('UV_3yr6',0)
-}
-// SUV
-if (localStorage.getItem('SUV_1yr1') == null || localStorage.getItem('SUV_2yr1') == null || localStorage.getItem('SUV_3yr1') == null) {
-  localStorage.setItem('SUV_1yr1', 0)
-  localStorage.setItem('SUV_2yr1', 0)
-  localStorage.setItem('SUV_3yr1',0)
-}
-if (localStorage.getItem('SUV_1yr2') == null || localStorage.getItem('SUV_2yr2') == null || localStorage.getItem('SUV_3yr2') == null) {
-  localStorage.setItem('SUV_1yr2', 0)
-  localStorage.setItem('SUV_2yr2', 0)
-  localStorage.setItem('SUV_3yr2',0)
-}
-if (localStorage.getItem('SUV_1yr3') == null || localStorage.getItem('SUV_2yr3') == null || localStorage.getItem('SUV_3yr3') == null) {
-  localStorage.setItem('SUV_1yr3', 0)
-  localStorage.setItem('SUV_2yr3', 0)
-  localStorage.setItem('SUV_3yr3',0)
-}
-if (localStorage.getItem('SUV_1yr4') == null || localStorage.getItem('SUV_2yr4') == null || localStorage.getItem('SUV_3yr4') == null) {
-  localStorage.setItem('SUV_1yr4', 0)
-  localStorage.setItem('SUV_2yr4', 0)
-  localStorage.setItem('SUV_3yr4',0)
-}
-if (localStorage.getItem('SUV_1yr5') == null || localStorage.getItem('SUV_2yr5') == null || localStorage.getItem('SUV_3yr5') == null) {
-  localStorage.setItem('SUV_1yr5', 0)
-  localStorage.setItem('SUV_2yr5', 0)
-  localStorage.setItem('SUV_3yr5',0)
-}
-if (localStorage.getItem('SUV_1yr6') == null || localStorage.getItem('SUV_2yr6') == null || localStorage.getItem('SUV_3yr6') == null) {
-  localStorage.setItem('SUV_1yr6', 0)
-  localStorage.setItem('SUV_2yr6', 0)
-  localStorage.setItem('SUV_3yr6',0)
-}
-// BUSES
-if (localStorage.getItem('BUS_1yr1') == null || localStorage.getItem('BUS_2yr1') == null || localStorage.getItem('BUS_3yr1') == null) {
-  localStorage.setItem('BUS_1yr1', 0)
-  localStorage.setItem('BUS_2yr1', 0)
-  localStorage.setItem('BUS_3yr1',0)
-}
-if (localStorage.getItem('BUS_1yr2') == null || localStorage.getItem('BUS_2yr2') == null || localStorage.getItem('BUS_3yr2') == null) {
-  localStorage.setItem('BUS_1yr2', 0)
-  localStorage.setItem('BUS_2yr2', 0) 
-  localStorage.setItem('BUS_3yr2',0)
-}
-if (localStorage.getItem('BUS_1yr3') == null || localStorage.getItem('BUS_2yr3') == null || localStorage.getItem('BUS_3yr3') == null) {
-  localStorage.setItem('BUS_1yr3', 0)
-  localStorage.setItem('BUS_2yr3', 0)
-  localStorage.setItem('BUS_3yr3',0)
-}
-if (localStorage.getItem('BUS_1yr4') == null || localStorage.getItem('BUS_2yr4') == null || localStorage.getItem('BUS_3yr4') == null) {
-  localStorage.setItem('BUS_1yr4', 0)
-  localStorage.setItem('BUS_2yr4', 0)
-  localStorage.setItem('BUS_3yr4',0)
-}
-if (localStorage.getItem('BUS_1yr5') == null || localStorage.getItem('BUS_2yr5') == null || localStorage.getItem('BUS_3yr5') == null) {
-  localStorage.setItem('BUS_1yr5', 0)
-  localStorage.setItem('BUS_2yr5', 0)
-  localStorage.setItem('BUS_3yr5',0)
-}
-if (localStorage.getItem('BUS_1yr6') == null || localStorage.getItem('BUS_2yr6') == null || localStorage.getItem('BUS_3yr6') == null) {
-  localStorage.setItem('BUS_1yr6', 0)
-  localStorage.setItem('BUS_2yr6', 0)
-  localStorage.setItem('BUS_3yr6',0)
-}
-// Trucks
-if (localStorage.getItem('TRCK_1yr1') == null || localStorage.getItem('TRCK_2yr1') == null || localStorage.getItem('TRCK_3yr1') == null) {
-  localStorage.setItem('TRCK_1yr1', 0)
-  localStorage.setItem('TRCK_2yr1', 0)
-  localStorage.setItem('TRCK_3yr1',0)
-}
-if (localStorage.getItem('TRCK_1yr2') == null || localStorage.getItem('TRCK_2yr2') == null || localStorage.getItem('TRCK_3yr2') == null) {
-  localStorage.setItem('TRCK_1yr2', 0)
-  localStorage.setItem('TRCK_2yr2', 0)
-  localStorage.setItem('TRCK_3yr2',0)
-}
-if (localStorage.getItem('TRCK_1yr3') == null || localStorage.getItem('TRCK_2yr3') == null || localStorage.getItem('TRCK_3yr3') == null) {
-  localStorage.setItem('TRCK_1yr3', 0)
-  localStorage.setItem('TRCK_2yr3', 0)
-  localStorage.setItem('TRCK_3yr3',0)
-}
-if (localStorage.getItem('TRCK_1yr4') == null || localStorage.getItem('TRCK_2yr4') == null || localStorage.getItem('TRCK_3yr4') == null) {
-  localStorage.setItem('TRCK_1yr4', 0)
-  localStorage.setItem('TRCK_2yr4', 0)
-  localStorage.setItem('TRCK_3yr4',0)
-}
-if (localStorage.getItem('TRCK_1yr5') == null || localStorage.getItem('TRCK_2yr5') == null || localStorage.getItem('TRCK_3yr5') == null) {
-  localStorage.setItem('TRCK_1yr5', 0)
-  localStorage.setItem('TRCK_2yr5', 0)
-  localStorage.setItem('TRCK_3yr5',0)
-}
-if (localStorage.getItem('TRCK_1yr6') == null || localStorage.getItem('TRCK_2yr6') == null || localStorage.getItem('TRCK_3yr6') == null) {
-  localStorage.setItem('TRCK_1yr6', 0)
-  localStorage.setItem('TRCK_2yr6', 0)
-  localStorage.setItem('TRCK_3yr6',0)
-}
 
 // Display Value
 // document.getElementsById("").innerHTML = localStorage.getItem("");
 // CAR
-let yr1_car1 = parseInt(localStorage.getItem("car1_yr1"));
-let yr1_car2 = parseInt(localStorage.getItem("car2_yr1"));
-let yr1_car3 = parseInt(localStorage.getItem("car3_yr1"));
-let yr2_car1 = parseInt(localStorage.getItem("car1_yr2"));
-let yr2_car2 = parseInt(localStorage.getItem("car2_yr2"));
-let yr2_car3 = parseInt(localStorage.getItem("car3_yr2"));
-let yr3_car1 = parseInt(localStorage.getItem("car1_yr3"));
-let yr3_car2 = parseInt(localStorage.getItem("car2_yr3"));
-let yr3_car3 = parseInt(localStorage.getItem("car3_yr3"));
-let yr4_car1 = parseInt(localStorage.getItem("car1_yr4"));
-let yr4_car2 = parseInt(localStorage.getItem("car2_yr4"));
-let yr4_car3 = parseInt(localStorage.getItem("car3_yr4"));
-let yr5_car1 = parseInt(localStorage.getItem("car1_yr5"));
-let yr5_car2 = parseInt(localStorage.getItem("car2_yr5"));
-let yr5_car3 = parseInt(localStorage.getItem("car3_yr5"));
-let yr6_car1 = parseInt(localStorage.getItem("car1_yr6"));
-let yr6_car2 = parseInt(localStorage.getItem("car2_yr6"));
-let yr6_car3 = parseInt(localStorage.getItem("car3_yr6"));
+let yr1_car1 = cym1;
+let yr1_car2 = cym2;
+let yr1_car3 = cym3;
+let yr2_car1 = yr2m1;
+let yr2_car2 = yr2m2;
+let yr2_car3 = yr2m3;
+let yr3_car1 = yr3m1;
+let yr3_car2 = yr3m2;
+let yr3_car3 = yr3m3;
+let yr4_car1 = yr4m1;
+let yr4_car2 = yr4m2;
+let yr4_car3 = yr4m3;
+let yr5_car1 = yr5m1;
+let yr5_car2 = yr5m2;
+let yr5_car3 = yr5m3;
+let yr6_car1 = yr6m1;
+let yr6_car2 = yr6m2;
+let yr6_car3 = yr6m3;
 
 document.getElementById("yrmd1_1").innerHTML = yr1_car1;
 document.getElementById("yrmd1_2").innerHTML = yr1_car2;
@@ -807,24 +682,24 @@ document.getElementById("yrmd6_1").innerHTML = yr6_car1;
 document.getElementById("yrmd6_2").innerHTML = yr6_car2;
 document.getElementById("yrmd6_3").innerHTML = yr6_car3;
 // UV
-let yr1_UV1 = parseInt(localStorage.getItem("UV_1yr1"));
-let yr1_UV2 = parseInt(localStorage.getItem("UV_2yr1"));
-let yr1_UV3 = parseInt(localStorage.getItem("UV_3yr1"));
-let yr2_UV1 = parseInt(localStorage.getItem("UV_1yr2"));
-let yr2_UV2 = parseInt(localStorage.getItem("UV_2yr2"));
-let yr2_UV3 = parseInt(localStorage.getItem("UV_3yr2"));
-let yr3_UV1 = parseInt(localStorage.getItem("UV_1yr3"));
-let yr3_UV2 = parseInt(localStorage.getItem("UV_2yr3"));
-let yr3_UV3 = parseInt(localStorage.getItem("UV_3yr3"));
-let yr4_UV1 = parseInt(localStorage.getItem("UV_1yr4"));
-let yr4_UV2 = parseInt(localStorage.getItem("UV_2yr4"));
-let yr4_UV3 = parseInt(localStorage.getItem("UV_3yr4"));
-let yr5_UV1 = parseInt(localStorage.getItem("UV_1yr5"));
-let yr5_UV2 = parseInt(localStorage.getItem("UV_2yr5"));
-let yr5_UV3 = parseInt(localStorage.getItem("UV_3yr5"));
-let yr6_UV1 = parseInt(localStorage.getItem("UV_1yr6"));
-let yr6_UV2 = parseInt(localStorage.getItem("UV_2yr6"));
-let yr6_UV3 = parseInt(localStorage.getItem("UV_3yr6"));
+let yr1_UV1 = cym4;
+let yr1_UV2 = cym5;
+let yr1_UV3 = cym6;
+let yr2_UV1 = yr2m4;
+let yr2_UV2 = yr2m5;
+let yr2_UV3 = yr2m6;
+let yr3_UV1 = yr3m4;
+let yr3_UV2 = yr3m5;
+let yr3_UV3 = yr3m6;
+let yr4_UV1 = yr4m4;
+let yr4_UV2 = yr4m5;
+let yr4_UV3 =yr4m6;
+let yr5_UV1 = yr5m4;
+let yr5_UV2 = yr5m5;
+let yr5_UV3 = yr5m6;
+let yr6_UV1 = yr6m4;
+let yr6_UV2 = yr6m5;
+let yr6_UV3 =yr6m6;
 
 document.getElementById("yrmd1_5").innerHTML = yr1_UV1;
 document.getElementById("yrmd1_6").innerHTML = yr1_UV2;
@@ -845,24 +720,24 @@ document.getElementById("yrmd6_5").innerHTML = yr6_UV1;
 document.getElementById("yrmd6_6").innerHTML = yr6_UV2;
 document.getElementById("yrmd6_7").innerHTML = yr6_UV3;
 // SUV
-let yr1_SUV1 = parseInt(localStorage.getItem("SUV_1yr1"));
-let yr1_SUV2 = parseInt(localStorage.getItem("SUV_2yr1"));
-let yr1_SUV3 = parseInt(localStorage.getItem("SUV_3yr1"));
-let yr2_SUV1 = parseInt(localStorage.getItem("SUV_1yr2"));
-let yr2_SUV2 = parseInt(localStorage.getItem("SUV_2yr2"));
-let yr2_SUV3 = parseInt(localStorage.getItem("SUV_3yr2"));
-let yr3_SUV1 = parseInt(localStorage.getItem("SUV_1yr3"));
-let yr3_SUV2 = parseInt(localStorage.getItem("SUV_2yr3"));
-let yr3_SUV3 = parseInt(localStorage.getItem("SUV_3yr3"));
-let yr4_SUV1 = parseInt(localStorage.getItem("SUV_1yr4"));
-let yr4_SUV2 = parseInt(localStorage.getItem("SUV_2yr4"));
-let yr4_SUV3 = parseInt(localStorage.getItem("SUV_3yr4"));
-let yr5_SUV1 = parseInt(localStorage.getItem("SUV_1yr5"));
-let yr5_SUV2 = parseInt(localStorage.getItem("SUV_2yr5"));
-let yr5_SUV3 = parseInt(localStorage.getItem("SUV_3yr5"));
-let yr6_SUV1 = parseInt(localStorage.getItem("SUV_1yr6"));
-let yr6_SUV2 = parseInt(localStorage.getItem("SUV_2yr6"));
-let yr6_SUV3 = parseInt(localStorage.getItem("SUV_3yr6"));
+let yr1_SUV1 = cym7;
+let yr1_SUV2 = cym8;
+let yr1_SUV3 = cym9;
+let yr2_SUV1 = yr2m7;
+let yr2_SUV2 = yr2m8;
+let yr2_SUV3 = yr2m9;
+let yr3_SUV1 = yr3m7;
+let yr3_SUV2 = yr3m8;
+let yr3_SUV3 = yr3m9;
+let yr4_SUV1 = yr4m7;
+let yr4_SUV2 = yr4m8;
+let yr4_SUV3 = yr4m9;
+let yr5_SUV1 = yr5m7
+let yr5_SUV2 = yr5m8
+let yr5_SUV3 = yr5m9
+let yr6_SUV1 = yr6m7
+let yr6_SUV2 = yr6m8
+let yr6_SUV3 = yr6m9
 
 document.getElementById("yrmd1_9").innerHTML = yr1_SUV1;
 document.getElementById("yrmd1_10").innerHTML = yr1_SUV2;
@@ -883,24 +758,24 @@ document.getElementById("yrmd6_9").innerHTML = yr6_SUV1;
 document.getElementById("yrmd6_10").innerHTML = yr6_SUV2;
 document.getElementById("yrmd6_11").innerHTML = yr6_SUV3;
 // BUSES
-let yr1_BUS1 = parseInt(localStorage.getItem("BUS_1yr1"));
-let yr1_BUS2 = parseInt(localStorage.getItem("BUS_2yr1"));
-let yr1_BUS3 = parseInt(localStorage.getItem("BUS_3yr1"));
-let yr2_BUS1 = parseInt(localStorage.getItem("BUS_1yr2"));
-let yr2_BUS2 = parseInt(localStorage.getItem("BUS_2yr2"));
-let yr2_BUS3 = parseInt(localStorage.getItem("BUS_3yr2"));
-let yr3_BUS1 = parseInt(localStorage.getItem("BUS_1yr3"));
-let yr3_BUS2 = parseInt(localStorage.getItem("BUS_2yr3"));
-let yr3_BUS3 = parseInt(localStorage.getItem("BUS_3yr3"));
-let yr4_BUS1 = parseInt(localStorage.getItem("BUS_1yr4"));
-let yr4_BUS2 = parseInt(localStorage.getItem("BUS_2yr4"));
-let yr4_BUS3 = parseInt(localStorage.getItem("BUS_3yr4"));
-let yr5_BUS1 = parseInt(localStorage.getItem("BUS_1yr5"));
-let yr5_BUS2 = parseInt(localStorage.getItem("BUS_2yr5"));
-let yr5_BUS3 = parseInt(localStorage.getItem("BUS_3yr5"));
-let yr6_BUS1 = parseInt(localStorage.getItem("BUS_1yr6"));
-let yr6_BUS2 = parseInt(localStorage.getItem("BUS_2yr6"));
-let yr6_BUS3 = parseInt(localStorage.getItem("BUS_3yr6"));
+let yr1_BUS1 = cym10;
+let yr1_BUS2 = cym11;
+let yr1_BUS3 = cym12;
+let yr2_BUS1 = yr2m10;
+let yr2_BUS2 = yr2m11;
+let yr2_BUS3 = yr2m12;
+let yr3_BUS1 =yr3m10
+let yr3_BUS2 = yr3m11
+let yr3_BUS3 = yr3m12
+let yr4_BUS1 = yr4m10
+let yr4_BUS2 = yr4m11
+let yr4_BUS3 = yr4m12
+let yr5_BUS1 = yr5m10
+let yr5_BUS2 = yr5m11
+let yr5_BUS3 = yr5m12
+let yr6_BUS1 = yr6m10
+let yr6_BUS2 = yr6m11
+let yr6_BUS3 = yr6m12
 
 document.getElementById("yrmd1_13").innerHTML = yr1_BUS1;
 document.getElementById("yrmd1_14").innerHTML = yr1_BUS2;
@@ -921,24 +796,24 @@ document.getElementById("yrmd6_13").innerHTML = yr6_BUS1;
 document.getElementById("yrmd6_14").innerHTML = yr6_BUS2;
 document.getElementById("yrmd6_15").innerHTML = yr6_BUS3;
 // TRUCKS
-let yr1_TRCK1 = parseInt(localStorage.getItem("TRCK_1yr1"));
-let yr1_TRCK2 = parseInt(localStorage.getItem("TRCK_2yr1"));
-let yr1_TRCK3 = parseInt(localStorage.getItem("TRCK_3yr1"));
-let yr2_TRCK1 = parseInt(localStorage.getItem("TRCK_1yr2"));
-let yr2_TRCK2 = parseInt(localStorage.getItem("TRCK_2yr2"));
-let yr2_TRCK3 = parseInt(localStorage.getItem("TRCK_3yr2"));
-let yr3_TRCK1 = parseInt(localStorage.getItem("TRCK_1yr3"));
-let yr3_TRCK2 = parseInt(localStorage.getItem("TRCK_2yr3"));
-let yr3_TRCK3 = parseInt(localStorage.getItem("TRCK_3yr3"));
-let yr4_TRCK1 = parseInt(localStorage.getItem("TRCK_1yr4"));
-let yr4_TRCK2 = parseInt(localStorage.getItem("TRCK_2yr4"));
-let yr4_TRCK3 = parseInt(localStorage.getItem("TRCK_3yr4"));
-let yr5_TRCK1 = parseInt(localStorage.getItem("TRCK_1yr5"));
-let yr5_TRCK2 = parseInt(localStorage.getItem("TRCK_2yr5"));
-let yr5_TRCK3 = parseInt(localStorage.getItem("TRCK_3yr5"));
-let yr6_TRCK1 = parseInt(localStorage.getItem("TRCK_1yr6"));
-let yr6_TRCK2 = parseInt(localStorage.getItem("TRCK_2yr6"));
-let yr6_TRCK3 = parseInt(localStorage.getItem("TRCK_3yr6"));
+let yr1_TRCK1 = cym13;
+let yr1_TRCK2 = cym14;
+let yr1_TRCK3 = cym15;
+let yr2_TRCK1 = yr2m13;
+let yr2_TRCK2 = yr2m14;
+let yr2_TRCK3 = yr2m15
+let yr3_TRCK1 = yr3m13
+let yr3_TRCK2 = yr3m14
+let yr3_TRCK3 = yr3m15
+let yr4_TRCK1 = yr4m13
+let yr4_TRCK2 = yr4m14
+let yr4_TRCK3 = yr4m15
+let yr5_TRCK1 = yr5m13
+let yr5_TRCK2 = yr5m14
+let yr5_TRCK3 = yr5m15
+let yr6_TRCK1 =yr6m13
+let yr6_TRCK2 = yr6m14
+let yr6_TRCK3 = yr6m15
 
 document.getElementById("yrmd1_17").innerHTML = yr1_TRCK1;
 document.getElementById("yrmd1_18").innerHTML = yr1_TRCK2;

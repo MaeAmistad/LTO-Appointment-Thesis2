@@ -8,8 +8,10 @@ comp_btn.addEventListener('click',(e) => {
 
 incomp_btn.addEventListener('click',(e) => {
     window.location = "a_pcmvDeclind.html";
-});
-
+}); 
+archived_acc.addEventListener('click',(e) => {
+    window.location = "a_archiveReportsmv.html";
+}); 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import { getFirestore, getDocs, collection } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
 

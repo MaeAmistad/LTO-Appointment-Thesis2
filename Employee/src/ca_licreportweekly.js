@@ -16,11 +16,43 @@ const firebaseConfig = {
    
 // Initialize Firebase
 const app = initializeApp(firebaseConfig); 
-const db = getFirestore(app); 
+const db = getFirestore(app);  
 
-// Monthly Filter
-var currentmonth = new Date().getMonth() + 1;
-if (currentmonth < 10)  currentmonth = "0" + currentmonth;
+
+// Weekly Date 
+function getDatesInRange(startDate, endDate) {
+  const date = new Date(startDate);
+  const dates = [];
+// to push date in an array
+  while (date <= endDate) {
+  let dt = new Date(date)
+  let day = dt.getDate();
+  var month = dt.getMonth() + 1;
+  var year = dt.getFullYear();
+  if (month < 10) month = "0" + month;
+  if (day < 10) day = "0" + day;
+  var today = day + " - " + month + " - " + year; 
+   
+  dates.push(today); 
+  date.setDate(date.getDate() + 1);
+  }
+  return dates;
+}
+// Getting date / Initialization
+  let now = new Date();
+//  For Getting the week date 
+  let dayOfWeek = now.getDay(); //0-6
+  let numDay = now.getDate();
+// Set a start date
+  let start = new Date(now); //copy
+  start.setDate(numDay - dayOfWeek);
+// Set an end date
+  let end = new Date(now); //copy
+  end.setDate(numDay + (7 - dayOfWeek));
+
+  let d1 = new Date(start);
+  let d2 = new Date(end);
+  let today = getDatesInRange(d1, d2);
 
 // DLPI Count
 const license = await getDocs(collection(db,"License"));
@@ -49,29 +81,24 @@ let dd = doc.data().dt_App;
 let mmsp = dd.slice(5,7);
 
 // Current Count
-if(mmsp == currentmonth){
+if(today.includes(doc.data().dt_App)){
   if(doc.data().laa == "STUDENT-DRIVER'S PERMIT"){    
-    // document.getElementById("sp_dpch").innerHTML = spttal+=1;
 
     if(doc.data().at == "NEW"){
       if(doc.data().User_GN == "MALE"){
-        let sp_nm = sp1n+=1;        
-        localStorage.setItem("sp_dnmm",sp_nm);
+        sp1n = sp1n+=1;        
       }
       else if(doc.data().User_GN == "FEMALE"){
-        let sp_nf = sp2n+=1;        
-        localStorage.setItem("sp_dnff",sp_nf);
+        sp2n = sp2n+=1;        
       }
     }
 
     if(doc.data().at == "RENEWAL"){
       if(doc.data().User_GN == "MALE"){
-        let sp_rnm = sp1rn+=1;        
-        localStorage.setItem("sp_rnmm",sp_rnm);
+        sp1rn = sp1rn+=1;        
       }
       else if(doc.data().User_GN == "FEMALE"){
-        let sp_rnf = sp2rn+=1;        
-        localStorage.setItem("sp_rnff",sp_rnf); 
+        sp2rn = sp2rn+=1;        
       }
     }
   }
@@ -80,23 +107,19 @@ if(mmsp == currentmonth){
   if(doc.data().laa == "CONDUCTOR'S LICENSE"){
     if(doc.data().at == "NEW"){
       if(doc.data().User_GN == "MALE"){
-        let cl_nm = cl1n+=1;        
-        localStorage.setItem("cl_dnmm",cl_nm);
+        cl1n = cl1n+=1;        
       }
       else if(doc.data().User_GN == "FEMALE"){
-        let cl_nf = cl2n+=1;        
-        localStorage.setItem("cl_dnff",cl_nf);
+        cl2n = cl2n+=1;        
       }
     }
 
     if(doc.data().at == "RENEWAL"){
       if(doc.data().User_GN == "MALE"){
-        let cl_rnm = cl1rn+=1;        
-        localStorage.setItem("cl_rnmm",cl_rnm);
+        cl1rn = cl1rn+=1;        
       }
       else if(doc.data().User_GN == "FEMALE"){
-        let cl_rnf = cl2rn+=1;        
-        localStorage.setItem("cl_rnff",cl_rnf);
+        cl2rn = cl2rn+=1;        
       }
     }
   }
@@ -104,39 +127,31 @@ if(mmsp == currentmonth){
   if(doc.data().laa == "DRIVER'S LICENSE"){
     if(doc.data().at == "NEW"){
       if(doc.data().User_GN == "MALE"){
-        let  spn_m = spnw_mal+=1;        
-        localStorage.setItem("spn_ml",spn_m);
+        spnw_mal = spnw_mal+=1;        
       }
       else if(doc.data().User_GN == "FEMALE"){
-        let spn_f = spnw_fem+=1;        
-        localStorage.setItem("spn_fm",spn_f);
+        spnw_fem = spnw_fem+=1;        
       }
-    }
+    } 
 
     else if(doc.data().at == "CONVERSION OF FOREIGN DL"){
       if(doc.data().User_GN == "MALE"){
-        let  spn_m = flnw_mal+=1;        
-        localStorage.setItem("fl_dnm",spn_m);
+        flnw_mal = flnw_mal+=1;        
       }
       else if(doc.data().User_GN == "FEMALE"){
-        let spn_f = flnw_fem+=1;        
-        localStorage.setItem("fl_dnf",spn_f);
+        flnw_fem = flnw_fem+=1;        
       }
     }
 
     if(doc.data().at == "RENEWAL"){
       if(doc.data().User_GN == "MALE"){
-        let  spn_m = rn_mal+=1;        
-        localStorage.setItem("rn_drnm",spn_m);
+        rn_mal = rn_mal+=1;        
       }
       else if(doc.data().User_GN == "FEMALE"){
-        let spn_f = rn_fem+=1;        
-        localStorage.setItem("rn_drnf",spn_f);
+        rn_fem = rn_fem+=1;        
       }
     }
   }
-
-  
 
 }
 
@@ -168,90 +183,75 @@ AE_licW.forEach((doc) => {
   let dd = doc.data().dt_App;
   let mmsp = dd.slice(5,7);
   
-  if(mmsp == currentmonth){
+  if(today.includes(doc.data().dt_App)){
   // CL
-    if(doc.data().laa == "CONDUCTOR'S LICENSE"){
-      // document.getElementById("cl_dpch").innerHtml = clttl+=1;
+  if(doc.data().laa == "CONDUCTOR'S LICENSE"){
+    if(doc.data().result == "PASSED"){
+      cl_pw = cl_pw+=1;      
+    }
+    else if(doc.data().result == "FAILED"){
+      cl_fw = cl_fw+=1;      
+    }
+  }
+ 
+  if(doc.data().Laa == "DRIVER'S LICENSE"){
+     // DL New
+    if(doc.data().at == "NEW"){
       if(doc.data().result == "PASSED"){
-        let cl_wf = cl_pw+=1;      
-        localStorage.setItem("cl_pw",cl_wf);
+        new_pw = new_pw+=1;
       }
       else if(doc.data().result == "FAILED"){
-        let cl_wp = cl_fw+=1;      
-        localStorage.setItem("cl_fw",cl_wp);
+        new_fw = new_fw+=1;
       }
     }
-   
-    if(doc.data().Laa == "DRIVER'S LICENSE"){
-       // DL New
-      if(doc.data().at == "NEW"){
-        if(doc.data().result == "PASSED"){
-          let  nw_pw = new_pw+=1;
-          localStorage.setItem("new_wp",nw_pw);
-        }
-        else if(doc.data().result == "FAILED"){
-          let nw_fw = new_fw+=1;
-          localStorage.setItem("new_wf",nw_fw);
-        }
+    // DL ADC
+    if(doc.data().at == "ADDITIONAL CODE OR CATEGORY"){
+      if(doc.data().result == "PASSED"){
+        adl_pw = adl_pw+=1;
       }
-      // DL ADC
-      if(doc.data().at == "ADDITIONAL CODE OR CATEGORY"){
-        if(doc.data().result == "PASSED"){
-          let adl_pp = adl_pw+=1;
-          localStorage.setItem("adc_pw",adl_pp);
-        }
-        else if(doc.data().result == "FAILED"){
-          let adl_pf = adl_fw+=1;
-          localStorage.setItem("adc_fw",adl_pf);
-        }
+      else if(doc.data().result == "FAILED"){
+        adl_fw = adl_fw+=1;
       }
-
-      else if (doc.data().at == "CHANGE OF DL CLASSIFICATION" || doc.data().at == "EXPIRED DL WITH VALID FDL" || doc.data().at == "DROPPING OF CATEGORY OR ADD'L OR REMOVAL OF DRIVING CONDITIONS"){
-        if(doc.data().result == "PASSED"){
-          let othr_1 = other1_pw+=1;
-          localStorage.setItem("othr1_awp",othr_1);
-        }
-        else if(doc.data().result == "FAILED"){
-          let othr_2 = other1_fw+=1;
-          localStorage.setItem("othr1_awf",othr_2);
-        }
-      }
-
-      else if(doc.data().at == "ENHANCEMENT OF DL" || doc.data().at == "CHANGE OF CLUTCH TYPE"){
-        if(doc.data().result == "PASSED"){
-          let othr_1 = other2_pw+=1;
-          localStorage.setItem("othr2_awp",othr_1);
-        }
-        else if(doc.data().result == "FAILED"){
-          let othr_2 = other2_fw+=1;
-          localStorage.setItem("othr2_awf",othr_2);
-        }
-      }
-
-      // FL
-      else if(doc.data().at == "CONVERSION OF FOREIGN DL"){
-        if(doc.data().result == "PASSED"){
-          let othr_1 = fl_pw+=1;
-          localStorage.setItem("fl_awp",othr_1);
-        }
-        else if(doc.data().result == "FAILED"){
-          let othr_2 = fl_fw+=1;
-          localStorage.setItem("fl_awf",othr_2);
-        }
-      }
-
-      else if(doc.data().at == "RENEWAL"){
-        if(doc.data().result == "PASSED"){
-          let othr_1 = rn_pw+=1;
-          localStorage.setItem("rn_awp",othr_1);
-        }
-        else if(doc.data().result == "FAILED"){
-          let othr_2 = rn_fw+=1;
-          localStorage.setItem("rn_awf",othr_2);
-        }
-      }
-      
     }
+
+    else if (doc.data().at == "CHANGE OF DL CLASSIFICATION" || doc.data().at == "EXPIRED DL WITH VALID FDL" || doc.data().at == "DROPPING OF CATEGORY OR ADD'L OR REMOVAL OF DRIVING CONDITIONS"){
+      if(doc.data().result == "PASSED"){
+        other1_pw = other1_pw+=1;
+      }
+      else if(doc.data().result == "FAILED"){
+        other1_fw = other1_fw+=1;
+      }
+    }
+
+    else if(doc.data().at == "ENHANCEMENT OF DL" || doc.data().at == "CHANGE OF CLUTCH TYPE"){
+      if(doc.data().result == "PASSED"){
+        other2_pw = other2_pw+=1;
+      }
+      else if(doc.data().result == "FAILED"){
+        other2_fw = other2_fw+=1;
+      }
+    }
+
+    // FL
+    else if(doc.data().at == "CONVERSION OF FOREIGN DL"){
+      if(doc.data().result == "PASSED"){
+        fl_pw = fl_pw+=1;
+      }
+      else if(doc.data().result == "FAILED"){
+        fl_fw = fl_fw+=1;
+      }
+    }
+
+    else if(doc.data().at == "RENEWAL"){
+      if(doc.data().result == "PASSED"){
+        rn_pw = rn_pw+=1;
+      }
+      else if(doc.data().result == "FAILED"){
+        rn_fw = rn_fw+=1;
+      }
+    }
+    
+  }
   }
   });
 
@@ -277,77 +277,65 @@ AE_licP.forEach((doc) => {
   let dd = doc.data().dt_App;
   let mmsp = dd.slice(5,7);
   
-  if(mmsp == currentmonth){
+  if(today.includes(doc.data().dt_App)){
     if(doc.data().Laa == "DRIVER'S LICENSE"){
-    // DL New
-    if(doc.data().at == "NEW"){
-      if(doc.data().result == "PASSED"){
-        let  nw_pw = new_pp+=1;
-        localStorage.setItem("new_pp",nw_pw); 
-      }
-      else if(doc.data().result == "FAILED"){
-        let nw_fw = new_fp+=1;
-        localStorage.setItem("new_pf",nw_fw);
-      }
-    }
-      // DL ADC
-      if(doc.data().at == "ADDITIONAL CODE OR CATEGORY"){
+      // DL New
+      if(doc.data().at == "NEW"){
         if(doc.data().result == "PASSED"){
-          let adc_pp = adl_pp+=1;
-          localStorage.setItem("adc_pp",adc_pp);
+          new_pp = new_pp+=1;
         }
         else if(doc.data().result == "FAILED"){
-          let adl_pf = adl_fp+=1;
-          localStorage.setItem("adc_fp",adl_pf);
+          new_fp = new_fp+=1;
         }
       }
-// other
-      else if (doc.data().at == "CHANGE OF DL CLASSIFICATION" || doc.data().at == "EXPIRED DL WITH VALID FDL" || doc.data().at == "DROPPING OF CATEGORY OR ADD'L OR REMOVAL OF DRIVING CONDITIONS"){
-        if(doc.data().result == "PASSED"){
-          let othr_1 = other1_pp+=1;
-          localStorage.setItem("othr1_app",othr_1);
+        // DL ADC
+        if(doc.data().at == "ADDITIONAL CODE OR CATEGORY"){
+          if(doc.data().result == "PASSED"){
+            adl_pp = adl_pp+=1;
+          }
+          else if(doc.data().result == "FAILED"){
+            adl_fp = adl_fp+=1;
+          }
         }
-        else if(doc.data().result == "FAILED"){
-          let othr_2 = other1_fp+=1;
-          localStorage.setItem("othr1_apf",othr_2);
+  // other
+        else if (doc.data().at == "CHANGE OF DL CLASSIFICATION" || doc.data().at == "EXPIRED DL WITH VALID FDL" || doc.data().at == "DROPPING OF CATEGORY OR ADD'L OR REMOVAL OF DRIVING CONDITIONS"){
+          if(doc.data().result == "PASSED"){
+            other1_pp = other1_pp+=1;
+          }
+          else if(doc.data().result == "FAILED"){
+            other1_fp= other1_fp+=1;
+          }
         }
+  
+        else if(doc.data().at == "ENHANCEMENT OF DL" || doc.data().at == "CHANGE OF CLUTCH TYPE"){
+          if(doc.data().result == "PASSED"){
+            other2_pp = other2_pp+=1;
+          }
+          else if(doc.data().result == "FAILED"){
+            other2_fp = other2_fp+=1;
+          }
+        }
+  
+              // FL
+        else if(doc.data().at == "CONVERSION OF FOREIGN DL"){
+          if(doc.data().result == "PASSED"){
+            fl_pp = fl_pp+=1;
+          }
+          else if(doc.data().result == "FAILED"){
+            fl_fp = fl_fp+=1;
+          }
+        }
+  
+        else if(doc.data().at == "RENEWAL"){
+          if(doc.data().result == "PASSED"){
+            rn_pp = rn_pp+=1;
+          }
+          else if(doc.data().result == "FAILED"){
+            rn_fp = rn_fp+=1;
+          }
+        }
+        
       }
-
-      else if(doc.data().at == "ENHANCEMENT OF DL" || doc.data().at == "CHANGE OF CLUTCH TYPE"){
-        if(doc.data().result == "PASSED"){
-          let othr_1 = other2_pp+=1;
-          localStorage.setItem("othr2_app",othr_1);
-        }
-        else if(doc.data().result == "FAILED"){
-          let othr_2 = other2_fp+=1;
-          localStorage.setItem("othr2_apf",othr_2);
-        }
-      }
-
-            // FL
-      else if(doc.data().at == "CONVERSION OF FOREIGN DL"){
-        if(doc.data().result == "PASSED"){
-          let othr_1 = fl_pp+=1;
-          localStorage.setItem("fl_app",othr_1);
-        }
-        else if(doc.data().result == "FAILED"){
-          let othr_2 = fl_fp+=1;
-          localStorage.setItem("fl_apf",othr_2);
-        }
-      }
-
-      else if(doc.data().at == "RENEWAL"){
-        if(doc.data().result == "PASSED"){
-          let othr_1 = rn_pp+=1;
-          localStorage.setItem("rn_app",othr_1);
-        }
-        else if(doc.data().result == "FAILED"){
-          let othr_2 = rn_fp+=1;
-          localStorage.setItem("rn_apf",othr_2);
-        }
-      }
-      
-    }
 
   }
   });
@@ -361,229 +349,123 @@ AE_licP.forEach((doc) => {
     let dd = doc.data().dt_App;
     let mmsp = dd.slice(5,7);
 
-    if(mmsp == currentmonth){
+    if(today.includes(doc.data().dt_App)){
       if(doc.data().laa == "STUDENT-DRIVER'S PERMIT"){  
         if (doc.data().at == "DUPLICATE" || doc.data().at == "REVISION OF RECORDS"){
-          var misc_ttl = miscttld1+=1;
-          localStorage.setItem("sp_mscttl",misc_ttl);
+          miscttld1 = miscttld1+=1;
         }
       } 
       if(doc.data().laa == "CONDUCTOR'S LICENSE"){  
         if (doc.data().at == "DUPLICATE" || doc.data().at == "REVISION OF RECORDS"){
-          var misc_ttl = miscttld2+=1;
-          localStorage.setItem("cl_mscttl",misc_ttl);
+          miscttld2 = miscttld2+=1;
         }
       }
       if (doc.data().at == "DUPLICATE"){
-        var misc_ttl = miscttld3+=1;
-        localStorage.setItem("dupl_mscttl",misc_ttl);
+        miscttld3 = miscttld3+=1;
       }
       if (doc.data().at == "REVISION OF RECORDS"){
-        var misc_ttl = miscttld4+=1;
-        localStorage.setItem("ror_mscttl",misc_ttl);
+        miscttld4 = miscttld4+=1;
       }
   }
   });
 
-  // NAN to int
-if (localStorage.getItem("sp_dnmm") == null || localStorage.getItem("sp_dnff") == null || localStorage.getItem("sp_rnmm") == null || localStorage.getItem("sp_rnff") == null){
-  localStorage.setItem("sp_dnmm",0);
-  localStorage.setItem("sp_dnff",0);  
-  localStorage.setItem("sp_rnmm",0);
-  localStorage.setItem("sp_rnff",0);
-}
-if (localStorage.getItem("cl_dnmm") == null || localStorage.getItem("cl_dnff") == null || localStorage.getItem("cl_rnmm") == null || localStorage.getItem("cl_rnff") == null){
-  localStorage.setItem("cl_dnmm",0);
-  localStorage.setItem("cl_dnff",0);  
-  localStorage.setItem("cl_rnmm",0);
-  localStorage.setItem("cl_rnff",0);
-}
-if (localStorage.getItem("spn_ml") == null || localStorage.getItem("spn_fm") == null || localStorage.getItem("fl_dnm") == null || localStorage.getItem("fl_dnf") == null){
-  localStorage.setItem("spn_ml",0);
-  localStorage.setItem("spn_fm",0);  
-  localStorage.setItem("fl_dnm",0);
-  localStorage.setItem("fl_dnf",0);
-}
-if (localStorage.getItem("rn_drnf") == null || localStorage.getItem("rn_drnm") == null || localStorage.getItem("cl_pw") == null || localStorage.getItem("cl_fw") == null){
-  localStorage.setItem("rn_drnf",0);
-  localStorage.setItem("rn_drnm",0);  
-  localStorage.setItem("cl_pw",0);
-  localStorage.setItem("cl_fw",0);
-}
-if (localStorage.getItem("new_wp") == null || localStorage.getItem("new_wf") == null || localStorage.getItem("adc_pw") == null || localStorage.getItem("adc_fw") == null){
-  localStorage.setItem("new_wp",0);
-  localStorage.setItem("new_wf",0);  
-  localStorage.setItem("adc_pw",0);
-  localStorage.setItem("adc_fw",0);
-}
-if (localStorage.getItem("othr1_awp") == null || localStorage.getItem("othr1_awf") == null || localStorage.getItem("othr2_awp") == null || localStorage.getItem("othr2_awf") == null){
-  localStorage.setItem("othr1_awp",0);
-  localStorage.setItem("othr1_awf",0);  
-  localStorage.setItem("othr2_awp",0);
-  localStorage.setItem("othr2_awf",0);
-}
-if (localStorage.getItem("fl_awp") == null || localStorage.getItem("fl_awf") == null || localStorage.getItem("rn_awp") == null || localStorage.getItem("rn_awf") == null){
-  localStorage.setItem("fl_awp",0);
-  localStorage.setItem("fl_awf",0);  
-  localStorage.setItem("rn_awp",0);
-  localStorage.setItem("rn_awf",0);
-}
-if (localStorage.getItem("new_pp") == null || localStorage.getItem("new_pf") == null || localStorage.getItem("adc_pp") == null || localStorage.getItem("adc_fp") == null){
-  localStorage.setItem("new_pp",0);
-  localStorage.setItem("new_pf",0);  
-  localStorage.setItem("adc_pp",0);
-  localStorage.setItem("adc_fp",0);
-}
-if (localStorage.getItem("othr1_app") == null || localStorage.getItem("othr1_apf") == null || localStorage.getItem("othr2_app") == null || localStorage.getItem("othr2_apf") == null){
-  localStorage.setItem("othr1_app",0);
-  localStorage.setItem("othr1_apf",0);  
-  localStorage.setItem("othr2_app",0);
-  localStorage.setItem("othr2_apf",0);
-}
-if (localStorage.getItem("fl_app") == null || localStorage.getItem("fl_apf") == null || localStorage.getItem("rn_app") == null || localStorage.getItem("rn_apf") == null){
-  localStorage.setItem("fl_app",0);
-  localStorage.setItem("fl_apf",0);  
-  localStorage.setItem("rn_app",0);
-  localStorage.setItem("rn_apf",0);
-}
-if (localStorage.getItem("sp_mscttl") == null || localStorage.getItem("cl_mscttl") == null || localStorage.getItem("dupl_mscttl") == null || localStorage.getItem("ror_mscttl") == null){
-  localStorage.setItem("sp_mscttl",0);
-  localStorage.setItem("cl_mscttl",0);  
-  localStorage.setItem("dupl_mscttl",0);
-  localStorage.setItem("ror_mscttl",0);
-}
+  
 
-// Count Total
-// document.getElementById("").innerHTML = parseInt(localStorage.getItem("")) + parseInt(localStorage.getItem(""));
-
+/// Count Total1
 // Student Permit
-let sp_ttl1 = parseInt(localStorage.getItem("sp_dnmm"));
-let sp_ttl2 =  parseInt(localStorage.getItem("sp_dnff"));
-let sp_ttl3 = parseInt(localStorage.getItem("sp_rnmm"));
-let sp_ttl4 = parseInt(localStorage.getItem("sp_rnff"));
-
-document.getElementById("sp_dnm").innerHTML = sp_ttl1;
-document.getElementById("sp_dnf").innerHTML = sp_ttl2;
-document.getElementById("sp_drm").innerHTML = sp_ttl3;
-document.getElementById("sp_drf").innerHTML = sp_ttl4;
-document.getElementById("sp_dnt").innerHTML = sp_ttl1 + sp_ttl2;
-document.getElementById("sp_drt").innerHTML = sp_ttl3 + sp_ttl4;
-document.getElementById("sp_dtm").innerHTML = sp_ttl1 + sp_ttl3;
-document.getElementById("sp_dtf").innerHTML = sp_ttl2 + sp_ttl4;
-document.getElementById("sp_dtt").innerHTML = sp_ttl1 + sp_ttl3 + sp_ttl2 + sp_ttl4;
+document.getElementById("sp_dnm").innerHTML = sp1n;
+document.getElementById("sp_dnf").innerHTML = sp2n;
+document.getElementById("sp_drm").innerHTML = sp1rn;
+document.getElementById("sp_drf").innerHTML = sp2rn;
+document.getElementById("sp_dnt").innerHTML = sp1n + sp2n;
+document.getElementById("sp_drt").innerHTML = sp1rn + sp2rn;
+document.getElementById("sp_dtm").innerHTML = sp1n + sp1rn;
+document.getElementById("sp_dtf").innerHTML = sp2n + sp2rn;
+document.getElementById("sp_dtt").innerHTML = sp1n + sp1rn + sp2n + sp2rn;
 
 // Conductor license
-let cl_ttl1 = parseInt(localStorage.getItem("cl_pw"));
-let cl_ttl2 = parseInt(localStorage.getItem("cl_fw"));
-let cl_ttl3 = parseInt(localStorage.getItem("cl_dnmm"));
-let cl_ttl4 = parseInt(localStorage.getItem("cl_dnff"));
-let cl_ttl5 = parseInt(localStorage.getItem("cl_rnmm"));
-let cl_ttl6 = parseInt(localStorage.getItem("cl_rnff"));
-
-document.getElementById("cl_awp").innerHTML = cl_ttl1;
-document.getElementById("cl_awf").innerHTML = cl_ttl2;
-document.getElementById("cl_awt").innerHTML = cl_ttl1 + cl_ttl2;
-document.getElementById("cl_dnm").innerHTML = cl_ttl3;
-document.getElementById("cl_dnf").innerHTML = cl_ttl4; 
-document.getElementById("cl_dnt").innerHTML = cl_ttl3 + cl_ttl4;
-document.getElementById("cl_drm").innerHTML = cl_ttl5;
-document.getElementById("cl_drf").innerHTML = cl_ttl6;
-document.getElementById("cl_drt").innerHTML = cl_ttl5 + cl_ttl6;
-document.getElementById("cl_dtm").innerHTML = cl_ttl3 + cl_ttl5;
-document.getElementById("cl_dtf").innerHTML = cl_ttl4 + cl_ttl6;
-document.getElementById("cl_dtt").innerHTML = cl_ttl3 + cl_ttl4 + cl_ttl5 + cl_ttl6;
+document.getElementById("cl_awp").innerHTML = cl_pw;
+document.getElementById("cl_awf").innerHTML = cl_fw;
+document.getElementById("cl_awt").innerHTML = cl_pw + cl_fw;
+document.getElementById("cl_dnm").innerHTML = cl1n;
+document.getElementById("cl_dnf").innerHTML = cl2n; 
+document.getElementById("cl_dnt").innerHTML = cl1n + cl2n;
+document.getElementById("cl_drm").innerHTML = cl1rn;
+document.getElementById("cl_drf").innerHTML = cl2rn;
+document.getElementById("cl_drt").innerHTML = cl1rn + cl2rn;
+document.getElementById("cl_dtm").innerHTML = cl1n + cl1rn;
+document.getElementById("cl_dtf").innerHTML = cl2n + cl2rn;
+document.getElementById("cl_dtt").innerHTML = cl1n + cl2n + cl1rn + cl2rn; 
 
 // Driver's License
 // SP to New
-let spn_ttl1 = parseInt(localStorage.getItem("new_wp"));
-let spn_ttl2 = parseInt(localStorage.getItem("new_wf"));
-let spn_ttl3 = parseInt(localStorage.getItem("new_pp"));
-let spn_ttl4 = parseInt(localStorage.getItem("new_pf"));
-let spn_ttl5 = parseInt(localStorage.getItem("spn_ml"));
-let spn_ttl6 = parseInt(localStorage.getItem("spn_fm"));
+document.getElementById("spdl_awp").innerHTML = new_pw;
+document.getElementById("spdl_awf").innerHTML = new_fw;
+document.getElementById("spdl_app").innerHTML = new_pp;
+document.getElementById("spdl_apf").innerHTML = new_fp;
+document.getElementById("spdl_dnm").innerHTML = spnw_mal;
+document.getElementById("spdl_dnf").innerHTML = spnw_fem;
+document.getElementById("spdl_dtm").innerHTML = spnw_mal;
+document.getElementById("spdl_dtf").innerHTML = spnw_fem;
+document.getElementById("spdl_dtt").innerHTML = spnw_mal + spnw_fem;
+document.getElementById("spdl_dnt").innerHTML = spnw_mal + spnw_fem;
+document.getElementById("spdl_awt").innerHTML = new_pw + new_fw;
+document.getElementById("spdl_apt").innerHTML = new_pp + new_fp;
 
-document.getElementById("spdl_awp").innerHTML = spn_ttl1;
-document.getElementById("spdl_awf").innerHTML = spn_ttl2;
-document.getElementById("spdl_app").innerHTML = spn_ttl3;
-document.getElementById("spdl_apf").innerHTML = spn_ttl4;
-document.getElementById("spdl_dnm").innerHTML = spn_ttl5;
-document.getElementById("spdl_dnf").innerHTML = spn_ttl6;
-document.getElementById("spdl_dtm").innerHTML = spn_ttl5;
-document.getElementById("spdl_dtf").innerHTML = spn_ttl6;
-document.getElementById("spdl_dtt").innerHTML = spn_ttl5 + spn_ttl6;
-document.getElementById("spdl_dnt").innerHTML = spn_ttl5 + spn_ttl6;
-document.getElementById("spdl_awt").innerHTML = spn_ttl1 + spn_ttl2;
-document.getElementById("spdl_apt").innerHTML = spn_ttl3 + spn_ttl4;
 // Foreign License
-let fl_ttl1 = parseInt(localStorage.getItem("fl_dnm"));
-let fl_ttl2 = parseInt(localStorage.getItem("fl_dnf"));
-let fl_ttl3 = parseInt(localStorage.getItem("fl_awp"));
-let fl_ttl4 = parseInt(localStorage.getItem("fl_awf"));
-let fl_ttl5 = parseInt(localStorage.getItem("fl_app"));
-let fl_ttl6 = parseInt(localStorage.getItem("fl_apf"));
+document.getElementById("fl_awp").innerHTML = fl_pw;
+document.getElementById("fl_awf").innerHTML = fl_fw;
+document.getElementById("fl_app").innerHTML = fl_pp;
+document.getElementById("fl_apf").innerHTML = fl_fp;
+document.getElementById("fl_dnm").innerHTML = flnw_mal;
+document.getElementById("fl_dnf").innerHTML = flnw_fem;
+document.getElementById("fl_dtm").innerHTML = flnw_mal;
+document.getElementById("fl_dtf").innerHTML = flnw_fem;
+document.getElementById("fl_dtt").innerHTML = flnw_mal + flnw_fem;
+document.getElementById("fl_dnt").innerHTML = flnw_mal + flnw_fem;
+document.getElementById("fl_awt").innerHTML = fl_pw + fl_fw;
+document.getElementById("fl_apt").innerHTML = fl_pp + fl_fp;
 
-document.getElementById("fl_awp").innerHTML = fl_ttl3;
-document.getElementById("fl_awf").innerHTML = fl_ttl4;
-document.getElementById("fl_app").innerHTML = fl_ttl5;
-document.getElementById("fl_apf").innerHTML = fl_ttl6;
-document.getElementById("fl_dnm").innerHTML = fl_ttl1;
-document.getElementById("fl_dnf").innerHTML = fl_ttl2;
-document.getElementById("fl_dtm").innerHTML = fl_ttl1;
-document.getElementById("fl_dtf").innerHTML = fl_ttl2;
-document.getElementById("fl_dtt").innerHTML = fl_ttl1 + fl_ttl2;
-document.getElementById("fl_dnt").innerHTML = fl_ttl1 + fl_ttl2;
-document.getElementById("fl_awt").innerHTML = fl_ttl3 + fl_ttl4;
-document.getElementById("fl_apt").innerHTML = fl_ttl5 + fl_ttl6;
 // Normal Renewal
-let nr_ttl1 = parseInt(localStorage.getItem("rn_drnm"));
-let nr_ttl2 = parseInt(localStorage.getItem("rn_drnf"));
-let nr_ttl3 = parseInt(localStorage.getItem("rn_awp"));
-let nr_ttl4 = parseInt(localStorage.getItem("rn_awf"));
-let nr_ttl5 = parseInt(localStorage.getItem("rn_app"));
-let nr_ttl6 = parseInt(localStorage.getItem("rn_apf"));
+document.getElementById("nrn_awp").innerHTML = rn_pw;
+document.getElementById("nrn_awf").innerHTML = rn_fw;
+document.getElementById("nrn_app").innerHTML = rn_pp;
+document.getElementById("nrn_apf").innerHTML = rn_fp;
+document.getElementById("nrn_drm").innerHTML = rn_mal;
+document.getElementById("nrn_drf").innerHTML = rn_fem;
+document.getElementById("nrn_dtm").innerHTML = rn_mal;
+document.getElementById("nrn_dtf").innerHTML = rn_fem;
+document.getElementById("nrn_dtt").innerHTML = rn_mal + rn_fem;
+document.getElementById("nrn_drt").innerHTML = rn_mal + rn_fem;
+document.getElementById("nrn_awt").innerHTML = rn_pw + rn_fw;
+document.getElementById("nrn_apt").innerHTML = rn_pp + rn_fp;
 
-document.getElementById("nrn_awp").innerHTML = nr_ttl3;
-document.getElementById("nrn_awf").innerHTML = nr_ttl4;
-document.getElementById("nrn_app").innerHTML = nr_ttl5;
-document.getElementById("nrn_apf").innerHTML = nr_ttl6;
-document.getElementById("nrn_drm").innerHTML = nr_ttl1;
-document.getElementById("nrn_drf").innerHTML = nr_ttl2;
-document.getElementById("nrn_dtm").innerHTML = nr_ttl1;
-document.getElementById("nrn_dtf").innerHTML = nr_ttl2;
-document.getElementById("nrn_dtt").innerHTML = nr_ttl1 + nr_ttl2;
-document.getElementById("nrn_drt").innerHTML = nr_ttl1 + nr_ttl2;
-document.getElementById("nrn_awt").innerHTML = nr_ttl3 + nr_ttl4;
-document.getElementById("nrn_apt").innerHTML = nr_ttl5 + nr_ttl6;
 // Renewal Total
-document.getElementById("rnwl_awp").innerHTML = nr_ttl3;
-document.getElementById("rnwl_awf").innerHTML = nr_ttl4;
-document.getElementById("rnwl_app").innerHTML = nr_ttl5;
-document.getElementById("rnwl_apf").innerHTML = nr_ttl6;
-document.getElementById("rnwl_drm").innerHTML = nr_ttl1;
-document.getElementById("rnwl_drf").innerHTML = nr_ttl2;
-document.getElementById("rnwl_dtm").innerHTML = nr_ttl1;
-document.getElementById("rnwl_dtf").innerHTML = nr_ttl2;
-document.getElementById("rnwl_dtt").innerHTML = nr_ttl1 + nr_ttl2;
-document.getElementById("rnwl_drt").innerHTML = nr_ttl1 + nr_ttl2;
-document.getElementById("rnwl_awt").innerHTML = nr_ttl3 + nr_ttl4;
-document.getElementById("rnwl_apt").innerHTML = nr_ttl5 + nr_ttl6 ;
+document.getElementById("rnwl_awp").innerHTML = rn_pw;
+document.getElementById("rnwl_awf").innerHTML = rn_fw;
+document.getElementById("rnwl_app").innerHTML = rn_pp;
+document.getElementById("rnwl_apf").innerHTML = rn_fp;
+document.getElementById("rnwl_drm").innerHTML = rn_mal;
+document.getElementById("rnwl_drf").innerHTML = rn_fem;
+document.getElementById("rnwl_dtm").innerHTML = rn_mal;
+document.getElementById("rnwl_dtf").innerHTML = rn_fem;
+document.getElementById("rnwl_dtt").innerHTML = rn_mal + rn_fem;
+document.getElementById("rnwl_drt").innerHTML = rn_mal + rn_fem;
+document.getElementById("rnwl_awt").innerHTML = rn_pw + rn_fw;
+document.getElementById("rnwl_apt").innerHTML = rn_pp + rn_fp ;
 // Add'l Code
-let addlc_ttl1 = parseInt(localStorage.getItem("adc_pw"));
-let addlc_ttl2 = parseInt(localStorage.getItem("adc_fw"));
-let addlc_ttl3 = parseInt(localStorage.getItem("adc_pp"));
-let addlc_ttl4 = parseInt(localStorage.getItem("adc_fp"));
 
-document.getElementById("adc_awp").innerHTML = addlc_ttl1;
-document.getElementById("adc_awf").innerHTML = addlc_ttl2;
-document.getElementById("adc_app").innerHTML = addlc_ttl3;
-document.getElementById("adc_apf").innerHTML = addlc_ttl4;
-document.getElementById("adc_awt").innerHTML = addlc_ttl1 + addlc_ttl2;
-document.getElementById("adc_apt").innerHTML = addlc_ttl3 + addlc_ttl4;
+document.getElementById("adc_awp").innerHTML = adl_pw;
+document.getElementById("adc_awf").innerHTML = adl_fw;
+document.getElementById("adc_app").innerHTML = adl_pp;
+document.getElementById("adc_apf").innerHTML = adl_fp;
+document.getElementById("adc_awt").innerHTML = adl_pw + adl_fw;
+document.getElementById("adc_apt").innerHTML = adl_pp + adl_fp;
 // Others
-let othrs_ttl1 =parseInt(localStorage.getItem("othr1_awp")) + parseInt(localStorage.getItem("othr2_awp"));
-let othrs_ttl2 =parseInt(localStorage.getItem("othr1_app")) + parseInt(localStorage.getItem("othr2_app"));
-let othrs_ttl3 =parseInt(localStorage.getItem("othr1_apf")) + parseInt(localStorage.getItem("othr2_apf"));
-let othrs_ttl4 =parseInt(localStorage.getItem("othr1_awf")) + parseInt(localStorage.getItem("othr2_awf"));
+let othrs_ttl1 = other1_pw + other2_pw;
+let othrs_ttl2 = other1_pp + other2_pp;
+let othrs_ttl3 = other1_fp + other2_fp;
+let othrs_ttl4 = other1_fw + other2_fw;
 
 document.getElementById("othr_awp").innerHTML = othrs_ttl1;
 document.getElementById("othr_awf").innerHTML = othrs_ttl4;
@@ -593,92 +475,88 @@ document.getElementById("othr_awt").innerHTML = othrs_ttl1 + othrs_ttl4;
 document.getElementById("othr_apt").innerHTML = othrs_ttl2 + othrs_ttl3;
 
 // MISC
-let misc_ttl1 = parseInt(localStorage.getItem("sp_mscttl"));
-let misc_ttl2 = parseInt(localStorage.getItem("cl_mscttl"));
-let misc_ttl3 = parseInt(localStorage.getItem("dupl_mscttl"));
-let misc_ttl4 = parseInt(localStorage.getItem("ror_mscttl"));
-
-document.getElementById("sp_misc").innerHTML = misc_ttl1;
-document.getElementById("cl_misc").innerHTML = misc_ttl2;
-document.getElementById("dt_misc").innerHTML = misc_ttl3;
-document.getElementById("rr_misc").innerHTML = misc_ttl4;
+document.getElementById("sp_misc").innerHTML = miscttld1;
+document.getElementById("cl_misc").innerHTML = miscttld2;
+document.getElementById("dt_misc").innerHTML = miscttld3;
+document.getElementById("rr_misc").innerHTML = miscttld4;
 
 // Total of NF
-let ttl_dpch1 = spn_ttl6 + fl_ttl2 + spn_ttl5 + fl_ttl1;
-let ttl_dpch2 = spn_ttl1 + fl_ttl3 +spn_ttl2 + fl_ttl4;
-let ttl_dpch3 =  spn_ttl3 + fl_ttl5 + spn_ttl4 + fl_ttl6;
-document.getElementById("nf_awp").innerHTML = spn_ttl1 + fl_ttl3;
-document.getElementById("nf_awf").innerHTML = spn_ttl2 + fl_ttl4;
-document.getElementById("nf_app").innerHTML = spn_ttl3 + fl_ttl5;
-document.getElementById("nf_apf").innerHTML = spn_ttl4 + fl_ttl6;
-document.getElementById("nf_dnm").innerHTML = spn_ttl5 + fl_ttl1;
-document.getElementById("nf_dnf").innerHTML = spn_ttl6 + fl_ttl2;
+let ttl_dpch1 = spnw_fem + flnw_fem + spnw_mal + flnw_mal;
+let ttl_dpch2 = new_pw + fl_pw +new_fw + fl_fw;
+let ttl_dpch3 =  new_pp + fl_pp + new_fp + fl_fp;
+document.getElementById("nf_awp").innerHTML = new_pw + fl_pw;
+document.getElementById("nf_awf").innerHTML = new_fw + fl_fw;
+document.getElementById("nf_app").innerHTML = new_pp + fl_pp;
+document.getElementById("nf_apf").innerHTML = new_fp + fl_fp;
+document.getElementById("nf_dnm").innerHTML = spnw_mal + flnw_mal;
+document.getElementById("nf_dnf").innerHTML = spnw_fem + flnw_fem;
 document.getElementById("nf_dnt").innerHTML = ttl_dpch1;
 document.getElementById("nf_awt").innerHTML = ttl_dpch2;
 document.getElementById("nf_apt").innerHTML = ttl_dpch3;
-document.getElementById("nf_dtm").innerHTML = spn_ttl5 + fl_ttl1;
-document.getElementById("nf_dtf").innerHTML = spn_ttl6 + fl_ttl2;
-document.getElementById("nf_dtt").innerHTML = spn_ttl6 + fl_ttl2 + spn_ttl5 + fl_ttl1;
+document.getElementById("nf_dtm").innerHTML = spnw_mal + flnw_mal;
+document.getElementById("nf_dtf").innerHTML = spnw_fem + flnw_fem;
+document.getElementById("nf_dtt").innerHTML = spnw_fem + flnw_fem + spnw_mal + flnw_mal;
 document.getElementById("nf_dpch").innerHTML = ttl_dpch1 + ttl_dpch2 + ttl_dpch3;
 
 // DLPCH Total
-document.getElementById("sp_dpch").innerHTML = sp_ttl1 + sp_ttl3 + sp_ttl2 + sp_ttl4 + misc_ttl1;
-document.getElementById("cl_dpch").innerHTML = cl_ttl3 + cl_ttl4 + cl_ttl5 + cl_ttl6 + cl_ttl1 + cl_ttl2 + misc_ttl2;
-document.getElementById("spdl_dpch").innerHTML = spn_ttl1 + spn_ttl2 + spn_ttl3 + spn_ttl4 + spn_ttl5 + spn_ttl6;
-document.getElementById("fl_dpch").innerHTML = fl_ttl5 + fl_ttl6 + fl_ttl3 + fl_ttl4 + fl_ttl1 + fl_ttl2;
-document.getElementById("dt_dpch").innerHTML = misc_ttl3;
-document.getElementById("rr_dpch").innerHTML = misc_ttl4; 
-document.getElementById("nrn_dpch").innerHTML = nr_ttl5 + nr_ttl6 + nr_ttl3 + nr_ttl4 + nr_ttl1 + nr_ttl2;
-document.getElementById("rnwl_dpch").innerHTML = nr_ttl5 + nr_ttl6 + nr_ttl3 + nr_ttl4 + nr_ttl1 + nr_ttl2;
-document.getElementById("adc_dpch").innerHTML = addlc_ttl1 + addlc_ttl2 + addlc_ttl3 + addlc_ttl4;
+document.getElementById("sp_dpch").innerHTML = sp1n + sp1rn + sp2n + sp2rn + miscttld1;
+document.getElementById("cl_dpch").innerHTML = cl1n + cl2n + cl1rn + cl2rn + cl_pw + cl_fw + miscttld2;
+document.getElementById("spdl_dpch").innerHTML = new_pw + new_fw + new_pp + new_fp + spnw_mal + spnw_fem;
+document.getElementById("fl_dpch").innerHTML = fl_pp + fl_fp + fl_pw + fl_fw + flnw_mal + flnw_fem;
+document.getElementById("dt_dpch").innerHTML = miscttld3;
+document.getElementById("rr_dpch").innerHTML = miscttld4; 
+document.getElementById("nrn_dpch").innerHTML = rn_pp + rn_fp + rn_pw + rn_fw + rn_mal + rn_fem;
+document.getElementById("rnwl_dpch").innerHTML = rn_pp + rn_fp + rn_pw + rn_fw + rn_mal + rn_fem;
+document.getElementById("adc_dpch").innerHTML = adl_pw + adl_fw + adl_pp + adl_fp;
 document.getElementById("othr_dpch").innerHTML =  othrs_ttl1 + othrs_ttl4 + othrs_ttl2 + othrs_ttl3;
 // MISC Total
-document.getElementById("misc_awp").innerHTML = addlc_ttl1 + othrs_ttl1;
-document.getElementById("misc_awt").innerHTML = addlc_ttl1 + addlc_ttl2 + othrs_ttl1 + othrs_ttl4;
-document.getElementById("misc_awf").innerHTML = addlc_ttl2 + othrs_ttl4
-document.getElementById("misc_app").innerHTML = addlc_ttl3+ spn_ttl3 + fl_ttl5;
-document.getElementById("misc_apf").innerHTML = addlc_ttl4 + othrs_ttl3;
-document.getElementById("misc_apt").innerHTML = addlc_ttl3 + addlc_ttl4 + othrs_ttl2 + othrs_ttl3;
-document.getElementById("misc_mt").innerHTML = misc_ttl3 + misc_ttl4;
-document.getElementById("misc_dpch").innerHTML = misc_ttl3 + misc_ttl4 + othrs_ttl1 + othrs_ttl2 + addlc_ttl1 + addlc_ttl2 + addlc_ttl3 + addlc_ttl4;
+document.getElementById("misc_awp").innerHTML = adl_pw + othrs_ttl1;
+document.getElementById("misc_awt").innerHTML = adl_pw + adl_fw + othrs_ttl1 + othrs_ttl4;
+document.getElementById("misc_awf").innerHTML = adl_fw + othrs_ttl4
+document.getElementById("misc_app").innerHTML = adl_pp+ new_pp + fl_pp;
+document.getElementById("misc_apf").innerHTML = adl_fp + othrs_ttl3;
+document.getElementById("misc_apt").innerHTML = adl_pp + adl_fp + othrs_ttl2 + othrs_ttl3;
+document.getElementById("misc_mt").innerHTML = miscttld3 + miscttld4;
+document.getElementById("misc_dpch").innerHTML = miscttld3 + miscttld4 + othrs_ttl1 + othrs_ttl2 + adl_pw + adl_fw + adl_pp + adl_fp;
 
 // DL Count
-document.getElementById("dl_awp").innerHTML = spn_ttl1 + fl_ttl3 + nr_ttl3 + addlc_ttl1 + othrs_ttl1;
-document.getElementById("dl_awf").innerHTML = spn_ttl2 + fl_ttl4 + nr_ttl4 + addlc_ttl2 + othrs_ttl4;
-document.getElementById("dl_awt").innerHTML = ttl_dpch2 + nr_ttl3 + nr_ttl4 + addlc_ttl1 + addlc_ttl2 + othrs_ttl1 + othrs_ttl4;
-document.getElementById("dl_app").innerHTML = spn_ttl3 + fl_ttl5 + nr_ttl5 + addlc_ttl3+ spn_ttl3 + fl_ttl5;
-document.getElementById("dl_apf").innerHTML = addlc_ttl4 + othrs_ttl3 + spn_ttl4 + fl_ttl6 + nr_ttl6;
-document.getElementById("dl_apt").innerHTML = nr_ttl5 + nr_ttl6 + ttl_dpch3 + addlc_ttl3 + addlc_ttl4 + othrs_ttl2 + othrs_ttl3;
-document.getElementById("dl_dnm").innerHTML = spn_ttl5 + fl_ttl1;
-document.getElementById("dl_dnf").innerHTML = fl_ttl2 + spn_ttl6;
-document.getElementById("dl_dnt").innerHTML = spn_ttl5 + fl_ttl1 + fl_ttl2 + spn_ttl6;
-document.getElementById("dl_drm").innerHTML = nr_ttl1;
-document.getElementById("dl_drf").innerHTML = nr_ttl2;
-document.getElementById("dl_drt").innerHTML = nr_ttl1 + nr_ttl2;
-document.getElementById("dl_dtm").innerHTML = spn_ttl5 + fl_ttl1 + nr_ttl1;
-document.getElementById("dl_dtf").innerHTML = nr_ttl2 + fl_ttl2 + spn_ttl6;
-document.getElementById("dl_dtt").innerHTML = spn_ttl5 + spn_ttl6 + fl_ttl1 + fl_ttl2 + nr_ttl1 + nr_ttl2;
-document.getElementById("dl_misc").innerHTML = misc_ttl3 + misc_ttl4;
-document.getElementById("dl_dpch").innerHTML = ttl_dpch1 + ttl_dpch2 + ttl_dpch3 + nr_ttl5 + nr_ttl6 + nr_ttl3 + nr_ttl4 + nr_ttl1 + nr_ttl2 + misc_ttl3 + misc_ttl4 + othrs_ttl1 + othrs_ttl2 + addlc_ttl1 + addlc_ttl2 + addlc_ttl3 + addlc_ttl4;
+document.getElementById("dl_awp").innerHTML = new_pw + fl_pw + rn_pw + adl_pw + othrs_ttl1;
+document.getElementById("dl_awf").innerHTML = new_fw + fl_fw + rn_fw + adl_fw + othrs_ttl4;
+document.getElementById("dl_awt").innerHTML = ttl_dpch2 + rn_pw + rn_fw + adl_pw + adl_fw + othrs_ttl1 + othrs_ttl4;
+document.getElementById("dl_app").innerHTML = new_pp + fl_pp + rn_pp + adl_pp+ new_pp + fl_pp;
+document.getElementById("dl_apf").innerHTML = adl_fp + othrs_ttl3 + new_fp + fl_fp + rn_fp;
+document.getElementById("dl_apt").innerHTML = rn_pp + rn_fp + ttl_dpch3 + adl_pp + adl_fp + othrs_ttl2 + othrs_ttl3;
+document.getElementById("dl_dnm").innerHTML = spnw_mal + flnw_mal;
+document.getElementById("dl_dnf").innerHTML = flnw_fem + spnw_fem;
+document.getElementById("dl_dnt").innerHTML = spnw_mal + flnw_mal + flnw_fem + spnw_fem;
+document.getElementById("dl_drm").innerHTML = rn_mal;
+document.getElementById("dl_drf").innerHTML = rn_fem;
+document.getElementById("dl_drt").innerHTML = rn_mal + rn_fem;
+document.getElementById("dl_dtm").innerHTML = spnw_mal + flnw_mal + rn_mal;
+document.getElementById("dl_dtf").innerHTML = rn_fem + flnw_fem + spnw_fem;
+document.getElementById("dl_dtt").innerHTML = spnw_mal + spnw_fem + flnw_mal + flnw_fem + rn_mal + rn_fem;
+document.getElementById("dl_misc").innerHTML = miscttld3 + miscttld4;
+document.getElementById("dl_dpch").innerHTML = ttl_dpch1 + ttl_dpch2 + ttl_dpch3 + rn_pp + rn_fp + rn_pw + rn_fw + rn_mal + rn_fem + miscttld3 + miscttld4 + othrs_ttl1 + othrs_ttl2 + adl_pw + adl_fw + adl_pp + adl_fp;
 // TOTAL OF ALL
-let dpcha1 = ttl_dpch1 + ttl_dpch2 + ttl_dpch3 + nr_ttl5 + nr_ttl6 + nr_ttl3 + nr_ttl4 + nr_ttl1 + nr_ttl2 + misc_ttl3 + misc_ttl4 + othrs_ttl1 + othrs_ttl2 + addlc_ttl1 + addlc_ttl2 + addlc_ttl3 + addlc_ttl4;
-let dpcha2 = sp_ttl1 + sp_ttl3 + sp_ttl2 + sp_ttl4 + misc_ttl1;
-let dpcha3 = cl_ttl3 + cl_ttl4 + cl_ttl5 + cl_ttl6 + cl_ttl1 + cl_ttl2 + misc_ttl2;
+let dpcha1 = ttl_dpch1 + ttl_dpch2 + ttl_dpch3 + rn_pp + rn_fp + rn_pw + rn_fw + rn_mal + rn_fem + miscttld3 + miscttld4 + othrs_ttl1 + othrs_ttl2 + adl_pw + adl_fw + adl_pp + adl_fp;
+let dpcha2 = sp1n + sp1rn + sp2n + sp2rn + miscttld1;
+let dpcha3 = cl1n + cl2n + cl1rn + cl2rn + cl_pw + cl_fw + miscttld2;
 
-document.getElementById("ttl_awp").innerHTML = cl_ttl1 + spn_ttl1 + fl_ttl3 + nr_ttl3 + addlc_ttl1 + othrs_ttl1;
-document.getElementById("ttl_awf").innerHTML = spn_ttl2 + fl_ttl4 + nr_ttl4 + addlc_ttl2 + othrs_ttl4 + cl_ttl2;
-document.getElementById("ttl_awt").innerHTML = cl_ttl1 + cl_ttl2 + ttl_dpch2 + nr_ttl3 + nr_ttl4 + addlc_ttl1 + addlc_ttl2 + othrs_ttl1 + othrs_ttl4;
-document.getElementById("ttl_app").innerHTML = spn_ttl3 + fl_ttl5 + nr_ttl5 + addlc_ttl3+ spn_ttl3 + fl_ttl5;
-document.getElementById("ttl_apf").innerHTML = addlc_ttl4 + othrs_ttl3 + spn_ttl4 + fl_ttl6 + nr_ttl6;
-document.getElementById("ttl_apt").innerHTML = nr_ttl5 + nr_ttl6 + ttl_dpch3 + addlc_ttl3 + addlc_ttl4 + othrs_ttl2 + othrs_ttl3;
-document.getElementById("ttl_dnm").innerHTML = spn_ttl5 + fl_ttl1 + cl_ttl3 + sp_ttl1;
-document.getElementById("ttl_dnf").innerHTML = fl_ttl2 + spn_ttl6 + cl_ttl4 + sp_ttl2;
-document.getElementById("ttl_dnt").innerHTML = spn_ttl5 + fl_ttl1 + fl_ttl2 + spn_ttl6 + cl_ttl3 + cl_ttl4 + sp_ttl1 + sp_ttl2;
-document.getElementById("ttl_drm").innerHTML = nr_ttl1 + cl_ttl5 + sp_ttl3;
-document.getElementById("ttl_drf").innerHTML = nr_ttl2 + cl_ttl6 + sp_ttl4;
-document.getElementById("ttl_drt").innerHTML = nr_ttl1 + nr_ttl2 + cl_ttl5 + cl_ttl6 + sp_ttl3 + sp_ttl4;
-document.getElementById("ttl_dtm").innerHTML = sp_ttl1 + sp_ttl3 + cl_ttl3 + cl_ttl5 + spn_ttl5 + fl_ttl1 + nr_ttl1;
-document.getElementById("ttl_dtf").innerHTML = sp_ttl2 + sp_ttl4 + cl_ttl4 + cl_ttl6 + nr_ttl2 + fl_ttl2 + spn_ttl6;
-document.getElementById("ttl_dtt").innerHTML = sp_ttl1 + sp_ttl3 + sp_ttl2 + sp_ttl4 + cl_ttl3 + cl_ttl4 + cl_ttl5 + cl_ttl6 + spn_ttl5 + spn_ttl6 + fl_ttl1 + fl_ttl2 + nr_ttl1 + nr_ttl2;
-document.getElementById("ttl_misc").innerHTML = misc_ttl3 + misc_ttl4;
+document.getElementById("ttl_awp").innerHTML = cl_pw + new_pw + fl_pw + rn_pw + adl_pw + othrs_ttl1;
+document.getElementById("ttl_awf").innerHTML = new_fw + fl_fw + rn_fw + adl_fw + othrs_ttl4 + cl_fw;
+document.getElementById("ttl_awt").innerHTML = cl_pw + cl_fw + ttl_dpch2 + rn_pw + rn_fw + adl_pw + adl_fw + othrs_ttl1 + othrs_ttl4;
+document.getElementById("ttl_app").innerHTML = new_pp + fl_pp + rn_pp + adl_pp+ new_pp + fl_pp;
+document.getElementById("ttl_apf").innerHTML = adl_fp + othrs_ttl3 + new_fp + fl_fp + rn_fp;
+document.getElementById("ttl_apt").innerHTML = rn_pp + rn_fp + ttl_dpch3 + adl_pp + adl_fp + othrs_ttl2 + othrs_ttl3;
+document.getElementById("ttl_dnm").innerHTML = spnw_mal + flnw_mal + cl1n + sp1n;
+document.getElementById("ttl_dnf").innerHTML = flnw_fem + spnw_fem + cl2n + sp2n;
+document.getElementById("ttl_dnt").innerHTML = spnw_mal + flnw_mal + flnw_fem + spnw_fem + cl1n + cl2n + sp1n + sp2n;
+document.getElementById("ttl_drm").innerHTML = rn_mal + cl1rn + sp1rn;
+document.getElementById("ttl_drf").innerHTML = rn_fem + cl2rn + sp2rn;
+document.getElementById("ttl_drt").innerHTML = rn_mal + rn_fem + cl1rn + cl2rn + sp1rn + sp2rn;
+document.getElementById("ttl_dtm").innerHTML = sp1n + sp1rn + cl1n + cl1rn + spnw_mal + flnw_mal + rn_mal;
+document.getElementById("ttl_dtf").innerHTML = sp2n + sp2rn + cl2n + cl2rn + rn_fem + flnw_fem + spnw_fem;
+document.getElementById("ttl_dtt").innerHTML = sp1n + sp1rn + sp2n + sp2rn + cl1n + cl2n + cl1rn + cl2rn + spnw_mal + spnw_fem + flnw_mal + flnw_fem + rn_mal + rn_fem;
+document.getElementById("ttl_misc").innerHTML = miscttld3 + miscttld4;
 document.getElementById("ttl_dpch").innerHTML = dpcha1 + dpcha2 + dpcha3;
+

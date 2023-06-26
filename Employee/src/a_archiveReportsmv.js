@@ -1,3 +1,7 @@
+back.addEventListener('click', (e) => {
+    window.location = "a_pcmvApprved.html";
+})
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import { getFirestore, getDocs, collection } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
 
@@ -21,7 +25,7 @@ var tbody = document.getElementById('tbody1');
 
 querySnapshot2.forEach(doc2 => {
     //  
-    if (doc2.data().User_Stat == "MISSED" && doc2.data().User_TT == "LICENSING") {
+    if (doc2.data().User_Stat == "MISSED" && doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION") {
 
         let trow = document.createElement('tr');
         let t_ID = document.createElement('td');
@@ -78,7 +82,3 @@ querySnapshot2.forEach(doc2 => {
     // });
 
 });
-
-back.addEventListener('click', (e) => {
-    window.location = "a_pcLIApprved.html";
-})
