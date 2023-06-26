@@ -8,7 +8,7 @@ btnReportFR.addEventListener('click',() =>{
   window.location = "a_mvFinancialrdaily.html"
 });
 btnReporttransct.addEventListener('click',() =>{ 
-  window.location = "a_mvreporttrnsctdaily.html"
+  window.location = "a_mvreporttrnsctdaily.html" 
 });
 // ---------- CHARTS ---------- 
 
@@ -188,7 +188,7 @@ mv_bc.forEach((doc) => {
         else if (doc.data().typel == "MOTORCYCLE WITH SIDECAR"){
           mvwsc = mvwsc+=1
         }
-        else if (doc.data().typel == "MOTORCYCLE WITHOUT SIDECAR"){
+        else if (doc.data().typel == "MOTORCYCLE WITHOUT SIDECAR" || doc.data().typel == "MC"){
           mvwosc = mvwosc+=1
         }
   }

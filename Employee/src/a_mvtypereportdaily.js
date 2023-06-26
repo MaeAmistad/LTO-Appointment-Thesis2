@@ -12,7 +12,7 @@ const firebaseConfig = {
     projectId: "lto-online-appointment-setter",
     storageBucket: "lto-online-appointment-setter.appspot.com",
     messagingSenderId: "382579903791",
-    appId: "1:382579903791:web:5d98bbe4ea8b38a43065da" 
+    appId: "1:382579903791:web:5d98bbe4ea8b38a43065da"  
 };
  
 // Initialize Firebase
@@ -81,7 +81,7 @@ mv.forEach(doc => {
             row1_1 = row1_1+=1;
             all1 = all1+=1;
         }
-        else if(doc.data().typel == "MOTORCYCLE WITHOUT SIDECAR"){
+        else if(doc.data().typel == "MOTORCYCLE WITHOUT SIDECAR" || doc.data().typel == "MC"){
             row2_1 = row2_1+=1;
             all1 = all1+=1;
         }
@@ -111,7 +111,7 @@ mv.forEach(doc => {
             row1_2 = row1_2+=1
             all2 = all2+=1
         }
-        else if(doc.data().typel == "MOTORCYCLE WITHOUT SIDECAR"){
+        else if(doc.data().typel == "MOTORCYCLE WITHOUT SIDECAR" || doc.data().typel == "MC"){
             row2_2 = row2_2+=1
             all2 = all2+=1
         }
@@ -141,7 +141,7 @@ mv.forEach(doc => {
             row1_3 = row1_3+=1
             all3 = all3+=1
         }
-        else if(doc.data().typel == "MOTORCYCLE WITHOUT SIDECAR"){
+        else if(doc.data().typel == "MOTORCYCLE WITHOUT SIDECAR" || doc.data().typel == "MC"){
             row2_3 = row2_3+=1
             all3 = all3+=1
         }

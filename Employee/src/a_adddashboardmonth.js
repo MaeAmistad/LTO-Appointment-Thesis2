@@ -191,18 +191,25 @@ bcklic.addEventListener('click' , () => {
       "#4f35a1"
     ],
     plotOptions: {
-      bar: { 
-        distributed: true,
-        borderRadius: 4,
-        horizontal: false,  
-        columnWidth: '40%',
+      bar: {
+          borderRadius: 4,
+          horizontal: false,
+          columnWidth: '40%'
       }
     },
     dataLabels: {
       enabled: false
     },
     legend: {
-      show: true
+      show: true,
+        onItemHover: {
+          highlightDataSeries: true
+        }
+    },
+    stroke: {
+      show: true,
+      width: 1,
+      colors: ['#fff']
     },
     xaxis: {
       categories: ["San Ildefonso", "Vigan City","Bantay","San Vicente","Sta. Catalina","Caoayan","Sto. Domingo","Magsingal","San Juan", "Cabugao","Sinait"],

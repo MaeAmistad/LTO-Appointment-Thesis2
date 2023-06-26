@@ -137,7 +137,7 @@ mv.forEach(doc => {
                 rnwl1 = rnwl1+=1
                 ttl1 = ttl1+=1
             }
-            else if(doc.data().typel == "MOTORCYCLE W/O SIDECAR"){
+            else if(doc.data().typel == "MOTORCYCLE W/O SIDECAR" || doc.data().typel == "MC"){
                 rnwl2 = rnwl2+=1
                 ttl2 = ttl2+=1
             }
@@ -168,7 +168,7 @@ mv.forEach(doc => {
                 dplmt1 = dplmt1+=1
                 ttl1 = ttl1+=1
             }
-            else if(doc.data().typel == "MOTORCYCLE W/O SIDECAR"){
+            else if(doc.data().typel == "MOTORCYCLE W/O SIDECAR" || doc.data().typel == "MC"){
                 dplmt2 = dplmt2+=1
                 ttl2 = ttl2+=1
             }
@@ -199,7 +199,7 @@ mv.forEach(doc => {
                 oev1 = oev1+=1
                 ttl1 = ttl1+=1
             }
-            else if(doc.data().typel == "MOTORCYCLE W/O SIDECAR"){
+            else if(doc.data().typel == "MOTORCYCLE W/O SIDECAR" || doc.data().typel == "MC"){
                 oev2 = oev2+=1
                 ttl2 = ttl2+=1
             }
@@ -230,7 +230,7 @@ mv.forEach(doc => {
                 frhr1 = frhr1+=1
                 ttl1 = ttl1+=1
             }
-            else if(doc.data().typel == "MOTORCYCLE W/O SIDECAR"){
+            else if(doc.data().typel == "MOTORCYCLE W/O SIDECAR" || doc.data().typel == "MC"){
                 frhr2 = frhr2+=1
                 ttl2 = ttl2+=1
             }
@@ -261,7 +261,7 @@ mv.forEach(doc => {
                 stlnrcvrd1 = stlnrcvrd1+=1
                 ttl1 = ttl1+=1
             }
-            else if(doc.data().typel == "MOTORCYCLE W/O SIDECAR"){
+            else if(doc.data().typel == "MOTORCYCLE W/O SIDECAR" || doc.data().typel == "MC"){
                 stlnrcvrd2 = stlnrcvrd2+=1
                 ttl2 = ttl2+=1
             }
@@ -292,7 +292,7 @@ mv.forEach(doc => {
                 rctvtn1 = rctvtn1+=1
                 ttl1 = ttl1+=1
             }
-            else if(doc.data().typel == "MOTORCYCLE W/O SIDECAR"){
+            else if(doc.data().typel == "MOTORCYCLE W/O SIDECAR" || doc.data().typel == "MC"){
                 rctvtn2 = rctvtn2+=1
                 ttl2 = ttl2+=1
             }

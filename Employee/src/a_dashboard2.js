@@ -346,7 +346,7 @@ if(doc.data().dt_App == today){
 });
 
 mv.forEach(doc =>{
-if(doc.data().User_dt_App == today){
+if(doc.data().dt_App == today){
   if(doc.data().User_Add == "SAN ILDEFONSO,ILOCOS SUR" || doc.data().User_Add == "SAN ILDEFONSO, ILOCOS SUR"){
     mv1 = mv1+=1
     licmv = licmv+=1
@@ -423,17 +423,24 @@ var barChartOptions = {
   ],
   plotOptions: {
     bar: {
-      distributed: true,
-      borderRadius: 4,
-      horizontal: false,  
-      columnWidth: '40%',
+        borderRadius: 4,
+        horizontal: false,
+        columnWidth: '40%'
     }
   },
   dataLabels: {
     enabled: false
   },
   legend: {
-    show: true
+    show: true,
+      onItemHover: {
+        highlightDataSeries: true
+      }
+  },
+  stroke: {
+    show: true,
+    width: 1,
+    colors: ['#fff']
   },
   xaxis: {
     categories: ["San Ildefonso", "Vigan City","Bantay","San Vicente","Sta. Catalina","Caoayan","Sto. Domingo","Magsingal","San Juan", "Cabugao","Sinait"],

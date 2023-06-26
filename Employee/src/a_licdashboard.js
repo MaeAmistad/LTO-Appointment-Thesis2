@@ -188,7 +188,7 @@ var barChartOptions = {
       },
     },
     colors: [
-      "#C59336",
+      "#C59336", 
       "#FAD48E"
     ],
     plotOptions: {
