@@ -21,7 +21,7 @@ var tbody = document.getElementById('tbody1');
 
 querySnapshot2.forEach(doc2 => {
     //  
-    if (doc2.data().User_Stat == "MISSED") {
+    if (doc2.data().User_Stat == "MISSED" && doc2.data().User_TT == "LICENSING") {
 
         let trow = document.createElement('tr');
         let t_ID = document.createElement('td');
@@ -48,34 +48,8 @@ querySnapshot2.forEach(doc2 => {
 
         tbody.appendChild(trow);
 
-        // trow.addEventListener('click', (e) => {
-        //     trow.style.backgroundColor = '#254894c0';
-        //     trow.style.color = "white";
-        //     localStorage.setItem('stat', doc2.data().User_AppID)
-        //     localStorage.setItem('ID', doc2.id)
-
-        //     window.location = "a_reqdata2.html";
-        // });
-
-        // trow.addEventListener('mouseover', function () {
-        //     trow.style.backgroundColor = 'rgb(218, 216, 216)';
-        //     trow.style.color = "black";
-        // })
-        // trow.addEventListener('mouseleave', function () {
-        //     trow.style.backgroundColor = "";
-        //     trow.style.color = "";
-        // })
-        
-
+    
     }
-
-    // trow.addEventListener('click', (e) =>{
-    //     trow.style.backgroundColor = 'rgb(218, 216, 216)';
-    //     localStorage.setItem('stat',doc2.data().User_AppID)    
-    //     localStorage.setItem('ID', doc2.id)
-
-    //     window.location = "a_reqdata.html";
-    // });
 
 });
 
