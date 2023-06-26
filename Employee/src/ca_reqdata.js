@@ -20,7 +20,7 @@ cnl1.addEventListener('click', () => {
 cnl2.addEventListener('click', () => {
     document.getElementById('inc_modal').style.visibility = "hidden"
     blur.classList.toggle('active')
-}); 
+});
 
 // var tranID = localStorage.getItem("stat");
 // document.getElementById('tranID').innerHTML = tranID;
@@ -52,11 +52,12 @@ var ID = localStorage.getItem("ID");
 console.log(ID)
 
 var total = localStorage.getItem("payment");
+let receipt = document.getElementById("orNumber")
 document.getElementById("feeTotal").innerHTML = total + ".00 PHP";
 querySnapshot2.forEach(doc2 => {
 
-    
-    
+
+
     if (transID == doc2.data().User_TransID) {
 
         if (doc2.data().User_AT == "REVISION OF RECORDS") {
@@ -157,7 +158,7 @@ querySnapshot2.forEach(doc2 => {
             document.getElementById("dt_reg").innerHTML = doc2.data().dtrgstrd;
             document.getElementById("transctionmv").innerHTML = doc2.data().trnsctn;
             document.getElementById("deptAgncy").innerHTML = doc2.data().deptagncy;
-    
+
 
             document.getElementById("laa").style.display = "none"
             document.getElementById("laa2").style.display = "none"
@@ -179,6 +180,7 @@ querySnapshot2.forEach(doc2 => {
     let mnts = date.getMinutes();
     let time = hrs + ":" + mnts;
 
+
     // Saving Data
     onAuthStateChanged(auth, (user) => {
         if (user) {
@@ -192,50 +194,107 @@ querySnapshot2.forEach(doc2 => {
                     const updateStat = doc(db, "Applicants", doc2.id)
                     var stt = localStorage.getItem("stat")
 
-                    
+                    if (receipt.value === '') {
+                        Swal.fire({
+                            title: 'Please Enter OR Number',
+                            confirmButtonColor: '#132aaa',
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            }
+                        })
+                    }
+                    else {
 
-                    if (stt == doc2.data().User_TransID) {
-                        if (doc2.data().User_TT == "LICENSING") {
-                            // ATC
-                            if (doc2.data().User_Stat == "APPROVED_TO_CASHIER") {
-                                // DL
-                                if (doc2.data().User_Laa == "DRIVER'S LICENSE") {
+                        if (stt == doc2.data().User_TransID) {
+                            if (doc2.data().User_TT == "LICENSING") {
+                                // ATC
+                                if (doc2.data().User_Stat == "APPROVED_TO_CASHIER") {
+                                    // DL
+                                    if (doc2.data().User_Laa == "DRIVER'S LICENSE") {
 
-                                    if (doc2.data().User_AT == "NEW") {
-                                        updateDoc(updateStat, {
-                                            User_Stat4: "COMPLETED",
-                                            User_Stat: "COMPLETED",
-                                            User_CashierName: employees,
-                                            User_CashierDate: today + " , " + time,
-                                            User_TotalPayment: total + ".00"
-                                        }).then(() => {
-                                            window.location = "ca_homepage.html"
-                                        })
-                                        console.log('condition 1')
+                                        if (doc2.data().User_AT == "NEW") {
+                                            updateDoc(updateStat, {
+                                                User_Stat4: "COMPLETED",
+                                                User_Stat: "COMPLETED",
+                                                User_CashierName: employees,
+                                                User_CashierDate: today + " , " + time,
+                                                User_TotalPayment: total + ".00",
+                                                User_OR: receipt.value
+                                            }).then(() => {
+                                                window.location = "ca_homepage.html"
+                                            })
+                                            console.log('condition 1')
+                                        }
+                                        else if (doc2.data().User_AT == "ADDITIONAL DL CODE OR CATEGORY") {
+                                            updateDoc(updateStat, {
+                                                User_Stat4: "COMPLETED",
+                                                User_Stat: "COMPLETED",
+                                                User_CashierName: employees,
+                                                User_CashierDate: today + " , " + time,
+                                                User_TotalPayment: total + ".00",
+                                                User_OR: receipt.value
+                                            }).then(() => {
+                                                window.location = "ca_homepage.html"
+                                            })
+                                            console.log('condition 2')
+                                        }
+                                        else if (doc2.data().User_AT == "CHANGE OF DL CLASSIFICATION") {
+                                            updateDoc(updateStat, {
+                                                User_Stat4: "COMPLETED",
+                                                User_Stat: "COMPLETED",
+                                                User_CashierName: employees,
+                                                User_CashierDate: today + " , " + time,
+                                                User_TotalPayment: total + ".00",
+                                                User_OR: receipt.value
+                                            }).then(() => {
+                                                window.location = "ca_homepage.html"
+                                            })
+                                            console.log('condition 3')
+                                        }
+                                        else {
+                                            updateDoc(updateStat, {
+                                                User_Stat4: "RELEASED",
+                                                User_Stat: "RELEASED",
+                                                User_CashierName: employees,
+                                                User_CashierDate: today + " , " + time,
+                                                User_TotalPayment: total + ".00",
+                                                User_OR: receipt.value
+                                            })
+                                            setDoc(doc(db, "License", doc2.data().User_TransID), {
+                                                User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,
+                                                laa: doc2.data().User_Laa,
+                                                at: doc2.data().User_AT,
+                                                dt_App: doc2.data().User_D,
+                                                t_app: doc2.data().User_T,
+                                                User_GN: doc2.data().User_GN,
+                                                User_BD: doc2.data().User_BD,
+                                                User_Add: doc2.data().User_ADD,
+                                                User_CashierName: employees,
+                                                User_CashierDate: today + " , " + time,
+                                                User_TotalPayment: total + ".00",
+                                                User_OR: receipt.value
+                                            }).then(() => {
+                                                window.location = "ca_homepage.html"
+                                            })
+                                            console.log('condition 4')
+                                        }
                                     }
-                                    else if (doc2.data().User_AT == "ADDITIONAL DL CODE OR CATEGORY") {
+                                    // CL  
+                                    else if (doc2.data().User_Laa == "CONDUCTOR'S LICENSE" && doc2.data().User_AT == "NEW") {
                                         updateDoc(updateStat, {
                                             User_Stat4: "COMPLETED",
                                             User_Stat: "COMPLETED",
                                             User_CashierName: employees,
                                             User_CashierDate: today + " , " + time,
-                                            User_TotalPayment: total + ".00"
+                                            User_TotalPayment: total + ".00",
+                                            User_OR: receipt.value
                                         }).then(() => {
                                             window.location = "ca_homepage.html"
                                         })
-                                        console.log('condition 2')
-                                    }
-                                    else if (doc2.data().User_AT == "CHANGE OF DL CLASSIFICATION") {
-                                        updateDoc(updateStat, {
-                                            User_Stat4: "COMPLETED",
-                                            User_Stat: "COMPLETED",
-                                            User_CashierName: employees,
-                                            User_CashierDate: today + " , " + time,
-                                            User_TotalPayment: total + ".00"
-                                        }).then(() => {
-                                            window.location = "ca_homepage.html"
-                                        })
-                                        console.log('condition 3')
+                                        console.log('condition 5')
                                     }
                                     else {
                                         updateDoc(updateStat, {
@@ -243,76 +302,8 @@ querySnapshot2.forEach(doc2 => {
                                             User_Stat: "RELEASED",
                                             User_CashierName: employees,
                                             User_CashierDate: today + " , " + time,
-                                            User_TotalPayment: total + ".00"
-                                        })
-                                        setDoc(doc(db, "License", doc2.data().User_TransID), {
-                                            User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,
-                                            laa: doc2.data().User_Laa,
-                                            at: doc2.data().User_AT,
-                                            dt_App: doc2.data().User_D, 
-                                            t_app: doc2.data().User_T,
-                                            User_GN: doc2.data().User_GN,
-                                            User_BD: doc2.data().User_BD,
-                                            User_Add: doc2.data().User_ADD,
-                                            User_CashierName: employees,
-                                            User_CashierDate: today + " , " + time,
-                                            User_TotalPayment: total + ".00"
-                                        }).then(() => {
-                                            window.location = "ca_homepage.html"
-                                        })
-                                        console.log('condition 4')
-                                    }
-                                }
-                                // CL  
-                                else if (doc2.data().User_Laa == "CONDUCTOR'S LICENSE" && doc2.data().User_AT == "NEW") {
-                                    updateDoc(updateStat, {
-                                        User_Stat4: "COMPLETED",
-                                        User_Stat: "COMPLETED",
-                                        User_CashierName: employees,
-                                        User_CashierDate: today + " , " + time,
-                                        User_TotalPayment: total + ".00"
-                                    }).then(() => {
-                                        window.location = "ca_homepage.html"
-                                    })
-                                    console.log('condition 5')
-                                }
-                                else {
-                                    updateDoc(updateStat, {
-                                        User_Stat4: "RELEASED",
-                                        User_Stat: "RELEASED",
-                                        User_CashierName: employees,
-                                        User_CashierDate: today + " , " + time,
-                                        User_TotalPayment: total + ".00"
-                                    })
-                                    setDoc(doc(db, "License", doc2.data().User_TransID), {
-                                        User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,
-                                        laa: doc2.data().User_Laa,
-                                        at: doc2.data().User_AT,
-                                        dt_App: doc2.data().User_D,
-                                        t_app: doc2.data().User_T,
-                                        User_GN: doc2.data().User_GN,
-                                        User_BD: doc2.data().User_BD,
-                                        User_Add: doc2.data().User_ADD,
-                                        User_CashierName: employees,
-                                        User_CashierDate: today + " , " + time,
-                                        User_TotalPayment: total + ".00"
-                                    }).then(() => {
-                                        window.location = "ca_homepage.html"
-                                    })
-                                    console.log('condition 6')
-                                }
-
-                            }
-                            // PENDING
-                            else if (doc2.data().User_Stat == "PASSED") {
-                                if (doc2.data().User_Laa == "DRIVER'S LICENSE") {
-                                    if (doc2.data().User_AT == "NEW") {
-                                        updateDoc(updateStat, {
-                                            User_Stat4: "RELEASED",
-                                            User_Stat: "RELEASED",
-                                            User_CashierName: employees,
-                                            User_CashierDate: today + " , " + time,
-                                            User_TotalPayment: total + ".00"
+                                            User_TotalPayment: total + ".00",
+                                            User_OR: receipt.value
                                         })
                                         setDoc(doc(db, "License", doc2.data().User_TransID), {
                                             User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,
@@ -325,19 +316,80 @@ querySnapshot2.forEach(doc2 => {
                                             User_Add: doc2.data().User_ADD,
                                             User_CashierName: employees,
                                             User_CashierDate: today + " , " + time,
-                                            User_TotalPayment: total + ".00"
+                                            User_TotalPayment: total + ".00",
+                                            User_OR: receipt.value
                                         }).then(() => {
                                             window.location = "ca_homepage.html"
                                         })
-
+                                        console.log('condition 6')
                                     }
-                                    else if (doc2.data().User_AT == "ADDITIONAL DL CODE OR CATEGORY") {
+
+                                }
+                                // PENDING
+                                else if (doc2.data().User_Stat == "PASSED") {
+                                    if (doc2.data().User_Laa == "DRIVER'S LICENSE") {
+                                        if (doc2.data().User_AT == "NEW") {
+                                            updateDoc(updateStat, {
+                                                User_Stat4: "RELEASED",
+                                                User_Stat: "RELEASED",
+                                                User_CashierName: employees,
+                                                User_CashierDate: today + " , " + time,
+                                                User_TotalPayment: total + ".00",
+                                                User_OR: receipt.value
+                                            })
+                                            setDoc(doc(db, "License", doc2.data().User_TransID), {
+                                                User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,
+                                                laa: doc2.data().User_Laa,
+                                                at: doc2.data().User_AT,
+                                                dt_App: doc2.data().User_D,
+                                                t_app: doc2.data().User_T,
+                                                User_GN: doc2.data().User_GN,
+                                                User_BD: doc2.data().User_BD,
+                                                User_Add: doc2.data().User_ADD,
+                                                User_CashierName: employees,
+                                                User_CashierDate: today + " , " + time,
+                                                User_TotalPayment: total + ".00",
+                                                User_OR: receipt.value
+                                            }).then(() => {
+                                                window.location = "ca_homepage.html"
+                                            })
+
+                                        }
+                                        else if (doc2.data().User_AT == "ADDITIONAL DL CODE OR CATEGORY") {
+                                            updateDoc(updateStat, {
+                                                User_Stat4: "RELEASED",
+                                                User_Stat: "RELEASED",
+                                                User_CashierName: employees,
+                                                User_CashierDate: today + " , " + time,
+                                                User_TotalPayment: total + ".00",
+                                                User_OR: receipt.value
+                                            })
+                                            setDoc(doc(db, "License", doc2.data().User_TransID), {
+                                                User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,
+                                                laa: doc2.data().User_Laa,
+                                                at: doc2.data().User_AT,
+                                                dt_App: doc2.data().User_D,
+                                                t_app: doc2.data().User_T,
+                                                User_GN: doc2.data().User_GN,
+                                                User_BD: doc2.data().User_BD,
+                                                User_Add: doc2.data().User_ADD,
+                                                User_CashierName: employees,
+                                                User_CashierDate: today + " , " + time,
+                                                User_TotalPayment: total + ".00",
+                                                User_OR: receipt.value
+                                            }).then(() => {
+                                                window.location = "ca_homepage.html"
+                                            })
+                                        }
+                                    }
+                                    else if (doc2.data().User_Laa == "CONDUCTOR'S LICENSE" && doc2.data().User_AT == "NEW") {
                                         updateDoc(updateStat, {
                                             User_Stat4: "RELEASED",
                                             User_Stat: "RELEASED",
                                             User_CashierName: employees,
                                             User_CashierDate: today + " , " + time,
-                                            User_TotalPayment: total + ".00"
+                                            User_TotalPayment: total + ".00",
+                                            User_OR: receipt.value
                                         })
                                         setDoc(doc(db, "License", doc2.data().User_TransID), {
                                             User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,
@@ -350,79 +402,57 @@ querySnapshot2.forEach(doc2 => {
                                             User_Add: doc2.data().User_ADD,
                                             User_CashierName: employees,
                                             User_CashierDate: today + " , " + time,
-                                            User_TotalPayment: total + ".00"
+                                            User_TotalPayment: total + ".00",
+                                            User_OR: receipt.value
                                         }).then(() => {
                                             window.location = "ca_homepage.html"
                                         })
                                     }
-                                }
-                                else if (doc2.data().User_Laa == "CONDUCTOR'S LICENSE" && doc2.data().User_AT == "NEW") {
-                                    updateDoc(updateStat, {
-                                        User_Stat4: "RELEASED",
-                                        User_Stat: "RELEASED",
-                                        User_CashierName: employees,
-                                        User_CashierDate: today + " , " + time,
-                                        User_TotalPayment: total + ".00"
-                                    })
-                                    setDoc(doc(db, "License", doc2.data().User_TransID), {
-                                        User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,
-                                        laa: doc2.data().User_Laa,
-                                        at: doc2.data().User_AT,
-                                        dt_App: doc2.data().User_D,
-                                        t_app: doc2.data().User_T,
-                                        User_GN: doc2.data().User_GN,
-                                        User_BD: doc2.data().User_BD,
-                                        User_Add: doc2.data().User_ADD,
-                                        User_CashierName: employees,
-                                        User_CashierDate: today + " , " + time,
-                                        User_TotalPayment: total + ".00"
-                                    }).then(() => {
-                                        window.location = "ca_homepage.html"
-                                    })
+
                                 }
 
                             }
+                            // MV
+                            else if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION") {
+                                updateDoc(updateStat, {
+                                    User_Stat4: "REGISTERED",
+                                    User_Stat: "REGISTERED",
+                                    User_CashierName: employees,
+                                    User_CashierDate: today + " , " + time,
+                                    User_TotalPayment: total + ".00",
+                                    User_OR: receipt.value
+                                })
+                                setDoc(doc(db, "Motor Vehicle", doc2.data().User_TransID), {
+                                    User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,
+                                    at: doc2.data().User_AT,
+                                    dt_App: doc2.data().User_D,
+                                    t_app: doc2.data().User_T,
+                                    refrigerant_type: doc2.data().refrigerant_typ,
+                                    typel: doc2.data().typel,
+                                    yr_modell: doc2.data().yr_modell,
+                                    pltno: doc2.data().pltno,
+                                    typel: doc2.data().typel,
+                                    mksrs: doc2.data().mksrs,
+                                    mtrno: doc2.data().mtrno,
+                                    chassno: doc2.data().chassno,
+                                    color: doc2.data().color,
+                                    fuel: doc2.data().fuel,
+                                    fileno: doc2.data().fileno,
+                                    dtrgstrd: doc2.data().dtrgstrd,
+                                    deptagncy: doc2.data().deptagncy,
+                                    User_Add: doc2.data().User_ADD,
+                                    classification: doc2.data().classification,
+                                    User_CashierName: employees,
+                                    User_CashierDate: today + " , " + time,
+                                    User_TotalPayment: total + ".00",
+                                    User_OR: receipt.value
+                                }).then(() => {
+                                    window.location = "ca_homepage.html"
+                                })
+                            }
 
                         }
-                        // MV
-                        else if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION") {
-                            updateDoc(updateStat, {
-                                User_Stat4: "REGISTERED",
-                                User_Stat: "REGISTERED",
-                                User_CashierName: employees,
-                                User_CashierDate: today + " , " + time,
-                                User_TotalPayment: total + ".00"
-                            })
-                            setDoc(doc(db, "Motor Vehicle", doc2.data().User_TransID), {
-                                User_name: doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN,
-                                at: doc2.data().User_AT,
-                                dt_App: doc2.data().User_D,
-                                t_app: doc2.data().User_T,
-                                refrigerant_type: doc2.data().refrigerant_typ,
-                                typel: doc2.data().typel,
-                                yr_modell: doc2.data().yr_modell,
-                                pltno: doc2.data().pltno,
-                                typel: doc2.data().typel,
-                                mksrs: doc2.data().mksrs,
-                                mtrno: doc2.data().mtrno,
-                                chassno: doc2.data().chassno,
-                                color: doc2.data().color,
-                                fuel: doc2.data().fuel, 
-                                fileno: doc2.data().fileno,
-                                dtrgstrd: doc2.data().dtrgstrd,
-                                deptagncy: doc2.data().deptagncy,
-                                User_Add: doc2.data().User_ADD,
-                                classification:doc2.data().classification,
-                                User_CashierName: employees,
-                                User_CashierDate: today + " , " + time,
-                                User_TotalPayment: total + ".00" 
-                            }).then(() => {
-                                window.location = "ca_homepage.html"
-                            })
-                        }
-
                     }
-
 
                 })
 

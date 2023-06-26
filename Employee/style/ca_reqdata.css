@@ -1,61 +1,74 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
 
 body {
-    margin: 0; 
-    padding: 0; 
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     background-color: white;
 }
-.btn button, .btn2 button,.main{
+
+.btn button,
+.btn2 button,
+.main {
     width: 100%;
 }
-.main{
-    position: relative; 
+
+.main {
+    position: relative;
     max-width: 100%;
     width: 80%;
     padding: 25px;
     background: white;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     padding: 20px;
     margin-left: 145px;
     margin-top: 20px;
     margin-bottom: 10px;
 }
-.btn button, .btn2 button{
-	padding: 4px;
-	width: 100px; 
+
+.btn button,
+.btn2 button {
+    padding: 4px;
+    width: 100px;
     outline: none;
-	padding: 10px;
+    padding: 10px;
     margin: 10px;
     text-transform: uppercase;
     font-size: 12px;
-    margin-top: 20px;
+    margin-top: 40px;
     cursor: pointer;
 }
-.btn{
+
+.btn {
     display: flex;
 }
-#bck{
+
+#bck {
     margin-left: 80px;
 }
-p{
+
+p {
     font-size: 25px;
     font-weight: 700;
     margin-left: 50px;
 }
-table{
+
+table {
     margin-left: 80px;
 }
-table td{
+
+table td {
     padding-left: 20px;
 }
-.main#blur.active{
+
+.main#blur.active {
     filter: blur(10px);
     pointer-events: none;
     user-select: none;
 }
-.cnfrm_modal{
+
+.cnfrm_modal {
     width: 550px;
     /* height: 200px; */
     background-color: white;
@@ -71,24 +84,35 @@ table td{
     transform: translate(-50%, -50%);
     transition: transform 0.4s, top 0.4s;
 }
-.cnfrm_modal h1, .cnfrm_modal2 h1{
+
+.cnfrm_modal h1,
+.cnfrm_modal2 h1 {
     letter-spacing: 3px;
     text-align: center;
 }
-.cnfrm_modal p, .cnfrm_modal2 p{
+
+.cnfrm_modal p,
+.cnfrm_modal2 p {
     font-weight: 500;
     letter-spacing: 3px;
 }
-.cnfrm_modal2 p{
+
+.cnfrm_modal2 p {
     margin-left: 100px;
 }
-#cnl1, #cnl2{
+
+#cnl1,
+#cnl2 {
     margin-left: 300px;
 }
-#complete_modal label, #inc_modal label{ 
+
+#complete_modal label,
+#inc_modal label {
     padding-left: 50px;
 }
-#complete_modal input, #inc_modal input{
+
+#complete_modal input,
+#inc_modal input {
     padding: 5px;
     width: 300px;
     font-size: 15px;
@@ -97,23 +121,28 @@ table td{
     border-bottom: 1px solid black;
     outline: none;
 }
+
 /* Admin Transaction */
-.btnn{
+.btnn {
     margin-left: 33%;
 }
-#delttr{
+
+#delttr {
     background-color: #D0342C;
     color: white;
     /* border: none; */
 }
-#cmplt{
+
+#cmplt {
     background-color: rgb(19, 42, 172);
     color: white;
     /* border: none; */
 }
-.cnfrm_modal3,.cnfrm_modal4{
+
+.cnfrm_modal3,
+.cnfrm_modal4 {
     width: 550px;
-    background-color: white; 
+    background-color: white;
     user-select: none;
     border: 1px solid #b3b3b3;
     box-shadow: 5px 5px 5px rgb(70, 69, 69);
@@ -126,54 +155,76 @@ table td{
     transform: translate(-50%, -50%);
     transition: transform 0.4s, top 0.4s;
     margin-bottom: 25px;
-} 
+}
+
 /* .cnfrm_modal4{
     margin-top: -750px; 
     position: relative;
     z-index: 999;
 } */
-.cnfrm_modal3 h1, .cnfrm_modal4 h1{
+.cnfrm_modal3 h1,
+.cnfrm_modal4 h1 {
     letter-spacing: 3px;
     text-align: center;
 }
-.cnfrm_modal3 p,.cnfrm_modal4 p{
+
+.cnfrm_modal3 p,
+.cnfrm_modal4 p {
     font-weight: 500;
     letter-spacing: 3px;
 }
-#cnl3, #cnl4{
+
+#cnl3,
+#cnl4 {
     margin-left: 300px;
 }
-.basicinfo input, .basicinfo select{
+
+.basicinfo input,
+.basicinfo select {
     outline: none;
     margin-left: auto;
     width: 50%;
     height: 25px;
     text-transform: uppercase;
 }
-.basicinfo select{
+
+.basicinfo select {
     width: 51.7%;
     height: 30px;
 }
-.info{
+
+.info {
     display: flex;
     padding: 5px;
 }
-@media only screen and (max-width: 768px){
-    
-    .main, .main2 {
+.or{
+    display: block;
+}
+#orNumber{
+    width: 380px;
+    padding: 0 2px 0 2px;
+    height: 40px;
+    font-size: 14px;
+    background: none;
+    margin-left: 50px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+@media only screen and (max-width: 768px) {
+
+    .main,
+    .main2 {
         margin-left: 2%;
         align-items: center;
         width: 115%
-     }
-     #inc, #cmplt{
-        width:100px;
-        margin-left: 10px;
-     }
-  
     }
-   
 
-  
+    #inc,
+    #cmplt {
+        width: 100px;
+        margin-left: 10px;
+    }
 
-
-   
+}

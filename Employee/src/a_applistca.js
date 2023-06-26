@@ -56,6 +56,13 @@ var changeDate = localStorage.getItem('chngeDtApplstca')
             let td7 = document.createElement('td');
             let td8 = document.createElement('td'); 
 
+            //FOR PAYMENT AMOUNT
+    const fee = parseFloat(~~doc2.data().User_Payment);
+    const additionalFee = parseFloat(~~doc2.data().User_AdditionalFee);
+    
+    const total = parseInt(fee) + parseInt(additionalFee);
+    console.log("fee: " + fee)
+
         if(localStorage.getItem("chngeDtApplstca") == null){
             if(today == dtcon){
                 if (doc2.data().User_Stat == "APPROVED_TO_CASHIER"){
@@ -78,6 +85,7 @@ var changeDate = localStorage.getItem('chngeDtApplstca')
                     trow.style.color = "white";
                     localStorage.setItem('stat',doc2.data().User_TransID)    
                     localStorage.setItem('ID', doc2.id)
+                    localStorage.setItem('payment', total)
     
                     window.location = "a_reqdataca.html";
                 });
@@ -116,6 +124,7 @@ var changeDate = localStorage.getItem('chngeDtApplstca')
                         trow.style.color = "white";
                         localStorage.setItem('stat',doc2.data().User_TransID)    
                         localStorage.setItem('ID', doc2.id)
+                        localStorage.setItem('payment', total)
         
                         window.location = "a_reqdataca.html";
                     });
