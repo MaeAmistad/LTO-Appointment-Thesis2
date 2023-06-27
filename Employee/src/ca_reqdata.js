@@ -454,7 +454,7 @@ querySnapshot2.forEach(doc2 => {
                         }
                     }
 
-                })
+                });
 
                 cnfrm2.addEventListener('click', (e) => {
                     const updateStat = doc(db, "Applicants", doc2.id)

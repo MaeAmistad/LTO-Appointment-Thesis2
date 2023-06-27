@@ -209,7 +209,6 @@ btn_nxt.addEventListener('click', (e) => {
             console.log("existing application is " + date + " at " + time)
           }
         }
-
         if (doc.data().User_Stat == "APPROVED_TO_CASHIER" || doc.data().User_Stat == "APPROVED_TO_PROCEED") {
           if (last_name == doc.data().User_LN && first_name == doc.data().User_FN && middle_name == doc.data().User_MN && gen == doc.data().User_GN && bday == doc.data().User_BD) {
             var date = doc.data().User_D;
@@ -243,6 +242,20 @@ btn_nxt.addEventListener('click', (e) => {
 
             console.log("CAN APPLY AGAIN")
           }
+        }
+        if (last_name === doc.data().User_LN && first_name === doc.data().User_FN && bday === doc.data().User_BD && doc.data().User_Stat !== "PENDING") {
+          localStorage.setItem("last_name", last_name);
+          localStorage.setItem("first_name", first_name);
+          localStorage.setItem("middle_name", middle_name);
+          localStorage.setItem("bday", bday);
+          localStorage.setItem("gen", gen);
+          localStorage.setItem("addrss1", addrss);
+          localStorage.setItem("con_num", con_num);
+          localStorage.setItem("email", email);
+
+          window.location = "c_confirmation.html";
+          console.log("no existing application")
+
         }
         if (last_name !== doc.data().User_LN && first_name !== doc.data().User_FN && bday !== doc.data().User_BD) {
           localStorage.setItem("last_name", last_name);

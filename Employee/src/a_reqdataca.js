@@ -279,7 +279,16 @@ querySnapshot2.forEach(doc2 => {
         var stt = localStorage.getItem("stat")
 
         if (receipt.value === '') {
-
+            Swal.fire({
+                title: 'Please Enter OR Number',
+                confirmButtonColor: '#132aaa',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            })
         }
         else {
             if (stt == doc2.data().User_TransID) {
