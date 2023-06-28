@@ -77,15 +77,16 @@ nav ul li:hover > ul{
     margin-right: 5px;
   }
   .dropdown-user select{
-    padding: 5px;
+    padding: 10px;
     text-transform: uppercase;
     outline: none;
   }
       #table, .tablemv{
         margin: 10px;
-        width: auto;
+        /* width: auto; */
         border-collapse: collapse;
         font-size: 12px;
+        margin-bottom: 15px;
       }
       .tablemv tr th{
         padding: 5px 5px;
@@ -100,7 +101,13 @@ nav ul li:hover > ul{
       #rw_ottl, .hdr th, tr td{
         text-align: center;
       }
-/* .font-weight-bold{
-    font-size: 20px;
-    margin-left: 10px;
-} */
+      #nxtrprt{
+        margin-left: 56.5%;
+      }
+      .tablelic tr th{ 
+        width: 300px;
+      }
+
+      .trnsct_tab tr th{
+        text-align:center;
+      }

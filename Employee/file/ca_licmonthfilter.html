@@ -13,7 +13,7 @@
     <script src="https://kit.fontawesome.com/8ec04d5e4f.js" crossorigin="anonymous"></script>
     <!-- Excel/PDF JS -->
     <script src="../src/table2excel.js"></script>
-    <!-- Custom CSS -->
+    <!-- Custom CSS --> 
     <link rel="stylesheet" href="../style/ca_reportdaily.css">
   </head>
   <body>
@@ -46,24 +46,25 @@
 
         </div>
      
-          <div class="dropdown-user">
-            <button id="bcklic">BACK</button>
+        <div class="dropdown-user">
+          <button id="bcklic">BACK</button>
 
-            <select id="user" onchange="user(this.value)">
-                <option value="ca_licreportdaily.html" selected>LICENSE</option>
-                <option value="ca_mvdashboard.html">MOTOR VEHICLE</option>
-              </select> 
-  
-              <select id="update_dash" onchange="user(this.value)">
-                <option value="ca_licreportdaily.html" >Daily</option>
-                <option value="ca_licweeklyfltr.html" >Weekly</option>
-                <option value="ca_licmonthfilter.html" selected>Monthly</option>
-              </select>
+          <select id="user" onchange="user(this.value)">
+              <option value="ca_licreportdaily.html" selected>LICENSE</option>
+              <option value="ca_mvdashboard.html">MOTOR VEHICLE</option>
+            </select> 
 
-            <button id="sav_excl">SAVE TO EXCEL</button>
-            <!-- <button id="sav_pdf">SAVE TO PDF</button> -->
-          </div>
+            <select id="update_dash" onchange="user(this.value)">
+              <option value="ca_licreportdaily.html" >Daily</option>
+              <option value="ca_licweeklyfltr.html" >weekly</option>
+              <option value="ca_licmonthfilter.html" selected>monthly</option>
+              <option value="ca_licyrfilter.html" >yearly</option>
+            </select>
 
+          <button id="sav_excl">SAVE TO EXCEL</button>
+          <!-- <button id="sav_pdf">SAVE TO PDF</button> -->
+          <button id="nxtrprt">NEXT<i class="fa-solid fa-chevron-right" style="color: #000000; margin-left:10px;"></i></button>
+        </div>
 
           <!-- Table -->
           <table id="table">

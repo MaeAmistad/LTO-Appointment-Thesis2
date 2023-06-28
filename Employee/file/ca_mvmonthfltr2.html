@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>LTO Appointment Setter</title>
+
+    <!-- Montserrat Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://kit.fontawesome.com/8ec04d5e4f.css" crossorigin="anonymous"> -->
+    <script src="https://kit.fontawesome.com/8ec04d5e4f.js" crossorigin="anonymous"></script>
+    <!-- Excel/PDF JS -->
+    <script src="../src/table2excel.js"></script>
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="../style/ca_reportdaily.css">
+  </head>
+  <body>
+    <div class="grid-container"> 
+
+      <section class="main"> 
+        <nav>
+            <img src="../img/Land_Transportation_Office.svg.png">
+        
+            <div class="navbar" id="navLinks">
+                <ul>
+                    <li id="hm"><a href="ca_homepage.html">HOME</a></li>
+                    <li><a href="">TRANSACTIONS<i class="fa-solid fa-caret-down"></i></a>
+                    <ul>
+                      <li><a href="ca_LIComp.html">LICENSE</a></li>
+                      <li><a href="ca_mvPass.html">MOTOR VEHICLE</a></li>
+                    </ul>
+                    </li> 
+                    <li id="rprt"><a href="ca_reportdaily.html">REPORT</a></li>
+                    <li id="prfl"><a href="ca_profile.html">PROFILE</a></li>
+                    <li id="logout">LOGOUT</li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+
+      <!-- Main -->
+      <main class="main-container">
+        <div class="main-title">
+        </div>
+     
+          <div class="dropdown-user">
+            <button id="bcklic" style="margin-left:10px;"><i class="fa-solid fa-chevron-right fa-flip-horizontal" style="color: #000000;margin-right:10px;"></i>PREV</button>
+
+            <select id="user" onchange="user(this.value)">
+              <option value="ca_licreportdaily.html">LICENSE</option>
+              <option value="ca_mvdashboard.html" selected>MOTOR VEHICLE</option>
+            </select>
+
+            <select id="update_dash" onchange="user(this.value)">
+              <option value="ca_mvdashboard.html" >Daily</option>
+              <option value="ca_mvweeklyfltr.html">weekly</option>
+              <option value="ca_mvmonthfltr.html" selected>monthly</option>
+              <option value="ca_mvyrfltr.html">yearly</option>
+            </select>
+
+            <button id="sav_excel1">SAVE TO EXCEL</button>
+            
+            <!-- <button id="">SAVE TO PDF</button> -->
+            <button id="nxtrprt">NEXT<i class="fa-solid fa-chevron-right" style="color: #000000; margin-left:10px;"></i></button>
+          </div>
+
+
+          <!-- Table -->
+          <table style="border-collapse:collapse; margin-left:18%; margin-top:30px;" class="trnsct_tab">
+            <thead>
+              <tr>
+                <th rowspan="2">MV TYPE</th>
+                <th colspan="6" style="background-color:rgb(230, 224, 224);">TRANSACTION</th>
+                <th rowspan="2">TOTAL</th>
+              </tr>
+              <tr>
+                <th style="background-color:rgb(230, 224, 224);">RENEWAL</th>
+                <th style="background-color:rgb(230, 224, 224);">DIPLOMAT</th>
+                <th style="background-color:rgb(230, 224, 224);">OTHER EXEMPT VEHICLE (OEV)</th>
+                <th style="background-color:rgb(230, 224, 224);">FOR HIRE</th>
+                <th style="background-color:rgb(230, 224, 224);">STOLEN AND RECOVERED</th>
+                <th style="background-color:rgb(230, 224, 224);">REACTIVATION OF STORAGE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Motorycle w/ Sidecar</th>
+                <td id="mwsc_rn1"></td>
+                <td id="mwsc_dplmt1"></td>
+                <td id="mwsc_oev1"></td>
+                <td id="mwsc_fh1"></td>
+                <td id="mwsc_stlnrcvrd1"></td>
+                <td id="mwsc_ros1"></td>
+                <td id="ttl1"></td>
+              </tr>
+              <tr> 
+                <th>Motorycle w/o Sidecar</th>
+                <td id="mwsc_rn2"></td>
+                <td id="mwsc_dplmt2"></td>
+                <td id="mwsc_oev2"></td>
+                <td id="mwsc_fh2"></td>
+                <td id="mwsc_stlnrcvrd2"></td>
+                <td id="mwsc_ros2"></td>
+                <td id="ttl2"></td>
+              </tr>
+              <tr>
+                <th>Car</th>
+                <td id="mwsc_rn3"></td>
+                <td id="mwsc_dplmt3"></td>
+                <td id="mwsc_oev3"></td>
+                <td id="mwsc_fh3"></td>
+                <td id="mwsc_stlnrcvrd3"></td>
+                <td id="mwsc_ros3"></td>
+                <td id="ttl3"></td>
+              </tr>
+              <tr>
+                <th>UV</th>
+                <td id="mwsc_rn4"></td>
+                <td id="mwsc_dplmt4"></td>
+                <td id="mwsc_oev4"></td>
+                <td id="mwsc_fh4"></td>
+                <td id="mwsc_stlnrcvrd4"></td>
+                <td id="mwsc_ros4"></td>
+                <td id="ttl4"></td>
+              </tr>
+              <tr>
+                <th>SUV</th>
+                <td id="mwsc_rn5"></td>
+                <td id="mwsc_dplmt5"></td>
+                <td id="mwsc_oev5"></td>
+                <td id="mwsc_fh5"></td>
+                <td id="mwsc_stlnrcvrd5"></td>
+                <td id="mwsc_ros5"></td>
+                <td id="ttl5"></td>
+              </tr>
+              <tr>
+                <th>Bus</th>
+                <td id="mwsc_rn6"></td>
+                <td id="mwsc_dplmt6"></td>
+                <td id="mwsc_oev6"></td>
+                <td id="mwsc_fh6"></td>
+                <td id="mwsc_stlnrcvrd6"></td>
+                <td id="mwsc_ros6"></td>
+                <td id="ttl6"></td>
+              </tr>
+              <tr>
+                <th>Truck</th>
+                  <td id="mwsc_rn7"></td>
+                  <td id="mwsc_dplmt7"></td>
+                  <td id="mwsc_oev7"></td>
+                  <td id="mwsc_fh7"></td>
+                  <td id="mwsc_stlnrcvrd7"></td>
+                  <td id="mwsc_ros7"></td>
+                  <td id="ttl7"></td>   
+              </tr>
+              <tr style="background-color:rgb(230, 224, 224);">
+                <th>Total</th>
+                <td id="mwsc_rn8"></td>
+                <td id="mwsc_dplmt8"></td>
+                <td id="mwsc_oev8"></td>
+                <td id="mwsc_fh8"></td>
+                <td id="mwsc_stlnrcvrd8"></td>
+                <td id="mwsc_ros8"></td>
+                <td id="ttl8"></td>
+              </tr>
+            </tbody>
+          </table>
+          
+      </main>
+      <!-- End Main -->
+
+    </div>
+
+    <!-- Scripts --> 
+    <!-- Custom JS -->
+    <script type="module" src="../src/ca_mvmonthfltr2.js"></script>
+    <script type="module" src="../src/a_logout.js"></script>
+    <script>
+      sav_excel1.addEventListener('click',(e) =>{
+        var table2excel = new Table2Excel();
+        table2excel.export(document.querySelectorAll("table"));
+      });
+
+      function user(src){
+        window.location = src;  
+      }
+      
+    </script>
+  </body>
+</html> 

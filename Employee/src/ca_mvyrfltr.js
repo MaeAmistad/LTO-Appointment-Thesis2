@@ -1,6 +1,10 @@
 bcklic.addEventListener('click' , () => {
-    window.location = "ca_mvweeklyfltr.html"
-})
+    window.location = "ca_homepage.html"
+});
+nxtrprt.addEventListener('click' , () => {
+    window.location = "ca_mvyrfltr2.html"
+});
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
 import { getFirestore, collection,getCountFromServer,getDocs } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
  
@@ -133,59 +137,27 @@ let yr6m15 = 0;
     ]
 
 
-// Weekly Date 
-function getDatesInRange(startDate, endDate) {
-    const date = new Date(startDate);
-    const dates = [];
-// to push date in an array
-    while (date <= endDate) {
-    let dt = new Date(date)
-    let day = dt.getDate();
-    var month = dt.getMonth() + 1;
-    var year = dt.getFullYear();
-    if (month < 10) month = "0" + month;
-    if (day < 10) day = "0" + day;
-    var today = day + " - " + month + " - " + year; 
-    
-    dates.push(today); 
-    date.setDate(date.getDate() + 1);
-    }
-    return dates;
-}
-// Getting date / Initialization
-    let now = new Date();
-//  For Getting the week date
-    let dayOfWeek = now.getDay(); //0-6
-    let numDay = now.getDate();
-// Set a start date
-    let start = new Date(now); //copy
-    start.setDate(numDay - dayOfWeek);
-// Set an end date
-    let end = new Date(now); //copy
-    end.setDate(numDay + (7 - dayOfWeek));
-
-    let d1 = new Date(start);
-    let d2 = new Date(end);
-    let today = getDatesInRange(d1, d2);
+  // Yearly Filter
+  var date = new Date();
+  var year = date.getFullYear();
+  
 
 // DATE TODAY
 var date = new Date();
-var day = date.getDate();
+var day = date.getDate(); 
 var month = date.getMonth() + 1;
 var year = date.getFullYear();
 if (month < 10) month = "0" + month;
 if (day < 10) day = "0" + day;
-// TIME TODAY 
-let hrs = date.getHours();
-let mnts = date.getMinutes();
-let time = hrs + ":" + mnts;
-var today2 = month + "/" + day + "/" + year ;
 
 const mv_bc = await getDocs(collection(db, "Motor Vehicle"));
 mv_bc.forEach((doc) => {
   // CAR
+    // getting Year
+    let dd = doc.data().dt_App;
+    let mmsp = dd.slice(10,15);
 
-  if(today.includes(doc.data().dt_App)){
+  if(mmsp == year){
     // Year Model 1
     if (year_mdl1.includes(doc.data().yr_modell)){
       if (doc.data().typel == "CAR" || doc.data().typel == "CARS"){

@@ -1,6 +1,10 @@
-bcklic.addEventListener('click' , () => { 
-    window.location = "ca_mvdashboard.html"
+bcklic.addEventListener('click' , () => {
+    window.location = "ca_homepage.html"
 });
+nxtrprt.addEventListener('click' , () => {
+    window.location = "ca_mvmonthfltr2.html"
+});
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
 import { getFirestore, collection,getCountFromServer,getDocs } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
  
@@ -133,30 +137,26 @@ let yr6m15 = 0;
     ]
 
 
+// Monthly Filter
+var currentmonth = new Date().getMonth() + 1;
+if (currentmonth < 10)  currentmonth = "0" + currentmonth;
+
 // DATE TODAY
 var date = new Date();
-var day = date.getDate();
+var day = date.getDate(); 
 var month = date.getMonth() + 1;
 var year = date.getFullYear();
 if (month < 10) month = "0" + month;
 if (day < 10) day = "0" + day;
-var today = year + "-" + month + "-" + day ;
-// TIME TODAY 
-let hrs = date.getHours();
-let mnts = date.getMinutes();
-let time = hrs + ":" + mnts;
-var today2 = month + "/" + day + "/" + year ;
 
 const mv_bc = await getDocs(collection(db, "Motor Vehicle"));
 mv_bc.forEach((doc) => {
   // CAR
-  var dd = doc.data().dt_App;
-  var ddsp = dd.slice(0,2);
-  var mmsp = dd.slice(5,7);
-  var yysp = dd.slice(10,14);
-  var dtcon = yysp + "-" + mmsp + "-" + ddsp; 
+        // getting month
+        let dd = doc.data().dt_App;
+        let mmsp = dd.slice(5,7);
 
-  if(dtcon == today){
+  if(mmsp == currentmonth){
     // Year Model 1
     if (year_mdl1.includes(doc.data().yr_modell)){
       if (doc.data().typel == "CAR" || doc.data().typel == "CARS"){
@@ -456,7 +456,7 @@ mv_bc.forEach((doc) => {
            
           }
         }
-    } 
+    }
     // Year Model 5
     if (year_mdl5.includes(doc.data().yr_modell)){
       if (doc.data().typel == "CAR" || doc.data().typel == "CARS"){
@@ -906,3 +906,165 @@ document.getElementById('yrmd3_24').innerHTML = carttlyr3 + uvttlyr3 + suvttlyr3
 document.getElementById('yrmd4_24').innerHTML = carttlyr4 + uvttlyr4 + suvttlyr4 + busttlyr4 + trckttlyr4;
 document.getElementById('yrmd5_24').innerHTML = carttlyr5 + uvttlyr5 + suvttlyr5 + busttlyr5 + trckttlyr5;
 document.getElementById('yrmd6_24').innerHTML = carttlyr6 + uvttlyr6 + suvttlyr6 + busttlyr6 + trckttlyr6;
+// TABLE 2
+// CAR
+document.getElementById("yrmd1_1d").innerHTML = yr1_car1;
+document.getElementById("yrmd1_2d").innerHTML = yr1_car2;
+document.getElementById("yrmd1_3d").innerHTML = yr1_car3;
+document.getElementById("yrmd2_1d").innerHTML = yr2_car1;
+document.getElementById("yrmd2_2d").innerHTML = yr2_car2;
+document.getElementById("yrmd2_3d").innerHTML = yr2_car3;
+document.getElementById("yrmd3_1d").innerHTML = yr3_car1;
+document.getElementById("yrmd3_2d").innerHTML = yr3_car2;
+document.getElementById("yrmd3_3d").innerHTML = yr3_car3;
+document.getElementById("yrmd4_1d").innerHTML = yr4_car1;
+document.getElementById("yrmd4_2d").innerHTML = yr4_car2;
+document.getElementById("yrmd4_3d").innerHTML = yr4_car3;
+document.getElementById("yrmd5_1d").innerHTML = yr5_car1;
+document.getElementById("yrmd5_2d").innerHTML = yr5_car2;
+document.getElementById("yrmd5_3d").innerHTML = yr5_car3;
+document.getElementById("yrmd6_1d").innerHTML = yr6_car1;
+document.getElementById("yrmd6_2d").innerHTML = yr6_car2;
+document.getElementById("yrmd6_3d").innerHTML = yr6_car3;
+// UV
+document.getElementById("yrmd1_5d").innerHTML = yr1_UV1;
+document.getElementById("yrmd1_6d").innerHTML = yr1_UV2;
+document.getElementById("yrmd1_7d").innerHTML = yr1_UV3;
+document.getElementById("yrmd2_5d").innerHTML = yr2_UV1;
+document.getElementById("yrmd2_6d").innerHTML = yr2_UV2;
+document.getElementById("yrmd2_7d").innerHTML = yr2_UV3;
+document.getElementById("yrmd3_5d").innerHTML = yr3_UV1;
+document.getElementById("yrmd3_6d").innerHTML = yr3_UV2;
+document.getElementById("yrmd3_7d").innerHTML = yr3_UV3;
+document.getElementById("yrmd4_5d").innerHTML = yr4_UV1;
+document.getElementById("yrmd4_6d").innerHTML = yr4_UV2;
+document.getElementById("yrmd4_7d").innerHTML = yr4_UV3;
+document.getElementById("yrmd5_5d").innerHTML = yr5_UV1;
+document.getElementById("yrmd5_6d").innerHTML = yr5_UV2;
+document.getElementById("yrmd5_7d").innerHTML = yr5_UV3;
+document.getElementById("yrmd6_5d").innerHTML = yr6_UV1;
+document.getElementById("yrmd6_6d").innerHTML = yr6_UV2;
+document.getElementById("yrmd6_7d").innerHTML = yr6_UV3;
+// SUV
+document.getElementById("yrmd1_9d").innerHTML = yr1_SUV1;
+document.getElementById("yrmd1_10d").innerHTML = yr1_SUV2;
+document.getElementById("yrmd1_11d").innerHTML = yr1_SUV3;
+document.getElementById("yrmd2_9d").innerHTML = yr2_SUV1;
+document.getElementById("yrmd2_10d").innerHTML = yr2_SUV2;
+document.getElementById("yrmd2_11d").innerHTML = yr2_SUV3;
+document.getElementById("yrmd3_9d").innerHTML = yr3_SUV1;
+document.getElementById("yrmd3_10d").innerHTML = yr3_SUV2;
+document.getElementById("yrmd3_11d").innerHTML = yr3_SUV3;
+document.getElementById("yrmd4_9d").innerHTML = yr4_SUV1;
+document.getElementById("yrmd4_10d").innerHTML = yr4_SUV2;
+document.getElementById("yrmd4_11d").innerHTML = yr4_SUV3;
+document.getElementById("yrmd5_9d").innerHTML = yr5_SUV1;
+document.getElementById("yrmd5_10d").innerHTML = yr5_SUV2;
+document.getElementById("yrmd5_11d").innerHTML = yr5_SUV3;
+document.getElementById("yrmd6_9d").innerHTML = yr6_SUV1;
+document.getElementById("yrmd6_10d").innerHTML = yr6_SUV2;
+document.getElementById("yrmd6_11d").innerHTML = yr6_SUV3;
+// BUSES
+document.getElementById("yrmd1_13d").innerHTML = yr1_BUS1;
+document.getElementById("yrmd1_14d").innerHTML = yr1_BUS2;
+document.getElementById("yrmd1_15d").innerHTML = yr1_BUS3;
+document.getElementById("yrmd2_13d").innerHTML = yr2_BUS1;
+document.getElementById("yrmd2_14d").innerHTML = yr2_BUS2;
+document.getElementById("yrmd2_15d").innerHTML = yr2_BUS3; 
+document.getElementById("yrmd3_13d").innerHTML = yr3_BUS1;
+document.getElementById("yrmd3_14d").innerHTML = yr3_BUS2;
+document.getElementById("yrmd3_15d").innerHTML = yr3_BUS3;
+document.getElementById("yrmd4_13d").innerHTML = yr4_BUS1;
+document.getElementById("yrmd4_14d").innerHTML = yr4_BUS2;
+document.getElementById("yrmd4_15d").innerHTML = yr4_BUS3;
+document.getElementById("yrmd5_13d").innerHTML = yr5_BUS1;
+document.getElementById("yrmd5_14d").innerHTML = yr5_BUS2;
+document.getElementById("yrmd5_15d").innerHTML = yr5_BUS3;
+document.getElementById("yrmd6_13d").innerHTML = yr6_BUS1;
+document.getElementById("yrmd6_14d").innerHTML = yr6_BUS2;
+document.getElementById("yrmd6_15d").innerHTML = yr6_BUS3;
+// TRUCKS
+document.getElementById("yrmd1_17d").innerHTML = yr1_TRCK1;
+document.getElementById("yrmd1_18d").innerHTML = yr1_TRCK2;
+document.getElementById("yrmd1_19d").innerHTML = yr1_TRCK3;
+document.getElementById("yrmd2_17d").innerHTML = yr2_TRCK1;
+document.getElementById("yrmd2_18d").innerHTML = yr2_TRCK2;
+document.getElementById("yrmd2_19d").innerHTML = yr2_TRCK3;
+document.getElementById("yrmd3_17d").innerHTML = yr3_TRCK1;
+document.getElementById("yrmd3_18d").innerHTML = yr3_TRCK2;
+document.getElementById("yrmd3_19d").innerHTML = yr3_TRCK3;
+document.getElementById("yrmd4_17d").innerHTML = yr4_TRCK1;
+document.getElementById("yrmd4_18d").innerHTML = yr4_TRCK2;
+document.getElementById("yrmd4_19d").innerHTML = yr4_TRCK3;
+document.getElementById("yrmd5_17d").innerHTML = yr5_TRCK1;
+document.getElementById("yrmd5_18d").innerHTML = yr5_TRCK2;
+document.getElementById("yrmd5_19d").innerHTML = yr5_TRCK3;
+document.getElementById("yrmd6_17d").innerHTML = yr6_TRCK1;
+document.getElementById("yrmd6_18d").innerHTML = yr6_TRCK2;
+document.getElementById("yrmd6_19d").innerHTML = yr6_TRCK3;
+
+// total 
+// CAR
+document.getElementById('yrmd1_4d').innerHTML = yr1_car1 + yr1_car2 + yr1_car3;
+document.getElementById('yrmd2_4d').innerHTML = yr2_car1 + yr2_car2 + yr2_car3;
+document.getElementById('yrmd3_4d').innerHTML = yr3_car1 + yr3_car2 + yr3_car3;
+document.getElementById('yrmd4_4d').innerHTML = yr4_car1 + yr4_car2 + yr4_car3;
+document.getElementById('yrmd5_4d').innerHTML = yr5_car1 + yr5_car2 + yr5_car3;
+document.getElementById('yrmd6_4d').innerHTML = yr6_car1 + yr6_car2 + yr6_car3;
+// UV
+document.getElementById('yrmd1_8d').innerHTML = yr1_UV1 + yr1_UV2 + yr1_UV3;
+document.getElementById('yrmd2_8d').innerHTML = yr2_UV1 + yr2_UV2 + yr2_UV3;
+document.getElementById('yrmd3_8d').innerHTML = yr3_UV1 + yr3_UV2 + yr3_UV3;
+document.getElementById('yrmd4_8d').innerHTML = yr4_UV1 + yr4_UV2 + yr4_UV3;
+document.getElementById('yrmd5_8d').innerHTML = yr5_UV1 + yr5_UV2 + yr5_UV3;
+document.getElementById('yrmd6_8d').innerHTML = yr6_UV1 + yr6_UV2 + yr6_UV3;
+// SUV
+document.getElementById('yrmd1_12d').innerHTML = yr1_SUV1 + yr1_SUV2 + yr1_SUV3;
+document.getElementById('yrmd2_12d').innerHTML = yr2_SUV1 + yr2_SUV2 + yr2_SUV3;
+document.getElementById('yrmd3_12d').innerHTML = yr3_SUV1 + yr3_SUV2 + yr3_SUV3;
+document.getElementById('yrmd4_12d').innerHTML = yr4_SUV1 + yr4_SUV2 + yr4_SUV3;
+document.getElementById('yrmd5_12d').innerHTML = yr5_SUV1 + yr5_SUV2 + yr5_SUV3;
+document.getElementById('yrmd6_12d').innerHTML = yr6_SUV1 + yr6_SUV2 + yr6_SUV3;
+// BUSES
+document.getElementById('yrmd1_16d').innerHTML = yr1_BUS1 + yr1_BUS2 + yr1_BUS3;
+document.getElementById('yrmd2_16d').innerHTML = yr2_BUS1 + yr2_BUS2 + yr2_BUS3;
+document.getElementById('yrmd3_16d').innerHTML = yr3_BUS1 + yr3_BUS2 + yr3_BUS3;
+document.getElementById('yrmd4_16d').innerHTML = yr4_BUS1 + yr4_BUS2 + yr4_BUS3;
+document.getElementById('yrmd5_16d').innerHTML = yr5_BUS1 + yr5_BUS2 + yr5_BUS3;
+document.getElementById('yrmd6_16d').innerHTML = yr6_BUS1 + yr6_BUS2 + yr6_BUS3;
+// TRUCKS
+document.getElementById('yrmd1_20d').innerHTML = yr1_TRCK1 + yr1_TRCK2 + yr1_TRCK3;
+document.getElementById('yrmd2_20d').innerHTML = yr2_TRCK1 + yr2_TRCK2 + yr2_TRCK3;
+document.getElementById('yrmd3_20d').innerHTML = yr3_TRCK1 + yr3_TRCK2 + yr3_TRCK3;
+document.getElementById('yrmd4_20d').innerHTML = yr4_TRCK1 + yr4_TRCK2 + yr4_TRCK3;
+document.getElementById('yrmd5_20d').innerHTML = yr5_TRCK1 + yr5_TRCK2 + yr5_TRCK3;
+document.getElementById('yrmd6_20d').innerHTML = yr6_TRCK1 + yr6_TRCK2 + yr6_TRCK3;
+// TOTAL ALL
+// non-AC
+document.getElementById('yrmd1_21d').innerHTML = yr1_car1 + yr1_UV1 + yr1_SUV1 + yr1_BUS1 + yr1_TRCK1;
+document.getElementById('yrmd2_21d').innerHTML = yr2_car1 + yr2_UV1 + yr2_SUV1 + yr2_BUS1 + yr2_TRCK1;
+document.getElementById('yrmd3_21d').innerHTML = yr3_car1 + yr3_UV1 + yr3_SUV1 + yr3_BUS1 + yr3_TRCK1;
+document.getElementById('yrmd4_21d').innerHTML = yr4_car1 + yr4_UV1 + yr4_SUV1 + yr4_BUS1 + yr4_TRCK1;
+document.getElementById('yrmd5_21d').innerHTML = yr5_car1 + yr5_UV1 + yr5_SUV1 + yr5_BUS1 + yr5_TRCK1;
+document.getElementById('yrmd6_21d').innerHTML = yr6_car1 + yr6_UV1 + yr6_SUV1 + yr6_BUS1 + yr6_TRCK1;
+// r12
+document.getElementById('yrmd1_22d').innerHTML = yr1_car2 + yr1_UV2 + yr1_SUV2 + yr1_BUS2 + yr1_TRCK2;
+document.getElementById('yrmd2_22d').innerHTML = yr2_car2 + yr2_UV2 + yr2_SUV2 + yr2_BUS2 + yr2_TRCK2;
+document.getElementById('yrmd3_22d').innerHTML = yr3_car2 + yr3_UV2 + yr3_SUV2 + yr3_BUS2 + yr3_TRCK2;
+document.getElementById('yrmd4_22d').innerHTML = yr4_car2 + yr4_UV2 + yr4_SUV2 + yr4_BUS2 + yr4_TRCK2;
+document.getElementById('yrmd5_22d').innerHTML = yr5_car2 + yr5_UV2 + yr5_SUV2 + yr5_BUS2 + yr5_TRCK2;
+document.getElementById('yrmd6_22d').innerHTML = yr6_car2 + yr6_UV2 + yr6_SUV2 + yr6_BUS2 + yr6_TRCK2;
+// r134a
+document.getElementById('yrmd1_23d').innerHTML = yr1_car3 + yr1_UV3 + yr1_SUV3 + yr1_BUS3 + yr1_TRCK3;
+document.getElementById('yrmd2_23d').innerHTML = yr2_car3 + yr2_UV3 + yr2_SUV3 + yr2_BUS3 + yr2_TRCK3;
+document.getElementById('yrmd3_23d').innerHTML = yr3_car3 + yr3_UV3 + yr3_SUV3 + yr3_BUS3 + yr3_TRCK3;
+document.getElementById('yrmd4_23d').innerHTML = yr4_car3 + yr4_UV3 + yr4_SUV3 + yr4_BUS3 + yr4_TRCK3;
+document.getElementById('yrmd5_23d').innerHTML = yr5_car3 + yr5_UV3 + yr5_SUV3 + yr5_BUS3 + yr5_TRCK3;
+document.getElementById('yrmd6_23d').innerHTML = yr6_car3 + yr6_UV3 + yr6_SUV3 + yr6_BUS3 + yr6_TRCK3;
+// Grand TOTAL
+document.getElementById('yrmd1_24d').innerHTML = carttlyr1 + uvttlyr1 + suvttlyr1 + busttlyr1 + trckttlyr1;
+document.getElementById('yrmd2_24d').innerHTML = carttlyr2 + uvttlyr2 + suvttlyr2 + busttlyr2 + trckttlyr2;
+document.getElementById('yrmd3_24d').innerHTML = carttlyr3 + uvttlyr3 + suvttlyr3 + busttlyr3 + trckttlyr3;
+document.getElementById('yrmd4_24d').innerHTML = carttlyr4 + uvttlyr4 + suvttlyr4 + busttlyr4 + trckttlyr4;
+document.getElementById('yrmd5_24d').innerHTML = carttlyr5 + uvttlyr5 + suvttlyr5 + busttlyr5 + trckttlyr5;
+document.getElementById('yrmd6_24d').innerHTML = carttlyr6 + uvttlyr6 + suvttlyr6 + busttlyr6 + trckttlyr6;

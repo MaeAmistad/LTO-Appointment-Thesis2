@@ -1,6 +1,9 @@
 bcklic.addEventListener('click' , () => {
     window.location = "ca_homepage.html"
 });  
+nxtrprt.addEventListener('click' , () => {
+  window.location = "ca_licweeklyfltr2.html"
+});  
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
 import { getFirestore, collection,getDocs } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
   

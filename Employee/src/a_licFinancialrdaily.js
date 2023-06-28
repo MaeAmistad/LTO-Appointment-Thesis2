@@ -61,12 +61,12 @@ querySnapshot2.forEach(doc => {
     let td5 = document.createElement('td'); 
     let td6 = document.createElement('td'); 
     
-    td1.innerHTML = itmNo+=1;
-    td2.innerHTML = doc.id;
-    td3.innerHTML = doc.data().User_name;
-    td4.innerHTML = doc.data().laa;
-    td5.innerHTML = doc.data().User_TotalPayment;
-    td6.innerHTML = doc.data().User_OR;
+    td1.innerHTML = itmNo+=1; 
+    td2.innerHTML = doc.data().User_OR
+    td3.innerHTML = doc.id;
+    td4.innerHTML = doc.data().User_name;
+    td5.innerHTML = doc.data().laa;
+    td6.innerHTML = doc.data().User_TotalPayment
 
     trow.appendChild(td1);
     trow.appendChild(td2);
@@ -140,12 +140,12 @@ if(dtcon1 == today){
   let td5 = document.createElement('td'); 
   let td6 = document.createElement('td'); 
   
-  td1.innerHTML = itmNo+=1;
-  td2.innerHTML = doc.id;
-  td3.innerHTML = doc.data().User_name;
-  td4.innerHTML = doc.data().laa;
-  td5.innerHTML = doc.data().User_TotalPayment;
-  td6.innerHTML = doc.data().User_OR;
+  td1.innerHTML = itmNo+=1; 
+  td2.innerHTML = doc.data().User_OR
+  td3.innerHTML = doc.id;
+  td4.innerHTML = doc.data().User_name;
+  td5.innerHTML = doc.data().laa;
+  td6.innerHTML = doc.data().User_TotalPayment
 
   trow.appendChild(td1);
   trow.appendChild(td2);

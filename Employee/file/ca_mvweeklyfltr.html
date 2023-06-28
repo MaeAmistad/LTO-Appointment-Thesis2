@@ -14,11 +14,11 @@
     <script src="https://kit.fontawesome.com/8ec04d5e4f.js" crossorigin="anonymous"></script>
     <!-- Excel/PDF JS -->
     <script src="../src/table2excel.js"></script>
-    <!-- Custom CSS -->
+    <!-- Custom CSS --> 
     <link rel="stylesheet" href="../style/ca_reportdaily.css">
   </head>
   <body>
-    <div class="grid-container">
+    <div class="grid-container"> 
 
       <section class="main"> 
         <nav>
@@ -52,41 +52,234 @@
             <select id="user" onchange="user(this.value)">
               <option value="ca_licreportdaily.html">LICENSE</option>
               <option value="ca_mvdashboard.html" selected>MOTOR VEHICLE</option>
-            </select> 
+            </select>
 
             <select id="update_dash" onchange="user(this.value)">
               <option value="ca_mvdashboard.html" >Daily</option>
               <option value="ca_mvweeklyfltr.html" selected>weekly</option>
               <option value="ca_mvmonthfltr.html">monthly</option>
+              <option value="ca_mvyrfltr.html">yearly</option>
             </select>
 
-            <button id="yrmv">YEAR MODEL REPORT</button>
-            
             <button id="sav_excel1">SAVE TO EXCEL</button>
             
             <!-- <button id="">SAVE TO PDF</button> -->
+            <button id="nxtrprt">NEXT<i class="fa-solid fa-chevron-right" style="color: #000000; margin-left:10px;"></i></button>
           </div>
 
 
           <!-- Table -->
-          <table id="table" class="tablemv">
+          <!-- Table -->
+          <table id="table" class="tablemv" style="margin-left:3%; margin-top:30px;">
             <thead>
-                <tr class="hdr">
-                  <th>Item No.</th>
-                  <th>Plate No.</th>
-                  <th>Type</th>
-                  <th>Make/Series</th>
-                  <th>Motor Number</th>
-                  <th>Chassis Number</th>
-                  <th>Color</th>
-                  <th>Fuel</th>
-                  <th>File No.</th>
-                  <th>Date Registered</th>
-                  <th>Transaction</th>
-                  <th>Dept./Agency</th>
+                <tr>
+                  <th rowspan="4">YEAR MODEL</th>
+                  <th colspan="4">CARS</th>
+                  <th colspan="4">UV</th>
+                  <th colspan="4">SUV</th>
+                  <th colspan="4">BUSES</th>
+                  <th colspan="4">TRUCKS</th>
+                  <th colspan="3">TOTAL</th>
+                  <th rowspan="4">GRAND TOTAL</th>
+                </tr>
+                <tr>
+                    <th rowspan="3">NON-AC</th>
+                    <th colspan="2">TYPE OF CFC</th>
+                    <th rowspan="3">TOTAL</th>
+                    <th rowspan="3">NON-AC</th>
+                    <th colspan="2">TYPE OF CFC</th>
+                    <th rowspan="3">TOTAL</th>
+                    <th rowspan="3">NON-AC</th>
+                    <th colspan="2">TYPE OF CFC</th>
+                    <th rowspan="3">TOTAL</th>
+                    <th rowspan="3">NON-AC</th>
+                    <th colspan="2">TYPE OF CFC</th>
+                    <th rowspan="3">TOTAL</th>
+                    <th rowspan="3">NON-AC</th>
+                    <th colspan="2">TYPE OF CFC</th>
+                    <th rowspan="3">TOTAL</th>
+                    <th rowspan="3">NON-AC</th>
+                    <th colspan="2">TYPE OF CFC</th>
+                </tr>
+                <tr>
+                    <th>R12</th>
+                    <th>R134A</th>
+                    <th>R12</th>
+                    <th>R134A</th>
+                    <th>R12</th>
+                    <th>R134A</th>
+                    <th>R12</th>
+                    <th>R134A</th>
+                    <th>R12</th>
+                    <th>R134A</th>
+                    <th>R12</th>
+                    <th>R134A</th>
                 </tr>
             </thead>
-              <tbody id="tbody1"> </tbody>
+            <tbody>
+              <tr>
+                <th>2024-2019</th>
+                <td id="yrmd1_1"></td>
+                <td id="yrmd1_2"></td>
+                <td id="yrmd1_3"></td>
+                <td id="yrmd1_4"></td>
+                <td id="yrmd1_5"></td>
+                <td id="yrmd1_6"></td>
+                <td id="yrmd1_7"></td>
+                <td id="yrmd1_8"></td>
+                <td id="yrmd1_9"></td>
+                <td id="yrmd1_10"></td>
+                <td id="yrmd1_11"></td>
+                <td id="yrmd1_12"></td>
+                <td id="yrmd1_13"></td>
+                <td id="yrmd1_14"></td>
+                <td id="yrmd1_15"></td>
+                <td id="yrmd1_16"></td>
+                <td id="yrmd1_17"></td>
+                <td id="yrmd1_18"></td>
+                <td id="yrmd1_19"></td>
+                <td id="yrmd1_20"></td>
+                <td id="yrmd1_21"></td>
+                <td id="yrmd1_22"></td>
+                <td id="yrmd1_23"></td>
+                <td id="yrmd1_24"></td>
+              </tr>
+              <tr>
+                <th>2018-2013</th>
+                <td id="yrmd2_1"></td>
+                <td id="yrmd2_2"></td>
+                <td id="yrmd2_3"></td>
+                <td id="yrmd2_4"></td>
+                <td id="yrmd2_5"></td>
+                <td id="yrmd2_6"></td>
+                <td id="yrmd2_7"></td>
+                <td id="yrmd2_8"></td>
+                <td id="yrmd2_9"></td>
+                <td id="yrmd2_10"></td>
+                <td id="yrmd2_11"></td>
+                <td id="yrmd2_12"></td>
+                <td id="yrmd2_13"></td>
+                <td id="yrmd2_14"></td>
+                <td id="yrmd2_15"></td>
+                <td id="yrmd2_16"></td>
+                <td id="yrmd2_17"></td>
+                <td id="yrmd2_18"></td>
+                <td id="yrmd2_19"></td>
+                <td id="yrmd2_20"></td>
+                <td id="yrmd2_21"></td>
+                <td id="yrmd2_22"></td>
+                <td id="yrmd2_23"></td>
+                <td id="yrmd2_24"></td>
+              </tr>
+              <tr>
+                <th>2012-2007</th>
+                <td id="yrmd3_1"></td>
+                <td id="yrmd3_2"></td>
+                <td id="yrmd3_3"></td>
+                <td id="yrmd3_4"></td>
+                <td id="yrmd3_5"></td>
+                <td id="yrmd3_6"></td>
+                <td id="yrmd3_7"></td>
+                <td id="yrmd3_8"></td>
+                <td id="yrmd3_9"></td>
+                <td id="yrmd3_10"></td>
+                <td id="yrmd3_11"></td>
+                <td id="yrmd3_12"></td>
+                <td id="yrmd3_13"></td>
+                <td id="yrmd3_14"></td>
+                <td id="yrmd3_15"></td>
+                <td id="yrmd3_16"></td>
+                <td id="yrmd3_17"></td>
+                <td id="yrmd3_18"></td>
+                <td id="yrmd3_19"></td>
+                <td id="yrmd3_20"></td>
+                <td id="yrmd3_21"></td>
+                <td id="yrmd3_22"></td>
+                <td id="yrmd3_23"></td>
+                <td id="yrmd3_24"></td>
+              </tr>
+              <tr>
+                <th>2006-2001</th>
+                <td id="yrmd4_1"></td>
+                <td id="yrmd4_2"></td>
+                <td id="yrmd4_3"></td>
+                <td id="yrmd4_4"></td>
+                <td id="yrmd4_5"></td>
+                <td id="yrmd4_6"></td>
+                <td id="yrmd4_7"></td>
+                <td id="yrmd4_8"></td>
+                <td id="yrmd4_9"></td>
+                <td id="yrmd4_10"></td>
+                <td id="yrmd4_11"></td>
+                <td id="yrmd4_12"></td>
+                <td id="yrmd4_13"></td>
+                <td id="yrmd4_14"></td>
+                <td id="yrmd4_15"></td>
+                <td id="yrmd4_16"></td>
+                <td id="yrmd4_17"></td>
+                <td id="yrmd4_18"></td>
+                <td id="yrmd4_19"></td>
+                <td id="yrmd4_20"></td>
+                <td id="yrmd4_21"></td>
+                <td id="yrmd4_22"></td>
+                <td id="yrmd4_23"></td>
+                <td id="yrmd4_24"></td>
+              </tr>
+              <tr>
+                <th>2000-1996</th>
+                <td id="yrmd5_1"></td>
+                <td id="yrmd5_2"></td>
+                <td id="yrmd5_3"></td>
+                <td id="yrmd5_4"></td>
+                <td id="yrmd5_5"></td>
+                <td id="yrmd5_6"></td>
+                <td id="yrmd5_7"></td>
+                <td id="yrmd5_8"></td>
+                <td id="yrmd5_9"></td>
+                <td id="yrmd5_10"></td>
+                <td id="yrmd5_11"></td>
+                <td id="yrmd5_12"></td>
+                <td id="yrmd5_13"></td>
+                <td id="yrmd5_14"></td>
+                <td id="yrmd5_15"></td>
+                <td id="yrmd5_16"></td>
+                <td id="yrmd5_17"></td>
+                <td id="yrmd5_18"></td>
+                <td id="yrmd5_19"></td>
+                <td id="yrmd5_20"></td>
+                <td id="yrmd5_21"></td>
+                <td id="yrmd5_22"></td>
+                <td id="yrmd5_23"></td>
+                <td id="yrmd5_24"></td>
+              </tr>
+              <tr>
+                <th>1995-below</th>
+                <td id="yrmd6_1"></td>
+                <td id="yrmd6_2"></td>
+                <td id="yrmd6_3"></td>
+                <td id="yrmd6_4"></td>
+                <td id="yrmd6_5"></td>
+                <td id="yrmd6_6"></td>
+                <td id="yrmd6_7"></td>
+                <td id="yrmd6_8"></td>
+                <td id="yrmd6_9"></td>
+                <td id="yrmd6_10"></td>
+                <td id="yrmd6_11"></td>
+                <td id="yrmd6_12"></td>
+                <td id="yrmd6_13"></td>
+                <td id="yrmd6_14"></td>
+                <td id="yrmd6_15"></td>
+                <td id="yrmd6_16"></td>
+                <td id="yrmd6_17"></td>
+                <td id="yrmd6_18"></td>
+                <td id="yrmd6_19"></td>
+                <td id="yrmd6_20"></td>
+                <td id="yrmd6_21"></td>
+                <td id="yrmd6_22"></td>
+                <td id="yrmd6_23"></td>
+                <td id="yrmd6_24"></td>
+              </tr>
+            </tbody>
           </table>
       </main>
       <!-- End Main -->
@@ -96,7 +289,7 @@
     <!-- Scripts --> 
     <!-- Custom JS -->
     <script src="../src/a_dashboard.js"></script>
-    <script type="module" src="../src/ca_mvreportweekly.js"></script>
+    <script type="module" src="../src/ca_mvweeklyfltr.js"></script>
     <script type="module" src="../src/a_logout.js"></script>
     <script>
       sav_excel1.addEventListener('click',(e) =>{

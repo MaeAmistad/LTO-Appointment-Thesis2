@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>LTO Appointment Setter</title>
+
+    <!-- Montserrat Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://kit.fontawesome.com/8ec04d5e4f.css" crossorigin="anonymous"> -->
+    <script src="https://kit.fontawesome.com/8ec04d5e4f.js" crossorigin="anonymous"></script>
+    <!-- Excel/PDF JS -->
+    <script src="../src/table2excel.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../style/ca_reportdaily.css">
+  </head>
+  <body> 
+    <div class="grid-container">
+
+        <section class="main"> 
+            <nav>
+                <img src="../img/Land_Transportation_Office.svg.png">
+            
+                <div class="navbar" id="navLinks">
+                    <ul>
+                        <li id="hm"><a href="ca_homepage.html">HOME</a></li>
+                        <li><a href="">TRANSACTIONS<i class="fa-solid fa-caret-down"></i></a>
+                        <ul>
+                          <li><a href="ca_LIComp.html">LICENSE</a></li>
+                          <li><a href="ca_mvPass.html">MOTOR VEHICLE</a></li>
+                        </ul>
+                        </li> 
+                        <li id="rprt"><a href="ca_reportdaily.html">REPORT</a></li>
+                        <li id="prfl"><a href="ca_profile.html">PROFILE</a></li>
+                        <li id="logout">LOGOUT</li>
+                    </ul>
+                </div>
+            </nav>
+        </section>
+
+      <!-- Main -->
+      <main class="main-container">
+        <div class="main-title">
+
+        </div>
+     
+          <div class="dropdown-user">
+            <button id="bcklic" style="margin-left:10px;"><i class="fa-solid fa-chevron-right fa-flip-horizontal" style="color: #000000;margin-right:10px;"></i>PREV</button>
+
+            <select id="user" onchange="user(this.value)">
+                <option value="ca_licreportdaily.html" selected>LICENSE</option>
+                <option value="ca_mvdashboard.html">MOTOR VEHICLE</option>
+              </select> 
+  
+              <select id="update_dash" onchange="user(this.value)">
+                <option value="ca_licreportdaily.html" >Daily</option>
+                <option value="ca_licweeklyfltr.html" >weekly</option>
+                <option value="ca_licmonthfilter.html" selected>monthly</option>
+                <option value="ca_licyrfilter.html" >yearly</option>
+              </select>
+
+            <button id="sav_excl">SAVE TO EXCEL</button> 
+            <!-- <button id="sav_pdf">SAVE TO PDF</button> -->
+          </div>
+
+
+          <!-- Table -->
+         <!-- Table -->
+         <table id="table" class="tablelic">
+          <thead>
+            <tr>
+              <th>ID No.</th>
+              <th>OR No.</th>
+              <th>Transaction ID</th>
+              <th>Name of Applicant</th>
+              <th>Type of Transaction</th>
+              <th>Amount</th>
+            </tr>   
+          </thead>
+          <tbody id="tbody">
+
+          </tbody>
+
+        </table>
+        <table id="table" class="tablemv">
+          <thead>
+              <tr>
+                <th style="width:200px; text-align:center;">TYPES OF DRIVER'S LICENSE AND PERMITS TRANSACTIONS</th>
+                <th style="width:200px; text-align:center;">TOTAL</th>
+              </tr>
+          </thead>
+          <tbody> 
+            <tr> 
+              <th>Student-Driver's Permit</th> 
+              <td id="spttl"></td>
+            </tr> 
+            <tr>
+              <th>Driver's License</th>
+              <td id="dlttl"></td>
+            </tr> 
+            <tr>
+              <th>Conductor License</th>
+              <td id="clttl"></td>
+            </tr>
+            <tr>
+              <th>TOTAL</th>
+              <td id="ttlall"></td>
+            </tr>
+          </tbody>
+        </table>
+          
+      </main>
+      <!-- End Main -->
+
+    </div>
+
+    <!-- Scripts -->
+    <!-- Custom JS -->
+    <script src="../src/a_dashboard.js"></script>
+    <script type="module" src="../src/ca_licmonthfilter3.js"></script>
+    <!-- <script src="../src/a_licreportpdf.js"></script> -->
+    <!-- Seperate Script for excel -->
+    <script type="module" src="../src/a_logout.js"></script>
+    <script>
+      sav_excl.addEventListener('click',(e) =>{
+        var table2excel = new Table2Excel(); 
+        table2excel.export(document.querySelectorAll("table"));
+      });
+
+      function user(src){
+        window.location = src;  
+      }
+ 
+    </script>
+  </body>
+</html> 

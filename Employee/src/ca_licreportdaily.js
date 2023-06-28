@@ -1,6 +1,9 @@
 bcklic.addEventListener('click' , () => {
   window.location = "ca_homepage.html"
 }); 
+nxtrprt.addEventListener('click' , () => {
+  window.location = "ca_licreportdaily2.html"
+}); 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
 import { getFirestore, collection,getDocs } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
   
@@ -11,9 +14,9 @@ const firebaseConfig = {
       projectId: "lto-online-appointment-setter",
       storageBucket: "lto-online-appointment-setter.appspot.com",
       messagingSenderId: "382579903791",
-      appId: "1:382579903791:web:5d98bbe4ea8b38a43065da" 
+      appId: "1:382579903791:web:5d98bbe4ea8b38a43065da"  
 }; 
-  
+   
 // Initialize Firebase 
 const app = initializeApp(firebaseConfig); 
 const db = getFirestore(app); 

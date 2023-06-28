@@ -58,15 +58,17 @@
                 <option value="ca_licreportdaily.html" selected>Daily</option>
                 <option value="ca_licweeklyfltr.html" >weekly</option>
                 <option value="ca_licmonthfilter.html" >monthly</option>
+                <option value="ca_licyrfilter.html" >yearly</option>
               </select>
 
             <button id="sav_excl">SAVE TO EXCEL</button> 
             <!-- <button id="sav_pdf">SAVE TO PDF</button> -->
+            <button id="nxtrprt">NEXT<i class="fa-solid fa-chevron-right" style="color: #000000; margin-left:10px;"></i></button>
           </div>
 
 
           <!-- Table -->
-          <table id="table">
+          <table id="table" class="tab1">
             <thead>
               <tr class="hdr">
                 <th rowspan="3">TYPES OF DRIVER'S LICENSE AND PERMITS TRANSACTIONS</th>
@@ -403,6 +405,7 @@
               </tr>
             </tbody>
           </table>
+          
       </main>
       <!-- End Main -->
 
@@ -417,7 +420,7 @@
     <script type="module" src="../src/a_logout.js"></script>
     <script>
       sav_excl.addEventListener('click',(e) =>{
-        var table2excel = new Table2Excel();
+        var table2excel = new Table2Excel(); 
         table2excel.export(document.querySelectorAll("table"));
       });
 
