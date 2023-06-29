@@ -14,7 +14,7 @@ import { getFirestore, getDocs, collection } from "https://www.gstatic.com/fireb
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyCyNToos3S0HwLl0cZMRdiVjFJcBb4FWFo",
+    apiKey: "AIzaSyCyNToos3S0HwLl0cZMRdiVjFJcBb4FWFo", 
     authDomain: "lto-online-appointment-setter.firebaseapp.com",
     projectId: "lto-online-appointment-setter",
     storageBucket: "lto-online-appointment-setter.appspot.com",
@@ -25,16 +25,16 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
- 
+  
 
 
 //get all data
   const querySnapshot2 = await getDocs(collection(db,"Applicants"));
   var tbody = document.getElementById('tbody1');
-
+ 
       querySnapshot2.forEach(doc2 => {
-//  
-        if(doc2.data().User_Stat4 == "INCOMPLETED" && doc2.data().User_TT == "LICENSING"){
+//   
+        if(doc2.data().User_Stat4 == "RELEASED" && doc2.data().User_TT == "LICENSING"){
 
                 if (doc2.data().User_AT == "REVISION OF RECORDS"){
                     let trow = document.createElement('tr'); 
@@ -45,61 +45,28 @@ const db = getFirestore(app);
                     let td4 = document.createElement('td'); 
                     let td5 = document.createElement('td'); 
                     let td6 = document.createElement('td'); 
+                    let td7 = document.createElement('td');
+                    let td8 = document.createElement('td');
 
                     t_ID.innerHTML = doc2.data().User_TransID; 
-                    td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
-                    td2.innerHTML = doc2.data().User_TT;
-                    td3.innerHTML = doc2.data().User_D;
-                    td4.innerHTML = doc2.data().User_T;
-                    td5.innerHTML = doc2.data().User_CashierName;
-                    td6.innerHTML = doc2.data().User_CashierDate;
-                    
+                    td1.innerHTML =  doc2.data().User_OR;
+                    td2.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
+                    td3.innerHTML = doc2.data().User_TT;
+                    td4.innerHTML = doc2.data().User_D;
+                    td5.innerHTML = doc2.data().User_T;
+                    td6.innerHTML = doc2.data().User_TotalPayment;
+                    td7.innerHTML = doc2.data().User_CashierName;
+                    td8.innerHTML = doc2.data().User_CashierDate;
 
                     trow.appendChild(t_ID);
-                    trow.appendChild(td1);
+                    trow.appendChild(td1); 
                     trow.appendChild(td2);
                     trow.appendChild(td3);
                     trow.appendChild(td4);
                     trow.appendChild(td5);
                     trow.appendChild(td6);
-
-                    tbody.appendChild(trow);
-
-                    trow.addEventListener('click', (e) =>{
-                        trow.style.backgroundColor = 'rgb(218, 216, 216)';
-                        localStorage.setItem('stat',doc2.data().User_AppID)    
-                        localStorage.setItem('ID', doc2.id)
-
-                        window.location = "a_reqdata2.html";
-                    });
-
-                }
-                else{
-                    let trow = document.createElement('tr'); 
-                    let t_ID = document.createElement('td'); 
-                    let td1 = document.createElement('td');
-                    let td2 = document.createElement('td');
-                    let td3 = document.createElement('td'); 
-                    let td4 = document.createElement('td'); 
-                    let td5 = document.createElement('td'); 
-                    let td6 = document.createElement('td')
-
-                    t_ID.innerHTML = doc2.data().User_TransID; 
-                    td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
-                    td2.innerHTML = doc2.data().User_TT;
-                    td3.innerHTML = doc2.data().User_D;
-                    td4.innerHTML = doc2.data().User_T;
-                    td5.innerHTML = doc2.data().User_CashierName;
-                    td6.innerHTML = doc2.data().User_CashierDate;
-                    
-
-                    trow.appendChild(t_ID);
-                    trow.appendChild(td1);
-                    trow.appendChild(td2);
-                    trow.appendChild(td3);
-                    trow.appendChild(td4);
-                    trow.appendChild(td5);
-                    trow.appendChild(td6);
+                    trow.appendChild(td7);
+                    trow.appendChild(td8);
 
                     tbody.appendChild(trow);
 
@@ -121,9 +88,63 @@ const db = getFirestore(app);
                         trow.style.color = "";
                      })
                 }
+                else{
+                    let trow = document.createElement('tr'); 
+                    let t_ID = document.createElement('td'); 
+                    let td1 = document.createElement('td');
+                    let td2 = document.createElement('td');
+                    let td3 = document.createElement('td'); 
+                    let td4 = document.createElement('td'); 
+                    let td5 = document.createElement('td'); 
+                    let td6 = document.createElement('td'); 
+                    let td7 = document.createElement('td');
+                    let td8 = document.createElement('td');
+
+                    t_ID.innerHTML = doc2.data().User_TransID; 
+                    td1.innerHTML =  doc2.data().User_OR;
+                    td2.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
+                    td3.innerHTML = doc2.data().User_TT;
+                    td4.innerHTML = doc2.data().User_D;
+                    td5.innerHTML = doc2.data().User_T;
+                    td6.innerHTML = doc2.data().User_TotalPayment;
+                    td7.innerHTML = doc2.data().User_CashierName;
+                    td8.innerHTML = doc2.data().User_CashierDate;
+
+                    trow.appendChild(t_ID);
+                    trow.appendChild(td1); 
+                    trow.appendChild(td2);
+                    trow.appendChild(td3);
+                    trow.appendChild(td4);
+                    trow.appendChild(td5);
+                    trow.appendChild(td6);
+                    trow.appendChild(td7);
+                    trow.appendChild(td8);
+
+                    tbody.appendChild(trow);        
+                    
+                    trow.addEventListener('click', (e) =>{
+                        trow.style.backgroundColor = '#254894c0';
+                        trow.style.color = "white";
+                        localStorage.setItem('stat',doc2.data().User_AppID)    
+                        localStorage.setItem('ID', doc2.id)
+        
+                        window.location = "a_reqdata2.html";
+                    });
+        
+                    trow.addEventListener('mouseover',function(){
+                        trow.style.backgroundColor = 'rgb(218, 216, 216)';
+                        trow.style.color = "black";
+                     })
+                     trow.addEventListener('mouseleave',function(){
+                        trow.style.backgroundColor = "";
+                        trow.style.color = "";
+                     })
+                }    
+                
+
 
         }
 
+
+
       });
-
-

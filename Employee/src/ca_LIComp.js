@@ -53,18 +53,20 @@ const db = getFirestore(app);
                     let td9 = document.createElement('td'); 
                     let td10 = document.createElement('td'); 
                     let td11 = document.createElement('td'); 
+                    let td12 = document.createElement('td'); 
 
                     t_ID.innerHTML = doc2.data().User_TransID; 
-                    td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
-                    td2.innerHTML = doc2.data().User_BD;
-                    td3.innerHTML = doc2.data().User_GN;
-                    td4.innerHTML = doc2.data().User_ADD;
-                    td6.innerHTML = doc2.data().User_Laa;
-                    td7.innerHTML = doc2.data().User_AT + " (" +  doc2.data().User_Rev + ")";
-                    td8.innerHTML = doc2.data().User_D;
-                    td9.innerHTML = doc2.data().User_T;
-                    td10.innerHTML = doc2.data().User_CN ;
-                    td11.innerHTML = doc2.data().User_E;
+                    td1.innerHTML =  doc2.data().User_OR;
+                    td2.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
+                    td3.innerHTML = doc2.data().User_BD;
+                    td4.innerHTML = doc2.data().User_GN;
+                    td6.innerHTML = doc2.data().User_ADD;
+                    td7.innerHTML = doc2.data().User_Laa;
+                    td8.innerHTML = doc2.data().User_AT + " (" +  doc2.data().User_Rev + ")";
+                    td9.innerHTML = doc2.data().User_D;
+                    td10.innerHTML =doc2.data().User_T;
+                    td11.innerHTML =  doc2.data().User_CN;
+                    td12.innerHTML = doc2.data().User_E;
                     
 
                     trow.appendChild(t_ID);
@@ -78,6 +80,7 @@ const db = getFirestore(app);
                     trow.appendChild(td9);
                     trow.appendChild(td10);
                     trow.appendChild(td11);
+                    trow.appendChild(td12);
 
                     tbody.appendChild(trow);
 
@@ -95,18 +98,20 @@ const db = getFirestore(app);
                     let td9 = document.createElement('td'); 
                     let td10 = document.createElement('td'); 
                     let td11 = document.createElement('td'); 
+                    let td12 = document.createElement('td'); 
 
                     t_ID.innerHTML = doc2.data().User_TransID; 
-                    td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
-                    td2.innerHTML = doc2.data().User_BD;
-                    td3.innerHTML = doc2.data().User_GN;
-                    td4.innerHTML = doc2.data().User_ADD;
-                    td6.innerHTML = doc2.data().User_Laa;
-                    td7.innerHTML = doc2.data().User_AT;
-                    td8.innerHTML = doc2.data().User_D;
-                    td9.innerHTML = doc2.data().User_T;
-                    td10.innerHTML = doc2.data().User_CN ;
-                    td11.innerHTML = doc2.data().User_E;
+                    td1.innerHTML =  doc2.data().User_OR;
+                    td2.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
+                    td3.innerHTML = doc2.data().User_BD;
+                    td4.innerHTML = doc2.data().User_GN;
+                    td6.innerHTML = doc2.data().User_ADD;
+                    td7.innerHTML = doc2.data().User_Laa;
+                    td8.innerHTML = doc2.data().User_AT + " (" +  doc2.data().User_Rev + ")";
+                    td9.innerHTML = doc2.data().User_D;
+                    td10.innerHTML =doc2.data().User_T;
+                    td11.innerHTML =  doc2.data().User_CN;
+                    td12.innerHTML = doc2.data().User_E;
                     
 
                     trow.appendChild(t_ID);
@@ -120,6 +125,7 @@ const db = getFirestore(app);
                     trow.appendChild(td9);
                     trow.appendChild(td10);
                     trow.appendChild(td11);
+                    trow.appendChild(td12);
 
                     tbody.appendChild(trow);
                 }

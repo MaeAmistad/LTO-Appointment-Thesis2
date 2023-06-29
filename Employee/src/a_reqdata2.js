@@ -57,8 +57,12 @@ const db = getFirestore(app);
                     document.getElementById("addrss").innerHTML = doc2.data().User_ADD;
                     document.getElementById("em").innerHTML = doc2.data().User_E;
                     document.getElementById("mnn").innerHTML = doc2.data().User_CN;
+                    document.getElementById("exmt").style.display = "none"
+                    document.getElementById("et").style.display = "none"
                     document.getElementById("mv-table").style.display = "none"
                     document.getElementById("mvtitle").style.display = "none"
+                    document.getElementById("appntmntID").style.display = "none"
+                    document.getElementById("aID").style.display = "none"
                 }
                 else if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION"){
                     document.getElementById("ln").innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;

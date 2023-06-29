@@ -6,13 +6,15 @@ comp_btn.addEventListener('click',(e) => {
 incomp_btn.addEventListener('click',(e) => {
     window.location = "a_caLIInomp.html";
 });
-
+released.addEventListener('click',(e) => {
+    window.location = "a_caLIReleased.html";
+});
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import { getFirestore, getDocs, collection } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyCyNToos3S0HwLl0cZMRdiVjFJcBb4FWFo",
+    apiKey: "AIzaSyCyNToos3S0HwLl0cZMRdiVjFJcBb4FWFo", 
     authDomain: "lto-online-appointment-setter.firebaseapp.com",
     projectId: "lto-online-appointment-setter",
     storageBucket: "lto-online-appointment-setter.appspot.com",
@@ -30,8 +32,8 @@ const db = getFirestore(app);
   const querySnapshot2 = await getDocs(collection(db,"Applicants"));
   var tbody = document.getElementById('tbody1');
  
-      querySnapshot2.forEach(doc2 => {
-//  
+      querySnapshot2.forEach(doc2 => { 
+//   
         if(doc2.data().User_Stat4 == "COMPLETED" && doc2.data().User_TT == "LICENSING"){
 
                 if (doc2.data().User_AT == "REVISION OF RECORDS"){
@@ -44,15 +46,17 @@ const db = getFirestore(app);
                     let td5 = document.createElement('td'); 
                     let td6 = document.createElement('td'); 
                     let td7 = document.createElement('td');
+                    let td8 = document.createElement('td');
 
                     t_ID.innerHTML = doc2.data().User_TransID; 
-                    td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
-                    td2.innerHTML = doc2.data().User_TT;
-                    td3.innerHTML = doc2.data().User_D;
-                    td4.innerHTML = doc2.data().User_T;
-                    td5.innerHTML = doc2.data().User_TotalPayment;
-                    td6.innerHTML = doc2.data().User_CashierName;
-                    td7.innerHTML = doc2.data().User_CashierDate;
+                    td1.innerHTML =  doc2.data().User_OR;
+                    td2.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
+                    td3.innerHTML = doc2.data().User_TT;
+                    td4.innerHTML = doc2.data().User_D;
+                    td5.innerHTML = doc2.data().User_T;
+                    td6.innerHTML = doc2.data().User_TotalPayment;
+                    td7.innerHTML = doc2.data().User_CashierName;
+                    td8.innerHTML = doc2.data().User_CashierDate;
 
                     trow.appendChild(t_ID);
                     trow.appendChild(td1); 
@@ -62,6 +66,7 @@ const db = getFirestore(app);
                     trow.appendChild(td5);
                     trow.appendChild(td6);
                     trow.appendChild(td7);
+                    trow.appendChild(td8);
 
                     tbody.appendChild(trow);
 
@@ -90,30 +95,32 @@ const db = getFirestore(app);
                     let td2 = document.createElement('td');
                     let td3 = document.createElement('td'); 
                     let td4 = document.createElement('td'); 
-                    let td5 = document.createElement('td');
-                    let td6 = document.createElement('td');
+                    let td5 = document.createElement('td'); 
+                    let td6 = document.createElement('td'); 
                     let td7 = document.createElement('td');
+                    let td8 = document.createElement('td');
 
                     t_ID.innerHTML = doc2.data().User_TransID; 
-                    td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
-                    td2.innerHTML = doc2.data().User_TT;
-                    td3.innerHTML = doc2.data().User_D;
-                    td4.innerHTML = doc2.data().User_T;
-                    td5.innerHTML = doc2.data().User_TotalPayment;
-                    td6.innerHTML = doc2.data().User_CashierName;
-                    td7.innerHTML = doc2.data().User_CashierDate;
-                    
+                    td1.innerHTML =  doc2.data().User_OR;
+                    td2.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
+                    td3.innerHTML = doc2.data().User_TT;
+                    td4.innerHTML = doc2.data().User_D;
+                    td5.innerHTML = doc2.data().User_T;
+                    td6.innerHTML = doc2.data().User_TotalPayment;
+                    td7.innerHTML = doc2.data().User_CashierName;
+                    td8.innerHTML = doc2.data().User_CashierDate;
 
                     trow.appendChild(t_ID);
-                    trow.appendChild(td1);
+                    trow.appendChild(td1); 
                     trow.appendChild(td2);
                     trow.appendChild(td3);
                     trow.appendChild(td4);
                     trow.appendChild(td5);
                     trow.appendChild(td6);
                     trow.appendChild(td7);
+                    trow.appendChild(td8);
 
-                    tbody.appendChild(trow);        
+                    tbody.appendChild(trow);       
                     
                     trow.addEventListener('click', (e) =>{
                         trow.style.backgroundColor = '#254894c0';

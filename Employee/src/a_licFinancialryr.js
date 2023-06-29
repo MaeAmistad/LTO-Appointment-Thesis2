@@ -55,28 +55,33 @@ let numA = [];
     let dd = doc.data().dt_App;
     let mmsp = dd.slice(10,15);
 
+    let dtime = doc.data().User_CashierDate;
+    let date = dtime.slice(0,11)
+
             if(mmsp == year){
-              let trow = document.createElement('tr');    
               let td1 = document.createElement('td'); 
-              let td2 = document.createElement('td'); 
-              let td3 = document.createElement('td');
-              let td4 = document.createElement('td');
-              let td5 = document.createElement('td'); 
-              let td6 = document.createElement('td'); 
-              
-              td1.innerHTML = itmNo+=1; 
-              td2.innerHTML = doc.data().User_OR
-              td3.innerHTML = doc.id;
-              td4.innerHTML = doc.data().User_name;
-              td5.innerHTML = doc.data().laa;
-              td6.innerHTML = doc.data().User_TotalPayment
-          
-              trow.appendChild(td1);
-              trow.appendChild(td2);
-              trow.appendChild(td3);
-              trow.appendChild(td4);
-              trow.appendChild(td5);
-              trow.appendChild(td6);
+                let td2 = document.createElement('td'); 
+                let td3 = document.createElement('td');
+                let td4 = document.createElement('td');
+                let td5 = document.createElement('td'); 
+                let td6 = document.createElement('td'); 
+                let td7 = document.createElement('td'); 
+                
+                td1.innerHTML = itmNo+=1; 
+                td2.innerHTML = doc.data().User_OR
+                td3.innerHTML = doc.id;
+                td4.innerHTML = doc.data().User_name;
+                td5.innerHTML = doc.data().laa;
+                td6.innerHTML = date
+                td7.innerHTML = doc.data().User_TotalPayment
+            
+                trow.appendChild(td1);
+                trow.appendChild(td2);
+                trow.appendChild(td3);
+                trow.appendChild(td4);
+                trow.appendChild(td5);
+                trow.appendChild(td6);
+                trow.appendChild(td7);
     
                   tbody.appendChild(trow);
 
@@ -131,28 +136,33 @@ querySnapshot2.forEach(doc => {
     let dd = doc.data().dt_App;
     let mmsp = dd.slice(10,15);
 
-  if(mmsp == year){
-    let trow = document.createElement('tr');    
-    let td1 = document.createElement('td'); 
-    let td2 = document.createElement('td'); 
-    let td3 = document.createElement('td');
-    let td4 = document.createElement('td');
-    let td5 = document.createElement('td'); 
-    let td6 = document.createElement('td'); 
-    
-    td1.innerHTML = itmNo+=1; 
-    td2.innerHTML = doc.data().User_OR
-    td3.innerHTML = doc.id;
-    td4.innerHTML = doc.data().User_name;
-    td5.innerHTML = doc.data().laa;
-    td6.innerHTML = doc.data().User_TotalPayment
+    let dtime = doc.data().User_CashierDate;
+    let date = dtime.slice(0,11)
 
-    trow.appendChild(td1);
-    trow.appendChild(td2);
-    trow.appendChild(td3);
-    trow.appendChild(td4);
-    trow.appendChild(td5);
-    trow.appendChild(td6);
+  if(mmsp == year){
+    let td1 = document.createElement('td'); 
+                let td2 = document.createElement('td'); 
+                let td3 = document.createElement('td');
+                let td4 = document.createElement('td');
+                let td5 = document.createElement('td'); 
+                let td6 = document.createElement('td'); 
+                let td7 = document.createElement('td'); 
+                
+                td1.innerHTML = itmNo+=1; 
+                td2.innerHTML = doc.data().User_OR
+                td3.innerHTML = doc.id;
+                td4.innerHTML = doc.data().User_name;
+                td5.innerHTML = doc.data().laa;
+                td6.innerHTML = date
+                td7.innerHTML = doc.data().User_TotalPayment
+            
+                trow.appendChild(td1);
+                trow.appendChild(td2);
+                trow.appendChild(td3);
+                trow.appendChild(td4);
+                trow.appendChild(td5);
+                trow.appendChild(td6);
+                trow.appendChild(td7);
   
         tbody1.appendChild(trow);
 

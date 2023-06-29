@@ -54,20 +54,21 @@ const db = getFirestore(app);
                     let td10 = document.createElement('td'); 
                     let td11 = document.createElement('td'); 
                     let td12 = document.createElement('td'); 
+                    let td13 = document.createElement('td'); 
 
                     t_ID.innerHTML = doc2.data().User_TransID; 
-                    td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
-                    td2.innerHTML = doc2.data().User_BD;
-                    td3.innerHTML = doc2.data().User_GN;
-                    td4.innerHTML = doc2.data().User_ADD;
-                    td6.innerHTML = doc2.data().User_Laa;
-                    td7.innerHTML = doc2.data().User_AT + " (" +  doc2.data().User_Rev + ")";
-                    td8.innerHTML = doc2.data().User_examType;
-                    td9.innerHTML = doc2.data().User_D;
-                    td10.innerHTML = doc2.data().User_T;
-                    td11.innerHTML = doc2.data().User_CN;
-                    td12.innerHTML = doc2.data().User_E;
-                    
+                    td1.innerHTML =  doc2.data().User_OR;
+                    td2.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
+                    td3.innerHTML = doc2.data().User_BD;
+                    td4.innerHTML = doc2.data().User_GN;
+                    td6.innerHTML = doc2.data().User_ADD;
+                    td7.innerHTML = doc2.data().User_Laa;
+                    td8.innerHTML = doc2.data().User_AT + " (" +  doc2.data().User_Rev + ")";
+                    td9.innerHTML = doc2.data().User_examType;
+                    td10.innerHTML = doc2.data().User_D;
+                    td11.innerHTML = doc2.data().User_T;
+                    td12.innerHTML = doc2.data().User_CN;
+                    td13.innerHTML = doc2.data().User_E;
 
                     trow.appendChild(t_ID);
                     trow.appendChild(td1);
@@ -81,6 +82,7 @@ const db = getFirestore(app);
                     trow.appendChild(td10);
                     trow.appendChild(td11);
                     trow.appendChild(td12);
+                    trow.appendChild(td13);
 
                     tbody.appendChild(trow);
 
@@ -91,7 +93,7 @@ const db = getFirestore(app);
                     let td1 = document.createElement('td');
                     let td2 = document.createElement('td');
                     let td3 = document.createElement('td'); 
-                    let td4 = document.createElement('td'); 
+                    let td4 = document.createElement('td');  
                     let td6 = document.createElement('td');
                     let td7 = document.createElement('td');
                     let td8 = document.createElement('td'); 
@@ -99,20 +101,21 @@ const db = getFirestore(app);
                     let td10 = document.createElement('td'); 
                     let td11 = document.createElement('td'); 
                     let td12 = document.createElement('td'); 
+                    let td13 = document.createElement('td'); 
 
                     t_ID.innerHTML = doc2.data().User_TransID; 
-                    td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
-                    td2.innerHTML = doc2.data().User_BD;
-                    td3.innerHTML = doc2.data().User_GN;
-                    td4.innerHTML = doc2.data().User_ADD;
-                    td6.innerHTML = doc2.data().User_Laa;
-                    td7.innerHTML = doc2.data().User_AT;
-                    td8.innerHTML = doc2.data().User_examType;
-                    td9.innerHTML = doc2.data().User_D;
-                    td10.innerHTML = doc2.data().User_T;
-                    td11.innerHTML = doc2.data().User_CN;
-                    td12.innerHTML = doc2.data().User_E;
-                    
+                    td1.innerHTML =  doc2.data().User_OR;
+                    td2.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN;
+                    td3.innerHTML = doc2.data().User_BD;
+                    td4.innerHTML = doc2.data().User_GN;
+                    td6.innerHTML = doc2.data().User_ADD;
+                    td7.innerHTML = doc2.data().User_Laa;
+                    td8.innerHTML = doc2.data().User_AT + " (" +  doc2.data().User_Rev + ")";
+                    td9.innerHTML = doc2.data().User_examType;
+                    td10.innerHTML = doc2.data().User_D;
+                    td11.innerHTML = doc2.data().User_T;
+                    td12.innerHTML = doc2.data().User_CN;
+                    td13.innerHTML = doc2.data().User_E;
 
                     trow.appendChild(t_ID);
                     trow.appendChild(td1);
@@ -126,6 +129,7 @@ const db = getFirestore(app);
                     trow.appendChild(td10);
                     trow.appendChild(td11);
                     trow.appendChild(td12);
+                    trow.appendChild(td13);
 
                     tbody.appendChild(trow);
                 }

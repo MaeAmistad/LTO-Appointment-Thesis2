@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../style/a_appntmntStatADC.css">
   </head>
   <body>
-    <div class="grid-container"> 
+    <div class="grid-container">
  
       <!-- Header -->
       <header class="header">
@@ -98,7 +98,8 @@
 
       <!-- Main -->
       <main class="main-container">
-
+        <div class="outer-wrapper">
+          <div class="table-wrapper">
         <div class="main"> 
 
 
@@ -106,43 +107,44 @@
             <div class="main2">
                 <div class="dropdown-user">
                   <select id="user" onchange="user(this.value)">
-                    <option value="a_pcLIApprved.html" selected>Evaluator</option>
-                    <option value="a_caLIComp.html">Cashier</option>
+                    <option value="a_pcLIApprved.html">Evaluator</option>
+                    <option value="a_caLIComp.html" selected>Cashier</option>
                     <option value="a_exLIPass.html">Examiner</option>
                   </select>
                 </div>
 
                 <div class="btnOptn">
-                    <button id="comp_btn" style="background:#032d8983; color: white;">Approved</button>
+                    <button id="comp_btn" >COMPLETED</button>
                 </div>
                 <div class="btnOptn">
-                    <button id="incomp_btn">Declined</button>
+                    <button id="incomp_btn">INCOMPLETE</button>
                 </div>
-
-                <div>
-                  <button id="archived_acc" >See Archives</button>
-                </div>
-            </div> 
+                <div class="btnOptn">
+                  <button id="released" style="background:#032d8983; color: white;">RELEASED</button>
+              </div>
+            </div>
 
             <table class="content-table">
               <thead>
               <tr>
-                <th class="sp" colspan="7">Appointments</th>
+                <th class="sp" colspan="9">Appointments</th>
               </tr>
               <tr>
-                    <th>Application ID.</th>
+                    <th>Transaction ID.</th>
+                    <th>OR Number</th>
                     <th>Full Name</th>
                     <th>Transaction Type</th>
                     <th>Date</th>      
                     <th>Time</th>  
-                    <th>Evaluator Name</th>
-                    <th>Approved Time</th> 
+                    <th>Amount</th>
+                    <th>Cashier Name</th>
+                    <th>Accepted Time</th>
               </tr> 
                 <tbody id="tbody1"> </tbody>
               </table>
           </div>
-
-
+          </div>
+        </div>
         </div>
       </main>
       <!-- End Main -->
@@ -151,7 +153,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
 
-    <script type="module" src="../src/a_LIComp.js"></script>
+    <script type="module" src="../src/a_caLIReleased.js"></script>
     <script src="../src/a_dashboard.js"></script>
     <script type="module" src="../src/a_logout.js"></script>
   </body>

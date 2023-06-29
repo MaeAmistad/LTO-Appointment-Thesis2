@@ -7,7 +7,7 @@ comp_btn.addEventListener('click',(e) => {
 });
 
 incomp_btn.addEventListener('click',(e) => {
-    window.location = "a_camvInomp.html";
+    window.location = "a_camvInomp.html"; 
 });
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
@@ -43,19 +43,21 @@ const db = getFirestore(app);
             let td2 = document.createElement('td');
             let td3 = document.createElement('td'); 
             let td4 = document.createElement('td'); 
+            let td5 = document.createElement('td'); 
 
             t_ID.innerHTML = doc2.data().User_TransID; 
-            td1.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
-            td2.innerHTML = doc2.data().User_TT;
-            td3.innerHTML = doc2.data().User_D;
-            td4.innerHTML = doc2.data().User_T;
-            
+            td1.innerHTML = doc2.data().User_OR
+            td2.innerHTML = doc2.data().User_LN + ", " + doc2.data().User_FN + " " + doc2.data().User_MN ;
+            td3.innerHTML = doc2.data().User_TT;
+            td4.innerHTML = doc2.data().User_D;
+            td5.innerHTML = doc2.data().User_T;
 
             trow.appendChild(t_ID);
             trow.appendChild(td1);
             trow.appendChild(td2);
             trow.appendChild(td3);
             trow.appendChild(td4);
+            trow.appendChild(td5);
 
             tbody.appendChild(trow);
 
