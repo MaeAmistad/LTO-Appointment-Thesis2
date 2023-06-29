@@ -7,8 +7,8 @@
     font-family: 'Poppins', sans-serif;
 }
 img{
-  width: 80px;
-  height: 80px;
+  width: 200px;
+  height: 200px;
 }
   .material-icons-outlined {
     vertical-align: middle;
@@ -84,7 +84,7 @@ img{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 20px 20px 20px;
+    padding: 20px 15px 0px 25px;
     margin-bottom: 30px;
   }
   
