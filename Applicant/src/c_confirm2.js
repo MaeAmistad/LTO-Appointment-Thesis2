@@ -31,7 +31,7 @@ var laa = localStorage.getItem("laa");
 var rr = localStorage.getItem("rvsnofrcrds");
 var fee = localStorage.getItem("fees");
 
-console.log(email.toLowerCase())
+// console.log(email.toLowerCase())
 
 //change birthday date format
 var birthday = gn;
