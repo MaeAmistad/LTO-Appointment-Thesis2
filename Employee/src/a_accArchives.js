@@ -1,3 +1,7 @@
+bck.addEventListener('click' ,() =>{
+  window.location = "a_accMan.html";
+})
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
 import { getFirestore, getDocs, getDoc, setDoc, doc, collection, updateDoc } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
 import { getAuth, createUserWithEmailAndPassword, sendEmailVerification} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";

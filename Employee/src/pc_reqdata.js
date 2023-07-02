@@ -167,15 +167,14 @@ querySnapshot2.forEach(doc2 => {
 
                 var employees = doc1.data().user_LN + ", " + doc1.data().user_FN + " " + doc1.data().user_MN;
 
-
-
-                cnfrm.addEventListener('click', (e) => {
+                cnfrm1.addEventListener('click', (e) => {
                     const updateStat = doc(db, "Applicants", doc2.id)
                     var stt = localStorage.getItem("stat")
 
                     if (doc2.data().User_TT == "MOTOR VEHICLE REGISTRATION") {
 
                         if (stt == doc2.data().User_AppID) {
+                            console.log(stt)
                             updateDoc(updateStat, {
                                 User_Stat2: "APPROVED_TO_CASHIER",
                                 User_Stat: "APPROVED_TO_CASHIER",
@@ -191,6 +190,7 @@ querySnapshot2.forEach(doc2 => {
                     }
                     else if (doc2.data().User_TT == "LICENSING") {
                         if (stt == doc2.data().User_AppID) {
+                            console.log(stt)
                             updateDoc(updateStat, {
                                 User_Stat2: "APPROVED_TO_CASHIER",
                                 User_Stat: "APPROVED_TO_CASHIER",
@@ -200,8 +200,8 @@ querySnapshot2.forEach(doc2 => {
                                 User_EvaluatorDate: today + " , " + time
                             }).then(() => {
                                 window.location = "pc_homepage.html"
-                                // console.log(additionalFee.value)
-                                // console.log(employees)
+                                console.log(additionalFee.value)
+                                console.log(employees)
                             })
                         }
                     }

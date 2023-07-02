@@ -26,7 +26,6 @@
 h1{
     font-size: 30px;
     text-align: center;
-    border-bottom: 1px solid gray;
     margin-bottom: 10px;
     align-items: center;
     justify-content: center;
@@ -286,7 +285,8 @@ i{
   box-shadow: 5px 5px 5px rgb(70, 69, 69);
   color: black;
   padding: 20px;
-  visibility: hidden;
+  /* visibility: hidden; */
+  display: none;
   position: fixed;
   top: 50%;
   left: 50%;

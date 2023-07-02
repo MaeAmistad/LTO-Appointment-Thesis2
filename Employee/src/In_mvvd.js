@@ -27,6 +27,7 @@ console.log(localStorage.getItem('AppID'))
 
 mvapprvdSnap.forEach(doc => {
     if (AppID == doc.data().User_AppID){
+        console.log(doc.id)
         document.getElementById("plate_num").innerHTML = doc.data().pltno;
         document.getElementById("typee").innerHTML = doc.data().typel;
         document.getElementById("reftypee").innerHTML = doc.data().refrigerant_typ;

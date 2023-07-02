@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <!-- <meta http-equiv="refresh" content="5"> -->
     <title>LTO Appointment Setter</title> 
 
     <!-- Montserrat Font -->
@@ -12,6 +11,7 @@
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="https://kit.fontawesome.com/8ec04d5e4f.js" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -78,7 +78,7 @@
       <!-- End Sidebar -->
 
       <!-- Main -->
-      <main class="main-container"  id="blur">
+      <main class="main-container">
 
         <div class="main2">
             <div class="btn_useracc">
@@ -112,6 +112,7 @@
         </div>
         
       </main>
+    </div>
       <!-- End Main -->
   
       <!-- CREATE ACCOUNT -->
@@ -293,17 +294,16 @@
       <!-- confirmation modal for edit account -->
       <div class="cnfrm_modal" id="cnfrm_modal_edit">
         <h1>Update User's Information?</h1>
-            <div class="btn">
-                <button class="cnl">Cancel</button>
+            <div class="btn1">
+                <button id="cnl" class="cnl">Cancel</button>
                 <button id="cnfrm">Confirm</button>
             </div>
       </div>
-    </div>
     
     <!-- confirmation modal for delete account -->
       <div class="cnfrm_modal_delete" id="delete_acc_modal">
         <h1>Confirm delete this account?</h1>
-            <div class="btn">
+            <div class="btn1">
                 <button id="cnl2">Cancel</button>
                 <button id="cnfrm2">Confirm</button>
             </div>
@@ -367,29 +367,25 @@
                   icon4.innerText = "visibility"
                 }
         }
-      
-      function toggle(){
-            var blur = document.getElementById('blur');
-            blur.classList.toggle('active');
+      var blur = document.getElementById('blur');
 
+      function toggle(){
             var popup = document.getElementById('user-modal');
             popup.classList.toggle('active');
+            blur.classList.toggle('active')
       }
       
       function toggle2(){
-            var blur = document.getElementById('blur');
-            blur.classList.toggle('active');
-
             var popup = document.getElementById('edit-modal');
             popup.classList.toggle('active');
+            blur.classList.toggle('active')
       }    
 
       function toggle3(){
-            var blur = document.getElementById('blur');
-            blur.classList.toggle('active');
-
-            var popup = document.getElementById('delete_acc_modal');
-            popup.classList.toggle('active');
+            // var popup = document.getElementById('delete_acc_modal');
+            // popup.classList.toggle('active');
+            document.getElementById('delete_acc_modal').style.display = "block";
+            blur.classList.toggle('active')
       } 
 
     </script>

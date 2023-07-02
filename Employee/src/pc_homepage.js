@@ -235,76 +235,76 @@ else{
 window.onload = getData;
 
 // Check if the date of appointment is already past
-const querySnapshot2 = await getDocs(collection(db, "Applicants"));
+// const querySnapshot2 = await getDocs(collection(db, "Applicants"));
 
-querySnapshot2.forEach(doc3 => {
+// querySnapshot2.forEach(doc3 => {
 
-    var date = new Date();
-    var day = date.getDate();
-    var month = date.getMonth() + 1;
-    var year = date.getFullYear();
-    if (month < 10) month = "0" + month;
-    if (day < 10) day = "0" + day;
-
-
-    //fix
-    var appointmentDate = doc3.data().User_D;
-    let today = year + " - " + month + " - " + day;
+//     var date = new Date();
+//     var day = date.getDate();
+//     var month = date.getMonth() + 1;
+//     var year = date.getFullYear();
+//     if (month < 10) month = "0" + month;
+//     if (day < 10) day = "0" + day;
 
 
-    // let time1 = current.getTime();
-    // let time2 = past.getTime();
+//     //fix
+//     var appointmentDate = doc3.data().User_D;
+//     let today = year + " - " + month + " - " + day;
 
-    // console.log("today: " + today)
-    // console.log("past: " + appointmentDate)
 
-    console.log(appointmentDate < today);
-    const updateStat = doc(db, "Applicants", doc3.id)
-    if (appointmentDate < today) {
-        updateDoc(updateStat, {
-            User_Stat: "MISSED"
-        }).then(() => {
-            var full_name = doc3.data().User_FN + doc3.data().User_MN + doc3.data().User_LN;
-            var at = doc3.data().User_TT + ", " + doc3.data().User_AT;
-            var email = doc3.data().User_E;
+//     // let time1 = current.getTime();
+//     // let time2 = past.getTime();
 
-            const tt = "Hi " + full_name + "<br/>" + "<br/>";
-            const r2 = "YOU HAVE MISSED YOUR APPLICATION FOR " + "<u>" + at + ". " + "</u>" + "<br/>";
-            const r3 = "DATE: " + doc3.data().User_D + " at " + doc3.data().User_D;
-            const r4 = ". Please set an appointment again if you wish to have a transaction at the LTO San Ildefonso, Ilocos Sur" + "<br/>" + "<br/>";
-            const r5 = "If you didn't set an appointment, please disregard this email."
+//     // console.log("today: " + today)
+//     // console.log("past: " + appointmentDate)
 
-            Email.send({
-                Host: "smtp.elasticemail.com",
-                Username: "advocsbscs@gmail.com",
-                Password: "342E004513CF8CC2EC61B156D52548F2EF93",
-                To: email.toLowerCase(),
-                From: "advocsbscs@gmail.com",
-                Subject: "LTO APPOINTMENT APPLICATION",
-                Body: tt + r2 + r3 + r4 + r5
-            }).then(
-                Swal.fire({
-                    title: 'Your proof of appointment has been sent to your email.',
-                    confirmButtonColor: '#132aaa',
-                    showClass: {
-                        popup: 'animate__animated animate__fadeInDown'
-                    },
-                    hideClass: {
-                        popup: 'animate__animated animate__fadeOutUp'
-                    }
-                }).then(() => {
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'Your Application has been sent',
-                        showConfirmButton: false,
-                        timer: 2000
-                    })
+//     // console.log(appointmentDate < today);
+//     const updateStat = doc(db, "Applicants", doc3.id)
+//     if (appointmentDate < today) {
+//         updateDoc(updateStat, {
+//             User_Stat: "MISSED"
+//         }).then(() => {
+//             var full_name = doc3.data().User_FN + doc3.data().User_MN + doc3.data().User_LN;
+//             var at = doc3.data().User_TT + ", " + doc3.data().User_AT;
+//             var email = doc3.data().User_E;
 
-                    // window.location = "index.html";
-                    console.log("Email Sent")
-                })
-            );
-        })
-    }
-})
+//             const tt = "Hi " + full_name + "<br/>" + "<br/>";
+//             const r2 = "YOU HAVE MISSED YOUR APPLICATION FOR " + "<u>" + at + ". " + "</u>" + "<br/>";
+//             const r3 = "DATE: " + doc3.data().User_D + " at " + doc3.data().User_D;
+//             const r4 = ". Please set an appointment again if you wish to have a transaction at the LTO San Ildefonso, Ilocos Sur" + "<br/>" + "<br/>";
+//             const r5 = "If you didn't set an appointment, please disregard this email."
+
+//             Email.send({
+//                 Host: "smtp.elasticemail.com",
+//                 Username: "advocsbscs@gmail.com",
+//                 Password: "342E004513CF8CC2EC61B156D52548F2EF93",
+//                 To: email.toLowerCase(),
+//                 From: "advocsbscs@gmail.com",
+//                 Subject: "LTO APPOINTMENT APPLICATION",
+//                 Body: tt + r2 + r3 + r4 + r5
+//             }).then(
+//                 Swal.fire({
+//                     title: 'Your proof of appointment has been sent to your email.',
+//                     confirmButtonColor: '#132aaa',
+//                     showClass: {
+//                         popup: 'animate__animated animate__fadeInDown'
+//                     },
+//                     hideClass: {
+//                         popup: 'animate__animated animate__fadeOutUp'
+//                     }
+//                 }).then(() => {
+//                     Swal.fire({
+//                         position: 'center',
+//                         icon: 'success',
+//                         title: 'Your Application has been sent',
+//                         showConfirmButton: false,
+//                         timer: 2000
+//                     })
+
+//                     // window.location = "index.html";
+//                     console.log("Email Sent")
+//                 })
+//             );
+//         })
+//     }
+// })

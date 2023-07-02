@@ -108,10 +108,10 @@ if (tt == "MOTOR VEHICLE REGISTRATION"){
 
     var full_name = localStorage.getItem("first_name");
     const tt = "Hi " + full_name + "<br/>" + "<br/>";
-    const r2 = "YOUR APPLICATION FOR " + "<u>" +  at  + " HAS BEEN SET SUCCESFULLY." + "</u>" + "<br/>" + "<br/>";
+    const r2 = "YOUR APPLICATION FOR " + "<u>" +  at  + " HAS BEEN SET SUCCESFULLY. " + "</u>" + "<br/>" + "<br/>";
     const r3 = "Come to the office on " + localStorage.getItem("date") + " at " + localStorage.getItem("time");
     const r4 = " and please remember to bring your requirements together with your proof of appointment. " + TranID + "<br/>" + "<br/>";
-    const r5 = "If you didn't set an appointment, please disregard this email."
+    const r5 = " If you didn't set an appointment, please disregard this email. "
 
     Email.send({
         Host : "smtp.elasticemail.com",
@@ -191,10 +191,10 @@ else if (tt == "LICENSING"){
   
     var full_name = localStorage.getItem("first_name");
     const tt = "Hi " + full_name + "<br/>" + "<br/>";
-    const r2 = "YOUR APPLICATION FOR " + "<u>" + laa + at  + " HAS BEEN SET SUCCESFULLY." + "</u>" + "<br/>" + "<br/>";
+    const r2 = "YOUR APPLICATION FOR " + "<u>" + laa + at  + " HAS BEEN SET SUCCESFULLY. " + "</u>" + "<br/>" + "<br/>";
     const r3 = "Come to the office on " + localStorage.getItem("date") + " at " + localStorage.getItem("time");
     const r4 = " and please remember to bring your requirements together with your proof of appointment. " + TranID + "<br/>" + "<br/>";
-    const r5 = "If you didn't set an appointment, please disregard this email."
+    const r5 = " If you didn't set an appointment, please disregard this email. "
   
       Email.send({
           Host : "smtp.elasticemail.com",
@@ -271,7 +271,7 @@ else if (tt == "LICENSING"){
     const r2 = "YOUR APPLICATION FOR " + "<u>" + laa + at  + " HAS BEEN SET SUCCESFULLY.  " + "</u>" + "<br/>" + "<br/>";
     const r3 = "Come to the office on " + localStorage.getItem("date") + " at " + localStorage.getItem("time");
     const r4 = " and please remember to bring your requirements together with your proof of appointment. " + TranID + "<br/>" + "<br/>";
-    const r5 = "If you didn't set an appointment, please disregard this email."
+    const r5 = " If you didn't set an appointment, please disregard this email. "
   
       Email.send({ 
           Host : "smtp.elasticemail.com",

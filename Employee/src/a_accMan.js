@@ -1,3 +1,4 @@
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
 import { getFirestore, getDocs, setDoc, doc, collection, updateDoc } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
 import { getAuth, createUserWithEmailAndPassword, sendEmailVerification} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
@@ -10,7 +11,7 @@ const firebaseConfig = {
     storageBucket: "lto-online-appointment-setter.appspot.com",
     messagingSenderId: "382579903791",
     appId: "1:382579903791:web:5d98bbe4ea8b38a43065da" 
-};
+}; 
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

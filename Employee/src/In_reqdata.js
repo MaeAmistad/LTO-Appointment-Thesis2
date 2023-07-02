@@ -446,7 +446,7 @@ const querySnapshot2 = await getDocs(collection(db, "Applicants"));
 
 var transID = localStorage.getItem("stat");
 var ID = localStorage.getItem("ID");
-
+console.log(ID)
 function makeid(l) {
   var text = "";
   var number = "0123456789"
@@ -506,7 +506,7 @@ querySnapshot2.forEach(doc2 => {
   // Saving Data
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      console.log(user.uid)
+      // console.log(user.uid)
       onSnapshot(doc(db, "Users", "Employee", "EmployeeData", user.uid), (doc1) => {
         // console.log(doc.data())
 

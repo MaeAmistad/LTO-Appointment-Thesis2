@@ -224,7 +224,7 @@ th, tr, td{
     text-transform: uppercase;
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color: rgb(209, 207, 207);
+    background-color: rgb(223, 217, 217);
     cursor: pointer;
 }
 .btn_useracc{
@@ -239,14 +239,9 @@ th, tr, td{
     text-transform: uppercase;
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color: rgb(39, 88, 147);
+    background-color: rgb(39, 88, 147); 
     color: white;
     cursor: pointer;
-}
-.grid-container#blur.active{
-  filter: blur(10px);
-  pointer-events: none;
-  user-select: none;
 }
 tr th, tr th{
     background-color: gainsboro;
@@ -280,6 +275,24 @@ h4{
   padding-left: 5px;
   text-transform: uppercase;
   /* margin-bottom: 10px; */
+}
+.btn1 button{
+  padding: 4px;
+  padding: 10px;
+  margin: 10px;
+  text-transform: uppercase;
+  margin-top: 20px;
+  cursor: pointer;
+  border:1px solid grey;
+  color:black;
+}
+#cnl{
+  margin-left: 60%;
+}
+.grid-container#blur.active{
+  filter: blur(10px);
+  pointer-events: none;
+  user-select: none;
 }
   /* Medium <= 992px */
   @media screen and (max-width: 992px) {
